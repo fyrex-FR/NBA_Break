@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  card-optimizer:
+    build: .
+    container_name: card-optimizer
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      # Mount the checklists folder so you can add files without rebuilding
+      - ./checklists:/app/checklists
+    restart: unless-stopped
