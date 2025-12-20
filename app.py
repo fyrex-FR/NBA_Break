@@ -4,15 +4,13 @@ import os
 import glob
 import plotly.express as px
 import re
-import openai
 
 def extract_year(filename):
     match = re.search(r"(\d{4}-\d{2})", filename)
     return match.group(1) if match else "Inconnue"
 
-# API Key Config (Provided by User)
-# Note: In production, use st.secrets or environment variables
-OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+# API Key Config (Removed as requested)
+# OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 st.set_page_config(page_title="Check list optimizer", page_icon="🏀", layout="wide")
 
@@ -244,7 +242,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.session_state['active_view'] = st.session_state['nav_radio']
 
         # Navigation Bar
-        views = ["🌍 Vue Globale", "💎 Autos & Patchs", "🔥 Logoman", "✨ Case Hits", "👥 Multi-Joueurs", "⚖️ Comparateur Joueurs", "📤 Export & Analyse AI", "📂 Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"]
+        views = ["🌍 Vue Globale", "💎 Autos & Patchs", "🔥 Logoman", "✨ Case Hits", "👥 Multi-Joueurs", "⚖️ Comparateur Joueurs", " Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"]
         
         # Ensure current view is valid
         if st.session_state['active_view'] not in views:
@@ -670,152 +668,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 fig_comp = px.bar(comp_df, x="Joueur", y=["🔥 Logoman", "✨ Case Hit", "💎 Auto/Mem", "📄 Base/Autre"], title="Comparaison Visuelle", barmode='stack')
                 st.plotly_chart(fig_comp, use_container_width=True)
 
-        elif selection == "📤 Export & Analyse AI":
-            st.subheader("🤖 Analyse AI (GPT-4o-mini)")
-            st.info("L'intelligence artificielle analyse vos checklists pour trouver les meilleures opportunités.")
-            
-            # Prepare Export Data
-            df_export = df_p.copy()
-            df_export['Category'] = df_export['Box Type'].apply(categorize_card)
-            
-            # --- HARDCODED ROOKIE LOGIC (To help AI) ---
-            # --- HARDCODED ROOKIE LOGIC (To help AI) ---
-            ROOKIE_DB = {
-                "2023-24": ["Victor Wembanyama", "Brandon Miller", "Scoot Henderson", "Amen Thompson", "Ausar Thompson", "Jaime Jaquez Jr", "Brandin Podziemski"],
-                "2024-25": ["Zaccharie Risacher", "Alex Sarr", "Reed Sheppard", "Stephon Castle", "Ron Holland", "Tidjane Salaun", "Rob Dillingham", "Zach Edey"],
-                "2022-23": ["Paolo Banchero", "Chet Holmgren", "Jabari Smith Jr", "Keegan Murray", "Jaden Ivey"],
-                "2021-22": ["Cade Cunningham", "Jalen Green", "Evan Mobley", "Scottie Barnes", "Josh Giddey", "Franz Wagner"],
-                "2020-21": ["Anthony Edwards", "LaMelo Ball", "Tyrese Haliburton", "Tyrese Maxey"]
-            }
-            
-            def get_rookie_status(row):
-                year = row['Year']
-                player = row['Player']
-                box_type = str(row['Box Type']).lower()
-                
-                status = "❌ Vet / Minor" # Default
-                
-                # 1. Dynamic Detection (User Request)
-                # If the card name explicitly says "Rookie", "RC", "Rated Rookie"...
-                if "rookie" in box_type or " rc" in box_type or "rated rookie" in box_type:
-                    status = "✅ ROOKIE (Detected)"
-
-                # 2. DB Validation (Overrules/Refines)
-                if year in ROOKIE_DB:
-                    for r_name in ROOKIE_DB[year]:
-                        if r_name.lower() in player.lower():
-                            status = "✅ ROOKIE (Star)"
-                            break
-                            
-                return status
-
-            df_export['Rookie_Status'] = df_export.apply(get_rookie_status, axis=1)
-            
-            # Select relevant columns for Manual Export
-            final_export = df_export[['Year', 'File', 'Team', 'Player', 'Rookie_Status', 'Category', 'Box Type']]
-            
-            # --- AGGREGATION TO SAVE TOKENS ---
-            # Instead of sending every single row, we group identical cards
-            # This massively reduces token usage (e.g. 50 base cards = 1 row)
-            df_ai_summary = df_export.groupby(
-                ['Year', 'Team', 'Player', 'Rookie_Status', 'Category']
-            ).size().reset_index(name='Card_Count')
-            
-            # Sort by "Critical" cards first to ensure they are in the context window
-            # Order: Category (Logoman/Auto) -> Rookie Status -> Count
-            df_ai_summary['Priority'] = df_ai_summary['Category'].map({"🔥 Logoman": 4, "✨ Case Hit": 3, "💎 Auto/Mem": 2, "📄 Base/Autre": 1})
-            df_ai_summary = df_ai_summary.sort_values(by=['Priority', 'Card_Count'], ascending=[False, False]).drop(columns=['Priority'])
-
-            col_ai1, col_ai2 = st.columns([1, 1])
-            
-            with col_ai1:
-                st.markdown("#### 1. Données à analyser (Agrégées)")
-                st.dataframe(df_ai_summary.head(10), use_container_width=True)
-                st.caption(f"Données compressées : {len(df_ai_summary)} lignes envoyées (au lieu de {len(df_export)}).")
-
-            with col_ai2:
-                st.markdown("#### 2. Contexte & Prix")
-                user_context = st.text_area(
-                    "Indiquez ici les prix des spots.",
-                    height=150,
-                    placeholder="Exemple:\nLakers: 200$\nSpurs: 350$\nWarriors: 120$\n\nQuel est le meilleur rapport qualité/prix ?"
-                )
-                
-                analyze_btn = st.button("✨ Lancer l'analyse GPT-4o", type="primary")
-
-            if analyze_btn:
-                if not user_context:
-                    st.warning("Merci d'indiquer des prix ou un contexte pour guider l'IA.")
-                else:
-                    with st.spinner("Compression des données et Analyse IA en cours..."):
-                        try:
-                            # 1. Convert Data to CSV String (Use the SUMMARY dataframe)
-                            csv_data = df_ai_summary.to_csv(index=False)
-                            
-                            # 2. Construct Prompt
-                            prompt = f"""
-                            Tu es un expert mondial en investissement sur les cartes NBA.
-                            
-                            --- DONNÉES SYNTHÉTISÉES ---
-                            Je t'ai mâché une partie du travail (colonne 'Rookie_Status') :
-                            - '✅ ROOKIE (Star)' = Confirmé par ma base de données.
-                            - '✅ ROOKIE (Detected)' = Le mot "Rookie" est écrit sur la carte.
-                            - '❌ Vet / Minor' = Vétéran ou joueur mineur.
-                            
-                            ⚠️ TÂCHE EXPERTE SUPPLÉMENTAIRE :
-                            Mes données ne sont pas parfaites. UTILISE TON SAVOIR pour identifier les "Rookie Stars" qui seraient seulement notées "Detected" ou "Unchecked".
-                            Exemple : Si tu vois "Zach Edey" ou "Reed Sheppard" en 2024-25, considère-les comme des STARS même si je ne l'ai pas explicitement dit.
-                            
-                            CSV :
-                            {csv_data}
-                            
-                            PRIX DES SPOTS (Donnés par l'utilisateur) :
-                            {user_context}
-                            
-                            --- MISSION ---
-                            Trouve les meilleurs ratios (Valeur Totale Estimée / Prix du Spot).
-                            
-                            Calcul Mental Indicatif (Score) :
-                            - Logoman = 1000 pts
-                            - Case Hit (Downtown, etc.) = 500 pts
-                            - Auto/Mem (Star/Rookie Star) = 100 pts
-                            - Auto/Mem (Rookie mineur) = 20 pts
-                            - Base (Star Rookie) = 10 pts
-                            
-                            Rapport :
-                            1. 🏆 TOP 3 RENTABILITÉ : Spots sous-cotés (Undervalued).
-                            2. 🛑 ATTENTION aux faux amis : Spots chers avec que du 'Vet / Minor'.
-                            """
-                            
-                            client = openai.OpenAI(api_key=OPENAI_API_KEY)
-                            
-                            response = client.chat.completions.create(
-                                model="gpt-4o-mini",
-                                messages=[
-                                    {"role": "system", "content": "Tu es un assistant expert en Trading Cards NBA."},
-                                    {"role": "user", "content": prompt}
-                                ],
-                                max_tokens=1500
-                            )
-                            
-                            analysis = response.choices[0].message.content
-                            
-                            st.success("Analyse terminée !")
-                            st.markdown("### 🧠 Rapport de l'IA")
-                            st.markdown(analysis)
-                            
-                        except Exception as e:
-                            st.error(f"Erreur lors de l'appel AI : {e}")
-
-            st.markdown("---")
-            st.subheader("📥 Export Manuel")
-            csv = final_export.to_csv(index=False).encode('utf-8')
-            st.download_button(
-                label="Télécharger le fichier CSV",
-                data=csv,
-                file_name='card_optimizer_export.csv',
-                mime='text/csv',
-            )
 
         elif selection == "🔍 Analyse Joueur":
             st.subheader("Analyse détaillée par Joueur")
