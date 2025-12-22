@@ -304,6 +304,17 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 st.session_state['active_view'] = view_name
                 st.rerun()
 
+        def get_selected_row(event_obj):
+            if event_obj is None:
+                return None
+            selection = getattr(event_obj, "selection", None)
+            if selection is None:
+                return None
+            rows = getattr(selection, "rows", None)
+            if not rows:
+                return None
+            return rows[0]
+
         # Navigation Bar
         views = [
             "🌍 Vue Globale",
@@ -478,8 +489,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
                 
                 # Handle Selection
-                if len(event_p.selection.rows) > 0:
-                    row_idx = event_p.selection.rows[0]
+                row_idx = get_selected_row(event_p)
+                if row_idx is not None:
                     selected_player_name = sorted_players.iloc[row_idx]['Player']
                     if st.button("Voir détail joueur", key="global_player_detail"):
                         st.session_state['target_player'] = selected_player_name
@@ -505,8 +516,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
 
                 # Handle Selection
-                if len(event_t.selection.rows) > 0:
-                    row_idx = event_t.selection.rows[0]
+                row_idx = get_selected_row(event_t)
+                if row_idx is not None:
                     selected_team_name = sorted_teams.iloc[row_idx]['Team']
                     if st.button("Voir détail équipe", key="global_team_detail"):
                         st.session_state['target_team'] = selected_team_name
@@ -548,8 +559,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     key="auto_players_table"
                 )
                 
-                if len(event_pf.selection.rows) > 0:
-                    row_idx = event_pf.selection.rows[0]
+                row_idx = get_selected_row(event_pf)
+                if row_idx is not None:
                     selected_player_name = sorted_players_f.iloc[row_idx]['Player']
                     if st.button("Voir détail joueur", key="auto_player_detail"):
                         st.session_state['target_player'] = selected_player_name
@@ -570,8 +581,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     key="auto_teams_table"
                 )
                 
-                if len(event_tf.selection.rows) > 0:
-                    row_idx = event_tf.selection.rows[0]
+                row_idx = get_selected_row(event_tf)
+                if row_idx is not None:
                     selected_team_name = sorted_teams_f.iloc[row_idx]['Team']
                     if st.button("Voir détail équipe", key="auto_team_detail"):
                         st.session_state['target_team'] = selected_team_name
@@ -607,8 +618,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     key="logoman_players_table"
                 )
                 
-                if len(event_pl.selection.rows) > 0:
-                    row_idx = event_pl.selection.rows[0]
+                row_idx = get_selected_row(event_pl)
+                if row_idx is not None:
                     selected_player_name = sorted_players_l.iloc[row_idx]['Player']
                     if st.button("Voir détail joueur", key="logoman_player_detail"):
                         st.session_state['target_player'] = selected_player_name
@@ -629,8 +640,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     key="logoman_teams_table"
                 )
                 
-                if len(event_tl.selection.rows) > 0:
-                    row_idx = event_tl.selection.rows[0]
+                row_idx = get_selected_row(event_tl)
+                if row_idx is not None:
                     selected_team_name = sorted_teams_l.iloc[row_idx]['Team']
                     if st.button("Voir détail équipe", key="logoman_team_detail"):
                         st.session_state['target_team'] = selected_team_name
@@ -690,8 +701,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     key="ch_players_table"
                 )
                 
-                if len(event_pch.selection.rows) > 0:
-                    row_idx = event_pch.selection.rows[0]
+                row_idx = get_selected_row(event_pch)
+                if row_idx is not None:
                     selected_player_name = sorted_players_ch.iloc[row_idx]['Player']
                     if st.button("Voir détail joueur", key="casehit_player_detail"):
                         st.session_state['target_player'] = selected_player_name
@@ -715,8 +726,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     key="ch_teams_table"
                 )
                 
-                if len(event_tch.selection.rows) > 0:
-                    row_idx = event_tch.selection.rows[0]
+                row_idx = get_selected_row(event_tch)
+                if row_idx is not None:
                     selected_team_name = sorted_teams_ch.iloc[row_idx]['Team']
                     if st.button("Voir détail équipe", key="casehit_team_detail"):
                         st.session_state['target_team'] = selected_team_name
