@@ -99,7 +99,7 @@ else:
     
     # Toggle for Select All
     if "all_files_selected" not in st.session_state:
-        st.session_state.all_files_selected = True
+        st.session_state.all_files_selected = False
 
     def toggle_select_all():
         new_state = not st.session_state.all_files_selected
@@ -138,13 +138,16 @@ else:
                 # Initialize state if not present
                 chk_key = f"chk_{f_name}"
                 if chk_key not in st.session_state:
-                     st.session_state[chk_key] = True 
+                     st.session_state[chk_key] = False 
                 
                 # Checkbox controlling state
                 is_checked = st.checkbox(f_name, key=chk_key)
                 
                 if is_checked:
                     selected_file_paths.append(f_path)
+
+    st.sidebar.markdown("---")
+    st.sidebar.caption(f"{len(selected_file_paths)} fichier(s) sélectionné(s).")
 
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
