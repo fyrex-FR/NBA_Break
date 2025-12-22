@@ -163,7 +163,11 @@ if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
 
 def load_data(file_list):
     if not file_list:
-        return None, "Aucun fichier sélectionné."
+        return None, "Aucun fichier sélectionné.", []
+
+    @st.cache_data
+    def read_teams_clean(path):
+        return pd.read_excel(path, sheet_name="Teams_clean", engine="openpyxl")
 
     team_names = {
         "atlanta hawks", "atlanta",
@@ -204,6 +208,7 @@ def load_data(file_list):
 
     combined_data = []
     files_processed = 0
+    error_files = []
     
     progress_bar = st.progress(0)
     status_text = st.empty()
@@ -218,7 +223,7 @@ def load_data(file_list):
             source = file_obj # File Object
             
         if filename.startswith("~$"):
-            st.info(f"{filename}: fichier temporaire Excel ignoré.")
+            error_files.append((filename, "Fichier temporaire Excel ignoré."))
             continue
 
         status_text.text(f"Lecture de : {filename}")
@@ -228,7 +233,10 @@ def load_data(file_list):
             box_year = year_match.group(1) if year_match else "Inconnue"
             
             try:
-                df = pd.read_excel(source, sheet_name="Teams_clean", engine="openpyxl")
+                if isinstance(source, str):
+                    df = read_teams_clean(source)
+                else:
+                    df = pd.read_excel(source, sheet_name="Teams_clean", engine="openpyxl")
                 df = df.rename(columns={"Card Type": "Box Type"})
             except ValueError:
                 st.warning(f"{filename}: onglet 'Teams_clean' introuvable. Merci d'utiliser un fichier nettoye.")
@@ -238,7 +246,14 @@ def load_data(file_list):
             df = df.dropna(subset=['Player', 'Team'])
             
             # Remove trailing commas from names (common in new checklists)
-            df['Player'] = df['Player'].astype(str).str.replace(r',$', '', regex=True)
+            df['Player'] = (
+                df['Player']
+                .astype(str)
+                .str.replace(r',$', '', regex=True)
+                .str.strip()
+            )
+            df['Team'] = df['Team'].astype(str).str.strip()
+            df['Team'] = df['Team'].apply(lambda t: t.title())
 
             
             # Add metadata
@@ -253,10 +268,7 @@ def load_data(file_list):
             files_processed += 1
             
         except Exception as e:
-            st.warning(
-                f"Erreur sur {filename}: {e}. "
-                "Vérifie que le fichier est un .xlsx valide avec l'onglet 'Teams_clean'."
-            )
+            error_files.append((filename, str(e)))
         
         progress_bar.progress((i + 1) / len(file_list))
 
@@ -264,19 +276,29 @@ def load_data(file_list):
     progress_bar.empty()
     
     if not combined_data:
-        return None, "Aucun onglet 'Teams_clean' trouvé ou données valides extraites."
+        return None, "Aucun onglet 'Teams_clean' trouvé ou données valides extraites.", error_files
         
-    return pd.concat(combined_data, ignore_index=True), f"{files_processed} fichiers traités."
+    df = pd.concat(combined_data, ignore_index=True)
+    msg = f"{files_processed} fichiers traités • {len(df)} lignes"
+    return df, msg, error_files
 
 # --- Display ---
 
 if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
     # Use selected files from session state
     target_files = st.session_state.get('selected_files', [])
-    df, msg = load_data(target_files)
+    df, msg, error_files = load_data(target_files)
     
     if df is not None:
         st.success(msg)
+        st.sidebar.markdown("---")
+        st.sidebar.caption(f"{msg}")
+        if error_files:
+            st.sidebar.caption(f"{len(error_files)} fichier(s) ignoré(s).")
+        if error_files:
+            with st.expander(f"{len(error_files)} fichier(s) ignoré(s)"):
+                for name, err in error_files:
+                    st.write(f"- {name}: {err}")
         
         # --- Pre-processing for Multi-Values ---
         # Split and explode Players (separator '/')
@@ -483,11 +505,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 # Full sorted list for Table
                 sorted_players = player_stats.sort_values(by='Hits', ascending=False)
+                show_all_players = st.checkbox("Afficher tout", value=False, key="global_players_show_all")
+                display_players = sorted_players if show_all_players else sorted_players.head(50)
                 
                 # Dataframe with selection
                 event_p = st.dataframe(
-                    sorted_players,
-                    use_container_width=True,
+                    display_players, 
+                    use_container_width=True, 
                     selection_mode="single-row",
                     on_select="rerun",
                     key="global_players_table"
@@ -510,11 +534,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 # Full sorted list for Table
                 sorted_teams = team_stats.sort_values(by='Hits', ascending=False)
+                show_all_teams = st.checkbox("Afficher tout", value=False, key="global_teams_show_all")
+                display_teams = sorted_teams if show_all_teams else sorted_teams.head(50)
                 
                 # Dataframe with selection
                 event_t = st.dataframe(
-                    sorted_teams,
-                    use_container_width=True,
+                    display_teams, 
+                    use_container_width=True, 
                     selection_mode="single-row",
                     on_select="rerun",
                     key="global_teams_table"
@@ -1097,6 +1123,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             
     else:
         st.error(msg)
+        if error_files:
+            with st.expander(f"{len(error_files)} fichier(s) ignoré(s)"):
+                for name, err in error_files:
+                    st.write(f"- {name}: {err}")
 
 else:
     st.info("👈 Sélectionnez vos fichiers et cliquez sur 'Lancer l'analyse' pour commencer.")
