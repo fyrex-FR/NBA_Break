@@ -369,6 +369,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             mult = 1.0 + (100.0 / num)
             return min(mult, 10.0)
 
+        def parse_numbering(value):
+            try:
+                return int(float(value))
+            except (ValueError, TypeError):
+                return None
+
         # ... (Existing categorize_card helper is above) ...
         def categorize_card(box_type):
             box_type_str = str(box_type).lower()
@@ -946,7 +952,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 st.markdown("---")
                 st.subheader("Détail des cartes")
-                st.dataframe(file_df[['Player', 'Team', 'Box Type', 'Category', 'Hits']], use_container_width=True)
+                max_serial = st.number_input("Filtre numérotation (<= /xx)", min_value=0, value=0, step=1, key="file_serial")
+                display_file_df = file_df.copy()
+                if max_serial > 0:
+                    display_file_df = display_file_df[
+                        display_file_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial
+                    ]
+                st.dataframe(display_file_df[['Player', 'Team', 'Box Type', 'Numbering', 'Category', 'Hits']], use_container_width=True)
 
         elif selection == "🔍 Analyse Joueur":
             st.subheader("Analyse détaillée par Joueur")
@@ -1007,13 +1019,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 # Filter by Category for the table
                 filter_cat = st.radio("Filtrer le tableau par type :", ["Tous", "🔥 Logoman", "✨ Case Hit", "💎 Auto/Mem", "📄 Base/Autre"], horizontal=True)
+                max_serial_p = st.number_input("Filtre numérotation (<= /xx)", min_value=0, value=0, step=1, key="player_serial")
                 
                 if filter_cat != "Tous":
                     display_df = player_data[player_data['Category'] == filter_cat]
                 else:
                     display_df = player_data
+                if max_serial_p > 0:
+                    display_df = display_df[
+                        display_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial_p
+                    ]
 
-                st.dataframe(display_df[['Category', 'Box Type', 'Team', 'Hits', 'File']], use_container_width=True)
+                st.dataframe(display_df[['Category', 'Box Type', 'Numbering', 'Team', 'Hits', 'File']], use_container_width=True)
 
         elif selection == "🛡️ Analyse Équipe":
              st.subheader("Analyse détaillée par Équipe")
@@ -1048,7 +1065,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
  
                  with col_t2:
                      st.markdown("#### Détail des cartes")
-                     st.dataframe(team_df_sub, use_container_width=True)
+                     max_serial_t = st.number_input("Filtre numérotation (<= /xx)", min_value=0, value=0, step=1, key="team_serial")
+                     display_team_df = team_df_sub.copy()
+                     if max_serial_t > 0:
+                         display_team_df = display_team_df[
+                             display_team_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial_t
+                         ]
+                     st.dataframe(display_team_df[['Player', 'Box Type', 'Numbering', 'Hits', 'File']], use_container_width=True)
 
 
             
