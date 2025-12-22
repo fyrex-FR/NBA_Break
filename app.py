@@ -482,9 +482,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 # Dataframe with selection
                 event_p = st.dataframe(
-                    sorted_players, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_players,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="global_players_table"
                 )
                 
@@ -492,9 +493,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 row_idx = get_selected_row(event_p)
                 if row_idx is not None:
                     selected_player_name = sorted_players.iloc[row_idx]['Player']
-                    if st.button("Voir détail joueur", key="global_player_detail"):
-                        st.session_state['target_player'] = selected_player_name
-                        go_to_view("🔍 Analyse Joueur")
+                    st.session_state['target_player'] = selected_player_name
+                    go_to_view("🔍 Analyse Joueur")
 
                 # Top 15 for Chart
                 fig_p = px.bar(sorted_players.head(15), x='Player', y='Hits', title="Top 15 Joueurs", color='Hits')
@@ -509,9 +509,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 # Dataframe with selection
                 event_t = st.dataframe(
-                    sorted_teams, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_teams,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="global_teams_table"
                 )
 
@@ -519,9 +520,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 row_idx = get_selected_row(event_t)
                 if row_idx is not None:
                     selected_team_name = sorted_teams.iloc[row_idx]['Team']
-                    if st.button("Voir détail équipe", key="global_team_detail"):
-                        st.session_state['target_team'] = selected_team_name
-                        go_to_view("🛡️ Analyse Équipe")
+                    st.session_state['target_team'] = selected_team_name
+                    go_to_view("🛡️ Analyse Équipe")
                 
                 # Top 15 for Chart
                 fig_t = px.bar(sorted_teams.head(15), x='Team', y='Hits', title="Top 15 Équipes", color='Hits')
@@ -553,18 +553,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 sorted_players_f = player_stats_f.sort_values(by='Hits', ascending=False)
                 
                 event_pf = st.dataframe(
-                    sorted_players_f, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_players_f,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="auto_players_table"
                 )
                 
                 row_idx = get_selected_row(event_pf)
                 if row_idx is not None:
                     selected_player_name = sorted_players_f.iloc[row_idx]['Player']
-                    if st.button("Voir détail joueur", key="auto_player_detail"):
-                        st.session_state['target_player'] = selected_player_name
-                        go_to_view("🔍 Analyse Joueur")
+                    st.session_state['target_player'] = selected_player_name
+                    go_to_view("🔍 Analyse Joueur")
                     
                 fig_pf = px.bar(sorted_players_f.head(15), x='Player', y='Hits', color='Hits')
                 st.plotly_chart(fig_pf, use_container_width=True)
@@ -575,18 +575,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 sorted_teams_f = team_stats_f.sort_values(by='Hits', ascending=False)
                 
                 event_tf = st.dataframe(
-                    sorted_teams_f, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_teams_f,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="auto_teams_table"
                 )
                 
                 row_idx = get_selected_row(event_tf)
                 if row_idx is not None:
                     selected_team_name = sorted_teams_f.iloc[row_idx]['Team']
-                    if st.button("Voir détail équipe", key="auto_team_detail"):
-                        st.session_state['target_team'] = selected_team_name
-                        go_to_view("🛡️ Analyse Équipe")
+                    st.session_state['target_team'] = selected_team_name
+                    go_to_view("🛡️ Analyse Équipe")
                     
                 fig_tf = px.bar(sorted_teams_f.head(15), x='Team', y='Hits', color='Hits')
                 st.plotly_chart(fig_tf, use_container_width=True)
@@ -612,18 +612,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 sorted_players_l = player_stats_l.sort_values(by='Hits', ascending=False)
                 
                 event_pl = st.dataframe(
-                    sorted_players_l, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_players_l,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="logoman_players_table"
                 )
                 
                 row_idx = get_selected_row(event_pl)
                 if row_idx is not None:
                     selected_player_name = sorted_players_l.iloc[row_idx]['Player']
-                    if st.button("Voir détail joueur", key="logoman_player_detail"):
-                        st.session_state['target_player'] = selected_player_name
-                        go_to_view("🔍 Analyse Joueur")
+                    st.session_state['target_player'] = selected_player_name
+                    go_to_view("🔍 Analyse Joueur")
                     
                 fig_pl = px.bar(sorted_players_l.head(15), x='Player', y='Hits', color='Hits')
                 st.plotly_chart(fig_pl, use_container_width=True)
@@ -634,18 +634,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 sorted_teams_l = team_stats_l.sort_values(by='Hits', ascending=False)
                 
                 event_tl = st.dataframe(
-                    sorted_teams_l, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_teams_l,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="logoman_teams_table"
                 )
                 
                 row_idx = get_selected_row(event_tl)
                 if row_idx is not None:
                     selected_team_name = sorted_teams_l.iloc[row_idx]['Team']
-                    if st.button("Voir détail équipe", key="logoman_team_detail"):
-                        st.session_state['target_team'] = selected_team_name
-                        go_to_view("🛡️ Analyse Équipe")
+                    st.session_state['target_team'] = selected_team_name
+                    go_to_view("🛡️ Analyse Équipe")
                     
                 fig_tl = px.bar(sorted_teams_l.head(15), x='Team', y='Hits', color='Hits')
                 st.plotly_chart(fig_tl, use_container_width=True)
@@ -695,18 +695,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 sorted_players_ch = player_stats_ch.sort_values(by='Hits', ascending=False)
                 
                 event_pch = st.dataframe(
-                    sorted_players_ch, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_players_ch,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="ch_players_table"
                 )
                 
                 row_idx = get_selected_row(event_pch)
                 if row_idx is not None:
                     selected_player_name = sorted_players_ch.iloc[row_idx]['Player']
-                    if st.button("Voir détail joueur", key="casehit_player_detail"):
-                        st.session_state['target_player'] = selected_player_name
-                        go_to_view("🔍 Analyse Joueur")
+                    st.session_state['target_player'] = selected_player_name
+                    go_to_view("🔍 Analyse Joueur")
                     
                 if not sorted_players_ch.empty:
                     fig_pch = px.bar(sorted_players_ch.head(15), x='Player', y='Hits', color='Hits', title="Top Players - Case Hits")
@@ -720,18 +720,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 sorted_teams_ch = team_stats_ch.sort_values(by='Hits', ascending=False)
                 
                 event_tch = st.dataframe(
-                    sorted_teams_ch, 
-                    use_container_width=True, 
-                    selection_mode="single-row", 
+                    sorted_teams_ch,
+                    use_container_width=True,
+                    selection_mode="single-row",
+                    on_select="rerun",
                     key="ch_teams_table"
                 )
                 
                 row_idx = get_selected_row(event_tch)
                 if row_idx is not None:
                     selected_team_name = sorted_teams_ch.iloc[row_idx]['Team']
-                    if st.button("Voir détail équipe", key="casehit_team_detail"):
-                        st.session_state['target_team'] = selected_team_name
-                        go_to_view("🛡️ Analyse Équipe")
+                    st.session_state['target_team'] = selected_team_name
+                    go_to_view("🛡️ Analyse Équipe")
                     
                 if not sorted_teams_ch.empty:
                     fig_tch = px.bar(sorted_teams_ch.head(15), x='Team', y='Hits', color='Hits', title="Top Teams - Case Hits")
