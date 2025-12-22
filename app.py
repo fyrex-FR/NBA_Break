@@ -34,7 +34,7 @@ st.markdown("""
 
 # Centered Header with Flexbox for alignment
 st.markdown("""
-    <div style="display: flex; justify-content: center; align_items: center; gap: 20px; margin-bottom: 20px;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px;">
         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/315px-National_Basketball_Association_logo.svg.png" width="60">
         <h1 style="margin: 0; display: inline-block;">Check list optimizer</h1>
     </div>
@@ -48,7 +48,7 @@ st.sidebar.header("📁 Configuration")
 
 # Setup default data folder for mobile ease-of-use
 base_dir = os.getcwd()
-default_data_dir = os.path.join(base_dir, "checklists")
+default_data_dir = os.path.join(base_dir, "checklists_clean")
 
 if not os.path.exists(default_data_dir):
     os.makedirs(default_data_dir)
@@ -141,13 +141,50 @@ else:
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
     # Merge local selected files AND uploaded files
-    st.session_state['selected_files'] = selected_file_paths + uploaded_files
+    st.session_state['selected_files'] = selected_file_paths + (uploaded_files or [])
 
 # --- Main Logic ---
 
 def load_data(file_list):
     if not file_list:
         return None, "Aucun fichier sélectionné."
+
+    team_names = {
+        "atlanta hawks", "atlanta",
+        "boston celtics", "boston",
+        "brooklyn nets", "brooklyn",
+        "charlotte hornets", "charlotte",
+        "chicago bulls", "chicago",
+        "cleveland cavaliers", "cleveland",
+        "dallas mavericks", "dallas",
+        "denver nuggets", "denver",
+        "detroit pistons", "detroit",
+        "golden state warriors", "golden state",
+        "houston rockets", "houston",
+        "indiana pacers", "indiana",
+        "los angeles clippers", "la clippers", "clippers",
+        "los angeles lakers", "la lakers", "lakers",
+        "memphis grizzlies", "memphis",
+        "miami heat", "miami",
+        "milwaukee bucks", "milwaukee",
+        "minnesota timberwolves", "minnesota",
+        "new orleans pelicans", "new orleans",
+        "new york knicks", "new york",
+        "oklahoma city thunder", "oklahoma city",
+        "orlando magic", "orlando",
+        "philadelphia 76ers", "philadelphia",
+        "phoenix suns", "phoenix",
+        "portland trail blazers", "portland",
+        "sacramento kings", "sacramento",
+        "san antonio spurs", "san antonio",
+        "toronto raptors", "toronto",
+        "utah jazz", "utah",
+        "washington wizards", "washington",
+    }
+    box_keywords = [
+        "base", "set", "auto", "autograph", "signature", "patch", "relic",
+        "mem", "jersey", "logoman", "rookie", "insert", "variation", "parallel"
+    ]
 
     combined_data = []
     files_processed = 0
@@ -170,18 +207,12 @@ def load_data(file_list):
             year_match = re.search(r"(\d{4}-\d{2})", filename)
             box_year = year_match.group(1) if year_match else "Inconnue"
             
-            # Read Excel
             try:
-                # Try standard format first: C=Player, D=Team, F=Box Type
-                df = pd.read_excel(source, sheet_name='Teams', usecols="C,D,F", engine='openpyxl')
-                df.columns = ["Player", "Team", "Box Type"]
+                df = pd.read_excel(source, sheet_name="Teams_clean", engine="openpyxl")
+                df = df.rename(columns={"Card Type": "Box Type"})
             except ValueError:
-                # Fallback for formats with fewer columns (e.g. 2025-26): A=Box Type, C=Player, D=Team
-                # Use header=None because these files often lack headers or have them on row 1 which gets consumed
-                df = pd.read_excel(source, sheet_name='Teams', usecols="A,C,D", header=None, engine='openpyxl')
-                df.columns = ["Box Type", "Player", "Team"]
-                # Reorder to standard
-                df = df[["Player", "Team", "Box Type"]]
+                st.warning(f"{filename}: onglet 'Teams_clean' introuvable. Merci d'utiliser un fichier nettoye.")
+                continue
             
             # Clean data
             df = df.dropna(subset=['Player', 'Team'])
@@ -669,6 +700,45 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 st.plotly_chart(fig_comp, use_container_width=True)
 
 
+        elif selection == " Par Fichier":
+            st.subheader("Analyse par Fichier")
+            
+            all_files = sorted(df['File'].unique().tolist())
+            selected_file = st.selectbox("Choisir une checklist :", all_files)
+            
+            if selected_file:
+                file_df = df[df['File'] == selected_file].copy()
+                file_df['Category'] = file_df['Box Type'].apply(categorize_card)
+                
+                total_hits = file_df['Hits'].sum()
+                cat_counts = file_df['Category'].value_counts()
+                
+                col_fa1, col_fa2, col_fa3, col_fa4, col_fa5 = st.columns(5)
+                col_fa1.metric("Total Cartes", total_hits)
+                col_fa2.metric("🔥 Logoman", cat_counts.get("🔥 Logoman", 0))
+                col_fa3.metric("✨ Case Hit", cat_counts.get("✨ Case Hit", 0))
+                col_fa4.metric("💎 Auto/Mem", cat_counts.get("💎 Auto/Mem", 0))
+                col_fa5.metric("📄 Base/Autre", cat_counts.get("📄 Base/Autre", 0))
+                
+                st.markdown("---")
+                
+                col_fa6, col_fa7 = st.columns(2)
+                with col_fa6:
+                    player_stats_file = file_df.groupby('Player').agg({'Hits': 'sum'}).reset_index()
+                    player_stats_file = player_stats_file.sort_values(by='Hits', ascending=False)
+                    st.subheader("🏆 Joueurs (Fichier)")
+                    st.dataframe(player_stats_file, use_container_width=True)
+                
+                with col_fa7:
+                    team_stats_file = file_df.groupby('Team').agg({'Hits': 'sum'}).reset_index()
+                    team_stats_file = team_stats_file.sort_values(by='Hits', ascending=False)
+                    st.subheader("🛡️ Équipes (Fichier)")
+                    st.dataframe(team_stats_file, use_container_width=True)
+                
+                st.markdown("---")
+                st.subheader("Détail des cartes")
+                st.dataframe(file_df[['Player', 'Team', 'Box Type', 'Category', 'Hits']], use_container_width=True)
+
         elif selection == "🔍 Analyse Joueur":
             st.subheader("Analyse détaillée par Joueur")
             
@@ -777,13 +847,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         st.error(msg)
 
 else:
-    st.info("👈 Entrez le chemin du dossier et cliquez sur 'Scanner le dossier' pour commencer.")
+    st.info("👈 Sélectionnez vos fichiers et cliquez sur 'Lancer l'analyse' pour commencer.")
     
     # Tutorial / Placeholder
     st.markdown("### Comment ça marche ?")
     st.markdown("""
-    1.  Assurez-vous que vos fichiers Excel sont dans un dossier.
-    2.  Chaque fichier doit avoir un onglet nommé **'Teams'**.
-    3.  L'app lit les colonnes **C (Joueur)**, **D (Équipe)** et **F (Tirage)**.
-    4.  Cliquez sur **Scanner** pour voir les stats !
+    1.  Utilisez des fichiers Excel contenant un onglet **'Teams_clean'**.
+    2.  Colonnes attendues : **Player**, **Team**, **Card Type**, **Numbering**.
+    3.  Vous pouvez déposer des fichiers via l'upload cloud ou les mettre dans le dossier local.
+    4.  Cliquez sur **Lancer l'analyse** pour voir les stats.
     """)
