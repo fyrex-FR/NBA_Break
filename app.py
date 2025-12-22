@@ -440,7 +440,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 'stained glass', 'strined glass', 'color blast', 'kaboom',
                 'manga', 'sublime', 'night moves',
                 'profile', 'micro-etch', 'photon', 'vortex',
-                'genesis', 'glass mosaic', 'color wheel'
+                'genesis', 'glass mosaic', 'color wheel',
+                'fanatical inserts', 'ultra violet', '451', 'radiating rookies',
+                'advisory', 'paradox', "let's go!", 'glass canvas',
+                'patented', 'finals', 'rock stars'
             ] # Expanded common case hits + typos
             if any(k in box_type_str for k in case_hits_keywords):
                 return "✨ Case Hit"
@@ -694,7 +697,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 'stained glass', 'strined glass', 'color blast', 'kaboom',
                 'manga', 'sublime', 'night moves',
                 'profile', 'micro-etch', 'photon', 'vortex',
-                'genesis', 'glass mosaic', 'color wheel'
+                'genesis', 'glass mosaic', 'color wheel',
+                'fanatical inserts', 'ultra violet', '451', 'radiating rookies',
+                'advisory', 'paradox', "let's go!", 'glass canvas',
+                'patented', 'finals', 'rock stars'
             ]
             pattern = '|'.join(case_hits_keywords)
             
