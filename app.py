@@ -9,6 +9,13 @@ def extract_year(filename):
     match = re.search(r"(\d{4}-\d{2})", filename)
     return match.group(1) if match else "Inconnue"
 
+def extract_product(filename):
+    name = os.path.splitext(filename)[0]
+    name = re.sub(r"\d{4}-\d{2}", "", name)
+    name = re.sub(r"checklist", "", name, flags=re.IGNORECASE)
+    name = re.sub(r"\s+", " ", name)
+    return name.strip(" -_")
+
 # API Key Config (Removed as requested)
 # OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
@@ -70,6 +77,7 @@ uploaded_files = st.sidebar.file_uploader(
     type=['xlsx'], 
     accept_multiple_files=True
 )
+st.sidebar.caption("Les fichiers doivent contenir un onglet 'Teams_clean'.")
 
 st.sidebar.markdown("### 🖥️ Dossier Local")
 if not found_files:
@@ -201,6 +209,10 @@ def load_data(file_list):
             filename = file_obj.name
             source = file_obj # File Object
             
+        if filename.startswith("~$"):
+            st.info(f"{filename}: fichier temporaire Excel ignoré.")
+            continue
+
         status_text.text(f"Lecture de : {filename}")
         try:
             # Extract Year from filename (e.g. "2023-24")
@@ -225,12 +237,18 @@ def load_data(file_list):
             df['Hits'] = 1
             df['File'] = filename # Track source file
             df['Year'] = box_year
+            df['Product'] = extract_product(filename)
+            if 'Numbering' not in df.columns:
+                df['Numbering'] = ""
             
             combined_data.append(df)
             files_processed += 1
             
         except Exception as e:
-            st.warning(f"Erreur sur {filename}: {e}")
+            st.warning(
+                f"Erreur sur {filename}: {e}. "
+                "Vérifie que le fichier est un .xlsx valide avec l'onglet 'Teams_clean'."
+            )
         
         progress_bar.progress((i + 1) / len(file_list))
 
@@ -238,7 +256,7 @@ def load_data(file_list):
     progress_bar.empty()
     
     if not combined_data:
-        return None, "Aucun onglet 'Teams' trouvé ou données valides extraites."
+        return None, "Aucun onglet 'Teams_clean' trouvé ou données valides extraites."
         
     return pd.concat(combined_data, ignore_index=True), f"{files_processed} fichiers traités."
 
@@ -273,7 +291,21 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.session_state['active_view'] = st.session_state['nav_radio']
 
         # Navigation Bar
-        views = ["🌍 Vue Globale", "💎 Autos & Patchs", "🔥 Logoman", "✨ Case Hits", "👥 Multi-Joueurs", "⚖️ Comparateur Joueurs", " Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"]
+        views = [
+            "🌍 Vue Globale",
+            "💎 Autos & Patchs",
+            "🔥 Logoman",
+            "✨ Case Hits",
+            "👥 Multi-Joueurs",
+            "⚖️ Comparateur Joueurs",
+            "🧠 Value Picks",
+            "💸 Cost par Pick",
+            "🧨 Rookies",
+            "⚡ Live Mode",
+            " Par Fichier",
+            "🔍 Analyse Joueur",
+            "🛡️ Analyse Équipe",
+        ]
         
         # Ensure current view is valid
         if st.session_state['active_view'] not in views:
@@ -289,6 +321,19 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             "Tier S": ["Victor Wembanyama", "LeBron James", "Stephen Curry", "Luka Doncic", "Anthony Edwards", "Giannis Antetokounmpo", "Nikola Jokic", "Jayson Tatum", "Ja Morant", "LaMelo Ball"],
             "Tier A": ["Trae Young", "Zion Williamson", "Kevin Durant", "Joel Embiid", "Shai Gilgeous-Alexander", "Tyrese Haliburton", "Paolo Banchero", "Chet Holmgren", "Scoot Henderson", "Brandon Miller", "Damian Lillard", "Devin Booker"],
             "Tier B": ["Cade Cunningham", "Jalen Green", "Scottie Barnes", "Evan Mobley", "Josh Giddey", "Franz Wagner", "Amen Thompson", "Ausar Thompson", "Keyonte George", "Bilal Coulibaly", "Donovan Mitchell", "Kyrie Irving"]
+        }
+
+        TOP_ROOKIES_BY_YEAR = {
+            2015: ["Karl-Anthony Towns", "D'Angelo Russell", "Kristaps Porzingis", "Devin Booker", "Myles Turner", "Terry Rozier"],
+            2016: ["Ben Simmons", "Brandon Ingram", "Jaylen Brown", "Buddy Hield", "Jamal Murray", "Pascal Siakam"],
+            2017: ["Jayson Tatum", "Lonzo Ball", "Donovan Mitchell", "De'Aaron Fox", "Bam Adebayo", "Lauri Markkanen"],
+            2018: ["Luka Doncic", "Trae Young", "Deandre Ayton", "Jaren Jackson Jr.", "Shai Gilgeous-Alexander", "Michael Porter Jr."],
+            2019: ["Zion Williamson", "Ja Morant", "RJ Barrett", "Darius Garland", "Tyler Herro", "De'Andre Hunter"],
+            2020: ["Anthony Edwards", "LaMelo Ball", "Tyrese Haliburton", "James Wiseman", "Isaac Okoro", "Patrick Williams"],
+            2021: ["Cade Cunningham", "Evan Mobley", "Scottie Barnes", "Jalen Green", "Jalen Suggs", "Franz Wagner"],
+            2022: ["Paolo Banchero", "Chet Holmgren", "Jabari Smith Jr.", "Keegan Murray", "Jaden Ivey", "Bennedict Mathurin"],
+            2023: ["Victor Wembanyama", "Scoot Henderson", "Brandon Miller", "Amen Thompson", "Ausar Thompson", "Bilal Coulibaly"],
+            2024: ["Zaccharie Risacher", "Alex Sarr", "Reed Sheppard", "Stephon Castle", "Matas Buzelis", "Rob Dillingham"],
         }
         
         # Invert for easier lookup
@@ -314,6 +359,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 score = 1
             return score
 
+        def rarity_multiplier(numbering):
+            try:
+                num = int(float(numbering))
+            except (ValueError, TypeError):
+                return 1.0
+            if num <= 0:
+                return 1.0
+            mult = 1.0 + (100.0 / num)
+            return min(mult, 10.0)
+
         # ... (Existing categorize_card helper is above) ...
         def categorize_card(box_type):
             box_type_str = str(box_type).lower()
@@ -323,7 +378,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 return "🔥 Logoman"
             
             # 2. Case Hits (New Priority)
-            case_hits_keywords = ['downtown', 'micro', 'stained glass', 'strined glass', 'manga', 'sublime', 'kaboom', 'color blast'] # Added common valid case hits + user typos
+            case_hits_keywords = [
+                'downtown', 'micro', 'micro mosaic',
+                'stained glass', 'strined glass', 'color blast', 'kaboom',
+                'manga', 'sublime', 'night moves',
+                'profile', 'micro-etch', 'photon', 'vortex',
+                'genesis', 'glass mosaic', 'color wheel'
+            ] # Expanded common case hits + typos
             if any(k in box_type_str for k in case_hits_keywords):
                 return "✨ Case Hit"
 
@@ -332,6 +393,30 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 return "💎 Auto/Mem"
             else:
                 return "📄 Base/Autre"
+
+        # --- Filters ---
+        all_products = sorted(df['Product'].dropna().unique().tolist())
+        selected_products = st.multiselect("Filtrer par produit :", all_products, default=all_products)
+        if selected_products:
+            df = df[df['Product'].isin(selected_products)]
+            df_p = df_p[df_p['Product'].isin(selected_products)]
+            df_t = df_t[df_t['Product'].isin(selected_products)]
+
+        # --- Scoring prep ---
+        df['Category'] = df['Box Type'].apply(categorize_card)
+        df['Rarity Mult'] = df['Numbering'].apply(rarity_multiplier)
+        df['Score'] = df.apply(calculate_score, axis=1) * df['Rarity Mult']
+
+        # Rebuild exploded frames after scoring/filtering
+        df_p = df.copy()
+        df_p['Player'] = df_p['Player'].astype(str).str.split('/')
+        df_p = df_p.explode('Player')
+        df_p['Player'] = df_p['Player'].str.strip()
+
+        df_t = df.copy()
+        df_t['Team'] = df_t['Team'].astype(str).str.split('/')
+        df_t = df_t.explode('Team')
+        df_t['Team'] = df_t['Team'].str.strip()
 
         if selection == "🌍 Vue Globale":
             # --- Aggregation Global ---
@@ -542,15 +627,21 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 st.plotly_chart(fig_tl, use_container_width=True)
 
         elif selection == "✨ Case Hits":
-            st.subheader("✨ Analyse Case Hits (Downtown, Manganese, Stained Glass...)")
+            st.subheader("✨ Analyse Case Hits (Downtown, Kaboom, Color Blast, Manga...)")
             # Keywords display
-            st.info("Filtre sur : DOWNTOWN, MICRO MOSAIC, STAINED GLASS, MANGA, SUBLIME")
+            st.info("Filtre sur : DOWNTOWN, KABOOM, COLOR BLAST, MANGA, SUBLIME, GENESIS, VORTEX...")
             
             # Filter Dataframes by category (relies on categorization done previously/on-the-fly? No, we filter by box_type string to be safe or re-use helper)
             # To be consistent with other blocks, let's filter by string content, BUT leveraging the categorize_card function logic is better.
             # However, other blocks do str.contains. Let's stick to the pattern used in categorize_card
             
-            case_hits_keywords = ['downtown', 'micro', 'stained glass', 'strined glass', 'manga', 'sublime', 'kaboom', 'color blast']
+            case_hits_keywords = [
+                'downtown', 'micro', 'micro mosaic',
+                'stained glass', 'strined glass', 'color blast', 'kaboom',
+                'manga', 'sublime', 'night moves',
+                'profile', 'micro-etch', 'photon', 'vortex',
+                'genesis', 'glass mosaic', 'color wheel'
+            ]
             pattern = '|'.join(case_hits_keywords)
             
             df_p_ch = df_p[df_p['Box Type'].astype(str).str.contains(pattern, case=False, na=False)]
@@ -673,6 +764,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     # Filter data
                     p_data = df_p[df_p['Player'] == p].copy()
                     p_data['Category'] = p_data['Box Type'].apply(categorize_card)
+                    p_data['Rarity Mult'] = p_data['Numbering'].apply(rarity_multiplier)
                     
                     total = p_data['Hits'].sum()
                     cat_counts = p_data['Category'].value_counts()
@@ -680,10 +772,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     case_hit = cat_counts.get("✨ Case Hit", 0)
                     auto = cat_counts.get("💎 Auto/Mem", 0)
                     base = cat_counts.get("📄 Base/Autre", 0)
+                    score = (p_data.apply(calculate_score, axis=1) * p_data['Rarity Mult']).sum()
                     
                     comparison_data.append({
                         "Joueur": p,
                         "Total Cartes": total,
+                        "Score": round(score, 2),
                         "🔥 Logoman": logo,
                         "✨ Case Hit": case_hit,
                         "💎 Auto/Mem": auto,
@@ -692,13 +786,128 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 comp_df = pd.DataFrame(comparison_data)
                 
-                # Sorting option? Default by Total
-                st.dataframe(comp_df.sort_values(by="Total Cartes", ascending=False), use_container_width=True)
+                # Sorting option? Default by Score
+                st.dataframe(comp_df.sort_values(by="Score", ascending=False), use_container_width=True)
                 
                 # Chart
                 fig_comp = px.bar(comp_df, x="Joueur", y=["🔥 Logoman", "✨ Case Hit", "💎 Auto/Mem", "📄 Base/Autre"], title="Comparaison Visuelle", barmode='stack')
                 st.plotly_chart(fig_comp, use_container_width=True)
 
+
+        elif selection == "🧠 Value Picks":
+            st.subheader("🧠 Value Picks")
+            st.info(
+                "La note combine le type de carte (Logoman > Case Hit > Auto/Mem > Base) "
+                "et la rareté (numérotation faible = bonus). "
+                "Le Value Index = Score / Hype (moins hype = meilleur value)."
+            )
+
+            player_scores = df.groupby("Player").agg({
+                "Hits": "sum",
+                "Score": "sum",
+            }).reset_index()
+            player_scores["Hype"] = player_scores["Player"].apply(get_hype_multiplier)
+            player_scores["Value Index"] = player_scores["Score"] / player_scores["Hype"].replace(0, 1)
+
+            player_scores = player_scores.sort_values(by="Value Index", ascending=False)
+            st.dataframe(player_scores.head(50), use_container_width=True)
+
+            top20 = player_scores.head(20)
+            csv_data = top20.to_csv(index=False).encode("utf-8")
+            st.download_button("Exporter Top 20 (CSV)", data=csv_data, file_name="top20_value_picks.csv", mime="text/csv")
+
+        elif selection == "💸 Cost par Pick":
+            st.subheader("💸 Cost par Pick")
+            st.info(
+                "Renseigne le coût par équipe pour obtenir le meilleur rapport qualité/prix."
+            )
+
+            default_cost = st.number_input("Coût par spot (par équipe)", min_value=0.0, value=25.0, step=0.5)
+
+            teams = sorted(df['Team'].dropna().unique().tolist())
+            if "cost_by_team" not in st.session_state:
+                st.session_state.cost_by_team = pd.DataFrame({
+                    "Team": teams,
+                    "Cost per spot": [default_cost] * len(teams),
+                })
+            else:
+                for t in teams:
+                    if t not in st.session_state.cost_by_team["Team"].tolist():
+                        st.session_state.cost_by_team = pd.concat(
+                            [
+                                st.session_state.cost_by_team,
+                                pd.DataFrame({"Team": [t], "Cost per spot": [default_cost]}),
+                            ],
+                            ignore_index=True,
+                        )
+
+            cost_df = st.data_editor(
+                st.session_state.cost_by_team,
+                use_container_width=True,
+                hide_index=True,
+                num_rows="fixed",
+            )
+            st.session_state.cost_by_team = cost_df
+
+            cost_map = dict(zip(
+                st.session_state.cost_by_team["Team"],
+                st.session_state.cost_by_team["Cost per spot"],
+            ))
+
+            df_cost = df.copy()
+            df_cost["Cost"] = df_cost["Team"].map(cost_map).fillna(default_cost)
+            df_cost["Value per Cost"] = df_cost["Score"] / df_cost["Cost"].replace(0, 1)
+
+            team_cost = df_cost.groupby("Team").agg({
+                "Hits": "sum",
+                "Score": "sum",
+                "Cost": "sum",
+            }).reset_index()
+            team_cost["Value/€"] = team_cost["Score"] / team_cost["Cost"].replace(0, 1)
+            team_cost = team_cost.sort_values(by="Value/€", ascending=False)
+            st.subheader("🛡️ Équipes (meilleur value)")
+            st.dataframe(team_cost.head(50), use_container_width=True)
+
+        elif selection == "🧨 Rookies":
+            st.subheader("🧨 Rookies en vue")
+            st.info("Détection via 'RC' ou 'Rookie' dans le type de carte.")
+
+            st.markdown("#### Top rookies hype par annee (draft)")
+            rookie_rows = [
+                {"Annee": year, "Top 6": ", ".join(names)}
+                for year, names in sorted(TOP_ROOKIES_BY_YEAR.items())
+            ]
+            st.dataframe(pd.DataFrame(rookie_rows), use_container_width=True)
+
+            df_rookie = df[df['Box Type'].astype(str).str.contains(r"\brc\b|rookie", case=False, na=False)]
+            if df_rookie.empty:
+                st.info("Aucun rookie détecté sur ce filtre.")
+            else:
+                rookies = df_rookie.groupby("Player").agg({
+                    "Hits": "sum",
+                    "Score": "sum",
+                }).reset_index()
+                rookies = rookies.sort_values(by="Score", ascending=False)
+                st.dataframe(rookies.head(50), use_container_width=True)
+
+        elif selection == "⚡ Live Mode":
+            st.subheader("⚡ Live Mode (Pick rapide)")
+            st.info("Top picks instantanés basés sur le score.")
+
+            player_scores = df.groupby("Player").agg({"Score": "sum"}).reset_index()
+            team_scores = df.groupby("Team").agg({"Score": "sum"}).reset_index()
+            top_players = player_scores.sort_values(by="Score", ascending=False).head(5)
+            top_teams = team_scores.sort_values(by="Score", ascending=False).head(5)
+
+            col_lp, col_lt = st.columns(2)
+            with col_lp:
+                st.markdown("#### Top 5 Joueurs")
+                for _, row in top_players.iterrows():
+                    st.metric(row["Player"], f"{row['Score']:.1f}")
+            with col_lt:
+                st.markdown("#### Top 5 Équipes")
+                for _, row in top_teams.iterrows():
+                    st.metric(row["Team"], f"{row['Score']:.1f}")
 
         elif selection == " Par Fichier":
             st.subheader("Analyse par Fichier")
