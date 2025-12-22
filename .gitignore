@@ -39,6 +39,6 @@ ENV/
 # Mac
 .DS_Store
 
-# Note: We intentionally DO NOT ignore the checklists/ folder
-# because we want to deploy them to Streamlit Cloud.
+# Ignore raw checklists; use checklists_clean instead.
+checklists/
 *.tar
