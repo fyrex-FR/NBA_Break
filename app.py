@@ -60,24 +60,16 @@ default_data_dir = os.path.join(base_dir, "checklists_clean")
 if not os.path.exists(default_data_dir):
     os.makedirs(default_data_dir)
 
-# Advanced mode: Custom path
-with st.sidebar.expander("Configuration Avancée (Chemin)"):
-    folder_path = st.text_input("Chemin du dossier", value=default_data_dir)
+if "folder_path" not in st.session_state:
+    st.session_state.folder_path = default_data_dir
+
+folder_path = st.session_state.folder_path
 
 # 1. Scan for files first
 if os.path.isdir(folder_path):
     found_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
 else:
     found_files = []
-
-# --- CLOUD UPLOAD SUPPORT ---
-st.sidebar.markdown("### ☁️ Upload (Cloud/Web)")
-uploaded_files = st.sidebar.file_uploader(
-    "Ajouter des fichiers Excel", 
-    type=['xlsx'], 
-    accept_multiple_files=True
-)
-st.sidebar.caption("Les fichiers doivent contenir un onglet 'Teams_clean'.")
 
 st.sidebar.markdown("### 🖥️ Dossier Local")
 if not found_files:
@@ -148,6 +140,19 @@ else:
 
     st.sidebar.markdown("---")
     st.sidebar.caption(f"{len(selected_file_paths)} fichier(s) sélectionné(s).")
+
+# Advanced mode: Custom path
+with st.sidebar.expander("Configuration Avancée (Chemin)"):
+    st.text_input("Chemin du dossier", value=folder_path, key="folder_path")
+
+# --- CLOUD UPLOAD SUPPORT ---
+st.sidebar.markdown("### ☁️ Upload (Cloud/Web)")
+uploaded_files = st.sidebar.file_uploader(
+    "Ajouter des fichiers Excel",
+    type=['xlsx'],
+    accept_multiple_files=True
+)
+st.sidebar.caption("Les fichiers doivent contenir un onglet 'Teams_clean'.")
 
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
