@@ -299,9 +299,9 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.session_state['active_view'] = st.session_state['nav_radio']
             
         def go_to_view(view_name):
-            if st.session_state.get('nav_radio') != view_name or st.session_state.get('active_view') != view_name:
-                st.session_state['nav_radio'] = view_name
-                st.session_state['active_view'] = view_name
+            if st.session_state.get('active_view') != view_name:
+                st.session_state['pending_view'] = view_name
+                st.rerun()
 
         def get_selected_row(event_obj):
             if event_obj is None:
@@ -315,6 +315,11 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             return rows[0]
 
         # Navigation Bar
+        if 'pending_view' in st.session_state:
+            st.session_state['nav_radio'] = st.session_state['pending_view']
+            st.session_state['active_view'] = st.session_state['pending_view']
+            del st.session_state['pending_view']
+
         views = [
             "🌍 Vue Globale",
             "💎 Autos & Patchs",
