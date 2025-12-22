@@ -302,7 +302,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             if st.session_state.get('nav_radio') != view_name or st.session_state.get('active_view') != view_name:
                 st.session_state['nav_radio'] = view_name
                 st.session_state['active_view'] = view_name
-                st.rerun()
 
         def get_selected_row(event_obj):
             if event_obj is None:
