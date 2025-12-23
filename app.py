@@ -384,7 +384,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             2021: ["Cade Cunningham", "Evan Mobley", "Scottie Barnes", "Jalen Green", "Jalen Suggs", "Franz Wagner"],
             2022: ["Paolo Banchero", "Chet Holmgren", "Jabari Smith Jr.", "Keegan Murray", "Jaden Ivey", "Bennedict Mathurin"],
             2023: ["Victor Wembanyama", "Scoot Henderson", "Brandon Miller", "Amen Thompson", "Ausar Thompson", "Bilal Coulibaly"],
-            2024: ["Zaccharie Risacher", "Alex Sarr", "Reed Sheppard", "Stephon Castle", "Matas Buzelis", "Rob Dillingham"],
+            2024: ["Zaccharie Risacher", "Alex Sarr", "Reed Sheppard", "Stephon Castle", "Jared McCain", "Matas Buzelis"],
         }
         
         # Invert for easier lookup
