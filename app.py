@@ -237,7 +237,25 @@ def load_data(file_list):
                     df = read_teams_clean(source)
                 else:
                     df = pd.read_excel(source, sheet_name="Teams_clean", engine="openpyxl")
-                df = df.rename(columns={"Card Type": "Box Type"})
+                # Normalize column names to avoid missing-key errors from stray whitespace/casing.
+                df.columns = [c.strip() if isinstance(c, str) else c for c in df.columns]
+                lower_map = {str(c).strip().lower(): c for c in df.columns}
+                if "box type" in lower_map:
+                    df = df.rename(columns={lower_map["box type"]: "Box Type"})
+                elif "card type" in lower_map:
+                    df = df.rename(columns={lower_map["card type"]: "Box Type"})
+                elif "boxtype" in lower_map:
+                    df = df.rename(columns={lower_map["boxtype"]: "Box Type"})
+
+                if "player" in lower_map and "Player" not in df.columns:
+                    df = df.rename(columns={lower_map["player"]: "Player"})
+                if "team" in lower_map and "Team" not in df.columns:
+                    df = df.rename(columns={lower_map["team"]: "Team"})
+
+                missing_cols = [c for c in ["Player", "Team", "Box Type"] if c not in df.columns]
+                if missing_cols:
+                    error_files.append((filename, f"Colonnes manquantes: {', '.join(missing_cols)}. Colonnes trouvées: {list(df.columns)}"))
+                    continue
             except ValueError:
                 st.warning(f"{filename}: onglet 'Teams_clean' introuvable. Merci d'utiliser un fichier nettoye.")
                 continue
