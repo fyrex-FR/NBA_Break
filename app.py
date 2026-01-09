@@ -284,6 +284,16 @@ def load_data(file_list):
             df['Product'] = extract_product(filename)
             if 'Numbering' not in df.columns:
                 df['Numbering'] = ""
+            if 'Box Type' not in df.columns:
+                df['Box Type'] = ""
+
+            # Fix older formats where "Box Type" ended up in Numbering
+            box_empty = df['Box Type'].astype(str).str.strip().eq("") | df['Box Type'].isna()
+            numbering_str = df['Numbering'].astype(str).str.strip()
+            non_numeric = ~numbering_str.str.fullmatch(r"\d+(\.\d+)?")
+            if box_empty.mean() > 0.8 and non_numeric.mean() > 0.5:
+                df.loc[box_empty, 'Box Type'] = df.loc[box_empty, 'Numbering']
+                df.loc[non_numeric, 'Numbering'] = ""
             
             combined_data.append(df)
             files_processed += 1
