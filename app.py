@@ -843,9 +843,39 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             
             # Get list of players
             all_players_comp = sorted(df_p['Player'].unique().tolist())
-            
-            selected_players_comp = st.multiselect("Choix des joueurs :", all_players_comp)
-            
+
+            def parse_player_list(raw_text):
+                if not raw_text:
+                    return []
+                parts = re.split(r"[,\n;]+", raw_text)
+                return [p.strip() for p in parts if p.strip()]
+
+            if "compare_list_active" not in st.session_state:
+                st.session_state.compare_list_active = False
+            if "compare_list_players" not in st.session_state:
+                st.session_state.compare_list_players = []
+
+            st.markdown("##### Comparer une liste")
+            raw_list = st.text_area(
+                "Colle ta liste (1 par ligne ou séparé par virgule)",
+                key="compare_list_text"
+            )
+            col_cmp1, col_cmp2 = st.columns([1, 1])
+            with col_cmp1:
+                if st.button("Comparer la liste", key="compare_list_btn"):
+                    parsed = parse_player_list(raw_list)
+                    st.session_state.compare_list_players = parsed
+                    st.session_state.compare_list_active = True
+            with col_cmp2:
+                if st.button("Revenir à la sélection", key="compare_list_reset"):
+                    st.session_state.compare_list_active = False
+
+            if st.session_state.compare_list_active:
+                selected_players_comp = st.session_state.compare_list_players
+                st.caption(f"{len(selected_players_comp)} joueur(s) collé(s).")
+            else:
+                selected_players_comp = st.multiselect("Choix des joueurs :", all_players_comp)
+
             if selected_players_comp:
                 comparison_data = []
                 
@@ -878,6 +908,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 # Sorting option? Default by Score
                 st.dataframe(comp_df.sort_values(by="Score", ascending=False), use_container_width=True)
                 
+                missing = [p for p in selected_players_comp if p not in all_players_comp]
+                if missing:
+                    st.warning(f"Introuvable(s) dans les données: {', '.join(missing)}")
+
                 # Chart
                 fig_comp = px.bar(comp_df, x="Joueur", y=["🔥 Logoman", "✨ Case Hit", "💎 Auto/Mem", "📄 Base/Autre"], title="Comparaison Visuelle", barmode='stack')
                 st.plotly_chart(fig_comp, use_container_width=True)
