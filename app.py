@@ -908,6 +908,25 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 # Sorting option? Default by Score
                 st.dataframe(comp_df.sort_values(by="Score", ascending=False), use_container_width=True)
                 
+                total_row = {
+                    "Joueur": "TOTAL",
+                    "Total Cartes": comp_df["Total Cartes"].sum(),
+                    "Score": round(comp_df["Score"].sum(), 2),
+                    "🔥 Logoman": comp_df["🔥 Logoman"].sum(),
+                    "✨ Case Hit": comp_df["✨ Case Hit"].sum(),
+                    "💎 Auto/Mem": comp_df["💎 Auto/Mem"].sum(),
+                    "📄 Base/Autre": comp_df["📄 Base/Autre"].sum(),
+                }
+                st.markdown("##### Total global")
+                st.dataframe(pd.DataFrame([total_row]), use_container_width=True)
+                col_tot1, col_tot2, col_tot3, col_tot4, col_tot5, col_tot6 = st.columns(6)
+                col_tot1.metric("Total Cartes", total_row["Total Cartes"])
+                col_tot2.metric("Score", total_row["Score"])
+                col_tot3.metric("🔥 Logoman", total_row["🔥 Logoman"])
+                col_tot4.metric("✨ Case Hit", total_row["✨ Case Hit"])
+                col_tot5.metric("💎 Auto/Mem", total_row["💎 Auto/Mem"])
+                col_tot6.metric("📄 Base/Autre", total_row["📄 Base/Autre"])
+
                 missing = [p for p in selected_players_comp if p not in all_players_comp]
                 if missing:
                     st.warning(f"Introuvable(s) dans les données: {', '.join(missing)}")
