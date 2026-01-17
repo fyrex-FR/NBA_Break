@@ -52,6 +52,8 @@ st.markdown("""
 
 # --- Sidebar: Configuration ---
 st.sidebar.header("📁 Configuration")
+if st.sidebar.button("🔄 Recharger (cache)"):
+    st.cache_data.clear()
 
 # Setup default data folder for mobile ease-of-use
 base_dir = os.getcwd()
@@ -166,7 +168,7 @@ def load_data(file_list):
         return None, "Aucun fichier sélectionné.", []
 
     @st.cache_data
-    def read_teams_clean(path):
+    def read_teams_clean(path, mtime):
         return pd.read_excel(path, sheet_name="Teams_clean", engine="openpyxl")
 
     team_names = {
@@ -234,7 +236,7 @@ def load_data(file_list):
             
             try:
                 if isinstance(source, str):
-                    df = read_teams_clean(source)
+                    df = read_teams_clean(source, os.path.getmtime(source))
                 else:
                     df = pd.read_excel(source, sheet_name="Teams_clean", engine="openpyxl")
                 # Normalize column names to avoid missing-key errors from stray whitespace/casing.
