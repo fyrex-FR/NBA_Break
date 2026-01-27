@@ -4,6 +4,7 @@ import os
 import glob
 import plotly.express as px
 import re
+import json
 
 def extract_year(filename):
     match = re.search(r"(\d{4}-\d{2})", filename)
@@ -58,6 +59,30 @@ if st.sidebar.button("🔄 Recharger (cache)"):
 # Setup default data folder for mobile ease-of-use
 base_dir = os.getcwd()
 default_data_dir = os.path.join(base_dir, "checklists_clean")
+presets_path = os.path.join(base_dir, "presets.json")
+
+def load_presets(path):
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            return data
+    except Exception:
+        pass
+    return {}
+
+def save_presets(path, presets):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(presets, f, ensure_ascii=False, indent=2)
+
+def apply_preset(preset_files, all_filenames):
+    for fname in all_filenames:
+        st.session_state[f"chk_{fname}"] = fname in preset_files
+    st.session_state.all_files_selected = (
+        len(all_filenames) > 0 and all(f in preset_files for f in all_filenames)
+    )
 
 if not os.path.exists(default_data_dir):
     os.makedirs(default_data_dir)
@@ -87,6 +112,8 @@ else:
     # helper to build keys
     file_map = {os.path.basename(f): f for f in found_files}
     all_filenames = list(file_map.keys())
+
+    presets = load_presets(presets_path)
     
     # "Select All" logic helper
     container = st.sidebar.container()
@@ -108,6 +135,37 @@ else:
     )
     
     selected_file_paths = []
+
+    # Presets UI
+    st.sidebar.markdown("### 💾 Presets")
+    preset_names = sorted(presets.keys())
+    preset_to_load = st.sidebar.selectbox(
+        "Charger un preset",
+        options=[""] + preset_names,
+        index=0,
+        help="Recharge une selection sauvegardee."
+    )
+
+    def on_load_preset():
+        if not preset_to_load:
+            return
+        files = presets.get(preset_to_load, [])
+        apply_preset(files, all_filenames)
+
+    def on_save_preset():
+        name = st.session_state.get("preset_name", "").strip()
+        if not name:
+            return
+        current_selection = [
+            fname for fname in all_filenames
+            if st.session_state.get(f"chk_{fname}", False)
+        ]
+        presets[name] = current_selection
+        save_presets(presets_path, presets)
+
+    st.sidebar.button("Charger le preset", on_click=on_load_preset, disabled=not preset_to_load)
+    st.sidebar.text_input("Nom du preset", key="preset_name")
+    st.sidebar.button("Sauvegarder la selection", on_click=on_save_preset)
     
     st.sidebar.markdown("---")
     st.sidebar.markdown("**Fichiers locaux :**")
