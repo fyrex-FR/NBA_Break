@@ -83,6 +83,9 @@ def apply_preset(preset_files, all_filenames):
     st.session_state.all_files_selected = (
         len(all_filenames) > 0 and all(f in preset_files for f in all_filenames)
     )
+    # Sync Multiselect
+    valid_files = [f for f in preset_files if f in all_filenames]
+    st.session_state["files_multiselect"] = valid_files
 
 if not os.path.exists(default_data_dir):
     os.makedirs(default_data_dir)
@@ -129,6 +132,12 @@ else:
         for fname in all_filenames:
             st.session_state[f"chk_{fname}"] = new_state
         
+        # Sync Multiselect
+        if new_state:
+            st.session_state["files_multiselect"] = all_filenames
+        else:
+             st.session_state["files_multiselect"] = []
+        
     select_all_btn = container.button(
         "Tout désélectionner" if st.session_state.all_files_selected else "Tout sélectionner", 
         on_click=toggle_select_all
@@ -156,10 +165,15 @@ else:
         name = st.session_state.get("preset_name", "").strip()
         if not name:
             return
-        current_selection = [
-            fname for fname in all_filenames
-            if st.session_state.get(f"chk_{fname}", False)
-        ]
+        
+        mode = st.session_state.get("selection_mode", "Par Année (Cases)")
+        if mode == "Liste (Multiselect)":
+             current_selection = st.session_state.get("files_multiselect", [])
+        else:
+             current_selection = [
+                fname for fname in all_filenames
+                if st.session_state.get(f"chk_{fname}", False)
+            ]
         presets[name] = current_selection
         save_presets(presets_path, presets)
 
@@ -170,36 +184,61 @@ else:
     st.sidebar.markdown("---")
     st.sidebar.markdown("**Fichiers locaux :**")
     
-    # Group by Year
-    files_by_year = {}
-    for f_path in found_files:
-        f_name = os.path.basename(f_path)
-        y = extract_year(f_name)
-        if y not in files_by_year:
-            files_by_year[y] = []
-        files_by_year[y].append(f_path)
-    
-    # Sort years descending (newest first)
-    sorted_years = sorted(files_by_year.keys(), reverse=True)
-    
-    for year in sorted_years:
-        year_files = files_by_year[year]
-        with st.sidebar.expander(f"{year} ({len(year_files)})", expanded=False):
-            for f_path in year_files:
-                f_name = os.path.basename(f_path)
-                # Initialize state if not present
-                chk_key = f"chk_{f_name}"
-                if chk_key not in st.session_state:
-                     st.session_state[chk_key] = False 
-                
-                # Checkbox controlling state
-                is_checked = st.checkbox(f_name, key=chk_key)
-                
-                if is_checked:
-                    selected_file_paths.append(f_path)
+    # Mode Selection
+    selection_mode = st.sidebar.radio(
+        "Mode de sélection :",
+        ["Par Année (Cases)", "Liste (Multiselect)"],
+        index=0,
+        key="selection_mode"
+    )
+
+    if selection_mode == "Liste (Multiselect)":
+        # Multiselect Mode
+        if "files_multiselect" not in st.session_state:
+             st.session_state["files_multiselect"] = []
+        
+        selected_filenames = st.multiselect(
+            "Sélectionner les fichiers :",
+            options=all_filenames,
+            key="files_multiselect",
+            help="Sélectionnez plusieurs fichiers."
+        )
+        # Map back to paths
+        selected_file_paths = [file_map[f] for f in selected_filenames]
+        
+    else:
+        # Checkbox Mode (Grouped by Year)
+        files_by_year = {}
+        for f_path in found_files:
+            f_name = os.path.basename(f_path)
+            y = extract_year(f_name)
+            if y not in files_by_year:
+                files_by_year[y] = []
+            files_by_year[y].append(f_path)
+        
+        sorted_years = sorted(files_by_year.keys(), reverse=True)
+        
+        for year in sorted_years:
+            year_files = files_by_year[year]
+            with st.sidebar.expander(f"{year} ({len(year_files)})", expanded=False):
+                for f_path in year_files:
+                    f_name = os.path.basename(f_path)
+                    # Initialize state if not present
+                    chk_key = f"chk_{f_name}"
+                    if chk_key not in st.session_state:
+                         st.session_state[chk_key] = False 
+                    
+                    # Checkbox controlling state
+                    is_checked = st.checkbox(f_name, key=chk_key)
+                    
+                    if is_checked:
+                        selected_file_paths.append(f_path)
 
     st.sidebar.markdown("---")
     st.sidebar.caption(f"{len(selected_file_paths)} fichier(s) sélectionné(s).")
+    # Debug info (requested in plan)
+    if len(selected_file_paths) > 10:
+        st.sidebar.text(f"Debug: {len(selected_file_paths)} items selected")
 
 # Advanced mode: Custom path
 with st.sidebar.expander("Configuration Avancée (Chemin)"):
