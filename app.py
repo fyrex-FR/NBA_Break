@@ -26,9 +26,22 @@ from sports_config import (
     sport_key_from_label,
 )
 
-def extract_year(filename):
-    match = re.search(r"(\d{4}-\d{2})", filename)
-    return match.group(1) if match else "Inconnue"
+def extract_year(filename, sport_key=DEFAULT_SPORT_KEY):
+    base_name = os.path.basename(filename)
+
+    # NFL products are seasoned on a single year (e.g. 2024).
+    if sport_key == "nfl":
+        match = re.search(r"((?:19|20)\d{2})", base_name)
+        return match.group(1) if match else "Inconnue"
+
+    # Default behavior for basketball-like seasons (e.g. 2024-25).
+    season_match = re.search(r"((?:19|20)\d{2}-\d{2})", base_name)
+    if season_match:
+        return season_match.group(1)
+
+    # Fallback to simple year for other sports/files.
+    year_match = re.search(r"((?:19|20)\d{2})", base_name)
+    return year_match.group(1) if year_match else "Inconnue"
 
 def extract_product(filename):
     name = os.path.splitext(filename)[0]
@@ -286,7 +299,7 @@ else:
         files_by_year = {}
         for f_path in found_files:
             f_name = os.path.basename(f_path)
-            y = extract_year(f_name)
+            y = extract_year(f_name, selected_sport_key)
             if y not in files_by_year:
                 files_by_year[y] = []
             files_by_year[y].append(f_path)
@@ -382,9 +395,8 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
             team_aliases = file_sport_profile.get("team_aliases", {})
             sheet_names = file_sport_profile.get("sheet_names", ["Teams_clean"])
 
-            # Extract Year from filename (e.g. "2023-24")
-            year_match = re.search(r"(\d{4}-\d{2})", filename)
-            box_year = year_match.group(1) if year_match else "Inconnue"
+            # Extract Year from filename (sport-aware).
+            box_year = extract_year(filename, selected_sport_key)
             
             try:
                 df = None
