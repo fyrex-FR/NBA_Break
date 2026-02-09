@@ -344,6 +344,46 @@ SPORT_PROFILES = {
             "futera",
         ],
     },
+    "tennis": {
+        "label": "Tennis",
+        "page_icon": "🎾",
+        "header_logo_url": "",
+        "header_title": "Check list optimizer",
+        "header_subtitle": "Analysez vos checklists tennis pour optimiser vos picks joueurs et nationalités.",
+        "sheet_names": ["Teams_clean"],
+        "team_aliases": {},
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "logoman": ["logo patch", "crest patch"],
+            "case_hit": DEFAULT_CATEGORY_RULES["case_hit"] + ["hidden gems", "helix", "let's go"],
+        },
+        "hype_tiers": {
+            "Tier S": ["Carlos Alcaraz", "Jannik Sinner", "Novak Djokovic", "Iga Swiatek", "Coco Gauff"],
+            "Tier A": ["Aryna Sabalenka", "Daniil Medvedev", "Alexander Zverev", "Jessica Pegula", "Elena Rybakina"],
+            "Tier B": ["Ben Shelton", "Mirra Andreeva", "Qinwen Zheng", "Holger Rune", "Jack Draper"],
+        },
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": True,
+            "case_hits": True,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": [
+            "tennis",
+            "atp",
+            "wta",
+            "grand slam",
+            "us open",
+            "roland garros",
+            "wimbledon",
+            "australian open",
+            "topps chrome tennis",
+        ],
+    },
 }
 
 DEFAULT_SPORT_KEY = "nba"
@@ -387,10 +427,13 @@ def sport_key_from_label(label):
 
 def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
     normalized = re.sub(r"\s+", " ", os.path.basename(filename).lower())
+    tennis_strong = ["tennis", "atp", "wta", "wimbledon", "roland garros", "australian open", "us open"]
     soccer_strong = ["soccer", "uefa", "fifa", "premier league", "la liga", "serie a", "bundesliga", "merlin"]
     nfl_strong = ["nfl", "football", "super bowl", "draft picks"]
     nba_strong = ["nba", "basket", "basketball", "hoops"]
 
+    if any(h in normalized for h in tennis_strong):
+        return "tennis"
     if any(h in normalized for h in soccer_strong):
         return "soccer"
     if any(h in normalized for h in nba_strong):
