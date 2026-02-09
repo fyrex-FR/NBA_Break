@@ -5,6 +5,26 @@ import glob
 import plotly.express as px
 import re
 import json
+from card_logic import (
+    CATEGORY_AUTO_MEM,
+    CATEGORY_CASE_HIT,
+    CATEGORY_FILTER_OPTIONS,
+    CATEGORY_LOGOMAN,
+    build_hype_map,
+    calculate_score,
+    categorize_card,
+    get_hype_multiplier,
+    normalize_team_name,
+    parse_numbering,
+    rarity_multiplier,
+)
+from sports_config import (
+    DEFAULT_SPORT_KEY,
+    detect_sport_from_filename,
+    get_sport_labels,
+    get_sport_profile,
+    sport_key_from_label,
+)
 
 def extract_year(filename):
     match = re.search(r"(\d{4}-\d{2})", filename)
@@ -20,7 +40,13 @@ def extract_product(filename):
 # API Key Config (Removed as requested)
 # OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
-st.set_page_config(page_title="Check list optimizer", page_icon="🏀", layout="wide")
+initial_sport_key = st.session_state.get("selected_sport", DEFAULT_SPORT_KEY)
+initial_sport_profile = get_sport_profile(initial_sport_key)
+st.set_page_config(
+    page_title="Check list optimizer",
+    page_icon=initial_sport_profile.get("page_icon", "🏀"),
+    layout="wide",
+)
 
 # --- CSS Styling ---
 st.markdown("""
@@ -40,25 +66,64 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Centered Header with Flexbox for alignment
-st.markdown("""
-    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px;">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/315px-National_Basketball_Association_logo.svg.png" width="60">
-        <h1 style="margin: 0; display: inline-block;">Check list optimizer</h1>
-    </div>
-    <div style="text-align: center; margin-bottom: 40px;">
-        Optimisez vos choix de <b>Pick Your Player</b> et <b>Pick Your Team</b> en analysant vos checklists.
-    </div>
-""", unsafe_allow_html=True)
-
 # --- Sidebar: Configuration ---
 st.sidebar.header("📁 Configuration")
 if st.sidebar.button("🔄 Recharger (cache)"):
     st.cache_data.clear()
 
+if "selected_sport" not in st.session_state:
+    st.session_state["selected_sport"] = DEFAULT_SPORT_KEY
+
+sport_labels = get_sport_labels()
+current_sport_label = get_sport_profile(st.session_state["selected_sport"])["label"]
+selected_sport_label = st.sidebar.selectbox(
+    "Sport",
+    options=sport_labels,
+    index=sport_labels.index(current_sport_label) if current_sport_label in sport_labels else 0,
+    help="Le sport pilote la normalisation des équipes et les règles de scoring.",
+)
+selected_sport_key = sport_key_from_label(selected_sport_label)
+st.session_state["selected_sport"] = selected_sport_key
+sport_profile = get_sport_profile(selected_sport_key)
+
+header_logo_url = sport_profile.get("header_logo_url", "")
+header_title = sport_profile.get("header_title", "Check list optimizer")
+header_subtitle = sport_profile.get("header_subtitle", "")
+
+if header_logo_url:
+    st.markdown(
+        f"""
+        <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px;">
+            <img src="{header_logo_url}" width="60">
+            <h1 style="margin: 0; display: inline-block;">{header_title}</h1>
+        </div>
+        <div style="text-align: center; margin-bottom: 40px;">
+            {header_subtitle}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+else:
+    st.markdown(
+        f"""
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h1 style="margin: 0;">{header_title}</h1>
+        </div>
+        <div style="text-align: center; margin-bottom: 40px;">
+            {header_subtitle}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
 # Setup default data folder for mobile ease-of-use
 base_dir = os.getcwd()
-default_data_dir = os.path.join(base_dir, "checklists_clean")
+default_data_root_dir = os.path.join(base_dir, "checklists_clean")
+sport_data_dir = os.path.join(default_data_root_dir, selected_sport_key)
+if os.path.isdir(sport_data_dir) and glob.glob(os.path.join(sport_data_dir, "*.xlsx")):
+    default_data_dir = sport_data_dir
+else:
+    default_data_dir = default_data_root_dir
 presets_path = os.path.join(base_dir, "presets.json")
 
 def load_presets(path):
@@ -87,11 +152,15 @@ def apply_preset(preset_files, all_filenames):
     valid_files = [f for f in preset_files if f in all_filenames]
     st.session_state["files_multiselect"] = valid_files
 
-if not os.path.exists(default_data_dir):
-    os.makedirs(default_data_dir)
+if not os.path.exists(default_data_root_dir):
+    os.makedirs(default_data_root_dir)
 
-if "folder_path" not in st.session_state:
+if (
+    "folder_path" not in st.session_state
+    or st.session_state.get("folder_path_sport_key") != selected_sport_key
+):
     st.session_state.folder_path = default_data_dir
+    st.session_state.folder_path_sport_key = selected_sport_key
 
 folder_path = st.session_state.folder_path
 
@@ -101,9 +170,15 @@ if os.path.isdir(folder_path):
 else:
     found_files = []
 
+found_files = [
+    f for f in found_files
+    if detect_sport_from_filename(os.path.basename(f), fallback=selected_sport_key) == selected_sport_key
+]
+
 st.sidebar.markdown("### 🖥️ Dossier Local")
+st.sidebar.caption(f"Dossier actif: `{folder_path}`")
 if not found_files:
-    st.sidebar.info("Aucun fichier local trouvé.")
+    st.sidebar.info("Aucun fichier local trouvé pour ce sport.")
     selected_file_paths = []
 else:
     # 2. Let user select files
@@ -242,6 +317,7 @@ else:
 
 # Advanced mode: Custom path
 with st.sidebar.expander("Configuration Avancée (Chemin)"):
+    st.caption("Recommandé: `checklists_clean/nba`, `checklists_clean/nfl`, `checklists_clean/soccer`.")
     st.text_input("Chemin du dossier", value=folder_path, key="folder_path")
 
 # --- CLOUD UPLOAD SUPPORT ---
@@ -260,50 +336,13 @@ if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
 
 # --- Main Logic ---
 
-def load_data(file_list):
+def load_data(file_list, selected_sport_key, selected_sport_profile):
     if not file_list:
         return None, "Aucun fichier sélectionné.", []
 
     @st.cache_data
-    def read_teams_clean(path, mtime):
-        return pd.read_excel(path, sheet_name="Teams_clean", engine="openpyxl")
-
-    team_names = {
-        "atlanta hawks", "atlanta",
-        "boston celtics", "boston",
-        "brooklyn nets", "brooklyn",
-        "charlotte hornets", "charlotte",
-        "chicago bulls", "chicago",
-        "cleveland cavaliers", "cleveland",
-        "dallas mavericks", "dallas",
-        "denver nuggets", "denver",
-        "detroit pistons", "detroit",
-        "golden state warriors", "golden state",
-        "houston rockets", "houston",
-        "indiana pacers", "indiana",
-        "los angeles clippers", "la clippers", "clippers",
-        "los angeles lakers", "la lakers", "lakers",
-        "memphis grizzlies", "memphis",
-        "miami heat", "miami",
-        "milwaukee bucks", "milwaukee",
-        "minnesota timberwolves", "minnesota",
-        "new orleans pelicans", "new orleans",
-        "new york knicks", "new york",
-        "oklahoma city thunder", "oklahoma city",
-        "orlando magic", "orlando",
-        "philadelphia 76ers", "philadelphia",
-        "phoenix suns", "phoenix",
-        "portland trail blazers", "portland",
-        "sacramento kings", "sacramento",
-        "san antonio spurs", "san antonio",
-        "toronto raptors", "toronto",
-        "utah jazz", "utah",
-        "washington wizards", "washington",
-    }
-    box_keywords = [
-        "base", "set", "auto", "autograph", "signature", "patch", "relic",
-        "mem", "jersey", "logoman", "rookie", "insert", "variation", "parallel"
-    ]
+    def read_sheet(path, mtime, sheet_name):
+        return pd.read_excel(path, sheet_name=sheet_name, engine="openpyxl")
 
     combined_data = []
     files_processed = 0
@@ -327,15 +366,41 @@ def load_data(file_list):
 
         status_text.text(f"Lecture de : {filename}")
         try:
+            guessed_sport_key = detect_sport_from_filename(filename, fallback=selected_sport_key)
+            if guessed_sport_key != selected_sport_key:
+                error_files.append(
+                    (
+                        filename,
+                        f"Ignoré: le fichier semble être '{guessed_sport_key}' alors que le sport actif est '{selected_sport_key}'.",
+                    )
+                )
+                continue
+
+            file_sport_key = selected_sport_key
+            file_sport_profile = selected_sport_profile
+
+            team_aliases = file_sport_profile.get("team_aliases", {})
+            sheet_names = file_sport_profile.get("sheet_names", ["Teams_clean"])
+
             # Extract Year from filename (e.g. "2023-24")
             year_match = re.search(r"(\d{4}-\d{2})", filename)
             box_year = year_match.group(1) if year_match else "Inconnue"
             
             try:
-                if isinstance(source, str):
-                    df = read_teams_clean(source, os.path.getmtime(source))
-                else:
-                    df = pd.read_excel(source, sheet_name="Teams_clean", engine="openpyxl")
+                df = None
+                for sheet_name in sheet_names:
+                    try:
+                        if isinstance(source, str):
+                            df = read_sheet(source, os.path.getmtime(source), sheet_name)
+                        else:
+                            source.seek(0)
+                            df = pd.read_excel(source, sheet_name=sheet_name, engine="openpyxl")
+                        break
+                    except ValueError:
+                        continue
+                if df is None:
+                    raise ValueError("Sheet not found")
+
                 # Normalize column names to avoid missing-key errors from stray whitespace/casing.
                 df.columns = [str(c).strip() for c in df.columns]
                 lower_map = {c.lower(): c for c in df.columns}
@@ -359,7 +424,7 @@ def load_data(file_list):
                     df["Box Type"] = ""
                     error_files.append((filename, "Colonne 'Box Type' absente: ajoutée vide pour éviter l'erreur."))
             except ValueError:
-                st.warning(f"{filename}: onglet 'Teams_clean' introuvable. Merci d'utiliser un fichier nettoye.")
+                st.warning(f"{filename}: aucun onglet compatible trouvé ({', '.join(sheet_names)}).")
                 continue
             
             # Clean data
@@ -373,7 +438,7 @@ def load_data(file_list):
                 .str.strip()
             )
             df['Team'] = df['Team'].astype(str).str.strip()
-            df['Team'] = df['Team'].apply(lambda t: t.title())
+            df['Team'] = df['Team'].apply(lambda t: normalize_team_name(t, team_aliases))
 
             
             # Add metadata
@@ -381,6 +446,7 @@ def load_data(file_list):
             df['File'] = filename # Track source file
             df['Year'] = box_year
             df['Product'] = extract_product(filename)
+            df['Sport'] = file_sport_key
             if 'Numbering' not in df.columns:
                 df['Numbering'] = ""
             if 'Box Type' not in df.columns:
@@ -417,10 +483,15 @@ def load_data(file_list):
 if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
     # Use selected files from session state
     target_files = st.session_state.get('selected_files', [])
-    df, msg, error_files = load_data(target_files)
+    df, msg, error_files = load_data(
+        target_files,
+        selected_sport_key=selected_sport_key,
+        selected_sport_profile=sport_profile,
+    )
     
     if df is not None:
         st.success(msg)
+        st.caption(f"Sport actif pour l'analyse: {sport_profile.get('label', selected_sport_key)}")
         st.sidebar.markdown("---")
         st.sidebar.caption(f"{msg}")
         if error_files:
@@ -472,21 +543,32 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.session_state['active_view'] = st.session_state['pending_view']
             del st.session_state['pending_view']
 
-        views = [
-            "🌍 Vue Globale",
-            "💎 Autos & Patchs",
-            "🔥 Logoman",
-            "✨ Case Hits",
-            "👥 Multi-Joueurs",
-            "⚖️ Comparateur Joueurs",
-            "🧠 Value Picks",
-            "💸 Cost par Pick",
-            "🧨 Rookies",
-            "⚡ Live Mode",
-            " Par Fichier",
-            "🔍 Analyse Joueur",
-            "🛡️ Analyse Équipe",
-        ]
+        # --- ROI & Hype Logic ---
+        category_rules = sport_profile.get("category_rules", {})
+        case_hit_keywords = category_rules.get("case_hit", [])
+        auto_mem_keywords = category_rules.get("auto_mem", [])
+        logoman_keywords = category_rules.get("logoman", [])
+        top_rookies_by_year = sport_profile.get("top_rookies_by_year", {})
+        hype_map = build_hype_map(sport_profile.get("hype_tiers", {}))
+        enabled_views = sport_profile.get("enabled_views", {})
+
+        views = ["🌍 Vue Globale"]
+        if enabled_views.get("autos_patchs", True) and auto_mem_keywords:
+            views.append("💎 Autos & Patchs")
+        if enabled_views.get("logoman", True) and logoman_keywords:
+            views.append("🔥 Logoman")
+        if enabled_views.get("case_hits", True) and case_hit_keywords:
+            views.append("✨ Case Hits")
+        views.extend(["👥 Multi-Joueurs", "⚖️ Comparateur Joueurs"])
+        if enabled_views.get("value_picks", True) and hype_map:
+            views.append("🧠 Value Picks")
+        if enabled_views.get("cost_by_pick", True):
+            views.append("💸 Cost par Pick")
+        if enabled_views.get("rookies", bool(top_rookies_by_year)):
+            views.append("🧨 Rookies")
+        if enabled_views.get("live_mode", True):
+            views.append("⚡ Live Mode")
+        views.extend([" Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"])
         
         # Ensure current view is valid
         if st.session_state['active_view'] not in views:
@@ -494,95 +576,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
              
         selection = st.radio("", views, index=views.index(st.session_state['active_view']), horizontal=True, key="nav_radio", on_change=update_view, label_visibility="collapsed")
         st.markdown("---")
-        
-        # --- ROI & Hype Logic ---
-        
-        # 1. Hype Data (Hardcoded as requested)
-        HYPE_DATA = {
-            "Tier S": ["Victor Wembanyama", "LeBron James", "Stephen Curry", "Luka Doncic", "Anthony Edwards", "Giannis Antetokounmpo", "Nikola Jokic", "Jayson Tatum", "Ja Morant", "LaMelo Ball"],
-            "Tier A": ["Trae Young", "Zion Williamson", "Kevin Durant", "Joel Embiid", "Shai Gilgeous-Alexander", "Tyrese Haliburton", "Paolo Banchero", "Chet Holmgren", "Scoot Henderson", "Brandon Miller", "Damian Lillard", "Devin Booker"],
-            "Tier B": ["Cade Cunningham", "Jalen Green", "Scottie Barnes", "Evan Mobley", "Josh Giddey", "Franz Wagner", "Amen Thompson", "Ausar Thompson", "Keyonte George", "Bilal Coulibaly", "Donovan Mitchell", "Kyrie Irving"]
-        }
-
-        TOP_ROOKIES_BY_YEAR = {
-            2015: ["Karl-Anthony Towns", "D'Angelo Russell", "Kristaps Porzingis", "Devin Booker", "Myles Turner", "Terry Rozier"],
-            2016: ["Ben Simmons", "Brandon Ingram", "Jaylen Brown", "Buddy Hield", "Jamal Murray", "Pascal Siakam"],
-            2017: ["Jayson Tatum", "Lonzo Ball", "Donovan Mitchell", "De'Aaron Fox", "Bam Adebayo", "Lauri Markkanen"],
-            2018: ["Luka Doncic", "Trae Young", "Deandre Ayton", "Jaren Jackson Jr.", "Shai Gilgeous-Alexander", "Michael Porter Jr."],
-            2019: ["Zion Williamson", "Ja Morant", "RJ Barrett", "Darius Garland", "Tyler Herro", "De'Andre Hunter"],
-            2020: ["Anthony Edwards", "LaMelo Ball", "Tyrese Haliburton", "James Wiseman", "Isaac Okoro", "Patrick Williams"],
-            2021: ["Cade Cunningham", "Evan Mobley", "Scottie Barnes", "Jalen Green", "Jalen Suggs", "Franz Wagner"],
-            2022: ["Paolo Banchero", "Chet Holmgren", "Jabari Smith Jr.", "Keegan Murray", "Jaden Ivey", "Bennedict Mathurin"],
-            2023: ["Victor Wembanyama", "Scoot Henderson", "Brandon Miller", "Amen Thompson", "Ausar Thompson", "Bilal Coulibaly"],
-            2024: ["Zaccharie Risacher", "Alex Sarr", "Reed Sheppard", "Stephon Castle", "Jared McCain", "Matas Buzelis"],
-        }
-        
-        # Invert for easier lookup
-        PLAYER_HYPE_MAP = {}
-        for player in HYPE_DATA["Tier S"]: PLAYER_HYPE_MAP[player] = 10.0
-        for player in HYPE_DATA["Tier A"]: PLAYER_HYPE_MAP[player] = 5.0
-        for player in HYPE_DATA["Tier B"]: PLAYER_HYPE_MAP[player] = 2.0
-        
-        def get_hype_multiplier(player_name):
-            return PLAYER_HYPE_MAP.get(player_name, 1.0) # Default Tier C = 1.0
-
-        # 2. Scoring Helper
-        def calculate_score(row):
-            # Weights: Logoman=1000, Case Hit=500, Auto/Mem=20, Base=1
-            score = 0
-            if "🔥 Logoman" == row['Category']:
-                score = 1000
-            elif "✨ Case Hit" == row['Category']:
-                score = 500
-            elif "💎 Auto/Mem" == row['Category']:
-                score = 20
-            else:
-                score = 1
-            return score
-
-        def rarity_multiplier(numbering):
-            try:
-                num = int(float(numbering))
-            except (ValueError, TypeError):
-                return 1.0
-            if num <= 0:
-                return 1.0
-            mult = 1.0 + (100.0 / num)
-            return min(mult, 10.0)
-
-        def parse_numbering(value):
-            try:
-                return int(float(value))
-            except (ValueError, TypeError):
-                return None
-
-        # ... (Existing categorize_card helper is above) ...
-        def categorize_card(box_type):
-            box_type_str = str(box_type).lower()
-            
-            # 1. Logoman (Top Priority)
-            if "logoman" in box_type_str:
-                return "🔥 Logoman"
-            
-            # 2. Case Hits (New Priority)
-            case_hits_keywords = [
-                'downtown', 'micro', 'micro mosaic',
-                'stained glass', 'strined glass', 'color blast', 'kaboom',
-                'manga', 'sublime', 'night moves',
-                'profile', 'micro-etch', 'photon', 'vortex',
-                'genesis', 'glass mosaic', 'color wheel',
-                'fanatical inserts', 'ultra violet', '451', 'radiating rookies',
-                'advisory', 'paradox', "let's go!", 'glass canvas',
-                'patented', 'finals', 'rock stars'
-            ] # Expanded common case hits + typos
-            if any(k in box_type_str for k in case_hits_keywords):
-                return "✨ Case Hit"
-
-            # 3. Auto/Mem
-            elif any(k in box_type_str for k in ['auto', 'signature', 'patch', 'relic', 'mem', 'jersey']):
-                return "💎 Auto/Mem"
-            else:
-                return "📄 Base/Autre"
 
         # --- Filters ---
         all_products = sorted(df['Product'].dropna().unique().tolist())
@@ -593,9 +586,23 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             df_t = df_t[df_t['Product'].isin(selected_products)]
 
         # --- Scoring prep ---
-        df['Category'] = df['Box Type'].apply(categorize_card)
+        sport_rule_map = {}
+        if "Sport" in df.columns:
+            for sk in df["Sport"].dropna().astype(str).unique().tolist():
+                sport_rule_map[sk] = get_sport_profile(sk).get("category_rules", category_rules)
+        if not sport_rule_map:
+            sport_rule_map[selected_sport_key] = category_rules
+
+        def resolve_rules_for_row(row):
+            sk = str(row.get("Sport", selected_sport_key))
+            return sport_rule_map.get(sk, category_rules)
+
+        df['Category'] = df.apply(
+            lambda row: categorize_card(row.get('Box Type', ''), resolve_rules_for_row(row)),
+            axis=1,
+        )
         df['Rarity Mult'] = df['Numbering'].apply(rarity_multiplier)
-        df['Score'] = df.apply(calculate_score, axis=1) * df['Rarity Mult']
+        df['Score'] = df['Category'].apply(calculate_score) * df['Rarity Mult']
 
         # Rebuild exploded frames after scoring/filtering
         df_p = df.copy()
@@ -692,16 +699,11 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
         elif selection == "💎 Autos & Patchs":
             st.subheader("Analyse Autographes & Memorabilia")
-            st.info("Filtre sur les mots clés : Auto, Signature, Patch, Relic, Mem, Jersey")
-            
-            # Keywords for filtering
-            keywords = ['auto', 'signature', 'patch', 'relic', 'mem', 'jersey']
-            pattern = '|'.join(keywords)
+            st.info("Filtre sur les mots clés du sport sélectionné (auto/mem).")
             
             # Filter Dataframes
-            # We filter the exploded dataframes
-            df_p_filtered = df_p[df_p['Box Type'].astype(str).str.contains(pattern, case=False, na=False)]
-            df_t_filtered = df_t[df_t['Box Type'].astype(str).str.contains(pattern, case=False, na=False)]
+            df_p_filtered = df_p[df_p['Category'] == CATEGORY_AUTO_MEM]
+            df_t_filtered = df_t[df_t['Category'] == CATEGORY_AUTO_MEM]
             
             # Group by Player
             player_stats_f = df_p_filtered.groupby('Player').agg({'Hits': 'sum'}).reset_index()
@@ -756,11 +758,11 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
         elif selection == "🔥 Logoman":
             st.subheader("🔥 Analyse Logoman")
-            st.info("Filtre sur le mot clé : Logoman")
+            st.info("Filtre sur les mots-clés logoman/logo patch du sport sélectionné.")
             
             # Filter Dataframes
-            df_p_logoman = df_p[df_p['Box Type'].astype(str).str.contains("logoman", case=False, na=False)]
-            df_t_logoman = df_t[df_t['Box Type'].astype(str).str.contains("logoman", case=False, na=False)]
+            df_p_logoman = df_p[df_p['Category'] == CATEGORY_LOGOMAN]
+            df_t_logoman = df_t[df_t['Category'] == CATEGORY_LOGOMAN]
             
             # Group by Player
             player_stats_l = df_p_logoman.groupby('Player').agg({'Hits': 'sum'}).reset_index()
@@ -816,26 +818,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         elif selection == "✨ Case Hits":
             st.subheader("✨ Analyse Case Hits (Downtown, Kaboom, Color Blast, Manga...)")
             # Keywords display
-            st.info("Filtre sur : DOWNTOWN, KABOOM, COLOR BLAST, MANGA, SUBLIME, GENESIS, VORTEX...")
-            
-            # Filter Dataframes by category (relies on categorization done previously/on-the-fly? No, we filter by box_type string to be safe or re-use helper)
-            # To be consistent with other blocks, let's filter by string content, BUT leveraging the categorize_card function logic is better.
-            # However, other blocks do str.contains. Let's stick to the pattern used in categorize_card
-            
-            case_hits_keywords = [
-                'downtown', 'micro', 'micro mosaic',
-                'stained glass', 'strined glass', 'color blast', 'kaboom',
-                'manga', 'sublime', 'night moves',
-                'profile', 'micro-etch', 'photon', 'vortex',
-                'genesis', 'glass mosaic', 'color wheel',
-                'fanatical inserts', 'ultra violet', '451', 'radiating rookies',
-                'advisory', 'paradox', "let's go!", 'glass canvas',
-                'patented', 'finals', 'rock stars'
-            ]
-            pattern = '|'.join(case_hits_keywords)
-            
-            df_p_ch = df_p[df_p['Box Type'].astype(str).str.contains(pattern, case=False, na=False)]
-            df_t_ch = df_t[df_t['Box Type'].astype(str).str.contains(pattern, case=False, na=False)]
+            st.info("Filtre sur les mots-clés Case Hits configurés pour le sport sélectionné.")
+
+            df_p_ch = df_p[df_p['Category'] == CATEGORY_CASE_HIT]
+            df_t_ch = df_t[df_t['Category'] == CATEGORY_CASE_HIT]
             
             # Group by Player with details
             player_stats_ch = df_p_ch.groupby('Player').agg({
@@ -981,7 +967,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 for p in selected_players_comp:
                     # Filter data
                     p_data = df_p[df_p['Player'] == p].copy()
-                    p_data['Category'] = p_data['Box Type'].apply(categorize_card)
                     p_data['Rarity Mult'] = p_data['Numbering'].apply(rarity_multiplier)
                     
                     total = p_data['Hits'].sum()
@@ -990,7 +975,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     case_hit = cat_counts.get("✨ Case Hit", 0)
                     auto = cat_counts.get("💎 Auto/Mem", 0)
                     base = cat_counts.get("📄 Base/Autre", 0)
-                    score = (p_data.apply(calculate_score, axis=1) * p_data['Rarity Mult']).sum()
+                    score = (p_data['Category'].apply(calculate_score) * p_data['Rarity Mult']).sum()
                     
                     comparison_data.append({
                         "Joueur": p,
@@ -1047,7 +1032,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 "Hits": "sum",
                 "Score": "sum",
             }).reset_index()
-            player_scores["Hype"] = player_scores["Player"].apply(get_hype_multiplier)
+            player_scores["Hype"] = player_scores["Player"].apply(lambda x: get_hype_multiplier(x, hype_map))
             player_scores["Value Index"] = player_scores["Score"] / player_scores["Hype"].replace(0, 1)
 
             player_scores = player_scores.sort_values(by="Value Index", ascending=False)
@@ -1114,11 +1099,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.info("Détection via 'RC' ou 'Rookie' dans le type de carte.")
 
             st.markdown("#### Top rookies hype par annee (draft)")
-            rookie_rows = [
-                {"Annee": year, "Top 6": ", ".join(names)}
-                for year, names in sorted(TOP_ROOKIES_BY_YEAR.items())
-            ]
-            st.dataframe(pd.DataFrame(rookie_rows), use_container_width=True)
+            if top_rookies_by_year:
+                rookie_rows = [
+                    {"Annee": year, "Top 6": ", ".join(names)}
+                    for year, names in sorted(top_rookies_by_year.items())
+                ]
+                st.dataframe(pd.DataFrame(rookie_rows), use_container_width=True)
+            else:
+                st.caption("Pas de liste rookies configurée pour ce sport.")
 
             df_rookie = df[df['Box Type'].astype(str).str.contains(r"\brc\b|rookie", case=False, na=False)]
             if df_rookie.empty:
@@ -1158,7 +1146,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             
             if selected_file:
                 file_df = df[df['File'] == selected_file].copy()
-                file_df['Category'] = file_df['Box Type'].apply(categorize_card)
                 
                 total_hits = file_df['Hits'].sum()
                 cat_counts = file_df['Category'].value_counts()
@@ -1212,9 +1199,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 # Filter data for this player
                 player_data = df_p[df_p['Player'] == selected_player]
                 
-                # --- Categorization Logic (Using Helper) ---
-                player_data['Category'] = player_data['Box Type'].apply(categorize_card)
-                
                 # Metrics
                 total_hits = player_data['Hits'].sum()
                 
@@ -1253,7 +1237,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 st.subheader("Détail des cartes")
                 
                 # Filter by Category for the table
-                filter_cat = st.radio("Filtrer le tableau par type :", ["Tous", "🔥 Logoman", "✨ Case Hit", "💎 Auto/Mem", "📄 Base/Autre"], horizontal=True)
+                filter_cat = st.radio("Filtrer le tableau par type :", CATEGORY_FILTER_OPTIONS, horizontal=True)
                 max_serial_p = st.number_input("Filtre numérotation (<= /xx)", min_value=0, value=0, step=1, key="player_serial")
                 
                 if filter_cat != "Tous":
@@ -1323,8 +1307,10 @@ else:
     # Tutorial / Placeholder
     st.markdown("### Comment ça marche ?")
     st.markdown("""
-    1.  Utilisez des fichiers Excel contenant un onglet **'Teams_clean'**.
-    2.  Colonnes attendues : **Player**, **Team**, **Card Type**, **Numbering**.
-    3.  Vous pouvez déposer des fichiers via l'upload cloud ou les mettre dans le dossier local.
-    4.  Cliquez sur **Lancer l'analyse** pour voir les stats.
+    1.  Choisissez un sport dans la barre latérale (par défaut: **NBA/Basket**).
+    2.  Placez vos fichiers par sport dans `checklists_clean/nba`, `checklists_clean/nfl`, `checklists_clean/soccer`.
+    3.  Colonnes attendues : **Player**, **Team**, **Card Type**, **Numbering**.
+    4.  Les alias équipes et règles de scoring s'adaptent au sport sélectionné.
+    5.  Vous pouvez déposer des fichiers via l'upload cloud ou les mettre dans le dossier local.
+    6.  Cliquez sur **Lancer l'analyse** pour voir les stats.
     """)

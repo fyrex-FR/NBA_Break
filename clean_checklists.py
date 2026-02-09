@@ -5,85 +5,24 @@ import shutil
 import pandas as pd
 from openpyxl import load_workbook
 
+from card_logic import normalize_team_name
+from sports_config import DEFAULT_CATEGORY_RULES, DEFAULT_SPORT_KEY, detect_sport_from_filename, get_sport_profile
 
-TEAM_MAP = {
-    "atlanta": "Atlanta Hawks",
-    "atlanta hawks": "Atlanta Hawks",
-    "boston": "Boston Celtics",
-    "boston celtics": "Boston Celtics",
-    "brooklyn": "Brooklyn Nets",
-    "brooklyn nets": "Brooklyn Nets",
-    "charlotte": "Charlotte Hornets",
-    "charlotte hornets": "Charlotte Hornets",
-    "chicago": "Chicago Bulls",
-    "chicago bulls": "Chicago Bulls",
-    "cleveland": "Cleveland Cavaliers",
-    "cleveland cavaliers": "Cleveland Cavaliers",
-    "dallas": "Dallas Mavericks",
-    "dallas mavericks": "Dallas Mavericks",
-    "denver": "Denver Nuggets",
-    "denver nuggets": "Denver Nuggets",
-    "detroit": "Detroit Pistons",
-    "detroit pistons": "Detroit Pistons",
-    "golden state": "Golden State Warriors",
-    "golden state warriors": "Golden State Warriors",
-    "houston": "Houston Rockets",
-    "houston rockets": "Houston Rockets",
-    "indiana": "Indiana Pacers",
-    "indiana pacers": "Indiana Pacers",
-    "la clippers": "Los Angeles Clippers",
-    "clippers": "Los Angeles Clippers",
-    "los angeles clippers": "Los Angeles Clippers",
-    "la lakers": "Los Angeles Lakers",
-    "lakers": "Los Angeles Lakers",
-    "los angeles lakers": "Los Angeles Lakers",
-    "memphis": "Memphis Grizzlies",
-    "memphis grizzlies": "Memphis Grizzlies",
-    "miami": "Miami Heat",
-    "miami heat": "Miami Heat",
-    "milwaukee": "Milwaukee Bucks",
-    "milwaukee bucks": "Milwaukee Bucks",
-    "minnesota": "Minnesota Timberwolves",
-    "minnesota timberwolves": "Minnesota Timberwolves",
-    "new orleans": "New Orleans Pelicans",
-    "new orleans pelicans": "New Orleans Pelicans",
-    "new york": "New York Knicks",
-    "new york knicks": "New York Knicks",
-    "oklahoma city": "Oklahoma City Thunder",
-    "oklahoma city thunder": "Oklahoma City Thunder",
-    "orlando": "Orlando Magic",
-    "orlando magic": "Orlando Magic",
-    "philadelphia": "Philadelphia 76ers",
-    "philadelphia 76ers": "Philadelphia 76ers",
-    "phoenix": "Phoenix Suns",
-    "phoenix suns": "Phoenix Suns",
-    "portland": "Portland Trail Blazers",
-    "portland trail blazers": "Portland Trail Blazers",
-    "sacramento": "Sacramento Kings",
-    "sacramento kings": "Sacramento Kings",
-    "san antonio": "San Antonio Spurs",
-    "san antonio spurs": "San Antonio Spurs",
-    "toronto": "Toronto Raptors",
-    "toronto raptors": "Toronto Raptors",
-    "utah": "Utah Jazz",
-    "utah jazz": "Utah Jazz",
-    "washington": "Washington Wizards",
-    "washington wizards": "Washington Wizards",
-}
 
-BOX_KEYWORDS = [
-    "base", "set", "auto", "autograph", "signature", "patch", "relic",
-    "mem", "jersey", "logoman", "rookie", "insert", "variation", "parallel",
-]
+BASE_BOX_KEYWORDS = ["base", "set", "rookie", "insert", "variation", "parallel"]
 
 
 def normalize(value):
     return str(value).strip().lower()
 
 
-def normalize_team(value):
-    key = normalize(value)
-    return TEAM_MAP.get(key, str(value).strip())
+def build_box_keywords(sport_profile):
+    rules = sport_profile.get("category_rules", DEFAULT_CATEGORY_RULES)
+    keywords = set(BASE_BOX_KEYWORDS)
+    for values in rules.values():
+        for value in values:
+            keywords.add(normalize(value))
+    return sorted(keywords)
 
 
 def is_header_row(row):
@@ -91,14 +30,16 @@ def is_header_row(row):
     return "player" in joined or "team" in joined
 
 
-def infer_columns(df_raw):
+def infer_columns(df_raw, team_aliases, box_keywords):
+    team_lookup = set(team_aliases.keys())
+
     team_col = None
     best_ratio = 0
     for col in df_raw.columns:
         col_values = df_raw[col].dropna().tolist()
         if not col_values:
             continue
-        matches = sum(1 for v in col_values if normalize(v) in TEAM_MAP)
+        matches = sum(1 for v in col_values if normalize(v) in team_lookup)
         ratio = matches / max(len(col_values), 1)
         if ratio > best_ratio:
             best_ratio = ratio
@@ -121,7 +62,7 @@ def infer_columns(df_raw):
             continue
         score = sum(
             1 for v in col_values
-            if isinstance(v, str) and any(k in normalize(v) for k in BOX_KEYWORDS)
+            if isinstance(v, str) and any(k in normalize(v) for k in box_keywords)
         )
         if score > best_score:
             best_score = score
@@ -138,7 +79,6 @@ def infer_columns(df_raw):
 
 
 def extract_numbering(row):
-    # Look for explicit "/ 99" patterns or a '/' cell with neighbor numeric value.
     for cell in row:
         if isinstance(cell, str):
             match = re.search(r"/\s*(\d+)", cell)
@@ -159,7 +99,7 @@ def extract_numbering(row):
     return ""
 
 
-def process_file(src_path, dst_path):
+def process_file(src_path, dst_path, sport_profile):
     df_raw = pd.read_excel(src_path, sheet_name="Teams", header=None, engine="openpyxl")
     df_raw = df_raw.dropna(axis=1, how="all")
 
@@ -169,7 +109,9 @@ def process_file(src_path, dst_path):
     if is_header_row(df_raw.iloc[0].tolist()):
         df_raw = df_raw.iloc[1:].reset_index(drop=True)
 
-    player_col, team_col, box_col = infer_columns(df_raw)
+    team_aliases = sport_profile.get("team_aliases", {})
+    box_keywords = build_box_keywords(sport_profile)
+    player_col, team_col, box_col = infer_columns(df_raw, team_aliases, box_keywords)
 
     cleaned_rows = []
     for _, row in df_raw.iterrows():
@@ -181,7 +123,7 @@ def process_file(src_path, dst_path):
             continue
 
         player_str = str(player).strip().rstrip(",")
-        team_str = normalize_team(team)
+        team_str = normalize_team_name(team, team_aliases)
         card_str = "" if pd.isna(card_type) else str(card_type).strip()
         numbering = extract_numbering(row.tolist())
 
@@ -212,9 +154,13 @@ def main():
         src_path = os.path.join(src_dir, fname)
         dst_path = os.path.join(dst_dir, fname)
         shutil.copy2(src_path, dst_path)
-        rows = process_file(src_path, dst_path)
+
+        sport_key = detect_sport_from_filename(fname, fallback=DEFAULT_SPORT_KEY)
+        sport_profile = get_sport_profile(sport_key)
+
+        rows = process_file(src_path, dst_path, sport_profile)
         total_rows += rows
-        print(f"{fname}: {rows} lignes")
+        print(f"{fname}: {rows} lignes ({sport_key})")
 
     print(f"Fichiers traites: {len(files)}")
     print(f"Total lignes: {total_rows}")

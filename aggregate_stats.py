@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import glob
 import re
+from card_logic import CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN, categorize_card
+from sports_config import DEFAULT_SPORT_KEY, get_sport_profile
 
 # Configuration
 base_dir = '/Users/fyrex/antiGravityCode/checklists_clean_shaks'
@@ -13,35 +15,13 @@ def normalize_name(name):
     # Remove trailing commas and spaces, uppercase
     return re.sub(r',$', '', name.strip()).upper()
 
-def categorize_card(box_type):
-    box_type_str = str(box_type).lower()
-    
-    # 1. Logoman (Top Priority)
-    if "logoman" in box_type_str:
-        return "Logoman"
-    
-    # 2. Case Hits
-    case_hits_keywords = [
-        'downtown', 'micro', 'micro mosaic',
-        'stained glass', 'strined glass', 'color blast', 'kaboom',
-        'manga', 'sublime', 'night moves',
-        'profile', 'micro-etch', 'photon', 'vortex',
-        'genesis', 'glass mosaic', 'color wheel',
-        'fanatical inserts', 'ultra violet', '451', 'radiating rookies',
-        'advisory', 'paradox', "let's go!", 'glass canvas',
-        'patented', 'finals', 'rock stars'
-    ]
-    if any(k in box_type_str for k in case_hits_keywords):
-        return "Case Hit"
-
-    # 3. Auto/Mem
-    if any(k in box_type_str for k in ['auto', 'signature', 'patch', 'relic', 'mem', 'jersey']):
-        return "Auto_Mem"
-    
-    return "Base_Other"
-
 def main():
+    sport_key = os.getenv("SPORT_KEY", DEFAULT_SPORT_KEY).lower()
+    sport_profile = get_sport_profile(sport_key)
+    category_rules = sport_profile.get("category_rules", {})
+
     print(f"Loading {prix_joueurs_path}...")
+    print(f"Sport profile: {sport_key}")
     try:
         df_target = pd.read_excel(prix_joueurs_path)
     except Exception as e:
@@ -121,7 +101,7 @@ def main():
                 # Split multi-players
                 players = raw_player.split('/')
                 
-                card_category = categorize_card(box_type)
+                card_category = categorize_card(box_type, category_rules)
                 
                 for p_raw in players:
                     p_norm = normalize_name(p_raw)
@@ -130,11 +110,11 @@ def main():
                         stats = player_stats[p_norm]
                         stats['Total'] += 1
                         
-                        if card_category == 'Logoman':
+                        if card_category == CATEGORY_LOGOMAN:
                             stats['Logoman'] += 1
-                        elif card_category == 'Case Hit':
+                        elif card_category == CATEGORY_CASE_HIT:
                             stats['Case_Hit'] += 1
-                        elif card_category == 'Auto_Mem':
+                        elif card_category == CATEGORY_AUTO_MEM:
                             stats['Auto_Mem'] += 1
                             
         except ValueError:
