@@ -618,7 +618,9 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
         # Rebuild exploded frames after scoring/filtering
         df_p = df.copy()
-        df_p['Player'] = df_p['Player'].astype(str).str.split('/')
+        df_p['Player Raw'] = df_p['Player'].astype(str).str.strip()
+        df_p['Is Multi-Player Card'] = df_p['Player Raw'].str.contains('/', na=False)
+        df_p['Player'] = df_p['Player Raw'].astype(str).str.split('/')
         df_p = df_p.explode('Player')
         df_p['Player'] = df_p['Player'].str.strip()
 
@@ -1213,6 +1215,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 # Metrics
                 total_hits = player_data['Hits'].sum()
+                multi_hits = player_data.loc[player_data['Is Multi-Player Card'].fillna(False), 'Hits'].sum()
                 
                 # Breakdown counts
                 cat_counts = player_data['Category'].value_counts()
@@ -1227,6 +1230,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 col3.metric("✨ Case Hit", count_casehit)
                 col4.metric("💎 Auto/Mem", count_auto)
                 col5.metric("📄 Base/Autre", count_base)
+                if multi_hits > 0:
+                    st.caption(f"Info: {int(multi_hits)} carte(s) proviennent de combos multi-joueurs.")
                 
                 st.markdown("---")
                 
@@ -1261,7 +1266,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         display_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial_p
                     ]
 
-                st.dataframe(display_df[['Category', 'Box Type', 'Numbering', 'Team', 'Hits', 'File']], use_container_width=True)
+                display_df_view = display_df.copy()
+                display_df_view['Multi-Joueurs'] = display_df_view['Is Multi-Player Card'].fillna(False).map({True: "Oui", False: ""})
+                display_df_view['Combo Joueurs'] = display_df_view['Player Raw'].where(display_df_view['Is Multi-Player Card'].fillna(False), "")
+
+                st.dataframe(
+                    display_df_view[['Category', 'Box Type', 'Multi-Joueurs', 'Combo Joueurs', 'Numbering', 'Team', 'Hits', 'File']],
+                    use_container_width=True,
+                )
 
         elif selection == "🛡️ Analyse Équipe":
              st.subheader("Analyse détaillée par Équipe")
