@@ -200,7 +200,21 @@ else:
 # Setup default data folder for mobile ease-of-use
 base_dir = os.getcwd()
 default_data_root_dir = os.path.join(base_dir, "checklists_clean")
-sport_data_dir = os.path.join(default_data_root_dir, selected_sport_key)
+
+def resolve_sport_data_dir(root_dir, sport_key):
+    exact = os.path.join(root_dir, sport_key)
+    if os.path.isdir(exact):
+        return exact
+    if not os.path.isdir(root_dir):
+        return exact
+    # Case-insensitive fallback (e.g. Tennis vs tennis).
+    target = sport_key.lower()
+    for entry in os.listdir(root_dir):
+        if entry.lower() == target and os.path.isdir(os.path.join(root_dir, entry)):
+            return os.path.join(root_dir, entry)
+    return exact
+
+sport_data_dir = resolve_sport_data_dir(default_data_root_dir, selected_sport_key)
 if os.path.isdir(sport_data_dir) and glob.glob(os.path.join(sport_data_dir, "*.xlsx")):
     default_data_dir = sport_data_dir
 else:
@@ -244,6 +258,8 @@ if (
     st.session_state.folder_path_sport_key = selected_sport_key
 
 folder_path = st.session_state.folder_path
+folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
+folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
 
 # 1. Scan for files first
 if os.path.isdir(folder_path):
@@ -251,10 +267,29 @@ if os.path.isdir(folder_path):
 else:
     found_files = []
 
-found_files = [
-    f for f in found_files
-    if detect_sport_from_filename(os.path.basename(f), fallback=selected_sport_key) == selected_sport_key
-]
+# Auto-recover if a stale custom path has no files for the active sport.
+if not found_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
+    st.session_state.folder_path = default_data_dir
+    folder_path = default_data_dir
+    found_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
+
+if not folder_is_selected_sport_dir:
+    found_files = [
+        f for f in found_files
+        if detect_sport_from_filename(os.path.basename(f), fallback="unknown") == selected_sport_key
+    ]
+
+if not found_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
+    st.session_state.folder_path = default_data_dir
+    folder_path = default_data_dir
+    folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
+    folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
+    found_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
+    if not folder_is_selected_sport_dir:
+        found_files = [
+            f for f in found_files
+            if detect_sport_from_filename(os.path.basename(f), fallback="unknown") == selected_sport_key
+        ]
 
 st.sidebar.markdown("### 🖥️ Dossier Local")
 st.sidebar.caption(f"Dossier actif: `{folder_path}`")
@@ -398,7 +433,7 @@ else:
 
 # Advanced mode: Custom path
 with st.sidebar.expander("Configuration Avancée (Chemin)"):
-    st.caption("Recommandé: `checklists_clean/nba`, `checklists_clean/nfl`, `checklists_clean/soccer`.")
+    st.caption("Recommandé: `checklists_clean/nba`, `checklists_clean/nfl`, `checklists_clean/soccer`, `checklists_clean/tennis`.")
     st.text_input("Chemin du dossier", value=folder_path, key="folder_path")
 
 # --- CLOUD UPLOAD SUPPORT ---
