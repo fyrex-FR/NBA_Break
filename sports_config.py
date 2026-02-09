@@ -103,6 +103,33 @@ NBA_TEAM_ALIASES = {
     "utah jazz": "Utah Jazz",
     "washington": "Washington Wizards",
     "washington wizards": "Washington Wizards",
+    # Legacy / relocated NBA franchises
+    "seattle supersonics": "Oklahoma City Thunder",
+    "new jersey nets": "Brooklyn Nets",
+    "new orleans hornets": "New Orleans Pelicans",
+    "new orleans/oklahoma city hornets": "New Orleans Pelicans",
+    "charlotte bobcats": "Charlotte Hornets",
+    "san diego clippers": "Los Angeles Clippers",
+    "buffalo braves": "Los Angeles Clippers",
+    "cincinnati royals": "Sacramento Kings",
+    "kansas city kings": "Sacramento Kings",
+    "kansas city-omaha kings": "Sacramento Kings",
+    "rochester royals": "Sacramento Kings",
+    "st. louis hawks": "Atlanta Hawks",
+    "st louis hawks": "Atlanta Hawks",
+    "milwaukee hawks": "Atlanta Hawks",
+    "tri-cities blackhawks": "Atlanta Hawks",
+    "philadelphia warriors": "Golden State Warriors",
+    "san francisco warriors": "Golden State Warriors",
+    "syracuse nationals": "Philadelphia 76ers",
+    "new orleans jazz": "Utah Jazz",
+    "washington bullets": "Washington Wizards",
+    "fort wayne pistons": "Detroit Pistons",
+    "minneapolis lakers": "Los Angeles Lakers",
+    "vancouver grizzlies": "Memphis Grizzlies",
+    # Frequent checklist variants / typos
+    "portland trailblazers": "Portland Trail Blazers",
+    "minnesota tmberwolves": "Minnesota Timberwolves",
 }
 
 NFL_TEAM_ALIASES = {
@@ -172,6 +199,21 @@ NFL_TEAM_ALIASES = {
     "tennessee titans": "Tennessee Titans",
     "washington": "Washington Commanders",
     "washington commanders": "Washington Commanders",
+    # Legacy / relocated NFL franchises
+    "oakland raiders": "Las Vegas Raiders",
+    "los angeles raiders": "Las Vegas Raiders",
+    "san diego chargers": "Los Angeles Chargers",
+    "st. louis rams": "Los Angeles Rams",
+    "st louis rams": "Los Angeles Rams",
+    "houston oilers": "Tennessee Titans",
+    "tennessee oilers": "Tennessee Titans",
+    "st. louis cardinals": "Arizona Cardinals",
+    "st louis cardinals": "Arizona Cardinals",
+    "phoenix cardinals": "Arizona Cardinals",
+    "baltimore colts": "Indianapolis Colts",
+    "washington redskins": "Washington Commanders",
+    "washington football team": "Washington Commanders",
+    "boston patriots": "New England Patriots",
 }
 
 SPORT_PROFILES = {
