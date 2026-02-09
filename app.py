@@ -50,6 +50,72 @@ def extract_product(filename):
     name = re.sub(r"\s+", " ", name)
     return name.strip(" -_")
 
+
+def split_slash_values(value):
+    text = "" if value is None else str(value)
+    return [p.strip() for p in text.split("/") if p and p.strip() and p.strip().lower() != "nan"]
+
+
+def dedupe_multiplayer_projection_rows(df):
+    """
+    Collapse repeated multi-player rows where the same card is listed once per team.
+    Example: A/B card appearing as Team=A then Team=B should count once globally.
+    """
+    if df.empty or "Player" not in df.columns or "Team" not in df.columns:
+        return df, 0
+
+    work = df.copy()
+    work["_player_parts"] = work["Player"].apply(split_slash_values)
+    work["_player_count"] = work["_player_parts"].apply(len)
+    multi_mask = work["_player_count"] > 1
+    if not multi_mask.any():
+        return df, 0
+
+    work["_player_canon"] = work["_player_parts"].apply(lambda parts: "/".join(sorted(dict.fromkeys(parts))))
+    work["_box_type_key"] = work["Box Type"].astype(str) if "Box Type" in work.columns else ""
+    work["_numbering_key"] = work["Numbering"].astype(str) if "Numbering" in work.columns else ""
+    work["_file_key"] = work["File"].astype(str) if "File" in work.columns else ""
+    work["_dedupe_key"] = (
+        work["_file_key"]
+        + "||"
+        + work["_box_type_key"]
+        + "||"
+        + work["_numbering_key"]
+        + "||"
+        + work["_player_canon"]
+    )
+
+    key_counts = work.loc[multi_mask, "_dedupe_key"].value_counts()
+    duplicated_keys = set(key_counts[key_counts > 1].index.tolist())
+    if not duplicated_keys:
+        return df, 0
+
+    duplicated_rows = work[multi_mask & work["_dedupe_key"].isin(duplicated_keys)].copy()
+    keep_rows = work[~(multi_mask & work["_dedupe_key"].isin(duplicated_keys))].copy()
+
+    def build_team_union(group):
+        teams = []
+        for raw_team in group["Team"].tolist():
+            teams.extend(split_slash_values(raw_team))
+        ordered_unique = []
+        for t in teams:
+            if t not in ordered_unique:
+                ordered_unique.append(t)
+        return "/".join(ordered_unique)
+
+    team_map = duplicated_rows.groupby("_dedupe_key").apply(build_team_union).to_dict()
+    collapsed_rows = duplicated_rows.drop_duplicates(subset=["_dedupe_key"]).copy()
+    collapsed_rows["Team"] = collapsed_rows["_dedupe_key"].map(team_map).fillna(collapsed_rows["Team"])
+
+    result = pd.concat([keep_rows, collapsed_rows], ignore_index=True)
+    rows_removed = len(work) - len(result)
+
+    helper_cols = [
+        "_player_parts", "_player_count", "_player_canon", "_box_type_key", "_numbering_key", "_file_key", "_dedupe_key"
+    ]
+    result = result.drop(columns=[c for c in helper_cols if c in result.columns], errors="ignore")
+    return result, rows_removed
+
 # API Key Config (Removed as requested)
 # OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
@@ -597,6 +663,11 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             df_p = df_p[df_p['Product'].isin(selected_products)]
             df_t = df_t[df_t['Product'].isin(selected_products)]
 
+        # De-duplicate projected multi-team rows to avoid over-counting multi-player cards.
+        df, collapsed_multi_rows = dedupe_multiplayer_projection_rows(df)
+        if collapsed_multi_rows > 0:
+            st.caption(f"Info: {collapsed_multi_rows} ligne(s) multi-équipe fusionnée(s) pour éviter le surcomptage.")
+
         # --- Scoring prep ---
         sport_rule_map = {}
         if "Sport" in df.columns:
@@ -619,10 +690,29 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         # Rebuild exploded frames after scoring/filtering
         df_p = df.copy()
         df_p['Player Raw'] = df_p['Player'].astype(str).str.strip()
+        df_p['Team Raw'] = df_p['Team'].astype(str).str.strip()
         df_p['Is Multi-Player Card'] = df_p['Player Raw'].str.contains('/', na=False)
-        df_p['Player'] = df_p['Player Raw'].astype(str).str.split('/')
-        df_p = df_p.explode('Player')
-        df_p['Player'] = df_p['Player'].str.strip()
+        df_p['Player List'] = df_p['Player Raw'].apply(split_slash_values)
+        df_p['Team List'] = df_p['Team Raw'].apply(split_slash_values)
+        df_p['Player Count'] = df_p['Player List'].apply(len)
+        df_p['Team Count'] = df_p['Team List'].apply(len)
+        df_p['Is Player-Team Aligned'] = (df_p['Player Count'] == df_p['Team Count']) & (df_p['Player Count'] > 1)
+        df_p = df_p.reset_index(drop=True)
+        df_p['Card Row Id'] = df_p.index
+        df_p = df_p.explode('Player List')
+        df_p['Player Position'] = df_p.groupby('Card Row Id').cumcount()
+        df_p['Player'] = df_p['Player List'].astype(str).str.strip()
+        df_p = df_p[df_p['Player'] != ""].copy()
+
+        def resolve_player_team(row):
+            team_list = row.get('Team List', [])
+            player_pos = row.get('Player Position', 0)
+            if isinstance(team_list, list) and row.get('Is Player-Team Aligned', False):
+                if 0 <= player_pos < len(team_list):
+                    return str(team_list[player_pos]).strip()
+            return row.get('Team Raw', '')
+
+        df_p['Team'] = df_p.apply(resolve_player_team, axis=1)
 
         df_t = df.copy()
         df_t['Team'] = df_t['Team'].astype(str).str.split('/')
