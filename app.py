@@ -58,6 +58,25 @@ def split_slash_values(value):
     return [p.strip() for p in text.split("/") if p and p.strip() and p.strip().lower() != "nan"]
 
 
+def normalize_team_value(value, team_aliases):
+    """
+    Normalize each team inside slash-separated values.
+    Example: "Houston Oilers/Tennessee Titans" -> "Tennessee Titans/Tennessee Titans"
+    """
+    parts = split_slash_values(value)
+    if not parts:
+        raw = "" if value is None else str(value).strip()
+        return normalize_team_name(raw, team_aliases)
+
+    normalized = [normalize_team_name(team, team_aliases).strip() for team in parts]
+    # Keep order while removing exact duplicates.
+    deduped = []
+    for team in normalized:
+        if team and team not in deduped:
+            deduped.append(team)
+    return "/".join(deduped)
+
+
 def dedupe_multiplayer_projection_rows(df):
     """
     Collapse repeated multi-player rows where the same card is listed once per team.
@@ -553,7 +572,7 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
                 .str.strip()
             )
             df['Team'] = df['Team'].astype(str).str.strip()
-            df['Team'] = df['Team'].apply(lambda t: normalize_team_name(t, team_aliases))
+            df['Team'] = df['Team'].apply(lambda t: normalize_team_value(t, team_aliases))
 
             
             # Add metadata
