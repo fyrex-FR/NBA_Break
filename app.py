@@ -5,6 +5,7 @@ import glob
 import plotly.express as px
 import re
 import json
+import importlib
 from card_logic import (
     CATEGORY_AUTO_MEM,
     CATEGORY_CASE_HIT,
@@ -18,13 +19,14 @@ from card_logic import (
     parse_numbering,
     rarity_multiplier,
 )
-from sports_config import (
-    DEFAULT_SPORT_KEY,
-    detect_sport_from_filename,
-    get_sport_labels,
-    get_sport_profile,
-    sport_key_from_label,
-)
+import sports_config as sports_config_module
+
+sports_config_module = importlib.reload(sports_config_module)
+DEFAULT_SPORT_KEY = sports_config_module.DEFAULT_SPORT_KEY
+detect_sport_from_filename = sports_config_module.detect_sport_from_filename
+get_sport_labels = sports_config_module.get_sport_labels
+get_sport_profile = sports_config_module.get_sport_profile
+sport_key_from_label = sports_config_module.sport_key_from_label
 
 def extract_year(filename, sport_key=DEFAULT_SPORT_KEY):
     base_name = os.path.basename(filename)
