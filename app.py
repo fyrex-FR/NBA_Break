@@ -336,6 +336,8 @@ else:
 base_dir = os.getcwd()
 presets_path = os.path.join(base_dir, "presets.json")
 presets_r2_key = "app/presets.json"
+keyword_overrides_path = os.path.join(base_dir, "keyword_overrides.json")
+keyword_overrides_r2_key = "app/keyword_overrides.json"
 
 def load_presets(path, r2_enabled, r2_config, sport_key):
     """
@@ -387,6 +389,97 @@ def save_presets(path, presets, r2_enabled, r2_config, sport_key):
         with open(path, "w", encoding="utf-8") as f:
             json.dump(presets, f, ensure_ascii=False, indent=2)
 
+
+def load_keyword_overrides(path, r2_enabled, r2_config):
+    data = {}
+    if r2_enabled:
+        try:
+            data = read_r2_json(r2_config, keyword_overrides_r2_key)
+        except Exception:
+            data = {}
+    else:
+        if os.path.exists(path):
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except Exception:
+                data = {}
+    return data if isinstance(data, dict) else {}
+
+
+def save_keyword_overrides(path, data, r2_enabled, r2_config):
+    safe_data = data if isinstance(data, dict) else {}
+    if r2_enabled:
+        write_r2_json(r2_config, keyword_overrides_r2_key, safe_data)
+    else:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(safe_data, f, ensure_ascii=False, indent=2)
+
+
+def normalize_box_type_text(value):
+    text = "" if value is None else str(value).strip().lower()
+    text = re.sub(r"\s+", " ", text)
+    return text
+
+
+def build_auto_mem_suspects(df):
+    if df.empty or "Box Type" not in df.columns or "Category" not in df.columns:
+        return pd.DataFrame(columns=["Box Type", "Hits", "Score"])
+
+    strong_patterns = [
+        r"\bauto\b",
+        r"\bautograph\b",
+        r"\bsignature\b",
+        r"\bsigned\b",
+        r"\bpatch\b",
+        r"\brelic\b",
+        r"\bjersey\b",
+        r"\bmemorabilia\b",
+        r"\bmem\b",
+        r"\brpa\b",
+        r"\bswatch\b",
+        r"\bbooklet\b",
+        r"\bmaterials?\b",
+        r"\bink\b",
+    ]
+    typo_patterns = [
+        r"\bautp\b",
+        r"\bauot\b",
+        r"\bsignat",
+        r"\bsignta",
+        r"\bjeresy\b",
+        r"\brelci\b",
+        r"\bmemora",
+    ]
+
+    grouped = (
+        df.groupby("Box Type", dropna=False)
+        .agg(
+            Hits=("Hits", "sum"),
+            IsAutoMem=("Category", lambda x: (x == CATEGORY_AUTO_MEM).any()),
+        )
+        .reset_index()
+    )
+    grouped["Box Type"] = grouped["Box Type"].astype(str).str.strip()
+    grouped = grouped[grouped["Box Type"] != ""].copy()
+    grouped = grouped[~grouped["IsAutoMem"]].copy()
+
+    def score_text(text):
+        t = normalize_box_type_text(text)
+        score = 0
+        for p in strong_patterns:
+            if re.search(p, t):
+                score += 2
+        for p in typo_patterns:
+            if re.search(p, t):
+                score += 1
+        return score
+
+    grouped["Score"] = grouped["Box Type"].apply(score_text)
+    grouped = grouped[grouped["Score"] > 0].copy()
+    grouped = grouped.sort_values(["Score", "Hits", "Box Type"], ascending=[False, False, True])
+    return grouped[["Box Type", "Hits", "Score"]].reset_index(drop=True)
+
 def apply_preset(preset_files, all_filenames):
     valid_files = [f for f in preset_files if f in all_filenames]
     st.session_state["selected_cloud_labels"] = valid_files
@@ -397,6 +490,11 @@ def apply_preset(preset_files, all_filenames):
 # Cloud scan (R2 parquet)
 r2_config = get_r2_config(st.secrets)
 r2_enabled = is_r2_configured(r2_config)
+keyword_overrides_root = load_keyword_overrides(
+    keyword_overrides_path,
+    r2_enabled=r2_enabled,
+    r2_config=r2_config,
+)
 cloud_files = []
 cloud_error = ""
 if r2_enabled:
@@ -874,6 +972,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             views.append("🔥 Logoman")
         if enabled_views.get("case_hits", True) and case_hit_keywords:
             views.append("✨ Case Hits")
+        views.append("🧪 Détection Auto/Mem")
         views.extend(["👥 Multi-Joueurs", "⚖️ Comparateur Joueurs"])
         if enabled_views.get("value_picks", True) and hype_map:
             views.append("🧠 Value Picks")
@@ -913,12 +1012,34 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         if not sport_rule_map:
             sport_rule_map[selected_sport_key] = category_rules
 
+        overrides_by_sport = keyword_overrides_root.get("auto_mem_exact_by_sport", {})
+        if not isinstance(overrides_by_sport, dict):
+            overrides_by_sport = {}
+        override_sets = {}
+        for sk in sport_rule_map.keys():
+            raw_list = overrides_by_sport.get(sk, [])
+            if isinstance(raw_list, list):
+                override_sets[sk] = {normalize_box_type_text(v) for v in raw_list if str(v).strip()}
+            else:
+                override_sets[sk] = set()
+
         def resolve_rules_for_row(row):
             sk = str(row.get("Sport", selected_sport_key))
             return sport_rule_map.get(sk, category_rules)
 
+        def resolve_override_set_for_row(row):
+            sk = str(row.get("Sport", selected_sport_key))
+            return override_sets.get(sk, set())
+
+        def categorize_row(row):
+            box_type = row.get("Box Type", "")
+            normalized_box = normalize_box_type_text(box_type)
+            if normalized_box in resolve_override_set_for_row(row):
+                return CATEGORY_AUTO_MEM
+            return categorize_card(box_type, resolve_rules_for_row(row))
+
         df['Category'] = df.apply(
-            lambda row: categorize_card(row.get('Box Type', ''), resolve_rules_for_row(row)),
+            lambda row: categorize_row(row),
             axis=1,
         )
         df['Rarity Mult'] = df['Numbering'].apply(rarity_multiplier)
@@ -1231,6 +1352,91 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     st.plotly_chart(fig_tch, use_container_width=True)
                 else:
                     st.info("Aucun Case Hit trouvé pour les équipes.")
+
+        elif selection == "🧪 Détection Auto/Mem":
+            st.subheader("🧪 Détection assistée des libellés Auto/Mem")
+            st.caption("Objectif: trouver les Box Type qui semblent Auto/Mem mais ne sont pas encore reconnus.")
+
+            current_overrides = overrides_by_sport.get(selected_sport_key, [])
+            if not isinstance(current_overrides, list):
+                current_overrides = []
+
+            if current_overrides:
+                st.markdown("##### Libellés déjà forcés Auto/Mem")
+                st.dataframe(pd.DataFrame({"Box Type": sorted(current_overrides)}), use_container_width=True)
+                to_remove = st.multiselect(
+                    "Retirer des libellés forcés",
+                    options=sorted(current_overrides),
+                    key=f"auto_mem_remove_{selected_sport_key}",
+                )
+                if st.button("Retirer la sélection", key=f"auto_mem_remove_btn_{selected_sport_key}", disabled=not to_remove):
+                    updated = [v for v in current_overrides if v not in to_remove]
+                    new_root = dict(keyword_overrides_root)
+                    by_sport = new_root.get("auto_mem_exact_by_sport", {})
+                    if not isinstance(by_sport, dict):
+                        by_sport = {}
+                    by_sport[selected_sport_key] = updated
+                    new_root["auto_mem_exact_by_sport"] = by_sport
+                    try:
+                        save_keyword_overrides(
+                            keyword_overrides_path,
+                            new_root,
+                            r2_enabled=r2_enabled,
+                            r2_config=r2_config,
+                        )
+                        st.success(f"{len(to_remove)} libellé(s) retiré(s).")
+                        st.cache_data.clear()
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Sauvegarde impossible: {e}")
+            else:
+                st.caption("Aucun libellé forcé actuellement.")
+
+            suspects_df = build_auto_mem_suspects(df)
+            if suspects_df.empty:
+                st.info("Aucun suspect trouvé avec les heuristiques actuelles.")
+            else:
+                st.markdown("##### Suggestions (non reconnues actuellement)")
+                st.dataframe(suspects_df.head(200), use_container_width=True)
+
+                suggestion_labels = []
+                suggestion_map = {}
+                for _, row in suspects_df.head(200).iterrows():
+                    box_type = str(row["Box Type"])
+                    label = f"{box_type} | Hits={int(row['Hits'])} | Score={int(row['Score'])}"
+                    suggestion_labels.append(label)
+                    suggestion_map[label] = box_type
+
+                selected_suggestions = st.multiselect(
+                    "Libellés à forcer en Auto/Mem",
+                    options=suggestion_labels,
+                    key=f"auto_mem_add_{selected_sport_key}",
+                )
+                if st.button(
+                    "Ajouter à la détection Auto/Mem",
+                    key=f"auto_mem_add_btn_{selected_sport_key}",
+                    disabled=not selected_suggestions,
+                ):
+                    to_add = [suggestion_map[label] for label in selected_suggestions]
+                    merged = sorted(set(current_overrides + to_add))
+                    new_root = dict(keyword_overrides_root)
+                    by_sport = new_root.get("auto_mem_exact_by_sport", {})
+                    if not isinstance(by_sport, dict):
+                        by_sport = {}
+                    by_sport[selected_sport_key] = merged
+                    new_root["auto_mem_exact_by_sport"] = by_sport
+                    try:
+                        save_keyword_overrides(
+                            keyword_overrides_path,
+                            new_root,
+                            r2_enabled=r2_enabled,
+                            r2_config=r2_config,
+                        )
+                        st.success(f"{len(to_add)} libellé(s) ajouté(s).")
+                        st.cache_data.clear()
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Sauvegarde impossible: {e}")
 
         elif selection == "👥 Multi-Joueurs":
             st.subheader("👥 Analyse Multi-Joueurs / Dual / Triple")
