@@ -34,7 +34,21 @@ DEFAULT_CATEGORY_RULES = {
         "finals",
         "rock stars",
     ],
-    "auto_mem": ["auto", "autograph", "signature", "patch", "relic", "mem", "jersey", "signed"],
+    "auto_mem": [
+        "auto",
+        "autograph",
+        "signature",
+        "patch",
+        "relic",
+        "mem",
+        "jersey",
+        "signed",
+        "ink",
+        "material",
+        "materials",
+        "gear",
+        "booklet",
+    ],
 }
 
 AUTO_SPORT_KEY = "auto"

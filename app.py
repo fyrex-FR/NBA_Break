@@ -424,7 +424,7 @@ def normalize_box_type_text(value):
 
 def build_auto_mem_suspects(df):
     if df.empty or "Box Type" not in df.columns or "Category" not in df.columns:
-        return pd.DataFrame(columns=["Box Type", "Hits", "Score"])
+        return pd.DataFrame(columns=["Box Type", "Hits", "Score", "Checklists"])
 
     strong_patterns = [
         r"\bauto\b",
@@ -440,6 +440,7 @@ def build_auto_mem_suspects(df):
         r"\bswatch\b",
         r"\bbooklet\b",
         r"\bmaterials?\b",
+        r"\bgear\b",
         r"\bink\b",
     ]
     typo_patterns = [
@@ -457,6 +458,7 @@ def build_auto_mem_suspects(df):
         .agg(
             Hits=("Hits", "sum"),
             IsAutoMem=("Category", lambda x: (x == CATEGORY_AUTO_MEM).any()),
+            Checklists=("File", lambda x: sorted(set(str(v) for v in x if str(v).strip()))),
         )
         .reset_index()
     )
@@ -477,8 +479,11 @@ def build_auto_mem_suspects(df):
 
     grouped["Score"] = grouped["Box Type"].apply(score_text)
     grouped = grouped[grouped["Score"] > 0].copy()
+    grouped["Checklists"] = grouped["Checklists"].apply(
+        lambda files: ", ".join(files[:3]) + (" ..." if len(files) > 3 else "")
+    )
     grouped = grouped.sort_values(["Score", "Hits", "Box Type"], ascending=[False, False, True])
-    return grouped[["Box Type", "Hits", "Score"]].reset_index(drop=True)
+    return grouped[["Box Type", "Hits", "Score", "Checklists"]].reset_index(drop=True)
 
 def apply_preset(preset_files, all_filenames):
     valid_files = [f for f in preset_files if f in all_filenames]
