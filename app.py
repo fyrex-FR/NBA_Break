@@ -388,14 +388,8 @@ def save_presets(path, presets, r2_enabled, r2_config, sport_key):
             json.dump(presets, f, ensure_ascii=False, indent=2)
 
 def apply_preset(preset_files, all_filenames):
-    for fname in all_filenames:
-        st.session_state[f"chk_{fname}"] = fname in preset_files
-    st.session_state.all_files_selected = (
-        len(all_filenames) > 0 and all(f in preset_files for f in all_filenames)
-    )
-    # Sync Multiselect
     valid_files = [f for f in preset_files if f in all_filenames]
-    st.session_state["files_multiselect"] = valid_files
+    st.session_state["selected_cloud_labels"] = valid_files
 
 # Cloud scan (R2 parquet)
 r2_config = get_r2_config(st.secrets)
@@ -409,15 +403,11 @@ if r2_enabled:
     except Exception as e:
         cloud_error = str(e)
 
-# Sidebar checklist selection (R2 only).
-st.sidebar.markdown("### ☁️ Checklists (R2)")
-if cloud_files:
-    st.sidebar.caption(f"{len(cloud_files)} fichier(s) cloud trouvés.")
 if cloud_error:
     st.sidebar.warning("R2 configuré mais inaccessible. Vérifie les secrets.")
 
 if not r2_enabled:
-    st.sidebar.caption("Ajoute les secrets R2 pour activer la sélection cloud.")
+    st.sidebar.caption("Ajoute les secrets R2 pour activer la sélection.")
     selected_file_paths = []
 elif not cloud_files:
     st.sidebar.info("Aucune checklist Parquet trouvée sur R2 pour ce sport.")
@@ -433,33 +423,18 @@ else:
         r2_config=r2_config,
         sport_key=selected_sport_key,
     )
-    
-    # "Select All" logic helper
-    container = st.sidebar.container()
-    
-    # Toggle for Select All
-    if "all_files_selected" not in st.session_state:
-        st.session_state.all_files_selected = False
 
-    def toggle_select_all():
-        new_state = not st.session_state.all_files_selected
-        st.session_state.all_files_selected = new_state
-        # Force update all checkbox keys
-        for fname in all_filenames:
-            st.session_state[f"chk_{fname}"] = new_state
-        
-        # Sync Multiselect
-        if new_state:
-            st.session_state["files_multiselect"] = all_filenames
-        else:
-             st.session_state["files_multiselect"] = []
-        
-    select_all_btn = container.button(
-        "Tout désélectionner" if st.session_state.all_files_selected else "Tout sélectionner", 
-        on_click=toggle_select_all
-    )
-    
-    selected_file_paths = []
+    # No automatic selection by default: user/preset must choose.
+    if (
+        st.session_state.get("selected_cloud_sport") != selected_sport_key
+        or "selected_cloud_labels" not in st.session_state
+    ):
+        st.session_state["selected_cloud_sport"] = selected_sport_key
+        st.session_state["selected_cloud_labels"] = []
+    else:
+        # Keep only labels still present for this sport.
+        current_labels = st.session_state.get("selected_cloud_labels", [])
+        st.session_state["selected_cloud_labels"] = [n for n in current_labels if n in all_filenames]
 
     # Presets UI
     st.sidebar.markdown("### 💾 Presets")
@@ -477,6 +452,8 @@ else:
     def on_preset_change():
         selected = st.session_state.get("preset_to_load", "")
         if not selected:
+            st.session_state["selected_cloud_labels"] = []
+            st.session_state["preset_name"] = ""
             return
         files = presets.get(selected, [])
         apply_preset(files, all_filenames)
@@ -494,15 +471,8 @@ else:
         name = st.session_state.get("preset_name", "").strip()
         if not name:
             return
-        
-        mode = st.session_state.get("selection_mode", "Par Année (Cases)")
-        if mode == "Liste (Multiselect)":
-             current_selection = st.session_state.get("files_multiselect", [])
-        else:
-             current_selection = [
-                fname for fname in all_filenames
-                if st.session_state.get(f"chk_{fname}", False)
-            ]
+
+        current_selection = st.session_state.get("selected_cloud_labels", [])
         presets[name] = current_selection
         try:
             save_presets(
@@ -547,65 +517,20 @@ else:
             disabled=not st.session_state.get("preset_to_load"),
             use_container_width=True,
         )
-    
-    st.sidebar.markdown("---")
-    st.sidebar.markdown("**Fichiers cloud :**")
-    
-    # Mode Selection
-    selection_mode = st.sidebar.radio(
-        "Mode de sélection :",
-        ["Par Année (Cases)", "Liste (Multiselect)"],
-        index=0,
-        key="selection_mode"
-    )
 
-    if selection_mode == "Liste (Multiselect)":
-        # Multiselect Mode
-        if "files_multiselect" not in st.session_state:
-             st.session_state["files_multiselect"] = []
-        
-        selected_filenames = st.multiselect(
-            "Sélectionner les fichiers :",
+    with st.sidebar.expander("Modifier la sélection (optionnel)", expanded=False):
+        st.multiselect(
+            "Checklists incluses",
             options=all_filenames,
-            key="files_multiselect",
-            help="Sélectionnez plusieurs fichiers."
+            key="selected_cloud_labels",
+            help="Aucune checklist n'est sélectionnée par défaut.",
         )
-        # Map back to paths
-        selected_file_paths = [file_map[f] for f in selected_filenames]
-        
-    else:
-        # Checkbox Mode (Grouped by Year)
-        files_by_year = {}
-        for entry in file_entries:
-            f_name = entry["filename"]
-            y = extract_year(f_name, selected_sport_key)
-            if y not in files_by_year:
-                files_by_year[y] = []
-            files_by_year[y].append(entry)
-        
-        sorted_years = sorted(files_by_year.keys(), reverse=True)
-        
-        for year in sorted_years:
-            year_files = files_by_year[year]
-            with st.sidebar.expander(f"{year} ({len(year_files)})", expanded=False):
-                for entry in year_files:
-                    f_name = entry["label"]
-                    # Initialize state if not present
-                    chk_key = f"chk_{f_name}"
-                    if chk_key not in st.session_state:
-                         st.session_state[chk_key] = False 
-                    
-                    # Checkbox controlling state
-                    is_checked = st.checkbox(f_name, key=chk_key)
-                    
-                    if is_checked:
-                        selected_file_paths.append(entry["source"])
 
-    st.sidebar.markdown("---")
-    st.sidebar.caption(f"{len(selected_file_paths)} fichier(s) sélectionné(s).")
-    # Debug info (requested in plan)
-    if len(selected_file_paths) > 10:
-        st.sidebar.text(f"Debug: {len(selected_file_paths)} items selected")
+    selected_labels = st.session_state.get("selected_cloud_labels", [])
+    selected_file_paths = [file_map[name] for name in selected_labels if name in file_map]
+    st.sidebar.caption(
+        f"{len(selected_file_paths)}/{len(all_filenames)} checklists utilisées pour l'analyse."
+    )
 
 # --- CHECKLIST INGESTION ---
 st.sidebar.markdown("### ➕ Ajouter une checklist")
