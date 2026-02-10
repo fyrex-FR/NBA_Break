@@ -9,6 +9,7 @@ import hashlib
 from io import BytesIO
 from card_logic import (
     CATEGORY_AUTO_MEM,
+    CATEGORY_BASE_OTHER,
     CATEGORY_CASE_HIT,
     CATEGORY_FILTER_OPTIONS,
     CATEGORY_LOGOMAN,
@@ -423,15 +424,15 @@ def normalize_box_type_text(value):
     return text
 
 
-def build_auto_mem_review_by_file(df):
+def build_category_review_by_file(df):
     if df.empty or "Box Type" not in df.columns or "Category" not in df.columns or "File" not in df.columns:
-        return pd.DataFrame(columns=["File", "Box Type", "Hits", "IsAutoMem"])
+        return pd.DataFrame(columns=["File", "Box Type", "Hits", "Category"])
 
     grouped = (
         df.groupby(["File", "Box Type"], dropna=False)
         .agg(
             Hits=("Hits", "sum"),
-            IsAutoMem=("Category", lambda x: (x == CATEGORY_AUTO_MEM).any()),
+            Category=("Category", lambda x: x.value_counts().idxmax()),
         )
         .reset_index()
     )
@@ -973,29 +974,55 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         if not sport_rule_map:
             sport_rule_map[selected_sport_key] = category_rules
 
-        overrides_by_sport = keyword_overrides_root.get("auto_mem_exact_by_sport", {})
+        overrides_by_sport = keyword_overrides_root.get("exact_category_by_sport", {})
         if not isinstance(overrides_by_sport, dict):
             overrides_by_sport = {}
-        override_sets = {}
+        legacy_auto_by_sport = keyword_overrides_root.get("auto_mem_exact_by_sport", {})
+        if not isinstance(legacy_auto_by_sport, dict):
+            legacy_auto_by_sport = {}
+
+        auto_override_sets = {}
+        case_override_sets = {}
         for sk in sport_rule_map.keys():
-            raw_list = overrides_by_sport.get(sk, [])
-            if isinstance(raw_list, list):
-                override_sets[sk] = {normalize_box_type_text(v) for v in raw_list if str(v).strip()}
-            else:
-                override_sets[sk] = set()
+            sport_overrides = overrides_by_sport.get(sk, {})
+            if not isinstance(sport_overrides, dict):
+                sport_overrides = {}
+
+            auto_values = []
+            case_values = []
+
+            raw_auto = sport_overrides.get("auto_mem", [])
+            if isinstance(raw_auto, list):
+                auto_values.extend(raw_auto)
+            legacy_raw_auto = legacy_auto_by_sport.get(sk, [])
+            if isinstance(legacy_raw_auto, list):
+                auto_values.extend(legacy_raw_auto)
+
+            raw_case = sport_overrides.get("case_hit", [])
+            if isinstance(raw_case, list):
+                case_values.extend(raw_case)
+
+            auto_override_sets[sk] = {normalize_box_type_text(v) for v in auto_values if str(v).strip()}
+            case_override_sets[sk] = {normalize_box_type_text(v) for v in case_values if str(v).strip()}
 
         def resolve_rules_for_row(row):
             sk = str(row.get("Sport", selected_sport_key))
             return sport_rule_map.get(sk, category_rules)
 
-        def resolve_override_set_for_row(row):
+        def resolve_auto_override_set_for_row(row):
             sk = str(row.get("Sport", selected_sport_key))
-            return override_sets.get(sk, set())
+            return auto_override_sets.get(sk, set())
+
+        def resolve_case_override_set_for_row(row):
+            sk = str(row.get("Sport", selected_sport_key))
+            return case_override_sets.get(sk, set())
 
         def categorize_row(row):
             box_type = row.get("Box Type", "")
             normalized_box = normalize_box_type_text(box_type)
-            if normalized_box in resolve_override_set_for_row(row):
+            if normalized_box in resolve_case_override_set_for_row(row):
+                return CATEGORY_CASE_HIT
+            if normalized_box in resolve_auto_override_set_for_row(row):
                 return CATEGORY_AUTO_MEM
             return categorize_card(box_type, resolve_rules_for_row(row))
 
@@ -1315,92 +1342,147 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     st.info("Aucun Case Hit trouvé pour les équipes.")
 
         elif selection == "🧪 Détection Auto/Mem":
-            st.subheader("🧪 Détection Auto/Mem (par checklist)")
-            st.caption("Coche les Card Type à forcer en Auto/Mem, puis enregistre.")
+            st.subheader("🧪 Détection Auto/Mem + Case Hit (par checklist)")
+            st.caption("Coche Auto/Mem et/ou Case Hit pour chaque Card Type, puis enregistre.")
 
-            current_overrides = overrides_by_sport.get(selected_sport_key, [])
-            if not isinstance(current_overrides, list):
-                current_overrides = []
-            current_override_set = set(current_overrides)
+            sport_overrides = overrides_by_sport.get(selected_sport_key, {})
+            if not isinstance(sport_overrides, dict):
+                sport_overrides = {}
+            current_auto_overrides = sport_overrides.get("auto_mem", [])
+            current_case_overrides = sport_overrides.get("case_hit", [])
+            if not isinstance(current_auto_overrides, list):
+                current_auto_overrides = []
+            if not isinstance(current_case_overrides, list):
+                current_case_overrides = []
 
-            review_df = build_auto_mem_review_by_file(df)
+            # Migrate/display legacy auto overrides if still present.
+            legacy_auto = keyword_overrides_root.get("auto_mem_exact_by_sport", {})
+            if isinstance(legacy_auto, dict):
+                legacy_values = legacy_auto.get(selected_sport_key, [])
+                if isinstance(legacy_values, list):
+                    current_auto_overrides = sorted(set(current_auto_overrides + legacy_values))
+
+            current_auto_set = {normalize_box_type_text(v) for v in current_auto_overrides}
+            current_case_set = {normalize_box_type_text(v) for v in current_case_overrides}
+
+            review_df = build_category_review_by_file(df)
             if review_df.empty:
                 st.info("Aucune donnée exploitable pour cette détection.")
             else:
-                non_auto_df = review_df[~review_df["IsAutoMem"]].copy()
-                auto_count = int(review_df["IsAutoMem"].sum())
-                st.caption(
-                    f"{len(non_auto_df)} Card Type non reconnus affichés • {auto_count} déjà reconnus automatiquement."
+                review_df["Norm"] = review_df["Box Type"].apply(normalize_box_type_text)
+                candidate_mask = (
+                    (review_df["Category"] == CATEGORY_BASE_OTHER)
+                    | (review_df["Norm"].isin(current_auto_set))
+                    | (review_df["Norm"].isin(current_case_set))
                 )
+                candidate_df = review_df[candidate_mask].copy()
 
-                if non_auto_df.empty:
-                    st.info("Tout est déjà reconnu en Auto/Mem.")
+                if candidate_df.empty:
+                    st.info("Aucun Card Type à corriger pour l'instant.")
                 else:
-                    checklist_names = sorted(non_auto_df["File"].unique().tolist())
+                    checklist_names = sorted(candidate_df["File"].unique().tolist())
                     selected_checklists = st.multiselect(
                         "Filtrer les checklists",
                         options=checklist_names,
                         default=checklist_names,
-                        key=f"auto_mem_review_files_{selected_sport_key}",
+                        key=f"category_review_files_{selected_sport_key}",
                     )
-                    working_df = non_auto_df[non_auto_df["File"].isin(selected_checklists)].copy()
+                    working_df = candidate_df[candidate_df["File"].isin(selected_checklists)].copy()
 
                     text_filter = st.text_input(
                         "Filtrer les Card Type (texte)",
                         value="",
-                        key=f"auto_mem_review_filter_{selected_sport_key}",
+                        key=f"category_review_filter_{selected_sport_key}",
                     ).strip().lower()
                     if text_filter:
                         working_df = working_df[
                             working_df["Box Type"].astype(str).str.lower().str.contains(re.escape(text_filter), na=False)
                         ]
 
-                    # Initialize checkbox states from saved overrides.
-                    for _, row in working_df.iterrows():
-                        file_name = str(row["File"])
-                        box_type = str(row["Box Type"])
+                    def checkbox_keys(file_name, box_type):
                         key_hash = hashlib.md5(
                             f"{selected_sport_key}|{file_name}|{box_type}".encode("utf-8")
                         ).hexdigest()[:12]
-                        chk_key = f"auto_mem_chk_{key_hash}"
-                        if chk_key not in st.session_state:
-                            st.session_state[chk_key] = box_type in current_override_set
+                        return f"cat_auto_chk_{key_hash}", f"cat_case_chk_{key_hash}"
 
-                    if st.button("Recharger les cases depuis la config", key=f"auto_mem_reload_{selected_sport_key}"):
-                        for _, row in working_df.iterrows():
+                    # Initialize checkbox states for all candidates, not only filtered rows.
+                    for _, row in candidate_df.iterrows():
+                        file_name = str(row["File"])
+                        box_type = str(row["Box Type"])
+                        norm_box = normalize_box_type_text(box_type)
+                        auto_key, case_key = checkbox_keys(file_name, box_type)
+                        if auto_key not in st.session_state:
+                            st.session_state[auto_key] = norm_box in current_auto_set
+                        if case_key not in st.session_state:
+                            st.session_state[case_key] = norm_box in current_case_set
+
+                    if st.button("Recharger les cases depuis la config", key=f"category_review_reload_{selected_sport_key}"):
+                        for _, row in candidate_df.iterrows():
                             file_name = str(row["File"])
                             box_type = str(row["Box Type"])
-                            key_hash = hashlib.md5(
-                                f"{selected_sport_key}|{file_name}|{box_type}".encode("utf-8")
-                            ).hexdigest()[:12]
-                            chk_key = f"auto_mem_chk_{key_hash}"
-                            st.session_state[chk_key] = box_type in current_override_set
+                            norm_box = normalize_box_type_text(box_type)
+                            auto_key, case_key = checkbox_keys(file_name, box_type)
+                            st.session_state[auto_key] = norm_box in current_auto_set
+                            st.session_state[case_key] = norm_box in current_case_set
                         st.rerun()
 
-                    checked_box_types = set()
                     for checklist in sorted(working_df["File"].unique().tolist()):
                         file_rows = working_df[working_df["File"] == checklist].copy()
                         with st.expander(f"{checklist} ({len(file_rows)})", expanded=False):
                             for _, row in file_rows.iterrows():
                                 box_type = str(row["Box Type"])
                                 hits = int(row["Hits"])
-                                key_hash = hashlib.md5(
-                                    f"{selected_sport_key}|{checklist}|{box_type}".encode("utf-8")
-                                ).hexdigest()[:12]
-                                chk_key = f"auto_mem_chk_{key_hash}"
-                                is_checked = st.checkbox(f"{box_type} • {hits} hit(s)", key=chk_key)
-                                if is_checked:
-                                    checked_box_types.add(box_type)
+                                auto_key, case_key = checkbox_keys(checklist, box_type)
+                                c1, c2, c3 = st.columns([6, 2, 2])
+                                with c1:
+                                    st.write(f"{box_type} • {hits} hit(s)")
+                                with c2:
+                                    st.checkbox("Auto/Mem", key=auto_key)
+                                with c3:
+                                    st.checkbox("Case Hit", key=case_key)
 
-                    st.caption(f"{len(checked_box_types)} Card Type cochés pour Auto/Mem.")
-                    if st.button("💾 Enregistrer la sélection Auto/Mem", key=f"auto_mem_save_{selected_sport_key}"):
-                        merged = sorted(checked_box_types)
+                    checked_auto = set()
+                    checked_case = set()
+                    for _, row in candidate_df.iterrows():
+                        file_name = str(row["File"])
+                        box_type = str(row["Box Type"])
+                        auto_key, case_key = checkbox_keys(file_name, box_type)
+                        if st.session_state.get(auto_key, False):
+                            checked_auto.add(box_type)
+                        if st.session_state.get(case_key, False):
+                            checked_case.add(box_type)
+
+                    overlap_count = len({normalize_box_type_text(v) for v in checked_auto} & {normalize_box_type_text(v) for v in checked_case})
+                    if overlap_count > 0:
+                        st.caption(
+                            f"{overlap_count} Card Type cochés dans les deux colonnes (priorité Case Hit)."
+                        )
+                    st.caption(
+                        f"{len(checked_auto)} Auto/Mem cochés • {len(checked_case)} Case Hit cochés."
+                    )
+
+                    if st.button("💾 Enregistrer la sélection", key=f"category_review_save_{selected_sport_key}"):
+                        # If same text appears in both, keep Case Hit priority.
+                        case_norm = {normalize_box_type_text(v) for v in checked_case}
+                        final_auto = sorted(v for v in checked_auto if normalize_box_type_text(v) not in case_norm)
+                        final_case = sorted(checked_case)
+
                         new_root = dict(keyword_overrides_root)
-                        by_sport = new_root.get("auto_mem_exact_by_sport", {})
+                        by_sport = new_root.get("exact_category_by_sport", {})
                         if not isinstance(by_sport, dict):
                             by_sport = {}
-                        by_sport[selected_sport_key] = merged
-                        new_root["auto_mem_exact_by_sport"] = by_sport
+                        by_sport[selected_sport_key] = {
+                            "auto_mem": final_auto,
+                            "case_hit": final_case,
+                        }
+                        new_root["exact_category_by_sport"] = by_sport
+
+                        # Cleanup migrated legacy key for this sport.
+                        legacy = new_root.get("auto_mem_exact_by_sport", {})
+                        if isinstance(legacy, dict) and selected_sport_key in legacy:
+                            del legacy[selected_sport_key]
+                            new_root["auto_mem_exact_by_sport"] = legacy
+
                         try:
                             save_keyword_overrides(
                                 keyword_overrides_path,
@@ -1408,7 +1490,9 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 r2_enabled=r2_enabled,
                                 r2_config=r2_config,
                             )
-                            st.success(f"Configuration enregistrée ({len(merged)} libellé(s)).")
+                            st.success(
+                                f"Configuration enregistrée ({len(final_auto)} Auto/Mem, {len(final_case)} Case Hit)."
+                            )
                             st.cache_data.clear()
                             st.rerun()
                         except Exception as e:
