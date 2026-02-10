@@ -20,6 +20,17 @@ from card_logic import (
     rarity_multiplier,
 )
 import sports_config as sports_config_module
+from r2_storage import (
+    get_r2_config,
+    is_r2_configured,
+    is_r2_uri,
+    key_to_r2_uri,
+    list_r2_parquet_keys,
+    r2_uri_to_key,
+    read_r2_parquet,
+    source_filename,
+    source_label,
+)
 
 sports_config_module = importlib.reload(sports_config_module)
 DEFAULT_SPORT_KEY = sports_config_module.DEFAULT_SPORT_KEY
@@ -75,6 +86,31 @@ def normalize_team_value(value, team_aliases):
         if team and team not in deduped:
             deduped.append(team)
     return "/".join(deduped)
+
+
+def build_source_entries(sources):
+    """
+    Build unique display labels for local files and cloud files.
+    """
+    ordered = sorted(sources, key=lambda s: source_filename(s).lower())
+    used_labels = set()
+    entries = []
+
+    for src in ordered:
+        base_label = source_label(src)
+        label = base_label
+        suffix = 2
+        while label in used_labels:
+            label = f"{base_label} ({suffix})"
+            suffix += 1
+        used_labels.add(label)
+        entries.append({
+            "label": label,
+            "source": src,
+            "filename": source_filename(src),
+            "is_cloud": is_r2_uri(src),
+        })
+    return entries
 
 
 def dedupe_multiplayer_projection_rows(df):
@@ -280,51 +316,70 @@ folder_path = st.session_state.folder_path
 folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
 folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
 
-# 1. Scan for files first
+# 1) Local scan
 if os.path.isdir(folder_path):
-    found_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
+    local_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
 else:
-    found_files = []
+    local_files = []
 
 # Auto-recover if a stale custom path has no files for the active sport.
-if not found_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
+if not local_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
     st.session_state.folder_path = default_data_dir
     folder_path = default_data_dir
-    found_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
+    local_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
+    folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
+    folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
 
 if not folder_is_selected_sport_dir:
-    found_files = [
-        f for f in found_files
+    local_files = [
+        f for f in local_files
         if detect_sport_from_filename(os.path.basename(f), fallback="unknown") == selected_sport_key
     ]
 
-if not found_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
+if not local_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
     st.session_state.folder_path = default_data_dir
     folder_path = default_data_dir
     folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
     folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
-    found_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
+    local_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
     if not folder_is_selected_sport_dir:
-        found_files = [
-            f for f in found_files
+        local_files = [
+            f for f in local_files
             if detect_sport_from_filename(os.path.basename(f), fallback="unknown") == selected_sport_key
         ]
 
+# 2) Cloud scan (R2 parquet)
+r2_config = get_r2_config(st.secrets)
+r2_enabled = is_r2_configured(r2_config)
+cloud_files = []
+cloud_error = ""
+if r2_enabled:
+    try:
+        cloud_keys = list_r2_parquet_keys(r2_config, selected_sport_key)
+        cloud_files = [key_to_r2_uri(k) for k in cloud_keys]
+    except Exception as e:
+        cloud_error = str(e)
+
+available_sources = local_files + cloud_files
+
 st.sidebar.markdown("### 🖥️ Dossier Local")
 st.sidebar.caption(f"Dossier actif: `{folder_path}`")
-if not found_files:
-    st.sidebar.info("Aucun fichier local trouvé pour ce sport.")
+if cloud_files:
+    st.sidebar.caption(f"☁️ {len(cloud_files)} fichier(s) cloud trouvés (R2).")
+if cloud_error:
+    st.sidebar.warning("R2 configuré mais inaccessible. Vérifie les secrets.")
+
+if not available_sources:
+    st.sidebar.info("Aucun fichier trouvé (local ou cloud) pour ce sport.")
     selected_file_paths = []
 else:
     # 2. Let user select files
-    st.sidebar.caption(f"{len(found_files)} fichiers locaux.")
-    
-    # Sort files to ensure consistency
-    found_files.sort()
-    
-    # helper to build keys
-    file_map = {os.path.basename(f): f for f in found_files}
-    all_filenames = list(file_map.keys())
+    st.sidebar.caption(f"{len(local_files)} fichier(s) local(aux) • {len(cloud_files)} cloud.")
+
+    file_entries = build_source_entries(available_sources)
+    file_map = {entry["label"]: entry["source"] for entry in file_entries}
+    filename_map = {entry["label"]: entry["filename"] for entry in file_entries}
+    all_filenames = [entry["label"] for entry in file_entries]
 
     presets = load_presets(presets_path)
     
@@ -392,7 +447,7 @@ else:
     st.sidebar.button("Sauvegarder la selection", on_click=on_save_preset)
     
     st.sidebar.markdown("---")
-    st.sidebar.markdown("**Fichiers locaux :**")
+    st.sidebar.markdown("**Fichiers disponibles (local + cloud) :**")
     
     # Mode Selection
     selection_mode = st.sidebar.radio(
@@ -419,20 +474,20 @@ else:
     else:
         # Checkbox Mode (Grouped by Year)
         files_by_year = {}
-        for f_path in found_files:
-            f_name = os.path.basename(f_path)
+        for entry in file_entries:
+            f_name = entry["filename"]
             y = extract_year(f_name, selected_sport_key)
             if y not in files_by_year:
                 files_by_year[y] = []
-            files_by_year[y].append(f_path)
+            files_by_year[y].append(entry)
         
         sorted_years = sorted(files_by_year.keys(), reverse=True)
         
         for year in sorted_years:
             year_files = files_by_year[year]
             with st.sidebar.expander(f"{year} ({len(year_files)})", expanded=False):
-                for f_path in year_files:
-                    f_name = os.path.basename(f_path)
+                for entry in year_files:
+                    f_name = entry["label"]
                     # Initialize state if not present
                     chk_key = f"chk_{f_name}"
                     if chk_key not in st.session_state:
@@ -442,7 +497,7 @@ else:
                     is_checked = st.checkbox(f_name, key=chk_key)
                     
                     if is_checked:
-                        selected_file_paths.append(f_path)
+                        selected_file_paths.append(entry["source"])
 
     st.sidebar.markdown("---")
     st.sidebar.caption(f"{len(selected_file_paths)} fichier(s) sélectionné(s).")
@@ -489,8 +544,8 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
     for i, file_obj in enumerate(file_list):
         # Handle difference between Local Path (str) and UploadedFile (object)
         if isinstance(file_obj, str):
-            filename = os.path.basename(file_obj)
-            source = file_obj # Path
+            source = file_obj
+            filename = source_filename(file_obj) if is_r2_uri(file_obj) else os.path.basename(file_obj)
         else:
             filename = file_obj.name
             source = file_obj # File Object
@@ -521,19 +576,27 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
             box_year = extract_year(filename, selected_sport_key)
             
             try:
-                df = None
-                for sheet_name in sheet_names:
-                    try:
-                        if isinstance(source, str):
-                            df = read_sheet(source, os.path.getmtime(source), sheet_name)
-                        else:
-                            source.seek(0)
-                            df = pd.read_excel(source, sheet_name=sheet_name, engine="openpyxl")
-                        break
-                    except ValueError:
-                        continue
-                if df is None:
-                    raise ValueError("Sheet not found")
+                if isinstance(source, str) and is_r2_uri(source):
+                    key = r2_uri_to_key(source)
+                    if not key.lower().endswith(".parquet"):
+                        raise ValueError("Format cloud non supporté (attendu: .parquet)")
+                    if not r2_enabled:
+                        raise ValueError("R2 non configuré dans les secrets.")
+                    df = read_r2_parquet(r2_config, key)
+                else:
+                    df = None
+                    for sheet_name in sheet_names:
+                        try:
+                            if isinstance(source, str):
+                                df = read_sheet(source, os.path.getmtime(source), sheet_name)
+                            else:
+                                source.seek(0)
+                                df = pd.read_excel(source, sheet_name=sheet_name, engine="openpyxl")
+                            break
+                        except ValueError:
+                            continue
+                    if df is None:
+                        raise ValueError("Sheet not found")
 
                 # Normalize column names to avoid missing-key errors from stray whitespace/casing.
                 df.columns = [str(c).strip() for c in df.columns]
@@ -557,8 +620,11 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
                 if "Box Type" not in df.columns:
                     df["Box Type"] = ""
                     error_files.append((filename, "Colonne 'Box Type' absente: ajoutée vide pour éviter l'erreur."))
-            except ValueError:
-                st.warning(f"{filename}: aucun onglet compatible trouvé ({', '.join(sheet_names)}).")
+            except ValueError as e:
+                if isinstance(source, str) and is_r2_uri(source):
+                    error_files.append((filename, f"Lecture cloud impossible: {e}"))
+                else:
+                    st.warning(f"{filename}: aucun onglet compatible trouvé ({', '.join(sheet_names)}).")
                 continue
             
             # Clean data

@@ -41,4 +41,5 @@ ENV/
 
 # Ignore raw checklists; use checklists_clean instead.
 checklists/
+checklists_parquet/
 *.tar
