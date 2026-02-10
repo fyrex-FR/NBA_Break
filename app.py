@@ -580,7 +580,7 @@ else:
                     chk_key = f"chk_cloud_{label}"
                     if chk_key not in st.session_state:
                         st.session_state[chk_key] = label in selected_set
-                    if st.sidebar.checkbox(label, key=chk_key):
+                    if st.checkbox(label, key=chk_key):
                         selected_set.add(label)
                     else:
                         selected_set.discard(label)
