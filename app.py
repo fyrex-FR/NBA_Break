@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import os
-import glob
 import plotly.express as px
 import re
 import json
@@ -315,28 +314,8 @@ else:
         unsafe_allow_html=True,
     )
 
-# Setup default data folder for mobile ease-of-use
+# Sidebar data source now uses R2 only.
 base_dir = os.getcwd()
-default_data_root_dir = os.path.join(base_dir, "checklists_clean")
-
-def resolve_sport_data_dir(root_dir, sport_key):
-    exact = os.path.join(root_dir, sport_key)
-    if os.path.isdir(exact):
-        return exact
-    if not os.path.isdir(root_dir):
-        return exact
-    # Case-insensitive fallback (e.g. Tennis vs tennis).
-    target = sport_key.lower()
-    for entry in os.listdir(root_dir):
-        if entry.lower() == target and os.path.isdir(os.path.join(root_dir, entry)):
-            return os.path.join(root_dir, entry)
-    return exact
-
-sport_data_dir = resolve_sport_data_dir(default_data_root_dir, selected_sport_key)
-if os.path.isdir(sport_data_dir) and glob.glob(os.path.join(sport_data_dir, "*.xlsx")):
-    default_data_dir = sport_data_dir
-else:
-    default_data_dir = default_data_root_dir
 presets_path = os.path.join(base_dir, "presets.json")
 
 def load_presets(path):
@@ -365,53 +344,7 @@ def apply_preset(preset_files, all_filenames):
     valid_files = [f for f in preset_files if f in all_filenames]
     st.session_state["files_multiselect"] = valid_files
 
-if not os.path.exists(default_data_root_dir):
-    os.makedirs(default_data_root_dir)
-
-if (
-    "folder_path" not in st.session_state
-    or st.session_state.get("folder_path_sport_key") != selected_sport_key
-):
-    st.session_state.folder_path = default_data_dir
-    st.session_state.folder_path_sport_key = selected_sport_key
-
-folder_path = st.session_state.folder_path
-folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
-folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
-
-# 1) Local scan
-if os.path.isdir(folder_path):
-    local_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
-else:
-    local_files = []
-
-# Auto-recover if a stale custom path has no files for the active sport.
-if not local_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
-    st.session_state.folder_path = default_data_dir
-    folder_path = default_data_dir
-    local_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
-    folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
-    folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
-
-if not folder_is_selected_sport_dir:
-    local_files = [
-        f for f in local_files
-        if detect_sport_from_filename(os.path.basename(f), fallback="unknown") == selected_sport_key
-    ]
-
-if not local_files and folder_path != default_data_dir and os.path.isdir(default_data_dir):
-    st.session_state.folder_path = default_data_dir
-    folder_path = default_data_dir
-    folder_basename = os.path.basename(os.path.normpath(folder_path)).lower()
-    folder_is_selected_sport_dir = folder_basename == selected_sport_key.lower()
-    local_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
-    if not folder_is_selected_sport_dir:
-        local_files = [
-            f for f in local_files
-            if detect_sport_from_filename(os.path.basename(f), fallback="unknown") == selected_sport_key
-        ]
-
-# 2) Cloud scan (R2 parquet)
+# Cloud scan (R2 parquet)
 r2_config = get_r2_config(st.secrets)
 r2_enabled = is_r2_configured(r2_config)
 cloud_files = []
@@ -423,32 +356,22 @@ if r2_enabled:
     except Exception as e:
         cloud_error = str(e)
 
-# Prefer cloud parquet to avoid duplicate display (local xlsx + cloud parquet).
+# Sidebar checklist selection (R2 only).
+st.sidebar.markdown("### ☁️ Checklists (R2)")
 if cloud_files:
-    available_sources = cloud_files
-else:
-    available_sources = local_files
-
-st.sidebar.markdown("### 🖥️ Dossier Local")
-st.sidebar.caption(f"Dossier actif: `{folder_path}`")
-if cloud_files:
-    st.sidebar.caption(f"☁️ {len(cloud_files)} fichier(s) cloud trouvés (R2).")
+    st.sidebar.caption(f"{len(cloud_files)} fichier(s) cloud trouvés.")
 if cloud_error:
     st.sidebar.warning("R2 configuré mais inaccessible. Vérifie les secrets.")
 
-if not available_sources:
-    st.sidebar.info("Aucun fichier trouvé (local ou cloud) pour ce sport.")
+if not r2_enabled:
+    st.sidebar.caption("Ajoute les secrets R2 pour activer la sélection cloud.")
+    selected_file_paths = []
+elif not cloud_files:
+    st.sidebar.info("Aucune checklist Parquet trouvée sur R2 pour ce sport.")
     selected_file_paths = []
 else:
-    # 2. Let user select files
-    if cloud_files:
-        st.sidebar.caption(f"{len(cloud_files)} fichier(s) cloud affiché(s) (priorité Parquet).")
-    else:
-        st.sidebar.caption(f"{len(local_files)} fichier(s) local(aux).")
-
-    file_entries = build_source_entries(available_sources)
+    file_entries = build_source_entries(cloud_files)
     file_map = {entry["label"]: entry["source"] for entry in file_entries}
-    filename_map = {entry["label"]: entry["filename"] for entry in file_entries}
     all_filenames = [entry["label"] for entry in file_entries]
 
     presets = load_presets(presets_path)
@@ -517,7 +440,7 @@ else:
     st.sidebar.button("Sauvegarder la selection", on_click=on_save_preset)
     
     st.sidebar.markdown("---")
-    st.sidebar.markdown("**Fichiers disponibles (local + cloud) :**")
+    st.sidebar.markdown("**Fichiers cloud :**")
     
     # Mode Selection
     selection_mode = st.sidebar.radio(
@@ -574,20 +497,6 @@ else:
     # Debug info (requested in plan)
     if len(selected_file_paths) > 10:
         st.sidebar.text(f"Debug: {len(selected_file_paths)} items selected")
-
-# Advanced mode: Custom path
-with st.sidebar.expander("Configuration Avancée (Chemin)"):
-    st.caption("Recommandé: `checklists_clean/nba`, `checklists_clean/nfl`, `checklists_clean/soccer`, `checklists_clean/tennis`.")
-    st.text_input("Chemin du dossier", value=folder_path, key="folder_path")
-
-# --- CLOUD UPLOAD SUPPORT ---
-st.sidebar.markdown("### ☁️ Upload (Cloud/Web)")
-uploaded_files = st.sidebar.file_uploader(
-    "Ajouter des fichiers Excel",
-    type=['xlsx'],
-    accept_multiple_files=True
-)
-st.sidebar.caption("Les fichiers doivent contenir un onglet 'Teams_clean'.")
 
 # --- R2 INGESTION (XLSX -> PARQUET) ---
 st.sidebar.markdown("### 🪣 Ingestion R2 (XLSX -> Parquet)")
@@ -654,8 +563,7 @@ else:
 
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
-    # Merge local selected files AND uploaded files
-    st.session_state['selected_files'] = selected_file_paths + (uploaded_files or [])
+    st.session_state['selected_files'] = selected_file_paths
 
 # --- Main Logic ---
 
