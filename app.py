@@ -360,7 +360,11 @@ if r2_enabled:
     except Exception as e:
         cloud_error = str(e)
 
-available_sources = local_files + cloud_files
+# Prefer cloud parquet to avoid duplicate display (local xlsx + cloud parquet).
+if cloud_files:
+    available_sources = cloud_files
+else:
+    available_sources = local_files
 
 st.sidebar.markdown("### 🖥️ Dossier Local")
 st.sidebar.caption(f"Dossier actif: `{folder_path}`")
@@ -374,7 +378,10 @@ if not available_sources:
     selected_file_paths = []
 else:
     # 2. Let user select files
-    st.sidebar.caption(f"{len(local_files)} fichier(s) local(aux) • {len(cloud_files)} cloud.")
+    if cloud_files:
+        st.sidebar.caption(f"{len(cloud_files)} fichier(s) cloud affiché(s) (priorité Parquet).")
+    else:
+        st.sidebar.caption(f"{len(local_files)} fichier(s) local(aux).")
 
     file_entries = build_source_entries(available_sources)
     file_map = {entry["label"]: entry["source"] for entry in file_entries}
