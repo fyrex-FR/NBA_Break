@@ -28,9 +28,11 @@ from r2_storage import (
     r2_uri_to_key,
     r2_object_exists,
     read_r2_parquet,
+    read_r2_json,
     source_filename,
     source_label,
     upload_parquet_dataframe,
+    write_r2_json,
 )
 
 sports_config_module = importlib.reload(sports_config_module)
@@ -317,22 +319,57 @@ else:
 # Sidebar data source now uses R2 only.
 base_dir = os.getcwd()
 presets_path = os.path.join(base_dir, "presets.json")
+presets_r2_key = "app/presets.json"
 
-def load_presets(path):
-    if not os.path.exists(path):
+def load_presets(path, r2_enabled, r2_config, sport_key):
+    """
+    Presets are stored in R2 when available, grouped by sport key.
+    Fallback to local presets.json for local/dev use.
+    """
+    data = {}
+    if r2_enabled:
+        try:
+            data = read_r2_json(r2_config, presets_r2_key)
+        except Exception:
+            data = {}
+    else:
+        if os.path.exists(path):
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except Exception:
+                data = {}
+
+    if not isinstance(data, dict):
         return {}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        if isinstance(data, dict):
-            return data
-    except Exception:
-        pass
-    return {}
 
-def save_presets(path, presets):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(presets, f, ensure_ascii=False, indent=2)
+    # Legacy format support: {"preset_name": [...]}.
+    if data and all(isinstance(v, list) for v in data.values()):
+        return data
+
+    sport_presets = data.get(sport_key, {})
+    return sport_presets if isinstance(sport_presets, dict) else {}
+
+
+def save_presets(path, presets, r2_enabled, r2_config, sport_key):
+    if r2_enabled:
+        root = {}
+        try:
+            root = read_r2_json(r2_config, presets_r2_key)
+        except Exception:
+            root = {}
+        if not isinstance(root, dict):
+            root = {}
+
+        # Migrate legacy flat format if it exists.
+        if root and all(isinstance(v, list) for v in root.values()):
+            root = {"legacy": root}
+
+        root[sport_key] = presets
+        write_r2_json(r2_config, presets_r2_key, root)
+    else:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(presets, f, ensure_ascii=False, indent=2)
 
 def apply_preset(preset_files, all_filenames):
     for fname in all_filenames:
@@ -374,7 +411,12 @@ else:
     file_map = {entry["label"]: entry["source"] for entry in file_entries}
     all_filenames = [entry["label"] for entry in file_entries]
 
-    presets = load_presets(presets_path)
+    presets = load_presets(
+        presets_path,
+        r2_enabled=r2_enabled,
+        r2_config=r2_config,
+        sport_key=selected_sport_key,
+    )
     
     # "Select All" logic helper
     container = st.sidebar.container()
@@ -405,11 +447,13 @@ else:
 
     # Presets UI
     st.sidebar.markdown("### 💾 Presets")
+    st.sidebar.caption("Stockage presets: R2" if r2_enabled else "Stockage presets: local")
     preset_names = sorted(presets.keys())
     preset_to_load = st.sidebar.selectbox(
         "Charger un preset",
         options=[""] + preset_names,
         index=0,
+        key="preset_to_load",
         help="Recharge une selection sauvegardee."
     )
 
@@ -433,11 +477,39 @@ else:
                 if st.session_state.get(f"chk_{fname}", False)
             ]
         presets[name] = current_selection
-        save_presets(presets_path, presets)
+        try:
+            save_presets(
+                presets_path,
+                presets,
+                r2_enabled=r2_enabled,
+                r2_config=r2_config,
+                sport_key=selected_sport_key,
+            )
+        except Exception as e:
+            st.sidebar.warning(f"Sauvegarde preset impossible: {e}")
+
+    def on_delete_preset():
+        if not preset_to_load:
+            return
+        if preset_to_load in presets:
+            del presets[preset_to_load]
+            try:
+                save_presets(
+                    presets_path,
+                    presets,
+                    r2_enabled=r2_enabled,
+                    r2_config=r2_config,
+                    sport_key=selected_sport_key,
+                )
+            except Exception as e:
+                st.sidebar.warning(f"Suppression preset impossible: {e}")
+                return
+        st.session_state["preset_to_load"] = ""
 
     st.sidebar.button("Charger le preset", on_click=on_load_preset, disabled=not preset_to_load)
     st.sidebar.text_input("Nom du preset", key="preset_name")
     st.sidebar.button("Sauvegarder la selection", on_click=on_save_preset)
+    st.sidebar.button("Supprimer le preset", on_click=on_delete_preset, disabled=not preset_to_load)
     
     st.sidebar.markdown("---")
     st.sidebar.markdown("**Fichiers cloud :**")

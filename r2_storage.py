@@ -1,4 +1,5 @@
 import os
+import json
 from io import BytesIO
 
 import pandas as pd
@@ -127,3 +128,23 @@ def upload_parquet_dataframe(config, key, df):
         ContentType="application/octet-stream",
     )
     return len(data)
+
+
+def read_r2_json(config, key):
+    client = make_r2_client(config)
+    resp = client.get_object(Bucket=config["bucket"], Key=key)
+    payload = resp["Body"].read()
+    if not payload:
+        return {}
+    return json.loads(payload.decode("utf-8"))
+
+
+def write_r2_json(config, key, data):
+    client = make_r2_client(config)
+    payload = json.dumps(data, ensure_ascii=False, indent=2).encode("utf-8")
+    client.put_object(
+        Bucket=config["bucket"],
+        Key=key,
+        Body=payload,
+        ContentType="application/json",
+    )
