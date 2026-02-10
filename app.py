@@ -288,6 +288,8 @@ st.markdown("""
 st.sidebar.header("📁 Configuration")
 if st.sidebar.button("🔄 Recharger (cache)"):
     st.cache_data.clear()
+    st.session_state.pop("analysis_payload", None)
+    st.session_state["analysis_force_reload"] = True
 
 if "selected_sport" not in st.session_state:
     st.session_state["selected_sport"] = DEFAULT_SPORT_KEY
@@ -449,6 +451,43 @@ def apply_preset(preset_files, all_filenames):
     for fname in all_filenames:
         st.session_state[f"chk_cloud_{fname}"] = fname in valid_files
 
+
+def _r2_config_values(config):
+    return (
+        config.get("account_id", ""),
+        config.get("access_key_id", ""),
+        config.get("secret_access_key", ""),
+        config.get("bucket", ""),
+        config.get("endpoint", ""),
+    )
+
+
+def _build_r2_config(account_id, access_key_id, secret_access_key, bucket, endpoint):
+    return {
+        "account_id": account_id,
+        "access_key_id": access_key_id,
+        "secret_access_key": secret_access_key,
+        "bucket": bucket,
+        "endpoint": endpoint,
+    }
+
+
+@st.cache_data(show_spinner=False, ttl=120)
+def list_r2_parquet_keys_cached(
+    account_id, access_key_id, secret_access_key, bucket, endpoint, sport_key
+):
+    cfg = _build_r2_config(account_id, access_key_id, secret_access_key, bucket, endpoint)
+    return list_r2_parquet_keys(cfg, sport_key)
+
+
+@st.cache_data(show_spinner=False, ttl=900)
+def read_r2_parquet_cached(
+    account_id, access_key_id, secret_access_key, bucket, endpoint, key
+):
+    cfg = _build_r2_config(account_id, access_key_id, secret_access_key, bucket, endpoint)
+    return read_r2_parquet(cfg, key)
+
+
 # Cloud scan (R2 parquet)
 r2_config = get_r2_config(st.secrets)
 r2_enabled = is_r2_configured(r2_config)
@@ -461,7 +500,7 @@ cloud_files = []
 cloud_error = ""
 if r2_enabled:
     try:
-        cloud_keys = list_r2_parquet_keys(r2_config, selected_sport_key)
+        cloud_keys = list_r2_parquet_keys_cached(*_r2_config_values(r2_config), selected_sport_key)
         cloud_files = [key_to_r2_uri(k) for k in cloud_keys]
     except Exception as e:
         cloud_error = str(e)
@@ -722,6 +761,7 @@ else:
                 if skipped_count:
                     st.sidebar.caption(f"{skipped_count} fichier(s) ignoré(s).")
                 st.cache_data.clear()
+                st.session_state.pop("analysis_payload", None)
                 st.rerun()
             else:
                 st.sidebar.error("Aucun fichier ajouté. Vérifie le format du fichier.")
@@ -729,6 +769,7 @@ else:
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
     st.session_state['selected_files'] = selected_file_paths
+    st.session_state['analysis_force_reload'] = True
 
 # --- Main Logic ---
 
@@ -788,7 +829,7 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
                         raise ValueError("Format cloud non supporté (attendu: .parquet)")
                     if not r2_enabled:
                         raise ValueError("R2 non configuré dans les secrets.")
-                    df = read_r2_parquet(r2_config, key)
+                    df = read_r2_parquet_cached(*_r2_config_values(r2_config), key)
                 else:
                     df = None
                     for sheet_name in sheet_names:
@@ -858,11 +899,32 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
 if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
     # Use selected files from session state
     target_files = st.session_state.get('selected_files', [])
-    df, msg, error_files = load_data(
-        target_files,
-        selected_sport_key=selected_sport_key,
-        selected_sport_profile=sport_profile,
+    force_reload = st.session_state.pop("analysis_force_reload", False)
+    analysis_signature = (
+        selected_sport_key,
+        tuple(sorted(str(v) for v in target_files)),
     )
+    cached_payload = st.session_state.get("analysis_payload")
+    if (
+        (not force_reload)
+        and isinstance(cached_payload, dict)
+        and cached_payload.get("signature") == analysis_signature
+    ):
+        df = cached_payload.get("df")
+        msg = cached_payload.get("msg", "Résultats restaurés depuis le cache local.")
+        error_files = cached_payload.get("error_files", [])
+    else:
+        df, msg, error_files = load_data(
+            target_files,
+            selected_sport_key=selected_sport_key,
+            selected_sport_profile=sport_profile,
+        )
+        st.session_state["analysis_payload"] = {
+            "signature": analysis_signature,
+            "df": df,
+            "msg": msg,
+            "error_files": error_files,
+        }
     
     if df is not None:
         st.success(msg)
@@ -875,19 +937,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             with st.expander(f"{len(error_files)} fichier(s) ignoré(s)"):
                 for name, err in error_files:
                     st.write(f"- {name}: {err}")
-        
-        # --- Pre-processing for Multi-Values ---
-        # Split and explode Players (separator '/')
-        df_p = df.copy()
-        df_p['Player'] = df_p['Player'].astype(str).str.split('/')
-        df_p = df_p.explode('Player')
-        df_p['Player'] = df_p['Player'].str.strip()
-        
-        # Split and explode Teams (separator '/')
-        df_t = df.copy()
-        df_t['Team'] = df_t['Team'].astype(str).str.split('/')
-        df_t = df_t.explode('Team')
-        df_t['Team'] = df_t['Team'].str.strip()
         
         # --- Navigation State Management ---
         if 'active_view' not in st.session_state:
@@ -1005,31 +1054,40 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             auto_override_sets[sk] = {normalize_box_type_text(v) for v in auto_values if str(v).strip()}
             case_override_sets[sk] = {normalize_box_type_text(v) for v in case_values if str(v).strip()}
 
-        def resolve_rules_for_row(row):
-            sk = str(row.get("Sport", selected_sport_key))
-            return sport_rule_map.get(sk, category_rules)
-
-        def resolve_auto_override_set_for_row(row):
-            sk = str(row.get("Sport", selected_sport_key))
-            return auto_override_sets.get(sk, set())
-
-        def resolve_case_override_set_for_row(row):
-            sk = str(row.get("Sport", selected_sport_key))
-            return case_override_sets.get(sk, set())
-
-        def categorize_row(row):
-            box_type = row.get("Box Type", "")
-            normalized_box = normalize_box_type_text(box_type)
-            if normalized_box in resolve_case_override_set_for_row(row):
-                return CATEGORY_CASE_HIT
-            if normalized_box in resolve_auto_override_set_for_row(row):
-                return CATEGORY_AUTO_MEM
-            return categorize_card(box_type, resolve_rules_for_row(row))
-
-        df['Category'] = df.apply(
-            lambda row: categorize_row(row),
-            axis=1,
+        # Faster category assignment: compute once per unique Box Type per sport.
+        df["Normalized Box Type"] = df["Box Type"].apply(normalize_box_type_text)
+        df["Category"] = CATEGORY_BASE_OTHER
+        sport_series = (
+            df["Sport"].astype(str) if "Sport" in df.columns else pd.Series([selected_sport_key] * len(df), index=df.index)
         )
+        for sk in sport_series.dropna().astype(str).unique().tolist():
+            mask = sport_series == sk
+            rules = sport_rule_map.get(sk, category_rules)
+            auto_set = auto_override_sets.get(sk, set())
+            case_set = case_override_sets.get(sk, set())
+            local_map = (
+                df.loc[mask, ["Normalized Box Type", "Box Type"]]
+                .drop_duplicates(subset=["Normalized Box Type"])
+                .set_index("Normalized Box Type")["Box Type"]
+                .astype(str)
+                .to_dict()
+            )
+
+            norm_to_category = {}
+            for norm_box, raw_box in local_map.items():
+                if norm_box in case_set:
+                    norm_to_category[norm_box] = CATEGORY_CASE_HIT
+                elif norm_box in auto_set:
+                    norm_to_category[norm_box] = CATEGORY_AUTO_MEM
+                else:
+                    norm_to_category[norm_box] = categorize_card(raw_box, rules)
+
+            df.loc[mask, "Category"] = (
+                df.loc[mask, "Normalized Box Type"]
+                .map(norm_to_category)
+                .fillna(CATEGORY_BASE_OTHER)
+            )
+        df.drop(columns=["Normalized Box Type"], inplace=True, errors="ignore")
         df['Rarity Mult'] = df['Numbering'].apply(rarity_multiplier)
         df['Score'] = df['Category'].apply(calculate_score) * df['Rarity Mult']
 
