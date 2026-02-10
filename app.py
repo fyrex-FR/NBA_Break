@@ -1007,8 +1007,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         selected_products = st.multiselect("Filtrer par produit :", all_products, default=all_products)
         if selected_products:
             df = df[df['Product'].isin(selected_products)]
-            df_p = df_p[df_p['Product'].isin(selected_products)]
-            df_t = df_t[df_t['Product'].isin(selected_products)]
 
         # De-duplicate projected multi-team rows to avoid over-counting multi-player cards.
         df, collapsed_multi_rows = dedupe_multiplayer_projection_rows(df)
