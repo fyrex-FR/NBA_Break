@@ -5,6 +5,7 @@ import plotly.express as px
 import re
 import json
 import importlib
+import hashlib
 from io import BytesIO
 from card_logic import (
     CATEGORY_AUTO_MEM,
@@ -422,68 +423,23 @@ def normalize_box_type_text(value):
     return text
 
 
-def build_auto_mem_suspects(df):
-    if df.empty or "Box Type" not in df.columns or "Category" not in df.columns:
-        return pd.DataFrame(columns=["Box Type", "Hits", "Score", "Checklists"])
-
-    strong_patterns = [
-        r"\bauto\b",
-        r"\bautograph\b",
-        r"\bsignature\b",
-        r"\bsigned\b",
-        r"\bpatch\b",
-        r"\brelic\b",
-        r"\bjersey\b",
-        r"\bmemorabilia\b",
-        r"\bmem\b",
-        r"\brpa\b",
-        r"\bswatch\b",
-        r"\bbooklet\b",
-        r"\bmaterials?\b",
-        r"\bgear\b",
-        r"\bink\b",
-    ]
-    typo_patterns = [
-        r"\bautp\b",
-        r"\bauot\b",
-        r"\bsignat",
-        r"\bsignta",
-        r"\bjeresy\b",
-        r"\brelci\b",
-        r"\bmemora",
-    ]
+def build_auto_mem_review_by_file(df):
+    if df.empty or "Box Type" not in df.columns or "Category" not in df.columns or "File" not in df.columns:
+        return pd.DataFrame(columns=["File", "Box Type", "Hits", "IsAutoMem"])
 
     grouped = (
-        df.groupby("Box Type", dropna=False)
+        df.groupby(["File", "Box Type"], dropna=False)
         .agg(
             Hits=("Hits", "sum"),
             IsAutoMem=("Category", lambda x: (x == CATEGORY_AUTO_MEM).any()),
-            Checklists=("File", lambda x: sorted(set(str(v) for v in x if str(v).strip()))),
         )
         .reset_index()
     )
+    grouped["File"] = grouped["File"].astype(str).str.strip()
     grouped["Box Type"] = grouped["Box Type"].astype(str).str.strip()
-    grouped = grouped[grouped["Box Type"] != ""].copy()
-    grouped = grouped[~grouped["IsAutoMem"]].copy()
-
-    def score_text(text):
-        t = normalize_box_type_text(text)
-        score = 0
-        for p in strong_patterns:
-            if re.search(p, t):
-                score += 2
-        for p in typo_patterns:
-            if re.search(p, t):
-                score += 1
-        return score
-
-    grouped["Score"] = grouped["Box Type"].apply(score_text)
-    grouped = grouped[grouped["Score"] > 0].copy()
-    grouped["Checklists"] = grouped["Checklists"].apply(
-        lambda files: ", ".join(files[:3]) + (" ..." if len(files) > 3 else "")
-    )
-    grouped = grouped.sort_values(["Score", "Hits", "Box Type"], ascending=[False, False, True])
-    return grouped[["Box Type", "Hits", "Score", "Checklists"]].reset_index(drop=True)
+    grouped = grouped[(grouped["File"] != "") & (grouped["Box Type"] != "")].copy()
+    grouped = grouped.sort_values(["File", "Hits", "Box Type"], ascending=[True, False, True])
+    return grouped.reset_index(drop=True)
 
 def apply_preset(preset_files, all_filenames):
     valid_files = [f for f in preset_files if f in all_filenames]
@@ -1359,89 +1315,104 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     st.info("Aucun Case Hit trouvé pour les équipes.")
 
         elif selection == "🧪 Détection Auto/Mem":
-            st.subheader("🧪 Détection assistée des libellés Auto/Mem")
-            st.caption("Objectif: trouver les Box Type qui semblent Auto/Mem mais ne sont pas encore reconnus.")
+            st.subheader("🧪 Détection Auto/Mem (par checklist)")
+            st.caption("Coche les Card Type à forcer en Auto/Mem, puis enregistre.")
 
             current_overrides = overrides_by_sport.get(selected_sport_key, [])
             if not isinstance(current_overrides, list):
                 current_overrides = []
+            current_override_set = set(current_overrides)
 
-            if current_overrides:
-                st.markdown("##### Libellés déjà forcés Auto/Mem")
-                st.dataframe(pd.DataFrame({"Box Type": sorted(current_overrides)}), use_container_width=True)
-                to_remove = st.multiselect(
-                    "Retirer des libellés forcés",
-                    options=sorted(current_overrides),
-                    key=f"auto_mem_remove_{selected_sport_key}",
-                )
-                if st.button("Retirer la sélection", key=f"auto_mem_remove_btn_{selected_sport_key}", disabled=not to_remove):
-                    updated = [v for v in current_overrides if v not in to_remove]
-                    new_root = dict(keyword_overrides_root)
-                    by_sport = new_root.get("auto_mem_exact_by_sport", {})
-                    if not isinstance(by_sport, dict):
-                        by_sport = {}
-                    by_sport[selected_sport_key] = updated
-                    new_root["auto_mem_exact_by_sport"] = by_sport
-                    try:
-                        save_keyword_overrides(
-                            keyword_overrides_path,
-                            new_root,
-                            r2_enabled=r2_enabled,
-                            r2_config=r2_config,
-                        )
-                        st.success(f"{len(to_remove)} libellé(s) retiré(s).")
-                        st.cache_data.clear()
-                        st.rerun()
-                    except Exception as e:
-                        st.error(f"Sauvegarde impossible: {e}")
+            review_df = build_auto_mem_review_by_file(df)
+            if review_df.empty:
+                st.info("Aucune donnée exploitable pour cette détection.")
             else:
-                st.caption("Aucun libellé forcé actuellement.")
-
-            suspects_df = build_auto_mem_suspects(df)
-            if suspects_df.empty:
-                st.info("Aucun suspect trouvé avec les heuristiques actuelles.")
-            else:
-                st.markdown("##### Suggestions (non reconnues actuellement)")
-                st.dataframe(suspects_df.head(200), use_container_width=True)
-
-                suggestion_labels = []
-                suggestion_map = {}
-                for _, row in suspects_df.head(200).iterrows():
-                    box_type = str(row["Box Type"])
-                    label = f"{box_type} | Hits={int(row['Hits'])} | Score={int(row['Score'])}"
-                    suggestion_labels.append(label)
-                    suggestion_map[label] = box_type
-
-                selected_suggestions = st.multiselect(
-                    "Libellés à forcer en Auto/Mem",
-                    options=suggestion_labels,
-                    key=f"auto_mem_add_{selected_sport_key}",
+                non_auto_df = review_df[~review_df["IsAutoMem"]].copy()
+                auto_count = int(review_df["IsAutoMem"].sum())
+                st.caption(
+                    f"{len(non_auto_df)} Card Type non reconnus affichés • {auto_count} déjà reconnus automatiquement."
                 )
-                if st.button(
-                    "Ajouter à la détection Auto/Mem",
-                    key=f"auto_mem_add_btn_{selected_sport_key}",
-                    disabled=not selected_suggestions,
-                ):
-                    to_add = [suggestion_map[label] for label in selected_suggestions]
-                    merged = sorted(set(current_overrides + to_add))
-                    new_root = dict(keyword_overrides_root)
-                    by_sport = new_root.get("auto_mem_exact_by_sport", {})
-                    if not isinstance(by_sport, dict):
-                        by_sport = {}
-                    by_sport[selected_sport_key] = merged
-                    new_root["auto_mem_exact_by_sport"] = by_sport
-                    try:
-                        save_keyword_overrides(
-                            keyword_overrides_path,
-                            new_root,
-                            r2_enabled=r2_enabled,
-                            r2_config=r2_config,
-                        )
-                        st.success(f"{len(to_add)} libellé(s) ajouté(s).")
-                        st.cache_data.clear()
+
+                if non_auto_df.empty:
+                    st.info("Tout est déjà reconnu en Auto/Mem.")
+                else:
+                    checklist_names = sorted(non_auto_df["File"].unique().tolist())
+                    selected_checklists = st.multiselect(
+                        "Filtrer les checklists",
+                        options=checklist_names,
+                        default=checklist_names,
+                        key=f"auto_mem_review_files_{selected_sport_key}",
+                    )
+                    working_df = non_auto_df[non_auto_df["File"].isin(selected_checklists)].copy()
+
+                    text_filter = st.text_input(
+                        "Filtrer les Card Type (texte)",
+                        value="",
+                        key=f"auto_mem_review_filter_{selected_sport_key}",
+                    ).strip().lower()
+                    if text_filter:
+                        working_df = working_df[
+                            working_df["Box Type"].astype(str).str.lower().str.contains(re.escape(text_filter), na=False)
+                        ]
+
+                    # Initialize checkbox states from saved overrides.
+                    for _, row in working_df.iterrows():
+                        file_name = str(row["File"])
+                        box_type = str(row["Box Type"])
+                        key_hash = hashlib.md5(
+                            f"{selected_sport_key}|{file_name}|{box_type}".encode("utf-8")
+                        ).hexdigest()[:12]
+                        chk_key = f"auto_mem_chk_{key_hash}"
+                        if chk_key not in st.session_state:
+                            st.session_state[chk_key] = box_type in current_override_set
+
+                    if st.button("Recharger les cases depuis la config", key=f"auto_mem_reload_{selected_sport_key}"):
+                        for _, row in working_df.iterrows():
+                            file_name = str(row["File"])
+                            box_type = str(row["Box Type"])
+                            key_hash = hashlib.md5(
+                                f"{selected_sport_key}|{file_name}|{box_type}".encode("utf-8")
+                            ).hexdigest()[:12]
+                            chk_key = f"auto_mem_chk_{key_hash}"
+                            st.session_state[chk_key] = box_type in current_override_set
                         st.rerun()
-                    except Exception as e:
-                        st.error(f"Sauvegarde impossible: {e}")
+
+                    checked_box_types = set()
+                    for checklist in sorted(working_df["File"].unique().tolist()):
+                        file_rows = working_df[working_df["File"] == checklist].copy()
+                        with st.expander(f"{checklist} ({len(file_rows)})", expanded=False):
+                            for _, row in file_rows.iterrows():
+                                box_type = str(row["Box Type"])
+                                hits = int(row["Hits"])
+                                key_hash = hashlib.md5(
+                                    f"{selected_sport_key}|{checklist}|{box_type}".encode("utf-8")
+                                ).hexdigest()[:12]
+                                chk_key = f"auto_mem_chk_{key_hash}"
+                                is_checked = st.checkbox(f"{box_type} • {hits} hit(s)", key=chk_key)
+                                if is_checked:
+                                    checked_box_types.add(box_type)
+
+                    st.caption(f"{len(checked_box_types)} Card Type cochés pour Auto/Mem.")
+                    if st.button("💾 Enregistrer la sélection Auto/Mem", key=f"auto_mem_save_{selected_sport_key}"):
+                        merged = sorted(checked_box_types)
+                        new_root = dict(keyword_overrides_root)
+                        by_sport = new_root.get("auto_mem_exact_by_sport", {})
+                        if not isinstance(by_sport, dict):
+                            by_sport = {}
+                        by_sport[selected_sport_key] = merged
+                        new_root["auto_mem_exact_by_sport"] = by_sport
+                        try:
+                            save_keyword_overrides(
+                                keyword_overrides_path,
+                                new_root,
+                                r2_enabled=r2_enabled,
+                                r2_config=r2_config,
+                            )
+                            st.success(f"Configuration enregistrée ({len(merged)} libellé(s)).")
+                            st.cache_data.clear()
+                            st.rerun()
+                        except Exception as e:
+                            st.error(f"Sauvegarde impossible: {e}")
 
         elif selection == "👥 Multi-Joueurs":
             st.subheader("👥 Analyse Multi-Joueurs / Dual / Triple")
