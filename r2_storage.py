@@ -100,3 +100,30 @@ def read_r2_parquet(config, key):
     resp = client.get_object(Bucket=config["bucket"], Key=key)
     payload = resp["Body"].read()
     return pd.read_parquet(BytesIO(payload))
+
+
+def r2_object_exists(config, key):
+    client = make_r2_client(config)
+    try:
+        client.head_object(Bucket=config["bucket"], Key=key)
+        return True
+    except Exception:
+        return False
+
+
+def upload_parquet_dataframe(config, key, df):
+    """
+    Upload a DataFrame as parquet bytes to R2.
+    Returns uploaded payload size in bytes.
+    """
+    client = make_r2_client(config)
+    payload = BytesIO()
+    df.to_parquet(payload, index=False)
+    data = payload.getvalue()
+    client.put_object(
+        Bucket=config["bucket"],
+        Key=key,
+        Body=data,
+        ContentType="application/octet-stream",
+    )
+    return len(data)

@@ -27,9 +27,11 @@ from r2_storage import (
     key_to_r2_uri,
     list_r2_parquet_keys,
     r2_uri_to_key,
+    r2_object_exists,
     read_r2_parquet,
     source_filename,
     source_label,
+    upload_parquet_dataframe,
 )
 
 sports_config_module = importlib.reload(sports_config_module)
@@ -111,6 +113,67 @@ def build_source_entries(sources):
             "is_cloud": is_r2_uri(src),
         })
     return entries
+
+
+def normalize_checklist_columns(df):
+    """
+    Canonicalize checklist columns and keep the app contract.
+    Expected output columns: Player, Team, Box Type, Numbering.
+    """
+    work = df.copy()
+    work.columns = [str(c).strip() for c in work.columns]
+    lower_map = {c.lower(): c for c in work.columns}
+
+    if "box type" in lower_map:
+        work = work.rename(columns={lower_map["box type"]: "Box Type"})
+    elif "card type" in lower_map:
+        work = work.rename(columns={lower_map["card type"]: "Box Type"})
+    elif "boxtype" in lower_map:
+        work = work.rename(columns={lower_map["boxtype"]: "Box Type"})
+
+    if "player" in lower_map and "Player" not in work.columns:
+        work = work.rename(columns={lower_map["player"]: "Player"})
+    if "team" in lower_map and "Team" not in work.columns:
+        work = work.rename(columns={lower_map["team"]: "Team"})
+
+    missing_cols = [c for c in ["Player", "Team"] if c not in work.columns]
+    if missing_cols:
+        raise ValueError(f"Colonnes manquantes: {', '.join(missing_cols)}. Colonnes trouvées: {list(work.columns)}")
+
+    if "Box Type" not in work.columns:
+        work["Box Type"] = ""
+    if "Numbering" not in work.columns:
+        work["Numbering"] = ""
+
+    work = work[["Player", "Team", "Box Type", "Numbering"]].copy()
+    work = work.dropna(subset=["Player", "Team"])
+    work["Player"] = (
+        work["Player"]
+        .astype(str)
+        .str.replace(r",$", "", regex=True)
+        .str.strip()
+    )
+    work["Team"] = work["Team"].astype(str).str.strip()
+    work["Box Type"] = work["Box Type"].astype(str).str.strip()
+    work["Numbering"] = work["Numbering"].astype(str).str.strip()
+    return work
+
+
+def read_uploaded_checklist(uploaded_file, sheet_names):
+    data = uploaded_file.getvalue()
+    xls = pd.ExcelFile(data, engine="openpyxl")
+    for sheet_name in sheet_names:
+        if sheet_name in xls.sheet_names:
+            df = pd.read_excel(data, sheet_name=sheet_name, engine="openpyxl")
+            return normalize_checklist_columns(df)
+    raise ValueError(f"Aucun onglet compatible trouvé ({', '.join(sheet_names)}).")
+
+
+def parquet_key_for_upload(sport_key, original_filename):
+    stem = os.path.splitext(os.path.basename(original_filename))[0]
+    safe_stem = re.sub(r"[^\w\-\. ]+", "-", stem).strip().replace(" ", "-")
+    safe_stem = re.sub(r"-{2,}", "-", safe_stem)
+    return f"parquet/{sport_key}/{safe_stem}.parquet"
 
 
 def dedupe_multiplayer_projection_rows(df):
@@ -526,6 +589,69 @@ uploaded_files = st.sidebar.file_uploader(
 )
 st.sidebar.caption("Les fichiers doivent contenir un onglet 'Teams_clean'.")
 
+# --- R2 INGESTION (XLSX -> PARQUET) ---
+st.sidebar.markdown("### 🪣 Ingestion R2 (XLSX -> Parquet)")
+if not r2_enabled:
+    st.sidebar.caption("R2 non configuré: ajoute les secrets pour activer l'ingestion.")
+else:
+    st.sidebar.caption(f"Sport cible: **{sport_profile.get('label', selected_sport_key)}**")
+    overwrite_r2 = st.sidebar.checkbox(
+        "Remplacer si le fichier existe déjà",
+        value=True,
+        key="r2_ingest_overwrite",
+    )
+    ingest_files = st.sidebar.file_uploader(
+        "Uploader vers R2",
+        type=["xlsx"],
+        accept_multiple_files=True,
+        key="r2_ingest_uploader",
+        help="Le fichier doit contenir un onglet compatible (ex: Teams_clean).",
+    )
+
+    if st.sidebar.button("📤 Convertir et uploader sur R2", key="r2_ingest_button"):
+        if not ingest_files:
+            st.sidebar.warning("Aucun fichier sélectionné pour l'ingestion.")
+        else:
+            uploaded_count = 0
+            skipped_count = 0
+            uploaded_bytes = 0
+            for f in ingest_files:
+                if f.name.startswith("~$"):
+                    skipped_count += 1
+                    continue
+
+                target_sport_key = selected_sport_key
+                profile = get_sport_profile(target_sport_key)
+                team_aliases = profile.get("team_aliases", {})
+                sheet_names = profile.get("sheet_names", ["Teams_clean"])
+
+                try:
+                    clean_df = read_uploaded_checklist(f, sheet_names)
+                    clean_df["Team"] = clean_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
+                    target_key = parquet_key_for_upload(target_sport_key, f.name)
+
+                    if (not overwrite_r2) and r2_object_exists(r2_config, target_key):
+                        skipped_count += 1
+                        continue
+
+                    payload_size = upload_parquet_dataframe(r2_config, target_key, clean_df)
+                    uploaded_count += 1
+                    uploaded_bytes += payload_size
+                except Exception as e:
+                    st.sidebar.warning(f"{f.name}: {e}")
+                    skipped_count += 1
+
+            if uploaded_count > 0:
+                st.sidebar.success(
+                    f"{uploaded_count} fichier(s) uploadé(s) sur R2 ({uploaded_bytes / 1024:.1f} KB)."
+                )
+                if skipped_count:
+                    st.sidebar.caption(f"{skipped_count} fichier(s) ignoré(s).")
+                st.cache_data.clear()
+                st.rerun()
+            else:
+                st.sidebar.info("Aucun fichier uploadé.")
+
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
     # Merge local selected files AND uploaded files
@@ -605,28 +731,7 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
                     if df is None:
                         raise ValueError("Sheet not found")
 
-                # Normalize column names to avoid missing-key errors from stray whitespace/casing.
-                df.columns = [str(c).strip() for c in df.columns]
-                lower_map = {c.lower(): c for c in df.columns}
-                if "box type" in lower_map:
-                    df = df.rename(columns={lower_map["box type"]: "Box Type"})
-                elif "card type" in lower_map:
-                    df = df.rename(columns={lower_map["card type"]: "Box Type"})
-                elif "boxtype" in lower_map:
-                    df = df.rename(columns={lower_map["boxtype"]: "Box Type"})
-
-                if "player" in lower_map and "Player" not in df.columns:
-                    df = df.rename(columns={lower_map["player"]: "Player"})
-                if "team" in lower_map and "Team" not in df.columns:
-                    df = df.rename(columns={lower_map["team"]: "Team"})
-
-                missing_cols = [c for c in ["Player", "Team"] if c not in df.columns]
-                if missing_cols:
-                    error_files.append((filename, f"Colonnes manquantes: {', '.join(missing_cols)}. Colonnes trouvées: {list(df.columns)}"))
-                    continue
-                if "Box Type" not in df.columns:
-                    df["Box Type"] = ""
-                    error_files.append((filename, "Colonne 'Box Type' absente: ajoutée vide pour éviter l'erreur."))
+                df = normalize_checklist_columns(df)
             except ValueError as e:
                 if isinstance(source, str) and is_r2_uri(source):
                     error_files.append((filename, f"Lecture cloud impossible: {e}"))
@@ -634,17 +739,7 @@ def load_data(file_list, selected_sport_key, selected_sport_profile):
                     st.warning(f"{filename}: aucun onglet compatible trouvé ({', '.join(sheet_names)}).")
                 continue
             
-            # Clean data
-            df = df.dropna(subset=['Player', 'Team'])
-            
-            # Remove trailing commas from names (common in new checklists)
-            df['Player'] = (
-                df['Player']
-                .astype(str)
-                .str.replace(r',$', '', regex=True)
-                .str.strip()
-            )
-            df['Team'] = df['Team'].astype(str).str.strip()
+            # Team normalization for both local and cloud sources.
             df['Team'] = df['Team'].apply(lambda t: normalize_team_value(t, team_aliases))
 
             
