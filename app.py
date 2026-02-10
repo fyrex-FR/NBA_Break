@@ -5,6 +5,7 @@ import plotly.express as px
 import re
 import json
 import importlib
+from io import BytesIO
 from card_logic import (
     CATEGORY_AUTO_MEM,
     CATEGORY_CASE_HIT,
@@ -123,28 +124,21 @@ def normalize_checklist_columns(df):
     """
     work = df.copy()
     work.columns = [str(c).strip() for c in work.columns]
-    lower_map = {c.lower(): c for c in work.columns}
+    cols = list(work.columns)
+    has_required_base = all(c in cols for c in ["Player", "Team", "Numbering"])
+    has_card_type = "Card Type" in cols
+    has_box_type = "Box Type" in cols
 
-    if "box type" in lower_map:
-        work = work.rename(columns={lower_map["box type"]: "Box Type"})
-    elif "card type" in lower_map:
-        work = work.rename(columns={lower_map["card type"]: "Box Type"})
-    elif "boxtype" in lower_map:
-        work = work.rename(columns={lower_map["boxtype"]: "Box Type"})
+    if not has_required_base or (not has_card_type and not has_box_type):
+        raise ValueError(
+            "Format invalide. Colonnes autorisées: "
+            "Player, Team, Card Type, Numbering (ou Box Type au lieu de Card Type). "
+            f"Colonnes trouvées: {cols}"
+        )
 
-    if "player" in lower_map and "Player" not in work.columns:
-        work = work.rename(columns={lower_map["player"]: "Player"})
-    if "team" in lower_map and "Team" not in work.columns:
-        work = work.rename(columns={lower_map["team"]: "Team"})
-
-    missing_cols = [c for c in ["Player", "Team"] if c not in work.columns]
-    if missing_cols:
-        raise ValueError(f"Colonnes manquantes: {', '.join(missing_cols)}. Colonnes trouvées: {list(work.columns)}")
-
-    if "Box Type" not in work.columns:
-        work["Box Type"] = ""
-    if "Numbering" not in work.columns:
-        work["Numbering"] = ""
+    # Keep a single internal name.
+    if has_card_type and not has_box_type:
+        work = work.rename(columns={"Card Type": "Box Type"})
 
     work = work[["Player", "Team", "Box Type", "Numbering"]].copy()
     work = work.dropna(subset=["Player", "Team"])
@@ -175,6 +169,28 @@ def parquet_key_for_upload(sport_key, original_filename):
     safe_stem = re.sub(r"[^\w\-\. ]+", "-", stem).strip().replace(" ", "-")
     safe_stem = re.sub(r"-{2,}", "-", safe_stem)
     return f"parquet/{sport_key}/{safe_stem}.parquet"
+
+
+def build_template_xlsx_bytes():
+    """
+    Build a strict checklist template:
+    sheet: Teams_clean
+    columns: Player, Team, Card Type, Numbering
+    """
+    template_df = pd.DataFrame(
+        [
+            {
+                "Player": "Nom du joueur",
+                "Team": "Nom de l equipe / nationalite",
+                "Card Type": "Base",
+                "Numbering": "",
+            }
+        ]
+    )
+    buffer = BytesIO()
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        template_df.to_excel(writer, index=False, sheet_name="Teams_clean")
+    return buffer.getvalue()
 
 
 def dedupe_multiplayer_projection_rows(df):
@@ -591,28 +607,40 @@ else:
     if len(selected_file_paths) > 10:
         st.sidebar.text(f"Debug: {len(selected_file_paths)} items selected")
 
-# --- R2 INGESTION (XLSX -> PARQUET) ---
-st.sidebar.markdown("### 🪣 Ingestion R2 (XLSX -> Parquet)")
+# --- CHECKLIST INGESTION ---
+st.sidebar.markdown("### ➕ Ajouter une checklist")
 if not r2_enabled:
-    st.sidebar.caption("R2 non configuré: ajoute les secrets pour activer l'ingestion.")
+    st.sidebar.caption("Upload indisponible: configuration manquante.")
 else:
-    st.sidebar.caption(f"Sport cible: **{sport_profile.get('label', selected_sport_key)}**")
+    st.sidebar.caption(f"Sport sélectionné: **{sport_profile.get('label', selected_sport_key)}**")
+    st.sidebar.markdown(
+        "Format attendu:\n"
+        "- Onglet: `Teams_clean`\n"
+        "- Colonnes: `Player`, `Team`, `Card Type`, `Numbering`"
+    )
+    st.sidebar.download_button(
+        "Télécharger le modèle Excel",
+        data=build_template_xlsx_bytes(),
+        file_name="template-checklist.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        key="download_checklist_template",
+    )
     overwrite_r2 = st.sidebar.checkbox(
-        "Remplacer si le fichier existe déjà",
+        "Mettre à jour si le même nom existe déjà",
         value=True,
         key="r2_ingest_overwrite",
     )
     ingest_files = st.sidebar.file_uploader(
-        "Uploader vers R2",
+        "Fichier(s) Excel",
         type=["xlsx"],
         accept_multiple_files=True,
         key="r2_ingest_uploader",
-        help="Le fichier doit contenir un onglet compatible (ex: Teams_clean).",
+        help="Ajoute un ou plusieurs fichiers .xlsx.",
     )
 
-    if st.sidebar.button("📤 Convertir et uploader sur R2", key="r2_ingest_button"):
+    if st.sidebar.button("📤 Ajouter la checklist", key="r2_ingest_button"):
         if not ingest_files:
-            st.sidebar.warning("Aucun fichier sélectionné pour l'ingestion.")
+            st.sidebar.warning("Ajoute au moins un fichier Excel.")
         else:
             uploaded_count = 0
             skipped_count = 0
@@ -633,6 +661,7 @@ else:
                     target_key = parquet_key_for_upload(target_sport_key, f.name)
 
                     if (not overwrite_r2) and r2_object_exists(r2_config, target_key):
+                        st.sidebar.info(f"{f.name}: déjà présent (option remplacement désactivée).")
                         skipped_count += 1
                         continue
 
@@ -645,14 +674,14 @@ else:
 
             if uploaded_count > 0:
                 st.sidebar.success(
-                    f"{uploaded_count} fichier(s) uploadé(s) sur R2 ({uploaded_bytes / 1024:.1f} KB)."
+                    f"{uploaded_count} fichier(s) ajouté(s) avec succès."
                 )
                 if skipped_count:
                     st.sidebar.caption(f"{skipped_count} fichier(s) ignoré(s).")
                 st.cache_data.clear()
                 st.rerun()
             else:
-                st.sidebar.info("Aucun fichier uploadé.")
+                st.sidebar.error("Aucun fichier ajouté. Vérifie le format du fichier.")
 
 if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
     st.session_state['scan_triggered'] = True
