@@ -447,21 +447,32 @@ else:
 
     # Presets UI
     st.sidebar.markdown("### 💾 Presets")
-    st.sidebar.caption("Stockage presets: R2" if r2_enabled else "Stockage presets: local")
+    st.sidebar.caption("R2" if r2_enabled else "Local")
     preset_names = sorted(presets.keys())
-    preset_to_load = st.sidebar.selectbox(
-        "Charger un preset",
-        options=[""] + preset_names,
-        index=0,
-        key="preset_to_load",
-        help="Recharge une selection sauvegardee."
-    )
+    if "preset_name" not in st.session_state:
+        st.session_state["preset_name"] = ""
+    if "preset_to_load" not in st.session_state:
+        st.session_state["preset_to_load"] = ""
 
-    def on_load_preset():
-        if not preset_to_load:
+    # Keep selected value valid if a preset was deleted.
+    if st.session_state["preset_to_load"] not in ([""] + preset_names):
+        st.session_state["preset_to_load"] = ""
+
+    def on_preset_change():
+        selected = st.session_state.get("preset_to_load", "")
+        if not selected:
             return
-        files = presets.get(preset_to_load, [])
+        files = presets.get(selected, [])
         apply_preset(files, all_filenames)
+        st.session_state["preset_name"] = selected
+
+    st.sidebar.selectbox(
+        "Preset",
+        options=[""] + preset_names,
+        key="preset_to_load",
+        on_change=on_preset_change,
+        help="Sélectionner un preset l'applique automatiquement.",
+    )
 
     def on_save_preset():
         name = st.session_state.get("preset_name", "").strip()
@@ -485,14 +496,16 @@ else:
                 r2_config=r2_config,
                 sport_key=selected_sport_key,
             )
+            st.session_state["preset_to_load"] = name
         except Exception as e:
             st.sidebar.warning(f"Sauvegarde preset impossible: {e}")
 
     def on_delete_preset():
-        if not preset_to_load:
+        selected = st.session_state.get("preset_to_load", "")
+        if not selected:
             return
-        if preset_to_load in presets:
-            del presets[preset_to_load]
+        if selected in presets:
+            del presets[selected]
             try:
                 save_presets(
                     presets_path,
@@ -505,11 +518,19 @@ else:
                 st.sidebar.warning(f"Suppression preset impossible: {e}")
                 return
         st.session_state["preset_to_load"] = ""
+        st.session_state["preset_name"] = ""
 
-    st.sidebar.button("Charger le preset", on_click=on_load_preset, disabled=not preset_to_load)
-    st.sidebar.text_input("Nom du preset", key="preset_name")
-    st.sidebar.button("Sauvegarder la selection", on_click=on_save_preset)
-    st.sidebar.button("Supprimer le preset", on_click=on_delete_preset, disabled=not preset_to_load)
+    st.sidebar.text_input("Nom", key="preset_name", placeholder="Nom du preset")
+    preset_actions_col1, preset_actions_col2 = st.sidebar.columns(2)
+    with preset_actions_col1:
+        st.button("💾 Sauver", on_click=on_save_preset, use_container_width=True)
+    with preset_actions_col2:
+        st.button(
+            "🗑️ Suppr.",
+            on_click=on_delete_preset,
+            disabled=not st.session_state.get("preset_to_load"),
+            use_container_width=True,
+        )
     
     st.sidebar.markdown("---")
     st.sidebar.markdown("**Fichiers cloud :**")
