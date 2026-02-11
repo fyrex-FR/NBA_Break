@@ -458,11 +458,22 @@ def _safe_header_value(context_obj, name):
     headers = getattr(context_obj, "headers", None)
     if headers is None:
         return ""
+    lower_name = str(name).lower()
     try:
         value = headers.get(name, "")
+        if value:
+            return str(value)
+        value = headers.get(lower_name, "")
         return "" if value is None else str(value)
     except Exception:
-        return ""
+        pass
+    try:
+        for k, v in headers.items():
+            if str(k).lower() == lower_name and v is not None:
+                return str(v)
+    except Exception:
+        pass
+    return ""
 
 
 def _build_visitor_id(secrets_obj):
@@ -472,16 +483,22 @@ def _build_visitor_id(secrets_obj):
     """
     ctx = getattr(st, "context", None)
     if ctx is None:
-        return ""
+        return "", "none"
 
     ip_address = str(getattr(ctx, "ip_address", "") or "").strip()
+    xff = _safe_header_value(ctx, "X-Forwarded-For").strip()
     user_agent = _safe_header_value(ctx, "User-Agent").strip()
     accept_language = _safe_header_value(ctx, "Accept-Language").strip()
     locale = str(getattr(ctx, "locale", "") or "").strip()
+    timezone_name = str(getattr(ctx, "timezone", "") or "").strip()
 
-    fingerprint = "|".join([ip_address, user_agent, accept_language, locale]).strip("|")
+    fingerprint_parts = [ip_address, xff, user_agent, accept_language, locale, timezone_name]
+    fingerprint = "|".join([p for p in fingerprint_parts if p]).strip("|")
     if not fingerprint:
-        return ""
+        # Fallback: keep tracking enabled even if request context is sparse.
+        if "analytics_session_id" not in st.session_state:
+            st.session_state["analytics_session_id"] = uuid.uuid4().hex[:24]
+        return st.session_state["analytics_session_id"], "session_fallback"
 
     salt = ""
     try:
@@ -499,7 +516,7 @@ def _build_visitor_id(secrets_obj):
         salt = "default-analytics-salt"
 
     digest = hashlib.sha256(f"{salt}|{fingerprint}".encode("utf-8")).hexdigest()
-    return digest[:24]
+    return digest[:24], "fingerprint"
 
 
 def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
@@ -514,8 +531,9 @@ def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
     if st.session_state.get(marker_key):
         return
 
-    visitor_id = _build_visitor_id(secrets_obj)
+    visitor_id, id_source = _build_visitor_id(secrets_obj)
     if not visitor_id:
+        print("[analytics] no visitor id generated")
         return
 
     ts_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
@@ -524,6 +542,7 @@ def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
     payload = {
         "event": "app_open",
         "visitor_id": visitor_id,
+        "id_source": id_source,
         "sport": sport_key,
         "ts_utc": datetime.now(timezone.utc).isoformat(),
     }
@@ -531,9 +550,9 @@ def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
     try:
         write_r2_json(r2_config, key, payload)
         st.session_state[marker_key] = True
-    except Exception:
+    except Exception as e:
         # Best-effort only: never block the app on analytics write failures.
-        pass
+        print(f"[analytics] write failed for key={key}: {e}")
 
 
 def _r2_config_values(config):
