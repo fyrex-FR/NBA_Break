@@ -6,6 +6,8 @@ import re
 import json
 import importlib
 import hashlib
+import uuid
+from datetime import datetime, timezone
 from io import BytesIO
 from card_logic import (
     CATEGORY_AUTO_MEM,
@@ -452,6 +454,88 @@ def apply_preset(preset_files, all_filenames):
         st.session_state[f"chk_cloud_{fname}"] = fname in valid_files
 
 
+def _safe_header_value(context_obj, name):
+    headers = getattr(context_obj, "headers", None)
+    if headers is None:
+        return ""
+    try:
+        value = headers.get(name, "")
+        return "" if value is None else str(value)
+    except Exception:
+        return ""
+
+
+def _build_visitor_id(secrets_obj):
+    """
+    Build a pseudonymous visitor id from request context.
+    No raw IP/UA is stored.
+    """
+    ctx = getattr(st, "context", None)
+    if ctx is None:
+        return ""
+
+    ip_address = str(getattr(ctx, "ip_address", "") or "").strip()
+    user_agent = _safe_header_value(ctx, "User-Agent").strip()
+    accept_language = _safe_header_value(ctx, "Accept-Language").strip()
+    locale = str(getattr(ctx, "locale", "") or "").strip()
+
+    fingerprint = "|".join([ip_address, user_agent, accept_language, locale]).strip("|")
+    if not fingerprint:
+        return ""
+
+    salt = ""
+    try:
+        salt = str(secrets_obj.get("ANALYTICS_SALT", "") or "")
+    except Exception:
+        salt = ""
+    if not salt:
+        salt = os.getenv("ANALYTICS_SALT", "")
+    if not salt:
+        try:
+            salt = str(secrets_obj.get("R2_BUCKET", "") or "")
+        except Exception:
+            salt = ""
+    if not salt:
+        salt = "default-analytics-salt"
+
+    digest = hashlib.sha256(f"{salt}|{fingerprint}".encode("utf-8")).hexdigest()
+    return digest[:24]
+
+
+def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
+    """
+    Silent analytics: one event per session/day, stored in R2.
+    """
+    if not r2_enabled:
+        return
+
+    day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    marker_key = f"analytics_logged_day_{day}"
+    if st.session_state.get(marker_key):
+        return
+
+    visitor_id = _build_visitor_id(secrets_obj)
+    if not visitor_id:
+        return
+
+    ts_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
+    nonce = uuid.uuid4().hex[:8]
+    key = f"app/analytics/events/{day}/{ts_ms}-{visitor_id}-{nonce}.json"
+    payload = {
+        "event": "app_open",
+        "visitor_id": visitor_id,
+        "sport": sport_key,
+        "ts_utc": datetime.now(timezone.utc).isoformat(),
+    }
+
+    try:
+        write_r2_json(r2_config, key, payload)
+        st.session_state[marker_key] = True
+    except Exception:
+        # Best-effort only: never block the app on analytics write failures.
+        pass
+
+
 def _r2_config_values(config):
     return (
         config.get("account_id", ""),
@@ -495,6 +579,12 @@ keyword_overrides_root = load_keyword_overrides(
     keyword_overrides_path,
     r2_enabled=r2_enabled,
     r2_config=r2_config,
+)
+track_visit_silently(
+    r2_enabled=r2_enabled,
+    r2_config=r2_config,
+    sport_key=selected_sport_key,
+    secrets_obj=st.secrets,
 )
 cloud_files = []
 cloud_error = ""
