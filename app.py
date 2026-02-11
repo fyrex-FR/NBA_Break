@@ -7,6 +7,8 @@ import json
 import importlib
 import hashlib
 import uuid
+import ipaddress
+import urllib.request
 from datetime import datetime, timezone
 from io import BytesIO
 from card_logic import (
@@ -476,6 +478,78 @@ def _safe_header_value(context_obj, name):
     return ""
 
 
+def _extract_client_ip(context_obj):
+    if context_obj is None:
+        return ""
+    ip_address = str(getattr(context_obj, "ip_address", "") or "").strip()
+    xff = _safe_header_value(context_obj, "X-Forwarded-For").strip()
+    if xff:
+        # XFF can contain a chain: client, proxy1, proxy2...
+        first = xff.split(",")[0].strip()
+        if first:
+            return first
+    return ip_address
+
+
+def _is_public_ip(ip_text):
+    try:
+        ip_obj = ipaddress.ip_address(ip_text)
+        if ip_obj.is_private or ip_obj.is_loopback or ip_obj.is_link_local or ip_obj.is_reserved:
+            return False
+        return True
+    except Exception:
+        return False
+
+
+def _fetch_geo_json(url):
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "antiGravityCode-analytics/1.0"},
+    )
+    with urllib.request.urlopen(req, timeout=1.8) as resp:
+        if getattr(resp, "status", 200) != 200:
+            return {}
+        raw = resp.read()
+    if not raw:
+        return {}
+    try:
+        return json.loads(raw.decode("utf-8"))
+    except Exception:
+        return {}
+
+
+@st.cache_data(show_spinner=False, ttl=86400)
+def lookup_geo_from_ip(ip_text):
+    ip_clean = str(ip_text or "").strip()
+    if not ip_clean or not _is_public_ip(ip_clean):
+        return {}
+
+    # Provider 1
+    try:
+        payload = _fetch_geo_json(f"https://ipwho.is/{ip_clean}")
+        if payload and payload.get("success", True):
+            return {
+                "country": str(payload.get("country", "") or ""),
+                "region": str(payload.get("region", "") or ""),
+                "city": str(payload.get("city", "") or ""),
+            }
+    except Exception:
+        pass
+
+    # Provider 2 fallback
+    try:
+        payload = _fetch_geo_json(f"https://ipapi.co/{ip_clean}/json/")
+        if payload and not payload.get("error"):
+            return {
+                "country": str(payload.get("country_name", "") or ""),
+                "region": str(payload.get("region", "") or ""),
+                "city": str(payload.get("city", "") or ""),
+            }
+    except Exception:
+        pass
+    return {}
+
+
 def _build_visitor_id(secrets_obj):
     """
     Build a pseudonymous visitor id from request context.
@@ -485,7 +559,7 @@ def _build_visitor_id(secrets_obj):
     if ctx is None:
         return "", "none"
 
-    ip_address = str(getattr(ctx, "ip_address", "") or "").strip()
+    ip_address = _extract_client_ip(ctx)
     xff = _safe_header_value(ctx, "X-Forwarded-For").strip()
     user_agent = _safe_header_value(ctx, "User-Agent").strip()
     accept_language = _safe_header_value(ctx, "Accept-Language").strip()
@@ -535,6 +609,9 @@ def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
     if not visitor_id:
         print("[analytics] no visitor id generated")
         return
+    ctx = getattr(st, "context", None)
+    client_ip = _extract_client_ip(ctx)
+    geo = lookup_geo_from_ip(client_ip)
 
     ts_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
     nonce = uuid.uuid4().hex[:8]
@@ -545,6 +622,9 @@ def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
         "id_source": id_source,
         "sport": sport_key,
         "ts_utc": datetime.now(timezone.utc).isoformat(),
+        "country": geo.get("country", ""),
+        "region": geo.get("region", ""),
+        "city": geo.get("city", ""),
     }
 
     try:

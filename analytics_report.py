@@ -25,6 +25,11 @@ def parse_args():
         default="app/analytics/events/",
         help="R2 prefix where analytics events are stored.",
     )
+    parser.add_argument(
+        "--with-geo",
+        action="store_true",
+        help="Also compute top countries/regions/cities (requires reading event payloads).",
+    )
     return parser.parse_args()
 
 
@@ -50,9 +55,13 @@ def main():
     by_day = defaultdict(set)
     events_by_day = defaultdict(int)
     visitor_days = defaultdict(set)
+    city_counts = defaultdict(int)
+    region_counts = defaultdict(int)
+    country_counts = defaultdict(int)
 
     for key in keys:
         day_str, visitor_id = parse_key(key)
+        payload = None
         if not day_str:
             # Backward-compatible fallback if key format changes.
             try:
@@ -74,6 +83,21 @@ def main():
         events_by_day[day] += 1
         by_day[day].add(visitor_id)
         visitor_days[visitor_id].add(day)
+        if args.with_geo:
+            if payload is None:
+                try:
+                    payload = read_r2_json(cfg, key)
+                except Exception:
+                    payload = {}
+            country = str(payload.get("country", "")).strip()
+            region = str(payload.get("region", "")).strip()
+            city = str(payload.get("city", "")).strip()
+            if country:
+                country_counts[country] += 1
+            if region:
+                region_counts[region] += 1
+            if city:
+                city_counts[city] += 1
 
     if not events_by_day:
         print("Aucun event trouvé sur la période demandée.")
@@ -92,6 +116,22 @@ def main():
     print("--------------------------------")
     for day in sorted(events_by_day.keys(), reverse=True):
         print(f"{day} | {events_by_day[day]:>6} | {len(by_day[day]):>7}")
+
+    if args.with_geo:
+        def print_top(title, counts, limit=15):
+            print("")
+            print(title)
+            print("-" * len(title))
+            if not counts:
+                print("Aucune donnée.")
+                return
+            ranked = sorted(counts.items(), key=lambda kv: kv[1], reverse=True)[:limit]
+            for name, count in ranked:
+                print(f"{name}: {count}")
+
+        print_top("Top Countries", country_counts)
+        print_top("Top Regions", region_counts)
+        print_top("Top Cities", city_counts)
 
 
 if __name__ == "__main__":
