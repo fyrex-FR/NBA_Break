@@ -6,10 +6,6 @@ import re
 import json
 import importlib
 import hashlib
-import uuid
-import ipaddress
-import urllib.request
-from datetime import datetime, timezone
 from io import BytesIO
 from card_logic import (
     CATEGORY_AUTO_MEM,
@@ -31,7 +27,6 @@ from r2_storage import (
     is_r2_configured,
     is_r2_uri,
     key_to_r2_uri,
-    list_r2_keys,
     list_r2_parquet_keys,
     r2_uri_to_key,
     r2_object_exists,
@@ -457,199 +452,6 @@ def apply_preset(preset_files, all_filenames):
         st.session_state[f"chk_cloud_{fname}"] = fname in valid_files
 
 
-def _safe_header_value(context_obj, name):
-    headers = getattr(context_obj, "headers", None)
-    if headers is None:
-        return ""
-    lower_name = str(name).lower()
-    try:
-        value = headers.get(name, "")
-        if value:
-            return str(value)
-        value = headers.get(lower_name, "")
-        return "" if value is None else str(value)
-    except Exception:
-        pass
-    try:
-        for k, v in headers.items():
-            if str(k).lower() == lower_name and v is not None:
-                return str(v)
-    except Exception:
-        pass
-    return ""
-
-
-def _extract_client_ip(context_obj):
-    if context_obj is None:
-        return ""
-    ip_address = str(getattr(context_obj, "ip_address", "") or "").strip()
-    xff = _safe_header_value(context_obj, "X-Forwarded-For").strip()
-    if xff:
-        # XFF can contain a chain: client, proxy1, proxy2...
-        first = xff.split(",")[0].strip()
-        if first:
-            return first
-    return ip_address
-
-
-def _is_public_ip(ip_text):
-    try:
-        ip_obj = ipaddress.ip_address(ip_text)
-        if ip_obj.is_private or ip_obj.is_loopback or ip_obj.is_link_local or ip_obj.is_reserved:
-            return False
-        return True
-    except Exception:
-        return False
-
-
-def _fetch_geo_json(url):
-    req = urllib.request.Request(
-        url,
-        headers={"User-Agent": "antiGravityCode-analytics/1.0"},
-    )
-    with urllib.request.urlopen(req, timeout=1.8) as resp:
-        if getattr(resp, "status", 200) != 200:
-            return {}
-        raw = resp.read()
-    if not raw:
-        return {}
-    try:
-        return json.loads(raw.decode("utf-8"))
-    except Exception:
-        return {}
-
-
-@st.cache_data(show_spinner=False, ttl=86400)
-def lookup_geo_from_ip(ip_text):
-    ip_clean = str(ip_text or "").strip()
-    if not ip_clean or not _is_public_ip(ip_clean):
-        return {}
-
-    # Provider 1
-    try:
-        payload = _fetch_geo_json(f"https://ipwho.is/{ip_clean}")
-        if payload and payload.get("success", True):
-            return {
-                "country": str(payload.get("country", "") or ""),
-                "region": str(payload.get("region", "") or ""),
-                "city": str(payload.get("city", "") or ""),
-            }
-    except Exception:
-        pass
-
-    # Provider 2 fallback
-    try:
-        payload = _fetch_geo_json(f"https://ipapi.co/{ip_clean}/json/")
-        if payload and not payload.get("error"):
-            return {
-                "country": str(payload.get("country_name", "") or ""),
-                "region": str(payload.get("region", "") or ""),
-                "city": str(payload.get("city", "") or ""),
-            }
-    except Exception:
-        pass
-    return {}
-
-
-def _build_visitor_id(secrets_obj):
-    """
-    Build a pseudonymous visitor id from request context.
-    No raw IP/UA is stored.
-    """
-    ctx = getattr(st, "context", None)
-    if ctx is None:
-        return "", "none"
-
-    ip_address = _extract_client_ip(ctx)
-    user_agent = _safe_header_value(ctx, "User-Agent").strip()
-    accept_language = _safe_header_value(ctx, "Accept-Language").strip()
-    locale = str(getattr(ctx, "locale", "") or "").strip()
-    timezone_name = str(getattr(ctx, "timezone", "") or "").strip()
-
-    # Keep fingerprint stable across refreshes: avoid full proxy-chain headers.
-    fingerprint_parts = [ip_address, user_agent, accept_language, locale, timezone_name]
-    fingerprint = "|".join([p for p in fingerprint_parts if p]).strip("|")
-    if not fingerprint:
-        # Fallback: keep tracking enabled even if request context is sparse.
-        if "analytics_session_id" not in st.session_state:
-            st.session_state["analytics_session_id"] = uuid.uuid4().hex[:24]
-        return st.session_state["analytics_session_id"], "session_fallback"
-
-    salt = ""
-    try:
-        salt = str(secrets_obj.get("ANALYTICS_SALT", "") or "")
-    except Exception:
-        salt = ""
-    if not salt:
-        salt = os.getenv("ANALYTICS_SALT", "")
-    if not salt:
-        try:
-            salt = str(secrets_obj.get("R2_BUCKET", "") or "")
-        except Exception:
-            salt = ""
-    if not salt:
-        salt = "default-analytics-salt"
-
-    digest = hashlib.sha256(f"{salt}|{fingerprint}".encode("utf-8")).hexdigest()
-    return digest[:24], "fingerprint"
-
-
-def _already_logged_today(r2_config, day, visitor_id):
-    prefix = f"app/analytics/events/{day}/"
-    token = f"-{visitor_id}-"
-    try:
-        keys = list_r2_keys(r2_config, prefix=prefix, suffix=".json")
-    except Exception:
-        return False
-    return any(token in os.path.basename(k) for k in keys)
-
-
-def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
-    """
-    Silent analytics: one event per session/day, stored in R2.
-    """
-    if not r2_enabled:
-        return
-
-    day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    marker_key = f"analytics_logged_day_{day}"
-    if st.session_state.get(marker_key):
-        return
-
-    visitor_id, id_source = _build_visitor_id(secrets_obj)
-    if not visitor_id:
-        print("[analytics] no visitor id generated")
-        return
-
-    if _already_logged_today(r2_config, day, visitor_id):
-        st.session_state[marker_key] = True
-        return
-    ctx = getattr(st, "context", None)
-    client_ip = _extract_client_ip(ctx)
-    geo = lookup_geo_from_ip(client_ip)
-
-    ts_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
-    nonce = uuid.uuid4().hex[:8]
-    key = f"app/analytics/events/{day}/{ts_ms}-{visitor_id}-{nonce}.json"
-    payload = {
-        "event": "app_open",
-        "visitor_id": visitor_id,
-        "id_source": id_source,
-        "sport": sport_key,
-        "ts_utc": datetime.now(timezone.utc).isoformat(),
-        "country": geo.get("country", ""),
-        "region": geo.get("region", ""),
-        "city": geo.get("city", ""),
-    }
-
-    try:
-        write_r2_json(r2_config, key, payload)
-        st.session_state[marker_key] = True
-    except Exception as e:
-        # Best-effort only: never block the app on analytics write failures.
-        print(f"[analytics] write failed for key={key}: {e}")
-
-
 def _r2_config_values(config):
     return (
         config.get("account_id", ""),
@@ -693,12 +495,6 @@ keyword_overrides_root = load_keyword_overrides(
     keyword_overrides_path,
     r2_enabled=r2_enabled,
     r2_config=r2_config,
-)
-track_visit_silently(
-    r2_enabled=r2_enabled,
-    r2_config=r2_config,
-    sport_key=selected_sport_key,
-    secrets_obj=st.secrets,
 )
 cloud_files = []
 cloud_error = ""

@@ -96,29 +96,6 @@ def list_r2_parquet_keys(config, sport_key):
     return sorted(keys)
 
 
-def list_r2_keys(config, prefix="", suffix=""):
-    """
-    List object keys under a prefix.
-    Optional suffix filter (case-insensitive), e.g. ".json".
-    """
-    if not is_r2_configured(config):
-        return []
-
-    client = make_r2_client(config)
-    keys = []
-    suffix_lower = (suffix or "").lower().strip()
-    paginator = client.get_paginator("list_objects_v2")
-    for page in paginator.paginate(Bucket=config["bucket"], Prefix=prefix or ""):
-        for obj in page.get("Contents", []):
-            key = obj.get("Key", "")
-            if not key:
-                continue
-            if suffix_lower and not key.lower().endswith(suffix_lower):
-                continue
-            keys.append(key)
-    return sorted(keys)
-
-
 def read_r2_parquet(config, key):
     client = make_r2_client(config)
     resp = client.get_object(Bucket=config["bucket"], Key=key)
