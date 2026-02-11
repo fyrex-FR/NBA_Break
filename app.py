@@ -31,6 +31,7 @@ from r2_storage import (
     is_r2_configured,
     is_r2_uri,
     key_to_r2_uri,
+    list_r2_keys,
     list_r2_parquet_keys,
     r2_uri_to_key,
     r2_object_exists,
@@ -560,13 +561,13 @@ def _build_visitor_id(secrets_obj):
         return "", "none"
 
     ip_address = _extract_client_ip(ctx)
-    xff = _safe_header_value(ctx, "X-Forwarded-For").strip()
     user_agent = _safe_header_value(ctx, "User-Agent").strip()
     accept_language = _safe_header_value(ctx, "Accept-Language").strip()
     locale = str(getattr(ctx, "locale", "") or "").strip()
     timezone_name = str(getattr(ctx, "timezone", "") or "").strip()
 
-    fingerprint_parts = [ip_address, xff, user_agent, accept_language, locale, timezone_name]
+    # Keep fingerprint stable across refreshes: avoid full proxy-chain headers.
+    fingerprint_parts = [ip_address, user_agent, accept_language, locale, timezone_name]
     fingerprint = "|".join([p for p in fingerprint_parts if p]).strip("|")
     if not fingerprint:
         # Fallback: keep tracking enabled even if request context is sparse.
@@ -593,6 +594,16 @@ def _build_visitor_id(secrets_obj):
     return digest[:24], "fingerprint"
 
 
+def _already_logged_today(r2_config, day, visitor_id):
+    prefix = f"app/analytics/events/{day}/"
+    token = f"-{visitor_id}-"
+    try:
+        keys = list_r2_keys(r2_config, prefix=prefix, suffix=".json")
+    except Exception:
+        return False
+    return any(token in os.path.basename(k) for k in keys)
+
+
 def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
     """
     Silent analytics: one event per session/day, stored in R2.
@@ -608,6 +619,10 @@ def track_visit_silently(r2_enabled, r2_config, sport_key, secrets_obj):
     visitor_id, id_source = _build_visitor_id(secrets_obj)
     if not visitor_id:
         print("[analytics] no visitor id generated")
+        return
+
+    if _already_logged_today(r2_config, day, visitor_id):
+        st.session_state[marker_key] = True
         return
     ctx = getattr(st, "context", None)
     client_ip = _extract_client_ip(ctx)
