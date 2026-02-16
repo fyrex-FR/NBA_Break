@@ -393,11 +393,13 @@ def dedupe_multiplayer_projection_rows(df):
 
 SIM_METHOD_LETTER = "letter"
 SIM_METHOD_TEAM = "team"
+SIM_METHOD_PLAYER = "player"
 SIM_METHOD_CUSTOM = "custom"
 
 SIM_METHOD_LABELS = {
     SIM_METHOD_LETTER: "Break par Lettre (A-Z)",
     SIM_METHOD_TEAM: "Break par Équipe",
+    SIM_METHOD_PLAYER: "Break par Joueur",
     SIM_METHOD_CUSTOM: "Break Personnalisé",
 }
 
@@ -505,6 +507,11 @@ def build_default_spots(pool_df, method):
         for values in pool_df["Team List"].tolist():
             teams.extend(values)
         return sorted(_ordered_unique(teams))
+    if method == SIM_METHOD_PLAYER:
+        players = []
+        for values in pool_df["Player List"].tolist():
+            players.extend(values)
+        return sorted(_ordered_unique(players))
     return []
 
 
@@ -536,6 +543,16 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
                     mapping[team] = set()
                 for player in players:
                     mapping[team].add(player)
+        return mapping
+
+    if method == SIM_METHOD_PLAYER:
+        mapping = {}
+        for _, row in pool_df.iterrows():
+            players = row.get("Player List", [])
+            for player in players:
+                if player not in mapping:
+                    mapping[player] = set()
+                mapping[player].add(player)
         return mapping
 
     if method == SIM_METHOD_CUSTOM:
@@ -600,6 +617,8 @@ def build_deterministic_spot_summary(
             targets = [s for s in initial_list if s in spot_set]
         elif method == SIM_METHOD_TEAM:
             targets = [s for s in team_list if s in spot_set]
+        elif method == SIM_METHOD_PLAYER:
+            targets = [s for s in player_list if s in spot_set]
         elif method == SIM_METHOD_CUSTOM:
             if custom_scope == "players":
                 targets = [custom_map.get(p, "") for p in player_list]
@@ -662,16 +681,6 @@ def build_deterministic_spot_summary(
     }
     return result_df, summary
 
-
-def build_spot_export_text(display_df):
-    lines = []
-    for _, row in display_df.iterrows():
-        lines.append(
-            f"{row.get('Spot', '')}: {int(row.get('Cartes', 0))} cartes | "
-            f"auto/memo {int(row.get('Auto/Memo', 0))}, "
-            f"case hit {int(row.get('Case Hit', 0))}"
-        )
-    return "\n".join(lines)
 
 # API Key Config (Removed as requested)
 # OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
@@ -2496,7 +2505,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     compare_mode = st.checkbox("Mode comparaison (2 méthodes côte à côte)", value=False, key="sim_compare_mode")
                     compare_method = None
                     if compare_mode:
-                        compare_candidates = [SIM_METHOD_LETTER, SIM_METHOD_TEAM]
+                        compare_candidates = [SIM_METHOD_LETTER, SIM_METHOD_TEAM, SIM_METHOD_PLAYER]
                         compare_candidates = [m for m in compare_candidates if m != selected_method]
                         compare_method = st.selectbox(
                             "Méthode à comparer",
@@ -2681,14 +2690,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 mime="application/json",
                                 key="sim_export_json",
                             )
-
-                        spot_copy_text = build_spot_export_text(display_df)
-                        st.text_area(
-                            "Liste des spots (copier/coller)",
-                            value=spot_copy_text,
-                            height=180,
-                            key="sim_spot_copy_text",
-                        )
 
         elif selection == " Par Fichier":
             st.subheader("Analyse par Fichier")
