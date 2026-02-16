@@ -402,19 +402,14 @@ SIM_METHOD_LABELS = {
 }
 
 SIM_CARD_TYPE_COLUMNS = [
-    "Cartes de base",
-    "Rookies",
-    "Inserts",
-    "Parallèles",
-    "Autographes",
-    "Memorabilia/Patchs",
-    "Numérotées (/X)",
-    "1/1",
+    "Auto/Memo",
+    "Case Hit",
 ]
 
 SIM_SORT_OPTIONS = {
-    "Valeur moyenne": "Valeur Moyenne (proxy)",
     "Nombre de hits": "Hits",
+    "Auto/Memo": "Auto/Memo",
+    "Case Hit": "Case Hit",
     "Nombre de joueurs": "Nombre de joueurs",
     "Alphabétique": "Spot",
 }
@@ -463,14 +458,13 @@ def build_break_simulation_pool(df):
         return pd.DataFrame()
 
     work = df.copy().reset_index(drop=True)
-    for col in ["Player", "Team", "Box Type", "Numbering", "Category", "Hits"]:
+    for col in ["Player", "Team", "Box Type", "Category", "Hits"]:
         if col not in work.columns:
             work[col] = ""
 
     work["Player"] = work["Player"].astype(str).str.strip()
     work["Team"] = work["Team"].astype(str).str.strip()
     work["Box Type"] = work["Box Type"].astype(str).str.strip()
-    work["Numbering"] = work["Numbering"].astype(str).str.strip()
     work["Category"] = work["Category"].astype(str).str.strip()
     work["Hits"] = pd.to_numeric(work["Hits"], errors="coerce").fillna(1).clip(lower=0.1)
 
@@ -480,38 +474,10 @@ def build_break_simulation_pool(df):
     if work.empty:
         return pd.DataFrame()
 
-    box_text = work["Box Type"].astype(str).str.lower()
-    numbering_values = work["Numbering"].apply(parse_numbering)
+    auto_memo_mask = work["Category"].eq(CATEGORY_AUTO_MEM)
+    case_hit_mask = work["Category"].eq(CATEGORY_CASE_HIT)
 
-    rookie_mask = box_text.str.contains(r"\brc\b|rookie", regex=True, na=False)
-    parallel_mask = box_text.str.contains(
-        r"parallel|silver|gold|green|blue|red|purple|orange|pink|black|white|mojo|refractor|wave|ice|shimmer|scope|disco|holo|pulsar|laser",
-        regex=True,
-        na=False,
-    )
-    insert_mask = box_text.str.contains(
-        r"insert|downtown|kaboom|color blast|manga|stained glass|genesis|photon|sublime|night moves|vortex|radiating rookies",
-        regex=True,
-        na=False,
-    ) | work["Category"].isin([CATEGORY_CASE_HIT, CATEGORY_LOGOMAN])
-    auto_kw_mask = box_text.str.contains(r"auto|autograph|signature|signed|ink", regex=True, na=False)
-    mem_kw_mask = box_text.str.contains(r"patch|relic|jersey|mem|material|booklet|gear", regex=True, na=False)
-    auto_mem_mask = work["Category"].eq(CATEGORY_AUTO_MEM)
-    auto_mask = auto_mem_mask & (auto_kw_mask | ~mem_kw_mask)
-    mem_mask = auto_mem_mask & mem_kw_mask
-    case_hit_mask = work["Category"].isin([CATEGORY_CASE_HIT, CATEGORY_LOGOMAN])
-    numbered_mask = numbering_values.fillna(0).astype(float) > 0
-    one_of_one_mask = numbering_values.fillna(0).astype(float).eq(1) | work["Numbering"].str.contains(r"1/1", na=False)
-    base_mask = work["Category"].eq(CATEGORY_BASE_OTHER) & ~(rookie_mask | parallel_mask | insert_mask | auto_mem_mask)
-
-    work["Is Base"] = base_mask
-    work["Is Rookie"] = rookie_mask
-    work["Is Insert"] = insert_mask
-    work["Is Parallel"] = parallel_mask
-    work["Is Auto"] = auto_mask
-    work["Is Memorabilia"] = mem_mask
-    work["Is Numbered"] = numbered_mask
-    work["Is OneOfOne"] = one_of_one_mask
+    work["Is AutoMemo"] = auto_memo_mask
     work["Is CaseHit"] = case_hit_mask
 
     work["Initial List"] = work["Player List"].apply(
@@ -519,15 +485,6 @@ def build_break_simulation_pool(df):
     )
     work["Primary Player"] = work["Player List"].apply(lambda items: items[0] if items else "")
     work["Primary Team"] = work["Team List"].apply(lambda items: items[0] if items else "")
-
-    rarity_values = work["Numbering"].apply(rarity_multiplier).astype(float)
-    base_score = work["Category"].apply(calculate_score).astype(float)
-    rookie_bonus = work["Is Rookie"].map({True: 1.35, False: 1.0}).astype(float)
-    auto_bonus = work["Is Auto"].map({True: 2.2, False: 1.0}).astype(float)
-    mem_bonus = work["Is Memorabilia"].map({True: 1.9, False: 1.0}).astype(float)
-    case_bonus = work["Is CaseHit"].map({True: 2.4, False: 1.0}).astype(float)
-    one_bonus = work["Is OneOfOne"].map({True: 8.0, False: 1.0}).astype(float)
-    work["Sim Value"] = (base_score * rarity_values * rookie_bonus * auto_bonus * mem_bonus * case_bonus * one_bonus).clip(lower=1.0, upper=50000.0)
 
     return work
 
@@ -621,17 +578,10 @@ def build_deterministic_spot_summary(
 
     metric_cols = [
         "Hits",
-        "Cartes de base",
-        "Rookies",
-        "Inserts",
-        "Parallèles",
-        "Autographes",
-        "Memorabilia/Patchs",
-        "Numérotées (/X)",
-        "1/1",
+        "Auto/Memo",
+        "Case Hit",
     ]
     totals = {spot: {col: 0.0 for col in metric_cols} for spot in spots}
-    value_totals = {spot: 0.0 for spot in spots}
 
     for _, row in work.iterrows():
         player_list = row.get("Player List", [])
@@ -658,23 +608,14 @@ def build_deterministic_spot_summary(
         share = hits / len(targets)
         for spot in targets:
             totals[spot]["Hits"] += share
-            totals[spot]["Cartes de base"] += share if row.get("Is Base", False) else 0.0
-            totals[spot]["Rookies"] += share if row.get("Is Rookie", False) else 0.0
-            totals[spot]["Inserts"] += share if row.get("Is Insert", False) else 0.0
-            totals[spot]["Parallèles"] += share if row.get("Is Parallel", False) else 0.0
-            totals[spot]["Autographes"] += share if row.get("Is Auto", False) else 0.0
-            totals[spot]["Memorabilia/Patchs"] += share if row.get("Is Memorabilia", False) else 0.0
-            totals[spot]["Numérotées (/X)"] += share if row.get("Is Numbered", False) else 0.0
-            totals[spot]["1/1"] += share if row.get("Is OneOfOne", False) else 0.0
-            value_totals[spot] += float(row.get("Sim Value", 0.0)) * share
+            totals[spot]["Auto/Memo"] += share if row.get("Is AutoMemo", False) else 0.0
+            totals[spot]["Case Hit"] += share if row.get("Is CaseHit", False) else 0.0
 
     rows = []
     for spot in spots:
-        auto_val = totals[spot]["Autographes"]
-        mem_val = totals[spot]["Memorabilia/Patchs"]
-        case_val = totals[spot]["Inserts"]
-        one_val = totals[spot]["1/1"]
-        rarity_signal = auto_val + mem_val + (2.0 * case_val) + (5.0 * one_val)
+        auto_val = totals[spot]["Auto/Memo"]
+        case_val = totals[spot]["Case Hit"]
+        rarity_signal = auto_val + (2.0 * case_val)
         if rarity_signal < 1.0:
             rarity_label = "Commun"
         elif rarity_signal < 3.0:
@@ -684,21 +625,11 @@ def build_deterministic_spot_summary(
         else:
             rarity_label = "Ultra-rare"
 
-        spot_value = value_totals[spot]
         row = {
             "Spot": spot,
             "Hits": totals[spot]["Hits"],
-            "Cartes de base": totals[spot]["Cartes de base"],
-            "Rookies": totals[spot]["Rookies"],
-            "Inserts": totals[spot]["Inserts"],
-            "Parallèles": totals[spot]["Parallèles"],
-            "Autographes": totals[spot]["Autographes"],
-            "Memorabilia/Patchs": totals[spot]["Memorabilia/Patchs"],
-            "Numérotées (/X)": totals[spot]["Numérotées (/X)"],
-            "1/1": totals[spot]["1/1"],
-            "Valeur Min (proxy)": spot_value,
-            "Valeur Moyenne (proxy)": spot_value,
-            "Valeur Max (proxy)": spot_value,
+            "Auto/Memo": totals[spot]["Auto/Memo"],
+            "Case Hit": totals[spot]["Case Hit"],
             "Rareté": rarity_label,
         }
         rows.append(row)
@@ -707,9 +638,10 @@ def build_deterministic_spot_summary(
     if result_df.empty:
         return result_df, {}
 
-    global_mean_value = float(result_df["Valeur Moyenne (proxy)"].mean()) if not result_df.empty else 0.0
-    global_std_value = float(result_df["Valeur Moyenne (proxy)"].std()) if len(result_df) > 1 else 0.0
-    cv = (global_std_value / global_mean_value) if global_mean_value > 0 else 0.0
+    total_hits = float(result_df["Hits"].sum())
+    mean_hits = float(result_df["Hits"].mean()) if not result_df.empty else 0.0
+    std_hits = float(result_df["Hits"].std()) if len(result_df) > 1 else 0.0
+    cv = (std_hits / mean_hits) if mean_hits > 0 else 0.0
 
     if cv <= 0.15:
         fairness_label = "Très équilibré"
@@ -718,22 +650,24 @@ def build_deterministic_spot_summary(
     else:
         fairness_label = "Déséquilibré"
 
+    result_df["Hot Signal"] = result_df["Auto/Memo"] + (2.0 * result_df["Case Hit"])
     if len(result_df) > 5:
-        hot_threshold = float(result_df["Valeur Moyenne (proxy)"].quantile(0.9))
+        hot_threshold = float(result_df["Hot Signal"].quantile(0.9))
     else:
-        hot_threshold = float(result_df["Valeur Moyenne (proxy)"].max())
-    result_df["Hot Spot"] = result_df["Valeur Moyenne (proxy)"].apply(lambda x: "🔥 Hot" if x >= hot_threshold else "")
+        hot_threshold = float(result_df["Hot Signal"].max())
+    result_df["Hot Spot"] = result_df["Hot Signal"].apply(lambda x: "🔥 Hot" if x >= hot_threshold else "")
 
-    if global_mean_value > 0:
-        result_df["Équilibre Spot"] = result_df["Valeur Moyenne (proxy)"].apply(
-            lambda x: "Équitable" if abs((x / global_mean_value) - 1.0) <= 0.15 else "Non équitable"
+    if mean_hits > 0:
+        result_df["Équilibre Spot"] = result_df["Hits"].apply(
+            lambda x: "Équitable" if abs((x / mean_hits) - 1.0) <= 0.15 else "Non équitable"
         )
     else:
         result_df["Équilibre Spot"] = "Équitable"
 
     fairness_summary = {
-        "global_mean_value": global_mean_value,
-        "global_std_value": global_std_value,
+        "total_hits": total_hits,
+        "mean_hits": mean_hits,
+        "std_hits": std_hits,
         "cv": cv,
         "fairness_label": fairness_label,
     }
@@ -744,14 +678,9 @@ def build_spot_export_text(display_df):
     lines = []
     for _, row in display_df.iterrows():
         lines.append(
-            f"{row.get('Spot', '')}: {float(row.get('Hits', 0.0)):.1f} hits | "
-            f"{float(row.get('Valeur Moyenne (proxy)', 0.0)):.1f} valeur moy (proxy) | "
-            f"base {float(row.get('Cartes de base', 0.0)):.1f}, "
-            f"rookies {float(row.get('Rookies', 0.0)):.1f}, "
-            f"inserts {float(row.get('Inserts', 0.0)):.1f}, "
-            f"autos {float(row.get('Autographes', 0.0)):.1f}, "
-            f"patchs {float(row.get('Memorabilia/Patchs', 0.0)):.1f}, "
-            f"1/1 {float(row.get('1/1', 0.0)):.2f}"
+            f"{row.get('Spot', '')}: {float(row.get('Hits', 0.0)):.1f} cartes | "
+            f"auto/memo {float(row.get('Auto/Memo', 0.0)):.1f}, "
+            f"case hit {float(row.get('Case Hit', 0.0)):.1f}"
         )
     return "\n".join(lines)
 
@@ -2617,7 +2546,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         c_metric1, c_metric2, c_metric3, c_metric4 = st.columns(4)
                         c_metric1.metric("Méthode", SIM_METHOD_LABELS[selected_method])
                         c_metric2.metric("Spots", len(result_df))
-                        c_metric3.metric("Valeur moyenne globale", f"{fairness_summary.get('global_mean_value', 0.0):.1f}")
+                        c_metric3.metric("Total cartes", f"{fairness_summary.get('total_hits', 0.0):.1f}")
                         c_metric4.metric("Équilibre global", fairness_summary.get("fairness_label", "-"))
 
                         st.markdown("#### Filtres & vues")
@@ -2648,23 +2577,17 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 display_df["Joueurs (aperçu)"].astype(str).str.lower().str.contains(re.escape(player_search), na=False)
                             ]
 
-                        sort_col = SIM_SORT_OPTIONS.get(sort_label, "Valeur Moyenne (proxy)")
+                        sort_col = SIM_SORT_OPTIONS.get(sort_label, "Hits")
+                        if sort_col not in display_df.columns:
+                            sort_col = "Hits"
                         sort_ascending = sort_col == "Spot"
                         display_df = display_df.sort_values(by=sort_col, ascending=sort_ascending).reset_index(drop=True)
 
                         rounded_cols = [
                             "Hits",
-                            "Cartes de base",
-                            "Rookies",
-                            "Inserts",
-                            "Parallèles",
-                            "Autographes",
-                            "Memorabilia/Patchs",
-                            "Numérotées (/X)",
-                            "1/1",
-                            "Valeur Min (proxy)",
-                            "Valeur Moyenne (proxy)",
-                            "Valeur Max (proxy)",
+                            "Auto/Memo",
+                            "Case Hit",
+                            "Hot Signal",
                         ]
                         for col in rounded_cols:
                             if col in display_df.columns:
@@ -2674,9 +2597,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             "Spot",
                             "Nombre de joueurs",
                             "Hits",
-                            "Valeur Min (proxy)",
-                            "Valeur Moyenne (proxy)",
-                            "Valeur Max (proxy)",
+                            "Auto/Memo",
+                            "Case Hit",
                             "Rareté",
                             "Hot Spot",
                             "Équilibre Spot",
@@ -2684,7 +2606,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         selected_cols = ["Spot", "Nombre de joueurs"]
                         selected_cols.extend([c for c in visible_types if c in display_df.columns])
                         selected_cols.extend(
-                            [c for c in ["Valeur Min (proxy)", "Valeur Moyenne (proxy)", "Valeur Max (proxy)", "Rareté", "Hot Spot", "Équilibre Spot", "Joueurs (aperçu)"] if c in display_df.columns]
+                            [c for c in ["Rareté", "Hot Spot", "Équilibre Spot", "Joueurs (aperçu)"] if c in display_df.columns]
                         )
                         if not visible_types:
                             selected_cols = [c for c in base_cols + ["Joueurs (aperçu)"] if c in display_df.columns]
@@ -2696,10 +2618,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             fig_sim = px.bar(
                                 top_chart_df,
                                 x="Spot",
-                                y="Valeur Moyenne (proxy)",
+                                y="Hits",
                                 color="Hot Spot",
-                                hover_data=["Nombre de joueurs", "Hits", "Rareté"],
-                                title="Valeur estimée par spot (proxy)",
+                                hover_data=["Nombre de joueurs", "Auto/Memo", "Case Hit", "Rareté"],
+                                title="Répartition du nombre de cartes par spot",
                             )
                             st.plotly_chart(fig_sim, use_container_width=True)
 
@@ -2716,7 +2638,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             with cmp_col1:
                                 st.caption(SIM_METHOD_LABELS[selected_method])
                                 st.dataframe(
-                                    display_df[["Spot", "Valeur Moyenne (proxy)", "Hits", "Hot Spot"]].head(20),
+                                    display_df[["Spot", "Hits", "Auto/Memo", "Case Hit", "Hot Spot"]].head(20),
                                     use_container_width=True,
                                 )
                             with cmp_col2:
@@ -2724,9 +2646,9 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 if compare_df.empty:
                                     st.info("Aucun résultat pour la méthode comparée.")
                                 else:
-                                    compare_df = compare_df.sort_values("Valeur Moyenne (proxy)", ascending=False).head(20)
+                                    compare_df = compare_df.sort_values("Hits", ascending=False).head(20)
                                     st.dataframe(
-                                        compare_df[["Spot", "Valeur Moyenne (proxy)", "Hits", "Hot Spot"]],
+                                        compare_df[["Spot", "Hits", "Auto/Memo", "Case Hit", "Hot Spot"]],
                                         use_container_width=True,
                                     )
 
