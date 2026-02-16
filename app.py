@@ -6,6 +6,10 @@ import re
 import json
 import importlib
 import hashlib
+import numpy as np
+import math
+import base64
+from datetime import datetime
 from io import BytesIO
 from card_logic import (
     CATEGORY_AUTO_MEM,
@@ -389,6 +393,489 @@ def dedupe_multiplayer_projection_rows(df):
     ]
     result = result.drop(columns=[c for c in helper_cols if c in result.columns], errors="ignore")
     return result, rows_removed
+
+
+SIM_METHOD_LETTER = "letter"
+SIM_METHOD_TEAM = "team"
+SIM_METHOD_CUSTOM = "custom"
+
+SIM_METHOD_LABELS = {
+    SIM_METHOD_LETTER: "Break par Lettre (A-Z)",
+    SIM_METHOD_TEAM: "Break par Équipe",
+    SIM_METHOD_CUSTOM: "Break Personnalisé",
+}
+
+SIM_CARD_TYPE_COLUMNS = [
+    "Cartes de base",
+    "Rookies",
+    "Inserts",
+    "Parallèles",
+    "Autographes",
+    "Memorabilia/Patchs",
+    "Numérotées (/X)",
+    "1/1",
+]
+
+SIM_SORT_OPTIONS = {
+    "Valeur moyenne": "Valeur Moyenne (proxy)",
+    "Nombre de hits": "Hits Moyens",
+    "Nombre de joueurs": "Nombre de joueurs",
+    "Alphabétique": "Spot",
+}
+
+
+def _ordered_unique(values):
+    seen = set()
+    output = []
+    for raw in values:
+        value = str(raw).strip()
+        if value and value not in seen:
+            seen.add(value)
+            output.append(value)
+    return output
+
+
+def _clean_list_or_single(value):
+    parts = split_slash_values(value)
+    if parts:
+        return _ordered_unique(parts)
+    raw = "" if value is None else str(value).strip()
+    return [raw] if raw else []
+
+
+def extract_surname_initial(player_name):
+    text = "" if player_name is None else str(player_name).strip()
+    if not text:
+        return ""
+    text = re.sub(r"[^\w\s\-\']", " ", text)
+    tokens = [t for t in text.split() if t]
+    if not tokens:
+        return ""
+
+    suffixes = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv", "v"}
+    while tokens and tokens[-1].lower() in suffixes:
+        tokens = tokens[:-1]
+    if not tokens:
+        return ""
+
+    initial = tokens[-1][0].upper()
+    return initial if "A" <= initial <= "Z" else ""
+
+
+def build_break_simulation_pool(df):
+    if df is None or df.empty:
+        return pd.DataFrame()
+
+    work = df.copy().reset_index(drop=True)
+    for col in ["Player", "Team", "Box Type", "Numbering", "Category", "Hits"]:
+        if col not in work.columns:
+            work[col] = ""
+
+    work["Player"] = work["Player"].astype(str).str.strip()
+    work["Team"] = work["Team"].astype(str).str.strip()
+    work["Box Type"] = work["Box Type"].astype(str).str.strip()
+    work["Numbering"] = work["Numbering"].astype(str).str.strip()
+    work["Category"] = work["Category"].astype(str).str.strip()
+    work["Hits"] = pd.to_numeric(work["Hits"], errors="coerce").fillna(1).clip(lower=0.1)
+
+    work["Player List"] = work["Player"].apply(_clean_list_or_single)
+    work["Team List"] = work["Team"].apply(_clean_list_or_single)
+    work = work[work["Player List"].apply(len) > 0].copy()
+    if work.empty:
+        return pd.DataFrame()
+
+    box_text = work["Box Type"].astype(str).str.lower()
+    numbering_values = work["Numbering"].apply(parse_numbering)
+
+    rookie_mask = box_text.str.contains(r"\brc\b|rookie", regex=True, na=False)
+    parallel_mask = box_text.str.contains(
+        r"parallel|silver|gold|green|blue|red|purple|orange|pink|black|white|mojo|refractor|wave|ice|shimmer|scope|disco|holo|pulsar|laser",
+        regex=True,
+        na=False,
+    )
+    insert_mask = box_text.str.contains(
+        r"insert|downtown|kaboom|color blast|manga|stained glass|genesis|photon|sublime|night moves|vortex|radiating rookies",
+        regex=True,
+        na=False,
+    ) | work["Category"].isin([CATEGORY_CASE_HIT, CATEGORY_LOGOMAN])
+    auto_kw_mask = box_text.str.contains(r"auto|autograph|signature|signed|ink", regex=True, na=False)
+    mem_kw_mask = box_text.str.contains(r"patch|relic|jersey|mem|material|booklet|gear", regex=True, na=False)
+    auto_mem_mask = work["Category"].eq(CATEGORY_AUTO_MEM)
+    auto_mask = auto_mem_mask & (auto_kw_mask | ~mem_kw_mask)
+    mem_mask = auto_mem_mask & mem_kw_mask
+    case_hit_mask = work["Category"].isin([CATEGORY_CASE_HIT, CATEGORY_LOGOMAN])
+    numbered_mask = numbering_values.fillna(0).astype(float) > 0
+    one_of_one_mask = numbering_values.fillna(0).astype(float).eq(1) | work["Numbering"].str.contains(r"1/1", na=False)
+    base_mask = work["Category"].eq(CATEGORY_BASE_OTHER) & ~(rookie_mask | parallel_mask | insert_mask | auto_mem_mask)
+
+    work["Is Base"] = base_mask
+    work["Is Rookie"] = rookie_mask
+    work["Is Insert"] = insert_mask
+    work["Is Parallel"] = parallel_mask
+    work["Is Auto"] = auto_mask
+    work["Is Memorabilia"] = mem_mask
+    work["Is Numbered"] = numbered_mask
+    work["Is OneOfOne"] = one_of_one_mask
+    work["Is CaseHit"] = case_hit_mask
+
+    work["Initial List"] = work["Player List"].apply(
+        lambda names: [x for x in _ordered_unique(extract_surname_initial(n) for n in names) if x]
+    )
+    work["Primary Player"] = work["Player List"].apply(lambda items: items[0] if items else "")
+    work["Primary Team"] = work["Team List"].apply(lambda items: items[0] if items else "")
+
+    rarity_values = work["Numbering"].apply(rarity_multiplier).astype(float)
+    base_score = work["Category"].apply(calculate_score).astype(float)
+    rookie_bonus = np.where(work["Is Rookie"], 1.35, 1.0)
+    auto_bonus = np.where(work["Is Auto"], 2.2, 1.0)
+    mem_bonus = np.where(work["Is Memorabilia"], 1.9, 1.0)
+    case_bonus = np.where(work["Is CaseHit"], 2.4, 1.0)
+    one_bonus = np.where(work["Is OneOfOne"], 8.0, 1.0)
+    work["Sim Value"] = np.clip(base_score * rarity_values * rookie_bonus * auto_bonus * mem_bonus * case_bonus * one_bonus, 1.0, 50000.0)
+
+    return work
+
+
+def build_default_spots(pool_df, method):
+    if pool_df is None or pool_df.empty:
+        return []
+    if method == SIM_METHOD_LETTER:
+        return list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    if method == SIM_METHOD_TEAM:
+        teams = []
+        for values in pool_df["Team List"].tolist():
+            teams.extend(values)
+        return sorted(_ordered_unique(teams))
+    return []
+
+
+def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None, custom_spots=None):
+    mapping = {}
+    if pool_df is None or pool_df.empty:
+        return mapping
+
+    if method == SIM_METHOD_LETTER:
+        mapping = {letter: set() for letter in list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+        for _, row in pool_df.iterrows():
+            players = row.get("Player List", [])
+            initials = row.get("Initial List", [])
+            if not players or not initials:
+                continue
+            for player in players:
+                initial = extract_surname_initial(player)
+                if initial in mapping:
+                    mapping[initial].add(player)
+        return mapping
+
+    if method == SIM_METHOD_TEAM:
+        mapping = {}
+        for _, row in pool_df.iterrows():
+            players = row.get("Player List", [])
+            teams = row.get("Team List", [])
+            for team in teams:
+                if team not in mapping:
+                    mapping[team] = set()
+                for player in players:
+                    mapping[team].add(player)
+        return mapping
+
+    if method == SIM_METHOD_CUSTOM:
+        custom_map = custom_map or {}
+        mapping = {spot: set() for spot in (custom_spots or [])}
+
+        if custom_scope == "players":
+            for player, spot in custom_map.items():
+                if spot in mapping and str(player).strip():
+                    mapping[spot].add(str(player).strip())
+            return mapping
+
+        team_to_players = {}
+        for _, row in pool_df.iterrows():
+            players = row.get("Player List", [])
+            teams = row.get("Team List", [])
+            for team in teams:
+                if team not in team_to_players:
+                    team_to_players[team] = set()
+                for player in players:
+                    team_to_players[team].add(player)
+
+        for team, spot in custom_map.items():
+            if spot not in mapping:
+                continue
+            for player in team_to_players.get(team, set()):
+                mapping[spot].add(player)
+        return mapping
+
+    return mapping
+
+
+def enforce_minimum_in_draw(sample_idx, flag_array, min_count, eligible_idx, rng):
+    if min_count <= 0 or len(sample_idx) == 0:
+        return sample_idx
+    if eligible_idx is None or len(eligible_idx) == 0:
+        return sample_idx
+
+    current = int(flag_array[sample_idx].sum())
+    if current >= min_count:
+        return sample_idx
+
+    needed = min_count - current
+    replaceable_positions = np.where(~flag_array[sample_idx])[0]
+    if len(replaceable_positions) == 0:
+        replaceable_positions = np.arange(len(sample_idx))
+    take = min(needed, len(replaceable_positions))
+    if take <= 0:
+        return sample_idx
+
+    chosen_positions = rng.choice(replaceable_positions, size=take, replace=False)
+    sample_idx[chosen_positions] = rng.choice(eligible_idx, size=take, replace=True)
+    return sample_idx
+
+
+def simulate_break_spots(
+    pool_df,
+    method,
+    spots,
+    iterations,
+    boxes_count,
+    cards_per_box,
+    seed,
+    player_policy,
+    team_policy,
+    custom_scope="teams",
+    custom_map=None,
+    guaranteed_auto=0,
+    guaranteed_mem=0,
+    guaranteed_numbered=0,
+    guaranteed_case_per_case=0,
+    boxes_per_case=12,
+):
+    if pool_df is None or pool_df.empty:
+        return pd.DataFrame(), {}
+    if not spots:
+        return pd.DataFrame(), {}
+
+    work = pool_df.reset_index(drop=True).copy()
+    rng = np.random.default_rng(seed)
+    n = len(work)
+    if n == 0:
+        return pd.DataFrame(), {}
+
+    weights = pd.to_numeric(work.get("Hits", 1), errors="coerce").fillna(1.0).to_numpy(dtype=float)
+    weights = np.clip(weights, 0.0001, None)
+    weights = weights / weights.sum()
+    all_idx = np.arange(n)
+
+    is_base = work["Is Base"].to_numpy(dtype=bool)
+    is_rookie = work["Is Rookie"].to_numpy(dtype=bool)
+    is_insert = work["Is Insert"].to_numpy(dtype=bool)
+    is_parallel = work["Is Parallel"].to_numpy(dtype=bool)
+    is_auto = work["Is Auto"].to_numpy(dtype=bool)
+    is_mem = work["Is Memorabilia"].to_numpy(dtype=bool)
+    is_numbered = work["Is Numbered"].to_numpy(dtype=bool)
+    is_one = work["Is OneOfOne"].to_numpy(dtype=bool)
+    is_case = work["Is CaseHit"].to_numpy(dtype=bool)
+    sim_value = pd.to_numeric(work["Sim Value"], errors="coerce").fillna(0.0).to_numpy(dtype=float)
+
+    player_lists = work["Player List"].tolist()
+    team_lists = work["Team List"].tolist()
+    initials_lists = work["Initial List"].tolist()
+
+    auto_idx = np.where(is_auto)[0]
+    mem_idx = np.where(is_mem)[0]
+    numbered_idx = np.where(is_numbered)[0]
+    case_idx = np.where(is_case)[0]
+
+    metric_cols = [
+        "Hits Moyens",
+        "Cartes de base",
+        "Rookies",
+        "Inserts",
+        "Parallèles",
+        "Autographes",
+        "Memorabilia/Patchs",
+        "Numérotées (/X)",
+        "1/1",
+    ]
+    totals = {spot: {col: 0.0 for col in metric_cols} for spot in spots}
+    value_history = {spot: [] for spot in spots}
+
+    spot_set = set(spots)
+    iterations = max(1, int(iterations))
+    boxes_count = max(1, int(boxes_count))
+    cards_per_box = max(1, int(cards_per_box))
+    boxes_per_case = max(1, int(boxes_per_case))
+
+    def assign_spot_for_card(card_idx):
+        if method == SIM_METHOD_LETTER:
+            choices = initials_lists[card_idx]
+            if not choices:
+                return None
+            if player_policy == "Aléatoire":
+                picked = choices[int(rng.integers(0, len(choices)))]
+            else:
+                picked = choices[0]
+            return picked if picked in spot_set else None
+
+        if method == SIM_METHOD_TEAM:
+            choices = team_lists[card_idx]
+            if not choices:
+                return None
+            if team_policy == "Aléatoire":
+                picked = choices[int(rng.integers(0, len(choices)))]
+            else:
+                picked = choices[0]
+            return picked if picked in spot_set else None
+
+        if method == SIM_METHOD_CUSTOM:
+            custom_map_safe = custom_map or {}
+            if custom_scope == "players":
+                choices = player_lists[card_idx]
+                if not choices:
+                    return None
+                picked = choices[int(rng.integers(0, len(choices)))] if player_policy == "Aléatoire" else choices[0]
+                mapped = custom_map_safe.get(picked, "")
+                return mapped if mapped in spot_set else None
+
+            choices = team_lists[card_idx]
+            if not choices:
+                return None
+            picked = choices[int(rng.integers(0, len(choices)))] if team_policy == "Aléatoire" else choices[0]
+            mapped = custom_map_safe.get(picked, "")
+            return mapped if mapped in spot_set else None
+
+        return None
+
+    for _ in range(iterations):
+        iter_data = {spot: {col: 0.0 for col in metric_cols} for spot in spots}
+        iter_value = {spot: 0.0 for spot in spots}
+        draws = []
+
+        for _box in range(boxes_count):
+            sample_idx = rng.choice(all_idx, size=cards_per_box, replace=True, p=weights)
+            sample_idx = enforce_minimum_in_draw(sample_idx, is_auto, guaranteed_auto, auto_idx, rng)
+            sample_idx = enforce_minimum_in_draw(sample_idx, is_mem, guaranteed_mem, mem_idx, rng)
+            sample_idx = enforce_minimum_in_draw(sample_idx, is_numbered, guaranteed_numbered, numbered_idx, rng)
+            draws.append(sample_idx)
+
+        all_draw_idx = np.concatenate(draws) if draws else np.array([], dtype=int)
+        if guaranteed_case_per_case > 0 and len(all_draw_idx) > 0:
+            case_target = int(guaranteed_case_per_case) * max(1, int(math.ceil(boxes_count / boxes_per_case)))
+            all_draw_idx = enforce_minimum_in_draw(all_draw_idx, is_case, case_target, case_idx, rng)
+
+        for card_idx in all_draw_idx.tolist():
+            spot = assign_spot_for_card(card_idx)
+            if not spot:
+                continue
+            row_bucket = iter_data[spot]
+            row_bucket["Hits Moyens"] += 1
+            row_bucket["Cartes de base"] += int(is_base[card_idx])
+            row_bucket["Rookies"] += int(is_rookie[card_idx])
+            row_bucket["Inserts"] += int(is_insert[card_idx])
+            row_bucket["Parallèles"] += int(is_parallel[card_idx])
+            row_bucket["Autographes"] += int(is_auto[card_idx])
+            row_bucket["Memorabilia/Patchs"] += int(is_mem[card_idx])
+            row_bucket["Numérotées (/X)"] += int(is_numbered[card_idx])
+            row_bucket["1/1"] += int(is_one[card_idx])
+            iter_value[spot] += float(sim_value[card_idx])
+
+        for spot in spots:
+            for col in metric_cols:
+                totals[spot][col] += iter_data[spot][col]
+            value_history[spot].append(iter_value[spot])
+
+    rows = []
+    for spot in spots:
+        values = np.array(value_history.get(spot, [0.0]), dtype=float)
+        values = values if len(values) > 0 else np.array([0.0], dtype=float)
+        mean_hits = totals[spot]["Hits Moyens"] / iterations
+        mean_auto = totals[spot]["Autographes"] / iterations
+        mean_mem = totals[spot]["Memorabilia/Patchs"] / iterations
+        mean_case = totals[spot]["Inserts"] / iterations
+        mean_one = totals[spot]["1/1"] / iterations
+        rarity_signal = mean_auto + mean_mem + (2.0 * mean_case) + (5.0 * mean_one)
+        if rarity_signal < 1.0:
+            rarity_label = "Commun"
+        elif rarity_signal < 3.0:
+            rarity_label = "Peu commun"
+        elif rarity_signal < 7.0:
+            rarity_label = "Rare"
+        else:
+            rarity_label = "Ultra-rare"
+
+        row = {
+            "Spot": spot,
+            "Hits Moyens": mean_hits,
+            "Cartes de base": totals[spot]["Cartes de base"] / iterations,
+            "Rookies": totals[spot]["Rookies"] / iterations,
+            "Inserts": totals[spot]["Inserts"] / iterations,
+            "Parallèles": totals[spot]["Parallèles"] / iterations,
+            "Autographes": mean_auto,
+            "Memorabilia/Patchs": mean_mem,
+            "Numérotées (/X)": totals[spot]["Numérotées (/X)"] / iterations,
+            "1/1": mean_one,
+            "Valeur Min (proxy)": float(values.min()),
+            "Valeur Moyenne (proxy)": float(values.mean()),
+            "Valeur Max (proxy)": float(values.max()),
+            "Rareté": rarity_label,
+        }
+        rows.append(row)
+
+    result_df = pd.DataFrame(rows)
+    if result_df.empty:
+        return result_df, {}
+
+    global_mean_value = float(result_df["Valeur Moyenne (proxy)"].mean()) if not result_df.empty else 0.0
+    global_std_value = float(result_df["Valeur Moyenne (proxy)"].std()) if len(result_df) > 1 else 0.0
+    cv = (global_std_value / global_mean_value) if global_mean_value > 0 else 0.0
+
+    if cv <= 0.15:
+        fairness_label = "Très équilibré"
+    elif cv <= 0.30:
+        fairness_label = "Acceptable"
+    else:
+        fairness_label = "Déséquilibré"
+
+    if len(result_df) > 5:
+        hot_threshold = float(result_df["Valeur Moyenne (proxy)"].quantile(0.9))
+    else:
+        hot_threshold = float(result_df["Valeur Moyenne (proxy)"].max())
+    result_df["Hot Spot"] = np.where(result_df["Valeur Moyenne (proxy)"] >= hot_threshold, "🔥 Hot", "")
+
+    if global_mean_value > 0:
+        spread_ratio = (result_df["Valeur Moyenne (proxy)"] / global_mean_value) - 1.0
+        result_df["Équilibre Spot"] = np.where(spread_ratio.abs() <= 0.15, "Équitable", "Non équitable")
+    else:
+        result_df["Équilibre Spot"] = "Équitable"
+
+    fairness_summary = {
+        "global_mean_value": global_mean_value,
+        "global_std_value": global_std_value,
+        "cv": cv,
+        "fairness_label": fairness_label,
+    }
+    return result_df, fairness_summary
+
+
+def build_spot_export_text(display_df):
+    lines = []
+    for _, row in display_df.iterrows():
+        lines.append(
+            f"{row.get('Spot', '')}: {float(row.get('Hits Moyens', 0.0)):.1f} hits | "
+            f"{float(row.get('Valeur Moyenne (proxy)', 0.0)):.1f} valeur moy (proxy) | "
+            f"base {float(row.get('Cartes de base', 0.0)):.1f}, "
+            f"rookies {float(row.get('Rookies', 0.0)):.1f}, "
+            f"inserts {float(row.get('Inserts', 0.0)):.1f}, "
+            f"autos {float(row.get('Autographes', 0.0)):.1f}, "
+            f"patchs {float(row.get('Memorabilia/Patchs', 0.0)):.1f}, "
+            f"1/1 {float(row.get('1/1', 0.0)):.2f}"
+        )
+    return "\n".join(lines)
+
+
+def encode_share_payload(payload):
+    json_bytes = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return base64.urlsafe_b64encode(json_bytes).decode("utf-8")
 
 # API Key Config (Removed as requested)
 # OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
@@ -1293,6 +1780,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             views.append("🧨 Rookies")
         if enabled_views.get("live_mode", True):
             views.append("⚡ Live Mode")
+        views.append("🧩 Simulation de Break")
         views.extend([" Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"])
         
         # Ensure current view is valid
@@ -2100,6 +2588,474 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 st.markdown("#### Top 5 Équipes")
                 for _, row in top_teams.iterrows():
                     st.metric(row["Team"], f"{row['Score']:.1f}")
+
+        elif selection == "🧩 Simulation de Break":
+            st.subheader("🧩 Simulation de Break")
+            st.caption("Simulation Monte Carlo de spots pour planifier un break avant le live.")
+
+            available_products = sorted(df["Product"].dropna().astype(str).str.strip().unique().tolist())
+            available_products = [p for p in available_products if p]
+            if not available_products:
+                st.info("Aucun produit disponible pour la simulation.")
+            else:
+                method_label_to_key = {v: k for k, v in SIM_METHOD_LABELS.items()}
+                method_labels = list(SIM_METHOD_LABELS.values())
+
+                cfg_col1, cfg_col2, cfg_col3, cfg_col4 = st.columns(4)
+                with cfg_col1:
+                    selected_method_label = st.selectbox("Méthode de break", method_labels, key="sim_method_label")
+                with cfg_col2:
+                    selected_product = st.selectbox("Produit (box/case)", available_products, key="sim_product")
+                with cfg_col3:
+                    boxes_count = st.number_input("Nombre de boîtes", min_value=1, max_value=500, value=1, step=1, key="sim_boxes")
+                with cfg_col4:
+                    cards_per_box = st.number_input("Cartes simulées/boîte", min_value=1, max_value=1000, value=24, step=1, key="sim_cards_per_box")
+
+                cfg_col5, cfg_col6, cfg_col7, cfg_col8 = st.columns(4)
+                with cfg_col5:
+                    iterations = st.slider("Itérations Monte Carlo", min_value=50, max_value=3000, value=300, step=50, key="sim_iterations")
+                with cfg_col6:
+                    use_random_seed = st.checkbox("Seed aléatoire", value=False, key="sim_random_seed")
+                with cfg_col7:
+                    seed_value = st.number_input("Seed", min_value=0, max_value=99999999, value=42, step=1, key="sim_seed")
+                with cfg_col8:
+                    boxes_per_case = st.number_input("Boîtes / case", min_value=1, max_value=100, value=12, step=1, key="sim_boxes_per_case")
+
+                st.markdown("#### Checklist & garanties produit")
+                gcol1, gcol2, gcol3, gcol4 = st.columns(4)
+                with gcol1:
+                    guaranteed_auto = st.number_input("Autos min / boîte", min_value=0, max_value=20, value=0, step=1, key="sim_guaranteed_auto")
+                with gcol2:
+                    guaranteed_mem = st.number_input("Patchs min / boîte", min_value=0, max_value=20, value=0, step=1, key="sim_guaranteed_mem")
+                with gcol3:
+                    guaranteed_numbered = st.number_input("Numérotées min / boîte", min_value=0, max_value=100, value=0, step=1, key="sim_guaranteed_numbered")
+                with gcol4:
+                    guaranteed_case_per_case = st.number_input("Case-hit min / case", min_value=0, max_value=20, value=0, step=1, key="sim_guaranteed_case")
+
+                selected_method = method_label_to_key[selected_method_label]
+                current_seed = int(np.random.default_rng().integers(1, 2_000_000_000)) if use_random_seed else int(seed_value)
+
+                sim_df = df[df["Product"] == selected_product].copy()
+                sim_pool = build_break_simulation_pool(sim_df)
+                if sim_pool.empty:
+                    st.warning("Le produit sélectionné n'a pas de données exploitables pour la simulation.")
+                else:
+                    st.caption(
+                        f"Checklist chargée: {len(sim_pool)} lignes • "
+                        f"{sim_pool['Player'].nunique()} joueurs • {sim_pool['Team'].nunique()} équipes"
+                    )
+
+                    policy_col1, policy_col2 = st.columns(2)
+                    with policy_col1:
+                        player_policy = st.radio(
+                            "Multi-joueurs: attribution",
+                            options=["Premier", "Aléatoire"],
+                            horizontal=True,
+                            key="sim_player_policy",
+                        )
+                    with policy_col2:
+                        team_policy = st.radio(
+                            "Multi-équipes: attribution",
+                            options=["Premier", "Aléatoire"],
+                            horizontal=True,
+                            key="sim_team_policy",
+                        )
+
+                    custom_scope = "teams"
+                    custom_spots = []
+                    custom_map = {}
+                    if selected_method == SIM_METHOD_CUSTOM:
+                        st.markdown("#### Configuration break personnalisé")
+                        custom_scope_label = st.radio(
+                            "Construire les spots à partir de",
+                            options=["Équipes", "Joueurs"],
+                            horizontal=True,
+                            key="sim_custom_scope_label",
+                        )
+                        custom_scope = "players" if custom_scope_label == "Joueurs" else "teams"
+                        source_entities = []
+                        if custom_scope == "players":
+                            for values in sim_pool["Player List"].tolist():
+                                source_entities.extend(values)
+                        else:
+                            for values in sim_pool["Team List"].tolist():
+                                source_entities.extend(values)
+                        source_entities = sorted(_ordered_unique(source_entities))
+
+                        suggested_spot_count = min(24, max(2, len(source_entities) // 3 if source_entities else 2))
+                        spot_count = int(
+                            st.number_input(
+                                "Nombre de spots personnalisés",
+                                min_value=2,
+                                max_value=100,
+                                value=suggested_spot_count,
+                                step=1,
+                                key="sim_custom_spot_count",
+                            )
+                        )
+                        default_spot_names = "\n".join([f"Spot {i+1}" for i in range(spot_count)])
+                        spot_names_text = st.text_area(
+                            "Noms des spots (1 par ligne)",
+                            value=default_spot_names,
+                            key="sim_custom_spot_names_text",
+                            height=160,
+                        )
+                        parsed_spots = [line.strip() for line in spot_names_text.splitlines() if line.strip()]
+                        custom_spots = _ordered_unique(parsed_spots)[:100]
+
+                        if not custom_spots:
+                            st.warning("Ajoute au moins un spot personnalisé.")
+                        else:
+                            assign_df = pd.DataFrame({"Entité": source_entities, "Spot": [""] * len(source_entities)})
+                            assign_state_key = f"sim_custom_assign_{selected_sport_key}_{selected_product}_{custom_scope}"
+                            previous_assign = st.session_state.get(assign_state_key, pd.DataFrame())
+                            if (
+                                isinstance(previous_assign, pd.DataFrame)
+                                and not previous_assign.empty
+                                and set(previous_assign.columns) >= {"Entité", "Spot"}
+                            ):
+                                previous_map = dict(
+                                    zip(
+                                        previous_assign["Entité"].astype(str).tolist(),
+                                        previous_assign["Spot"].astype(str).tolist(),
+                                    )
+                                )
+                                assign_df["Spot"] = assign_df["Entité"].map(previous_map).fillna("")
+
+                            st.caption("Affectation manuelle des entités aux spots (style drag-and-drop via éditeur).")
+                            edited_assign = st.data_editor(
+                                assign_df,
+                                key=assign_state_key,
+                                use_container_width=True,
+                                hide_index=True,
+                                column_config={
+                                    "Entité": st.column_config.TextColumn("Entité", disabled=True),
+                                    "Spot": st.column_config.SelectboxColumn("Spot", options=[""] + custom_spots),
+                                },
+                            )
+                            custom_map = {
+                                str(row["Entité"]).strip(): str(row["Spot"]).strip()
+                                for _, row in edited_assign.iterrows()
+                                if str(row.get("Spot", "")).strip() in custom_spots
+                            }
+
+                    compare_mode = st.checkbox("Mode comparaison (2 méthodes côte à côte)", value=False, key="sim_compare_mode")
+                    compare_method = None
+                    if compare_mode:
+                        compare_candidates = [SIM_METHOD_LETTER, SIM_METHOD_TEAM]
+                        compare_candidates = [m for m in compare_candidates if m != selected_method]
+                        compare_method = st.selectbox(
+                            "Méthode à comparer",
+                            options=compare_candidates,
+                            format_func=lambda m: SIM_METHOD_LABELS[m],
+                            key="sim_compare_method",
+                        )
+
+                    run_button_col, reroll_button_col = st.columns([1, 1])
+                    with run_button_col:
+                        run_simulation = st.button("🚀 Lancer la simulation", type="primary", key="sim_run_button")
+                    with reroll_button_col:
+                        reroll_seed = st.button("🎲 Relancer avec un seed aléatoire", key="sim_reroll_seed")
+
+                    if reroll_seed:
+                        current_seed = int(np.random.default_rng().integers(1, 2_000_000_000))
+                        run_simulation = True
+
+                    sim_state_key = f"break_simulation_result_{selected_sport_key}"
+                    if run_simulation:
+                        if selected_method == SIM_METHOD_CUSTOM:
+                            spots = custom_spots
+                        else:
+                            spots = build_default_spots(sim_pool, selected_method)
+
+                        if len(spots) == 0:
+                            st.error("Aucun spot disponible pour la simulation.")
+                        elif len(spots) > 100:
+                            st.error("Limite dépassée: maximum 100 spots.")
+                        else:
+                            result_df, fairness_summary = simulate_break_spots(
+                                pool_df=sim_pool,
+                                method=selected_method,
+                                spots=spots,
+                                iterations=iterations,
+                                boxes_count=boxes_count,
+                                cards_per_box=cards_per_box,
+                                seed=current_seed,
+                                player_policy=player_policy,
+                                team_policy=team_policy,
+                                custom_scope=custom_scope,
+                                custom_map=custom_map,
+                                guaranteed_auto=guaranteed_auto,
+                                guaranteed_mem=guaranteed_mem,
+                                guaranteed_numbered=guaranteed_numbered,
+                                guaranteed_case_per_case=guaranteed_case_per_case,
+                                boxes_per_case=boxes_per_case,
+                            )
+                            player_map = build_spot_player_map(
+                                sim_pool,
+                                selected_method,
+                                custom_scope=custom_scope,
+                                custom_map=custom_map,
+                                custom_spots=spots,
+                            )
+                            result_df["Nombre de joueurs"] = result_df["Spot"].apply(
+                                lambda s: len(player_map.get(s, set()))
+                            )
+                            result_df["Joueurs (aperçu)"] = result_df["Spot"].apply(
+                                lambda s: ", ".join(sorted(list(player_map.get(s, set())))[:8])
+                            )
+
+                            compare_payload = None
+                            if compare_mode and compare_method:
+                                compare_spots = build_default_spots(sim_pool, compare_method)
+                                compare_df, compare_fairness = simulate_break_spots(
+                                    pool_df=sim_pool,
+                                    method=compare_method,
+                                    spots=compare_spots,
+                                    iterations=iterations,
+                                    boxes_count=boxes_count,
+                                    cards_per_box=cards_per_box,
+                                    seed=current_seed,
+                                    player_policy=player_policy,
+                                    team_policy=team_policy,
+                                )
+                                compare_player_map = build_spot_player_map(sim_pool, compare_method)
+                                if not compare_df.empty:
+                                    compare_df["Nombre de joueurs"] = compare_df["Spot"].apply(
+                                        lambda s: len(compare_player_map.get(s, set()))
+                                    )
+                                    compare_df["Joueurs (aperçu)"] = compare_df["Spot"].apply(
+                                        lambda s: ", ".join(sorted(list(compare_player_map.get(s, set())))[:8])
+                                    )
+                                compare_payload = {
+                                    "method": compare_method,
+                                    "df": compare_df,
+                                    "fairness": compare_fairness,
+                                }
+
+                            st.session_state[sim_state_key] = {
+                                "config": {
+                                    "method": selected_method,
+                                    "method_label": SIM_METHOD_LABELS[selected_method],
+                                    "product": selected_product,
+                                    "boxes_count": int(boxes_count),
+                                    "cards_per_box": int(cards_per_box),
+                                    "iterations": int(iterations),
+                                    "seed": int(current_seed),
+                                    "player_policy": player_policy,
+                                    "team_policy": team_policy,
+                                    "custom_scope": custom_scope,
+                                    "custom_spots": spots,
+                                    "custom_map_size": len(custom_map),
+                                    "guaranteed_auto": int(guaranteed_auto),
+                                    "guaranteed_mem": int(guaranteed_mem),
+                                    "guaranteed_numbered": int(guaranteed_numbered),
+                                    "guaranteed_case_per_case": int(guaranteed_case_per_case),
+                                    "boxes_per_case": int(boxes_per_case),
+                                },
+                                "result_df": result_df,
+                                "fairness_summary": fairness_summary,
+                                "compare_payload": compare_payload,
+                                "saved_at": datetime.utcnow().isoformat(),
+                            }
+
+                    sim_payload = st.session_state.get(sim_state_key)
+                    if isinstance(sim_payload, dict) and not sim_payload.get("result_df", pd.DataFrame()).empty:
+                        result_df = sim_payload["result_df"].copy()
+                        fairness_summary = sim_payload.get("fairness_summary", {})
+
+                        st.markdown("#### Résultats de simulation")
+                        cfg = sim_payload.get("config", {})
+                        c_metric1, c_metric2, c_metric3, c_metric4 = st.columns(4)
+                        c_metric1.metric("Méthode", cfg.get("method_label", "-"))
+                        c_metric2.metric("Spots", len(result_df))
+                        c_metric3.metric("Valeur moyenne globale", f"{fairness_summary.get('global_mean_value', 0.0):.1f}")
+                        c_metric4.metric("Équilibre global", fairness_summary.get("fairness_label", "-"))
+                        st.caption(
+                            f"Seed: {cfg.get('seed', '-')}, itérations: {cfg.get('iterations', '-')}, "
+                            f"boîtes: {cfg.get('boxes_count', '-')}, cartes/boîte: {cfg.get('cards_per_box', '-')}"
+                        )
+
+                        st.markdown("#### Filtres & vues")
+                        filter_col1, filter_col2, filter_col3, filter_col4 = st.columns(4)
+                        with filter_col1:
+                            visible_types = st.multiselect(
+                                "Types de cartes visibles",
+                                options=SIM_CARD_TYPE_COLUMNS,
+                                default=SIM_CARD_TYPE_COLUMNS,
+                                key="sim_visible_types",
+                            )
+                        with filter_col2:
+                            sort_label = st.selectbox(
+                                "Tri des spots",
+                                options=list(SIM_SORT_OPTIONS.keys()),
+                                key="sim_sort_label",
+                            )
+                        with filter_col3:
+                            hot_only = st.checkbox("Hot spots uniquement", value=False, key="sim_hot_only")
+                        with filter_col4:
+                            player_search = st.text_input("Recherche joueur", value="", key="sim_player_search").strip().lower()
+
+                        display_df = result_df.copy()
+                        if hot_only:
+                            display_df = display_df[display_df["Hot Spot"] == "🔥 Hot"]
+                        if player_search:
+                            display_df = display_df[
+                                display_df["Joueurs (aperçu)"].astype(str).str.lower().str.contains(re.escape(player_search), na=False)
+                            ]
+
+                        sort_col = SIM_SORT_OPTIONS.get(sort_label, "Valeur Moyenne (proxy)")
+                        sort_ascending = sort_col == "Spot"
+                        display_df = display_df.sort_values(by=sort_col, ascending=sort_ascending).reset_index(drop=True)
+
+                        rounded_cols = [
+                            "Hits Moyens",
+                            "Cartes de base",
+                            "Rookies",
+                            "Inserts",
+                            "Parallèles",
+                            "Autographes",
+                            "Memorabilia/Patchs",
+                            "Numérotées (/X)",
+                            "1/1",
+                            "Valeur Min (proxy)",
+                            "Valeur Moyenne (proxy)",
+                            "Valeur Max (proxy)",
+                        ]
+                        for col in rounded_cols:
+                            if col in display_df.columns:
+                                display_df[col] = display_df[col].round(2)
+
+                        base_cols = [
+                            "Spot",
+                            "Nombre de joueurs",
+                            "Hits Moyens",
+                            "Valeur Min (proxy)",
+                            "Valeur Moyenne (proxy)",
+                            "Valeur Max (proxy)",
+                            "Rareté",
+                            "Hot Spot",
+                            "Équilibre Spot",
+                        ]
+                        selected_cols = ["Spot", "Nombre de joueurs"]
+                        selected_cols.extend([c for c in visible_types if c in display_df.columns])
+                        selected_cols.extend(
+                            [c for c in ["Valeur Min (proxy)", "Valeur Moyenne (proxy)", "Valeur Max (proxy)", "Rareté", "Hot Spot", "Équilibre Spot", "Joueurs (aperçu)"] if c in display_df.columns]
+                        )
+                        if not visible_types:
+                            selected_cols = [c for c in base_cols + ["Joueurs (aperçu)"] if c in display_df.columns]
+
+                        st.dataframe(display_df[selected_cols], use_container_width=True)
+
+                        top_chart_df = display_df.head(25).copy()
+                        if not top_chart_df.empty:
+                            fig_sim = px.bar(
+                                top_chart_df,
+                                x="Spot",
+                                y="Valeur Moyenne (proxy)",
+                                color="Hot Spot",
+                                hover_data=["Nombre de joueurs", "Hits Moyens", "Rareté"],
+                                title="Valeur moyenne estimée par spot (proxy)",
+                            )
+                            st.plotly_chart(fig_sim, use_container_width=True)
+
+                        compare_payload = sim_payload.get("compare_payload")
+                        if compare_payload and isinstance(compare_payload, dict):
+                            cmp_df = compare_payload.get("df", pd.DataFrame()).copy()
+                            cmp_label = SIM_METHOD_LABELS.get(compare_payload.get("method", ""), "Méthode 2")
+                            if not cmp_df.empty:
+                                cmp_df = cmp_df.sort_values("Valeur Moyenne (proxy)", ascending=False).head(20)
+                            st.markdown("#### Mode comparaison")
+                            cmp_col1, cmp_col2 = st.columns(2)
+                            with cmp_col1:
+                                st.caption(cfg.get("method_label", "Méthode 1"))
+                                st.dataframe(
+                                    display_df[["Spot", "Valeur Moyenne (proxy)", "Hits Moyens", "Hot Spot"]].head(20),
+                                    use_container_width=True,
+                                )
+                            with cmp_col2:
+                                st.caption(cmp_label)
+                                if cmp_df.empty:
+                                    st.info("Aucun résultat pour la méthode comparée.")
+                                else:
+                                    st.dataframe(
+                                        cmp_df[["Spot", "Valeur Moyenne (proxy)", "Hits Moyens", "Hot Spot"]].head(20),
+                                        use_container_width=True,
+                                    )
+
+                        st.markdown("#### Export & partage")
+                        export_col1, export_col2 = st.columns(2)
+                        with export_col1:
+                            csv_data = display_df.to_csv(index=False).encode("utf-8")
+                            st.download_button(
+                                "Exporter CSV",
+                                data=csv_data,
+                                file_name=f"simulation_break_{selected_sport_key}.csv",
+                                mime="text/csv",
+                                key="sim_export_csv",
+                            )
+                        with export_col2:
+                            json_payload = {
+                                "config": sim_payload.get("config", {}),
+                                "generated_at": sim_payload.get("saved_at", ""),
+                                "fairness": fairness_summary,
+                                "rows": result_df.to_dict(orient="records"),
+                            }
+                            st.download_button(
+                                "Exporter JSON (snapshot)",
+                                data=json.dumps(json_payload, ensure_ascii=False, indent=2).encode("utf-8"),
+                                file_name=f"simulation_break_{selected_sport_key}.json",
+                                mime="application/json",
+                                key="sim_export_json",
+                            )
+
+                        share_token = encode_share_payload(
+                            {
+                                "sport": selected_sport_key,
+                                "config": sim_payload.get("config", {}),
+                                "generated_at": sim_payload.get("saved_at", ""),
+                            }
+                        )
+                        st.text_input(
+                            "Lien partageable (token)",
+                            value=f"?sim={share_token}",
+                            key="sim_share_link",
+                        )
+
+                        spot_copy_text = build_spot_export_text(display_df)
+                        st.text_area(
+                            "Liste des spots (copier/coller)",
+                            value=spot_copy_text,
+                            height=180,
+                            key="sim_spot_copy_text",
+                        )
+
+                        if "saved_break_simulations" not in st.session_state:
+                            st.session_state["saved_break_simulations"] = {}
+                        save_name_col1, save_name_col2 = st.columns([3, 1])
+                        with save_name_col1:
+                            save_name = st.text_input("Nom de sauvegarde", value="", key="sim_save_name")
+                        with save_name_col2:
+                            save_click = st.button("💾 Sauvegarder", key="sim_save_button")
+
+                        if save_click and save_name.strip():
+                            st.session_state["saved_break_simulations"][save_name.strip()] = sim_payload
+                            st.success(f"Simulation sauvegardée: {save_name.strip()}")
+
+                        saved_names = sorted(st.session_state["saved_break_simulations"].keys())
+                        if saved_names:
+                            loaded_name = st.selectbox(
+                                "Simulations sauvegardées",
+                                options=[""] + saved_names,
+                                key="sim_saved_selector",
+                            )
+                            if loaded_name:
+                                saved_payload = st.session_state["saved_break_simulations"].get(loaded_name, {})
+                                saved_cfg = saved_payload.get("config", {})
+                                st.caption(
+                                    f"{loaded_name} • méthode={saved_cfg.get('method_label', '-')}, "
+                                    f"produit={saved_cfg.get('product', '-')}, seed={saved_cfg.get('seed', '-')}"
+                                )
 
         elif selection == " Par Fichier":
             st.subheader("Analyse par Fichier")
