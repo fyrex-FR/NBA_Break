@@ -2255,9 +2255,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         total_hits_t = int(team_cards['Hits'].sum())
                         unique_players_t = int(team_players['Player'].nunique()) if not team_players.empty else 0
                         unique_files_t = int(team_cards['File'].nunique())
-                        total_score_t = float(team_cards['Score'].sum()) if 'Score' in team_cards.columns else 0.0
-                        avg_score_t = (total_score_t / total_hits_t) if total_hits_t > 0 else 0.0
-
                         cat_counts_t = team_cards['Category'].value_counts()
                         count_logoman_t = int(cat_counts_t.get(CATEGORY_LOGOMAN, 0))
                         count_case_t = int(cat_counts_t.get(CATEGORY_CASE_HIT, 0))
@@ -2266,12 +2263,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
                         st.markdown(f"### {selected_team}")
 
-                        kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)
+                        kpi1, kpi2, kpi3 = st.columns(3)
                         kpi1.metric("🎯 Cartes", total_hits_t)
                         kpi2.metric("👥 Joueurs uniques", unique_players_t)
                         kpi3.metric("📁 Checklists", unique_files_t)
-                        kpi4.metric("⭐ Score total", f"{total_score_t:.1f}")
-                        kpi5.metric("⚖️ Score moyen", f"{avg_score_t:.2f}")
 
                         kpi6, kpi7, kpi8, kpi9 = st.columns(4)
                         kpi6.metric("🔥 Logoman", count_logoman_t)
