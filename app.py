@@ -2518,8 +2518,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
                     if len(spots) == 0:
                         st.error("Aucun spot disponible pour la simulation.")
-                    elif len(spots) > 100:
-                        st.error("Limite dépassée: maximum 100 spots.")
                     else:
                         result_df, summary = build_deterministic_spot_summary(
                             pool_df=sim_pool,
