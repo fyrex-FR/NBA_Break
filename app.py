@@ -407,7 +407,7 @@ SIM_CARD_TYPE_COLUMNS = [
 ]
 
 SIM_SORT_OPTIONS = {
-    "Nombre de hits": "Hits",
+    "Nombre de cartes": "Cartes",
     "Auto/Memo": "Auto/Memo",
     "Case Hit": "Case Hit",
     "Nombre de joueurs": "Nombre de joueurs",
@@ -466,7 +466,13 @@ def build_break_simulation_pool(df):
     work["Team"] = work["Team"].astype(str).str.strip()
     work["Box Type"] = work["Box Type"].astype(str).str.strip()
     work["Category"] = work["Category"].astype(str).str.strip()
-    work["Hits"] = pd.to_numeric(work["Hits"], errors="coerce").fillna(1).clip(lower=0.1)
+    work["Hits"] = (
+        pd.to_numeric(work["Hits"], errors="coerce")
+        .fillna(1)
+        .round()
+        .clip(lower=1)
+        .astype(int)
+    )
 
     work["Player List"] = work["Player"].apply(_clean_list_or_single)
     work["Team List"] = work["Team"].apply(_clean_list_or_single)
@@ -577,17 +583,17 @@ def build_deterministic_spot_summary(
     custom_map = custom_map or {}
 
     metric_cols = [
-        "Hits",
+        "Cartes",
         "Auto/Memo",
         "Case Hit",
     ]
-    totals = {spot: {col: 0.0 for col in metric_cols} for spot in spots}
+    totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
 
     for _, row in work.iterrows():
         player_list = row.get("Player List", [])
         team_list = row.get("Team List", [])
         initial_list = row.get("Initial List", [])
-        hits = float(row.get("Hits", 1.0) or 1.0)
+        hits = int(row.get("Hits", 1) or 1)
 
         targets = []
         if method == SIM_METHOD_LETTER:
@@ -605,11 +611,11 @@ def build_deterministic_spot_summary(
         if not targets:
             continue
 
-        share = hits / len(targets)
-        for spot in targets:
-            totals[spot]["Hits"] += share
-            totals[spot]["Auto/Memo"] += share if row.get("Is AutoMemo", False) else 0.0
-            totals[spot]["Case Hit"] += share if row.get("Is CaseHit", False) else 0.0
+        # Deterministic single-spot assignment to avoid fractional cards.
+        assigned_spot = targets[0]
+        totals[assigned_spot]["Cartes"] += hits
+        totals[assigned_spot]["Auto/Memo"] += hits if row.get("Is AutoMemo", False) else 0
+        totals[assigned_spot]["Case Hit"] += hits if row.get("Is CaseHit", False) else 0
 
     rows = []
     for spot in spots:
@@ -627,7 +633,7 @@ def build_deterministic_spot_summary(
 
         row = {
             "Spot": spot,
-            "Hits": totals[spot]["Hits"],
+            "Cartes": totals[spot]["Cartes"],
             "Auto/Memo": totals[spot]["Auto/Memo"],
             "Case Hit": totals[spot]["Case Hit"],
             "Rareté": rarity_label,
@@ -638,17 +644,7 @@ def build_deterministic_spot_summary(
     if result_df.empty:
         return result_df, {}
 
-    total_hits = float(result_df["Hits"].sum())
-    mean_hits = float(result_df["Hits"].mean()) if not result_df.empty else 0.0
-    std_hits = float(result_df["Hits"].std()) if len(result_df) > 1 else 0.0
-    cv = (std_hits / mean_hits) if mean_hits > 0 else 0.0
-
-    if cv <= 0.15:
-        fairness_label = "Très équilibré"
-    elif cv <= 0.30:
-        fairness_label = "Acceptable"
-    else:
-        fairness_label = "Déséquilibré"
+    total_cartes = int(result_df["Cartes"].sum())
 
     result_df["Hot Signal"] = result_df["Auto/Memo"] + (2.0 * result_df["Case Hit"])
     if len(result_df) > 5:
@@ -656,31 +652,24 @@ def build_deterministic_spot_summary(
     else:
         hot_threshold = float(result_df["Hot Signal"].max())
     result_df["Hot Spot"] = result_df["Hot Signal"].apply(lambda x: "🔥 Hot" if x >= hot_threshold else "")
+    for col in ["Cartes", "Auto/Memo", "Case Hit", "Hot Signal"]:
+        result_df[col] = result_df[col].astype(int)
 
-    if mean_hits > 0:
-        result_df["Équilibre Spot"] = result_df["Hits"].apply(
-            lambda x: "Équitable" if abs((x / mean_hits) - 1.0) <= 0.15 else "Non équitable"
-        )
-    else:
-        result_df["Équilibre Spot"] = "Équitable"
-
-    fairness_summary = {
-        "total_hits": total_hits,
-        "mean_hits": mean_hits,
-        "std_hits": std_hits,
-        "cv": cv,
-        "fairness_label": fairness_label,
+    summary = {
+        "total_cartes": total_cartes,
+        "hot_spots": int((result_df["Hot Spot"] == "🔥 Hot").sum()),
+        "hot_threshold": hot_threshold,
     }
-    return result_df, fairness_summary
+    return result_df, summary
 
 
 def build_spot_export_text(display_df):
     lines = []
     for _, row in display_df.iterrows():
         lines.append(
-            f"{row.get('Spot', '')}: {float(row.get('Hits', 0.0)):.1f} cartes | "
-            f"auto/memo {float(row.get('Auto/Memo', 0.0)):.1f}, "
-            f"case hit {float(row.get('Case Hit', 0.0)):.1f}"
+            f"{row.get('Spot', '')}: {int(row.get('Cartes', 0))} cartes | "
+            f"auto/memo {int(row.get('Auto/Memo', 0))}, "
+            f"case hit {int(row.get('Case Hit', 0))}"
         )
     return "\n".join(lines)
 
@@ -2523,7 +2512,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     elif len(spots) > 100:
                         st.error("Limite dépassée: maximum 100 spots.")
                     else:
-                        result_df, fairness_summary = build_deterministic_spot_summary(
+                        result_df, summary = build_deterministic_spot_summary(
                             pool_df=sim_pool,
                             method=selected_method,
                             spots=spots,
@@ -2546,8 +2535,17 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         c_metric1, c_metric2, c_metric3, c_metric4 = st.columns(4)
                         c_metric1.metric("Méthode", SIM_METHOD_LABELS[selected_method])
                         c_metric2.metric("Spots", len(result_df))
-                        c_metric3.metric("Total cartes", f"{fairness_summary.get('total_hits', 0.0):.1f}")
-                        c_metric4.metric("Équilibre global", fairness_summary.get("fairness_label", "-"))
+                        c_metric3.metric("Total cartes", f"{int(summary.get('total_cartes', 0))}")
+                        c_metric4.metric("Hot spots", f"{summary.get('hot_spots', 0)}")
+
+                        hot_threshold_legend = float(summary.get("hot_threshold", 0.0))
+                        with st.expander("ℹ️ Légende de calcul", expanded=False):
+                            st.markdown(
+                                "- `Rareté` : signal = `Auto/Memo + 2 × Case Hit`.\n"
+                                "- Niveaux : `Commun < 1`, `Peu commun < 3`, `Rare < 7`, sinon `Ultra-rare`.\n"
+                                f"- `Hot Spot` : même signal, seuil actuel = `{hot_threshold_legend:.2f}` "
+                                "(p90 si > 5 spots, sinon max)."
+                            )
 
                         st.markdown("#### Filtres & vues")
                         filter_col1, filter_col2, filter_col3, filter_col4 = st.columns(4)
@@ -2577,14 +2575,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 display_df["Joueurs (aperçu)"].astype(str).str.lower().str.contains(re.escape(player_search), na=False)
                             ]
 
-                        sort_col = SIM_SORT_OPTIONS.get(sort_label, "Hits")
+                        sort_col = SIM_SORT_OPTIONS.get(sort_label, "Cartes")
                         if sort_col not in display_df.columns:
-                            sort_col = "Hits"
+                            sort_col = "Cartes"
                         sort_ascending = sort_col == "Spot"
                         display_df = display_df.sort_values(by=sort_col, ascending=sort_ascending).reset_index(drop=True)
 
                         rounded_cols = [
-                            "Hits",
+                            "Cartes",
                             "Auto/Memo",
                             "Case Hit",
                             "Hot Signal",
@@ -2596,29 +2594,30 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         base_cols = [
                             "Spot",
                             "Nombre de joueurs",
-                            "Hits",
+                            "Cartes",
                             "Auto/Memo",
                             "Case Hit",
                             "Rareté",
                             "Hot Spot",
-                            "Équilibre Spot",
                         ]
                         selected_cols = ["Spot", "Nombre de joueurs"]
                         selected_cols.extend([c for c in visible_types if c in display_df.columns])
                         selected_cols.extend(
-                            [c for c in ["Rareté", "Hot Spot", "Équilibre Spot", "Joueurs (aperçu)"] if c in display_df.columns]
+                            [c for c in ["Rareté", "Hot Spot", "Joueurs (aperçu)"] if c in display_df.columns]
                         )
                         if not visible_types:
                             selected_cols = [c for c in base_cols + ["Joueurs (aperçu)"] if c in display_df.columns]
 
-                        st.dataframe(display_df[selected_cols], use_container_width=True)
+                        export_cols = list(dict.fromkeys(selected_cols))
+                        export_table_df = display_df[export_cols].copy()
+                        st.dataframe(export_table_df, use_container_width=True)
 
                         top_chart_df = display_df.head(25).copy()
                         if not top_chart_df.empty:
                             fig_sim = px.bar(
                                 top_chart_df,
                                 x="Spot",
-                                y="Hits",
+                                y="Cartes",
                                 color="Hot Spot",
                                 hover_data=["Nombre de joueurs", "Auto/Memo", "Case Hit", "Rareté"],
                                 title="Répartition du nombre de cartes par spot",
@@ -2638,7 +2637,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             with cmp_col1:
                                 st.caption(SIM_METHOD_LABELS[selected_method])
                                 st.dataframe(
-                                    display_df[["Spot", "Hits", "Auto/Memo", "Case Hit", "Hot Spot"]].head(20),
+                                    display_df[["Spot", "Cartes", "Auto/Memo", "Case Hit", "Hot Spot"]].head(20),
                                     use_container_width=True,
                                 )
                             with cmp_col2:
@@ -2646,16 +2645,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 if compare_df.empty:
                                     st.info("Aucun résultat pour la méthode comparée.")
                                 else:
-                                    compare_df = compare_df.sort_values("Hits", ascending=False).head(20)
+                                    compare_df = compare_df.sort_values("Cartes", ascending=False).head(20)
                                     st.dataframe(
-                                        compare_df[["Spot", "Hits", "Auto/Memo", "Case Hit", "Hot Spot"]],
+                                        compare_df[["Spot", "Cartes", "Auto/Memo", "Case Hit", "Hot Spot"]],
                                         use_container_width=True,
                                     )
 
                         st.markdown("#### Export")
                         export_col1, export_col2 = st.columns(2)
                         with export_col1:
-                            csv_data = display_df.to_csv(index=False).encode("utf-8")
+                            csv_data = export_table_df.to_csv(index=False).encode("utf-8")
                             st.download_button(
                                 "Exporter CSV",
                                 data=csv_data,
@@ -2672,7 +2671,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                     "custom_scope": custom_scope,
                                     "spots": spots,
                                 },
-                                "fairness": fairness_summary,
+                                "summary": summary,
                                 "rows": result_df.to_dict(orient="records"),
                             }
                             st.download_button(
