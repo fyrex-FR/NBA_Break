@@ -2276,14 +2276,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
                         col_t1, col_t2 = st.columns(2)
                         with col_t1:
-                            st.markdown("#### Répartition par type")
-                            fig_cat_t = px.pie(
-                                team_cards.groupby('Category', as_index=False)['Hits'].sum(),
-                                names='Category',
-                                values='Hits',
-                                hole=0.35,
-                            )
-                            st.plotly_chart(fig_cat_t, use_container_width=True)
+                            if not team_players.empty:
+                                st.markdown("#### Top joueurs de l'équipe")
+                                top_players_t = (
+                                    team_players.groupby('Player', as_index=False)['Hits']
+                                    .sum()
+                                    .sort_values('Hits', ascending=False)
+                                )
+                                st.dataframe(top_players_t.head(20), use_container_width=True)
+                            else:
+                                st.info("Aucun joueur à afficher pour cette équipe.")
 
                         with col_t2:
                             st.markdown("#### Répartition par checklist")
@@ -2302,15 +2304,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             fig_file_t.update_layout(yaxis={'categoryorder': 'total ascending'})
                             st.plotly_chart(fig_file_t, use_container_width=True)
 
-                        if not team_players.empty:
-                            st.markdown("#### Top joueurs de l'équipe")
-                            top_players_t = (
-                                team_players.groupby('Player', as_index=False)['Hits']
-                                .sum()
-                                .sort_values('Hits', ascending=False)
-                            )
-                            st.dataframe(top_players_t.head(20), use_container_width=True)
-
                         st.markdown("---")
                         st.subheader("Liste des cartes")
 
@@ -2319,13 +2312,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             CATEGORY_FILTER_OPTIONS,
                             horizontal=True,
                             key="team_filter_cat",
-                        )
-                        max_serial_t = st.number_input(
-                            "Filtre numérotation (<= /xx)",
-                            min_value=0,
-                            value=0,
-                            step=1,
-                            key="team_serial",
                         )
                         box_search_t = st.text_input(
                             "Recherche Card Type / Joueur",
@@ -2344,10 +2330,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         display_team_df = team_cards.copy()
                         if filter_cat_t != "Tous":
                             display_team_df = display_team_df[display_team_df['Category'] == filter_cat_t]
-                        if max_serial_t > 0:
-                            display_team_df = display_team_df[
-                                display_team_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial_t
-                            ]
                         if selected_files_t:
                             display_team_df = display_team_df[display_team_df['File'].isin(selected_files_t)]
                         if box_search_t:
@@ -2357,12 +2339,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             )
                             display_team_df = display_team_df[search_mask]
 
-                        sort_cols_t = ['Hits']
-                        sort_asc_t = [False]
-                        if 'Score' in display_team_df.columns:
-                            sort_cols_t = ['Score'] + sort_cols_t
-                            sort_asc_t = [False] + sort_asc_t
-                        display_team_df = display_team_df.sort_values(sort_cols_t, ascending=sort_asc_t)
+                        display_team_df = display_team_df.sort_values(['Player', 'Category', 'Hits'], ascending=[True, True, False])
 
                         if display_team_df.empty:
                             st.info("Aucune carte ne correspond aux filtres.")
@@ -2374,10 +2351,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 .str.contains('/', na=False)
                                 .map({True: "Oui", False: ""})
                             )
-                            cols_team_view = ['Category', 'Player', 'Box Type', 'Multi-Joueurs', 'Numbering', 'Hits']
-                            if 'Score' in display_team_view.columns:
-                                cols_team_view.append('Score')
-                            cols_team_view.append('File')
+                            cols_team_view = ['Category', 'Player', 'Box Type', 'Multi-Joueurs', 'Hits', 'File']
                             st.dataframe(display_team_view[cols_team_view], use_container_width=True)
 
 
