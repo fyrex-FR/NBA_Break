@@ -2225,45 +2225,165 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
 
         elif selection == "🛡️ Analyse Équipe":
-             st.subheader("Analyse détaillée par Équipe")
-            
-             # Get list of teams from Exploded DF
-             all_teams = df_t['Team'].value_counts().index.tolist()
-             
-             # Check for pre-selected team from navigation
-             default_index_t = 0
-             if 'target_team' in st.session_state and st.session_state['target_team'] in all_teams:
-                 default_index_t = all_teams.index(st.session_state['target_team'])
+            st.subheader("Analyse détaillée par Équipe")
 
-             selected_team = st.selectbox("Rechercher une équipe :", all_teams, index=default_index_t, key="team_selector")
-             
-             if selected_team:
-                 team_df_sub = df_t[df_t['Team'] == selected_team]
-                 total_hits_t = len(team_df_sub)
-                 
-                 st.markdown(f"### {selected_team}")
-                 st.markdown(f"**Total Cartes :** {total_hits_t}")
-                 
-                 # File Distribution
-                 file_counts_t = team_df_sub['File'].value_counts().reset_index()
-                 file_counts_t.columns = ['File', 'Count']
-                 
-                 col_t1, col_t2 = st.columns([1, 1])
-                 
-                 with col_t1:
-                      st.markdown("#### Répartition par Fichier")
-                      fig_pie_file_t = px.pie(file_counts_t, values='Count', names='File', title=f"Répartition par Fichier")
-                      st.plotly_chart(fig_pie_file_t, use_container_width=True)
- 
-                 with col_t2:
-                     st.markdown("#### Détail des cartes")
-                     max_serial_t = st.number_input("Filtre numérotation (<= /xx)", min_value=0, value=0, step=1, key="team_serial")
-                     display_team_df = team_df_sub.copy()
-                     if max_serial_t > 0:
-                         display_team_df = display_team_df[
-                             display_team_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial_t
-                         ]
-                     st.dataframe(display_team_df[['Player', 'Box Type', 'Numbering', 'Hits', 'File']], use_container_width=True)
+            all_teams = df_t['Team'].dropna().astype(str).str.strip()
+            all_teams = [t for t in all_teams.unique().tolist() if t]
+            all_teams = sorted(all_teams)
+
+            if not all_teams:
+                st.info("Aucune équipe trouvée dans la sélection actuelle.")
+            else:
+                default_index_t = 0
+                if 'target_team' in st.session_state and st.session_state['target_team'] in all_teams:
+                    default_index_t = all_teams.index(st.session_state['target_team'])
+
+                selected_team = st.selectbox(
+                    "Rechercher une équipe :",
+                    all_teams,
+                    index=default_index_t,
+                    key="team_selector",
+                )
+
+                if selected_team:
+                    team_cards = df_t[df_t['Team'] == selected_team].copy()
+                    team_players = df_p[df_p['Team'] == selected_team].copy()
+
+                    if team_cards.empty:
+                        st.info("Aucune carte pour cette équipe.")
+                    else:
+                        total_hits_t = int(team_cards['Hits'].sum())
+                        unique_players_t = int(team_players['Player'].nunique()) if not team_players.empty else 0
+                        unique_files_t = int(team_cards['File'].nunique())
+                        total_score_t = float(team_cards['Score'].sum()) if 'Score' in team_cards.columns else 0.0
+                        avg_score_t = (total_score_t / total_hits_t) if total_hits_t > 0 else 0.0
+
+                        cat_counts_t = team_cards['Category'].value_counts()
+                        count_logoman_t = int(cat_counts_t.get(CATEGORY_LOGOMAN, 0))
+                        count_case_t = int(cat_counts_t.get(CATEGORY_CASE_HIT, 0))
+                        count_auto_t = int(cat_counts_t.get(CATEGORY_AUTO_MEM, 0))
+                        count_base_t = int(cat_counts_t.get(CATEGORY_BASE_OTHER, 0))
+
+                        st.markdown(f"### {selected_team}")
+
+                        kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)
+                        kpi1.metric("🎯 Cartes", total_hits_t)
+                        kpi2.metric("👥 Joueurs uniques", unique_players_t)
+                        kpi3.metric("📁 Checklists", unique_files_t)
+                        kpi4.metric("⭐ Score total", f"{total_score_t:.1f}")
+                        kpi5.metric("⚖️ Score moyen", f"{avg_score_t:.2f}")
+
+                        kpi6, kpi7, kpi8, kpi9 = st.columns(4)
+                        kpi6.metric("🔥 Logoman", count_logoman_t)
+                        kpi7.metric("✨ Case Hit", count_case_t)
+                        kpi8.metric("💎 Auto/Mem", count_auto_t)
+                        kpi9.metric("📄 Base/Autre", count_base_t)
+
+                        col_t1, col_t2 = st.columns(2)
+                        with col_t1:
+                            st.markdown("#### Répartition par type")
+                            fig_cat_t = px.pie(
+                                team_cards.groupby('Category', as_index=False)['Hits'].sum(),
+                                names='Category',
+                                values='Hits',
+                                hole=0.35,
+                            )
+                            st.plotly_chart(fig_cat_t, use_container_width=True)
+
+                        with col_t2:
+                            st.markdown("#### Répartition par checklist")
+                            file_counts_t = (
+                                team_cards.groupby('File', as_index=False)['Hits']
+                                .sum()
+                                .sort_values('Hits', ascending=False)
+                            )
+                            fig_file_t = px.bar(
+                                file_counts_t.head(12),
+                                x='Hits',
+                                y='File',
+                                orientation='h',
+                                color='Hits',
+                            )
+                            fig_file_t.update_layout(yaxis={'categoryorder': 'total ascending'})
+                            st.plotly_chart(fig_file_t, use_container_width=True)
+
+                        if not team_players.empty:
+                            st.markdown("#### Top joueurs de l'équipe")
+                            top_players_t = (
+                                team_players.groupby('Player', as_index=False)['Hits']
+                                .sum()
+                                .sort_values('Hits', ascending=False)
+                            )
+                            st.dataframe(top_players_t.head(20), use_container_width=True)
+
+                        st.markdown("---")
+                        st.subheader("Liste des cartes")
+
+                        filter_cat_t = st.radio(
+                            "Filtrer par type :",
+                            CATEGORY_FILTER_OPTIONS,
+                            horizontal=True,
+                            key="team_filter_cat",
+                        )
+                        max_serial_t = st.number_input(
+                            "Filtre numérotation (<= /xx)",
+                            min_value=0,
+                            value=0,
+                            step=1,
+                            key="team_serial",
+                        )
+                        box_search_t = st.text_input(
+                            "Recherche Card Type / Joueur",
+                            value="",
+                            key="team_search",
+                        ).strip().lower()
+
+                        available_files_t = sorted(team_cards['File'].dropna().astype(str).unique().tolist())
+                        selected_files_t = st.multiselect(
+                            "Filtrer les checklists",
+                            options=available_files_t,
+                            default=available_files_t,
+                            key="team_files_filter",
+                        )
+
+                        display_team_df = team_cards.copy()
+                        if filter_cat_t != "Tous":
+                            display_team_df = display_team_df[display_team_df['Category'] == filter_cat_t]
+                        if max_serial_t > 0:
+                            display_team_df = display_team_df[
+                                display_team_df['Numbering'].apply(parse_numbering).fillna(0) <= max_serial_t
+                            ]
+                        if selected_files_t:
+                            display_team_df = display_team_df[display_team_df['File'].isin(selected_files_t)]
+                        if box_search_t:
+                            search_mask = (
+                                display_team_df['Box Type'].astype(str).str.lower().str.contains(box_search_t, na=False)
+                                | display_team_df['Player'].astype(str).str.lower().str.contains(box_search_t, na=False)
+                            )
+                            display_team_df = display_team_df[search_mask]
+
+                        sort_cols_t = ['Hits']
+                        sort_asc_t = [False]
+                        if 'Score' in display_team_df.columns:
+                            sort_cols_t = ['Score'] + sort_cols_t
+                            sort_asc_t = [False] + sort_asc_t
+                        display_team_df = display_team_df.sort_values(sort_cols_t, ascending=sort_asc_t)
+
+                        if display_team_df.empty:
+                            st.info("Aucune carte ne correspond aux filtres.")
+                        else:
+                            display_team_view = display_team_df.copy()
+                            display_team_view['Multi-Joueurs'] = (
+                                display_team_view['Player']
+                                .astype(str)
+                                .str.contains('/', na=False)
+                                .map({True: "Oui", False: ""})
+                            )
+                            cols_team_view = ['Category', 'Player', 'Box Type', 'Multi-Joueurs', 'Numbering', 'Hits']
+                            if 'Score' in display_team_view.columns:
+                                cols_team_view.append('Score')
+                            cols_team_view.append('File')
+                            st.dataframe(display_team_view[cols_team_view], use_container_width=True)
 
 
             
