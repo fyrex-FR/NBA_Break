@@ -41,6 +41,7 @@ from r2_storage import (
 sports_config_module = importlib.reload(sports_config_module)
 DEFAULT_SPORT_KEY = sports_config_module.DEFAULT_SPORT_KEY
 detect_sport_from_filename = sports_config_module.detect_sport_from_filename
+get_effective_exact_category_by_sport = sports_config_module.get_effective_exact_category_by_sport
 get_sport_labels = sports_config_module.get_sport_labels
 get_sport_profile = sports_config_module.get_sport_profile
 sport_key_from_label = sports_config_module.sport_key_from_label
@@ -1614,34 +1615,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         if not sport_rule_map:
             sport_rule_map[selected_sport_key] = category_rules
 
-        overrides_by_sport = keyword_overrides_root.get("exact_category_by_sport", {})
-        if not isinstance(overrides_by_sport, dict):
-            overrides_by_sport = {}
-        legacy_auto_by_sport = keyword_overrides_root.get("auto_mem_exact_by_sport", {})
-        if not isinstance(legacy_auto_by_sport, dict):
-            legacy_auto_by_sport = {}
+        effective_exact_by_sport = get_effective_exact_category_by_sport(keyword_overrides_root)
 
         auto_override_sets = {}
         case_override_sets = {}
         for sk in sport_rule_map.keys():
-            sport_overrides = overrides_by_sport.get(sk, {})
-            if not isinstance(sport_overrides, dict):
-                sport_overrides = {}
-
-            auto_values = []
-            case_values = []
-
-            raw_auto = sport_overrides.get("auto_mem", [])
-            if isinstance(raw_auto, list):
-                auto_values.extend(raw_auto)
-            legacy_raw_auto = legacy_auto_by_sport.get(sk, [])
-            if isinstance(legacy_raw_auto, list):
-                auto_values.extend(legacy_raw_auto)
-
-            raw_case = sport_overrides.get("case_hit", [])
-            if isinstance(raw_case, list):
-                case_values.extend(raw_case)
-
+            sport_overrides = effective_exact_by_sport.get(sk, {})
+            auto_values = sport_overrides.get("auto_mem", []) if isinstance(sport_overrides, dict) else []
+            case_values = sport_overrides.get("case_hit", []) if isinstance(sport_overrides, dict) else []
             auto_override_sets[sk] = {normalize_box_type_text(v) for v in auto_values if str(v).strip()}
             case_override_sets[sk] = {normalize_box_type_text(v) for v in case_values if str(v).strip()}
 
@@ -1994,7 +1975,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.subheader("🧪 Détection Auto/Mem + Case Hit (par checklist)")
             st.caption("Coche Auto/Mem et/ou Case Hit pour chaque Card Type, puis enregistre.")
 
-            sport_overrides = overrides_by_sport.get(selected_sport_key, {})
+            sport_overrides = effective_exact_by_sport.get(selected_sport_key, {})
             if not isinstance(sport_overrides, dict):
                 sport_overrides = {}
             current_auto_overrides = sport_overrides.get("auto_mem", [])
@@ -2003,13 +1984,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 current_auto_overrides = []
             if not isinstance(current_case_overrides, list):
                 current_case_overrides = []
-
-            # Migrate/display legacy auto overrides if still present.
-            legacy_auto = keyword_overrides_root.get("auto_mem_exact_by_sport", {})
-            if isinstance(legacy_auto, dict):
-                legacy_values = legacy_auto.get(selected_sport_key, [])
-                if isinstance(legacy_values, list):
-                    current_auto_overrides = sorted(set(current_auto_overrides + legacy_values))
 
             current_auto_set = {normalize_box_type_text(v) for v in current_auto_overrides}
             current_case_set = {normalize_box_type_text(v) for v in current_case_overrides}

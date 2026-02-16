@@ -442,6 +442,19 @@ SPORT_PROFILES = {
     },
 }
 
+BASE_EXACT_CATEGORY_BY_SPORT = {
+    "nba": {
+        "auto_mem": [
+            "Autographed Gold Logoman Relics",
+            "Gold Logoman Relics",
+        ],
+        "case_hit": [
+            "Fanatical",
+            "Helix",
+        ],
+    },
+}
+
 DEFAULT_SPORT_KEY = "nba"
 AUTO_SPORT_PROFILE = {
     "label": AUTO_SPORT_LABEL,
@@ -450,6 +463,70 @@ AUTO_SPORT_PROFILE = {
     "header_title": "Check list optimizer",
     "header_subtitle": "Détection automatique du sport à partir des fichiers sélectionnés.",
 }
+
+
+def _normalized_exact_list(values):
+    if not isinstance(values, list):
+        return []
+    output = []
+    seen = set()
+    for raw in values:
+        text = "" if raw is None else str(raw).strip()
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        output.append(text)
+    return output
+
+
+def get_base_exact_category_by_sport():
+    output = {}
+    for sk in SPORT_PROFILES:
+        sport_base = BASE_EXACT_CATEGORY_BY_SPORT.get(sk, {})
+        if not isinstance(sport_base, dict):
+            sport_base = {}
+        output[sk] = {
+            "auto_mem": _normalized_exact_list(sport_base.get("auto_mem", [])),
+            "case_hit": _normalized_exact_list(sport_base.get("case_hit", [])),
+        }
+    return output
+
+
+def get_effective_exact_category_by_sport(keyword_overrides_root):
+    root = keyword_overrides_root if isinstance(keyword_overrides_root, dict) else {}
+    by_sport = root.get("exact_category_by_sport", {})
+    legacy_auto = root.get("auto_mem_exact_by_sport", {})
+
+    if not isinstance(by_sport, dict):
+        by_sport = {}
+    if not isinstance(legacy_auto, dict):
+        legacy_auto = {}
+
+    effective = get_base_exact_category_by_sport()
+    all_sport_keys = set(effective.keys()) | set(by_sport.keys()) | set(legacy_auto.keys())
+
+    for sk in sorted(all_sport_keys):
+        sport_base = effective.get(sk, {"auto_mem": [], "case_hit": []})
+        sport_runtime = by_sport.get(sk, {})
+        if not isinstance(sport_runtime, dict):
+            sport_runtime = {}
+
+        runtime_auto = sport_runtime.get("auto_mem", None)
+        runtime_case = sport_runtime.get("case_hit", None)
+        legacy_values = legacy_auto.get(sk, [])
+
+        auto_values = runtime_auto if isinstance(runtime_auto, list) else sport_base.get("auto_mem", [])
+        case_values = runtime_case if isinstance(runtime_case, list) else sport_base.get("case_hit", [])
+
+        if isinstance(legacy_values, list):
+            auto_values = list(auto_values) + legacy_values
+
+        effective[sk] = {
+            "auto_mem": _normalized_exact_list(auto_values),
+            "case_hit": _normalized_exact_list(case_values),
+        }
+
+    return effective
 
 
 def get_sport_profile(sport_key):
