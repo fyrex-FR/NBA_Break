@@ -77,12 +77,17 @@
         "Update - 2023-24 Crown Royale Basketball - Silhouettes Prime",
         "Update - 2023-24 Crown Royale Basketball - Silhouettes Super Prime",
         "Update - 2024-25 Panini Basketball - Private Signings",
-        "Update: 2024 Panini Hoops Basketball - Private Signings"
+        "Update: 2024 Panini Hoops Basketball - Private Signings",
+        "Autographed Gold Logoman Relics",
+        "Gold Logoman Relics"
       ],
       "case_hit": [
         "Blank Slate",
-        "Prizmania"
+        "Prizmania",
+        "Fanatical",
+        "Helix"
       ]
     }
-  }
+  },
+  "auto_mem_exact_by_sport": {}
 }
