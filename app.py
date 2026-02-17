@@ -456,6 +456,25 @@ def extract_surname_initial(player_name):
     return initial if "A" <= initial <= "Z" else ""
 
 
+def _iter_team_player_pairs(player_list, team_list):
+    players = _ordered_unique(player_list or [])
+    teams = _ordered_unique(team_list or [])
+    if not players or not teams:
+        return []
+
+    # If counts align (A/B players with X/Y teams), map by position.
+    if len(players) > 1 and len(players) == len(teams):
+        return [(teams[idx], players[idx]) for idx in range(len(players)) if teams[idx] and players[idx]]
+
+    # Fallback: unknown alignment, keep cross-product behavior.
+    pairs = []
+    for team in teams:
+        for player in players:
+            if team and player:
+                pairs.append((team, player))
+    return pairs
+
+
 def build_break_simulation_pool(df):
     if df is None or df.empty:
         return pd.DataFrame()
@@ -539,11 +558,10 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
         for _, row in pool_df.iterrows():
             players = row.get("Player List", [])
             teams = row.get("Team List", [])
-            for team in teams:
+            for team, player in _iter_team_player_pairs(players, teams):
                 if team not in mapping:
                     mapping[team] = set()
-                for player in players:
-                    mapping[team].add(player)
+                mapping[team].add(player)
         return mapping
 
     if method == SIM_METHOD_PLAYER:
@@ -570,11 +588,10 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
         for _, row in pool_df.iterrows():
             players = row.get("Player List", [])
             teams = row.get("Team List", [])
-            for team in teams:
+            for team, player in _iter_team_player_pairs(players, teams):
                 if team not in team_to_players:
                     team_to_players[team] = set()
-                for player in players:
-                    team_to_players[team].add(player)
+                team_to_players[team].add(player)
 
         for team, spot in custom_map.items():
             if spot not in mapping:
