@@ -2410,9 +2410,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 if sim_pool.empty:
                     st.warning("Le produit sélectionné n'a pas de données exploitables pour la simulation.")
                 else:
+                    non_special_cards_total = int(
+                        sim_pool.loc[~(sim_pool["Is AutoMemo"] | sim_pool["Is CaseHit"]), "Hits"].sum()
+                    )
                     st.caption(
                         f"Checklist chargée: {len(sim_pool)} lignes • "
-                        f"{sim_pool['Player'].nunique()} joueurs • {sim_pool['Team'].nunique()} équipes"
+                        f"{sim_pool['Player'].nunique()} joueurs "
+                        f"({non_special_cards_total} cartes hors Auto/Memo/Case Hit) • "
+                        f"{sim_pool['Team'].nunique()} équipes"
                     )
 
                     custom_scope = "teams"
@@ -2525,6 +2530,9 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             custom_spots=spots,
                         )
                         result_df["Nombre de joueurs"] = result_df["Spot"].apply(lambda s: len(player_map.get(s, set())))
+                        result_df["Cartes hors Auto/Memo/Case Hit"] = (
+                            result_df["Cartes"] - result_df["Auto/Memo"] - result_df["Case Hit"]
+                        ).clip(lower=0).astype(int)
                         result_df["Joueurs (aperçu)"] = result_df["Spot"].apply(
                             lambda s: ", ".join(sorted(list(player_map.get(s, set())))[:8])
                         )
@@ -2592,13 +2600,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         base_cols = [
                             "Spot",
                             "Nombre de joueurs",
+                            "Cartes hors Auto/Memo/Case Hit",
                             "Cartes",
                             "Auto/Memo",
                             "Case Hit",
                             "Rareté",
                             "Hot Spot",
                         ]
-                        selected_cols = ["Spot", "Nombre de joueurs"]
+                        selected_cols = ["Spot", "Nombre de joueurs", "Cartes hors Auto/Memo/Case Hit"]
                         selected_cols.extend([c for c in visible_types if c in display_df.columns])
                         selected_cols.extend(
                             [c for c in ["Rareté", "Hot Spot", "Joueurs (aperçu)"] if c in display_df.columns]
@@ -2617,7 +2626,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 x="Spot",
                                 y="Cartes",
                                 color="Hot Spot",
-                                hover_data=["Nombre de joueurs", "Auto/Memo", "Case Hit", "Rareté"],
+                                hover_data=[
+                                    "Nombre de joueurs",
+                                    "Cartes hors Auto/Memo/Case Hit",
+                                    "Auto/Memo",
+                                    "Case Hit",
+                                    "Rareté",
+                                ],
                                 title="Répartition du nombre de cartes par spot",
                             )
                             st.plotly_chart(fig_sim, use_container_width=True)
