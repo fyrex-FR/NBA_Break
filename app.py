@@ -700,6 +700,14 @@ def build_deterministic_spot_summary(
     return result_df, summary
 
 
+def clear_widget_state(widget_updates=None, keys_to_pop=None):
+    updates = widget_updates or {}
+    for key, value in updates.items():
+        st.session_state[key] = value
+    for key in (keys_to_pop or []):
+        st.session_state.pop(key, None)
+
+
 # API Key Config (Removed as requested)
 # OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
@@ -1738,11 +1746,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
             with global_search_clear_col:
                 st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                clear_global_search = st.button("Effacer", key="clear_global_search", use_container_width=True)
-
-            if clear_global_search:
-                st.session_state["global_search"] = ""
-                st.rerun()
+                st.button(
+                    "Effacer",
+                    key="clear_global_search",
+                    use_container_width=True,
+                    on_click=clear_widget_state,
+                    kwargs={"widget_updates": {"global_search": ""}},
+                )
 
             if search_player:
                 st.session_state['target_player'] = search_player
@@ -2044,24 +2054,23 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     )
                     working_df = candidate_df[candidate_df["File"].isin(selected_checklists)].copy()
 
+                    review_filter_key = f"category_review_filter_{selected_sport_key}"
                     review_filter_col, review_filter_clear_col = st.columns([6, 1])
                     with review_filter_col:
                         raw_text_filter = st.text_input(
                             "Filtrer les Card Type (texte)",
                             value="",
-                            key=f"category_review_filter_{selected_sport_key}",
+                            key=review_filter_key,
                         )
                     with review_filter_clear_col:
                         st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                        clear_review_filter = st.button(
+                        st.button(
                             "Effacer",
                             key=f"category_review_filter_clear_{selected_sport_key}",
                             use_container_width=True,
+                            on_click=clear_widget_state,
+                            kwargs={"widget_updates": {review_filter_key: ""}},
                         )
-
-                    if clear_review_filter:
-                        st.session_state[f"category_review_filter_{selected_sport_key}"] = ""
-                        st.rerun()
 
                     text_filter = raw_text_filter.strip().lower()
                     if text_filter:
@@ -2189,11 +2198,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
             with multi_filter_clear_col:
                 st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                clear_multi_filter = st.button("Effacer", key="clear_multi_player_filter", use_container_width=True)
-
-            if clear_multi_filter:
-                st.session_state["multi_player_filter"] = "Tous"
-                st.rerun()
+                st.button(
+                    "Effacer",
+                    key="clear_multi_player_filter",
+                    use_container_width=True,
+                    on_click=clear_widget_state,
+                    kwargs={"widget_updates": {"multi_player_filter": "Tous"}},
+                )
             
             if selected_multi_player != "Tous":
                  # Filter rows where the selected player is present in the split list
@@ -2618,11 +2629,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             raw_player_search = st.text_input("Recherche joueur", value="", key="sim_player_search")
                         with filter_col5:
                             st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                            clear_sim_player_search = st.button("Effacer", key="clear_sim_player_search", use_container_width=True)
-
-                        if clear_sim_player_search:
-                            st.session_state["sim_player_search"] = ""
-                            st.rerun()
+                            st.button(
+                                "Effacer",
+                                key="clear_sim_player_search",
+                                use_container_width=True,
+                                on_click=clear_widget_state,
+                                kwargs={"widget_updates": {"sim_player_search": ""}},
+                            )
 
                         player_search = raw_player_search.strip().lower()
 
@@ -2763,11 +2776,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
             with file_clear_col:
                 st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                clear_file_selector = st.button("Effacer", key="clear_file_selector", use_container_width=True)
-
-            if clear_file_selector:
-                st.session_state["file_selector"] = ""
-                st.rerun()
+                st.button(
+                    "Effacer",
+                    key="clear_file_selector",
+                    use_container_width=True,
+                    on_click=clear_widget_state,
+                    kwargs={"widget_updates": {"file_selector": ""}},
+                )
             
             if selected_file:
                 file_df = df[df['File'] == selected_file].copy()
@@ -2831,12 +2846,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 )
             with clear_col:
                 st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                clear_player = st.button("Effacer", key="clear_player_selector", use_container_width=True)
-
-            if clear_player:
-                st.session_state["player_selector"] = ""
-                st.session_state.pop("target_player", None)
-                st.rerun()
+                st.button(
+                    "Effacer",
+                    key="clear_player_selector",
+                    use_container_width=True,
+                    on_click=clear_widget_state,
+                    kwargs={
+                        "widget_updates": {"player_selector": ""},
+                        "keys_to_pop": ["target_player"],
+                    },
+                )
             
             if selected_player:
                 # Filter data for this player
@@ -2931,12 +2950,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     )
                 with team_clear_col:
                     st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                    clear_team_selector = st.button("Effacer", key="clear_team_selector", use_container_width=True)
-
-                if clear_team_selector:
-                    st.session_state["team_selector"] = ""
-                    st.session_state.pop("target_team", None)
-                    st.rerun()
+                    st.button(
+                        "Effacer",
+                        key="clear_team_selector",
+                        use_container_width=True,
+                        on_click=clear_widget_state,
+                        kwargs={
+                            "widget_updates": {"team_selector": ""},
+                            "keys_to_pop": ["target_team"],
+                        },
+                    )
 
                 if selected_team:
                     team_cards = df_t[df_t['Team'] == selected_team].copy()
@@ -3015,11 +3038,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             )
                         with team_search_clear_col:
                             st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
-                            clear_team_search = st.button("Effacer", key="clear_team_search", use_container_width=True)
-
-                        if clear_team_search:
-                            st.session_state["team_search"] = ""
-                            st.rerun()
+                            st.button(
+                                "Effacer",
+                                key="clear_team_search",
+                                use_container_width=True,
+                                on_click=clear_widget_state,
+                                kwargs={"widget_updates": {"team_search": ""}},
+                            )
 
                         box_search_t = raw_box_search_t.strip().lower()
 
