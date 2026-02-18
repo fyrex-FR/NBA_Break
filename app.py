@@ -1727,8 +1727,23 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             
             # --- Global Search ---
             all_players_global = sorted(player_stats['Player'].unique().tolist())
-            search_player = st.selectbox("🔍 Recherche Rapide Joueur (Tous les joueurs) :", [""] + all_players_global, key="global_search")
-            
+            global_search_options = [""] + all_players_global
+            global_search_col, global_search_clear_col = st.columns([6, 1])
+            with global_search_col:
+                search_player = st.selectbox(
+                    "🔍 Recherche Rapide Joueur (Tous les joueurs) :",
+                    global_search_options,
+                    key="global_search",
+                    placeholder="Tapez un nom de joueur",
+                )
+            with global_search_clear_col:
+                st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                clear_global_search = st.button("Effacer", key="clear_global_search", use_container_width=True)
+
+            if clear_global_search:
+                st.session_state["global_search"] = ""
+                st.rerun()
+
             if search_player:
                 st.session_state['target_player'] = search_player
                 go_to_view("🔍 Analyse Joueur")
@@ -2029,11 +2044,26 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     )
                     working_df = candidate_df[candidate_df["File"].isin(selected_checklists)].copy()
 
-                    text_filter = st.text_input(
-                        "Filtrer les Card Type (texte)",
-                        value="",
-                        key=f"category_review_filter_{selected_sport_key}",
-                    ).strip().lower()
+                    review_filter_col, review_filter_clear_col = st.columns([6, 1])
+                    with review_filter_col:
+                        raw_text_filter = st.text_input(
+                            "Filtrer les Card Type (texte)",
+                            value="",
+                            key=f"category_review_filter_{selected_sport_key}",
+                        )
+                    with review_filter_clear_col:
+                        st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                        clear_review_filter = st.button(
+                            "Effacer",
+                            key=f"category_review_filter_clear_{selected_sport_key}",
+                            use_container_width=True,
+                        )
+
+                    if clear_review_filter:
+                        st.session_state[f"category_review_filter_{selected_sport_key}"] = ""
+                        st.rerun()
+
+                    text_filter = raw_text_filter.strip().lower()
                     if text_filter:
                         working_df = working_df[
                             working_df["Box Type"].astype(str).str.lower().str.contains(re.escape(text_filter), na=False)
@@ -2149,7 +2179,21 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             unique_multi_players = sorted(list(set([p.strip() for sublist in multi_player_df['Player'].str.split('/') for p in sublist])))
             
             # Filter Box
-            selected_multi_player = st.selectbox("Filtrer par joueur inclus :", ["Tous"] + unique_multi_players)
+            multi_player_options = ["Tous"] + unique_multi_players
+            multi_filter_col, multi_filter_clear_col = st.columns([6, 1])
+            with multi_filter_col:
+                selected_multi_player = st.selectbox(
+                    "Filtrer par joueur inclus :",
+                    multi_player_options,
+                    key="multi_player_filter",
+                )
+            with multi_filter_clear_col:
+                st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                clear_multi_filter = st.button("Effacer", key="clear_multi_player_filter", use_container_width=True)
+
+            if clear_multi_filter:
+                st.session_state["multi_player_filter"] = "Tous"
+                st.rerun()
             
             if selected_multi_player != "Tous":
                  # Filter rows where the selected player is present in the split list
@@ -2554,7 +2598,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             )
 
                         st.markdown("#### Filtres & vues")
-                        filter_col1, filter_col2, filter_col3, filter_col4 = st.columns(4)
+                        filter_col1, filter_col2, filter_col3, filter_col4, filter_col5 = st.columns([1, 1, 1, 1, 0.7])
                         with filter_col1:
                             visible_types = st.multiselect(
                                 "Types de cartes visibles",
@@ -2571,7 +2615,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         with filter_col3:
                             hot_only = st.checkbox("Hot spots uniquement", value=False, key="sim_hot_only")
                         with filter_col4:
-                            player_search = st.text_input("Recherche joueur", value="", key="sim_player_search").strip().lower()
+                            raw_player_search = st.text_input("Recherche joueur", value="", key="sim_player_search")
+                        with filter_col5:
+                            st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                            clear_sim_player_search = st.button("Effacer", key="clear_sim_player_search", use_container_width=True)
+
+                        if clear_sim_player_search:
+                            st.session_state["sim_player_search"] = ""
+                            st.rerun()
+
+                        player_search = raw_player_search.strip().lower()
 
                         display_df = result_df.copy()
                         if hot_only:
@@ -2699,7 +2752,22 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.subheader("Analyse par Fichier")
             
             all_files = sorted(df['File'].unique().tolist())
-            selected_file = st.selectbox("Choisir une checklist :", all_files)
+            file_options = [""] + all_files
+            file_col, file_clear_col = st.columns([6, 1])
+            with file_col:
+                selected_file = st.selectbox(
+                    "Choisir une checklist :",
+                    file_options,
+                    key="file_selector",
+                    placeholder="Sélectionnez une checklist",
+                )
+            with file_clear_col:
+                st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                clear_file_selector = st.button("Effacer", key="clear_file_selector", use_container_width=True)
+
+            if clear_file_selector:
+                st.session_state["file_selector"] = ""
+                st.rerun()
             
             if selected_file:
                 file_df = df[df['File'] == selected_file].copy()
@@ -2746,11 +2814,29 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             all_players = df_p['Player'].value_counts().index.tolist()
             
             # Check for pre-selected player from navigation
-            default_index = 0
+            options_players = [""] + all_players
+            default_player = ""
             if 'target_player' in st.session_state and st.session_state['target_player'] in all_players:
-                default_index = all_players.index(st.session_state['target_player'])
-            
-            selected_player = st.selectbox("Rechercher un joueur :", all_players, index=default_index, key="player_selector")
+                default_player = st.session_state['target_player']
+            default_index = options_players.index(default_player)
+
+            search_col, clear_col = st.columns([6, 1])
+            with search_col:
+                selected_player = st.selectbox(
+                    "Rechercher un joueur :",
+                    options_players,
+                    index=default_index,
+                    key="player_selector",
+                    placeholder="Tapez un nom de joueur",
+                )
+            with clear_col:
+                st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                clear_player = st.button("Effacer", key="clear_player_selector", use_container_width=True)
+
+            if clear_player:
+                st.session_state["player_selector"] = ""
+                st.session_state.pop("target_player", None)
+                st.rerun()
             
             if selected_player:
                 # Filter data for this player
@@ -2828,16 +2914,29 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             if not all_teams:
                 st.info("Aucune équipe trouvée dans la sélection actuelle.")
             else:
-                default_index_t = 0
+                team_options = [""] + all_teams
+                default_team = ""
                 if 'target_team' in st.session_state and st.session_state['target_team'] in all_teams:
-                    default_index_t = all_teams.index(st.session_state['target_team'])
+                    default_team = st.session_state['target_team']
+                default_index_t = team_options.index(default_team)
 
-                selected_team = st.selectbox(
-                    "Rechercher une équipe :",
-                    all_teams,
-                    index=default_index_t,
-                    key="team_selector",
-                )
+                team_col, team_clear_col = st.columns([6, 1])
+                with team_col:
+                    selected_team = st.selectbox(
+                        "Rechercher une équipe :",
+                        team_options,
+                        index=default_index_t,
+                        key="team_selector",
+                        placeholder="Tapez une équipe",
+                    )
+                with team_clear_col:
+                    st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                    clear_team_selector = st.button("Effacer", key="clear_team_selector", use_container_width=True)
+
+                if clear_team_selector:
+                    st.session_state["team_selector"] = ""
+                    st.session_state.pop("target_team", None)
+                    st.rerun()
 
                 if selected_team:
                     team_cards = df_t[df_t['Team'] == selected_team].copy()
@@ -2907,11 +3006,22 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             horizontal=True,
                             key="team_filter_cat",
                         )
-                        box_search_t = st.text_input(
-                            "Recherche Card Type / Joueur",
-                            value="",
-                            key="team_search",
-                        ).strip().lower()
+                        team_search_col, team_search_clear_col = st.columns([6, 1])
+                        with team_search_col:
+                            raw_box_search_t = st.text_input(
+                                "Recherche Card Type / Joueur",
+                                value="",
+                                key="team_search",
+                            )
+                        with team_search_clear_col:
+                            st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                            clear_team_search = st.button("Effacer", key="clear_team_search", use_container_width=True)
+
+                        if clear_team_search:
+                            st.session_state["team_search"] = ""
+                            st.rerun()
+
+                        box_search_t = raw_box_search_t.strip().lower()
 
                         available_files_t = sorted(team_cards['File'].dropna().astype(str).unique().tolist())
                         selected_files_t = st.multiselect(
