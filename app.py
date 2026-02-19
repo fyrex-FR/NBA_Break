@@ -718,19 +718,33 @@ def build_deterministic_spot_summary(
 
     total_cartes = int(result_df["Cartes"].sum())
 
-    result_df["Hot Signal"] = result_df["Auto/Memo"] + (2.0 * result_df["Case Hit"])
-    if len(result_df) > 5:
-        hot_threshold = float(result_df["Hot Signal"].quantile(0.9))
+    # Break Score : valeur pondérée des cartes premium
+    # Auto/Memo = 3 pts, Case Hit = 5 pts (plus rare = plus de poids)
+    result_df["Break Score"] = (result_df["Auto/Memo"] * 3) + (result_df["Case Hit"] * 5)
+    
+    total_break_score = result_df["Break Score"].sum()
+    if total_break_score > 0:
+        result_df["Part du break"] = (result_df["Break Score"] / total_break_score * 100).round(1)
     else:
-        hot_threshold = float(result_df["Hot Signal"].max())
-    result_df["Hot Spot"] = result_df["Hot Signal"].apply(lambda x: "🔥 Hot" if x >= hot_threshold else "")
-    for col in ["Cartes", "Auto/Memo", "Case Hit", "Hot Signal"]:
+        result_df["Part du break"] = 0.0
+    
+    # Hot Spot : spots qui représentent plus que leur part équitable (100% / nb spots)
+    nb_spots = len(result_df)
+    fair_share = 100.0 / nb_spots if nb_spots > 0 else 0
+    # Un spot est "hot" s'il a plus de 1.5x sa part équitable
+    hot_threshold_pct = fair_share * 1.5
+    result_df["Hot Spot"] = result_df["Part du break"].apply(
+        lambda x: "🔥 Hot" if x >= hot_threshold_pct else ""
+    )
+    
+    for col in ["Cartes", "Auto/Memo", "Case Hit", "Break Score"]:
         result_df[col] = result_df[col].astype(int)
 
     summary = {
         "total_cartes": total_cartes,
+        "total_break_score": int(total_break_score),
         "hot_spots": int((result_df["Hot Spot"] == "🔥 Hot").sum()),
-        "hot_threshold": hot_threshold,
+        "hot_threshold_pct": round(hot_threshold_pct, 1),
     }
     return result_df, summary
 
@@ -2638,13 +2652,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         c_metric3.metric("Total cartes", f"{int(summary.get('total_cartes', 0))}")
                         c_metric4.metric("Hot spots", f"{summary.get('hot_spots', 0)}")
 
-                        hot_threshold_legend = float(summary.get("hot_threshold", 0.0))
+                        hot_threshold_legend = float(summary.get("hot_threshold_pct", 0.0))
                         with st.expander("ℹ️ Légende de calcul", expanded=False):
                             st.markdown(
-                                "- `Rareté` : signal = `Auto/Memo + 2 × Case Hit`.\n"
-                                "- Niveaux : `Commun < 1`, `Peu commun < 3`, `Rare < 7`, sinon `Ultra-rare`.\n"
-                                f"- `Hot Spot` : même signal, seuil actuel = `{hot_threshold_legend:.2f}` "
-                                "(p90 si > 5 spots, sinon max)."
+                                "- `Break Score` : valeur pondérée = `Auto/Memo × 3 + Case Hit × 5`.\n"
+                                "- `Part du break` : pourcentage de la valeur totale du break.\n"
+                                f"- `Hot Spot` : spots avec > {hot_threshold_legend:.1f}% du break (1.5× la part équitable).\n"
+                                "- `Rareté` : basée sur Auto/Memo + 2×Case Hit (Commun < 1, Peu commun < 3, Rare < 7, Ultra-rare ≥ 7)."
                             )
 
                         st.markdown("#### Filtres & vues")
@@ -2696,7 +2710,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             "Cartes",
                             "Auto/Memo",
                             "Case Hit",
-                            "Hot Signal",
+                            "Break Score",
+                            "Part du break",
                         ]
                         for col in rounded_cols:
                             if col in display_df.columns:
@@ -2709,13 +2724,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             "Cartes",
                             "Auto/Memo",
                             "Case Hit",
-                            "Rareté",
+                            "Break Score",
+                            "Part du break",
                             "Hot Spot",
                         ]
                         selected_cols = ["Spot", "Nombre de joueurs", "Cartes hors Auto/Memo/Case Hit"]
                         selected_cols.extend([c for c in visible_types if c in display_df.columns])
                         selected_cols.extend(
-                            [c for c in ["Rareté", "Hot Spot", "Joueurs (aperçu)"] if c in display_df.columns]
+                            [c for c in ["Break Score", "Part du break", "Hot Spot", "Joueurs (aperçu)"] if c in display_df.columns]
                         )
                         if not visible_types:
                             selected_cols = [c for c in base_cols + ["Joueurs (aperçu)"] if c in display_df.columns]
@@ -2737,7 +2753,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             with cmp_col1:
                                 st.caption(SIM_METHOD_LABELS[selected_method])
                                 st.dataframe(
-                                    display_df[["Spot", "Cartes", "Auto/Memo", "Case Hit", "Hot Spot"]].head(20),
+                                    display_df[["Spot", "Cartes", "Auto/Memo", "Case Hit", "Part du break", "Hot Spot"]].head(20),
                                     use_container_width=True,
                                 )
                             with cmp_col2:
@@ -2747,7 +2763,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 else:
                                     compare_df = compare_df.sort_values("Cartes", ascending=False).head(20)
                                     st.dataframe(
-                                        compare_df[["Spot", "Cartes", "Auto/Memo", "Case Hit", "Hot Spot"]],
+                                        compare_df[["Spot", "Cartes", "Auto/Memo", "Case Hit", "Part du break", "Hot Spot"]],
                                         use_container_width=True,
                                     )
 
