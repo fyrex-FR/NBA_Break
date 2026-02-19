@@ -120,6 +120,41 @@ def build_source_entries(sources):
     return entries
 
 
+def count_distinct_checklists(df):
+    """
+    Count distinct checklist sources in the current dataframe.
+    Prefer checklist names/files for UX labels, then fallback to ids.
+    """
+    if df is None or df.empty:
+        return 0
+
+    for col in ["checklist_name", "File", "checklist_id"]:
+        if col not in df.columns:
+            continue
+        values = df[col].astype(str).str.strip()
+        values = values[~values.isin(["", "nan", "None"])]
+        if not values.empty:
+            return int(values.nunique())
+    return 0
+
+
+def get_checklist_labels(df):
+    """
+    Return human-readable checklist labels available in the current dataframe.
+    """
+    if df is None or df.empty:
+        return []
+
+    for col in ["checklist_name", "File", "checklist_id"]:
+        if col not in df.columns:
+            continue
+        values = df[col].astype(str).str.strip()
+        values = values[~values.isin(["", "nan", "None"])]
+        if not values.empty:
+            return sorted(values.unique().tolist(), key=lambda v: str(v).lower())
+    return []
+
+
 def normalize_checklist_columns(df):
     """
     Canonicalize checklist columns and keep the app contract.
@@ -1623,10 +1658,15 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         st.markdown("---")
 
         # --- Filters ---
-        all_products = sorted(df['Product'].dropna().unique().tolist())
-        selected_products = st.multiselect("Filtrer par produit :", all_products, default=all_products)
-        if selected_products:
-            df = df[df['Product'].isin(selected_products)]
+        all_checklists = get_checklist_labels(df)
+        selected_checklists = st.multiselect("Filtrer par checklist :", all_checklists, default=all_checklists)
+        if selected_checklists:
+            for col in ["checklist_name", "File", "checklist_id"]:
+                if col in df.columns:
+                    col_values = df[col].astype(str).str.strip()
+                    if (col_values[~col_values.isin(["", "nan", "None"])].shape[0]) > 0:
+                        df = df[col_values.isin(selected_checklists)]
+                        break
 
         # De-duplicate projected multi-team rows to avoid over-counting multi-player cards.
         df, collapsed_multi_rows = dedupe_multiplayer_projection_rows(df)
@@ -2445,14 +2485,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.subheader("🧩 Simulation de Break")
             st.caption("Vue déterministe basée sur les checklists sélectionnées (sans Monte Carlo).")
 
-            products_in_sim = df["Product"].dropna().unique().tolist()
-            if not products_in_sim:
-                st.info("Aucun produit disponible pour la simulation.")
+            checklist_labels_in_sim = get_checklist_labels(df)
+            checklists_in_sim_count = count_distinct_checklists(df)
+            if not checklists_in_sim_count:
+                st.info("Aucune checklist disponible pour la simulation.")
             else:
-                if len(products_in_sim) > 1:
-                    st.info(f"📦 **{len(products_in_sim)} produits** inclus (filtre global appliqué)")
-                else:
-                    st.info(f"📦 Produit: **{products_in_sim[0]}**")
+                st.info(f"📋 **{checklists_in_sim_count} checklists** incluses (filtre global appliqué)")
                 
                 method_label_to_key = {v: k for k, v in SIM_METHOD_LABELS.items()}
                 method_labels = list(SIM_METHOD_LABELS.values())
@@ -2728,7 +2766,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             sim_buffer = BytesIO()
                             with pd.ExcelWriter(sim_buffer, engine="openpyxl") as writer:
                                 # Feuille Info avec les checklists
-                                info_df = pd.DataFrame({"Checklists incluses": products_in_sim})
+                                info_df = pd.DataFrame({"Checklists incluses": checklist_labels_in_sim})
                                 info_df.to_excel(writer, index=False, sheet_name="Info")
                                 # Feuille Export avec les données
                                 export_table_df.to_excel(writer, index=False, sheet_name="Simulation")
@@ -2746,15 +2784,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
             st.subheader("📤 Export Personnalisé")
             st.caption("Construis ton export Excel avec les colonnes de ton choix, trié automatiquement.")
             
-            # Utiliser le df filtré (peut contenir plusieurs produits selon le filtre global)
-            products_in_export = df["Product"].dropna().unique().tolist()
-            if len(products_in_export) == 0:
+            # Utiliser le df filtré (peut contenir plusieurs checklists selon le filtre global)
+            checklists_in_export = get_checklist_labels(df)
+            if len(checklists_in_export) == 0:
                 st.info("Aucune donnée disponible. Sélectionnez des checklists.")
             else:
-                if len(products_in_export) > 1:
-                    st.info(f"📦 **{len(products_in_export)} produits** inclus dans l'export (filtre global appliqué)")
-                else:
-                    st.info(f"📦 Produit: **{products_in_export[0]}**")
+                st.info(f"📋 **{len(checklists_in_export)} checklists** incluses dans l'export (filtre global appliqué)")
                 
                 exp_df = df.copy()
 
@@ -2875,7 +2910,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
                     # Feuille Info en premier
                     info_data = {
-                        "Checklists incluses": products_in_export,
+                        "Checklists incluses": checklists_in_export,
                     }
                     info_df = pd.DataFrame(info_data)
                     info_df.to_excel(writer, index=False, sheet_name="Info")
@@ -2885,11 +2920,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     writer.book.active = writer.book.worksheets[0]
                 buffer.seek(0)
 
-                # Nom de fichier basé sur les produits
-                if len(products_in_export) == 1:
-                    filename_base = products_in_export[0].replace(' ', '_')
+                # Nom de fichier basé sur les checklists
+                if len(checklists_in_export) == 1:
+                    single_checklist = os.path.splitext(os.path.basename(checklists_in_export[0]))[0]
+                    filename_base = re.sub(r"[^\w\-]+", "_", single_checklist).strip("_") or "checklist"
                 else:
-                    filename_base = f"multi_{len(products_in_export)}_produits"
+                    filename_base = f"multi_{len(checklists_in_export)}_checklists"
 
                 exp_col1, exp_col2 = st.columns(2)
                 with exp_col1:
