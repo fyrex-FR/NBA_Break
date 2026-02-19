@@ -2893,6 +2893,13 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 buffer = BytesIO()
                 with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+                    # Feuille Info en premier
+                    info_data = {
+                        "Checklists incluses": products_in_export,
+                    }
+                    info_df = pd.DataFrame(info_data)
+                    info_df.to_excel(writer, index=False, sheet_name="Info")
+                    # Feuille Export avec les données
                     export_df.to_excel(writer, index=False, sheet_name="Export")
                 buffer.seek(0)
 
