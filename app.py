@@ -819,11 +819,8 @@ st.markdown("""
 
 # --- Sidebar: Configuration ---
 st.sidebar.header("📁 Configuration")
-if st.sidebar.button("🔄 Recharger (cache)"):
-    st.cache_data.clear()
-    st.session_state.pop("analysis_payload", None)
-    st.session_state["analysis_force_reload"] = True
 
+# Sport selector (always visible)
 if "selected_sport" not in st.session_state:
     st.session_state["selected_sport"] = DEFAULT_SPORT_KEY
 
@@ -833,11 +830,19 @@ selected_sport_label = st.sidebar.selectbox(
     "Sport",
     options=sport_labels,
     index=sport_labels.index(current_sport_label) if current_sport_label in sport_labels else 0,
-    help="Le sport pilote la normalisation des équipes et les règles de scoring.",
 )
 selected_sport_key = sport_key_from_label(selected_sport_label)
 st.session_state["selected_sport"] = selected_sport_key
 sport_profile = get_sport_profile(selected_sport_key)
+
+# Sidebar tabs navigation
+sidebar_tab = st.sidebar.radio(
+    "Menu",
+    ["📋 Sélection", "💾 Presets", "➕ Upload", "⚙️ Options"],
+    horizontal=True,
+    label_visibility="collapsed",
+    key="sidebar_tab"
+)
 
 header_logo_url = sport_profile.get("header_logo_url", "")
 header_title = sport_profile.get("header_title", "Check list optimizer")
@@ -1093,14 +1098,18 @@ if r2_enabled:
         data_source_mode = "legacy"
         catalog_entries = legacy_entries
 
+# Prepare data structures (needed for all tabs)
+token_to_entry = {}
+all_tokens = []
+label_to_token = {}
+filename_to_token = {}
+presets = {}
+preset_names = []
+
 if cloud_error:
     st.sidebar.warning("R2 configuré mais inaccessible. Vérifie les secrets.")
 
-if not r2_enabled:
-    st.sidebar.caption("Ajoute les secrets R2 pour activer la sélection.")
-elif not catalog_entries:
-    st.sidebar.info("Aucune checklist Parquet trouvée sur R2 pour ce sport.")
-else:
+if r2_enabled and catalog_entries:
     token_to_entry = {entry["token"]: entry for entry in catalog_entries}
     all_tokens = [entry["token"] for entry in catalog_entries]
     label_to_token = {entry["label"]: entry["token"] for entry in catalog_entries}
@@ -1112,6 +1121,7 @@ else:
         r2_config=r2_config,
         sport_key=selected_sport_key,
     )
+    preset_names = sorted(presets.keys())
 
     if (
         st.session_state.get("selected_cloud_sport") != selected_sport_key
@@ -1125,62 +1135,59 @@ else:
         st.session_state["selected_cloud_tokens"] = [t for t in current_tokens if t in all_tokens]
         st.session_state["selected_cloud_tokens_multiselect"] = st.session_state["selected_cloud_tokens"]
 
-    # Presets UI
-    st.sidebar.markdown("### 💾 Presets")
-    storage_label = "R2 Master" if data_source_mode == "master" else ("R2" if r2_enabled else "Local")
-    st.sidebar.caption(storage_label)
-    preset_names = sorted(presets.keys())
-    if "preset_name" not in st.session_state:
+# Helper functions (needed regardless of tab)
+def normalize_preset_items(values):
+    normalized = []
+    for v in values if isinstance(values, list) else []:
+        if v in token_to_entry:
+            normalized.append(v)
+        elif v in label_to_token:
+            normalized.append(label_to_token[v])
+        elif v in filename_to_token:
+            normalized.append(filename_to_token[v])
+    seen = set()
+    ordered = []
+    for v in normalized:
+        if v not in seen:
+            seen.add(v)
+            ordered.append(v)
+    return ordered
+
+def on_preset_change():
+    selected = st.session_state.get("preset_to_load", "")
+    if not selected:
+        st.session_state["selected_cloud_tokens"] = []
+        st.session_state["selected_cloud_tokens_multiselect"] = []
         st.session_state["preset_name"] = ""
-    if "preset_to_load" not in st.session_state:
-        st.session_state["preset_to_load"] = ""
+        return
+    files = normalize_preset_items(presets.get(selected, []))
+    apply_preset(files, all_tokens)
+    st.session_state["preset_name"] = selected
 
-    if st.session_state["preset_to_load"] not in ([""] + preset_names):
-        st.session_state["preset_to_load"] = ""
+def on_save_preset():
+    name = st.session_state.get("preset_name", "").strip()
+    if not name:
+        return
+    current_selection = st.session_state.get("selected_cloud_tokens", [])
+    presets[name] = current_selection
+    try:
+        save_presets(
+            presets_path,
+            presets,
+            r2_enabled=r2_enabled,
+            r2_config=r2_config,
+            sport_key=selected_sport_key,
+        )
+        st.session_state["preset_to_load"] = name
+    except Exception as e:
+        st.sidebar.warning(f"Sauvegarde preset impossible: {e}")
 
-    def normalize_preset_items(values):
-        normalized = []
-        for v in values if isinstance(values, list) else []:
-            if v in token_to_entry:
-                normalized.append(v)
-            elif v in label_to_token:
-                normalized.append(label_to_token[v])
-            elif v in filename_to_token:
-                normalized.append(filename_to_token[v])
-        # Keep order + uniqueness.
-        seen = set()
-        ordered = []
-        for v in normalized:
-            if v not in seen:
-                seen.add(v)
-                ordered.append(v)
-        return ordered
-
-    def on_preset_change():
-        selected = st.session_state.get("preset_to_load", "")
-        if not selected:
-            st.session_state["selected_cloud_tokens"] = []
-            st.session_state["selected_cloud_tokens_multiselect"] = []
-            st.session_state["preset_name"] = ""
-            return
-        files = normalize_preset_items(presets.get(selected, []))
-        apply_preset(files, all_tokens)
-        st.session_state["preset_name"] = selected
-
-    st.sidebar.selectbox(
-        "Preset",
-        options=[""] + preset_names,
-        key="preset_to_load",
-        on_change=on_preset_change,
-        help="Sélectionner un preset l'applique automatiquement.",
-    )
-
-    def on_save_preset():
-        name = st.session_state.get("preset_name", "").strip()
-        if not name:
-            return
-        current_selection = st.session_state.get("selected_cloud_tokens", [])
-        presets[name] = current_selection
+def on_delete_preset():
+    selected = st.session_state.get("preset_to_load", "")
+    if not selected:
+        return
+    if selected in presets:
+        del presets[selected]
         try:
             save_presets(
                 presets_path,
@@ -1189,255 +1196,299 @@ else:
                 r2_config=r2_config,
                 sport_key=selected_sport_key,
             )
-            st.session_state["preset_to_load"] = name
         except Exception as e:
-            st.sidebar.warning(f"Sauvegarde preset impossible: {e}")
-
-    def on_delete_preset():
-        selected = st.session_state.get("preset_to_load", "")
-        if not selected:
+            st.sidebar.warning(f"Suppression preset impossible: {e}")
             return
-        if selected in presets:
-            del presets[selected]
-            try:
-                save_presets(
-                    presets_path,
-                    presets,
-                    r2_enabled=r2_enabled,
-                    r2_config=r2_config,
-                    sport_key=selected_sport_key,
-                )
-            except Exception as e:
-                st.sidebar.warning(f"Suppression preset impossible: {e}")
-                return
-        st.session_state["preset_to_load"] = ""
-        st.session_state["preset_name"] = ""
-        st.session_state["selected_cloud_tokens"] = []
-        st.session_state["selected_cloud_tokens_multiselect"] = []
+    st.session_state["preset_to_load"] = ""
+    st.session_state["preset_name"] = ""
+    st.session_state["selected_cloud_tokens"] = []
+    st.session_state["selected_cloud_tokens_multiselect"] = []
 
-    st.sidebar.text_input("Nom", key="preset_name", placeholder="Nom du preset")
-    preset_actions_col1, preset_actions_col2 = st.sidebar.columns(2)
-    with preset_actions_col1:
-        st.button("💾 Sauver", on_click=on_save_preset, use_container_width=True)
-    with preset_actions_col2:
-        st.button(
-            "🗑️ Suppr.",
-            on_click=on_delete_preset,
-            disabled=not st.session_state.get("preset_to_load"),
-            use_container_width=True,
-        )
+# Initialize session state for presets
+if "preset_name" not in st.session_state:
+    st.session_state["preset_name"] = ""
+if "preset_to_load" not in st.session_state:
+    st.session_state["preset_to_load"] = ""
+if st.session_state["preset_to_load"] not in ([""] + preset_names):
+    st.session_state["preset_to_load"] = ""
 
-    st.sidebar.markdown("---")
-    st.sidebar.markdown("### ☁️ Checklists")
-    st.sidebar.caption(f"{len(all_tokens)} checklist(s) cloud disponible(s).")
-
-    all_selected = len(st.session_state.get("selected_cloud_tokens", [])) == len(all_tokens) and len(all_tokens) > 0
-
-    def toggle_select_all_cloud():
-        new_selection = [] if all_selected else all_tokens.copy()
-        st.session_state["selected_cloud_tokens"] = new_selection
-        for token in all_tokens:
-            st.session_state[checkbox_key_for_token(token)] = token in new_selection
-
-    st.sidebar.button(
-        "Tout désélectionner" if all_selected else "Tout sélectionner",
-        on_click=toggle_select_all_cloud,
-        key="toggle_select_all_cloud",
-    )
-
-    selection_mode = st.sidebar.radio(
-        "Mode de sélection",
-        ["Par Année (Cases)", "Liste (Multiselect)"],
-        index=0,
-        key="cloud_selection_mode",
-    )
-
-    selected_tokens = []
-    if selection_mode == "Liste (Multiselect)":
-        if "selected_cloud_tokens_multiselect" not in st.session_state:
-            st.session_state["selected_cloud_tokens_multiselect"] = st.session_state.get("selected_cloud_tokens", [])
-        selected_tokens = st.sidebar.multiselect(
-            "Checklists incluses",
-            options=all_tokens,
-            default=st.session_state.get("selected_cloud_tokens_multiselect", []),
-            format_func=lambda token: token_to_entry[token]["label"],
-            key="selected_cloud_tokens_multiselect",
-        )
-        st.session_state["selected_cloud_tokens"] = selected_tokens
-        for token in all_tokens:
-            st.session_state[checkbox_key_for_token(token)] = token in selected_tokens
+# ============ TAB: SÉLECTION ============
+selected_tokens = []
+if sidebar_tab == "📋 Sélection":
+    if not r2_enabled:
+        st.sidebar.caption("Ajoute les secrets R2 pour activer la sélection.")
+    elif not catalog_entries:
+        st.sidebar.info("Aucune checklist Parquet trouvée sur R2 pour ce sport.")
     else:
-        files_by_year = {}
-        for entry in catalog_entries:
-            y = str(entry.get("year", "") or "Inconnue")
-            if y not in files_by_year:
-                files_by_year[y] = []
-            files_by_year[y].append(entry)
+        st.sidebar.caption(f"{len(all_tokens)} checklist(s) disponible(s)")
 
-        selected_set = set(st.session_state.get("selected_cloud_tokens", []))
-        for year in sorted(files_by_year.keys(), reverse=True):
-            year_files = files_by_year[year]
-            with st.sidebar.expander(f"{year} ({len(year_files)})", expanded=False):
-                for entry in year_files:
-                    token = entry["token"]
-                    label = entry["label"]
-                    chk_key = checkbox_key_for_token(token)
-                    if chk_key not in st.session_state:
-                        st.session_state[chk_key] = token in selected_set
-                    if st.checkbox(label, key=chk_key):
-                        selected_set.add(token)
-                    else:
-                        selected_set.discard(token)
-        selected_tokens = [token for token in all_tokens if token in selected_set]
-        st.session_state["selected_cloud_tokens"] = selected_tokens
+        all_selected = len(st.session_state.get("selected_cloud_tokens", [])) == len(all_tokens) and len(all_tokens) > 0
 
-    selected_file_paths = [token_to_entry[token]["source"] for token in selected_tokens if token in token_to_entry]
-    st.sidebar.caption(f"{len(selected_file_paths)}/{len(all_tokens)} checklist(s) sélectionnée(s).")
+        def toggle_select_all_cloud():
+            new_selection = [] if all_selected else all_tokens.copy()
+            st.session_state["selected_cloud_tokens"] = new_selection
+            for token in all_tokens:
+                st.session_state[checkbox_key_for_token(token)] = token in new_selection
 
-# --- CHECKLIST INGESTION ---
-st.sidebar.markdown("### ➕ Ajouter une checklist")
-if not r2_enabled:
-    st.sidebar.caption("Upload indisponible: configuration manquante.")
-else:
-    st.sidebar.caption(f"Sport sélectionné: **{sport_profile.get('label', selected_sport_key)}**")
-    st.sidebar.markdown(
-        "Format attendu:\n"
-        "- Onglet: `Teams_clean`\n"
-        "- Colonnes: `Player`, `Team`, `Card Type`, `Numbering`"
-    )
-    st.sidebar.download_button(
-        "Télécharger le modèle Excel",
-        data=build_template_xlsx_bytes(),
-        file_name="template-checklist.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        key="download_checklist_template",
-    )
-    overwrite_r2 = st.sidebar.checkbox(
-        "Mettre à jour si le même nom existe déjà",
-        value=True,
-        key="r2_ingest_overwrite",
-    )
-    ingest_files = st.sidebar.file_uploader(
-        "Fichier(s) Excel",
-        type=["xlsx"],
-        accept_multiple_files=True,
-        key="r2_ingest_uploader",
-        help="Ajoute un ou plusieurs fichiers .xlsx.",
-    )
+        st.sidebar.button(
+            "Tout désélectionner" if all_selected else "Tout sélectionner",
+            on_click=toggle_select_all_cloud,
+            key="toggle_select_all_cloud",
+        )
 
-    if st.sidebar.button("📤 Ajouter la checklist", key="r2_ingest_button"):
-        if not ingest_files:
-            st.sidebar.warning("Ajoute au moins un fichier Excel.")
+        selection_mode = st.sidebar.radio(
+            "Mode",
+            ["Par Année", "Liste"],
+            index=0,
+            horizontal=True,
+            key="cloud_selection_mode",
+        )
+
+        if selection_mode == "Liste":
+            if "selected_cloud_tokens_multiselect" not in st.session_state:
+                st.session_state["selected_cloud_tokens_multiselect"] = st.session_state.get("selected_cloud_tokens", [])
+            selected_tokens = st.sidebar.multiselect(
+                "Checklists",
+                options=all_tokens,
+                default=st.session_state.get("selected_cloud_tokens_multiselect", []),
+                format_func=lambda token: token_to_entry[token]["label"],
+                key="selected_cloud_tokens_multiselect",
+                label_visibility="collapsed",
+            )
+            st.session_state["selected_cloud_tokens"] = selected_tokens
+            for token in all_tokens:
+                st.session_state[checkbox_key_for_token(token)] = token in selected_tokens
         else:
-            uploaded_count = 0
-            skipped_count = 0
-            uploaded_bytes = 0
-            target_sport_key = selected_sport_key
-            target_master_key = master_parquet_key_for_sport(target_sport_key)
-            profile = get_sport_profile(target_sport_key)
-            team_aliases = profile.get("team_aliases", {})
-            sheet_names = profile.get("sheet_names", ["Teams_clean"])
-            pending_by_checklist_id = {}
+            files_by_year = {}
+            for entry in catalog_entries:
+                y = str(entry.get("year", "") or "Inconnue")
+                if y not in files_by_year:
+                    files_by_year[y] = []
+                files_by_year[y].append(entry)
 
-            # Load existing master once.
-            if r2_object_exists(r2_config, target_master_key):
-                try:
-                    existing_master = read_r2_parquet_cached(*_r2_config_values(r2_config), target_master_key)
-                    existing_master = ensure_master_dataframe_schema(existing_master, target_sport_key)
-                except Exception as e:
-                    st.sidebar.error(f"Lecture du master impossible: {e}")
-                    existing_master = pd.DataFrame(columns=MASTER_COLUMNS)
+            selected_set = set(st.session_state.get("selected_cloud_tokens", []))
+            for year in sorted(files_by_year.keys(), reverse=True):
+                year_files = files_by_year[year]
+                with st.sidebar.expander(f"{year} ({len(year_files)})", expanded=False):
+                    for entry in year_files:
+                        token = entry["token"]
+                        label = entry["label"]
+                        chk_key = checkbox_key_for_token(token)
+                        if chk_key not in st.session_state:
+                            st.session_state[chk_key] = token in selected_set
+                        if st.checkbox(label, key=chk_key):
+                            selected_set.add(token)
+                        else:
+                            selected_set.discard(token)
+            selected_tokens = [token for token in all_tokens if token in selected_set]
+            st.session_state["selected_cloud_tokens"] = selected_tokens
+
+        selected_file_paths = [token_to_entry[token]["source"] for token in selected_tokens if token in token_to_entry]
+        st.sidebar.caption(f"**{len(selected_file_paths)}** sélectionnée(s)")
+
+# ============ TAB: PRESETS ============
+elif sidebar_tab == "💾 Presets":
+    if not r2_enabled or not catalog_entries:
+        st.sidebar.caption("Sélectionnez d'abord des checklists.")
+    else:
+        storage_label = "R2 Master" if data_source_mode == "master" else ("R2" if r2_enabled else "Local")
+        st.sidebar.caption(storage_label)
+
+        st.sidebar.selectbox(
+            "Charger un preset",
+            options=[""] + preset_names,
+            key="preset_to_load",
+            on_change=on_preset_change,
+            label_visibility="collapsed",
+        )
+
+        st.sidebar.markdown("---")
+        st.sidebar.text_input("Nom", key="preset_name", placeholder="Nom du preset")
+        preset_actions_col1, preset_actions_col2 = st.sidebar.columns(2)
+        with preset_actions_col1:
+            st.button("💾 Sauver", on_click=on_save_preset, use_container_width=True)
+        with preset_actions_col2:
+            st.button(
+                "🗑️ Suppr.",
+                on_click=on_delete_preset,
+                disabled=not st.session_state.get("preset_to_load"),
+                use_container_width=True,
+            )
+
+        current_sel = st.session_state.get("selected_cloud_tokens", [])
+        if current_sel:
+            st.sidebar.caption(f"{len(current_sel)} checklist(s) dans la sélection actuelle")
+
+# Update selected_file_paths from session state when not on Sélection tab
+if sidebar_tab != "📋 Sélection" and r2_enabled and catalog_entries:
+    selected_tokens = st.session_state.get("selected_cloud_tokens", [])
+    selected_file_paths = [token_to_entry[token]["source"] for token in selected_tokens if token in token_to_entry]
+
+# ============ TAB: UPLOAD ============
+if sidebar_tab == "➕ Upload":
+    if not r2_enabled:
+        st.sidebar.caption("Upload indisponible: configuration R2 manquante.")
+    else:
+        st.sidebar.caption(f"Sport: **{sport_profile.get('label', selected_sport_key)}**")
+        st.sidebar.markdown(
+            "Format attendu:\n"
+            "- Onglet: `Teams_clean`\n"
+            "- Colonnes: `Player`, `Team`, `Card Type`, `Numbering`"
+        )
+        st.sidebar.download_button(
+            "📥 Télécharger le modèle",
+            data=build_template_xlsx_bytes(),
+            file_name="template-checklist.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            key="download_checklist_template",
+        )
+        st.sidebar.markdown("---")
+        overwrite_r2 = st.sidebar.checkbox(
+            "Remplacer si existant",
+            value=True,
+            key="r2_ingest_overwrite",
+        )
+        ingest_files = st.sidebar.file_uploader(
+            "Fichier(s) Excel",
+            type=["xlsx"],
+            accept_multiple_files=True,
+            key="r2_ingest_uploader",
+            label_visibility="collapsed",
+        )
+
+        if st.sidebar.button("📤 Ajouter", key="r2_ingest_button", use_container_width=True):
+            if not ingest_files:
+                st.sidebar.warning("Ajoute au moins un fichier Excel.")
             else:
-                existing_master = pd.DataFrame(columns=MASTER_COLUMNS)
+                uploaded_count = 0
+                skipped_count = 0
+                uploaded_bytes = 0
+                target_sport_key = selected_sport_key
+                target_master_key = master_parquet_key_for_sport(target_sport_key)
+                profile = get_sport_profile(target_sport_key)
+                team_aliases = profile.get("team_aliases", {})
+                sheet_names = profile.get("sheet_names", ["Teams_clean"])
+                pending_by_checklist_id = {}
 
-            existing_ids = set(existing_master["checklist_id"].astype(str).tolist()) if not existing_master.empty else set()
+                # Load existing master once.
+                if r2_object_exists(r2_config, target_master_key):
+                    try:
+                        existing_master = read_r2_parquet_cached(*_r2_config_values(r2_config), target_master_key)
+                        existing_master = ensure_master_dataframe_schema(existing_master, target_sport_key)
+                    except Exception as e:
+                        st.sidebar.error(f"Lecture du master impossible: {e}")
+                        existing_master = pd.DataFrame(columns=MASTER_COLUMNS)
+                else:
+                    existing_master = pd.DataFrame(columns=MASTER_COLUMNS)
 
-            # Reconcile legacy per-checklist parquets into master (missing IDs only).
-            try:
-                legacy_keys = list_r2_parquet_keys_cached(*_r2_config_values(r2_config), target_sport_key)
-                legacy_frames = []
-                for legacy_key in legacy_keys:
-                    legacy_name = os.path.basename(legacy_key)
-                    legacy_id = normalize_checklist_id(legacy_name)
-                    if legacy_id in existing_ids:
-                        continue
-                    legacy_df = read_r2_parquet_cached(*_r2_config_values(r2_config), legacy_key)
-                    legacy_df = normalize_checklist_columns(legacy_df)
-                    legacy_df["Team"] = legacy_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
-                    legacy_df["Hits"] = 1
-                    legacy_df["File"] = legacy_name
-                    legacy_df["Year"] = extract_year(legacy_name, target_sport_key)
-                    legacy_df["Product"] = extract_product(legacy_name)
-                    legacy_df["Sport"] = target_sport_key
-                    legacy_df["checklist_id"] = legacy_id
-                    legacy_df["checklist_name"] = legacy_name
-                    legacy_frames.append(ensure_master_dataframe_schema(legacy_df, target_sport_key))
-                    existing_ids.add(legacy_id)
-                if legacy_frames:
-                    existing_master = pd.concat([existing_master] + legacy_frames, ignore_index=True)
-                    existing_master = ensure_master_dataframe_schema(existing_master, target_sport_key)
-            except Exception as e:
-                st.sidebar.warning(f"Migration legacy -> master partielle: {e}")
+                existing_ids = set(existing_master["checklist_id"].astype(str).tolist()) if not existing_master.empty else set()
 
-            for f in ingest_files:
-                if f.name.startswith("~$"):
-                    skipped_count += 1
-                    continue
-
+                # Reconcile legacy per-checklist parquets into master (missing IDs only).
                 try:
-                    clean_df = read_uploaded_checklist(f, sheet_names)
-                    clean_df["Team"] = clean_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
-                    checklist_name = checklist_name_from_filename(f.name)
-                    checklist_id = normalize_checklist_id(checklist_name)
+                    legacy_keys = list_r2_parquet_keys_cached(*_r2_config_values(r2_config), target_sport_key)
+                    legacy_frames = []
+                    for legacy_key in legacy_keys:
+                        legacy_name = os.path.basename(legacy_key)
+                        legacy_id = normalize_checklist_id(legacy_name)
+                        if legacy_id in existing_ids:
+                            continue
+                        legacy_df = read_r2_parquet_cached(*_r2_config_values(r2_config), legacy_key)
+                        legacy_df = normalize_checklist_columns(legacy_df)
+                        legacy_df["Team"] = legacy_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
+                        legacy_df["Hits"] = 1
+                        legacy_df["File"] = legacy_name
+                        legacy_df["Year"] = extract_year(legacy_name, target_sport_key)
+                        legacy_df["Product"] = extract_product(legacy_name)
+                        legacy_df["Sport"] = target_sport_key
+                        legacy_df["checklist_id"] = legacy_id
+                        legacy_df["checklist_name"] = legacy_name
+                        legacy_frames.append(ensure_master_dataframe_schema(legacy_df, target_sport_key))
+                        existing_ids.add(legacy_id)
+                    if legacy_frames:
+                        existing_master = pd.concat([existing_master] + legacy_frames, ignore_index=True)
+                        existing_master = ensure_master_dataframe_schema(existing_master, target_sport_key)
+                except Exception as e:
+                    st.sidebar.warning(f"Migration legacy -> master partielle: {e}")
 
-                    if (not overwrite_r2) and (checklist_id in existing_ids or checklist_id in pending_by_checklist_id):
-                        st.sidebar.info(f"{f.name}: déjà présent (option remplacement désactivée).")
+                for f in ingest_files:
+                    if f.name.startswith("~$"):
                         skipped_count += 1
                         continue
 
-                    work = clean_df.copy()
-                    work["Hits"] = 1
-                    work["File"] = checklist_name
-                    work["Year"] = extract_year(checklist_name, target_sport_key)
-                    work["Product"] = extract_product(checklist_name)
-                    work["Sport"] = target_sport_key
-                    work["checklist_id"] = checklist_id
-                    work["checklist_name"] = checklist_name
-                    work = ensure_master_dataframe_schema(work, target_sport_key)
+                    try:
+                        clean_df = read_uploaded_checklist(f, sheet_names)
+                        clean_df["Team"] = clean_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
+                        checklist_name = checklist_name_from_filename(f.name)
+                        checklist_id = normalize_checklist_id(checklist_name)
 
-                    pending_by_checklist_id[checklist_id] = work
-                    uploaded_count += 1
-                except Exception as e:
-                    st.sidebar.warning(f"{f.name}: {e}")
-                    skipped_count += 1
+                        if (not overwrite_r2) and (checklist_id in existing_ids or checklist_id in pending_by_checklist_id):
+                            st.sidebar.info(f"{f.name}: déjà présent (option remplacement désactivée).")
+                            skipped_count += 1
+                            continue
 
-            if uploaded_count > 0:
-                replaced_ids = set(pending_by_checklist_id.keys())
-                if not existing_master.empty and replaced_ids:
-                    existing_master = existing_master[
-                        ~existing_master["checklist_id"].astype(str).isin(replaced_ids)
-                    ].copy()
+                        work = clean_df.copy()
+                        work["Hits"] = 1
+                        work["File"] = checklist_name
+                        work["Year"] = extract_year(checklist_name, target_sport_key)
+                        work["Product"] = extract_product(checklist_name)
+                        work["Sport"] = target_sport_key
+                        work["checklist_id"] = checklist_id
+                        work["checklist_name"] = checklist_name
+                        work = ensure_master_dataframe_schema(work, target_sport_key)
 
-                new_frames = [existing_master] + list(pending_by_checklist_id.values())
-                final_master = pd.concat(new_frames, ignore_index=True) if new_frames else pd.DataFrame(columns=MASTER_COLUMNS)
-                final_master = ensure_master_dataframe_schema(final_master, target_sport_key)
-                uploaded_bytes = upload_parquet_dataframe(r2_config, target_master_key, final_master)
+                        pending_by_checklist_id[checklist_id] = work
+                        uploaded_count += 1
+                    except Exception as e:
+                        st.sidebar.warning(f"{f.name}: {e}")
+                        skipped_count += 1
 
-                st.sidebar.success(
-                    f"{uploaded_count} checklist(s) ajoutée(s) dans le master parquet."
-                )
-                if skipped_count:
-                    st.sidebar.caption(f"{skipped_count} fichier(s) ignoré(s).")
-                st.sidebar.caption(f"Master: `{target_master_key}` ({uploaded_bytes} bytes)")
-                st.cache_data.clear()
-                st.session_state.pop("analysis_payload", None)
-                st.rerun()
-            else:
-                st.sidebar.error("Aucun fichier ajouté. Vérifie le format du fichier.")
+                if uploaded_count > 0:
+                    replaced_ids = set(pending_by_checklist_id.keys())
+                    if not existing_master.empty and replaced_ids:
+                        existing_master = existing_master[
+                            ~existing_master["checklist_id"].astype(str).isin(replaced_ids)
+                        ].copy()
 
-# Launch button
+                    new_frames = [existing_master] + list(pending_by_checklist_id.values())
+                    final_master = pd.concat(new_frames, ignore_index=True) if new_frames else pd.DataFrame(columns=MASTER_COLUMNS)
+                    final_master = ensure_master_dataframe_schema(final_master, target_sport_key)
+                    uploaded_bytes = upload_parquet_dataframe(r2_config, target_master_key, final_master)
+
+                    st.sidebar.success(
+                        f"{uploaded_count} checklist(s) ajoutée(s) dans le master parquet."
+                    )
+                    if skipped_count:
+                        st.sidebar.caption(f"{skipped_count} fichier(s) ignoré(s).")
+                    st.sidebar.caption(f"Master: `{target_master_key}` ({uploaded_bytes} bytes)")
+                    st.cache_data.clear()
+                    st.session_state.pop("analysis_payload", None)
+                    st.rerun()
+                else:
+                    st.sidebar.error("Aucun fichier ajouté. Vérifie le format du fichier.")
+
+# ============ TAB: OPTIONS ============
+if sidebar_tab == "⚙️ Options":
+    st.sidebar.caption("Paramètres avancés")
+    if st.sidebar.button("🔄 Vider le cache", use_container_width=True):
+        st.cache_data.clear()
+        st.session_state.pop("analysis_payload", None)
+        st.session_state["analysis_force_reload"] = True
+        st.rerun()
+    
+    st.sidebar.markdown("---")
+    st.sidebar.caption("Informations")
+    current_sel = st.session_state.get("selected_cloud_tokens", [])
+    st.sidebar.markdown(f"- **Checklists sélectionnées:** {len(current_sel)}")
+    st.sidebar.markdown(f"- **Mode source:** {data_source_mode}")
+    if r2_enabled:
+        st.sidebar.markdown(f"- **Stockage:** R2 Cloud")
+    else:
+        st.sidebar.markdown(f"- **Stockage:** Local")
+
+# Launch button (always visible)
 st.sidebar.markdown("---")
-if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
+num_selected = len(st.session_state.get("selected_cloud_tokens", []))
+if st.sidebar.button(f"🚀 Lancer ({num_selected})", type="primary", use_container_width=True, disabled=num_selected == 0):
     st.session_state['scan_triggered'] = True
     st.session_state['selected_files'] = selected_file_paths
     st.session_state['data_source_mode'] = data_source_mode
