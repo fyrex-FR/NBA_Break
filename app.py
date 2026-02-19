@@ -783,24 +783,6 @@ st.markdown("""
     h3 {
         color: #333;
     }
-    /* Sticky launch button container */
-    section[data-testid="stSidebar"] > div:first-child {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-        flex: 1;
-        overflow-y: auto;
-    }
-    .sticky-launch-btn {
-        position: sticky;
-        bottom: 0;
-        background: linear-gradient(to top, white 80%, transparent);
-        padding: 1rem 0;
-        margin-top: auto;
-        z-index: 999;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -1422,18 +1404,14 @@ else:
             else:
                 st.sidebar.error("Aucun fichier ajouté. Vérifie le format du fichier.")
 
-# Sticky launch button
+# Launch button
 st.sidebar.markdown("---")
-launch_col1, launch_col2 = st.sidebar.columns([4, 1])
-with launch_col1:
-    if st.sidebar.button("🚀 Lancer l'analyse", type="primary", use_container_width=True):
-        st.session_state['scan_triggered'] = True
-        st.session_state['selected_files'] = selected_file_paths
-        st.session_state['data_source_mode'] = data_source_mode
-        st.session_state['master_key'] = selected_master_key if data_source_mode == "master" else ""
-        st.session_state['analysis_force_reload'] = True
-with launch_col2:
-    st.sidebar.caption(f"{len(selected_file_paths)}")
+if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
+    st.session_state['scan_triggered'] = True
+    st.session_state['selected_files'] = selected_file_paths
+    st.session_state['data_source_mode'] = data_source_mode
+    st.session_state['master_key'] = selected_master_key if data_source_mode == "master" else ""
+    st.session_state['analysis_force_reload'] = True
 
 # --- Main Logic ---
 
