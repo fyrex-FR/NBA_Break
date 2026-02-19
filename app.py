@@ -731,8 +731,8 @@ def build_deterministic_spot_summary(
     # Hot Spot : spots qui représentent plus que leur part équitable (100% / nb spots)
     nb_spots = len(result_df)
     fair_share = 100.0 / nb_spots if nb_spots > 0 else 0
-    # Un spot est "hot" s'il a plus de 1.5x sa part équitable
-    hot_threshold_pct = fair_share * 1.5
+    # Un spot est "hot" s'il a plus de 1.5x sa part équitable, avec un minimum de 0.5%
+    hot_threshold_pct = max(fair_share * 1.5, 0.5)
     result_df["Hot Spot"] = result_df["Part du break"].apply(
         lambda x: "🔥 Hot" if x >= hot_threshold_pct else ""
     )
@@ -2652,13 +2652,14 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         c_metric3.metric("Total cartes", f"{int(summary.get('total_cartes', 0))}")
                         c_metric4.metric("Hot spots", f"{summary.get('hot_spots', 0)}")
 
-                        hot_threshold_legend = float(summary.get("hot_threshold_pct", 0.0))
+                        hot_threshold_legend = float(summary.get("hot_threshold_pct", 0.5))
+                        nb_spots_legend = len(result_df)
+                        fair_share_legend = 100.0 / nb_spots_legend if nb_spots_legend > 0 else 0
                         with st.expander("ℹ️ Légende de calcul", expanded=False):
                             st.markdown(
                                 "- `Break Score` : valeur pondérée = `Auto/Memo × 3 + Case Hit × 5`.\n"
                                 "- `Part du break` : pourcentage de la valeur totale du break.\n"
-                                f"- `Hot Spot` : spots avec > {hot_threshold_legend:.1f}% du break (1.5× la part équitable).\n"
-                                "- `Rareté` : basée sur Auto/Memo + 2×Case Hit (Commun < 1, Peu commun < 3, Rare < 7, Ultra-rare ≥ 7)."
+                                f"- `Hot Spot` : spots avec ≥ {hot_threshold_legend:.1f}% du break (1.5× la part équitable de {fair_share_legend:.2f}%, min 0.5%)."
                             )
 
                         st.markdown("#### Filtres & vues")
