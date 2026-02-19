@@ -1612,7 +1612,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         if enabled_views.get("live_mode", True):
             views.append("⚡ Live Mode")
         views.append("🧩 Simulation de Break")
-        views.append("🛠️ Break Builder")
         views.extend([" Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"])
         
         # Ensure current view is valid
