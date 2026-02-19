@@ -2901,6 +2901,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     info_df.to_excel(writer, index=False, sheet_name="Info")
                     # Feuille Export avec les données
                     export_df.to_excel(writer, index=False, sheet_name="Export")
+                    # Forcer l'ouverture sur la feuille Info
+                    writer.book.active = writer.book.worksheets[0]
                 buffer.seek(0)
 
                 # Nom de fichier basé sur les produits
