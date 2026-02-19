@@ -2778,6 +2778,28 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 
                 exp_df = df.copy()
 
+                # Normaliser les noms de joueurs (title case) pour éviter les doublons
+                def normalize_player_name(name):
+                    if pd.isna(name):
+                        return name
+                    name = str(name).strip()
+                    # Title case mais gère les particules (de, van, etc.)
+                    parts = name.split()
+                    normalized = []
+                    for i, part in enumerate(parts):
+                        lower_part = part.lower()
+                        # Garder les suffixes en majuscules (Jr., Sr., III, IV, etc.)
+                        if lower_part in ["jr.", "sr.", "jr", "sr", "ii", "iii", "iv", "v"]:
+                            normalized.append(part.upper().rstrip('.') + ('.' if '.' in part else ''))
+                        # Particules en minuscules sauf en début
+                        elif lower_part in ["de", "da", "van", "von", "del", "la", "le"] and i > 0:
+                            normalized.append(lower_part)
+                        else:
+                            normalized.append(part.capitalize())
+                    return " ".join(normalized)
+
+                exp_df["Player"] = exp_df["Player"].apply(normalize_player_name)
+
                 st.markdown("### 📋 Colonnes à exporter")
                 
                 col_options = st.columns(2)
