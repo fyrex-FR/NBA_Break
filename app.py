@@ -1633,6 +1633,35 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         # --- Navigation State Management ---
         if 'active_view' not in st.session_state:
             st.session_state['active_view'] = "🌍 Vue Globale"
+        
+        # Onboarding pour nouveaux utilisateurs
+        if 'onboarding_seen' not in st.session_state:
+            with st.expander("👋 Bienvenue ! Guide rapide", expanded=True):
+                onb_col1, onb_col2, onb_col3 = st.columns(3)
+                with onb_col1:
+                    st.markdown("""
+**📊 Analyse**
+- Vue Globale : classement joueurs/équipes
+- Autos & Patchs : autographes et mémorabilia
+- Case Hits : inserts rares (Downtown, Kaboom...)
+""")
+                with onb_col2:
+                    st.markdown("""
+**🎲 Simulation**
+- Simule un break par équipe/joueur/lettre
+- Identifie les Hot Spots (meilleurs spots)
+- Exporte en Excel pour partager
+""")
+                with onb_col3:
+                    st.markdown("""
+**💡 Astuces**
+- Utilise le filtre checklist en haut
+- Clique sur un joueur pour voir ses cartes
+- Exporte tes analyses en Excel
+""")
+                if st.button("✓ J'ai compris", type="primary"):
+                    st.session_state['onboarding_seen'] = True
+                    st.rerun()
             
         def update_view():
             st.session_state['active_view'] = st.session_state['nav_radio']
@@ -2746,12 +2775,26 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         hot_threshold_legend = float(summary.get("hot_threshold_pct", 0.5))
                         nb_spots_legend = len(result_df)
                         fair_share_legend = 100.0 / nb_spots_legend if nb_spots_legend > 0 else 0
-                        with st.expander("ℹ️ Légende de calcul", expanded=False):
-                            st.markdown(
-                                "- `Break Score` : valeur pondérée = `Auto/Memo × 3 + Case Hit × 5`.\n"
-                                "- `Part du break` : pourcentage de la valeur totale du break.\n"
-                                f"- `Hot Spot` : spots avec ≥ {hot_threshold_legend:.1f}% du break (1.5× la part équitable de {fair_share_legend:.2f}%, min 0.5%)."
-                            )
+                        with st.expander("ℹ️ Guide des métriques", expanded=False):
+                            col_help1, col_help2 = st.columns(2)
+                            with col_help1:
+                                st.markdown("""
+**Colonnes du tableau :**
+- **Cartes** : Nombre total de cartes pour ce spot
+- **Auto/Memo** : Autographes et mémorabilia (patches, jerseys)
+- **Case Hit** : Inserts rares (Downtown, Kaboom, Color Blast...)
+- **Break Score** : Valeur pondérée = `Auto/Memo × 3 + Case Hit × 5`
+- **Part du break** : % de la valeur totale (Break Score)
+""")
+                            with col_help2:
+                                st.markdown(f"""
+**Indicateurs visuels :**
+- 🔥 **Hot Spot** : Spots avec ≥ {hot_threshold_legend:.1f}% du break
+  - Seuil = 1.5× la part équitable ({fair_share_legend:.2f}%)
+  - Minimum 0.5% pour éviter les seuils trop bas
+- 🟢 **Lignes vertes** : Hot Spots (surperforment)
+- 🔵 **Dégradé bleu** : Intensité de Part du break
+""")
 
                         st.markdown("#### Filtres & vues")
                         filter_col1, filter_col2, filter_col3, filter_col4, filter_col5 = st.columns([1, 1, 1, 1, 0.7])
@@ -2840,7 +2883,25 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
                         export_cols = list(dict.fromkeys(selected_cols))
                         export_table_df = display_df[export_cols].copy()
-                        st.dataframe(export_table_df, use_container_width=True)
+                        
+                        # Couleurs conditionnelles pour le tableau
+                        def style_simulation_table(df):
+                            styles = pd.DataFrame("", index=df.index, columns=df.columns)
+                            # Hot Spot en vert
+                            if "Hot Spot" in df.columns:
+                                styles.loc[df["Hot Spot"] == "🔥 Hot", :] = "background-color: rgba(0, 200, 0, 0.15)"
+                            # Part du break élevée en dégradé
+                            if "Part du break" in df.columns:
+                                max_val = df["Part du break"].max() if df["Part du break"].max() > 0 else 1
+                                for idx in df.index:
+                                    val = df.loc[idx, "Part du break"]
+                                    if val > 0:
+                                        intensity = min(val / max_val * 0.3, 0.3)
+                                        styles.loc[idx, "Part du break"] = f"background-color: rgba(0, 150, 255, {intensity})"
+                            return styles
+                        
+                        styled_df = export_table_df.style.apply(style_simulation_table, axis=None)
+                        st.dataframe(styled_df, use_container_width=True)
 
                         if compare_mode and compare_method:
                             compare_spots = build_default_spots(sim_pool, compare_method)
