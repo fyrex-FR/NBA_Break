@@ -2729,13 +2729,23 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             "Part du break",
                             "Hot Spot",
                         ]
-                        selected_cols = ["Spot", "Nombre de joueurs", "Cartes hors Auto/Memo/Case Hit"]
+                        # Retirer "Nombre de joueurs" et "Joueurs (aperçu)" en vue par joueur (redondant)
+                        if selected_method == "player":
+                            base_cols = [c for c in base_cols if c != "Nombre de joueurs"]
+                            selected_cols = ["Spot", "Cartes hors Auto/Memo/Case Hit"]
+                            extra_cols = ["Break Score", "Part du break", "Hot Spot"]
+                        else:
+                            selected_cols = ["Spot", "Nombre de joueurs", "Cartes hors Auto/Memo/Case Hit"]
+                            extra_cols = ["Break Score", "Part du break", "Hot Spot", "Joueurs (aperçu)"]
                         selected_cols.extend([c for c in visible_types if c in display_df.columns])
                         selected_cols.extend(
-                            [c for c in ["Break Score", "Part du break", "Hot Spot", "Joueurs (aperçu)"] if c in display_df.columns]
+                            [c for c in extra_cols if c in display_df.columns]
                         )
                         if not visible_types:
-                            selected_cols = [c for c in base_cols + ["Joueurs (aperçu)"] if c in display_df.columns]
+                            if selected_method == "player":
+                                selected_cols = [c for c in base_cols if c in display_df.columns]
+                            else:
+                                selected_cols = [c for c in base_cols + ["Joueurs (aperçu)"] if c in display_df.columns]
 
                         export_cols = list(dict.fromkeys(selected_cols))
                         export_table_df = display_df[export_cols].copy()
