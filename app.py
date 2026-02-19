@@ -783,6 +783,24 @@ st.markdown("""
     h3 {
         color: #333;
     }
+    /* Sticky launch button container */
+    section[data-testid="stSidebar"] > div:first-child {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+        flex: 1;
+        overflow-y: auto;
+    }
+    .sticky-launch-btn {
+        position: sticky;
+        bottom: 0;
+        background: linear-gradient(to top, white 80%, transparent);
+        padding: 1rem 0;
+        margin-top: auto;
+        z-index: 999;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -1404,12 +1422,20 @@ else:
             else:
                 st.sidebar.error("Aucun fichier ajouté. Vérifie le format du fichier.")
 
-if st.sidebar.button("🚀 Lancer l'analyse", type="primary"):
-    st.session_state['scan_triggered'] = True
-    st.session_state['selected_files'] = selected_file_paths
-    st.session_state['data_source_mode'] = data_source_mode
-    st.session_state['master_key'] = selected_master_key if data_source_mode == "master" else ""
-    st.session_state['analysis_force_reload'] = True
+# Sticky launch button
+st.sidebar.markdown("---")
+st.sidebar.markdown('<div class="sticky-launch-btn">', unsafe_allow_html=True)
+launch_col1, launch_col2 = st.sidebar.columns([3, 1])
+with launch_col1:
+    if st.button("🚀 Lancer l'analyse", type="primary", use_container_width=True):
+        st.session_state['scan_triggered'] = True
+        st.session_state['selected_files'] = selected_file_paths
+        st.session_state['data_source_mode'] = data_source_mode
+        st.session_state['master_key'] = selected_master_key if data_source_mode == "master" else ""
+        st.session_state['analysis_force_reload'] = True
+with launch_col2:
+    st.caption(f"{len(selected_file_paths)} 📋")
+st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
 # --- Main Logic ---
 
@@ -1643,33 +1669,79 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         hype_map = build_hype_map(sport_profile.get("hype_tiers", {}))
         enabled_views = sport_profile.get("enabled_views", {})
 
-        views = ["🌍 Vue Globale"]
+        # Build categorized views
+        views_analyse = ["🌍 Vue Globale"]
         if enabled_views.get("autos_patchs", True) and auto_mem_keywords:
-            views.append("💎 Autos & Patchs")
+            views_analyse.append("💎 Autos & Patchs")
         if enabled_views.get("logoman", True) and logoman_keywords:
-            views.append("🔥 Logoman")
+            views_analyse.append("🔥 Logoman")
         if enabled_views.get("case_hits", True) and case_hit_keywords:
-            views.append("✨ Case Hits")
-        views.append("🧪 Détection Auto/Mem")
-        views.extend(["👥 Multi-Joueurs", "⚖️ Comparateur Joueurs"])
+            views_analyse.append("✨ Case Hits")
+        views_analyse.append("👥 Multi-Joueurs")
         if enabled_views.get("value_picks", True) and hype_map:
-            views.append("🧠 Value Picks")
-        if enabled_views.get("cost_by_pick", True):
-            views.append("💸 Cost par Pick")
+            views_analyse.append("🧠 Value Picks")
         if enabled_views.get("rookies", bool(top_rookies_by_year)):
-            views.append("🧨 Rookies")
+            views_analyse.append("🧨 Rookies")
+
+        views_details = ["🔍 Analyse Joueur", "🛡️ Analyse Équipe", "📁 Par Fichier"]
+
+        views_outils = ["🧪 Détection Auto/Mem", "⚖️ Comparateur Joueurs"]
+        if enabled_views.get("cost_by_pick", True):
+            views_outils.append("💸 Cost par Pick")
         if enabled_views.get("live_mode", True):
-            views.append("⚡ Live Mode")
-        views.append("🧩 Simulation de Break")
-        views.append("📤 Export")
-        views.extend([" Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"])
+            views_outils.append("⚡ Live Mode")
+
+        views_break = ["🧩 Simulation de Break", "📤 Export"]
+
+        # All views flat list for validation
+        all_views = views_analyse + views_details + views_outils + views_break
         
+        # Map view to category
+        view_to_category = {}
+        for v in views_analyse:
+            view_to_category[v] = "📊 Analyse"
+        for v in views_details:
+            view_to_category[v] = "🔍 Détails"
+        for v in views_outils:
+            view_to_category[v] = "🛠️ Outils"
+        for v in views_break:
+            view_to_category[v] = "🎲 Break"
+
+        category_to_views = {
+            "📊 Analyse": views_analyse,
+            "🔍 Détails": views_details,
+            "🛠️ Outils": views_outils,
+            "🎲 Break": views_break,
+        }
+
         # Ensure current view is valid
-        if st.session_state['active_view'] not in views:
-             st.session_state['active_view'] = views[0]
-             
-        selection = st.radio("", views, index=views.index(st.session_state['active_view']), horizontal=True, key="nav_radio", on_change=update_view, label_visibility="collapsed")
+        if st.session_state['active_view'] not in all_views:
+            st.session_state['active_view'] = all_views[0]
+
+        current_view = st.session_state['active_view']
+        current_category = view_to_category.get(current_view, "📊 Analyse")
+
+        # Category tabs
+        tab_labels = list(category_to_views.keys())
+        tabs = st.tabs(tab_labels)
+        
+        for i, (cat_label, cat_views) in enumerate(category_to_views.items()):
+            with tabs[i]:
+                # Short labels for buttons (remove emojis for cleaner look)
+                cols = st.columns(len(cat_views))
+                for j, view_name in enumerate(cat_views):
+                    with cols[j]:
+                        is_active = (current_view == view_name)
+                        btn_type = "primary" if is_active else "secondary"
+                        if st.button(view_name, key=f"nav_{view_name}", type=btn_type, use_container_width=True):
+                            st.session_state['active_view'] = view_name
+                            st.session_state['nav_radio'] = view_name
+                            st.rerun()
+        
         st.markdown("---")
+        
+        # Legacy compatibility: keep views list for old references
+        views = all_views
 
         # --- Filters ---
         all_checklists = get_checklist_labels(df)
@@ -2973,7 +3045,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         key="exp_csv",
                     )
 
-        elif selection == " Par Fichier":
+        elif selection == "📁 Par Fichier":
             st.subheader("Analyse par Fichier")
             
             all_files = sorted(df['File'].unique().tolist())
