@@ -1448,8 +1448,13 @@ def load_data(file_list, selected_sport_key, selected_sport_profile, source_mode
     files_processed = 0
     error_files = []
     
-    progress_bar = st.progress(0)
-    status_text = st.empty()
+    # Loading UI
+    loading_container = st.container()
+    with loading_container:
+        st.markdown("### ⏳ Chargement en cours...")
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+        stats_text = st.empty()
 
     for i, file_obj in enumerate(file_list):
         # Handle difference between Local Path (str) and UploadedFile (object)
@@ -1541,14 +1546,18 @@ def load_data(file_list, selected_sport_key, selected_sport_profile, source_mode
             
             combined_data.append(df)
             files_processed += 1
+            stats_text.caption(f"✓ {files_processed} fichier(s) chargé(s) • {sum(len(d) for d in combined_data)} lignes")
             
         except Exception as e:
             error_files.append((filename, str(e)))
         
         progress_bar.progress((i + 1) / len(file_list))
 
+    # Clear loading UI
     status_text.empty()
     progress_bar.empty()
+    stats_text.empty()
+    loading_container.empty()
     
     if not combined_data:
         return None, "Aucun onglet 'Teams_clean' trouvé ou données valides extraites.", error_files
@@ -1596,16 +1605,30 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         }
     
     if df is not None:
-        st.success(msg)
-        st.caption(f"Sport actif pour l'analyse: {sport_profile.get('label', selected_sport_key)}")
-        st.sidebar.markdown("---")
-        st.sidebar.caption(f"{msg}")
+        # Success banner with key metrics
+        st.success(f"✅ {msg}")
+        
+        # Quick stats bar
+        quick_stats = st.columns(5)
+        with quick_stats[0]:
+            st.metric("Lignes", f"{len(df):,}")
+        with quick_stats[1]:
+            if "Team" in df.columns:
+                st.metric("Équipes", df["Team"].nunique())
+        with quick_stats[2]:
+            if "Player" in df.columns:
+                st.metric("Joueurs", df["Player"].nunique())
+        with quick_stats[3]:
+            checklist_col = next((c for c in ["checklist_name", "File", "checklist_id"] if c in df.columns), None)
+            if checklist_col:
+                st.metric("Checklists", df[checklist_col].nunique())
+        with quick_stats[4]:
+            st.caption(f"Sport: {sport_profile.get('label', selected_sport_key)}")
+        
         if error_files:
-            st.sidebar.caption(f"{len(error_files)} fichier(s) ignoré(s).")
-        if error_files:
-            with st.expander(f"{len(error_files)} fichier(s) ignoré(s)"):
+            with st.expander(f"⚠️ {len(error_files)} fichier(s) ignoré(s)", expanded=False):
                 for name, err in error_files:
-                    st.write(f"- {name}: {err}")
+                    st.write(f"- **{name}**: {err}")
         
         # --- Navigation State Management ---
         if 'active_view' not in st.session_state:
@@ -1723,7 +1746,25 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
         # --- Filters ---
         all_checklists = get_checklist_labels(df)
-        selected_checklists = st.multiselect("Filtrer par checklist :", all_checklists, default=all_checklists)
+        filter_col1, filter_col2 = st.columns([6, 1])
+        with filter_col1:
+            selected_checklists = st.multiselect(
+                "Filtrer par checklist :",
+                all_checklists,
+                default=all_checklists,
+                key="global_checklist_filter"
+            )
+        with filter_col2:
+            # Filter status indicator
+            active_filters = len(all_checklists) - len(selected_checklists)
+            if active_filters > 0:
+                st.markdown(f"**{active_filters}** filtre(s)")
+                if st.button("🔄 Reset", key="reset_checklist_filter"):
+                    st.session_state["global_checklist_filter"] = all_checklists
+                    st.rerun()
+            else:
+                st.caption("Tout sélectionné")
+        
         if selected_checklists:
             for col in ["checklist_name", "File", "checklist_id"]:
                 if col in df.columns:
