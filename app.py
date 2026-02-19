@@ -1424,18 +1424,16 @@ else:
 
 # Sticky launch button
 st.sidebar.markdown("---")
-st.sidebar.markdown('<div class="sticky-launch-btn">', unsafe_allow_html=True)
-launch_col1, launch_col2 = st.sidebar.columns([3, 1])
+launch_col1, launch_col2 = st.sidebar.columns([4, 1])
 with launch_col1:
-    if st.button("🚀 Lancer l'analyse", type="primary", use_container_width=True):
+    if st.sidebar.button("🚀 Lancer l'analyse", type="primary", use_container_width=True):
         st.session_state['scan_triggered'] = True
         st.session_state['selected_files'] = selected_file_paths
         st.session_state['data_source_mode'] = data_source_mode
         st.session_state['master_key'] = selected_master_key if data_source_mode == "master" else ""
         st.session_state['analysis_force_reload'] = True
 with launch_col2:
-    st.caption(f"{len(selected_file_paths)} 📋")
-st.sidebar.markdown('</div>', unsafe_allow_html=True)
+    st.sidebar.caption(f"{len(selected_file_paths)}")
 
 # --- Main Logic ---
 
@@ -1742,6 +1740,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         
         # Legacy compatibility: keep views list for old references
         views = all_views
+        # Set selection for view switching logic
+        selection = st.session_state['active_view']
 
         # --- Filters ---
         all_checklists = get_checklist_labels(df)
