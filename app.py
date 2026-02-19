@@ -783,6 +783,37 @@ st.markdown("""
     h3 {
         color: #333;
     }
+    /* Mobile responsive improvements */
+    @media (max-width: 768px) {
+        /* Reduce padding on mobile */
+        .block-container {
+            padding: 1rem 0.5rem !important;
+        }
+        /* Stack columns vertically on mobile */
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: 100% !important;
+            min-width: 100% !important;
+        }
+        /* Smaller font for metrics */
+        [data-testid="stMetricValue"] {
+            font-size: 1.2rem !important;
+        }
+        /* Tabs scroll horizontally */
+        .stTabs [data-baseweb="tab-list"] {
+            overflow-x: auto;
+            flex-wrap: nowrap;
+        }
+        /* Buttons in tabs smaller */
+        .stTabs button {
+            font-size: 0.8rem !important;
+            padding: 0.3rem 0.5rem !important;
+        }
+    }
+    /* Improve dataframe readability */
+    .dataframe {
+        font-size: 0.85rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -1633,35 +1664,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         # --- Navigation State Management ---
         if 'active_view' not in st.session_state:
             st.session_state['active_view'] = "🌍 Vue Globale"
-        
-        # Onboarding pour nouveaux utilisateurs
-        if 'onboarding_seen' not in st.session_state:
-            with st.expander("👋 Bienvenue ! Guide rapide", expanded=True):
-                onb_col1, onb_col2, onb_col3 = st.columns(3)
-                with onb_col1:
-                    st.markdown("""
-**📊 Analyse**
-- Vue Globale : classement joueurs/équipes
-- Autos & Patchs : autographes et mémorabilia
-- Case Hits : inserts rares (Downtown, Kaboom...)
-""")
-                with onb_col2:
-                    st.markdown("""
-**🎲 Simulation**
-- Simule un break par équipe/joueur/lettre
-- Identifie les Hot Spots (meilleurs spots)
-- Exporte en Excel pour partager
-""")
-                with onb_col3:
-                    st.markdown("""
-**💡 Astuces**
-- Utilise le filtre checklist en haut
-- Clique sur un joueur pour voir ses cartes
-- Exporte tes analyses en Excel
-""")
-                if st.button("✓ J'ai compris", type="primary"):
-                    st.session_state['onboarding_seen'] = True
-                    st.rerun()
             
         def update_view():
             st.session_state['active_view'] = st.session_state['nav_radio']
