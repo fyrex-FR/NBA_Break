@@ -6,19 +6,47 @@ from copy import deepcopy
 DEFAULT_CATEGORY_RULES = {
     "logoman": ["logoman"],
     "case_hit": [
+        # Classic Case Hits
         "downtown",
-        "micro mosaic",
-        "stained glass",
-        "strined glass",
-        "color blast",
         "kaboom",
+        "color blast",
+        "black color blast",
         "manga",
-        "sublime",
+        # Mosaic
+        "stained glass",
+        "micro mosaic",
+        "razzle dazzle",
+        # Revolution
+        "vortex",
+        "shock wave",
+        "supernova",
+        # Prizm
+        "fireworks",
+        "fractal",
+        "kaleidoscopic",
+        "deep space",
+        "prizmania",
+        # Select
+        "tiger eyes",
+        "leopard",
+        "zebra",
+        # Court Kings
+        "aurora",
+        "la cinque",
+        # Hoops
+        "dreamcatchers",
+        "funkadelic",
+        # Donruss
+        "snow globe",
         "night moves",
-        "profile",
+        "sublime",
+        # One and One
+        "fourth dimension",
+        # Noir
+        "ceremonial orange",
+        # Autres SSP inserts
         "micro-etch",
         "photon",
-        "vortex",
         "genesis",
         "glass mosaic",
         "color wheel",
@@ -31,8 +59,8 @@ DEFAULT_CATEGORY_RULES = {
         "let's go!",
         "glass canvas",
         "patented",
-        "finals",
         "rock stars",
+        "profile signatures",
     ],
     "auto_mem": [
         "auto",
