@@ -2765,15 +2765,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         elif selection == "📤 Export":
             st.subheader("📤 Export Personnalisé")
             st.caption("Construis ton export Excel avec les colonnes de ton choix, trié automatiquement.")
-
-            available_products_exp = sorted(df["Product"].dropna().astype(str).str.strip().unique().tolist())
-            available_products_exp = [p for p in available_products_exp if p]
-
-            if not available_products_exp:
-                st.info("Aucun produit disponible. Chargez une checklist d'abord.")
+            
+            # Utiliser le df filtré (peut contenir plusieurs produits selon le filtre global)
+            products_in_export = df["Product"].dropna().unique().tolist()
+            if len(products_in_export) == 0:
+                st.info("Aucune donnée disponible. Sélectionnez des checklists.")
             else:
-                exp_product = st.selectbox("Choisir le produit", available_products_exp, key="exp_product")
-                exp_df = df[df["Product"] == exp_product].copy()
+                if len(products_in_export) > 1:
+                    st.info(f"📦 **{len(products_in_export)} produits** inclus dans l'export (filtre global appliqué)")
+                else:
+                    st.info(f"📦 Produit: **{products_in_export[0]}**")
+                
+                exp_df = df.copy()
 
                 st.markdown("### 📋 Colonnes à exporter")
                 
@@ -2812,7 +2815,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
                 # Agréger selon le mode
                 if inc_team and inc_player:
-                    # Grouper par équipe + joueur
                     group_cols = ["Team", "Player"]
                 elif inc_team:
                     group_cols = ["Team"]
@@ -2872,12 +2874,18 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     export_df.to_excel(writer, index=False, sheet_name="Export")
                 buffer.seek(0)
 
+                # Nom de fichier basé sur les produits
+                if len(products_in_export) == 1:
+                    filename_base = products_in_export[0].replace(' ', '_')
+                else:
+                    filename_base = f"multi_{len(products_in_export)}_produits"
+
                 exp_col1, exp_col2 = st.columns(2)
                 with exp_col1:
                     st.download_button(
                         "📊 Télécharger Excel",
                         data=buffer,
-                        file_name=f"export_{exp_product.replace(' ', '_')}.xlsx",
+                        file_name=f"export_{filename_base}.xlsx",
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                         key="exp_xlsx",
                     )
@@ -2886,7 +2894,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     st.download_button(
                         "📝 Télécharger CSV",
                         data=csv_data,
-                        file_name=f"export_{exp_product.replace(' ', '_')}.csv",
+                        file_name=f"export_{filename_base}.csv",
                         mime="text/csv",
                         key="exp_csv",
                     )
