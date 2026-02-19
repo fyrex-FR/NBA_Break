@@ -2443,28 +2443,28 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
         elif selection == "🧩 Simulation de Break":
             st.subheader("🧩 Simulation de Break")
-            st.caption("Vue déterministe basée sur la checklist (sans Monte Carlo).")
+            st.caption("Vue déterministe basée sur les checklists sélectionnées (sans Monte Carlo).")
 
-            available_products = sorted(df["Product"].dropna().astype(str).str.strip().unique().tolist())
-            available_products = [p for p in available_products if p]
-            if not available_products:
+            products_in_sim = df["Product"].dropna().unique().tolist()
+            if not products_in_sim:
                 st.info("Aucun produit disponible pour la simulation.")
             else:
+                if len(products_in_sim) > 1:
+                    st.info(f"📦 **{len(products_in_sim)} produits** inclus (filtre global appliqué)")
+                else:
+                    st.info(f"📦 Produit: **{products_in_sim[0]}**")
+                
                 method_label_to_key = {v: k for k, v in SIM_METHOD_LABELS.items()}
                 method_labels = list(SIM_METHOD_LABELS.values())
 
-                cfg_col1, cfg_col2 = st.columns(2)
-                with cfg_col1:
-                    selected_method_label = st.selectbox("Méthode de break", method_labels, key="sim_method_label")
-                with cfg_col2:
-                    selected_product = st.selectbox("Produit (box/case)", available_products, key="sim_product")
+                selected_method_label = st.selectbox("Méthode de break", method_labels, key="sim_method_label")
 
                 selected_method = method_label_to_key[selected_method_label]
 
-                sim_df = df[df["Product"] == selected_product].copy()
+                sim_df = df.copy()
                 sim_pool = build_break_simulation_pool(sim_df)
                 if sim_pool.empty:
-                    st.warning("Le produit sélectionné n'a pas de données exploitables pour la simulation.")
+                    st.warning("Aucune donnée exploitable pour la simulation.")
                 else:
                     non_special_cards_total = int(
                         sim_pool.loc[~(sim_pool["Is AutoMemo"] | sim_pool["Is CaseHit"]), "Hits"].sum()
@@ -2522,7 +2522,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             st.warning("Ajoute au moins un spot personnalisé.")
                         else:
                             assign_df = pd.DataFrame({"Entité": source_entities, "Spot": [""] * len(source_entities)})
-                            assign_state_key = f"sim_custom_assign_{selected_sport_key}_{selected_product}_{custom_scope}"
+                            assign_state_key = f"sim_custom_assign_{selected_sport_key}_{custom_scope}"
                             previous_assign = st.session_state.get(assign_state_key, pd.DataFrame())
                             if (
                                 isinstance(previous_assign, pd.DataFrame)
@@ -2686,24 +2686,6 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         export_table_df = display_df[export_cols].copy()
                         st.dataframe(export_table_df, use_container_width=True)
 
-                        top_chart_df = display_df.head(25).copy()
-                        if not top_chart_df.empty:
-                            fig_sim = px.bar(
-                                top_chart_df,
-                                x="Spot",
-                                y="Cartes",
-                                color="Hot Spot",
-                                hover_data=[
-                                    "Nombre de joueurs",
-                                    "Cartes hors Auto/Memo/Case Hit",
-                                    "Auto/Memo",
-                                    "Case Hit",
-                                    "Rareté",
-                                ],
-                                title="Répartition du nombre de cartes par spot",
-                            )
-                            st.plotly_chart(fig_sim, use_container_width=True)
-
                         if compare_mode and compare_method:
                             compare_spots = build_default_spots(sim_pool, compare_method)
                             compare_df, _ = build_deterministic_spot_summary(
@@ -2743,23 +2725,21 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 key="sim_export_csv",
                             )
                         with export_col2:
-                            json_payload = {
-                                "config": {
-                                    "method": selected_method,
-                                    "method_label": SIM_METHOD_LABELS[selected_method],
-                                    "product": selected_product,
-                                    "custom_scope": custom_scope,
-                                    "spots": spots,
-                                },
-                                "summary": summary,
-                                "rows": result_df.to_dict(orient="records"),
-                            }
+                            sim_buffer = BytesIO()
+                            with pd.ExcelWriter(sim_buffer, engine="openpyxl") as writer:
+                                # Feuille Info avec les checklists
+                                info_df = pd.DataFrame({"Checklists incluses": products_in_sim})
+                                info_df.to_excel(writer, index=False, sheet_name="Info")
+                                # Feuille Export avec les données
+                                export_table_df.to_excel(writer, index=False, sheet_name="Simulation")
+                                writer.book.active = writer.book.worksheets[0]
+                            sim_buffer.seek(0)
                             st.download_button(
-                                "Exporter JSON",
-                                data=json.dumps(json_payload, ensure_ascii=False, indent=2).encode("utf-8"),
-                                file_name=f"simulation_break_{selected_sport_key}.json",
-                                mime="application/json",
-                                key="sim_export_json",
+                                "Exporter Excel",
+                                data=sim_buffer,
+                                file_name=f"simulation_break_{selected_sport_key}.xlsx",
+                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                key="sim_export_xlsx",
                             )
 
         elif selection == "📤 Export":
