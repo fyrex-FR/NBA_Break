@@ -1612,6 +1612,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
         if enabled_views.get("live_mode", True):
             views.append("⚡ Live Mode")
         views.append("🧩 Simulation de Break")
+        views.append("📤 Export")
         views.extend([" Par Fichier", "🔍 Analyse Joueur", "🛡️ Analyse Équipe"])
         
         # Ensure current view is valid
@@ -2761,212 +2762,134 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                                 key="sim_export_json",
                             )
 
-        elif selection == "🛠️ Break Builder":
-            st.subheader("🛠️ Break Builder")
-            st.caption("Outil pour breakers : construisez vos tiers, calculez votre marge, exportez votre slot sheet.")
+        elif selection == "📤 Export":
+            st.subheader("📤 Export Personnalisé")
+            st.caption("Construis ton export Excel avec les colonnes de ton choix, trié automatiquement.")
 
-            # --- Configuration ---
-            available_products_bb = sorted(df["Product"].dropna().astype(str).str.strip().unique().tolist())
-            available_products_bb = [p for p in available_products_bb if p]
+            available_products_exp = sorted(df["Product"].dropna().astype(str).str.strip().unique().tolist())
+            available_products_exp = [p for p in available_products_exp if p]
 
-            if not available_products_bb:
+            if not available_products_exp:
                 st.info("Aucun produit disponible. Chargez une checklist d'abord.")
             else:
-                st.markdown("### ⚙️ Configuration")
-                cfg_bb_col1, cfg_bb_col2, cfg_bb_col3 = st.columns(3)
-                with cfg_bb_col1:
-                    bb_product = st.selectbox("Produit (box/case)", available_products_bb, key="bb_product")
-                with cfg_bb_col2:
-                    bb_box_cost = st.number_input("Prix de la box (€)", min_value=0, value=500, step=10, key="bb_box_cost")
-                with cfg_bb_col3:
-                    bb_target_margin = st.number_input("Marge cible (%)", min_value=0, max_value=100, value=15, step=1, key="bb_target_margin")
+                exp_product = st.selectbox("Choisir le produit", available_products_exp, key="exp_product")
+                exp_df = df[df["Product"] == exp_product].copy()
 
-                bb_target_revenue = int(bb_box_cost * (1 + bb_target_margin / 100))
-                st.caption(f"🎯 Objectif de vente : **{bb_target_revenue}€** (box {bb_box_cost}€ + {bb_target_margin}% marge)")
+                st.markdown("### 📋 Colonnes à exporter")
+                
+                col_options = st.columns(2)
+                with col_options[0]:
+                    st.markdown("**Infos de base**")
+                    inc_team = st.checkbox("Équipe", value=True, key="exp_inc_team")
+                    inc_player = st.checkbox("Joueur", value=True, key="exp_inc_player")
+                    inc_cards = st.checkbox("Nombre de cartes", value=True, key="exp_inc_cards")
+                
+                with col_options[1]:
+                    st.markdown("**Catégories**")
+                    inc_auto = st.checkbox("Auto/Memo", value=True, key="exp_inc_auto")
+                    inc_case = st.checkbox("Case Hits", value=True, key="exp_inc_case")
+                    inc_logoman = st.checkbox("Logoman", value=False, key="exp_inc_logoman")
+                    inc_base = st.checkbox("Base/Autre", value=False, key="exp_inc_base")
 
-                # --- Get teams from selected product ---
-                bb_df = df[df["Product"] == bb_product].copy()
-                bb_teams = sorted(bb_df["Team"].dropna().astype(str).unique().tolist())
-                bb_teams = [t for t in bb_teams if t and t.lower() not in ["", "nan", "unknown"]]
-
-                if not bb_teams:
-                    st.warning("Aucune équipe trouvée pour ce produit.")
+                st.markdown("### ⚙️ Options")
+                
+                # Mode de tri
+                if inc_team and inc_player:
+                    sort_mode = st.radio(
+                        "Trier par",
+                        ["Équipe (A-Z)", "Joueur (A-Z)"],
+                        horizontal=True,
+                        key="exp_sort_mode",
+                        help="Pick Your Team = tri par équipe, Pick Your Player = tri par joueur"
+                    )
+                elif inc_team:
+                    sort_mode = "Équipe (A-Z)"
                 else:
-                    st.markdown("### 💰 Prix par Tier")
-                    tier_names = ["🔥 Chase", "⭐ Tier 1", "📦 Tier 2", "💰 Value"]
-                    tier_col1, tier_col2, tier_col3, tier_col4 = st.columns(4)
-                    with tier_col1:
-                        price_chase = st.number_input("🔥 Chase (€)", min_value=0, value=150, step=5, key="bb_price_chase")
-                    with tier_col2:
-                        price_tier1 = st.number_input("⭐ Tier 1 (€)", min_value=0, value=50, step=5, key="bb_price_tier1")
-                    with tier_col3:
-                        price_tier2 = st.number_input("📦 Tier 2 (€)", min_value=0, value=25, step=5, key="bb_price_tier2")
-                    with tier_col4:
-                        price_value = st.number_input("💰 Value (€)", min_value=0, value=10, step=5, key="bb_price_value")
+                    sort_mode = "Joueur (A-Z)"
 
-                    tier_prices = {
-                        "🔥 Chase": price_chase,
-                        "⭐ Tier 1": price_tier1,
-                        "📦 Tier 2": price_tier2,
-                        "💰 Value": price_value,
-                        "": 0,
-                    }
+                # Construire le dataframe d'export
+                st.markdown("---")
 
-                    # --- Calculate team scores for initial suggestion ---
-                    team_scores_bb = (
-                        bb_df.groupby("Team", as_index=False)
-                        .agg({"Score": "sum", "Hits": "sum"})
-                        .sort_values("Score", ascending=False)
+                # Agréger selon le mode
+                if inc_team and inc_player:
+                    # Grouper par équipe + joueur
+                    group_cols = ["Team", "Player"]
+                elif inc_team:
+                    group_cols = ["Team"]
+                else:
+                    group_cols = ["Player"]
+
+                # Calculer les métriques
+                agg_dict = {}
+                if inc_cards:
+                    agg_dict["Cartes"] = ("Hits", "sum")
+                if inc_auto:
+                    exp_df["_auto"] = (exp_df["Category"] == "💎 Auto/Mem").astype(int) * exp_df["Hits"]
+                    agg_dict["Auto/Memo"] = ("_auto", "sum")
+                if inc_case:
+                    exp_df["_case"] = (exp_df["Category"] == "✨ Case Hit").astype(int) * exp_df["Hits"]
+                    agg_dict["Case Hits"] = ("_case", "sum")
+                if inc_logoman:
+                    exp_df["_logo"] = (exp_df["Category"] == "🔥 Logoman").astype(int) * exp_df["Hits"]
+                    agg_dict["Logoman"] = ("_logo", "sum")
+                if inc_base:
+                    exp_df["_base"] = (exp_df["Category"] == "📄 Base/Autre").astype(int) * exp_df["Hits"]
+                    agg_dict["Base/Autre"] = ("_base", "sum")
+
+                if not agg_dict:
+                    agg_dict["Cartes"] = ("Hits", "sum")
+
+                export_df = exp_df.groupby(group_cols, as_index=False).agg(**agg_dict)
+
+                # Renommer colonnes
+                rename_map = {"Team": "Équipe", "Player": "Joueur"}
+                export_df = export_df.rename(columns=rename_map)
+
+                # Trier
+                if sort_mode == "Équipe (A-Z)" and "Équipe" in export_df.columns:
+                    sort_col = "Équipe"
+                elif "Joueur" in export_df.columns:
+                    sort_col = "Joueur"
+                else:
+                    sort_col = export_df.columns[0]
+                
+                export_df = export_df.sort_values(sort_col, key=lambda x: x.str.lower())
+
+                # Convertir les colonnes numériques en int
+                for col in export_df.columns:
+                    if col not in ["Équipe", "Joueur"]:
+                        export_df[col] = export_df[col].astype(int)
+
+                st.markdown("### 👁️ Aperçu")
+                st.caption(f"{len(export_df)} lignes • Trié par {sort_col}")
+                st.dataframe(export_df, use_container_width=True, hide_index=True)
+
+                # Export Excel
+                st.markdown("### 📥 Télécharger")
+                
+                buffer = BytesIO()
+                with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+                    export_df.to_excel(writer, index=False, sheet_name="Export")
+                buffer.seek(0)
+
+                exp_col1, exp_col2 = st.columns(2)
+                with exp_col1:
+                    st.download_button(
+                        "📊 Télécharger Excel",
+                        data=buffer,
+                        file_name=f"export_{exp_product.replace(' ', '_')}.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        key="exp_xlsx",
                     )
-                    team_scores_bb = team_scores_bb[team_scores_bb["Team"].isin(bb_teams)]
-
-                    # Suggest tiers based on score percentiles
-                    def suggest_tier(team, scores_df):
-                        if scores_df.empty:
-                            return "📦 Tier 2"
-                        team_row = scores_df[scores_df["Team"] == team]
-                        if team_row.empty:
-                            return "📦 Tier 2"
-                        score = team_row["Score"].values[0]
-                        p90 = scores_df["Score"].quantile(0.90)
-                        p70 = scores_df["Score"].quantile(0.70)
-                        p40 = scores_df["Score"].quantile(0.40)
-                        if score >= p90:
-                            return "🔥 Chase"
-                        elif score >= p70:
-                            return "⭐ Tier 1"
-                        elif score >= p40:
-                            return "📦 Tier 2"
-                        else:
-                            return "💰 Value"
-
-                    st.markdown("### 📋 Assignation des équipes aux Tiers")
-                    st.caption("Modifiez les tiers selon votre connaissance du marché (ex: Cooper Flagg = Thunder en Chase).")
-
-                    # Build initial dataframe with suggested tiers
-                    bb_state_key = f"bb_tiers_{selected_sport_key}_{bb_product}"
-                    previous_tiers = st.session_state.get(bb_state_key, pd.DataFrame())
-
-                    tier_data = []
-                    for team in bb_teams:
-                        score_row = team_scores_bb[team_scores_bb["Team"] == team]
-                        score_val = score_row["Score"].values[0] if not score_row.empty else 0
-                        suggested = suggest_tier(team, team_scores_bb)
-                        # Restore previous selection if exists
-                        if isinstance(previous_tiers, pd.DataFrame) and not previous_tiers.empty and "Équipe" in previous_tiers.columns:
-                            prev_row = previous_tiers[previous_tiers["Équipe"] == team]
-                            if not prev_row.empty and prev_row["Tier"].values[0] in tier_names:
-                                suggested = prev_row["Tier"].values[0]
-                        tier_data.append({"Équipe": team, "Score": round(score_val, 1), "Tier": suggested})
-
-                    tier_assign_df = pd.DataFrame(tier_data)
-
-                    edited_tiers = st.data_editor(
-                        tier_assign_df,
-                        key=bb_state_key,
-                        use_container_width=True,
-                        hide_index=True,
-                        column_config={
-                            "Équipe": st.column_config.TextColumn("Équipe", disabled=True),
-                            "Score": st.column_config.NumberColumn("Score (checklist)", disabled=True, format="%.1f"),
-                            "Tier": st.column_config.SelectboxColumn("Tier", options=tier_names, required=True),
-                        },
+                with exp_col2:
+                    csv_data = export_df.to_csv(index=False).encode("utf-8")
+                    st.download_button(
+                        "📝 Télécharger CSV",
+                        data=csv_data,
+                        file_name=f"export_{exp_product.replace(' ', '_')}.csv",
+                        mime="text/csv",
+                        key="exp_csv",
                     )
-
-                    # --- Calculateur ---
-                    st.markdown("### 📊 Calculateur")
-                    edited_tiers["Prix"] = edited_tiers["Tier"].map(tier_prices).fillna(0).astype(int)
-                    total_revenue = edited_tiers["Prix"].sum()
-                    margin_amount = total_revenue - bb_box_cost
-                    margin_pct = (margin_amount / bb_box_cost * 100) if bb_box_cost > 0 else 0
-                    delta_vs_target = total_revenue - bb_target_revenue
-
-                    calc_col1, calc_col2, calc_col3, calc_col4 = st.columns(4)
-                    calc_col1.metric("💵 Revenu total", f"{total_revenue}€")
-                    calc_col2.metric("📦 Coût box", f"{bb_box_cost}€")
-                    calc_col3.metric("📈 Marge", f"{margin_pct:.1f}%", delta=f"{margin_amount}€")
-                    calc_col4.metric("🎯 vs Objectif", f"{delta_vs_target:+}€", delta_color="normal" if delta_vs_target >= 0 else "inverse")
-
-                    # Tier summary
-                    tier_summary = edited_tiers.groupby("Tier", as_index=False).agg(
-                        Slots=("Équipe", "count"),
-                        Revenu=("Prix", "sum")
-                    ).sort_values("Revenu", ascending=False)
-                    st.dataframe(tier_summary, use_container_width=True, hide_index=True)
-
-                    # --- Export ---
-                    st.markdown("### 📤 Export")
-
-                    # Build slot sheet text
-                    def build_slot_sheet(product, tiers_df, tier_prices, box_cost, total_rev, margin):
-                        lines = []
-                        lines.append("═" * 50)
-                        lines.append(f"  🏀 {product.upper()}")
-                        lines.append(f"  Pick Your Team - {len(tiers_df)} slots")
-                        lines.append("═" * 50)
-                        lines.append("")
-
-                        for tier in ["🔥 Chase", "⭐ Tier 1", "📦 Tier 2", "💰 Value"]:
-                            tier_teams = tiers_df[tiers_df["Tier"] == tier]["Équipe"].tolist()
-                            if tier_teams:
-                                price = tier_prices.get(tier, 0)
-                                lines.append(f"{tier} ({price}€)")
-                                # Format teams in rows of 3
-                                for i in range(0, len(tier_teams), 3):
-                                    chunk = tier_teams[i:i+3]
-                                    lines.append("  " + "  ".join([f"□ {t}" for t in chunk]))
-                                lines.append("")
-
-                        lines.append("─" * 50)
-                        lines.append(f"💵 Total: {total_rev}€ | 📦 Box: {box_cost}€ | 📈 Marge: {margin:.0f}%")
-                        lines.append("═" * 50)
-                        return "\n".join(lines)
-
-                    slot_sheet_txt = build_slot_sheet(
-                        bb_product, edited_tiers, tier_prices, bb_box_cost, total_revenue, margin_pct
-                    )
-
-                    export_bb_col1, export_bb_col2, export_bb_col3 = st.columns(3)
-                    with export_bb_col1:
-                        st.download_button(
-                            "📋 Slot Sheet (TXT)",
-                            data=slot_sheet_txt.encode("utf-8"),
-                            file_name=f"slot_sheet_{bb_product.replace(' ', '_')}.txt",
-                            mime="text/plain",
-                            key="bb_export_txt",
-                        )
-                    with export_bb_col2:
-                        csv_export = edited_tiers[["Équipe", "Tier", "Prix"]].to_csv(index=False).encode("utf-8")
-                        st.download_button(
-                            "📊 Export CSV",
-                            data=csv_export,
-                            file_name=f"break_builder_{bb_product.replace(' ', '_')}.csv",
-                            mime="text/csv",
-                            key="bb_export_csv",
-                        )
-                    with export_bb_col3:
-                        json_export = {
-                            "product": bb_product,
-                            "box_cost": bb_box_cost,
-                            "tier_prices": {k: v for k, v in tier_prices.items() if k},
-                            "teams": edited_tiers[["Équipe", "Tier", "Prix"]].to_dict(orient="records"),
-                            "summary": {
-                                "total_revenue": total_revenue,
-                                "margin_pct": round(margin_pct, 1),
-                                "margin_amount": margin_amount,
-                            }
-                        }
-                        st.download_button(
-                            "💾 Export JSON",
-                            data=json.dumps(json_export, ensure_ascii=False, indent=2).encode("utf-8"),
-                            file_name=f"break_builder_{bb_product.replace(' ', '_')}.json",
-                            mime="application/json",
-                            key="bb_export_json",
-                        )
-
-                    # Preview
-                    with st.expander("👁️ Aperçu Slot Sheet"):
-                        st.code(slot_sheet_txt, language=None)
 
         elif selection == " Par Fichier":
             st.subheader("Analyse par Fichier")
