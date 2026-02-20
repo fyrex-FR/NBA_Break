@@ -3089,18 +3089,23 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 selected_team_for_detail = None
                 
                 if team_detail_enabled:
-                    all_teams = sorted(exp_df["Team"].dropna().unique().tolist())
+                    # Liste des équipes uniques (sans les multi-équipes)
+                    all_teams_raw = exp_df["Team"].dropna().unique().tolist()
+                    single_teams = sorted([t for t in all_teams_raw if "/" not in str(t)])
+                    
                     selected_team_for_detail = st.selectbox(
                         "Équipe à détailler",
-                        options=all_teams,
+                        options=single_teams,
                         key="exp_team_detail_select",
                     )
                     
                     if selected_team_for_detail:
+                        # Inclure les cartes où l'équipe sélectionnée apparaît (y compris multi-équipes)
+                        mask = exp_df["Team"].astype(str).str.contains(selected_team_for_detail, case=False, na=False)
                         # Colonnes souhaitées, on ne garde que celles qui existent
                         detail_cols_wanted = ["Player", "Team", "Box Type", "Card Type", "Numbering", "File", "Category"]
                         detail_cols = [c for c in detail_cols_wanted if c in exp_df.columns]
-                        team_detail_df = exp_df[exp_df["Team"] == selected_team_for_detail][detail_cols].copy()
+                        team_detail_df = exp_df[mask][detail_cols].copy()
                         team_detail_df = team_detail_df.sort_values(["Player", "Box Type"] if "Box Type" in detail_cols else ["Player"])
                         rename_map = {
                             "Player": "Joueur",
