@@ -3079,6 +3079,41 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 else:
                     sort_mode = "Joueur (A-Z)"
 
+                # Option export détaillé par équipe
+                st.markdown("---")
+                st.markdown("### 🎯 Export détaillé par équipe")
+                st.caption("Ajoute une feuille avec toutes les cartes d'une équipe spécifique")
+                
+                team_detail_enabled = st.checkbox("Activer l'export détaillé", value=False, key="exp_team_detail")
+                team_detail_df = None
+                selected_team_for_detail = None
+                
+                if team_detail_enabled:
+                    all_teams = sorted(exp_df["Team"].dropna().unique().tolist())
+                    selected_team_for_detail = st.selectbox(
+                        "Équipe à détailler",
+                        options=all_teams,
+                        key="exp_team_detail_select",
+                    )
+                    
+                    if selected_team_for_detail:
+                        team_detail_df = exp_df[exp_df["Team"] == selected_team_for_detail][
+                            ["Player", "Team", "Box Type", "Card Type", "Numbering", "File", "Category"]
+                        ].copy()
+                        team_detail_df = team_detail_df.sort_values(["Player", "Box Type"])
+                        team_detail_df = team_detail_df.rename(columns={
+                            "Player": "Joueur",
+                            "Team": "Équipe", 
+                            "Box Type": "Type",
+                            "Card Type": "Variante",
+                            "Numbering": "Numérotation",
+                            "File": "Checklist",
+                            "Category": "Catégorie"
+                        })
+                        st.caption(f"📋 {len(team_detail_df)} cartes pour {selected_team_for_detail}")
+                        with st.expander("Aperçu des cartes", expanded=False):
+                            st.dataframe(team_detail_df.head(50), use_container_width=True, hide_index=True)
+
                 # Construire le dataframe d'export
                 st.markdown("---")
 
@@ -3148,6 +3183,10 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     info_df.to_excel(writer, index=False, sheet_name="Info")
                     # Feuille Export avec les données
                     export_df.to_excel(writer, index=False, sheet_name="Export")
+                    # Feuille détail équipe si activée
+                    if team_detail_enabled and team_detail_df is not None and not team_detail_df.empty:
+                        sheet_name = f"Détail {selected_team_for_detail}"[:31]  # Excel limite à 31 chars
+                        team_detail_df.to_excel(writer, index=False, sheet_name=sheet_name)
                     # Forcer l'ouverture sur la feuille Info
                     writer.book.active = writer.book.worksheets[0]
                 buffer.seek(0)
