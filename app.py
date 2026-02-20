@@ -3097,11 +3097,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     )
                     
                     if selected_team_for_detail:
-                        team_detail_df = exp_df[exp_df["Team"] == selected_team_for_detail][
-                            ["Player", "Team", "Box Type", "Card Type", "Numbering", "File", "Category"]
-                        ].copy()
-                        team_detail_df = team_detail_df.sort_values(["Player", "Box Type"])
-                        team_detail_df = team_detail_df.rename(columns={
+                        # Colonnes souhaitées, on ne garde que celles qui existent
+                        detail_cols_wanted = ["Player", "Team", "Box Type", "Card Type", "Numbering", "File", "Category"]
+                        detail_cols = [c for c in detail_cols_wanted if c in exp_df.columns]
+                        team_detail_df = exp_df[exp_df["Team"] == selected_team_for_detail][detail_cols].copy()
+                        team_detail_df = team_detail_df.sort_values(["Player", "Box Type"] if "Box Type" in detail_cols else ["Player"])
+                        rename_map = {
                             "Player": "Joueur",
                             "Team": "Équipe", 
                             "Box Type": "Type",
@@ -3109,7 +3110,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             "Numbering": "Numérotation",
                             "File": "Checklist",
                             "Category": "Catégorie"
-                        })
+                        }
+                        team_detail_df = team_detail_df.rename(columns={k: v for k, v in rename_map.items() if k in detail_cols})
                         st.caption(f"📋 {len(team_detail_df)} cartes pour {selected_team_for_detail}")
                         with st.expander("Aperçu des cartes", expanded=False):
                             st.dataframe(team_detail_df.head(50), use_container_width=True, hide_index=True)
