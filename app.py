@@ -683,11 +683,11 @@ def build_deterministic_spot_summary(
         if not targets:
             continue
 
-        # Deterministic single-spot assignment to avoid fractional cards.
-        assigned_spot = targets[0]
-        totals[assigned_spot]["Cartes"] += hits
-        totals[assigned_spot]["Auto/Memo"] += hits if row.get("Is AutoMemo", False) else 0
-        totals[assigned_spot]["Case Hit"] += hits if row.get("Is CaseHit", False) else 0
+        # Count card for ALL players on multi-player cards (deduplicated)
+        for assigned_spot in targets:
+            totals[assigned_spot]["Cartes"] += hits
+            totals[assigned_spot]["Auto/Memo"] += hits if row.get("Is AutoMemo", False) else 0
+            totals[assigned_spot]["Case Hit"] += hits if row.get("Is CaseHit", False) else 0
 
     rows = []
     for spot in spots:
@@ -1699,7 +1699,12 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 st.metric("Équipes", df["Team"].nunique())
         with quick_stats[2]:
             if "Player" in df.columns:
-                st.metric("Joueurs", df["Player"].nunique())
+                # Count unique individual players (split multi-player cards)
+                all_players = set()
+                for p in df["Player"].dropna().astype(str):
+                    for name in split_slash_values(p):
+                        all_players.add(name)
+                st.metric("Joueurs", len(all_players))
         with quick_stats[3]:
             checklist_col = next((c for c in ["checklist_name", "File", "checklist_id"] if c in df.columns), None)
             if checklist_col:
