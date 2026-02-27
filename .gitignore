@@ -44,3 +44,16 @@ checklists/
 checklists_parquet/
 *.tar
 *.parquet
+*.csv
+*.xlsx
+breaker_version/sports_config.py
+ToClean/convert_checklists.py
+.gitignore
+ToClean/parse_chronicles_2017.py
+ToClean/parse_chronicles_2018.py
+
+ToClean/parse_court_kings_2018.py
+ToClean/parse_donruss_optic_2017.py
+ToClean/parse_hoops_2018.py
+ToClean/parse_prestige_2017.py
+ToClean/parse_season_update_2010.py

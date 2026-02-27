@@ -219,7 +219,7 @@ MASTER_COLUMNS = [
 
 
 def master_parquet_key_for_sport(sport_key):
-    return f"{MASTER_PARQUET_PREFIX}/{sport_key}.parquet"
+    return f"{MASTER_PARQUET_PREFIX}/breaker_{sport_key.upper()}.parquet"
 
 
 def checklist_name_from_filename(original_filename):
@@ -923,7 +923,7 @@ else:
 # Sidebar data source now uses R2 only.
 base_dir = os.getcwd()
 presets_path = os.path.join(base_dir, "presets.json")
-presets_r2_key = "app/presets.json"
+presets_r2_key = "app/breaker_presets.json"
 keyword_overrides_path = os.path.join(base_dir, "keyword_overrides.json")
 keyword_overrides_r2_key = "app/keyword_overrides.json"
 
