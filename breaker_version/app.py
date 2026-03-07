@@ -3140,8 +3140,8 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
 
                 # Option export détaillé par équipe
                 st.markdown("---")
-                st.markdown("### 🎯 Export détaillé par équipe")
-                st.caption("Ajoute une feuille avec toutes les cartes d'une équipe spécifique")
+                st.markdown("### 🎯 Export détaillé")
+                st.caption("Ajoute une feuille avec toutes les cartes (toutes ou par équipe)")
                 
                 team_detail_enabled = st.checkbox("Activer l'export détaillé", value=False, key="exp_team_detail")
                 team_detail_df = None
@@ -3152,19 +3152,28 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                     all_teams_raw = exp_df["Team"].dropna().unique().tolist()
                     single_teams = sorted([t for t in all_teams_raw if "/" not in str(t)])
                     
+                    # Option "Toutes" en premier
+                    team_options = ["📦 Toutes les équipes"] + single_teams
+                    
                     selected_team_for_detail = st.selectbox(
                         "Équipe à détailler",
-                        options=single_teams,
+                        options=team_options,
                         key="exp_team_detail_select",
                     )
                     
                     if selected_team_for_detail:
-                        # Inclure les cartes où l'équipe sélectionnée apparaît (y compris multi-équipes)
-                        mask = exp_df["Team"].astype(str).str.contains(selected_team_for_detail, case=False, na=False)
                         # Colonnes souhaitées, on ne garde que celles qui existent
                         detail_cols_wanted = ["Player", "Team", "Box Type", "Card Type", "Numbering", "File", "Category"]
                         detail_cols = [c for c in detail_cols_wanted if c in exp_df.columns]
-                        team_detail_df = exp_df[mask][detail_cols].copy()
+                        
+                        if selected_team_for_detail == "📦 Toutes les équipes":
+                            # Exporter toutes les cartes
+                            team_detail_df = exp_df[detail_cols].copy()
+                        else:
+                            # Inclure les cartes où l'équipe sélectionnée apparaît (y compris multi-équipes)
+                            mask = exp_df["Team"].astype(str).str.contains(selected_team_for_detail, case=False, na=False)
+                            team_detail_df = exp_df[mask][detail_cols].copy()
+                        
                         team_detail_df = team_detail_df.sort_values(["Player", "Box Type"] if "Box Type" in detail_cols else ["Player"])
                         rename_map = {
                             "Player": "Joueur",
@@ -3176,7 +3185,11 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                             "Category": "Catégorie"
                         }
                         team_detail_df = team_detail_df.rename(columns={k: v for k, v in rename_map.items() if k in detail_cols})
-                        st.caption(f"📋 {len(team_detail_df)} cartes pour {selected_team_for_detail}")
+                        
+                        if selected_team_for_detail == "📦 Toutes les équipes":
+                            st.caption(f"📋 {len(team_detail_df)} cartes au total")
+                        else:
+                            st.caption(f"📋 {len(team_detail_df)} cartes pour {selected_team_for_detail}")
                         with st.expander("Aperçu des cartes", expanded=False):
                             st.dataframe(team_detail_df.head(50), use_container_width=True, hide_index=True)
 
