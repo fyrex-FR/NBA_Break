@@ -3407,12 +3407,16 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                 count_auto = cat_counts.get("💎 Auto/Mem", 0)
                 count_base = cat_counts.get("📄 Base/Autre", 0)
 
-                col1, col2, col3, col4, col5 = st.columns(5)
+                total_checklists_selected = int(df['File'].nunique()) if 'File' in df.columns else 0
+                player_checklists = int(player_data['File'].nunique()) if 'File' in player_data.columns else 0
+
+                col1, col2, col3, col4, col5, col6 = st.columns(6)
                 col1.metric("Total Cartes", total_hits)
-                col2.metric("🔥 Logoman", count_logoman)
-                col3.metric("✨ Case Hit", count_casehit)
-                col4.metric("💎 Auto/Mem", count_auto)
-                col5.metric("📄 Base/Autre", count_base)
+                col2.metric("📁 Checklists", f"{player_checklists}/{total_checklists_selected}")
+                col3.metric("🔥 Logoman", count_logoman)
+                col4.metric("✨ Case Hit", count_casehit)
+                col5.metric("💎 Auto/Mem", count_auto)
+                col6.metric("📄 Base/Autre", count_base)
                 if multi_hits > 0:
                     st.caption(f"Info: {int(multi_hits)} carte(s) proviennent de combos multi-joueurs.")
                 
@@ -3506,6 +3510,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         total_hits_t = int(team_cards['Hits'].sum())
                         unique_players_t = int(team_players['Player'].nunique()) if not team_players.empty else 0
                         unique_files_t = int(team_cards['File'].nunique())
+                        total_checklists_selected_t = int(df['File'].nunique()) if 'File' in df.columns else 0
                         cat_counts_t = team_cards['Category'].value_counts()
                         count_logoman_t = int(cat_counts_t.get(CATEGORY_LOGOMAN, 0))
                         count_case_t = int(cat_counts_t.get(CATEGORY_CASE_HIT, 0))
@@ -3517,7 +3522,7 @@ if 'scan_triggered' in st.session_state and st.session_state['scan_triggered']:
                         kpi1, kpi2, kpi3 = st.columns(3)
                         kpi1.metric("🎯 Cartes", total_hits_t)
                         kpi2.metric("👥 Joueurs uniques", unique_players_t)
-                        kpi3.metric("📁 Checklists", unique_files_t)
+                        kpi3.metric("📁 Checklists", f"{unique_files_t}/{total_checklists_selected_t}")
 
                         kpi6, kpi7, kpi8, kpi9 = st.columns(4)
                         kpi6.metric("🔥 Logoman", count_logoman_t)
