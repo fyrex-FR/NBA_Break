@@ -922,8 +922,10 @@ else:
 
 # Sidebar data source now uses R2 only.
 base_dir = os.getcwd()
-presets_path = os.path.join(base_dir, "presets.json")
-presets_r2_key = "app/presets.json"
+_profile = os.getenv("PRESET_PROFILE", "").strip()
+_profile_suffix = f"_{_profile}" if _profile else ""
+presets_path = os.path.join(base_dir, f"presets{_profile_suffix}.json")
+presets_r2_key = f"app/presets{_profile_suffix}.json"
 keyword_overrides_path = os.path.join(base_dir, "keyword_overrides.json")
 keyword_overrides_r2_key = "app/keyword_overrides.json"
 
