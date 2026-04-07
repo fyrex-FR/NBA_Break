@@ -6,7 +6,7 @@ import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { SearchSelect } from '../shared/SearchSelect'
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
+import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
@@ -87,24 +87,12 @@ export function TeamDetailView() {
           </div>
 
           <div className="mb-6">
-            <CategoryBreakdown data={categoryDist} title="Répartition par catégorie" />
-          </div>
-
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {['', CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setCategoryFilter(cat)}
-                className="px-3 py-1 rounded-full text-xs font-medium transition-colors"
-                style={{
-                  background: categoryFilter === cat ? 'var(--accent)' : 'transparent',
-                  color: categoryFilter === cat ? '#fff' : 'var(--text-tertiary)',
-                  border: `1px solid ${categoryFilter === cat ? 'var(--accent)' : 'var(--border-standard)'}`,
-                }}
-              >
-                {cat || 'Toutes'}
-              </button>
-            ))}
+            <CategoryBreakdown
+              data={categoryDist}
+              title="Répartition par catégorie"
+              activeFilter={categoryFilter}
+              onFilter={setCategoryFilter}
+            />
           </div>
 
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} />
