@@ -25,27 +25,20 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [presetName, setPresetName] = useState('')
   const [presetMsg, setPresetMsg] = useState<string | null>(null)
   const [confirmSelectAll, setConfirmSelectAll] = useState(false)
-  const [uploadOpen, setUploadOpen] = useState(false)
   const [uploadFile, setUploadFile] = useState<File | null>(null)
   const [uploadOverwrite, setUploadOverwrite] = useState(false)
   const [uploadStatus, setUploadStatus] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null)
   const [uploading, setUploading] = useState(false)
   const queryClient = useQueryClient()
 
-  // Fetch sports list
-  const { data: sports } = useQuery({
-    queryKey: ['sports'],
-    queryFn: fetchSports,
-  })
+  const { data: sports } = useQuery({ queryKey: ['sports'], queryFn: fetchSports })
 
-  // Fetch checklists when sport changes
   const { data: checklistsData } = useQuery({
     queryKey: ['checklists', selectedSport],
     queryFn: () => fetchChecklists(selectedSport),
     enabled: !!selectedSport,
   })
 
-  // Fetch presets
   const { data: presetsData } = useQuery({
     queryKey: ['presets', selectedSport],
     queryFn: () => fetchPresets(selectedSport),
@@ -54,7 +47,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const presets: PresetInfo[] = presetsData?.presets || []
 
-  // Update available checklists when data arrives (don't auto-select)
   useEffect(() => {
     if (checklistsData) {
       setAvailableChecklists(checklistsData.checklists)
@@ -62,7 +54,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     }
   }, [checklistsData])
 
-  // Group checklists by year
   const checklistsByYear = availableChecklists.reduce<Record<string, ChecklistInfo[]>>((acc, c) => {
     const year = c.year || 'Inconnue'
     if (!acc[year]) acc[year] = []
@@ -74,6 +65,17 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const selectedCount = selectedChecklistIds.length
   const totalCount = availableChecklists.length
   const allSelected = selectedCount === totalCount && totalCount > 0
+
+  function toggleYear(year: string) {
+    const ids = checklistsByYear[year].map((c) => c.checklist_id)
+    const allYearSelected = ids.every((id) => selectedChecklistIds.includes(id))
+    if (allYearSelected) {
+      setSelectedChecklistIds(selectedChecklistIds.filter((id) => !ids.includes(id)))
+    } else {
+      const merged = Array.from(new Set([...selectedChecklistIds, ...ids]))
+      setSelectedChecklistIds(merged)
+    }
+  }
 
   async function handleLancer() {
     if (selectedChecklistIds.length === 0) return
@@ -98,7 +100,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       setPresetName('')
       queryClient.invalidateQueries({ queryKey: ['presets', selectedSport] })
       setTimeout(() => setPresetMsg(null), 2000)
-    } catch (err) {
+    } catch {
       setPresetMsg('Erreur lors de la sauvegarde')
       setTimeout(() => setPresetMsg(null), 2000)
     }
@@ -148,312 +150,260 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 w-72 flex flex-col h-screen overflow-y-auto
+          fixed inset-y-0 left-0 z-50 w-72 flex flex-col h-screen
           transition-transform duration-300 ease-in-out
           md:relative md:translate-x-0 md:flex-shrink-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
         style={{ background: 'var(--bg-panel)', borderRight: '1px solid var(--border-subtle)' }}
       >
-      {/* Header */}
-      <div className="p-4 pb-2">
-        <h1 className="text-lg font-semibold flex items-center gap-2">
-          {currentSport?.page_icon || '🏀'} Checklist Optimizer
-        </h1>
-      </div>
-
-      {/* Sport selector */}
-      <div className="px-4 py-2">
-        <label className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-tertiary)' }}>
-          Sport
-        </label>
-        <select
-          value={selectedSport}
-          onChange={(e) => setSport(e.target.value)}
-          className="w-full rounded-lg px-3 py-2 text-sm"
-          style={{
-            background: 'var(--bg-surface)',
-            border: '1px solid var(--border-standard)',
-            color: 'var(--text-primary)',
-          }}
-        >
-          {sports?.map((s) => (
-            <option key={s.key} value={s.key}>
-              {s.page_icon} {s.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Upload checklist */}
-      <div className="px-4 py-2">
-        <button
-          onClick={() => { setUploadOpen((v) => !v); setUploadStatus(null) }}
-          className="w-full flex items-center justify-between text-xs font-medium px-3 py-2 rounded-lg transition-colors"
-          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
-        >
-          <span>📤 Ajouter une checklist</span>
-          <span>{uploadOpen ? '▲' : '▼'}</span>
-        </button>
-
-        {uploadOpen && (
-          <div className="mt-2 space-y-2">
-            {/* File picker */}
-            <label
-              className="flex flex-col items-center justify-center gap-1 rounded-lg py-4 cursor-pointer text-xs text-center"
+        {/* ── Header fixe ── */}
+        <div className="flex-shrink-0">
+          {/* Titre + sport sur une ligne */}
+          <div className="flex items-center gap-2 px-4 py-3">
+            <span className="text-lg">{currentSport?.page_icon || '🏀'}</span>
+            <select
+              value={selectedSport}
+              onChange={(e) => setSport(e.target.value)}
+              className="flex-1 rounded-lg px-2 py-1.5 text-sm font-semibold"
               style={{
-                border: `2px dashed ${uploadFile ? 'var(--accent)' : 'var(--border-standard)'}`,
-                color: uploadFile ? 'var(--accent)' : 'var(--text-quaternary)',
-                background: 'var(--bg-surface)',
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--text-primary)',
+                cursor: 'pointer',
               }}
             >
-              <span>{uploadFile ? `📄 ${uploadFile.name}` : '+ Choisir un fichier .xlsx'}</span>
-              <input
-                type="file"
-                accept=".xlsx,.xls"
-                className="hidden"
-                onChange={(e) => { setUploadFile(e.target.files?.[0] || null); setUploadStatus(null) }}
-              />
-            </label>
-
-            {/* Overwrite */}
-            <label className="flex items-center gap-2 text-xs cursor-pointer" style={{ color: 'var(--text-secondary)' }}>
-              <input
-                type="checkbox"
-                checked={uploadOverwrite}
-                onChange={(e) => setUploadOverwrite(e.target.checked)}
-                style={{ accentColor: 'var(--accent)' }}
-              />
-              Remplacer si existant
-            </label>
-
-            {/* Submit */}
-            <button
-              onClick={handleUpload}
-              disabled={!uploadFile || uploading}
-              className="w-full py-2 rounded-lg text-xs font-medium"
-              style={{
-                background: uploadFile && !uploading ? 'var(--accent)' : 'var(--bg-hover)',
-                color: uploadFile && !uploading ? '#fff' : 'var(--text-quaternary)',
-              }}
-            >
-              {uploading ? '⏳ Upload...' : '⬆️ Envoyer'}
-            </button>
-
-            {/* Feedback */}
-            {uploadStatus && (
-              <div
-                className="text-xs px-2 py-1.5 rounded"
-                style={{
-                  background: uploadStatus.type === 'ok' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
-                  color: uploadStatus.type === 'ok' ? '#22c55e' : '#ef4444',
-                }}
-              >
-                {uploadStatus.msg}
-              </div>
-            )}
+              {sports?.map((s) => (
+                <option key={s.key} value={s.key}>{s.page_icon} {s.label}</option>
+              ))}
+            </select>
           </div>
-        )}
-      </div>
 
-      {/* Tab switch: Sélection / Presets */}
-      <div className="flex mx-4 mt-2 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-        <button
-          onClick={() => setTab('selection')}
-          className="flex-1 py-1.5 text-xs font-medium transition-colors"
-          style={{
-            background: tab === 'selection' ? 'var(--accent)' : 'transparent',
-            color: tab === 'selection' ? '#fff' : 'var(--text-tertiary)',
-          }}
-        >
-          📋 Sélection
-        </button>
-        <button
-          onClick={() => setTab('presets')}
-          className="flex-1 py-1.5 text-xs font-medium transition-colors"
-          style={{
-            background: tab === 'presets' ? 'var(--accent)' : 'transparent',
-            color: tab === 'presets' ? '#fff' : 'var(--text-tertiary)',
-          }}
-        >
-          💾 Presets{presets.length > 0 ? ` (${presets.length})` : ''}
-        </button>
-      </div>
+          {/* Onglets */}
+          <div className="flex mx-4 mb-2 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+            <button
+              onClick={() => setTab('selection')}
+              className="flex-1 py-1.5 text-xs font-medium transition-colors"
+              style={{ background: tab === 'selection' ? 'var(--accent)' : 'transparent', color: tab === 'selection' ? '#fff' : 'var(--text-tertiary)' }}
+            >
+              📋 Sélection
+            </button>
+            <button
+              onClick={() => setTab('presets')}
+              className="flex-1 py-1.5 text-xs font-medium transition-colors"
+              style={{ background: tab === 'presets' ? 'var(--accent)' : 'transparent', color: tab === 'presets' ? '#fff' : 'var(--text-tertiary)' }}
+            >
+              💾 Presets{presets.length > 0 ? ` (${presets.length})` : ''}
+            </button>
+          </div>
 
-      {/* Tab content */}
-      <div className="px-4 py-2 flex-1 overflow-y-auto">
-        {tab === 'selection' ? (
-          <>
-            {/* Checklist selection */}
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
-                Checklists ({selectedCount}/{totalCount})
-              </label>
-              {allSelected ? (
-                <button
-                  onClick={deselectAllChecklists}
-                  className="text-xs px-2 py-0.5 rounded"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  Désélectionner
-                </button>
-              ) : confirmSelectAll ? (
-                <button
-                  onClick={() => { selectAllChecklists(); setConfirmSelectAll(false) }}
-                  className="text-xs px-2 py-0.5 rounded font-medium"
-                  style={{ color: '#fff', background: 'var(--accent)', borderRadius: 4 }}
-                  onBlur={() => setConfirmSelectAll(false)}
-                  autoFocus
-                >
-                  ⚠️ {totalCount} listes — ok ?
-                </button>
+          {/* Barre sélection — visible seulement sur l'onglet sélection */}
+          {tab === 'selection' && (
+            <div className="flex items-center justify-between px-4 pb-2">
+              <span className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
+                {selectedCount > 0 ? `${selectedCount} / ${totalCount} sélectionnées` : `${totalCount} checklists`}
+              </span>
+              <div className="flex gap-2">
+                {selectedCount > 0 && (
+                  <button
+                    onClick={deselectAllChecklists}
+                    className="text-xs px-2 py-0.5 rounded"
+                    style={{ color: 'var(--text-quaternary)', border: '1px solid var(--border-subtle)' }}
+                  >
+                    ✕ Effacer
+                  </button>
+                )}
+                {confirmSelectAll ? (
+                  <button
+                    onClick={() => { selectAllChecklists(); setConfirmSelectAll(false) }}
+                    className="text-xs px-2 py-0.5 rounded font-medium"
+                    style={{ color: '#fff', background: 'var(--accent)' }}
+                    onBlur={() => setConfirmSelectAll(false)}
+                    autoFocus
+                  >
+                    ⚠️ {totalCount} — ok ?
+                  </button>
+                ) : (
+                  !allSelected && (
+                    <button
+                      onClick={() => totalCount > 20 ? setConfirmSelectAll(true) : selectAllChecklists()}
+                      className="text-xs px-2 py-0.5 rounded"
+                      style={{ color: 'var(--accent)' }}
+                    >
+                      Tout
+                    </button>
+                  )
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ── Contenu scrollable ── */}
+        <div className="flex-1 overflow-y-auto px-4 pb-2">
+          {tab === 'selection' ? (
+            <>
+              {sortedYears.map((year) => {
+                const yearChecklists = checklistsByYear[year]
+                const yearSelectedCount = yearChecklists.filter((cl) => selectedChecklistIds.includes(cl.checklist_id)).length
+                const allYearSelected = yearSelectedCount === yearChecklists.length
+
+                return (
+                  <details key={year} className="mb-1 rounded-lg" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                    <summary className="px-2.5 py-2 cursor-pointer select-none list-none">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>{year}</span>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={(e) => { e.preventDefault(); toggleYear(year) }}
+                            className="text-xs px-1.5 py-0.5 rounded"
+                            style={{ color: allYearSelected ? 'var(--text-quaternary)' : 'var(--accent)', border: '1px solid var(--border-subtle)' }}
+                          >
+                            {allYearSelected ? '✕' : '+'}
+                          </button>
+                          <span className="text-xs" style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
+                            {yearSelectedCount}/{yearChecklists.length}
+                          </span>
+                        </div>
+                      </div>
+                    </summary>
+                    <div className="pb-1">
+                      {yearChecklists.map((cl) => (
+                        <label
+                          key={cl.checklist_id}
+                          className="flex items-start gap-2 px-2.5 py-1.5 text-xs cursor-pointer"
+                          style={{ color: 'var(--text-secondary)' }}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+                          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selectedChecklistIds.includes(cl.checklist_id)}
+                            onChange={() => toggleChecklist(cl.checklist_id)}
+                            className="rounded mt-0.5 flex-shrink-0"
+                            style={{ accentColor: 'var(--accent)' }}
+                          />
+                          <span className="flex-1 break-words leading-snug">{cl.checklist_name.replace('.parquet', '')}</span>
+                          <span className="flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </details>
+                )
+              })}
+            </>
+          ) : (
+            <>
+              {/* Sauver preset */}
+              <div className="mb-4 mt-1">
+                <label className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-tertiary)' }}>
+                  Sauver la sélection ({selectedCount})
+                </label>
+                <div className="flex gap-1.5">
+                  <input
+                    type="text"
+                    value={presetName}
+                    onChange={(e) => setPresetName(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSavePreset()}
+                    placeholder="Nom du preset..."
+                    className="flex-1 rounded-lg px-2.5 py-1.5 text-xs"
+                    style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+                  />
+                  <button
+                    onClick={handleSavePreset}
+                    disabled={!presetName.trim() || selectedCount === 0}
+                    className="px-2.5 py-1.5 rounded-lg text-xs font-medium"
+                    style={{
+                      background: presetName.trim() && selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
+                      color: presetName.trim() && selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
+                    }}
+                  >
+                    💾
+                  </button>
+                </div>
+                {presetMsg && <div className="text-xs mt-1" style={{ color: 'var(--accent)' }}>{presetMsg}</div>}
+              </div>
+
+              {/* Liste presets */}
+              <label className="text-xs font-medium mb-2 block" style={{ color: 'var(--text-tertiary)' }}>Presets sauvegardés</label>
+              {presets.length === 0 ? (
+                <div className="text-xs py-4 text-center" style={{ color: 'var(--text-quaternary)' }}>Aucun preset sauvegardé</div>
               ) : (
-                <button
-                  onClick={() => totalCount > 20 ? setConfirmSelectAll(true) : selectAllChecklists()}
-                  className="text-xs px-2 py-0.5 rounded"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  Tout
-                </button>
+                <div className="space-y-1 mb-6">
+                  {presets.map((p) => (
+                    <div key={p.name} className="flex items-center gap-2 px-2 py-2 rounded text-xs group" style={{ border: '1px solid var(--border-subtle)' }}>
+                      <button onClick={() => handleLoadPreset(p)} className="flex-1 text-left truncate" style={{ color: 'var(--text-secondary)' }}>
+                        <span className="font-medium">{p.name}</span>
+                        <span className="ml-1.5" style={{ color: 'var(--text-quaternary)' }}>({p.checklist_ids.length})</span>
+                      </button>
+                      <button
+                        onClick={() => handleDeletePreset(p.name)}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity px-1"
+                        style={{ color: 'var(--text-quaternary)' }}
+                      >🗑️</button>
+                    </div>
+                  ))}
+                </div>
               )}
-            </div>
 
-            {sortedYears.map((year) => {
-              const yearChecklists = checklistsByYear[year]
-              const yearSelectedCount = yearChecklists.filter((cl) => selectedChecklistIds.includes(cl.checklist_id)).length
-              return (
-                <details key={year} className="mb-1 rounded-lg" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-                  <summary
-                    className="px-2.5 py-2 cursor-pointer text-xs font-medium flex items-center justify-between select-none"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    <span>{year}</span>
-                    <span style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
-                      {yearSelectedCount}/{yearChecklists.length}
-                    </span>
-                  </summary>
-                  <div className="pb-1">
-                    {yearChecklists.map((cl) => (
-                      <label
-                        key={cl.checklist_id}
-                        className="flex items-start gap-2 px-2.5 py-1.5 text-xs cursor-pointer"
-                        style={{ color: 'var(--text-secondary)' }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={selectedChecklistIds.includes(cl.checklist_id)}
-                          onChange={() => toggleChecklist(cl.checklist_id)}
-                          className="rounded mt-0.5 flex-shrink-0"
-                          style={{ accentColor: 'var(--accent)' }}
-                        />
-                        <span className="flex-1 break-words leading-snug">{cl.checklist_name.replace('.parquet', '')}</span>
-                        <span className="flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
-                      </label>
-                    ))}
-                  </div>
-                </details>
-              )
-            })}
-          </>
-        ) : (
-          <>
-            {/* Presets tab */}
-            {/* Save current selection */}
-            <div className="mb-4">
-              <label className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-tertiary)' }}>
-                Sauver la sélection actuelle ({selectedCount})
-              </label>
-              <div className="flex gap-1.5">
-                <input
-                  type="text"
-                  value={presetName}
-                  onChange={(e) => setPresetName(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSavePreset()}
-                  placeholder="Nom du preset..."
-                  className="flex-1 rounded-lg px-2.5 py-1.5 text-xs"
+              {/* Upload */}
+              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '12px' }}>
+                <label className="text-xs font-medium mb-2 block" style={{ color: 'var(--text-tertiary)' }}>📤 Ajouter une checklist</label>
+                <label
+                  className="flex items-center justify-center gap-2 rounded-lg py-3 cursor-pointer text-xs"
                   style={{
+                    border: `2px dashed ${uploadFile ? 'var(--accent)' : 'var(--border-standard)'}`,
+                    color: uploadFile ? 'var(--accent)' : 'var(--text-quaternary)',
                     background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-standard)',
-                    color: 'var(--text-primary)',
-                  }}
-                />
-                <button
-                  onClick={handleSavePreset}
-                  disabled={!presetName.trim() || selectedCount === 0}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-medium"
-                  style={{
-                    background: presetName.trim() && selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
-                    color: presetName.trim() && selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
                   }}
                 >
-                  💾
+                  <span>{uploadFile ? `📄 ${uploadFile.name}` : '+ Choisir un fichier .xlsx'}</span>
+                  <input type="file" accept=".xlsx,.xls" className="hidden" onChange={(e) => { setUploadFile(e.target.files?.[0] || null); setUploadStatus(null) }} />
+                </label>
+                <label className="flex items-center gap-2 text-xs cursor-pointer mt-2 mb-2" style={{ color: 'var(--text-secondary)' }}>
+                  <input type="checkbox" checked={uploadOverwrite} onChange={(e) => setUploadOverwrite(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
+                  Remplacer si existant
+                </label>
+                <button
+                  onClick={handleUpload}
+                  disabled={!uploadFile || uploading}
+                  className="w-full py-2 rounded-lg text-xs font-medium"
+                  style={{
+                    background: uploadFile && !uploading ? 'var(--accent)' : 'var(--bg-hover)',
+                    color: uploadFile && !uploading ? '#fff' : 'var(--text-quaternary)',
+                  }}
+                >
+                  {uploading ? '⏳ Upload...' : '⬆️ Envoyer'}
                 </button>
-              </div>
-              {presetMsg && (
-                <div className="text-xs mt-1" style={{ color: 'var(--accent)' }}>{presetMsg}</div>
-              )}
-            </div>
-
-            {/* Saved presets list */}
-            <label className="text-xs font-medium mb-2 block" style={{ color: 'var(--text-tertiary)' }}>
-              Presets sauvegardés
-            </label>
-            {presets.length === 0 ? (
-              <div className="text-xs py-4 text-center" style={{ color: 'var(--text-quaternary)' }}>
-                Aucun preset sauvegardé
-              </div>
-            ) : (
-              <div className="space-y-1">
-                {presets.map((p) => (
-                  <div
-                    key={p.name}
-                    className="flex items-center gap-2 px-2 py-2 rounded text-xs group"
-                    style={{ border: '1px solid var(--border-subtle)' }}
-                  >
-                    <button
-                      onClick={() => handleLoadPreset(p)}
-                      className="flex-1 text-left truncate"
-                      style={{ color: 'var(--text-secondary)' }}
-                    >
-                      <span className="font-medium">{p.name}</span>
-                      <span className="ml-1.5" style={{ color: 'var(--text-quaternary)' }}>
-                        ({p.checklist_ids.length})
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => handleDeletePreset(p.name)}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity px-1"
-                      style={{ color: 'var(--text-quaternary)' }}
-                      title="Supprimer"
-                    >
-                      🗑️
-                    </button>
+                {uploadStatus && (
+                  <div className="text-xs px-2 py-1.5 rounded mt-2" style={{
+                    background: uploadStatus.type === 'ok' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+                    color: uploadStatus.type === 'ok' ? '#22c55e' : '#ef4444',
+                  }}>
+                    {uploadStatus.msg}
                   </div>
-                ))}
+                )}
               </div>
-            )}
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
 
-      {/* Lancer button */}
-      <div className="p-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
-        <button
-          onClick={handleLancer}
-          disabled={selectedCount === 0 || isAnalyzing}
-          className="w-full py-2.5 rounded-lg text-sm font-medium transition-colors"
-          style={{
-            background: selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
-            color: selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
-            opacity: isAnalyzing ? 0.6 : 1,
-          }}
-        >
-          {isAnalyzing ? '⏳ Analyse...' : `🚀 Lancer (${selectedCount})`}
-        </button>
-      </div>
-    </aside>
+        {/* ── Bouton Lancer — toujours visible ── */}
+        <div className="flex-shrink-0 p-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+          <button
+            onClick={handleLancer}
+            disabled={selectedCount === 0 || isAnalyzing}
+            className="w-full py-3 rounded-lg text-sm font-medium transition-colors"
+            style={{
+              background: selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
+              color: selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
+              opacity: isAnalyzing ? 0.6 : 1,
+            }}
+          >
+            {isAnalyzing ? '⏳ Analyse...' : selectedCount > 0 ? `🚀 Lancer (${selectedCount})` : 'Sélectionnez des checklists'}
+          </button>
+        </div>
+      </aside>
     </>
   )
 }
