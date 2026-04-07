@@ -62,53 +62,25 @@ export function ViewTabs({ enabledViews }: ViewTabsProps) {
   const currentCat = VIEW_CATEGORIES.find((c) => c.label === selectedCategory) || VIEW_CATEGORIES[0]
   const visibleViews = currentCat.views.filter((v) => enabledViews[v.key] !== false)
 
+  // All enabled views flattened (for mobile)
+  const allVisibleViews = VIEW_CATEGORIES.flatMap((cat) =>
+    cat.views.filter((v) => enabledViews[v.key] !== false),
+  )
+
   return (
     <div className="mb-5">
-      {/* Category tabs — horizontal row */}
-      <div className="flex gap-1 mb-2 border-b" style={{ borderColor: 'var(--border-subtle)' }}>
-        {VIEW_CATEGORIES.map((cat) => {
-          const isActive = selectedCategory === cat.label
-          const hasActiveView = cat.views.some((v) => v.name === activeView)
-          return (
-            <button
-              key={cat.label}
-              onClick={() => setSelectedCategory(cat.label)}
-              className="px-4 py-2 text-sm font-medium transition-colors relative"
-              style={{
-                color: isActive ? 'var(--text-primary)' : 'var(--text-quaternary)',
-                background: 'transparent',
-                border: 'none',
-              }}
-            >
-              {cat.label}
-              {/* Active indicator line */}
-              {isActive && (
-                <div
-                  className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full"
-                  style={{ background: 'var(--accent)' }}
-                />
-              )}
-              {/* Dot if active view is in this category but category is not selected */}
-              {!isActive && hasActiveView && (
-                <div
-                  className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full"
-                  style={{ background: 'var(--accent)' }}
-                />
-              )}
-            </button>
-          )
-        })}
-      </div>
-
-      {/* Sub-views — compact pills */}
-      <div className="flex flex-wrap gap-1.5">
-        {visibleViews.map((view) => {
+      {/* ── Mobile : une seule rangée scrollable ── */}
+      <div
+        className="md:hidden flex gap-1.5 overflow-x-auto pb-1"
+        style={{ scrollbarWidth: 'none' }}
+      >
+        {allVisibleViews.map((view) => {
           const isActive = activeView === view.name
           return (
             <button
               key={view.key}
               onClick={() => setActiveView(view.name)}
-              className="px-3 py-1 rounded-full text-xs font-medium transition-all"
+              className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-all"
               style={{
                 background: isActive ? 'var(--accent)' : 'transparent',
                 color: isActive ? '#fff' : 'var(--text-tertiary)',
@@ -119,6 +91,64 @@ export function ViewTabs({ enabledViews }: ViewTabsProps) {
             </button>
           )
         })}
+      </div>
+
+      {/* ── Desktop : deux niveaux (catégorie + pills) ── */}
+      <div className="hidden md:block">
+        {/* Category tabs */}
+        <div className="flex gap-1 mb-2 border-b" style={{ borderColor: 'var(--border-subtle)' }}>
+          {VIEW_CATEGORIES.map((cat) => {
+            const isActive = selectedCategory === cat.label
+            const hasActiveView = cat.views.some((v) => v.name === activeView)
+            return (
+              <button
+                key={cat.label}
+                onClick={() => setSelectedCategory(cat.label)}
+                className="px-4 py-2 text-sm font-medium transition-colors relative"
+                style={{
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-quaternary)',
+                  background: 'transparent',
+                  border: 'none',
+                }}
+              >
+                {cat.label}
+                {isActive && (
+                  <div
+                    className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full"
+                    style={{ background: 'var(--accent)' }}
+                  />
+                )}
+                {!isActive && hasActiveView && (
+                  <div
+                    className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full"
+                    style={{ background: 'var(--accent)' }}
+                  />
+                )}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Sub-view pills */}
+        <div className="flex flex-wrap gap-1.5">
+          {visibleViews.map((view) => {
+            const isActive = activeView === view.name
+            return (
+              <button
+                key={view.key}
+                onClick={() => setActiveView(view.name)}
+                className="px-3 py-1 rounded-full text-xs font-medium transition-all"
+                style={{
+                  background: isActive ? 'var(--accent)' : 'transparent',
+                  color: isActive ? '#fff' : 'var(--text-tertiary)',
+                  border: `1px solid ${isActive ? 'var(--accent)' : 'var(--border-standard)'}`,
+                }}
+              >
+                {view.short}
+              </button>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
