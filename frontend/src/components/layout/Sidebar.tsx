@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
-import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset } from '../../api/client'
+import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist } from '../../api/client'
 import type { ChecklistInfo, PresetInfo } from '../../types'
 
 type SidebarTab = 'selection' | 'presets'
@@ -25,6 +25,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [presetName, setPresetName] = useState('')
   const [presetMsg, setPresetMsg] = useState<string | null>(null)
   const [confirmSelectAll, setConfirmSelectAll] = useState(false)
+  const [uploadOpen, setUploadOpen] = useState(false)
+  const [uploadFile, setUploadFile] = useState<File | null>(null)
+  const [uploadOverwrite, setUploadOverwrite] = useState(false)
+  const [uploadStatus, setUploadStatus] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null)
+  const [uploading, setUploading] = useState(false)
   const queryClient = useQueryClient()
 
   // Fetch sports list
@@ -113,6 +118,23 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     setTab('selection')
   }
 
+  async function handleUpload() {
+    if (!uploadFile) return
+    setUploading(true)
+    setUploadStatus(null)
+    try {
+      const res = await uploadChecklist(uploadFile, selectedSport, uploadOverwrite)
+      setUploadStatus({ type: 'ok', msg: `✅ ${res.checklist_id} — ${res.rows} lignes` })
+      setUploadFile(null)
+      setUploadOverwrite(false)
+      queryClient.invalidateQueries({ queryKey: ['checklists', selectedSport] })
+    } catch (err: any) {
+      setUploadStatus({ type: 'err', msg: err.message || 'Erreur upload' })
+    } finally {
+      setUploading(false)
+    }
+  }
+
   const currentSport = sports?.find((s) => s.key === selectedSport)
 
   return (
@@ -161,6 +183,77 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             </option>
           ))}
         </select>
+      </div>
+
+      {/* Upload checklist */}
+      <div className="px-4 py-2">
+        <button
+          onClick={() => { setUploadOpen((v) => !v); setUploadStatus(null) }}
+          className="w-full flex items-center justify-between text-xs font-medium px-3 py-2 rounded-lg transition-colors"
+          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+        >
+          <span>📤 Ajouter une checklist</span>
+          <span>{uploadOpen ? '▲' : '▼'}</span>
+        </button>
+
+        {uploadOpen && (
+          <div className="mt-2 space-y-2">
+            {/* File picker */}
+            <label
+              className="flex flex-col items-center justify-center gap-1 rounded-lg py-4 cursor-pointer text-xs text-center"
+              style={{
+                border: `2px dashed ${uploadFile ? 'var(--accent)' : 'var(--border-standard)'}`,
+                color: uploadFile ? 'var(--accent)' : 'var(--text-quaternary)',
+                background: 'var(--bg-surface)',
+              }}
+            >
+              <span>{uploadFile ? `📄 ${uploadFile.name}` : '+ Choisir un fichier .xlsx'}</span>
+              <input
+                type="file"
+                accept=".xlsx,.xls"
+                className="hidden"
+                onChange={(e) => { setUploadFile(e.target.files?.[0] || null); setUploadStatus(null) }}
+              />
+            </label>
+
+            {/* Overwrite */}
+            <label className="flex items-center gap-2 text-xs cursor-pointer" style={{ color: 'var(--text-secondary)' }}>
+              <input
+                type="checkbox"
+                checked={uploadOverwrite}
+                onChange={(e) => setUploadOverwrite(e.target.checked)}
+                style={{ accentColor: 'var(--accent)' }}
+              />
+              Remplacer si existant
+            </label>
+
+            {/* Submit */}
+            <button
+              onClick={handleUpload}
+              disabled={!uploadFile || uploading}
+              className="w-full py-2 rounded-lg text-xs font-medium"
+              style={{
+                background: uploadFile && !uploading ? 'var(--accent)' : 'var(--bg-hover)',
+                color: uploadFile && !uploading ? '#fff' : 'var(--text-quaternary)',
+              }}
+            >
+              {uploading ? '⏳ Upload...' : '⬆️ Envoyer'}
+            </button>
+
+            {/* Feedback */}
+            {uploadStatus && (
+              <div
+                className="text-xs px-2 py-1.5 rounded"
+                style={{
+                  background: uploadStatus.type === 'ok' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+                  color: uploadStatus.type === 'ok' ? '#22c55e' : '#ef4444',
+                }}
+              >
+                {uploadStatus.msg}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Tab switch: Sélection / Presets */}
