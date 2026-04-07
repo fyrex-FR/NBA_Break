@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
-import { fetchSports, fetchChecklists, fetchAnalysis } from '../../api/client'
-import type { ChecklistInfo } from '../../types'
+import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset } from '../../api/client'
+import type { ChecklistInfo, PresetInfo } from '../../types'
+
+type SidebarTab = 'selection' | 'presets'
 
 export function Sidebar() {
   const {
@@ -13,6 +15,11 @@ export function Sidebar() {
     masterKey, setMasterKey,
     setAnalysisData, setIsAnalyzing, isAnalyzing,
   } = useAppStore()
+
+  const [tab, setTab] = useState<SidebarTab>('selection')
+  const [presetName, setPresetName] = useState('')
+  const [presetMsg, setPresetMsg] = useState<string | null>(null)
+  const queryClient = useQueryClient()
 
   // Fetch sports list
   const { data: sports } = useQuery({
@@ -27,12 +34,20 @@ export function Sidebar() {
     enabled: !!selectedSport,
   })
 
+  // Fetch presets
+  const { data: presetsData } = useQuery({
+    queryKey: ['presets', selectedSport],
+    queryFn: () => fetchPresets(selectedSport),
+    enabled: !!selectedSport,
+  })
+
+  const presets: PresetInfo[] = presetsData?.presets || []
+
   // Update available checklists when data arrives
   useEffect(() => {
     if (checklistsData) {
       setAvailableChecklists(checklistsData.checklists)
       setMasterKey(checklistsData.master_key)
-      // Auto-select all if nothing selected
       if (selectedChecklistIds.length === 0 && checklistsData.checklists.length > 0) {
         setSelectedChecklistIds(checklistsData.checklists.map((c) => c.checklist_id))
       }
@@ -64,6 +79,34 @@ export function Sidebar() {
     } finally {
       setIsAnalyzing(false)
     }
+  }
+
+  async function handleSavePreset() {
+    if (!presetName.trim()) return
+    try {
+      await savePreset(selectedSport, presetName.trim(), selectedChecklistIds)
+      setPresetMsg(`"${presetName.trim()}" sauvegardé`)
+      setPresetName('')
+      queryClient.invalidateQueries({ queryKey: ['presets', selectedSport] })
+      setTimeout(() => setPresetMsg(null), 2000)
+    } catch (err) {
+      setPresetMsg('Erreur lors de la sauvegarde')
+      setTimeout(() => setPresetMsg(null), 2000)
+    }
+  }
+
+  async function handleDeletePreset(name: string) {
+    try {
+      await deletePreset(selectedSport, name)
+      queryClient.invalidateQueries({ queryKey: ['presets', selectedSport] })
+    } catch (err) {
+      console.error('Delete preset failed:', err)
+    }
+  }
+
+  function handleLoadPreset(preset: PresetInfo) {
+    setSelectedChecklistIds(preset.checklist_ids)
+    setTab('selection')
   }
 
   const currentSport = sports?.find((s) => s.key === selectedSport)
@@ -103,47 +146,154 @@ export function Sidebar() {
         </select>
       </div>
 
-      {/* Checklist selection */}
-      <div className="px-4 py-2 flex-1 overflow-y-auto">
-        <div className="flex items-center justify-between mb-2">
-          <label className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
-            Checklists ({selectedCount}/{totalCount})
-          </label>
-          <button
-            onClick={allSelected ? deselectAllChecklists : selectAllChecklists}
-            className="text-xs px-2 py-0.5 rounded"
-            style={{ color: 'var(--accent)' }}
-          >
-            {allSelected ? 'Tout désélectionner' : 'Tout sélectionner'}
-          </button>
-        </div>
+      {/* Tab switch: Sélection / Presets */}
+      <div className="flex mx-4 mt-2 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+        <button
+          onClick={() => setTab('selection')}
+          className="flex-1 py-1.5 text-xs font-medium transition-colors"
+          style={{
+            background: tab === 'selection' ? 'var(--accent)' : 'transparent',
+            color: tab === 'selection' ? '#fff' : 'var(--text-tertiary)',
+          }}
+        >
+          📋 Sélection
+        </button>
+        <button
+          onClick={() => setTab('presets')}
+          className="flex-1 py-1.5 text-xs font-medium transition-colors"
+          style={{
+            background: tab === 'presets' ? 'var(--accent)' : 'transparent',
+            color: tab === 'presets' ? '#fff' : 'var(--text-tertiary)',
+          }}
+        >
+          💾 Presets{presets.length > 0 ? ` (${presets.length})` : ''}
+        </button>
+      </div>
 
-        {sortedYears.map((year) => (
-          <div key={year} className="mb-2">
-            <div className="text-xs font-medium mb-1 px-1" style={{ color: 'var(--text-quaternary)' }}>
-              {year}
-            </div>
-            {checklistsByYear[year].map((cl) => (
-              <label
-                key={cl.checklist_id}
-                className="flex items-center gap-2 px-2 py-1.5 rounded text-xs cursor-pointer"
-                style={{ color: 'var(--text-secondary)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-              >
-                <input
-                  type="checkbox"
-                  checked={selectedChecklistIds.includes(cl.checklist_id)}
-                  onChange={() => toggleChecklist(cl.checklist_id)}
-                  className="rounded"
-                  style={{ accentColor: 'var(--accent)' }}
-                />
-                <span className="truncate flex-1">{cl.checklist_name.replace('.parquet', '')}</span>
-                <span style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
+      {/* Tab content */}
+      <div className="px-4 py-2 flex-1 overflow-y-auto">
+        {tab === 'selection' ? (
+          <>
+            {/* Checklist selection */}
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
+                Checklists ({selectedCount}/{totalCount})
               </label>
+              <button
+                onClick={allSelected ? deselectAllChecklists : selectAllChecklists}
+                className="text-xs px-2 py-0.5 rounded"
+                style={{ color: 'var(--accent)' }}
+              >
+                {allSelected ? 'Désélectionner' : 'Tout'}
+              </button>
+            </div>
+
+            {sortedYears.map((year) => (
+              <div key={year} className="mb-2">
+                <div className="text-xs font-medium mb-1 px-1" style={{ color: 'var(--text-quaternary)' }}>
+                  {year}
+                </div>
+                {checklistsByYear[year].map((cl) => (
+                  <label
+                    key={cl.checklist_id}
+                    className="flex items-center gap-2 px-2 py-1.5 rounded text-xs cursor-pointer"
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedChecklistIds.includes(cl.checklist_id)}
+                      onChange={() => toggleChecklist(cl.checklist_id)}
+                      className="rounded"
+                      style={{ accentColor: 'var(--accent)' }}
+                    />
+                    <span className="truncate flex-1">{cl.checklist_name.replace('.parquet', '')}</span>
+                    <span style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
+                  </label>
+                ))}
+              </div>
             ))}
-          </div>
-        ))}
+          </>
+        ) : (
+          <>
+            {/* Presets tab */}
+            {/* Save current selection */}
+            <div className="mb-4">
+              <label className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-tertiary)' }}>
+                Sauver la sélection actuelle ({selectedCount})
+              </label>
+              <div className="flex gap-1.5">
+                <input
+                  type="text"
+                  value={presetName}
+                  onChange={(e) => setPresetName(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSavePreset()}
+                  placeholder="Nom du preset..."
+                  className="flex-1 rounded-lg px-2.5 py-1.5 text-xs"
+                  style={{
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-standard)',
+                    color: 'var(--text-primary)',
+                  }}
+                />
+                <button
+                  onClick={handleSavePreset}
+                  disabled={!presetName.trim() || selectedCount === 0}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-medium"
+                  style={{
+                    background: presetName.trim() && selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
+                    color: presetName.trim() && selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
+                  }}
+                >
+                  💾
+                </button>
+              </div>
+              {presetMsg && (
+                <div className="text-xs mt-1" style={{ color: 'var(--accent)' }}>{presetMsg}</div>
+              )}
+            </div>
+
+            {/* Saved presets list */}
+            <label className="text-xs font-medium mb-2 block" style={{ color: 'var(--text-tertiary)' }}>
+              Presets sauvegardés
+            </label>
+            {presets.length === 0 ? (
+              <div className="text-xs py-4 text-center" style={{ color: 'var(--text-quaternary)' }}>
+                Aucun preset sauvegardé
+              </div>
+            ) : (
+              <div className="space-y-1">
+                {presets.map((p) => (
+                  <div
+                    key={p.name}
+                    className="flex items-center gap-2 px-2 py-2 rounded text-xs group"
+                    style={{ border: '1px solid var(--border-subtle)' }}
+                  >
+                    <button
+                      onClick={() => handleLoadPreset(p)}
+                      className="flex-1 text-left truncate"
+                      style={{ color: 'var(--text-secondary)' }}
+                    >
+                      <span className="font-medium">{p.name}</span>
+                      <span className="ml-1.5" style={{ color: 'var(--text-quaternary)' }}>
+                        ({p.checklist_ids.length})
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => handleDeletePreset(p.name)}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity px-1"
+                      style={{ color: 'var(--text-quaternary)' }}
+                      title="Supprimer"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </div>
 
       {/* Lancer button */}
