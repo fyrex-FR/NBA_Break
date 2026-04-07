@@ -57,6 +57,12 @@ class DetectionResponse(BaseModel):
     files: List[str]
 
 
+class DetectRequest(BaseModel):
+    sport_key: str
+    checklist_ids: List[str]
+    master_key: Optional[str] = None
+
+
 class SaveOverridesRequest(BaseModel):
     sport_key: str
     auto_mem: List[str]
@@ -64,23 +70,19 @@ class SaveOverridesRequest(BaseModel):
 
 
 @router.post("/detect")
-def detect_card_types(
-    sport_key: str,
-    checklist_ids: List[str],
-    master_key: Optional[str] = None,
-):
+def detect_card_types(req: DetectRequest):
     """Get card types that are candidates for reclassification."""
     overrides_root = _load_overrides()
 
     try:
-        df = load_master_data(sport_key, checklist_ids, master_key)
-        df = enrich_dataframe(df, sport_key, overrides_root)
+        df = load_master_data(req.sport_key, req.checklist_ids, req.master_key)
+        df = enrich_dataframe(df, req.sport_key, overrides_root)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
     # Get current override sets for this sport
     effective = get_effective_exact_category_by_sport(overrides_root)
-    sport_overrides = effective.get(sport_key, {})
+    sport_overrides = effective.get(req.sport_key, {})
     current_auto_set = {normalize_box_type_text(v) for v in (sport_overrides.get("auto_mem", []) if isinstance(sport_overrides, dict) else [])}
     current_case_set = {normalize_box_type_text(v) for v in (sport_overrides.get("case_hit", []) if isinstance(sport_overrides, dict) else [])}
 

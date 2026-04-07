@@ -168,11 +168,14 @@ export function fetchDetection(
   checklistIds: string[],
   masterKey?: string | null,
 ): Promise<DetectionResponse> {
-  const params = new URLSearchParams({ sport_key: sportKey })
-  checklistIds.forEach((id) => params.append('checklist_ids', id))
-  if (masterKey) params.append('master_key', masterKey)
-
-  return fetchJSON(`/overrides/detect?${params.toString()}`, { method: 'POST' })
+  return fetchJSON('/overrides/detect', {
+    method: 'POST',
+    body: JSON.stringify({
+      sport_key: sportKey,
+      checklist_ids: checklistIds,
+      master_key: masterKey,
+    }),
+  })
 }
 
 export function saveOverrides(
