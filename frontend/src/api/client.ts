@@ -143,3 +143,45 @@ export async function uploadChecklist(
   }
   return res.json()
 }
+
+// ---------------------------------------------------------------------------
+// Keyword overrides (detection)
+// ---------------------------------------------------------------------------
+
+export interface CardTypeCandidate {
+  box_type: string
+  norm: string
+  hits: number
+  file: string
+  current_category: string
+  is_auto: boolean
+  is_case: boolean
+}
+
+export interface DetectionResponse {
+  candidates: CardTypeCandidate[]
+  files: string[]
+}
+
+export function fetchDetection(
+  sportKey: string,
+  checklistIds: string[],
+  masterKey?: string | null,
+): Promise<DetectionResponse> {
+  const params = new URLSearchParams({ sport_key: sportKey })
+  checklistIds.forEach((id) => params.append('checklist_ids', id))
+  if (masterKey) params.append('master_key', masterKey)
+
+  return fetchJSON(`/overrides/detect?${params.toString()}`, { method: 'POST' })
+}
+
+export function saveOverrides(
+  sportKey: string,
+  autoMem: string[],
+  caseHit: string[],
+): Promise<{ status: string; auto_mem_count: number; case_hit_count: number }> {
+  return fetchJSON('/overrides/save', {
+    method: 'POST',
+    body: JSON.stringify({ sport_key: sportKey, auto_mem: autoMem, case_hit: caseHit }),
+  })
+}

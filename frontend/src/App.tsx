@@ -11,6 +11,7 @@ import { FileAnalysisView } from './components/views/FileAnalysisView'
 import { ComparatorView } from './components/views/ComparatorView'
 import { BreakSimulationView } from './components/views/BreakSimulationView'
 import { ExportView } from './components/views/ExportView'
+import { DetectionView } from './components/views/DetectionView'
 import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
 
 const queryClient = new QueryClient({
@@ -88,6 +89,8 @@ function MainContent() {
         return <TeamDetailView />
       case '📁 Par Fichier':
         return <FileAnalysisView />
+      case '🧪 Détection Auto/Mem':
+        return <DetectionView />
       case '⚖️ Comparateur Joueurs':
         return <ComparatorView />
       case '🧩 Simulation de Break':
