@@ -44,7 +44,7 @@ export function GlobalView() {
   return (
     <div>
       {/* KPI cards */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
         <MetricCard label="Lignes" value={metadata.total_rows} icon="📊" />
         <MetricCard label="Équipes" value={metadata.unique_teams} icon="👥" />
         <MetricCard label="Joueurs" value={metadata.unique_players} icon="🎴" />
