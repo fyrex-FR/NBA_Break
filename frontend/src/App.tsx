@@ -3,6 +3,15 @@ import { useAppStore } from './stores/appStore'
 import { Sidebar } from './components/layout/Sidebar'
 import { ViewTabs } from './components/layout/ViewTabs'
 import { GlobalView } from './components/views/GlobalView'
+import { CategoryFilteredView } from './components/views/CategoryFilteredView'
+import { MultiPlayersView } from './components/views/MultiPlayersView'
+import { PlayerDetailView } from './components/views/PlayerDetailView'
+import { TeamDetailView } from './components/views/TeamDetailView'
+import { FileAnalysisView } from './components/views/FileAnalysisView'
+import { ComparatorView } from './components/views/ComparatorView'
+import { BreakSimulationView } from './components/views/BreakSimulationView'
+import { ExportView } from './components/views/ExportView'
+import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,19 +49,58 @@ function MainContent() {
     )
   }
 
-  // Render active view
   const renderView = () => {
     switch (activeView) {
       case '🌍 Vue Globale':
         return <GlobalView />
-      // Other views will be added here
+      case '💎 Autos & Patchs':
+        return (
+          <CategoryFilteredView
+            title="Autos & Patchs"
+            icon="💎"
+            category={CATEGORY_AUTO_MEM}
+            description="Cartes autographiées et memorabilia (patches, swatches, etc.)."
+          />
+        )
+      case '🔥 Logoman':
+        return (
+          <CategoryFilteredView
+            title="Logoman"
+            icon="🔥"
+            category={CATEGORY_LOGOMAN}
+            description="Cartes Logoman — les plus rares et recherchées."
+          />
+        )
+      case '✨ Case Hits':
+        return (
+          <CategoryFilteredView
+            title="Case Hits"
+            icon="✨"
+            category={CATEGORY_CASE_HIT}
+            description="Inserts spéciaux (Downtown, Kaboom, Color Blast, etc.)."
+          />
+        )
+      case '👥 Multi-Joueurs':
+        return <MultiPlayersView />
+      case '🔍 Analyse Joueur':
+        return <PlayerDetailView />
+      case '🛡️ Analyse Équipe':
+        return <TeamDetailView />
+      case '📁 Par Fichier':
+        return <FileAnalysisView />
+      case '⚖️ Comparateur Joueurs':
+        return <ComparatorView />
+      case '🧩 Simulation de Break':
+        return <BreakSimulationView />
+      case '📤 Export':
+        return <ExportView />
       default:
         return (
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
               <div className="text-4xl mb-3">🚧</div>
               <p style={{ color: 'var(--text-tertiary)' }}>
-                Vue <strong>{activeView}</strong> — en cours de développement
+                Vue <strong>{activeView}</strong> — bientôt disponible
               </p>
             </div>
           </div>
