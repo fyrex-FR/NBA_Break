@@ -22,9 +22,7 @@ const columns = [
   columnHelper.accessor('Team', { header: 'Équipe(s)' }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('Category', { header: 'Catégorie' }),
-  columnHelper.accessor('Numbering', { header: 'Numérotation' }),
   columnHelper.accessor('File', { header: 'Checklist' }),
-  columnHelper.accessor('Hits', { header: 'Cartes' }),
 ]
 
 export function MultiPlayersView() {

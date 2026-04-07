@@ -14,8 +14,6 @@ const cardColumns = [
   columnHelper.accessor('Team', { header: 'Équipe' }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
-  columnHelper.accessor('Numbering', { header: 'Num.' }),
-  columnHelper.accessor('Hits', { header: 'Cartes' }),
 ]
 
 export function FileAnalysisView() {

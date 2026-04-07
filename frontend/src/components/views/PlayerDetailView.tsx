@@ -18,9 +18,7 @@ const cardColumns = [
     cell: (info) => <CategoryBadge category={info.getValue()} />,
   }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
-  columnHelper.accessor('Numbering', { header: 'Num.' }),
   columnHelper.accessor('Team', { header: 'Équipe' }),
-  columnHelper.accessor('Hits', { header: 'Cartes' }),
   columnHelper.accessor('checklist_name', { header: 'Checklist', cell: (info) => info.getValue()?.replace('.parquet', '') }),
 ]
 
