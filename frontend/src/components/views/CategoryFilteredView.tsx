@@ -87,7 +87,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Players */}
           <div>
-            <h3 className="text-lg font-medium mb-3">🏆 Joueurs</h3>
+            <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Joueurs</h3>
             <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={playerRankings.slice(0, 10)} layout="vertical">
@@ -110,7 +110,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
 
           {/* Teams */}
           <div>
-            <h3 className="text-lg font-medium mb-3">🛡️ Équipes</h3>
+            <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Équipes</h3>
             <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={teamRankings.slice(0, 10)} layout="vertical">

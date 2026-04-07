@@ -9,10 +9,10 @@
   --text-primary: #f7f8f8;
   --text-secondary: #d0d6e0;
   --text-tertiary: #8a8f98;
-  --text-quaternary: #62666d;
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-standard: rgba(255, 255, 255, 0.08);
-  --border-solid: #23252a;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-standard: rgba(255, 255, 255, 0.12);
+  --border-solid: #2a2c31;
+  --text-quaternary: #72767f;
 
   /* Sport accent colors (default NBA) */
   --accent: #ff6b35;

@@ -114,7 +114,7 @@ function MainContent() {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       {/* Navigation tabs */}
       <ViewTabs enabledViews={analysisData.enabled_views} />
 

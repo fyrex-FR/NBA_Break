@@ -80,9 +80,9 @@ export function TeamDetailView() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
             <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
             <MetricCard label="Joueurs" value={uniquePlayers} icon="🎴" />
-            <MetricCard label="Logoman" value={logomanCount} icon="🔥" />
-            <MetricCard label="Case Hit" value={caseHitCount} icon="✨" />
-            <MetricCard label="Auto/Mem" value={autoMemCount} icon="💎" />
+            <MetricCard label="Logoman" value={logomanCount} icon="🔥" valueColor="#ef4444" />
+            <MetricCard label="Case Hit" value={caseHitCount} icon="✨" valueColor="#eab308" />
+            <MetricCard label="Auto/Mem" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
             <MetricCard label="Base/Autre" value={totalHits - logomanCount - caseHitCount - autoMemCount} icon="📄" />
           </div>
 

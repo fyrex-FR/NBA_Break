@@ -56,9 +56,9 @@ export function GlobalView() {
 
       {/* Category summary */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-        <MetricCard label="Logoman" value={category_summary.logoman} icon="🔥" />
-        <MetricCard label="Case Hit" value={category_summary.case_hit} icon="✨" />
-        <MetricCard label="Auto/Mem" value={category_summary.auto_mem} icon="💎" />
+        <MetricCard label="Logoman" value={category_summary.logoman} icon="🔥" valueColor="#ef4444" />
+        <MetricCard label="Case Hit" value={category_summary.case_hit} icon="✨" valueColor="#eab308" />
+        <MetricCard label="Auto/Mem" value={category_summary.auto_mem} icon="💎" valueColor="#3b82f6" />
         <MetricCard label="Base/Autre" value={category_summary.base_other} icon="📄" />
       </div>
 
@@ -66,7 +66,7 @@ export function GlobalView() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Players */}
         <div>
-          <h3 className="text-lg font-medium mb-3">🏆 Top Joueurs</h3>
+          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Top Joueurs</h3>
 
           {/* Bar chart */}
           <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
@@ -100,7 +100,7 @@ export function GlobalView() {
 
         {/* Teams */}
         <div>
-          <h3 className="text-lg font-medium mb-3">🛡️ Top Équipes</h3>
+          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Top Équipes</h3>
 
           <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
             <ResponsiveContainer width="100%" height={250}>
