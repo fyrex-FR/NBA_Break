@@ -2,7 +2,10 @@ import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
+import { SearchSelect } from '../shared/SearchSelect'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
+
+const MAX_PLAYERS = 5
 
 interface PlayerComparison {
   Joueur: string
@@ -26,21 +29,36 @@ const columns = [
 
 export function ComparatorView() {
   const { analysisData } = useAppStore()
-  const [input, setInput] = useState('')
+  const [slots, setSlots] = useState<string[]>(['', ''])
 
   if (!analysisData) return null
 
-  const playerNames = useMemo(() => {
-    return input
-      .split(/[,\n]/)
-      .map((s) => s.trim())
-      .filter(Boolean)
-  }, [input])
+  const allPlayers = useMemo(() => {
+    const names = new Set<string>()
+    for (const card of analysisData.cards) {
+      for (const name of card.Player.split('/').map((p) => p.trim())) {
+        if (name) names.add(name)
+      }
+    }
+    return Array.from(names).sort()
+  }, [analysisData.cards])
+
+  function setSlot(index: number, value: string) {
+    setSlots((prev) => prev.map((s, i) => (i === index ? value : s)))
+  }
+
+  function removeSlot(index: number) {
+    setSlots((prev) => prev.filter((_, i) => i !== index))
+  }
+
+  function addSlot() {
+    if (slots.length < MAX_PLAYERS) setSlots((prev) => [...prev, ''])
+  }
+
+  const selectedPlayers = slots.filter(Boolean)
 
   const comparisons = useMemo(() => {
-    if (playerNames.length === 0) return []
-
-    return playerNames.map((name) => {
+    return selectedPlayers.map((name) => {
       const cards = analysisData.cards.filter((c) =>
         c.Player.split('/').map((p) => p.trim().toLowerCase()).includes(name.toLowerCase()),
       )
@@ -53,26 +71,61 @@ export function ComparatorView() {
         Checklists: new Set(cards.map((c) => c.checklist_name)).size,
       }
     })
-  }, [playerNames, analysisData.cards])
+  }, [selectedPlayers, analysisData.cards])
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-2">⚖️ Comparateur Joueurs</h2>
-      <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
-        Entrez les noms des joueurs à comparer (un par ligne ou séparés par des virgules).
+      <h2 className="text-xl font-medium mb-1">⚖️ Comparateur Joueurs</h2>
+      <p className="text-sm mb-5" style={{ color: 'var(--text-tertiary)' }}>
+        Sélectionnez jusqu'à {MAX_PLAYERS} joueurs à comparer.
       </p>
 
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="LeBron James, Victor Wembanyama, Luka Doncic"
-        rows={4}
-        className="w-full max-w-lg rounded-lg px-3 py-2 text-sm mb-4"
-        style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)', resize: 'vertical' }}
-      />
+      <div className="max-w-lg">
+        {slots.map((slot, i) => (
+          <div key={i} className="flex items-start gap-2">
+            <div className="flex-1">
+              <SearchSelect
+                options={allPlayers.filter((p) => !slots.includes(p) || p === slot)}
+                value={slot}
+                onChange={(v) => setSlot(i, v)}
+                placeholder={`Joueur ${i + 1}…`}
+              />
+            </div>
+            {slots.length > 1 && (
+              <button
+                onClick={() => removeSlot(i)}
+                className="mt-2 px-1.5 py-1 rounded text-xs"
+                style={{ color: 'var(--text-quaternary)' }}
+                title="Retirer ce joueur"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        ))}
+
+        {slots.length < MAX_PLAYERS && (
+          <button
+            onClick={addSlot}
+            className="text-sm px-3 py-1.5 rounded-lg mb-6"
+            style={{
+              color: 'var(--accent)',
+              border: '1px dashed color-mix(in srgb, var(--accent) 50%, transparent)',
+              background: 'transparent',
+            }}
+          >
+            + Ajouter un joueur
+          </button>
+        )}
+      </div>
 
       {comparisons.length > 0 && (
-        <DataTable data={comparisons} columns={columns as any} pageSize={50} exportName={`comparaison_${playerNames.length}_joueurs`} />
+        <DataTable
+          data={comparisons}
+          columns={columns as any}
+          pageSize={50}
+          exportName={`comparaison_${selectedPlayers.length}_joueurs`}
+        />
       )}
     </div>
   )
