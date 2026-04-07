@@ -92,6 +92,7 @@ export function GlobalView() {
             onRowClick={handlePlayerClick}
             searchable
             searchPlaceholder="Rechercher un joueur..."
+            exportName="joueurs_global"
           />
         </div>
 
@@ -124,6 +125,7 @@ export function GlobalView() {
             onRowClick={handleTeamClick}
             searchable
             searchPlaceholder="Rechercher une équipe..."
+            exportName="equipes_global"
           />
         </div>
       </div>

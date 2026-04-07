@@ -96,7 +96,7 @@ export function MultiPlayersView() {
           Aucune carte multi-joueurs trouvée.
         </div>
       ) : (
-        <DataTable data={filtered as MultiCard[]} columns={columns as any} pageSize={50} />
+        <DataTable data={filtered as MultiCard[]} columns={columns as any} pageSize={50} exportName={filterPlayer ? `multi_${filterPlayer.replace(/\s+/g, '_')}` : 'multi_joueurs'} />
       )}
     </div>
   )

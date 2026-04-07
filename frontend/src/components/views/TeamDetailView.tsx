@@ -107,7 +107,7 @@ export function TeamDetailView() {
             ))}
           </div>
 
-          <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} />
+          <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} />
         </>
       )}
     </div>

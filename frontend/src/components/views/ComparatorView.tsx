@@ -72,7 +72,7 @@ export function ComparatorView() {
       />
 
       {comparisons.length > 0 && (
-        <DataTable data={comparisons} columns={columns as any} pageSize={50} />
+        <DataTable data={comparisons} columns={columns as any} pageSize={50} exportName={`comparaison_${playerNames.length}_joueurs`} />
       )}
     </div>
   )

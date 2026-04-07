@@ -104,6 +104,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
               onRowClick={(row) => { setTargetPlayer(row.Player!); setActiveView('🔍 Analyse Joueur') }}
               searchable
               searchPlaceholder="Rechercher un joueur..."
+              exportName={`joueurs_${title.replace(/\s+/g, '_')}`}
             />
           </div>
 
@@ -126,6 +127,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
               onRowClick={(row) => { setTargetTeam(row.Team!); setActiveView('🛡️ Analyse Équipe') }}
               searchable
               searchPlaceholder="Rechercher une équipe..."
+              exportName={`equipes_${title.replace(/\s+/g, '_')}`}
             />
           </div>
         </div>

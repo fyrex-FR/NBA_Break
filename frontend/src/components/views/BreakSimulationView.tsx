@@ -133,7 +133,7 @@ export function BreakSimulationView() {
           )}
 
           {/* Full table */}
-          <DataTable data={result.spots} columns={spotColumns as any} pageSize={100} searchable searchPlaceholder="Rechercher un spot..." />
+          <DataTable data={result.spots} columns={spotColumns as any} pageSize={100} searchable searchPlaceholder="Rechercher un spot..." exportName={`break_${method}`} />
         </>
       )}
     </div>

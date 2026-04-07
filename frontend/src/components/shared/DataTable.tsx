@@ -10,7 +10,7 @@ import {
   type SortingState,
 } from '@tanstack/react-table'
 
-function exportToCsv<T>(table: ReturnType<typeof useReactTable<T>>, allData: T[], columns: ColumnDef<T, unknown>[]) {
+function exportToCsv<T>(table: ReturnType<typeof useReactTable<T>>, filename: string) {
   const headers = table.getAllColumns().map((c) => String(c.columnDef.header ?? c.id))
   const rows = table.getFilteredRowModel().rows.map((row) =>
     row.getVisibleCells().map((cell) => {
@@ -26,7 +26,7 @@ function exportToCsv<T>(table: ReturnType<typeof useReactTable<T>>, allData: T[]
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = 'export.csv'
+  a.download = filename.endsWith('.csv') ? filename : `${filename}.csv`
   a.click()
   URL.revokeObjectURL(url)
 }
@@ -38,6 +38,8 @@ interface DataTableProps<T> {
   pageSize?: number
   searchable?: boolean
   searchPlaceholder?: string
+  /** Nom du fichier CSV exporté (sans extension). Ex: "LeBron_James", "Chicago_Bulls" */
+  exportName?: string
 }
 
 export function DataTable<T>({
@@ -47,6 +49,7 @@ export function DataTable<T>({
   pageSize = 50,
   searchable = false,
   searchPlaceholder = 'Rechercher...',
+  exportName,
 }: DataTableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState('')
@@ -114,7 +117,7 @@ export function DataTable<T>({
                 style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)' }}
               >
                 <button
-                  onClick={() => { exportToCsv(table, data, columns); setMenuOpen(false) }}
+                  onClick={() => { exportToCsv(table, exportName || 'export'); setMenuOpen(false) }}
                   className="w-full text-left px-3 py-2 text-sm"
                   style={{ color: 'var(--text-secondary)' }}
                   onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}

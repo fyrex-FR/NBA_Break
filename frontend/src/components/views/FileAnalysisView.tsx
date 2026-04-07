@@ -72,7 +72,7 @@ export function FileAnalysisView() {
             <MetricCard label="Case Hit" value={fileCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)} icon="✨" />
           </div>
 
-          <DataTable data={fileCards} columns={cardColumns as any} searchable searchPlaceholder="Rechercher dans cette checklist..." pageSize={100} />
+          <DataTable data={fileCards} columns={cardColumns as any} searchable searchPlaceholder="Rechercher dans cette checklist..." pageSize={100} exportName={selectedFile.replace('.parquet', '').replace(/\s+/g, '_')} />
         </>
       )}
     </div>
