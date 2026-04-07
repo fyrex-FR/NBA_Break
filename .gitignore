@@ -49,6 +49,7 @@ checklists_parquet/
 # Old versions / archives
 breaker_version/
 ToClean/
+design-md/
 
 # Local working files
 capture.png

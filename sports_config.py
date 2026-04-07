@@ -33,6 +33,8 @@ DEFAULT_CATEGORY_RULES = {
         # Court Kings
         "aurora",
         "la cinque",
+        "le cinque",
+        "blank slate",
         # Hoops
         "dreamcatchers",
         "funkadelic",
@@ -46,6 +48,7 @@ DEFAULT_CATEGORY_RULES = {
         "ceremonial orange",
         # Autres SSP inserts
         "micro-etch",
+        "micro etch",
         "photon",
         "genesis",
         "glass mosaic",
@@ -76,6 +79,12 @@ DEFAULT_CATEGORY_RULES = {
         "materials",
         "gear",
         "booklet",
+        # Mem/relic naming conventions
+        "swatch",
+        "thread",
+        "fabric",
+        "signing",
+        "laundry",
     ],
 }
 
@@ -270,6 +279,7 @@ SPORT_PROFILES = {
         "category_rules": {
             **DEFAULT_CATEGORY_RULES,
             "logoman": ["logoman", "nba logoman"],
+            "auto_mem": DEFAULT_CATEGORY_RULES["auto_mem"] + ["silhouette"],
         },
         "hype_tiers": {
             "Tier S": [
