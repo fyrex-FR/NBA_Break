@@ -114,14 +114,6 @@ function MainContent() {
 
   return (
     <div className="p-6">
-      {/* Success banner */}
-      <div
-        className="rounded-lg px-4 py-2 mb-4 text-sm"
-        style={{ background: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', border: '1px solid rgba(34, 197, 94, 0.2)' }}
-      >
-        ✅ {analysisData.metadata.checklists_count} checklist(s) • {analysisData.metadata.total_rows.toLocaleString('fr-FR')} lignes
-      </div>
-
       {/* Navigation tabs */}
       <ViewTabs enabledViews={analysisData.enabled_views} />
 
