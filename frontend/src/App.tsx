@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAppStore } from './stores/appStore'
+import { fetchAnalysis } from './api/client'
 import { Sidebar } from './components/layout/Sidebar'
 import { ViewTabs } from './components/layout/ViewTabs'
 import { GlobalView } from './components/views/GlobalView'
@@ -124,13 +125,23 @@ function MainContent() {
 }
 
 export default function App() {
-  const { selectedSport, analysisData, activeView } = useAppStore()
+  const { selectedSport, analysisData, activeView, selectedChecklistIds, masterKey, setAnalysisData, setIsAnalyzing } = useAppStore()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 })
   }, [activeView])
+
+  // Auto-relance l'analyse au retour sur la page si une sélection existe mais pas de données
+  useEffect(() => {
+    if (analysisData || selectedChecklistIds.length === 0) return
+    setIsAnalyzing(true)
+    fetchAnalysis(selectedSport, selectedChecklistIds, masterKey)
+      .then(setAnalysisData)
+      .catch(() => setAnalysisData(null))
+      .finally(() => setIsAnalyzing(false))
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <QueryClientProvider client={queryClient}>
