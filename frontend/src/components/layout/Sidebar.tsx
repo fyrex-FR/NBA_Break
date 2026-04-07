@@ -43,14 +43,11 @@ export function Sidebar() {
 
   const presets: PresetInfo[] = presetsData?.presets || []
 
-  // Update available checklists when data arrives
+  // Update available checklists when data arrives (don't auto-select)
   useEffect(() => {
     if (checklistsData) {
       setAvailableChecklists(checklistsData.checklists)
       setMasterKey(checklistsData.master_key)
-      if (selectedChecklistIds.length === 0 && checklistsData.checklists.length > 0) {
-        setSelectedChecklistIds(checklistsData.checklists.map((c) => c.checklist_id))
-      }
     }
   }, [checklistsData])
 
@@ -188,32 +185,44 @@ export function Sidebar() {
               </button>
             </div>
 
-            {sortedYears.map((year) => (
-              <div key={year} className="mb-2">
-                <div className="text-xs font-medium mb-1 px-1" style={{ color: 'var(--text-quaternary)' }}>
-                  {year}
-                </div>
-                {checklistsByYear[year].map((cl) => (
-                  <label
-                    key={cl.checklist_id}
-                    className="flex items-center gap-2 px-2 py-1.5 rounded text-xs cursor-pointer"
+            {sortedYears.map((year) => {
+              const yearChecklists = checklistsByYear[year]
+              const yearSelectedCount = yearChecklists.filter((cl) => selectedChecklistIds.includes(cl.checklist_id)).length
+              return (
+                <details key={year} className="mb-1 rounded-lg" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                  <summary
+                    className="px-2.5 py-2 cursor-pointer text-xs font-medium flex items-center justify-between select-none"
                     style={{ color: 'var(--text-secondary)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                   >
-                    <input
-                      type="checkbox"
-                      checked={selectedChecklistIds.includes(cl.checklist_id)}
-                      onChange={() => toggleChecklist(cl.checklist_id)}
-                      className="rounded"
-                      style={{ accentColor: 'var(--accent)' }}
-                    />
-                    <span className="truncate flex-1">{cl.checklist_name.replace('.parquet', '')}</span>
-                    <span style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
-                  </label>
-                ))}
-              </div>
-            ))}
+                    <span>{year}</span>
+                    <span style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
+                      {yearSelectedCount}/{yearChecklists.length}
+                    </span>
+                  </summary>
+                  <div className="pb-1">
+                    {yearChecklists.map((cl) => (
+                      <label
+                        key={cl.checklist_id}
+                        className="flex items-start gap-2 px-2.5 py-1.5 text-xs cursor-pointer"
+                        style={{ color: 'var(--text-secondary)' }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedChecklistIds.includes(cl.checklist_id)}
+                          onChange={() => toggleChecklist(cl.checklist_id)}
+                          className="rounded mt-0.5 flex-shrink-0"
+                          style={{ accentColor: 'var(--accent)' }}
+                        />
+                        <span className="flex-1 break-words leading-snug">{cl.checklist_name.replace('.parquet', '')}</span>
+                        <span className="flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
+                      </label>
+                    ))}
+                  </div>
+                </details>
+              )
+            })}
           </>
         ) : (
           <>
