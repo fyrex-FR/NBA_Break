@@ -16,5 +16,3 @@ services:
         sync: false
       - key: R2_ENDPOINT
         sync: false
-      - key: MASTER_KEY
-        sync: false
