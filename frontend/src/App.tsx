@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAppStore } from './stores/appStore'
 import { Sidebar } from './components/layout/Sidebar'
@@ -132,14 +132,19 @@ function MainContent() {
 }
 
 export default function App() {
-  const { selectedSport, analysisData } = useAppStore()
+  const { selectedSport, analysisData, activeView } = useAppStore()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const mainRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0 })
+  }, [activeView])
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex h-screen w-screen overflow-hidden" data-sport={selectedSport} style={{ background: 'var(--bg-primary)' }}>
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="flex-1 min-w-0 overflow-y-auto">
+        <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto">
           {/* Mobile topbar */}
           <div
             className="md:hidden flex items-center gap-3 px-4 py-3 sticky top-0 z-30"
