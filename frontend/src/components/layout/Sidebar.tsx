@@ -25,6 +25,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [presetName, setPresetName] = useState('')
   const [presetMsg, setPresetMsg] = useState<string | null>(null)
   const [confirmSelectAll, setConfirmSelectAll] = useState(false)
+  const [uploadOpen, setUploadOpen] = useState(false)
   const [uploadFile, setUploadFile] = useState<File | null>(null)
   const [uploadOverwrite, setUploadOverwrite] = useState(false)
   const [uploadStatus, setUploadStatus] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null)
@@ -159,25 +160,71 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         {/* ── Header fixe ── */}
         <div className="flex-shrink-0">
-          {/* Titre + sport sur une ligne */}
+          {/* Titre + sport + bouton upload */}
           <div className="flex items-center gap-2 px-4 py-3">
             <span className="text-lg">{currentSport?.page_icon || '🏀'}</span>
             <select
               value={selectedSport}
               onChange={(e) => setSport(e.target.value)}
               className="flex-1 rounded-lg px-2 py-1.5 text-sm font-semibold"
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--text-primary)',
-                cursor: 'pointer',
-              }}
+              style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer' }}
             >
               {sports?.map((s) => (
                 <option key={s.key} value={s.key}>{s.page_icon} {s.label}</option>
               ))}
             </select>
+            <button
+              onClick={() => { setUploadOpen((v) => !v); setUploadStatus(null) }}
+              title="Ajouter une checklist"
+              className="w-7 h-7 flex items-center justify-center rounded-md text-base transition-colors flex-shrink-0"
+              style={{
+                background: uploadOpen ? 'var(--accent)' : 'var(--bg-surface)',
+                color: uploadOpen ? '#fff' : 'var(--text-tertiary)',
+                border: '1px solid var(--border-subtle)',
+              }}
+            >
+              ⊕
+            </button>
           </div>
+
+          {/* Panel upload inline */}
+          {uploadOpen && (
+            <div className="mx-4 mb-2 p-3 rounded-lg space-y-2" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+              <label
+                className="flex items-center justify-center gap-2 rounded-lg py-3 cursor-pointer text-xs"
+                style={{
+                  border: `2px dashed ${uploadFile ? 'var(--accent)' : 'var(--border-standard)'}`,
+                  color: uploadFile ? 'var(--accent)' : 'var(--text-quaternary)',
+                }}
+              >
+                <span>{uploadFile ? `📄 ${uploadFile.name}` : '+ Choisir un fichier .xlsx'}</span>
+                <input type="file" accept=".xlsx,.xls" className="hidden" onChange={(e) => { setUploadFile(e.target.files?.[0] || null); setUploadStatus(null) }} />
+              </label>
+              <label className="flex items-center gap-2 text-xs cursor-pointer" style={{ color: 'var(--text-secondary)' }}>
+                <input type="checkbox" checked={uploadOverwrite} onChange={(e) => setUploadOverwrite(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
+                Remplacer si existant
+              </label>
+              <button
+                onClick={handleUpload}
+                disabled={!uploadFile || uploading}
+                className="w-full py-2 rounded-lg text-xs font-medium"
+                style={{
+                  background: uploadFile && !uploading ? 'var(--accent)' : 'var(--bg-hover)',
+                  color: uploadFile && !uploading ? '#fff' : 'var(--text-quaternary)',
+                }}
+              >
+                {uploading ? '⏳ Upload...' : '⬆️ Envoyer'}
+              </button>
+              {uploadStatus && (
+                <div className="text-xs px-2 py-1.5 rounded" style={{
+                  background: uploadStatus.type === 'ok' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+                  color: uploadStatus.type === 'ok' ? '#22c55e' : '#ef4444',
+                }}>
+                  {uploadStatus.msg}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Onglets */}
           <div className="flex mx-4 mb-2 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
@@ -346,44 +393,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </div>
               )}
 
-              {/* Upload */}
-              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '12px' }}>
-                <label className="text-xs font-medium mb-2 block" style={{ color: 'var(--text-tertiary)' }}>📤 Ajouter une checklist</label>
-                <label
-                  className="flex items-center justify-center gap-2 rounded-lg py-3 cursor-pointer text-xs"
-                  style={{
-                    border: `2px dashed ${uploadFile ? 'var(--accent)' : 'var(--border-standard)'}`,
-                    color: uploadFile ? 'var(--accent)' : 'var(--text-quaternary)',
-                    background: 'var(--bg-surface)',
-                  }}
-                >
-                  <span>{uploadFile ? `📄 ${uploadFile.name}` : '+ Choisir un fichier .xlsx'}</span>
-                  <input type="file" accept=".xlsx,.xls" className="hidden" onChange={(e) => { setUploadFile(e.target.files?.[0] || null); setUploadStatus(null) }} />
-                </label>
-                <label className="flex items-center gap-2 text-xs cursor-pointer mt-2 mb-2" style={{ color: 'var(--text-secondary)' }}>
-                  <input type="checkbox" checked={uploadOverwrite} onChange={(e) => setUploadOverwrite(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
-                  Remplacer si existant
-                </label>
-                <button
-                  onClick={handleUpload}
-                  disabled={!uploadFile || uploading}
-                  className="w-full py-2 rounded-lg text-xs font-medium"
-                  style={{
-                    background: uploadFile && !uploading ? 'var(--accent)' : 'var(--bg-hover)',
-                    color: uploadFile && !uploading ? '#fff' : 'var(--text-quaternary)',
-                  }}
-                >
-                  {uploading ? '⏳ Upload...' : '⬆️ Envoyer'}
-                </button>
-                {uploadStatus && (
-                  <div className="text-xs px-2 py-1.5 rounded mt-2" style={{
-                    background: uploadStatus.type === 'ok' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
-                    color: uploadStatus.type === 'ok' ? '#22c55e' : '#ef4444',
-                  }}>
-                    {uploadStatus.msg}
-                  </div>
-                )}
-              </div>
             </>
           )}
         </div>
