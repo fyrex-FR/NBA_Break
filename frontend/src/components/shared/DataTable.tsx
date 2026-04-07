@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState, useRef } from 'react'
 import {
   useReactTable,
   getCoreRowModel,
@@ -9,6 +9,27 @@ import {
   type ColumnDef,
   type SortingState,
 } from '@tanstack/react-table'
+
+function exportToCsv<T>(table: ReturnType<typeof useReactTable<T>>, allData: T[], columns: ColumnDef<T, unknown>[]) {
+  const headers = table.getAllColumns().map((c) => String(c.columnDef.header ?? c.id))
+  const rows = table.getFilteredRowModel().rows.map((row) =>
+    row.getVisibleCells().map((cell) => {
+      const val = cell.getValue()
+      const str = val == null ? '' : String(val)
+      return str.includes(',') || str.includes('"') || str.includes('\n')
+        ? `"${str.replace(/"/g, '""')}"`
+        : str
+    }),
+  )
+  const csv = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n')
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'export.csv'
+  a.click()
+  URL.revokeObjectURL(url)
+}
 
 interface DataTableProps<T> {
   data: T[]
@@ -29,6 +50,8 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState('')
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const table = useReactTable({
     data,
@@ -43,22 +66,77 @@ export function DataTable<T>({
     initialState: { pagination: { pageSize } },
   })
 
+  function handleCopyToClipboard() {
+    const headers = table.getAllColumns().map((c) => String(c.columnDef.header ?? c.id))
+    const rows = table.getFilteredRowModel().rows.map((row) =>
+      row.getVisibleCells().map((cell) => String(cell.getValue() ?? '')),
+    )
+    const text = [headers.join('\t'), ...rows.map((r) => r.join('\t'))].join('\n')
+    navigator.clipboard.writeText(text)
+    setMenuOpen(false)
+  }
+
   return (
     <div>
-      {searchable && (
-        <input
-          type="text"
-          value={globalFilter}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          placeholder={searchPlaceholder}
-          className="w-full mb-3 px-3 py-2 rounded-lg text-sm"
-          style={{
-            background: 'var(--bg-surface)',
-            border: '1px solid var(--border-standard)',
-            color: 'var(--text-primary)',
-          }}
-        />
-      )}
+      {/* Top bar: search + menu */}
+      <div className="flex items-center gap-2 mb-3">
+        {searchable && (
+          <input
+            type="text"
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+            placeholder={searchPlaceholder}
+            className="flex-1 px-3 py-2 rounded-lg text-sm"
+            style={{
+              background: 'var(--bg-surface)',
+              border: '1px solid var(--border-standard)',
+              color: 'var(--text-primary)',
+            }}
+          />
+        )}
+        {!searchable && <div className="flex-1" />}
+
+        {/* Export menu */}
+        <div className="relative" ref={menuRef}>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="px-2 py-2 rounded-lg text-xs"
+            style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+            title="Exporter"
+          >
+            ⋮
+          </button>
+          {menuOpen && (
+            <>
+              <div className="fixed inset-0 z-40" onClick={() => setMenuOpen(false)} />
+              <div
+                className="absolute right-0 top-full mt-1 z-50 rounded-lg py-1 shadow-lg min-w-[160px]"
+                style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)' }}
+              >
+                <button
+                  onClick={() => { exportToCsv(table, data, columns); setMenuOpen(false) }}
+                  className="w-full text-left px-3 py-2 text-sm"
+                  style={{ color: 'var(--text-secondary)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                >
+                  📥 Télécharger CSV
+                </button>
+                <button
+                  onClick={handleCopyToClipboard}
+                  className="w-full text-left px-3 py-2 text-sm"
+                  style={{ color: 'var(--text-secondary)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                >
+                  📋 Copier dans le presse-papier
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
       <div className="overflow-x-auto rounded-lg" style={{ border: '1px solid var(--border-subtle)' }}>
         <table className="w-full text-sm">
           <thead>
