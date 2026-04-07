@@ -22,10 +22,7 @@ app = FastAPI(
 # CORS — allow frontend dev server
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",  # Vite dev
-        "http://localhost:3000",  # Fallback
-    ],
+    allow_origins=["*"],  # Dev: accepte toutes les origines (réseau local inclus)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
