@@ -54,3 +54,7 @@ design-md/
 # Local working files
 capture.png
 _local/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/

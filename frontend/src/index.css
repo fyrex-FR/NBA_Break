@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* Linear-inspired dark theme tokens */
+:root {
+  --bg-primary: #08090a;
+  --bg-panel: #0f1011;
+  --bg-surface: #191a1b;
+  --bg-hover: #28282c;
+  --text-primary: #f7f8f8;
+  --text-secondary: #d0d6e0;
+  --text-tertiary: #8a8f98;
+  --text-quaternary: #62666d;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-standard: rgba(255, 255, 255, 0.08);
+  --border-solid: #23252a;
+
+  /* Sport accent colors (default NBA) */
+  --accent: #ff6b35;
+  --accent-hover: #ff8a5c;
+}
+
+/* Sport-specific accents */
+[data-sport="nba"] { --accent: #ff6b35; --accent-hover: #ff8a5c; }
+[data-sport="nfl"] { --accent: #2ecc71; --accent-hover: #4ade80; }
+[data-sport="soccer"] { --accent: #0a84ff; --accent-hover: #3b9eff; }
+[data-sport="tennis"] { --accent: #006633; --accent-hover: #00994d; }
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", "SF Pro Display", -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-panel); }
+::-webkit-scrollbar-thumb { background: var(--border-solid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-quaternary); }
