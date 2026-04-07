@@ -2,8 +2,11 @@
 Checklist Optimizer API — FastAPI backend.
 
 Run with:
-    uvicorn backend.main:app --reload --port 8000
+    python3 -m uvicorn backend.main:app --reload --port 8000
 """
+
+from dotenv import load_dotenv
+load_dotenv()  # Load .env file before anything else
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware

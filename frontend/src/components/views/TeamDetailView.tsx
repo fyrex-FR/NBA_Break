@@ -1,19 +1,12 @@
 import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
+import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
 import type { CardRecord } from '../../types'
-
-const PIE_COLORS: Record<string, string> = {
-  [CATEGORY_LOGOMAN]: '#ef4444',
-  [CATEGORY_CASE_HIT]: '#eab308',
-  [CATEGORY_AUTO_MEM]: '#3b82f6',
-  [CATEGORY_BASE_OTHER]: '#64748b',
-}
 
 const columnHelper = createColumnHelper<CardRecord>()
 
@@ -97,30 +90,20 @@ export function TeamDetailView() {
             <MetricCard label="Base/Autre" value={totalHits - logomanCount - caseHitCount - autoMemCount} icon="📄" />
           </div>
 
-          <div className="rounded-lg p-4 mb-6" style={{ background: 'var(--bg-surface)' }}>
-            <h4 className="text-sm font-medium mb-3" style={{ color: 'var(--text-tertiary)' }}>Répartition par catégorie</h4>
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart>
-                <Pie data={categoryDist} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label={(e) => e.name}>
-                  {categoryDist.map((entry) => (
-                    <Cell key={entry.name} fill={PIE_COLORS[entry.name] || '#64748b'} />
-                  ))}
-                </Pie>
-                <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
-              </PieChart>
-            </ResponsiveContainer>
+          <div className="mb-6">
+            <CategoryBreakdown data={categoryDist} title="Répartition par catégorie" />
           </div>
 
-          <div className="flex gap-2 mb-4">
+          <div className="flex flex-wrap gap-1.5 mb-4">
             {['', CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setCategoryFilter(cat)}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
+                className="px-3 py-1 rounded-full text-xs font-medium transition-colors"
                 style={{
-                  background: categoryFilter === cat ? 'var(--accent)' : 'var(--bg-surface)',
-                  color: categoryFilter === cat ? '#fff' : 'var(--text-secondary)',
-                  border: `1px solid ${categoryFilter === cat ? 'var(--accent)' : 'var(--border-subtle)'}`,
+                  background: categoryFilter === cat ? 'var(--accent)' : 'transparent',
+                  color: categoryFilter === cat ? '#fff' : 'var(--text-tertiary)',
+                  border: `1px solid ${categoryFilter === cat ? 'var(--accent)' : 'var(--border-standard)'}`,
                 }}
               >
                 {cat || 'Toutes'}

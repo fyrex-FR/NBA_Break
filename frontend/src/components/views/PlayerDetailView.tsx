@@ -1,19 +1,13 @@
 import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
+import { CategoryBreakdown } from '../shared/CategoryBreakdown'
+import { DistributionBar } from '../shared/DistributionBar'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
 import type { CardRecord } from '../../types'
-
-const PIE_COLORS: Record<string, string> = {
-  [CATEGORY_LOGOMAN]: '#ef4444',
-  [CATEGORY_CASE_HIT]: '#eab308',
-  [CATEGORY_AUTO_MEM]: '#3b82f6',
-  [CATEGORY_BASE_OTHER]: '#64748b',
-}
 
 const columnHelper = createColumnHelper<CardRecord>()
 
@@ -35,7 +29,6 @@ export function PlayerDetailView() {
 
   if (!analysisData) return null
 
-  // All unique players (split multi-player)
   const allPlayers = useMemo(() => {
     const set = new Set<string>()
     for (const c of analysisData.cards) {
@@ -46,7 +39,6 @@ export function PlayerDetailView() {
 
   const selectedPlayer = targetPlayer || ''
 
-  // Cards for this player
   const playerCards = useMemo(() => {
     if (!selectedPlayer) return []
     return analysisData.cards.filter((c) =>
@@ -59,14 +51,12 @@ export function PlayerDetailView() {
     return playerCards.filter((c) => c.Category === categoryFilter)
   }, [playerCards, categoryFilter])
 
-  // Category distribution
   const categoryDist = useMemo(() => {
     const map = new Map<string, number>()
     for (const c of playerCards) map.set(c.Category, (map.get(c.Category) || 0) + c.Hits)
     return Array.from(map.entries()).map(([name, value]) => ({ name, value }))
   }, [playerCards])
 
-  // Checklist distribution
   const checklistDist = useMemo(() => {
     const map = new Map<string, number>()
     for (const c of playerCards) {
@@ -87,7 +77,6 @@ export function PlayerDetailView() {
     <div>
       <h2 className="text-xl font-medium mb-4">🔍 Analyse Joueur</h2>
 
-      {/* Player selector */}
       <select
         value={selectedPlayer}
         onChange={(e) => setTargetPlayer(e.target.value || null)}
@@ -106,7 +95,6 @@ export function PlayerDetailView() {
         </div>
       ) : (
         <>
-          {/* KPI row */}
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
             <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
             <MetricCard label="Checklists" value={`${uniqueChecklists}/${totalChecklists}`} icon="📁" />
@@ -116,50 +104,23 @@ export function PlayerDetailView() {
             <MetricCard label="Base/Autre" value={totalHits - logomanCount - caseHitCount - autoMemCount} icon="📄" />
           </div>
 
-          {/* Charts */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            {/* Category pie */}
-            <div className="rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-              <h4 className="text-sm font-medium mb-3" style={{ color: 'var(--text-tertiary)' }}>Répartition par catégorie</h4>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie data={categoryDist} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label={(e) => e.name}>
-                    {categoryDist.map((entry) => (
-                      <Cell key={entry.name} fill={PIE_COLORS[entry.name] || '#64748b'} />
-                    ))}
-                  </Pie>
-                  <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Checklist pie */}
-            <div className="rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-              <h4 className="text-sm font-medium mb-3" style={{ color: 'var(--text-tertiary)' }}>Répartition par checklist</h4>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie data={checklistDist} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label={(e) => e.name.slice(0, 15)}>
-                    {checklistDist.map((_, i) => (
-                      <Cell key={i} fill={`hsl(${i * 50 + 200}, 60%, 55%)`} />
-                    ))}
-                  </Pie>
-                  <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
+          {/* Distribution bars instead of pie charts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <CategoryBreakdown data={categoryDist} title="Répartition par catégorie" />
+            <DistributionBar data={checklistDist} title="Répartition par checklist" />
           </div>
 
-          {/* Filters */}
-          <div className="flex gap-2 mb-4">
+          {/* Category filter pills */}
+          <div className="flex flex-wrap gap-1.5 mb-4">
             {['', CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setCategoryFilter(cat)}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
+                className="px-3 py-1 rounded-full text-xs font-medium transition-colors"
                 style={{
-                  background: categoryFilter === cat ? 'var(--accent)' : 'var(--bg-surface)',
-                  color: categoryFilter === cat ? '#fff' : 'var(--text-secondary)',
-                  border: `1px solid ${categoryFilter === cat ? 'var(--accent)' : 'var(--border-subtle)'}`,
+                  background: categoryFilter === cat ? 'var(--accent)' : 'transparent',
+                  color: categoryFilter === cat ? '#fff' : 'var(--text-tertiary)',
+                  border: `1px solid ${categoryFilter === cat ? 'var(--accent)' : 'var(--border-standard)'}`,
                 }}
               >
                 {cat || 'Toutes'}
@@ -167,7 +128,6 @@ export function PlayerDetailView() {
             ))}
           </div>
 
-          {/* Cards table */}
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} />
         </>
       )}
