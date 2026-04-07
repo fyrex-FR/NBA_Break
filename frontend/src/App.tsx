@@ -145,7 +145,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex h-screen w-screen overflow-hidden" data-sport={selectedSport} style={{ background: 'var(--bg-primary)' }}>
+      <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} style={{ background: 'var(--bg-primary)' }}>
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto">
           {/* Mobile topbar */}
