@@ -6,6 +6,7 @@ import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { DistributionBar } from '../shared/DistributionBar'
+import { SearchSelect } from '../shared/SearchSelect'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
 import type { CardRecord } from '../../types'
 
@@ -77,17 +78,12 @@ export function PlayerDetailView() {
     <div>
       <h2 className="text-xl font-medium mb-4">🔍 Analyse Joueur</h2>
 
-      <select
+      <SearchSelect
+        options={allPlayers}
         value={selectedPlayer}
-        onChange={(e) => setTargetPlayer(e.target.value || null)}
-        className="w-full max-w-md rounded-lg px-3 py-2 text-sm mb-6"
-        style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
-      >
-        <option value="">Sélectionnez un joueur...</option>
-        {allPlayers.map((p) => (
-          <option key={p} value={p}>{p}</option>
-        ))}
-      </select>
+        onChange={(v) => setTargetPlayer(v || null)}
+        placeholder="Tapez un nom de joueur..."
+      />
 
       {!selectedPlayer ? (
         <div className="text-center py-12" style={{ color: 'var(--text-tertiary)' }}>

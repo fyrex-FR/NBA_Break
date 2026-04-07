@@ -5,6 +5,7 @@ import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
+import { SearchSelect } from '../shared/SearchSelect'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
 import type { CardRecord } from '../../types'
 
@@ -63,17 +64,12 @@ export function TeamDetailView() {
     <div>
       <h2 className="text-xl font-medium mb-4">🛡️ Analyse Équipe</h2>
 
-      <select
+      <SearchSelect
+        options={allTeams}
         value={selectedTeam}
-        onChange={(e) => setTargetTeam(e.target.value || null)}
-        className="w-full max-w-md rounded-lg px-3 py-2 text-sm mb-6"
-        style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
-      >
-        <option value="">Sélectionnez une équipe...</option>
-        {allTeams.map((t) => (
-          <option key={t} value={t}>{t}</option>
-        ))}
-      </select>
+        onChange={(v) => setTargetTeam(v || null)}
+        placeholder="Tapez un nom d'équipe..."
+      />
 
       {!selectedTeam ? (
         <div className="text-center py-12" style={{ color: 'var(--text-tertiary)' }}>
