@@ -24,6 +24,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [tab, setTab] = useState<SidebarTab>('selection')
   const [presetName, setPresetName] = useState('')
   const [presetMsg, setPresetMsg] = useState<string | null>(null)
+  const [confirmSelectAll, setConfirmSelectAll] = useState(false)
   const queryClient = useQueryClient()
 
   // Fetch sports list
@@ -195,13 +196,33 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               <label className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
                 Checklists ({selectedCount}/{totalCount})
               </label>
-              <button
-                onClick={allSelected ? deselectAllChecklists : selectAllChecklists}
-                className="text-xs px-2 py-0.5 rounded"
-                style={{ color: 'var(--accent)' }}
-              >
-                {allSelected ? 'Désélectionner' : 'Tout'}
-              </button>
+              {allSelected ? (
+                <button
+                  onClick={deselectAllChecklists}
+                  className="text-xs px-2 py-0.5 rounded"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  Désélectionner
+                </button>
+              ) : confirmSelectAll ? (
+                <button
+                  onClick={() => { selectAllChecklists(); setConfirmSelectAll(false) }}
+                  className="text-xs px-2 py-0.5 rounded font-medium"
+                  style={{ color: '#fff', background: 'var(--accent)', borderRadius: 4 }}
+                  onBlur={() => setConfirmSelectAll(false)}
+                  autoFocus
+                >
+                  ⚠️ {totalCount} listes — ok ?
+                </button>
+              ) : (
+                <button
+                  onClick={() => totalCount > 20 ? setConfirmSelectAll(true) : selectAllChecklists()}
+                  className="text-xs px-2 py-0.5 rounded"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  Tout
+                </button>
+              )}
             </div>
 
             {sortedYears.map((year) => {

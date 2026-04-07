@@ -4,7 +4,7 @@ const CATEGORY_COLORS: Record<string, { bg: string; text: string }> = {
   [CATEGORY_LOGOMAN]: { bg: 'rgba(239, 68, 68, 0.15)', text: '#ef4444' },
   [CATEGORY_CASE_HIT]: { bg: 'rgba(234, 179, 8, 0.15)', text: '#eab308' },
   [CATEGORY_AUTO_MEM]: { bg: 'rgba(59, 130, 246, 0.15)', text: '#3b82f6' },
-  [CATEGORY_BASE_OTHER]: { bg: 'rgba(148, 163, 184, 0.1)', text: '#94a3b8' },
+  [CATEGORY_BASE_OTHER]: { bg: 'rgba(161, 161, 170, 0.15)', text: '#a1a1aa' },
 }
 
 interface CategoryBadgeProps {

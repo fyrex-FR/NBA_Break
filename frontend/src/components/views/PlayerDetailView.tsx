@@ -86,8 +86,10 @@ export function PlayerDetailView() {
       />
 
       {!selectedPlayer ? (
-        <div className="text-center py-12" style={{ color: 'var(--text-tertiary)' }}>
-          Sélectionnez un joueur pour voir son analyse détaillée.
+        <div className="text-center py-16">
+          <div className="text-4xl mb-3">🔍</div>
+          <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Sélectionnez un joueur</p>
+          <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Ou cliquez sur un joueur depuis la Vue Globale</p>
         </div>
       ) : (
         <>

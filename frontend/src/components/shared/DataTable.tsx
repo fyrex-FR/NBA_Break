@@ -54,7 +54,10 @@ export function DataTable<T>({
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [flashRowId, setFlashRowId] = useState<string | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+
+  const showSearch = searchable || data.length > 20
 
   const table = useReactTable({
     data,
@@ -83,7 +86,7 @@ export function DataTable<T>({
     <div>
       {/* Top bar: search + menu */}
       <div className="flex items-center gap-2 mb-3">
-        {searchable && (
+        {showSearch && (
           <input
             type="text"
             value={globalFilter}
@@ -97,7 +100,7 @@ export function DataTable<T>({
             }}
           />
         )}
-        {!searchable && <div className="flex-1" />}
+        {!showSearch && <div className="flex-1" />}
 
         {/* Export menu */}
         <div className="relative" ref={menuRef}>
@@ -162,17 +165,26 @@ export function DataTable<T>({
             ))}
           </thead>
           <tbody>
-            {table.getRowModel().rows.map((row, i) => (
+            {table.getRowModel().rows.map((row, i) => {
+              const isFlashing = flashRowId === row.id
+              return (
               <tr
                 key={row.id}
-                onClick={() => onRowClick?.(row.original)}
+                onClick={() => {
+                  if (!onRowClick) return
+                  setFlashRowId(row.id)
+                  setTimeout(() => {
+                    setFlashRowId(null)
+                    onRowClick(row.original)
+                  }, 120)
+                }}
                 className={onRowClick ? 'cursor-pointer' : ''}
                 style={{
-                  background: i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)',
+                  background: isFlashing ? 'color-mix(in srgb, var(--accent) 20%, var(--bg-panel))' : i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)',
                   transition: 'background 0.1s',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)')}
+                onMouseEnter={(e) => { if (!isFlashing) e.currentTarget.style.background = 'var(--bg-hover)' }}
+                onMouseLeave={(e) => { if (!isFlashing) e.currentTarget.style.background = i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)' }}
               >
                 {row.getVisibleCells().map((cell) => (
                   <td
@@ -184,7 +196,8 @@ export function DataTable<T>({
                   </td>
                 ))}
               </tr>
-            ))}
+              )
+            })}
           </tbody>
         </table>
       </div>

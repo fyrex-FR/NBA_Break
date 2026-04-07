@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
@@ -40,6 +40,7 @@ export function BreakSimulationView() {
   const [result, setResult] = useState<BreakSimulationResponse | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const resultsRef = useRef<HTMLDivElement>(null)
 
   async function handleSimulate() {
     setLoading(true)
@@ -52,6 +53,7 @@ export function BreakSimulationView() {
         method,
       })
       setResult(data)
+      setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
     } catch (err: any) {
       setError(err.message || 'Erreur lors de la simulation.')
       setResult(null)
@@ -108,7 +110,7 @@ export function BreakSimulationView() {
       )}
 
       {result && (
-        <>
+        <div ref={resultsRef}>
           {/* Summary KPIs */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
             <MetricCard label="Total Cartes" value={result.summary.total_cartes} icon="📊" />
@@ -134,7 +136,7 @@ export function BreakSimulationView() {
 
           {/* Full table */}
           <DataTable data={result.spots} columns={spotColumns as any} pageSize={100} searchable searchPlaceholder="Rechercher un spot..." exportName={`break_${method}`} />
-        </>
+        </div>
       )}
     </div>
   )
