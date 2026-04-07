@@ -6,13 +6,15 @@ services:
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     plan: free
     envVars:
-      - key: R2_ENDPOINT_URL
+      - key: R2_ACCOUNT_ID
         sync: false
       - key: R2_ACCESS_KEY_ID
         sync: false
       - key: R2_SECRET_ACCESS_KEY
         sync: false
-      - key: R2_BUCKET_NAME
+      - key: R2_BUCKET
+        sync: false
+      - key: R2_ENDPOINT
         sync: false
       - key: MASTER_KEY
         sync: false
