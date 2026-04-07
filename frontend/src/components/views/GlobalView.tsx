@@ -49,7 +49,9 @@ export function GlobalView() {
         <MetricCard label="Équipes" value={metadata.unique_teams} icon="👥" />
         <MetricCard label="Joueurs" value={metadata.unique_players} icon="🎴" />
         <MetricCard label="Checklists" value={metadata.checklists_count} icon="📁" />
-        <MetricCard label={metadata.sport_label} value={metadata.sport_key.toUpperCase()} icon="🏷️" />
+        <div className="col-span-2 sm:col-span-1">
+          <MetricCard label={metadata.sport_label} value={metadata.sport_key.toUpperCase()} icon="🏷️" />
+        </div>
       </div>
 
       {/* Category summary */}
