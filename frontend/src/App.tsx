@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAppStore } from './stores/appStore'
 import { Sidebar } from './components/layout/Sidebar'
@@ -131,12 +132,40 @@ function MainContent() {
 }
 
 export default function App() {
-  const { selectedSport } = useAppStore()
+  const { selectedSport, analysisData } = useAppStore()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex h-screen w-screen overflow-hidden" data-sport={selectedSport} style={{ background: 'var(--bg-primary)' }}>
-        <Sidebar />
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main className="flex-1 min-w-0 overflow-y-auto">
+          {/* Mobile topbar */}
+          <div
+            className="md:hidden flex items-center gap-3 px-4 py-3 sticky top-0 z-30"
+            style={{ background: 'var(--bg-panel)', borderBottom: '1px solid var(--border-subtle)' }}
+          >
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="p-1.5 rounded-md"
+              style={{ color: 'var(--text-secondary)' }}
+              aria-label="Ouvrir le menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <rect y="3" width="20" height="2" rx="1"/>
+                <rect y="9" width="20" height="2" rx="1"/>
+                <rect y="15" width="20" height="2" rx="1"/>
+              </svg>
+            </button>
+            <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+              Checklist Optimizer
+            </span>
+            {analysisData && (
+              <span className="ml-auto text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>
+                {analysisData.metadata.checklists_count} listes
+              </span>
+            )}
+          </div>
           <MainContent />
         </main>
       </div>

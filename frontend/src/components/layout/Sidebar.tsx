@@ -6,7 +6,12 @@ import type { ChecklistInfo, PresetInfo } from '../../types'
 
 type SidebarTab = 'selection' | 'presets'
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const {
     selectedSport, setSport,
     availableChecklists, setAvailableChecklists,
@@ -66,6 +71,7 @@ export function Sidebar() {
 
   async function handleLancer() {
     if (selectedChecklistIds.length === 0) return
+    onClose()
     setIsAnalyzing(true)
     try {
       const data = await fetchAnalysis(selectedSport, selectedChecklistIds, masterKey)
@@ -109,10 +115,23 @@ export function Sidebar() {
   const currentSport = sports?.find((s) => s.key === selectedSport)
 
   return (
-    <aside
-      className="w-72 flex-shrink-0 flex flex-col h-screen overflow-y-auto"
-      style={{ background: 'var(--bg-panel)', borderRight: '1px solid var(--border-subtle)' }}
-    >
+    <>
+      {/* Mobile overlay */}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        style={{ background: 'rgba(0,0,0,0.6)' }}
+        onClick={onClose}
+      />
+
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-50 w-72 flex flex-col h-screen overflow-y-auto
+          transition-transform duration-300 ease-in-out
+          md:relative md:translate-x-0 md:flex-shrink-0
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}
+        style={{ background: 'var(--bg-panel)', borderRight: '1px solid var(--border-subtle)' }}
+      >
       {/* Header */}
       <div className="p-4 pb-2">
         <h1 className="text-lg font-semibold flex items-center gap-2">
@@ -321,5 +340,6 @@ export function Sidebar() {
         </button>
       </div>
     </aside>
+    </>
   )
 }
