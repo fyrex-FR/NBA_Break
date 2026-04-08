@@ -91,6 +91,38 @@ def _find_player(name: str):
     return None
 
 
+AWARD_MAP = {
+    "NBA Most Valuable Player": "mvp",
+    "NBA Champion": "champion",
+    "NBA Finals Most Valuable Player": "finals_mvp",
+    "NBA Defensive Player of the Year Award": "dpoy",
+    "NBA Rookie of the Year Award": "roy",
+    "NBA All-Star": "allstar",
+    "All-NBA": "all_nba",
+    "NBA Most Improved Player Award": "mip",
+    "NBA Sixth Man of the Year Award": "sixth_man",
+}
+
+
+def _fetch_awards(player_id: int) -> dict:
+    from nba_api.stats.endpoints import playerawards
+    try:
+        time.sleep(0.6)
+        ep = playerawards.PlayerAwards(player_id=player_id, timeout=10)
+        rows = ep.get_normalized_dict().get("PlayerAwards", [])
+        counts = {}
+        for row in rows:
+            desc = row.get("DESCRIPTION", "")
+            for keyword, key in AWARD_MAP.items():
+                if keyword in desc:
+                    counts[key] = counts.get(key, 0) + 1
+                    break
+        return counts
+    except Exception as e:
+        logger.warning(f"Awards fetch failed for {player_id}: {e}")
+        return {}
+
+
 def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
     """Appelle nba_api et retourne les données structurées."""
     from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
@@ -122,6 +154,9 @@ def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
             "fg3_pct": round((s.get("FG3_PCT") or 0) * 100, 1),
         })
 
+    # Awards
+    awards = _fetch_awards(player_id)
+
     draft_year = bio.get("DRAFT_YEAR", "")
     draft_round = bio.get("DRAFT_ROUND", "")
     draft_number = bio.get("DRAFT_NUMBER", "")
@@ -145,6 +180,7 @@ def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
         "team": bio.get("TEAM_NAME", ""),
         "jersey": bio.get("JERSEY", ""),
         "draft": draft_label,
+        "awards": awards,
         "seasons": seasons,
     }
 

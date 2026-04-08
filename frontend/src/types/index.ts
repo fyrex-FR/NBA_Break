@@ -137,6 +137,18 @@ export interface PlayerSeason {
   fg3_pct: number
 }
 
+export interface PlayerAwards {
+  mvp?: number
+  champion?: number
+  finals_mvp?: number
+  dpoy?: number
+  roy?: number
+  allstar?: number
+  all_nba?: number
+  mip?: number
+  sixth_man?: number
+}
+
 export interface PlayerStatsResponse {
   player_id: number
   full_name: string
@@ -149,6 +161,7 @@ export interface PlayerStatsResponse {
   team: string
   jersey: string
   draft: string | null
+  awards: PlayerAwards
   seasons: PlayerSeason[]
 }
 
