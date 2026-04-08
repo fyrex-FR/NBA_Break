@@ -39,8 +39,17 @@ export function PlayerStatsPanel({ playerName }: Props) {
       </div>
 
       {isLoading && (
-        <div className="flex items-center justify-center py-8 gap-2 text-sm" style={{ color: 'var(--text-tertiary)' }}>
-          <span className="animate-pulse">⏳</span> Chargement depuis NBA.com...
+        <div className="p-4 space-y-3">
+          <div className="flex gap-3">
+            <div className="rounded-lg flex-shrink-0 animate-pulse" style={{ width: 64, height: 48, background: 'var(--bg-hover)' }} />
+            <div className="flex-1 space-y-2">
+              <div className="h-4 rounded animate-pulse" style={{ background: 'var(--bg-hover)', width: '60%' }} />
+              <div className="h-3 rounded animate-pulse" style={{ background: 'var(--bg-hover)', width: '40%' }} />
+            </div>
+          </div>
+          {[1,2,3,4,5].map((i) => (
+            <div key={i} className="h-7 rounded animate-pulse" style={{ background: 'var(--bg-hover)', opacity: 1 - i * 0.15 }} />
+          ))}
         </div>
       )}
 

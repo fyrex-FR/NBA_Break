@@ -7,12 +7,18 @@ interface MetricCardProps {
 
 export function MetricCard({ label, value, icon, valueColor }: MetricCardProps) {
   return (
-    <div className="rounded-lg p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-      <div className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
-        {icon && <span className="mr-1">{icon}</span>}
-        {label}
+    <div
+      className="rounded-xl p-4 flex flex-col gap-1"
+      style={{
+        background: valueColor ? `${valueColor}0d` : 'var(--bg-surface)',
+        border: `1px solid ${valueColor ? `${valueColor}25` : 'var(--border-subtle)'}`,
+      }}
+    >
+      <div className="flex items-center justify-between">
+        {icon && <span className="text-xl">{icon}</span>}
+        <span className="text-xs font-medium ml-auto" style={{ color: 'var(--text-tertiary)' }}>{label}</span>
       </div>
-      <div className="text-2xl font-semibold mt-2" style={{ color: valueColor || 'var(--text-primary)' }}>
+      <div className="text-2xl font-bold mt-1" style={{ color: valueColor || 'var(--text-primary)' }}>
         {typeof value === 'number' ? value.toLocaleString('fr-FR') : value}
       </div>
     </div>

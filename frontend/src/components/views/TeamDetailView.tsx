@@ -71,17 +71,34 @@ export function TeamDetailView() {
 
   return (
     <div>
-      <div className="flex items-center gap-3 mb-4">
-        {teamInfo?.logo_url && (
+      {selectedTeam && teamInfo ? (
+        <div className="rounded-xl mb-4 p-4 flex gap-4 items-center" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
           <img
             src={teamInfo.logo_url}
-            alt={selectedTeam}
-            className="w-10 h-10 object-contain flex-shrink-0"
+            alt={teamInfo.full_name}
+            className="flex-shrink-0 object-contain"
+            style={{ width: 72, height: 72 }}
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
-        )}
-        <h2 className="text-xl font-medium">🛡️ Analyse Équipe</h2>
-      </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <span className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{teamInfo.full_name}</span>
+              <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(148,163,184,0.15)', color: 'var(--text-tertiary)' }}>{teamInfo.abbreviation}</span>
+            </div>
+            {teamInfo.standing && (
+              <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs" style={{ color: 'var(--text-tertiary)' }}>
+                <span>{teamInfo.standing.conference} · #{teamInfo.standing.rank}</span>
+                <span style={{ color: 'var(--text-secondary)' }}>{teamInfo.standing.wins}W – {teamInfo.standing.losses}L</span>
+                <span>({Math.round(teamInfo.standing.win_pct * 100)}%)</span>
+                <span>Série: <span style={{ color: teamInfo.standing.streak.startsWith('W') ? '#22c55e' : '#ef4444' }}>{teamInfo.standing.streak}</span></span>
+                <span>10 derniers: {teamInfo.standing.last_10}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <h2 className="text-xl font-medium mb-4">🛡️ Analyse Équipe</h2>
+      )}
 
       <SearchSelect
         options={allTeams}

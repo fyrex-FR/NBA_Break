@@ -122,11 +122,10 @@ function MainContent() {
 
   return (
     <div className="p-4 md:p-6">
-      {/* Navigation tabs */}
       <ViewTabs enabledViews={analysisData.enabled_views} />
-
-      {/* Active view */}
-      {renderView()}
+      <div key={activeView} style={{ animation: 'fadeIn 0.15s ease-out' }}>
+        {renderView()}
+      </div>
     </div>
   )
 }
