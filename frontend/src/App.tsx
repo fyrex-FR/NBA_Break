@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAppStore } from './stores/appStore'
 import { fetchAnalysis } from './api/client'
+import { useWakeUp } from './hooks/useWakeUp'
 import { Sidebar } from './components/layout/Sidebar'
 import { ViewTabs } from './components/layout/ViewTabs'
 import { GlobalView } from './components/views/GlobalView'
@@ -127,10 +128,47 @@ function MainContent() {
   )
 }
 
+function WakeUpScreen({ attempts }: { attempts: number }) {
+  const dots = '.'.repeat((attempts % 3) + 1)
+  const elapsed = Math.round(attempts * 2.5)
+  return (
+    <div className="flex items-center justify-center h-dvh w-screen" style={{ background: 'var(--bg-primary)' }}>
+      <div className="text-center">
+        <div className="text-5xl mb-5" style={{ animation: 'pulse 1.5s ease-in-out infinite' }}>☕</div>
+        <p className="text-base font-medium mb-1" style={{ color: 'var(--text-primary)' }}>
+          Réveil du serveur{dots}
+        </p>
+        <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
+          {elapsed > 5 ? `${elapsed}s — Render se réveille, ça peut prendre ~30s` : 'Connexion au backend…'}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   const { selectedSport, analysisData, activeView, selectedChecklistIds, masterKey, setAnalysisData, setIsAnalyzing } = useAppStore()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
+  const { state: wakeState, attempts } = useWakeUp()
+
+  if (wakeState === 'checking') return <WakeUpScreen attempts={attempts} />
+  if (wakeState === 'timeout') return (
+    <div className="flex items-center justify-center h-dvh w-screen" style={{ background: 'var(--bg-primary)' }}>
+      <div className="text-center">
+        <div className="text-4xl mb-4">😴</div>
+        <p className="text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>Serveur inaccessible</p>
+        <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Render est peut-être en maintenance.</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="text-xs px-4 py-2 rounded-lg"
+          style={{ background: 'var(--accent)', color: 'white' }}
+        >
+          Réessayer
+        </button>
+      </div>
+    </div>
+  )
 
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 })

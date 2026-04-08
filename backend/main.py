@@ -29,6 +29,7 @@ app.add_middleware(
 )
 
 @app.get("/health")
+@app.get("/api/health")
 def health():
     return {"status": "ok"}
 
@@ -42,8 +43,3 @@ app.include_router(upload.router)
 app.include_router(overrides.router)
 app.include_router(players.router)
 app.include_router(rookies.router)
-
-
-@app.get("/api/health")
-def health():
-    return {"status": "ok"}
