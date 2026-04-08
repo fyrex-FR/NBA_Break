@@ -9,7 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recha
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
-import type { CardRecord, RankingRecord } from '../../types'
+import type { RankingRecord } from '../../types'
 
 const columnHelper = createColumnHelper<RankingRecord>()
 

@@ -4,7 +4,7 @@ import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
+import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from '../../types'
 import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()

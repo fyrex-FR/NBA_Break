@@ -3,7 +3,6 @@ import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
-import type { CardRecord } from '../../types'
 
 interface MultiCard {
   Player: string

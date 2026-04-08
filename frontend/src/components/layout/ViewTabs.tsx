@@ -62,10 +62,6 @@ export function ViewTabs({ enabledViews }: ViewTabsProps) {
   const currentCat = VIEW_CATEGORIES.find((c) => c.label === selectedCategory) || VIEW_CATEGORIES[0]
   const visibleViews = currentCat.views.filter((v) => enabledViews[v.key] !== false)
 
-  // All enabled views flattened (for mobile)
-  const allVisibleViews = VIEW_CATEGORIES.flatMap((cat) =>
-    cat.views.filter((v) => enabledViews[v.key] !== false),
-  )
 
   return (
     <div className="mb-5">

@@ -64,7 +64,7 @@ export function DetectionView() {
     return map
   }, [filtered])
 
-  function toggleAuto(norm: string, boxType: string) {
+  function toggleAuto(norm: string, _boxType: string) {
     setAutoSet((prev) => {
       const next = new Set(prev)
       if (next.has(norm)) next.delete(norm)
@@ -73,7 +73,7 @@ export function DetectionView() {
     })
   }
 
-  function toggleCase(norm: string, boxType: string) {
+  function toggleCase(norm: string, _boxType: string) {
     setCaseSet((prev) => {
       const next = new Set(prev)
       if (next.has(norm)) next.delete(norm)
