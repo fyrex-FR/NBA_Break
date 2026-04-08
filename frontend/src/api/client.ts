@@ -9,6 +9,7 @@ import type {
   BreakSimulationResponse,
   PresetInfo,
   PlayerStatsResponse,
+  TeamStatsResponse,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -185,6 +186,10 @@ export function fetchDetection(
 
 export function fetchPlayerStats(playerName: string): Promise<PlayerStatsResponse> {
   return fetchJSON(`/players/${encodeURIComponent(playerName)}/stats`)
+}
+
+export function fetchTeamStats(teamName: string): Promise<TeamStatsResponse> {
+  return fetchJSON(`/players/teams/${encodeURIComponent(teamName)}/stats`)
 }
 
 export function saveOverrides(

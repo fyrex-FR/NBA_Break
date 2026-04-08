@@ -6,6 +6,7 @@ import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { SearchSelect } from '../shared/SearchSelect'
+import { TeamStatsPanel } from '../shared/TeamStatsPanel'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
@@ -93,6 +94,10 @@ export function TeamDetailView() {
               activeFilter={categoryFilter}
               onFilter={setCategoryFilter}
             />
+          </div>
+
+          <div className="mb-4">
+            <TeamStatsPanel teamName={selectedTeam} />
           </div>
 
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} />

@@ -152,6 +152,36 @@ export interface PlayerStatsResponse {
   seasons: PlayerSeason[]
 }
 
+export interface TeamStanding {
+  conference: string
+  rank: number
+  wins: number
+  losses: number
+  win_pct: number
+  streak: string
+  last_10: string
+  label: string
+}
+
+export interface TeamGame {
+  date: string
+  matchup: string
+  wl: 'W' | 'L'
+  pts: number
+  reb: number
+  ast: number
+}
+
+export interface TeamStatsResponse {
+  team_id: number
+  full_name: string
+  abbreviation: string
+  logo_url: string
+  season: string
+  standing: TeamStanding | null
+  last_games: TeamGame[]
+}
+
 // Category constants (matching backend emoji labels)
 export const CATEGORY_LOGOMAN = '🔥 Logoman'
 export const CATEGORY_CASE_HIT = '✨ Case Hit'
