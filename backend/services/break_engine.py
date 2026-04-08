@@ -253,7 +253,10 @@ def build_deterministic_spot_summary(
     work = pool_df.reset_index(drop=True).copy()
     spot_set = set(spots)
     custom_map = custom_map or {}
-    checklist_hits_guaranteed = checklist_hits_guaranteed or {}
+    guaranteed_mode = bool(checklist_hits_guaranteed)
+    guaranteed_map = checklist_hits_guaranteed or {}
+    # En mode garantie : défaut 0 (ne contribue pas). Sans config : défaut 1 (comportement original).
+    guaranteed_default = 0 if guaranteed_mode else 1
 
     metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
@@ -289,7 +292,7 @@ def build_deterministic_spot_summary(
             continue
 
         checklist_id = str(row.get("checklist_id", "") or "").strip()
-        guaranteed = checklist_hits_guaranteed.get(checklist_id, 1)
+        guaranteed = guaranteed_map.get(checklist_id, guaranteed_default)
 
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
