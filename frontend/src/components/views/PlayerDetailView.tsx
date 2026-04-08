@@ -27,6 +27,14 @@ export function PlayerDetailView() {
   const selectedPlayer = targetPlayer || ''
   const rookie = selectedPlayer ? getRookie(selectedPlayer) : null
 
+  const hasRCInSelection = useMemo(() => {
+    if (!rookie || !analysisData) return false
+    return analysisData.cards.some(
+      (c) => c.Player.split('/').map((p) => p.trim()).includes(selectedPlayer) &&
+        parseInt(c.Year, 10) === rookie.year_start,
+    )
+  }, [rookie, analysisData, selectedPlayer])
+
   const { data: playerInfo } = useQuery({
     queryKey: ['player-stats', selectedPlayer],
     queryFn: () => fetchPlayerStats(selectedPlayer),
@@ -121,7 +129,7 @@ export function PlayerDetailView() {
             {/* Nom + badges statut */}
             <div className="flex items-center gap-2 flex-wrap mb-1">
               <span className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{playerInfo.full_name}</span>
-              {rookie && <RCBadge size="sm" />}
+              {hasRCInSelection && <RCBadge size="sm" />}
               {playerInfo.is_active
                 ? <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>Actif</span>
                 : <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(148,163,184,0.15)', color: 'var(--text-quaternary)' }}>Retraité</span>
@@ -131,7 +139,7 @@ export function PlayerDetailView() {
             <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
               {playerInfo.position && <span>{playerInfo.position}</span>}
               {playerInfo.team && <><span>·</span><span>{playerInfo.team}</span></>}
-              {rookie && <><span>·</span><span style={{ color: 'rgba(255,215,0,0.8)' }}>RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}</span></>}
+              {hasRCInSelection && rookie && <><span>·</span><span style={{ color: 'rgba(255,215,0,0.8)' }}>RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}</span></>}
               {playerInfo.country && <><span>·</span><span>{countryFlag(playerInfo.country)} {playerInfo.country}</span></>}
             </div>
             {/* Awards */}
