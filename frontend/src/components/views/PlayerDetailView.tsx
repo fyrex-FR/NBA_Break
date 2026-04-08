@@ -34,7 +34,7 @@ export function PlayerDetailView() {
       header: 'Checklist',
       cell: (info) => {
         const name = info.getValue()?.replace('.parquet', '')
-        const year = Number(info.row.original.Year)
+        const year = parseInt(info.row.original.Year, 10)
         const isRookieYear = rookie && (year === rookie.year_start || year === rookie.year_end)
         if (!isRookieYear) return <span>{name}</span>
         return (
