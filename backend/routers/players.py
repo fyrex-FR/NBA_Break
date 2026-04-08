@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException
 from ..services.player_stats import get_player_stats
 
 logger = logging.getLogger(__name__)
-router = APIRouter(prefix="/players", tags=["players"])
+router = APIRouter(prefix="/api/players", tags=["players"])
 
 
 @router.get("/{player_name}/stats")
