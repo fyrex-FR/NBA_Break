@@ -1,3 +1,5 @@
+import { useAppStore } from '../../stores/appStore'
+
 interface MetricCardProps {
   label: string
   value: string | number
@@ -6,12 +8,14 @@ interface MetricCardProps {
 }
 
 export function MetricCard({ label, value, icon, valueColor }: MetricCardProps) {
+  const theme = useAppStore((s) => s.theme)
+  const useTint = valueColor && theme === 'dark'
   return (
     <div
       className="rounded-xl p-4 flex flex-col gap-1"
       style={{
-        background: valueColor ? `${valueColor}0d` : 'var(--bg-surface)',
-        border: `1px solid ${valueColor ? `${valueColor}25` : 'var(--border-subtle)'}`,
+        background: useTint ? `${valueColor}0d` : 'var(--bg-surface)',
+        border: `1px solid ${useTint ? `${valueColor}25` : 'var(--border-subtle)'}`,
       }}
     >
       <div className="flex items-center justify-between">
