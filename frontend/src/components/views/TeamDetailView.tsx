@@ -7,13 +7,14 @@ import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { SearchSelect } from '../shared/SearchSelect'
 import { TeamStatsPanel } from '../shared/TeamStatsPanel'
+import { PlayerCell } from '../shared/PlayerCell'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
 const cardColumns = [
-  columnHelper.accessor('Player', { header: 'Joueur' }),
+  columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
   columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('checklist_name', { header: 'Checklist', cell: (info) => info.getValue()?.replace('.parquet', '') }),

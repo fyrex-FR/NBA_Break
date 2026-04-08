@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recha
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { PlayerCell } from '../shared/PlayerCell'
 import type { RankingRecord } from '../../types'
 
 const columnHelper = createColumnHelper<RankingRecord>()
@@ -57,7 +58,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
   }, [filtered])
 
   const playerCols = [
-    columnHelper.accessor('Player', { header: 'Joueur' }),
+    columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
     columnHelper.accessor('Hits', { header: 'Cartes', cell: (info) => info.getValue()?.toLocaleString('fr-FR') }),
   ]
 

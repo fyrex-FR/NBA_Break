@@ -3,6 +3,7 @@ import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { PlayerCell } from '../shared/PlayerCell'
 
 interface MultiCard {
   Player: string
@@ -17,7 +18,7 @@ interface MultiCard {
 const columnHelper = createColumnHelper<MultiCard>()
 
 const columns = [
-  columnHelper.accessor('Player', { header: 'Joueurs' }),
+  columnHelper.accessor('Player', { header: 'Joueurs', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
   columnHelper.accessor('Team', { header: 'Équipe(s)' }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('Category', { header: 'Catégorie' }),

@@ -4,12 +4,13 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recha
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { PlayerCell } from '../shared/PlayerCell'
 import type { RankingRecord } from '../../types'
 
 const columnHelper = createColumnHelper<RankingRecord>()
 
 const playerColumns = [
-  columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => info.getValue() }),
+  columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
   columnHelper.accessor('Hits', { header: 'Cartes', cell: (info) => info.getValue()?.toLocaleString('fr-FR') }),
 ]
 
