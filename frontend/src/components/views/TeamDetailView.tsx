@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
+import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
+import { fetchTeamStats } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
@@ -23,6 +25,15 @@ const cardColumns = [
 export function TeamDetailView() {
   const { analysisData, targetTeam, setTargetTeam, selectedSport } = useAppStore()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
+  const selectedTeam = targetTeam || ''
+
+  const { data: teamInfo } = useQuery({
+    queryKey: ['team-stats', selectedTeam],
+    queryFn: () => fetchTeamStats(selectedTeam),
+    enabled: !!selectedTeam && selectedSport === 'nba',
+    staleTime: 6 * 60 * 60 * 1000,
+    retry: 1,
+  })
 
   if (!analysisData) return null
 
@@ -33,8 +44,6 @@ export function TeamDetailView() {
     }
     return Array.from(set).sort()
   }, [analysisData.cards])
-
-  const selectedTeam = targetTeam || ''
 
   const teamCards = useMemo(() => {
     if (!selectedTeam) return []
@@ -62,7 +71,17 @@ export function TeamDetailView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-4">🛡️ Analyse Équipe</h2>
+      <div className="flex items-center gap-3 mb-4">
+        {teamInfo?.logo_url && (
+          <img
+            src={teamInfo.logo_url}
+            alt={selectedTeam}
+            className="w-10 h-10 object-contain flex-shrink-0"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+        )}
+        <h2 className="text-xl font-medium">🛡️ Analyse Équipe</h2>
+      </div>
 
       <SearchSelect
         options={allTeams}

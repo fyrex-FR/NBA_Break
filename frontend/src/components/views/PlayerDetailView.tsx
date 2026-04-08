@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
+import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
+import { fetchPlayerStats } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
@@ -22,6 +24,14 @@ export function PlayerDetailView() {
 
   const selectedPlayer = targetPlayer || ''
   const rookie = selectedPlayer ? getRookie(selectedPlayer) : null
+
+  const { data: playerInfo } = useQuery({
+    queryKey: ['player-stats', selectedPlayer],
+    queryFn: () => fetchPlayerStats(selectedPlayer),
+    enabled: !!selectedPlayer && selectedSport === 'nba',
+    staleTime: 24 * 60 * 60 * 1000,
+    retry: 1,
+  })
 
   const cardColumns = useMemo(() => [
     columnHelper.accessor('Category', {
@@ -94,6 +104,15 @@ export function PlayerDetailView() {
   return (
     <div>
       <div className="flex items-center gap-3 mb-4">
+        {playerInfo?.photo_url && (
+          <img
+            src={playerInfo.photo_url}
+            alt={selectedPlayer}
+            className="w-14 h-10 object-cover rounded-lg flex-shrink-0"
+            style={{ background: 'var(--bg-surface)' }}
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+        )}
         <h2 className="text-xl font-medium">🔍 Analyse Joueur</h2>
         {selectedPlayer && getRookie(selectedPlayer) && (() => {
           const r = getRookie(selectedPlayer)!

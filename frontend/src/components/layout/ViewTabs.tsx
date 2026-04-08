@@ -16,7 +16,6 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
       { name: '🔥 Logoman', key: 'logoman', short: 'Logoman' },
       { name: '✨ Case Hits', key: 'case_hits', short: 'Case Hits' },
       { name: '👥 Multi-Joueurs', key: 'multi_players', short: 'Multi' },
-      { name: '🧠 Value Picks', key: 'value_picks', short: 'Value' },
       { name: '🧨 Rookies', key: 'rookies', short: 'Rookies' },
     ],
   },
@@ -35,8 +34,6 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
     views: [
       { name: '🧪 Détection Auto/Mem', key: 'detection', short: 'Détection' },
       { name: '⚖️ Comparateur Joueurs', key: 'comparator', short: 'Comparer' },
-      { name: '💸 Cost par Pick', key: 'cost_by_pick', short: 'Cost' },
-      { name: '⚡ Live Mode', key: 'live_mode', short: 'Live' },
     ],
   },
   {
