@@ -349,6 +349,7 @@ def build_deterministic_spot_summary(
             "Case Hit": totals[spot]["Case Hit"],
             "Logoman": totals[spot]["Logoman"],
             "Auto garanties": totals[spot]["Auto garanties"],
+            "Weighted Auto": totals[spot]["Weighted Auto"],
             "Rareté": rarity_label,
             "Équipes": teams_str,
             "Checklists": ", ".join(sorted(checklists_per_spot[spot])),
