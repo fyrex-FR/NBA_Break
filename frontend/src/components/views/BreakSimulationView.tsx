@@ -50,6 +50,7 @@ export function BreakSimulationView() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
+  const [panelOpen, setPanelOpen] = useState(true)
   const resultsRef = useRef<HTMLDivElement>(null)
 
   const checklistsInfo = useMemo(() =>
@@ -81,6 +82,7 @@ export function BreakSimulationView() {
         checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
       })
       setResult(data)
+      setPanelOpen(false)
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
     } catch (err: any) {
       setError(err.message || 'Erreur lors de la simulation.')
@@ -104,10 +106,18 @@ export function BreakSimulationView() {
 
       {/* Hits garantis par checklist */}
       {checklistsInfo.length > 0 && (
-        <div className="mb-6 rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-          <p className="text-xs font-medium mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
-            Autos / Memo garanties par box
-          </p>
+        <div className="mb-6 rounded-xl" style={{ border: '1px solid var(--border-subtle)' }}>
+          <button
+            onClick={() => setPanelOpen(p => !p)}
+            className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left"
+            style={{ background: 'var(--bg-surface)' }}
+          >
+            <span className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+              Autos / Memo garanties par box
+            </span>
+            <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{panelOpen ? '▲' : '▼'}</span>
+          </button>
+          {panelOpen && <div className="px-4 pb-4 pt-1" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', borderRadius: '0 0 0.75rem 0.75rem' }}>
           <div className="space-y-2">
             {checklistsInfo.map((cl) => (
               <div key={cl!.checklist_id} className="flex items-center gap-3">
@@ -140,6 +150,7 @@ export function BreakSimulationView() {
               Sans saisie, toutes les checklists ont un poids égal (×1).
             </p>
           )}
+          </div>}
         </div>
       )}
 
