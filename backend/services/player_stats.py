@@ -101,6 +101,7 @@ AWARD_MAP = {
     "All-NBA": "all_nba",
     "NBA Most Improved Player Award": "mip",
     "NBA Sixth Man of the Year Award": "sixth_man",
+    "Hall of Fame": "hof",
 }
 
 
@@ -111,16 +112,61 @@ def _fetch_awards(player_id: int) -> dict:
         ep = playerawards.PlayerAwards(player_id=player_id, timeout=10)
         rows = ep.get_normalized_dict().get("PlayerAwards", [])
         counts = {}
+        finals_seasons = set()
         for row in rows:
             desc = row.get("DESCRIPTION", "")
+            season = row.get("SEASON", "")
+            # Compter les finales (champion = victoire, on trackera aussi les saisons)
+            if "NBA Champion" in desc and season:
+                finals_seasons.add(season)
             for keyword, key in AWARD_MAP.items():
                 if keyword in desc:
                     counts[key] = counts.get(key, 0) + 1
                     break
+        # Finales perdues via PlayerCareerStats playoffs + table finales statique
+        counts["finals"] = len(finals_seasons) + _count_lost_finals(player_id, finals_seasons)
         return counts
     except Exception as e:
         logger.warning(f"Awards fetch failed for {player_id}: {e}")
         return {}
+
+
+# Finales NBA par saison : {season_id: (winner_abbr, loser_abbr)}
+# On n'a besoin que des perdants pour compléter le compte
+_NBA_FINALS = {
+    "1996-97": ("CHI", "UTA"), "1997-98": ("CHI", "UTA"), "1998-99": ("SAS", "NYK"),
+    "1999-00": ("LAL", "IND"), "2000-01": ("LAL", "PHI"), "2001-02": ("LAL", "NJN"),
+    "2002-03": ("SAS", "NJN"), "2003-04": ("DET", "LAL"), "2004-05": ("SAS", "DET"),
+    "2005-06": ("MIA", "DAL"), "2006-07": ("SAS", "CLE"), "2007-08": ("BOS", "LAL"),
+    "2008-09": ("LAL", "ORL"), "2009-10": ("LAL", "BOS"), "2010-11": ("DAL", "MIA"),
+    "2011-12": ("MIA", "OKC"), "2012-13": ("MIA", "SAS"), "2013-14": ("SAS", "MIA"),
+    "2014-15": ("GSW", "CLE"), "2015-16": ("CLE", "GSW"), "2016-17": ("GSW", "CLE"),
+    "2017-18": ("GSW", "CLE"), "2018-19": ("TOR", "GSW"), "2019-20": ("LAL", "MIA"),
+    "2020-21": ("MIL", "PHX"), "2021-22": ("GSW", "BOS"), "2022-23": ("DEN", "MIA"),
+    "2023-24": ("BOS", "DAL"), "2024-25": ("OKC", "IND"),
+}
+
+
+def _count_lost_finals(player_id: int, won_seasons: set) -> int:
+    """Compte les finales perdues en croisant la carrière avec _NBA_FINALS."""
+    try:
+        from nba_api.stats.endpoints import playercareerstats
+        time.sleep(0.6)
+        ep = playercareerstats.PlayerCareerStats(player_id=player_id, timeout=10)
+        playoff_data = ep.get_normalized_dict().get("SeasonTotalsPostSeason", [])
+        lost = 0
+        for row in playoff_data:
+            season = row.get("SEASON_ID", "")
+            team = row.get("TEAM_ABBREVIATION", "")
+            if season in won_seasons:
+                continue  # déjà compté comme victoire
+            finals = _NBA_FINALS.get(season)
+            if finals and team in finals:
+                lost += 1
+        return lost
+    except Exception as e:
+        logger.warning(f"Lost finals count failed for {player_id}: {e}")
+        return 0
 
 
 def _fetch_from_nba(player_id: int, player_info: dict) -> dict:

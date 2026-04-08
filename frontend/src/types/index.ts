@@ -140,6 +140,7 @@ export interface PlayerSeason {
 export interface PlayerAwards {
   mvp?: number
   champion?: number
+  finals?: number
   finals_mvp?: number
   dpoy?: number
   roy?: number
@@ -147,6 +148,7 @@ export interface PlayerAwards {
   all_nba?: number
   mip?: number
   sixth_man?: number
+  hof?: number
 }
 
 export interface PlayerStatsResponse {
