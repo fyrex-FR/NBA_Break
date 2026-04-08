@@ -15,20 +15,37 @@ import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
-const cardColumns = [
-  columnHelper.accessor('Category', {
-    header: 'Catégorie',
-    cell: (info) => <CategoryBadge category={info.getValue()} />,
-  }),
-  columnHelper.accessor('Box Type', { header: 'Type' }),
-  columnHelper.accessor('Team', { header: 'Équipe' }),
-  columnHelper.accessor('checklist_name', { header: 'Checklist', cell: (info) => info.getValue()?.replace('.parquet', '') }),
-]
-
 export function PlayerDetailView() {
   const { analysisData, targetPlayer, setTargetPlayer, selectedSport } = useAppStore()
   const { getRookie } = useRookies()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
+
+  const selectedPlayer = targetPlayer || ''
+  const rookie = selectedPlayer ? getRookie(selectedPlayer) : null
+
+  const cardColumns = useMemo(() => [
+    columnHelper.accessor('Category', {
+      header: 'Catégorie',
+      cell: (info) => <CategoryBadge category={info.getValue()} />,
+    }),
+    columnHelper.accessor('Box Type', { header: 'Type' }),
+    columnHelper.accessor('Team', { header: 'Équipe' }),
+    columnHelper.accessor('checklist_name', {
+      header: 'Checklist',
+      cell: (info) => {
+        const name = info.getValue()?.replace('.parquet', '')
+        const year = Number(info.row.original.Year)
+        const isRookieYear = rookie && (year === rookie.year_start || year === rookie.year_end)
+        if (!isRookieYear) return <span>{name}</span>
+        return (
+          <span className="flex items-center gap-1.5">
+            <RCBadge size="sm" />
+            <span>{name}</span>
+          </span>
+        )
+      },
+    }),
+  ], [rookie])
 
   if (!analysisData) return null
 
@@ -39,8 +56,6 @@ export function PlayerDetailView() {
     }
     return Array.from(set).sort()
   }, [analysisData.cards])
-
-  const selectedPlayer = targetPlayer || ''
 
   const playerCards = useMemo(() => {
     if (!selectedPlayer) return []

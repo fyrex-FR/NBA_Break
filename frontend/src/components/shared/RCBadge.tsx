@@ -23,8 +23,8 @@ export function RCBadge({ size = 'sm', className = '' }: RCBadgeProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      title="Rookie Card"
     >
+      <title>Rookie Card</title>
       {/* Ombre */}
       <ellipse cx="24" cy="54" rx="14" ry="3" fill="rgba(0,0,0,0.25)" />
 
