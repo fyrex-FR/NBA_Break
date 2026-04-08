@@ -69,6 +69,7 @@ export function fetchBreakSimulation(params: {
   custom_scope?: string
   custom_map?: Record<string, string>
   custom_spots?: string[]
+  checklist_hits_guaranteed?: Record<string, number>
 }): Promise<BreakSimulationResponse> {
   return fetchJSON('/simulate/break', {
     method: 'POST',

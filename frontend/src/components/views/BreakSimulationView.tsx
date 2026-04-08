@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
@@ -13,6 +13,15 @@ const spotColumns = [
   columnHelper.accessor('Spot', { header: 'Spot' }),
   columnHelper.accessor('Cartes', { header: 'Cartes' }),
   columnHelper.accessor('Auto/Memo', { header: 'Auto/Memo' }),
+  columnHelper.accessor('Auto garanties', {
+    header: 'Auto garanties',
+    cell: (info) => {
+      const val = info.getValue() as number
+      return val > 0
+        ? <span className="font-medium" style={{ color: 'var(--accent)' }}>{val}</span>
+        : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+    },
+  }),
   columnHelper.accessor('Case Hit', { header: 'Case Hit' }),
   columnHelper.accessor('Logoman', { header: 'Logoman' }),
   columnHelper.accessor('Break Score', { header: 'Score' }),
@@ -35,22 +44,36 @@ const METHODS = [
 ]
 
 export function BreakSimulationView() {
-  const { selectedSport, selectedChecklistIds, masterKey } = useAppStore()
+  const { selectedSport, selectedChecklistIds, masterKey, availableChecklists } = useAppStore()
   const [method, setMethod] = useState('team')
   const [result, setResult] = useState<BreakSimulationResponse | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
   const resultsRef = useRef<HTMLDivElement>(null)
+
+  const checklistsInfo = useMemo(() =>
+    selectedChecklistIds.map(id => availableChecklists.find(c => c.checklist_id === id)).filter(Boolean),
+    [selectedChecklistIds, availableChecklists]
+  )
+
+  const hasAnyGuaranteed = Object.values(hitsGuaranteed).some(v => parseInt(v) > 0)
 
   async function handleSimulate() {
     setLoading(true)
     setError(null)
+    const guaranteedMap: Record<string, number> = {}
+    for (const [id, val] of Object.entries(hitsGuaranteed)) {
+      const n = parseInt(val)
+      if (n > 0) guaranteedMap[id] = n
+    }
     try {
       const data = await fetchBreakSimulation({
         sport_key: selectedSport,
         checklist_ids: selectedChecklistIds,
         master_key: masterKey,
         method,
+        checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
       })
       setResult(data)
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
@@ -69,7 +92,51 @@ export function BreakSimulationView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-4">🧩 Simulation de Break</h2>
+      <h2 className="text-xl font-medium mb-1">🧩 Simulation de Break</h2>
+      <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
+        Renseignez les autos garanties par box pour pondérer le score.
+      </p>
+
+      {/* Hits garantis par checklist */}
+      {checklistsInfo.length > 0 && (
+        <div className="mb-6 rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+          <p className="text-xs font-medium mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+            Autos / Memo garanties par box
+          </p>
+          <div className="space-y-2">
+            {checklistsInfo.map((cl) => (
+              <div key={cl!.checklist_id} className="flex items-center gap-3">
+                <span className="flex-1 text-sm truncate" style={{ color: 'var(--text-secondary)' }}>
+                  {cl!.checklist_name}
+                </span>
+                <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{cl!.year}</span>
+                <div className="flex items-center gap-1.5">
+                  <input
+                    type="number"
+                    min="0"
+                    max="20"
+                    placeholder="0"
+                    value={hitsGuaranteed[cl!.checklist_id] ?? ''}
+                    onChange={(e) => setHitsGuaranteed(prev => ({ ...prev, [cl!.checklist_id]: e.target.value }))}
+                    className="w-16 text-center rounded-lg px-2 py-1.5 text-sm"
+                    style={{
+                      background: 'var(--bg-primary)',
+                      border: '1px solid var(--border-standard)',
+                      color: 'var(--text-primary)',
+                    }}
+                  />
+                  <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>hits/box</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          {!hasAnyGuaranteed && (
+            <p className="text-xs mt-3" style={{ color: 'var(--text-quaternary)' }}>
+              Sans saisie, toutes les checklists ont un poids égal (×1).
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Controls */}
       <div className="flex flex-wrap gap-3 mb-6">

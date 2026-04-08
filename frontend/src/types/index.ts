@@ -74,6 +74,7 @@ export interface BreakSpotRecord {
   Spot: string
   Cartes: number
   'Auto/Memo': number
+  'Auto garanties': number
   'Case Hit': number
   Logoman: number
   Rareté: string

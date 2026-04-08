@@ -25,6 +25,7 @@ class BreakSimulationRequest(BaseModel):
     custom_scope: str = "teams"
     custom_map: Optional[Dict[str, str]] = None
     custom_spots: Optional[List[str]] = None
+    checklist_hits_guaranteed: Optional[Dict[str, int]] = None
 
 
 class ExportRequest(BaseModel):

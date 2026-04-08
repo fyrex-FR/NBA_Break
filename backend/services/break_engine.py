@@ -245,6 +245,7 @@ def build_deterministic_spot_summary(
     spots,
     custom_scope="teams",
     custom_map=None,
+    checklist_hits_guaranteed=None,
 ):
     if pool_df is None or pool_df.empty or not spots:
         return pd.DataFrame(), {}
@@ -252,8 +253,9 @@ def build_deterministic_spot_summary(
     work = pool_df.reset_index(drop=True).copy()
     spot_set = set(spots)
     custom_map = custom_map or {}
+    checklist_hits_guaranteed = checklist_hits_guaranteed or {}
 
-    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman"]
+    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     teams_solo_per_spot = {spot: {} for spot in spots}
@@ -286,11 +288,16 @@ def build_deterministic_spot_summary(
         if not targets:
             continue
 
+        checklist_id = str(row.get("checklist_id", "") or "").strip()
+        guaranteed = checklist_hits_guaranteed.get(checklist_id, 1)
+
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
-            totals[assigned_spot]["Auto/Memo"] += hits if row.get("Is AutoMemo", False) else 0
+            is_auto = row.get("Is AutoMemo", False)
+            totals[assigned_spot]["Auto/Memo"] += hits if is_auto else 0
             totals[assigned_spot]["Case Hit"] += hits if row.get("Is CaseHit", False) else 0
             totals[assigned_spot]["Logoman"] += hits if category == CATEGORY_LOGOMAN else 0
+            totals[assigned_spot]["Auto garanties"] += hits * guaranteed if is_auto else 0
             if checklist_name:
                 checklists_per_spot[assigned_spot].add(checklist_name)
             if method == SIM_METHOD_PLAYER:
@@ -340,6 +347,7 @@ def build_deterministic_spot_summary(
             "Auto/Memo": totals[spot]["Auto/Memo"],
             "Case Hit": totals[spot]["Case Hit"],
             "Logoman": totals[spot]["Logoman"],
+            "Auto garanties": totals[spot]["Auto garanties"],
             "Rareté": rarity_label,
             "Équipes": teams_str,
             "Checklists": ", ".join(sorted(checklists_per_spot[spot])),
@@ -365,7 +373,7 @@ def build_deterministic_spot_summary(
         lambda x: "🔥 Hot" if x >= hot_threshold_pct else ""
     )
 
-    for col in ["Cartes", "Auto/Memo", "Case Hit", "Break Score"]:
+    for col in ["Cartes", "Auto/Memo", "Case Hit", "Break Score", "Auto garanties"]:
         result_df[col] = result_df[col].astype(int)
 
     total_cartes = int(result_df["Cartes"].sum())

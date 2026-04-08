@@ -46,6 +46,7 @@ def simulate_break(req: BreakSimulationRequest):
         spots=spots,
         custom_scope=req.custom_scope,
         custom_map=req.custom_map,
+        checklist_hits_guaranteed=req.checklist_hits_guaranteed,
     )
 
     player_map = build_spot_player_map(
