@@ -42,13 +42,18 @@ function MainContent() {
   if (!analysisData) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-center max-w-md">
-          <img src="/logo.png" alt="NoClim" className="w-24 h-24 mb-4 mx-auto" style={{ borderRadius: '22%' }} />
-          <h2 className="text-xl font-medium mb-2">NoClim</h2>
+        <div className="text-center max-w-lg px-6">
+          <img src="/logo.png" alt="NoClim" className="w-40 h-40 mb-6 mx-auto" style={{ borderRadius: '24%' }} />
+          <h2 className="text-3xl font-bold mb-3">NoClim</h2>
+          <p className="text-base mb-2" style={{ color: 'var(--text-secondary)' }}>
+            Parce que climatiser en silence, c'est un art.
+          </p>
+          <p className="text-sm mb-6" style={{ color: 'var(--text-quaternary)' }}>
+            Sélectionne tes checklists à gauche, analyse tes spots et évite de te retrouver avec une carte base de 2012.
+          </p>
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-            Sélectionnez vos checklists dans la barre latérale puis cliquez sur
-            <span className="font-medium" style={{ color: 'var(--accent)' }}> 🚀 Lancer </span>
-            pour analyser vos cartes.
+            Prêt à ne plus clim ? Clique sur
+            <span className="font-semibold" style={{ color: 'var(--accent)' }}> 🚀 Lancer</span>.
           </p>
         </div>
       </div>
