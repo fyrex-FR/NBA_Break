@@ -7,6 +7,7 @@
 
 /* Dark theme (default) */
 :root, [data-theme="dark"] {
+  --rc-year-color: rgba(255, 215, 0, 0.8);
   --bg-primary: #08090a;
   --bg-panel: #0f1011;
   --bg-surface: #191a1b;
@@ -24,6 +25,7 @@
 
 /* Light theme */
 [data-theme="light"] {
+  --rc-year-color: #b45309;
   --bg-primary: #f4f5f7;
   --bg-panel: #ffffff;
   --bg-surface: #eceef1;

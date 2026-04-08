@@ -190,7 +190,7 @@ export function DataTable<T>({
                   <td
                     key={cell.id}
                     className="px-4 py-2.5"
-                    style={{ borderBottom: '1px solid var(--border-subtle)' }}
+                    style={{ borderBottom: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>

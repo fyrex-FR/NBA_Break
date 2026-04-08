@@ -38,7 +38,7 @@ export function PlayerCell({ name, requireRookieInSelection = false }: PlayerCel
       <span title={`RC ${rookie!.year_start}-${rookie!.year_end}${rookie!.draft_pick ? ` · Pick #${rookie!.draft_pick}` : ''}`}>
         <RCBadge size="sm" />
       </span>
-      <span className="text-xs" style={{ color: 'rgba(255,215,0,0.7)' }}>
+      <span className="text-xs" style={{ color: 'var(--rc-year-color, rgba(255,215,0,0.8))' }}>
         {rookie!.year_start}-{String(rookie!.year_end).slice(-2)}
       </span>
     </span>
