@@ -14,7 +14,7 @@ import type { CardRecord } from '../../types'
 const columnHelper = createColumnHelper<CardRecord>()
 
 const cardColumns = [
-  columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
+  columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
   columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('checklist_name', { header: 'Checklist', cell: (info) => info.getValue()?.replace('.parquet', '') }),

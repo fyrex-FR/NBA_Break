@@ -58,7 +58,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
   }, [filtered])
 
   const playerCols = [
-    columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
+    columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
     columnHelper.accessor('Hits', { header: 'Cartes', cell: (info) => info.getValue()?.toLocaleString('fr-FR') }),
   ]
 

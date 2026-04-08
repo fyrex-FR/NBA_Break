@@ -18,7 +18,7 @@ interface MultiCard {
 const columnHelper = createColumnHelper<MultiCard>()
 
 const columns = [
-  columnHelper.accessor('Player', { header: 'Joueurs', cell: (info) => <PlayerCell name={info.getValue() ?? ''} /> }),
+  columnHelper.accessor('Player', { header: 'Joueurs', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
   columnHelper.accessor('Team', { header: 'Équipe(s)' }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('Category', { header: 'Catégorie' }),
