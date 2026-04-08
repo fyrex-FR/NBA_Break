@@ -255,7 +255,7 @@ def build_deterministic_spot_summary(
     custom_map = custom_map or {}
     checklist_hits_guaranteed = checklist_hits_guaranteed or {}
 
-    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties"]
+    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     teams_solo_per_spot = {spot: {} for spot in spots}
@@ -297,7 +297,8 @@ def build_deterministic_spot_summary(
             totals[assigned_spot]["Auto/Memo"] += hits if is_auto else 0
             totals[assigned_spot]["Case Hit"] += hits if row.get("Is CaseHit", False) else 0
             totals[assigned_spot]["Logoman"] += hits if category == CATEGORY_LOGOMAN else 0
-            totals[assigned_spot]["Auto garanties"] += hits * guaranteed if is_auto else 0
+            totals[assigned_spot]["Auto garanties"] += hits if (is_auto and guaranteed > 0) else 0
+            totals[assigned_spot]["Weighted Auto"] += hits * guaranteed if is_auto else 0
             if checklist_name:
                 checklists_per_spot[assigned_spot].add(checklist_name)
             if method == SIM_METHOD_PLAYER:
@@ -358,7 +359,8 @@ def build_deterministic_spot_summary(
     if result_df.empty:
         return result_df, {}
 
-    result_df["Break Score"] = (result_df["Auto/Memo"] * 3) + (result_df["Case Hit"] * 5)
+    result_df["Break Score"] = (result_df["Weighted Auto"] * 3) + (result_df["Case Hit"] * 5)
+    result_df.drop(columns=["Weighted Auto"], inplace=True)
 
     total_break_score = result_df["Break Score"].sum()
     if total_break_score > 0:
@@ -374,7 +376,8 @@ def build_deterministic_spot_summary(
     )
 
     for col in ["Cartes", "Auto/Memo", "Case Hit", "Break Score", "Auto garanties"]:
-        result_df[col] = result_df[col].astype(int)
+        if col in result_df.columns:
+            result_df[col] = result_df[col].astype(int)
 
     total_cartes = int(result_df["Cartes"].sum())
     summary = {
