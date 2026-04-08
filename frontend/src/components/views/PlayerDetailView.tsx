@@ -14,6 +14,7 @@ import { RCBadge } from '../shared/RCBadge'
 import { useRookies } from '../../hooks/useRookies'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
 import type { CardRecord } from '../../types'
+import { AWARD_LABELS } from '../../constants/awards'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
@@ -103,32 +104,54 @@ export function PlayerDetailView() {
 
   return (
     <div>
-      <div className="flex items-center gap-3 mb-4">
-        {playerInfo?.photo_url && (
+      {/* Header — hero quand joueur sélectionné, titre simple sinon */}
+      {selectedPlayer && playerInfo ? (
+        <div className="rounded-xl mb-4 p-4 flex gap-4 items-center" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+          {/* Photo */}
           <img
             src={playerInfo.photo_url}
-            alt={selectedPlayer}
-            className="w-14 h-10 object-cover rounded-lg flex-shrink-0"
-            style={{ background: 'var(--bg-surface)' }}
+            alt={playerInfo.full_name}
+            className="w-24 h-18 object-cover rounded-xl flex-shrink-0"
+            style={{ background: 'var(--bg-hover)', height: '72px', width: '96px' }}
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
-        )}
-        <h2 className="text-xl font-medium">🔍 Analyse Joueur</h2>
-        {selectedPlayer && getRookie(selectedPlayer) && (() => {
-          const r = getRookie(selectedPlayer)!
-          return (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ background: 'rgba(255,215,0,0.1)', border: '1px solid rgba(255,215,0,0.3)' }}>
-              <RCBadge size="md" />
-              <div>
-                <div className="text-xs font-bold" style={{ color: '#FFD700' }}>ROOKIE CARD</div>
-                <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-                  {r.year_start}-{r.year_end} · {r.team}{r.draft_pick ? ` · Pick #${r.draft_pick}` : ''}
-                </div>
-              </div>
+          {/* Infos */}
+          <div className="flex-1 min-w-0">
+            {/* Nom + badges statut */}
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <span className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{playerInfo.full_name}</span>
+              {rookie && <RCBadge size="sm" />}
+              {playerInfo.is_active
+                ? <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>Actif</span>
+                : <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(148,163,184,0.15)', color: 'var(--text-quaternary)' }}>Retraité</span>
+              }
             </div>
-          )
-        })()}
-      </div>
+            {/* Position · Équipe · Pays */}
+            <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
+              {playerInfo.position && <span>{playerInfo.position}</span>}
+              {playerInfo.team && <><span>·</span><span>{playerInfo.team}</span></>}
+              {rookie && <><span>·</span><span style={{ color: 'rgba(255,215,0,0.8)' }}>RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}</span></>}
+              {playerInfo.country && <><span>·</span><span>🌍 {playerInfo.country}</span></>}
+            </div>
+            {/* Awards */}
+            {playerInfo.awards && Object.keys(playerInfo.awards).length > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {AWARD_LABELS.filter((a) => (playerInfo.awards[a.key] ?? 0) > 0).map((a) => {
+                  const count = playerInfo.awards[a.key]!
+                  return (
+                    <span key={a.key} className="flex items-center gap-0.5 text-xs px-2 py-0.5 rounded-full"
+                      style={{ background: `${a.color}15`, border: `1px solid ${a.color}35`, color: a.color }}>
+                      {a.icon}{count > 1 ? ` ×${count}` : ` ${a.label}`}
+                    </span>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <h2 className="text-xl font-medium mb-4">🔍 Analyse Joueur</h2>
+      )}
 
       <SearchSelect
         options={allPlayers}

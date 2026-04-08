@@ -1,21 +1,7 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { fetchPlayerStats } from '../../api/client'
-import type { PlayerAwards, PlayerSeason } from '../../types'
-
-const AWARD_LABELS: { key: keyof PlayerAwards; icon: string; label: string; color: string }[] = [
-  { key: 'hof',        icon: '🏛️', label: 'Hall of Fame', color: '#FFD700' },
-  { key: 'mvp',        icon: '🏆', label: 'MVP',           color: '#FFD700' },
-  { key: 'champion',   icon: '💍', label: 'Champion',      color: '#C0C0C0' },
-  { key: 'finals',     icon: '🏟️', label: 'Finales',       color: '#94a3b8' },
-  { key: 'finals_mvp', icon: '🎖️', label: 'Finals MVP',    color: '#FFD700' },
-  { key: 'dpoy',       icon: '🛡️', label: 'DPOY',          color: '#3b82f6' },
-  { key: 'roy',        icon: '🌱', label: 'ROY',           color: '#22c55e' },
-  { key: 'allstar',    icon: '⭐', label: 'All-Star',      color: '#a78bfa' },
-  { key: 'all_nba',    icon: '🏅', label: 'All-NBA',       color: '#fb923c' },
-  { key: 'mip',        icon: '📈', label: 'MIP',           color: '#38bdf8' },
-  { key: 'sixth_man',  icon: '6️⃣', label: '6th Man',      color: '#f472b6' },
-]
+import type { PlayerSeason } from '../../types'
 
 interface Props {
   playerName: string
@@ -91,25 +77,6 @@ export function PlayerStatsPanel({ playerName }: Props) {
               </div>
             </div>
           </div>
-
-          {/* Awards */}
-          {data.awards && Object.keys(data.awards).length > 0 && (
-            <div className="flex flex-wrap gap-2 px-4 pb-3">
-              {AWARD_LABELS.filter((a) => (data.awards[a.key] ?? 0) > 0).map((a) => {
-                const count = data.awards[a.key]!
-                return (
-                  <span
-                    key={a.key}
-                    className="flex items-center gap-1 text-xs px-2 py-1 rounded-full"
-                    style={{ background: `${a.color}18`, border: `1px solid ${a.color}40`, color: a.color }}
-                    title={a.label}
-                  >
-                    {a.icon} {count > 1 ? `×${count}` : a.label}
-                  </span>
-                )
-              })}
-            </div>
-          )}
 
           {/* Tableau stats */}
           {data.seasons.length > 0 && (
