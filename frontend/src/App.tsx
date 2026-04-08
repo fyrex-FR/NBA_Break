@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAppStore } from './stores/appStore'
 import { fetchAnalysis } from './api/client'
+import { useUrlSync } from './hooks/useUrlSync'
 import { Sidebar } from './components/layout/Sidebar'
 import { ViewTabs } from './components/layout/ViewTabs'
 import { GlobalView } from './components/views/GlobalView'
@@ -132,6 +133,7 @@ export default function App() {
   const { selectedSport, analysisData, activeView, selectedChecklistIds, masterKey, setAnalysisData, setIsAnalyzing } = useAppStore()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
+  useUrlSync()
 
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 })

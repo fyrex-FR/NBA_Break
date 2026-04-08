@@ -26,6 +26,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [presetMsg, setPresetMsg] = useState<string | null>(null)
   const [confirmSelectAll, setConfirmSelectAll] = useState(false)
   const [openYears, setOpenYears] = useState<Set<string>>(new Set())
+  const [copied, setCopied] = useState(false)
   const [uploadOpen, setUploadOpen] = useState(false)
   const [uploadFile, setUploadFile] = useState<File | null>(null)
   const [uploadOverwrite, setUploadOverwrite] = useState(false)
@@ -257,9 +258,21 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           {/* Barre sélection — visible seulement sur l'onglet sélection */}
           {tab === 'selection' && (
             <div className="flex items-center justify-between px-4 pb-2">
-              <span className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
-                {selectedCount > 0 ? `${selectedCount} / ${totalCount} sélectionnées` : `${totalCount} checklists`}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
+                  {selectedCount > 0 ? `${selectedCount} / ${totalCount} sélectionnées` : `${totalCount} checklists`}
+                </span>
+                {selectedCount > 0 && (
+                  <button
+                    onClick={() => { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 2000) }}
+                    className="text-xs px-1.5 py-0.5 rounded"
+                    style={{ color: copied ? '#22c55e' : 'var(--text-quaternary)', border: '1px solid var(--border-subtle)' }}
+                    title="Copier le lien de partage"
+                  >
+                    {copied ? '✓ Copié' : '🔗'}
+                  </button>
+                )}
+              </div>
               <div className="flex gap-2">
                 {selectedCount > 0 && (
                   <button
