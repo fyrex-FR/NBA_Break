@@ -35,7 +35,7 @@ export function PlayerDetailView() {
       cell: (info) => {
         const name = info.getValue()?.replace('.parquet', '')
         const year = parseInt(info.row.original.Year, 10)
-        const isRookieYear = rookie && (year === rookie.year_start || year === rookie.year_end)
+        const isRookieYear = rookie && year === rookie.year_start
         if (!isRookieYear) return <span>{name}</span>
         return (
           <span className="flex items-center gap-1.5">
