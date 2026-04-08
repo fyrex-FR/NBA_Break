@@ -192,6 +192,22 @@ export function fetchTeamStats(teamName: string): Promise<TeamStatsResponse> {
   return fetchJSON(`/players/teams/${encodeURIComponent(teamName)}/stats`)
 }
 
+// ---------------------------------------------------------------------------
+// Rookies
+// ---------------------------------------------------------------------------
+
+export interface RookieRecord {
+  player_name: string
+  year_start: number
+  year_end: number
+  team: string
+  draft_pick: number | null
+}
+
+export function fetchRookies(sportKey: string): Promise<{ rookies: RookieRecord[] }> {
+  return fetchJSON(`/rookies/${sportKey}`)
+}
+
 export function saveOverrides(
   sportKey: string,
   autoMem: string[],

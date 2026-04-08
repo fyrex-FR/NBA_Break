@@ -108,7 +108,7 @@ def save_checkpoint(data: dict):
 
 # ── NBA API lookup ────────────────────────────────────────────────────────────
 
-def find_player(name: str, all_players: list) -> dict | None:
+def find_player(name: str, all_players: list):
     norm = normalize(name)
 
     # 1. Correspondance exacte normalisée
@@ -128,7 +128,7 @@ def find_player(name: str, all_players: list) -> dict | None:
     return None
 
 
-def get_player_info(player_id: int) -> dict | None:
+def get_player_info(player_id: int):
     from nba_api.stats.endpoints import commonplayerinfo
     try:
         info = commonplayerinfo.CommonPlayerInfo(player_id=player_id, timeout=15)

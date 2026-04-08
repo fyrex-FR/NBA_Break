@@ -8,6 +8,8 @@ import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { DistributionBar } from '../shared/DistributionBar'
 import { SearchSelect } from '../shared/SearchSelect'
 import { PlayerStatsPanel } from '../shared/PlayerStatsPanel'
+import { RCBadge } from '../shared/RCBadge'
+import { useRookies } from '../../hooks/useRookies'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
@@ -25,6 +27,7 @@ const cardColumns = [
 
 export function PlayerDetailView() {
   const { analysisData, targetPlayer, setTargetPlayer, selectedSport } = useAppStore()
+  const { getRookie } = useRookies()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
 
   if (!analysisData) return null
@@ -75,7 +78,23 @@ export function PlayerDetailView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-4">🔍 Analyse Joueur</h2>
+      <div className="flex items-center gap-3 mb-4">
+        <h2 className="text-xl font-medium">🔍 Analyse Joueur</h2>
+        {selectedPlayer && getRookie(selectedPlayer) && (() => {
+          const r = getRookie(selectedPlayer)!
+          return (
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg" style={{ background: 'rgba(255,215,0,0.1)', border: '1px solid rgba(255,215,0,0.3)' }}>
+              <RCBadge size="md" />
+              <div>
+                <div className="text-xs font-bold" style={{ color: '#FFD700' }}>ROOKIE CARD</div>
+                <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+                  {r.year_start}-{r.year_end} · {r.team}{r.draft_pick ? ` · Pick #${r.draft_pick}` : ''}
+                </div>
+              </div>
+            </div>
+          )
+        })()}
+      </div>
 
       <SearchSelect
         options={allPlayers}
