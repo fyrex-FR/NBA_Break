@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { countryFlag } from '../../utils/countryFlag'
 import { createColumnHelper } from '@tanstack/react-table'
 import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
@@ -131,7 +132,7 @@ export function PlayerDetailView() {
               {playerInfo.position && <span>{playerInfo.position}</span>}
               {playerInfo.team && <><span>·</span><span>{playerInfo.team}</span></>}
               {rookie && <><span>·</span><span style={{ color: 'rgba(255,215,0,0.8)' }}>RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}</span></>}
-              {playerInfo.country && <><span>·</span><span>🌍 {playerInfo.country}</span></>}
+              {playerInfo.country && <><span>·</span><span>{countryFlag(playerInfo.country)} {playerInfo.country}</span></>}
             </div>
             {/* Awards */}
             {playerInfo.awards && Object.keys(playerInfo.awards).length > 0 && (
