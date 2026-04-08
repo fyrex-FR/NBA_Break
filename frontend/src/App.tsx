@@ -43,7 +43,7 @@ function MainContent() {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center max-w-md">
-          <div className="text-6xl mb-4">🃏</div>
+          <img src="/logo.png" alt="NoClim" className="w-24 h-24 mb-4 mx-auto" style={{ borderRadius: '22%' }} />
           <h2 className="text-xl font-medium mb-2">NoClim</h2>
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
             Sélectionnez vos checklists dans la barre latérale puis cliquez sur
