@@ -23,22 +23,22 @@
   --accent-hover: #ff8a5c;
 }
 
-/* Light theme */
+/* Light theme — inspired by Linear */
 [data-theme="light"] {
   --rc-year-color: #b45309;
-  --bg-primary: #f4f5f7;
-  --bg-panel: #ffffff;
-  --bg-surface: #eceef1;
-  --bg-hover: #e1e4e8;
-  --text-primary: #0f1011;
-  --text-secondary: #3c4149;
-  --text-tertiary: #6b7280;
-  --text-quaternary: #9ca3af;
-  --border-subtle: rgba(0, 0, 0, 0.07);
-  --border-standard: rgba(0, 0, 0, 0.13);
-  --border-solid: #d1d5db;
-  --accent: #ff6b35;
-  --accent-hover: #e85a24;
+  --bg-primary: #f0f0ef;      /* fond légèrement warm-gray, pas blanc pur */
+  --bg-panel: #f7f7f6;        /* sidebar/panels: un cran plus clair */
+  --bg-surface: #ffffff;      /* cartes/surfaces sur fond: blanc pur */
+  --bg-hover: #ebebea;        /* hover */
+  --text-primary: #1a1a18;    /* near-black légèrement warm */
+  --text-secondary: #3d3d3a;
+  --text-tertiary: #6f6f69;
+  --text-quaternary: #a0a09a;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-standard: rgba(0, 0, 0, 0.10);
+  --border-solid: #ddddd8;
+  --accent: #e8622e;          /* accent légèrement plus foncé pour contraste sur fond clair */
+  --accent-hover: #cc5225;
 }
 
 /* Sport-specific accents */
