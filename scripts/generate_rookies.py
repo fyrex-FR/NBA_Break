@@ -18,6 +18,7 @@ import json
 import os
 import sys
 import re
+import time
 import unicodedata
 from io import BytesIO
 from pathlib import Path
@@ -126,17 +127,27 @@ def extract_players(df: pd.DataFrame) -> list[str]:
 
 # ── Claude API ────────────────────────────────────────────────────────────────
 
-def query_claude(client: anthropic.Anthropic, players: list[str]) -> list[dict]:
+def query_claude(client: anthropic.Anthropic, players: list[str], retries: int = 5) -> list[dict]:
     """Interroge Claude pour un batch de joueurs. Retourne la liste parsée."""
     players_text = "\n".join(f"- {p}" for p in players)
     prompt = USER_PROMPT_TEMPLATE.format(players=players_text)
 
-    message = client.messages.create(
-        model=CLAUDE_MODEL,
-        max_tokens=4096,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    for attempt in range(retries):
+        try:
+            message = client.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=4096,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            break
+        except anthropic.RateLimitError:
+            wait = 20 * (attempt + 1)
+            print(f"  ⏳ Rate limit, attente {wait}s...")
+            time.sleep(wait)
+    else:
+        print("  ❌ Échec après plusieurs tentatives, batch ignoré")
+        return []
 
     raw = message.content[0].text.strip()
 
@@ -194,6 +205,9 @@ def main():
         rookies_in_batch = sum(1 for r in results if r.get("is_rookie"))
         print(f"   → {rookies_in_batch} rookies identifiés")
         all_results.extend(results)
+        # Pause entre batches pour éviter le rate limit (8k tokens/min sur Opus)
+        if i + batch_size < len(all_players):
+            time.sleep(15)
 
     # 3. Filtrer et construire le DataFrame
     rookies = [r for r in all_results if r.get("is_rookie")]

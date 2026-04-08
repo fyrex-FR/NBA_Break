@@ -1,0 +1,43 @@
+=== RAPPORT NETTOYAGE JOUEURS NBA ===
+
+Noms bruts    : 1842
+Après nettoyage : 1818
+
+
+--- Suffixes équipe supprimés (23) ---
+  'Anthony Davis - New Orleans Hornets' → 'Anthony Davis'
+  'Bob McAdoo - Buffalo Braves' → 'Bob McAdoo'
+  'Bob Pettit - St. Louis Hawks' → 'Bob Pettit'
+  'Dale Ellis - Seattle Supersonics' → 'Dale Ellis'
+  'Desmond Mason - Seattle Supersonics' → 'Desmond Mason'
+  'Elvin Hayes - Washington Bullets' → 'Elvin Hayes'
+  'Ernie DiGregorio - Buffalo Braves' → 'Ernie DiGregorio'
+  'Gary Payton - Seattle Supersonics' → 'Gary Payton'
+  'George Mikan - Minneapolis Lakers' → 'George Mikan'
+  'Gheorghe Muresan - Washington Bullets' → 'Gheorghe Muresan'
+  'Jason Kidd - New Jersey Nets' → 'Jason Kidd'
+  'Jerry Lucas - Cincinnati Royals' → 'Jerry Lucas'
+  'Kendall Gill - New Jersey Nets' → 'Kendall Gill'
+  'Kenyon Martin - New Jersey Nets' → 'Kenyon Martin'
+  'Nate Archibald - Kansas City Kings' → 'Nate Archibald'
+  'Oscar Robertson - Cincinnati Royals' → 'Oscar Robertson'
+  'Otis Birdsong - New Jersey Nets' → 'Otis Birdsong'
+  'Ray Allen - Seattle Supersonics' → 'Ray Allen'
+  'Rick Barry - San Francisco Warriors' → 'Rick Barry'
+  'Ricky Pierce - Seattle Supersonics' → 'Ricky Pierce'
+  'Shawn Kemp - Seattle Supersonics' → 'Shawn Kemp'
+  'Terry Cummings - Seattle Supersonics' → 'Terry Cummings'
+  'Vin Baker - Seattle Supersonics' → 'Vin Baker'
+
+--- Suspects multi-joueurs sans '/' (4) ---
+  Dejounte Murray Trae Young
+  John "Hot Rod" Williams
+  Luc Mbah a Moute
+  Luc Richard Mbah A Moute
+
+--- Noms trop courts / suspects (5) ---
+  Al
+  Nene
+  Nené
+  Olivier
+  Scottie
