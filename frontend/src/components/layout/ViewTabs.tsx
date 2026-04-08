@@ -16,6 +16,7 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
       { name: '🔥 Logoman', key: 'logoman', short: 'Logoman' },
       { name: '✨ Case Hits', key: 'case_hits', short: 'Case Hits' },
       { name: '👥 Multi-Joueurs', key: 'multi_players', short: 'Multi' },
+      { name: '📈 Tendances', key: 'trends', short: 'Tendances' },
       { name: '🧨 Rookies', key: 'rookies', short: 'Rookies' },
     ],
   },

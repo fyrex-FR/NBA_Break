@@ -112,6 +112,7 @@ export type ViewName =
   | '🔥 Logoman'
   | '✨ Case Hits'
   | '👥 Multi-Joueurs'
+  | '📈 Tendances'
   | '🧨 Rookies'
   | '🔍 Analyse Joueur'
   | '🛡️ Analyse Équipe'

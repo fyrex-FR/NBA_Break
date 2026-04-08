@@ -16,6 +16,7 @@ import { BreakSimulationView } from './components/views/BreakSimulationView'
 import { ExportView } from './components/views/ExportView'
 import { DetectionView } from './components/views/DetectionView'
 import { RookiesView } from './components/views/RookiesView'
+import { TrendView } from './components/views/TrendView'
 import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
 
 const queryClient = new QueryClient({
@@ -93,6 +94,8 @@ function MainContent() {
         return <TeamDetailView />
       case '📁 Par Fichier':
         return <FileAnalysisView />
+      case '📈 Tendances':
+        return <TrendView />
       case '🧨 Rookies':
         return <RookiesView />
       case '🧪 Détection Auto/Mem':
