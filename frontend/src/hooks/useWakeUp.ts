@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react'
 
-const HEALTH_URL = (import.meta.env.VITE_API_BASE ?? '') + '/api/health'
+const API_BASE = import.meta.env.VITE_API_BASE ?? ''
+const HEALTH_URL = API_BASE + '/api/health'
 const MAX_ATTEMPTS = 15
 const POLL_INTERVAL_MS = 2500
+
+// En local (pas de VITE_API_BASE), le backend tourne déjà — pas besoin de wake-up
+const IS_REMOTE = API_BASE.startsWith('http')
 
 type WakeUpState = 'checking' | 'awake' | 'timeout'
 
 export function useWakeUp() {
-  const [state, setState] = useState<WakeUpState>('checking')
+  const [state, setState] = useState<WakeUpState>(IS_REMOTE ? 'checking' : 'awake')
   const [attempts, setAttempts] = useState(0)
 
   useEffect(() => {
+    if (!IS_REMOTE) return
     let cancelled = false
     let attempt = 0
 
