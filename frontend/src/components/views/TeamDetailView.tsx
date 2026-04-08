@@ -20,7 +20,7 @@ const cardColumns = [
 ]
 
 export function TeamDetailView() {
-  const { analysisData, targetTeam, setTargetTeam } = useAppStore()
+  const { analysisData, targetTeam, setTargetTeam, selectedSport } = useAppStore()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
 
   if (!analysisData) return null
@@ -96,9 +96,11 @@ export function TeamDetailView() {
             />
           </div>
 
-          <div className="mb-4">
-            <TeamStatsPanel teamName={selectedTeam} />
-          </div>
+          {selectedSport === 'nba' && (
+            <div className="mb-4">
+              <TeamStatsPanel teamName={selectedTeam} />
+            </div>
+          )}
 
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} />
         </>

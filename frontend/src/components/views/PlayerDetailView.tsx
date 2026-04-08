@@ -24,7 +24,7 @@ const cardColumns = [
 ]
 
 export function PlayerDetailView() {
-  const { analysisData, targetPlayer, setTargetPlayer } = useAppStore()
+  const { analysisData, targetPlayer, setTargetPlayer, selectedSport } = useAppStore()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
 
   if (!analysisData) return null
@@ -112,9 +112,11 @@ export function PlayerDetailView() {
             <DistributionBar data={checklistDist} title="Répartition par checklist" />
           </div>
 
-          <div className="mb-4">
-            <PlayerStatsPanel playerName={selectedPlayer} />
-          </div>
+          {selectedSport === 'nba' && (
+            <div className="mb-4">
+              <PlayerStatsPanel playerName={selectedPlayer} />
+            </div>
+          )}
 
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedPlayer.replace(/\s+/g, '_')} />
         </>
