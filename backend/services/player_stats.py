@@ -19,6 +19,16 @@ logger = logging.getLogger(__name__)
 CACHE_PREFIX = "players_cache"
 CACHE_TTL_DAYS = 30
 
+# Hall of Fame — chargé depuis HOF.json au démarrage
+import os as _os
+_HOF_PATH = _os.path.join(_os.path.dirname(_os.path.dirname(__file__)), "HOF.json")
+_HOF_NAMES: set = set()
+try:
+    with open(_HOF_PATH, "r", encoding="utf-8") as _f:
+        _HOF_NAMES = {entry["name"].lower().strip() for entry in json.load(_f)}
+except Exception:
+    pass
+
 
 def normalize_name(name: str) -> str:
     nfkd = unicodedata.normalize("NFKD", name)
@@ -202,6 +212,10 @@ def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
 
     # Awards
     awards = _fetch_awards(player_id)
+    # Hall of Fame depuis fichier statique
+    full_name = player_info.get("full_name", "")
+    if normalize_name(full_name) in _HOF_NAMES:
+        awards["hof"] = 1
 
     draft_year = bio.get("DRAFT_YEAR", "")
     draft_round = bio.get("DRAFT_ROUND", "")
