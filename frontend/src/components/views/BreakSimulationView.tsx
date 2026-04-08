@@ -62,10 +62,15 @@ export function BreakSimulationView() {
   async function handleSimulate() {
     setLoading(true)
     setError(null)
+    // Construire la map : entrée vide = 1 (poids neutre), 0 = pas de garantie
     const guaranteedMap: Record<string, number> = {}
-    for (const [id, val] of Object.entries(hitsGuaranteed)) {
-      const n = parseInt(val)
-      if (n > 0) guaranteedMap[id] = n
+    for (const id of selectedChecklistIds) {
+      const raw = hitsGuaranteed[id]
+      if (raw !== undefined && raw !== '') {
+        const n = parseInt(raw)
+        guaranteedMap[id] = isNaN(n) ? 1 : Math.max(0, n)
+      }
+      // vide → absent → backend défaut 1
     }
     try {
       const data = await fetchBreakSimulation({
