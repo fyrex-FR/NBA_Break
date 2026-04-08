@@ -25,6 +25,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [presetName, setPresetName] = useState('')
   const [presetMsg, setPresetMsg] = useState<string | null>(null)
   const [confirmSelectAll, setConfirmSelectAll] = useState(false)
+  const [openYears, setOpenYears] = useState<Set<string>>(new Set())
   const [uploadOpen, setUploadOpen] = useState(false)
   const [uploadFile, setUploadFile] = useState<File | null>(null)
   const [uploadOverwrite, setUploadOverwrite] = useState(false)
@@ -76,6 +77,15 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       const merged = Array.from(new Set([...selectedChecklistIds, ...ids]))
       setSelectedChecklistIds(merged)
     }
+  }
+
+  function toggleYearOpen(year: string) {
+    setOpenYears((prev) => {
+      const next = new Set(prev)
+      if (next.has(year)) next.delete(year)
+      else next.add(year)
+      return next
+    })
   }
 
   async function handleLancer() {
@@ -295,47 +305,57 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 const yearSelectedCount = yearChecklists.filter((cl) => selectedChecklistIds.includes(cl.checklist_id)).length
                 const allYearSelected = yearSelectedCount === yearChecklists.length
 
+                const isOpen = openYears.has(year)
                 return (
-                  <details key={year} className="mb-1 rounded-lg" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-                    <summary className="px-2.5 py-2 cursor-pointer select-none list-none">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>{year}</span>
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={(e) => { e.preventDefault(); toggleYear(year) }}
-                            className="text-xs px-1.5 py-0.5 rounded"
-                            style={{ color: allYearSelected ? 'var(--text-quaternary)' : 'var(--accent)', border: '1px solid var(--border-subtle)' }}
-                          >
-                            {allYearSelected ? '✕' : '+'}
-                          </button>
-                          <span className="text-xs" style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
-                            {yearSelectedCount}/{yearChecklists.length}
-                          </span>
-                        </div>
-                      </div>
-                    </summary>
-                    <div className="pb-1">
-                      {yearChecklists.map((cl) => (
-                        <label
-                          key={cl.checklist_id}
-                          className="flex items-start gap-2 px-2.5 py-1.5 text-xs cursor-pointer"
-                          style={{ color: 'var(--text-secondary)' }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selectedChecklistIds.includes(cl.checklist_id)}
-                            onChange={() => toggleChecklist(cl.checklist_id)}
-                            className="rounded mt-0.5 flex-shrink-0"
-                            style={{ accentColor: 'var(--accent)' }}
-                          />
-                          <span className="flex-1 break-words leading-snug">{cl.checklist_name.replace('.parquet', '')}</span>
-                          <span className="flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
-                        </label>
-                      ))}
+                  <div key={year} className="mb-1 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                    {/* En-tête année — clic = expand/collapse */}
+                    <div
+                      className="flex items-center gap-2 px-2.5 py-2 cursor-pointer select-none"
+                      onClick={() => toggleYearOpen(year)}
+                    >
+                      <span className="text-xs flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>
+                        {isOpen ? '▾' : '▸'}
+                      </span>
+                      <span className="text-xs font-medium flex-1" style={{ color: 'var(--text-secondary)' }}>{year}</span>
+                      <span className="text-xs flex-shrink-0" style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
+                        {yearSelectedCount}/{yearChecklists.length}
+                      </span>
+                      {/* Checkbox pour sélectionner/désélectionner toute l'année */}
+                      <input
+                        type="checkbox"
+                        checked={allYearSelected}
+                        ref={(el) => { if (el) el.indeterminate = yearSelectedCount > 0 && !allYearSelected }}
+                        onChange={(e) => { e.stopPropagation(); toggleYear(year) }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex-shrink-0"
+                        style={{ accentColor: 'var(--accent)', cursor: 'pointer' }}
+                      />
                     </div>
-                  </details>
+                    {/* Checklists de l'année */}
+                    {isOpen && (
+                      <div className="pb-1" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+                        {yearChecklists.map((cl) => (
+                          <label
+                            key={cl.checklist_id}
+                            className="flex items-start gap-2 px-2.5 py-1.5 text-xs cursor-pointer"
+                            style={{ color: 'var(--text-secondary)' }}
+                            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={selectedChecklistIds.includes(cl.checklist_id)}
+                              onChange={() => toggleChecklist(cl.checklist_id)}
+                              className="rounded mt-0.5 flex-shrink-0"
+                              style={{ accentColor: 'var(--accent)' }}
+                            />
+                            <span className="flex-1 break-words leading-snug">{cl.checklist_name.replace('.parquet', '')}</span>
+                            <span className="flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 )
               })}
             </>
