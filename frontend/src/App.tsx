@@ -44,7 +44,7 @@ function MainContent() {
       <div className="flex items-center justify-center h-full">
         <div className="text-center max-w-md">
           <div className="text-6xl mb-4">🃏</div>
-          <h2 className="text-xl font-medium mb-2">Checklist Optimizer</h2>
+          <h2 className="text-xl font-medium mb-2">NoClim</h2>
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
             Sélectionnez vos checklists dans la barre latérale puis cliquez sur
             <span className="font-medium" style={{ color: 'var(--accent)' }}> 🚀 Lancer </span>
@@ -174,7 +174,7 @@ export default function App() {
               </svg>
             </button>
             <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
-              Checklist Optimizer
+              NoClim
             </span>
             <div className="ml-auto flex items-center gap-2">
               {analysisData && (
