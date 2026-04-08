@@ -1,0 +1,172 @@
+"""
+NBA player stats service.
+- Cherche le joueur via nba_api
+- Cache les résultats dans R2 (parquet_cache/players/{id}.json)
+- Retourne bio + stats carrière saison par saison
+"""
+
+import json
+import logging
+import re
+import time
+import unicodedata
+from typing import Optional
+
+from .r2_storage import get_r2_config, is_r2_configured, make_r2_client
+
+logger = logging.getLogger(__name__)
+
+CACHE_PREFIX = "players_cache"
+CACHE_TTL_DAYS = 30
+
+
+def normalize_name(name: str) -> str:
+    nfkd = unicodedata.normalize("NFKD", name)
+    return "".join(c for c in nfkd if not unicodedata.combining(c)).lower().strip()
+
+
+def _cache_key(player_id: int) -> str:
+    return f"{CACHE_PREFIX}/{player_id}.json"
+
+
+def _load_cache(config, player_id: int) -> Optional[dict]:
+    if not is_r2_configured(config):
+        return None
+    try:
+        client = make_r2_client(config)
+        resp = client.get_object(Bucket=config["bucket"], Key=_cache_key(player_id))
+        data = json.loads(resp["Body"].read().decode("utf-8"))
+        # Vérifier TTL
+        cached_at = data.get("_cached_at", 0)
+        age_days = (time.time() - cached_at) / 86400
+        if age_days > CACHE_TTL_DAYS:
+            return None
+        return data
+    except Exception:
+        return None
+
+
+def _save_cache(config, player_id: int, data: dict):
+    if not is_r2_configured(config):
+        return
+    try:
+        client = make_r2_client(config)
+        data["_cached_at"] = time.time()
+        payload = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        client.put_object(
+            Bucket=config["bucket"],
+            Key=_cache_key(player_id),
+            Body=payload,
+            ContentType="application/json",
+        )
+    except Exception as e:
+        logger.warning(f"Cache save failed: {e}")
+
+
+def _find_player(name: str):
+    """Cherche un joueur par nom, avec fallback sur normalisation."""
+    from nba_api.stats.static import players as nba_players
+
+    norm = normalize_name(name)
+
+    # Tentative 1 : correspondance exacte
+    results = nba_players.find_players_by_full_name(re.escape(name))
+    if results:
+        return results[0]
+
+    # Tentative 2 : recherche normalisée sur tous les joueurs
+    all_players = nba_players.get_players()
+    for p in all_players:
+        if normalize_name(p["full_name"]) == norm:
+            return p
+
+    # Tentative 3 : nom inversé "Nom, Prénom" → "Prénom Nom"
+    parts = name.split(",")
+    if len(parts) == 2:
+        flipped = f"{parts[1].strip()} {parts[0].strip()}"
+        results = nba_players.find_players_by_full_name(re.escape(flipped))
+        if results:
+            return results[0]
+
+    return None
+
+
+def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
+    """Appelle nba_api et retourne les données structurées."""
+    from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
+
+    # Bio
+    info_ep = commonplayerinfo.CommonPlayerInfo(player_id=player_id, timeout=10)
+    info_data = info_ep.get_normalized_dict()
+    bio = info_data.get("CommonPlayerInfo", [{}])[0]
+
+    # Stats carrière
+    time.sleep(0.6)  # politesse NBA.com
+    career_ep = playercareerstats.PlayerCareerStats(player_id=player_id, timeout=10)
+    career_data = career_ep.get_normalized_dict()
+    seasons_raw = career_data.get("SeasonTotalsRegularSeason", [])
+
+    seasons = []
+    for s in seasons_raw:
+        gp = s.get("GP") or 1
+        seasons.append({
+            "season": s.get("SEASON_ID", ""),
+            "team": s.get("TEAM_ABBREVIATION", ""),
+            "gp": gp,
+            "pts": round((s.get("PTS") or 0) / gp, 1),
+            "reb": round((s.get("REB") or 0) / gp, 1),
+            "ast": round((s.get("AST") or 0) / gp, 1),
+            "stl": round((s.get("STL") or 0) / gp, 1),
+            "blk": round((s.get("BLK") or 0) / gp, 1),
+            "fg_pct": round((s.get("FG_PCT") or 0) * 100, 1),
+            "fg3_pct": round((s.get("FG3_PCT") or 0) * 100, 1),
+        })
+
+    draft_year = bio.get("DRAFT_YEAR", "")
+    draft_round = bio.get("DRAFT_ROUND", "")
+    draft_number = bio.get("DRAFT_NUMBER", "")
+
+    if draft_year and draft_year != "Undrafted":
+        draft_label = f"{draft_year} — Tour {draft_round}, Pick #{draft_number}"
+    elif draft_year == "Undrafted":
+        draft_label = "Undrafted"
+    else:
+        draft_label = None
+
+    return {
+        "player_id": player_id,
+        "full_name": player_info["full_name"],
+        "is_active": player_info.get("is_active", False),
+        "photo_url": f"https://cdn.nba.com/headshots/nba/latest/1040x760/{player_id}.png",
+        "position": bio.get("POSITION", ""),
+        "height": bio.get("HEIGHT", ""),
+        "weight": bio.get("WEIGHT", ""),
+        "country": bio.get("COUNTRY", ""),
+        "team": bio.get("TEAM_NAME", ""),
+        "jersey": bio.get("JERSEY", ""),
+        "draft": draft_label,
+        "seasons": seasons,
+    }
+
+
+def get_player_stats(name: str) -> dict:
+    """Point d'entrée principal : cache → nba_api → cache."""
+    player_info = _find_player(name)
+    if not player_info:
+        raise ValueError(f"Joueur '{name}' introuvable dans la base NBA")
+
+    player_id = player_info["id"]
+    config = get_r2_config()
+
+    # Essayer le cache d'abord
+    cached = _load_cache(config, player_id)
+    if cached:
+        return cached
+
+    # Appel NBA.com
+    data = _fetch_from_nba(player_id, player_info)
+
+    # Sauvegarder en cache
+    _save_cache(config, player_id, data)
+
+    return data

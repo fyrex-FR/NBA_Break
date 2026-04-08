@@ -8,6 +8,7 @@ import type {
   AnalyzeResponse,
   BreakSimulationResponse,
   PresetInfo,
+  PlayerStatsResponse,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -176,6 +177,14 @@ export function fetchDetection(
       master_key: masterKey,
     }),
   })
+}
+
+// ---------------------------------------------------------------------------
+// Player stats (nba_api)
+// ---------------------------------------------------------------------------
+
+export function fetchPlayerStats(playerName: string): Promise<PlayerStatsResponse> {
+  return fetchJSON(`/players/${encodeURIComponent(playerName)}/stats`)
 }
 
 export function saveOverrides(

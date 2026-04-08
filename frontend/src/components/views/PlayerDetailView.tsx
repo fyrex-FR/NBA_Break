@@ -7,6 +7,7 @@ import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { DistributionBar } from '../shared/DistributionBar'
 import { SearchSelect } from '../shared/SearchSelect'
+import { PlayerStatsPanel } from '../shared/PlayerStatsPanel'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
@@ -109,6 +110,10 @@ export function PlayerDetailView() {
               onFilter={setCategoryFilter}
             />
             <DistributionBar data={checklistDist} title="Répartition par checklist" />
+          </div>
+
+          <div className="mb-4">
+            <PlayerStatsPanel playerName={selectedPlayer} />
           </div>
 
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedPlayer.replace(/\s+/g, '_')} />

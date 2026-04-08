@@ -124,6 +124,34 @@ export type ViewName =
   | '🧩 Simulation de Break'
   | '📤 Export'
 
+export interface PlayerSeason {
+  season: string
+  team: string
+  gp: number
+  pts: number
+  reb: number
+  ast: number
+  stl: number
+  blk: number
+  fg_pct: number
+  fg3_pct: number
+}
+
+export interface PlayerStatsResponse {
+  player_id: number
+  full_name: string
+  is_active: boolean
+  photo_url: string
+  position: string
+  height: string
+  weight: string
+  country: string
+  team: string
+  jersey: string
+  draft: string | null
+  seasons: PlayerSeason[]
+}
+
 // Category constants (matching backend emoji labels)
 export const CATEGORY_LOGOMAN = '🔥 Logoman'
 export const CATEGORY_CASE_HIT = '✨ Case Hit'
