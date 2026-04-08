@@ -132,7 +132,7 @@ function MainContent() {
 
 
 export default function App() {
-  const { selectedSport, analysisData, activeView, selectedChecklistIds, masterKey, setAnalysisData, setIsAnalyzing } = useAppStore()
+  const { selectedSport, analysisData, activeView, selectedChecklistIds, masterKey, setAnalysisData, setIsAnalyzing, theme, toggleTheme } = useAppStore()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
   useUrlSync()
@@ -153,7 +153,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} style={{ background: 'var(--bg-primary)' }}>
+      <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} data-theme={theme} style={{ background: 'var(--bg-primary)' }}>
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto">
           {/* Mobile topbar */}
@@ -176,11 +176,16 @@ export default function App() {
             <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
               Checklist Optimizer
             </span>
-            {analysisData && (
-              <span className="ml-auto text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>
-                {analysisData.metadata.checklists_count} listes
-              </span>
-            )}
+            <div className="ml-auto flex items-center gap-2">
+              {analysisData && (
+                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>
+                  {analysisData.metadata.checklists_count} listes
+                </span>
+              )}
+              <button onClick={toggleTheme} className="p-1.5 rounded-md text-base" style={{ color: 'var(--text-secondary)' }} title="Changer le thème">
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </button>
+            </div>
           </div>
           <MainContent />
         </main>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
 import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist } from '../../api/client'
+
 import type { ChecklistInfo, PresetInfo } from '../../types'
 
 type SidebarTab = 'selection' | 'presets'
@@ -19,6 +20,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     selectAllChecklists, deselectAllChecklists,
     masterKey, setMasterKey,
     setAnalysisData, setIsAnalyzing, isAnalyzing,
+    theme, toggleTheme,
   } = useAppStore()
 
   const [tab, setTab] = useState<SidebarTab>('selection')
@@ -184,6 +186,14 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <option key={s.key} value={s.key}>{s.page_icon} {s.label}</option>
               ))}
             </select>
+            <button
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
+              className="w-7 h-7 flex items-center justify-center rounded-md text-base flex-shrink-0"
+              style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
             <button
               onClick={() => { setUploadOpen((v) => !v); setUploadStatus(null) }}
               title="Ajouter une checklist"

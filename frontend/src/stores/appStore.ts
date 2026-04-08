@@ -8,6 +8,10 @@ import { persist } from 'zustand/middleware'
 import type { ViewName, AnalyzeResponse, ChecklistInfo } from '../types'
 
 interface AppState {
+  // Theme
+  theme: 'dark' | 'light'
+  toggleTheme: () => void
+
   // Sport selection
   selectedSport: string
   setSport: (sport: string) => void
@@ -47,6 +51,10 @@ interface AppState {
 export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
+      // Theme
+      theme: 'dark',
+      toggleTheme: () => set((s) => ({ theme: s.theme === 'dark' ? 'light' : 'dark' })),
+
       // Sport
       selectedSport: 'nba',
       setSport: (sport) => set({ selectedSport: sport, analysisData: null, selectedChecklistIds: [] }),
@@ -95,6 +103,7 @@ export const useAppStore = create<AppState>()(
       name: 'checklist-optimizer',
       // Only persist user preferences, not ephemeral analysis data
       partialize: (state) => ({
+        theme: state.theme,
         selectedSport: state.selectedSport,
         selectedChecklistIds: state.selectedChecklistIds,
         activeView: state.activeView,
