@@ -36,7 +36,8 @@ def normalize_name(name: str) -> str:
 
 
 def _cache_key(team_id: int) -> str:
-    return f"{CACHE_PREFIX}/{team_id}.json"
+    season = current_nba_season()
+    return f"{CACHE_PREFIX}/{team_id}_{season}.json"
 
 
 def _load_cache(config, team_id: int) -> Optional[dict]:
