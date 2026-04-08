@@ -18,7 +18,16 @@ logger = logging.getLogger(__name__)
 
 CACHE_PREFIX = "teams_cache"
 CACHE_TTL_HOURS = 6
-CURRENT_SEASON = "2024-25"
+
+
+def current_nba_season() -> str:
+    """Retourne la saison NBA en cours (ex: '2024-25').
+    La saison NBA commence en octobre — avant octobre on est encore sur la saison précédente.
+    """
+    from datetime import date
+    today = date.today()
+    year = today.year if today.month >= 10 else today.year - 1
+    return f"{year}-{str(year + 1)[-2:]}"
 
 
 def normalize_name(name: str) -> str:
@@ -86,8 +95,10 @@ def _find_team(name: str):
 def _fetch_from_nba(team_id: int, team_info: dict) -> dict:
     from nba_api.stats.endpoints import teamgamelog, leaguestandingsv3
 
+    season = current_nba_season()
+
     # Classement
-    standings_ep = leaguestandingsv3.LeagueStandingsV3(season=CURRENT_SEASON, timeout=10)
+    standings_ep = leaguestandingsv3.LeagueStandingsV3(season=season, timeout=10)
     standings_data = standings_ep.get_normalized_dict()
     standing = next(
         (t for t in standings_data["Standings"] if t["TeamID"] == team_id),
@@ -97,7 +108,7 @@ def _fetch_from_nba(team_id: int, team_info: dict) -> dict:
     time.sleep(0.6)
 
     # 5 derniers matchs
-    log_ep = teamgamelog.TeamGameLog(team_id=team_id, season=CURRENT_SEASON, timeout=10)
+    log_ep = teamgamelog.TeamGameLog(team_id=team_id, season=season, timeout=10)
     log_data = log_ep.get_normalized_dict()
     games_raw = log_data.get("TeamGameLog", [])[:5]
 
@@ -117,7 +128,7 @@ def _fetch_from_nba(team_id: int, team_info: dict) -> dict:
         "full_name": team_info["full_name"],
         "abbreviation": team_info["abbreviation"],
         "logo_url": f"https://cdn.nba.com/logos/nba/{team_id}/global/L/logo.svg",
-        "season": CURRENT_SEASON,
+        "season": season,
         "last_games": games,
     }
 
