@@ -173,6 +173,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         {/* ── Header fixe ── */}
         <div className="flex-shrink-0">
+          {/* Logo NoClim */}
+          <div className="flex items-center gap-2.5 px-4 pt-3 pb-2">
+            <img src="/logo.png" alt="NoClim" className="w-7 h-7 flex-shrink-0" style={{ borderRadius: '20%' }} />
+            <span className="font-bold text-sm tracking-wide" style={{ color: 'var(--text-primary)' }}>NoClim</span>
+          </div>
           {/* Titre + sport + bouton upload */}
           <div className="flex items-center gap-2 px-4 py-3">
             <span className="text-lg">{currentSport?.page_icon || '🏀'}</span>
