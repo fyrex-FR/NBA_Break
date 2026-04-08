@@ -10,7 +10,7 @@ import type {
   PresetInfo,
 } from '../types'
 
-const BASE = '/api'
+const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
 
 async function fetchJSON<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${url}`, {
