@@ -164,10 +164,13 @@ def read_uploaded_checklist(file_data, sheet_names):
         file_data: Raw bytes of the Excel file.
         sheet_names: Ordered list of sheet names to try.
     """
-    xls = pd.ExcelFile(file_data, engine="openpyxl")
+    import io
+    buf = io.BytesIO(file_data)
+    xls = pd.ExcelFile(buf, engine="openpyxl")
     for sheet_name in sheet_names:
         if sheet_name in xls.sheet_names:
-            df = pd.read_excel(file_data, sheet_name=sheet_name, engine="openpyxl")
+            buf.seek(0)
+            df = pd.read_excel(buf, sheet_name=sheet_name, engine="openpyxl")
             return normalize_checklist_columns(df)
     raise ValueError(f"Aucun onglet compatible trouvé ({', '.join(sheet_names)}).")
 
