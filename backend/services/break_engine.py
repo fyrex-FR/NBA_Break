@@ -300,20 +300,24 @@ def build_deterministic_spot_summary(
 
         targets = []
         if method == SIM_METHOD_LETTER:
-            targets = [s for s in initial_list if s in spot_set]
+            # Une carte = un seul spot : première lettre du premier joueur
+            first_initial = initial_list[0] if initial_list else ""
+            if first_initial in spot_set:
+                targets = [first_initial]
         elif method == SIM_METHOD_TEAM:
             targets = [s for s in team_list if s in spot_set]
         elif method == SIM_METHOD_PLAYER:
             targets = [s for s in player_list if s in spot_set]
         elif method == SIM_METHOD_PLAYER_LETTER:
-            targets = []
-            for p in player_list:
-                if p in extracted_set:
-                    target = p
+            # Une carte = un seul spot : premier joueur extrait ou première lettre du premier joueur
+            first_player = player_list[0] if player_list else ""
+            if first_player:
+                if first_player in extracted_set:
+                    target = first_player
                 else:
-                    target = extract_surname_initial(p)
+                    target = extract_surname_initial(first_player)
                 if target in spot_set:
-                    targets.append(target)
+                    targets = [target]
         elif method == SIM_METHOD_CUSTOM:
             if custom_scope == "players":
                 targets = [custom_map.get(p, "") for p in player_list]
