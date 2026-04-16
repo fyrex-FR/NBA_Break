@@ -5,7 +5,6 @@
 
 import { useMemo } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
@@ -89,16 +88,6 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
           {/* Players */}
           <div>
             <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Joueurs</h3>
-            <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-              <ResponsiveContainer width="100%" height={220}>
-                <BarChart data={playerRankings.slice(0, 10)} layout="vertical">
-                  <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Player" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-                  <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
-                  <Bar dataKey="Hits" fill="var(--accent)" radius={[0, 4, 4, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
             <DataTable
               data={playerRankings}
               columns={playerCols as any}
@@ -112,16 +101,6 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
           {/* Teams */}
           <div>
             <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Équipes</h3>
-            <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-              <ResponsiveContainer width="100%" height={220}>
-                <BarChart data={teamRankings.slice(0, 10)} layout="vertical">
-                  <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Team" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-                  <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
-                  <Bar dataKey="Hits" fill="var(--accent)" radius={[0, 4, 4, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
             <DataTable
               data={teamRankings}
               columns={teamCols as any}

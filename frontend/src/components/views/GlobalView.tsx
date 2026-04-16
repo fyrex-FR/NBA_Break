@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
@@ -69,23 +68,7 @@ export function GlobalView() {
         <div>
           <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Top Joueurs</h3>
 
-          {/* Bar chart */}
-          <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={topPlayers} layout="vertical" margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
-                <defs>
-                  <linearGradient id="gradPlayers" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.7} />
-                    <stop offset="100%" stopColor="var(--accent)" stopOpacity={1} />
-                  </linearGradient>
-                </defs>
-                <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                <YAxis type="category" dataKey="Player" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-                <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} labelStyle={{ color: 'var(--text-primary)' }} />
-                <Bar dataKey="Hits" fill="url(#gradPlayers)" radius={[0, 4, 4, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Top Joueurs</h3>
 
           <DataTable
             data={player_rankings}
@@ -101,22 +84,7 @@ export function GlobalView() {
         <div>
           <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Top Équipes</h3>
 
-          <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={topTeams} layout="vertical" margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
-                <defs>
-                  <linearGradient id="gradTeams" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.7} />
-                    <stop offset="100%" stopColor="var(--accent)" stopOpacity={1} />
-                  </linearGradient>
-                </defs>
-                <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                <YAxis type="category" dataKey="Team" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-                <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} labelStyle={{ color: 'var(--text-primary)' }} />
-                <Bar dataKey="Hits" fill="url(#gradTeams)" radius={[0, 4, 4, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Top Équipes</h3>
 
           <DataTable
             data={team_rankings}

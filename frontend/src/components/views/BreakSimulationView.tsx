@@ -1,6 +1,5 @@
 import { useState, useMemo, useRef } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
 import { fetchBreakSimulation } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
@@ -89,10 +88,7 @@ export function BreakSimulationView() {
     }
   }
 
-  const topSpots = result?.spots
-    .filter((s) => s['Break Score'] > 0)
-    .sort((a, b) => b['Break Score'] - a['Break Score'])
-    .slice(0, 15) || []
+
 
   return (
     <div>
@@ -198,21 +194,6 @@ export function BreakSimulationView() {
             <MetricCard label="Hot Spots" value={result.summary.hot_spots} icon="🔥" />
             <MetricCard label="Spots" value={result.spots.length} icon="🎯" />
           </div>
-
-          {/* Top spots chart */}
-          {topSpots.length > 0 && (
-            <div className="mb-6 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
-              <h4 className="text-sm font-medium mb-3" style={{ color: 'var(--text-tertiary)' }}>Top Spots par Break Score</h4>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={topSpots} layout="vertical" margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
-                  <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Spot" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-                  <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
-                  <Bar dataKey="Break Score" fill="var(--accent)" radius={[0, 4, 4, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          )}
 
           {/* Full table */}
           <DataTable data={result.spots} columns={spotColumns as any} pageSize={100} searchable searchPlaceholder="Rechercher un spot..." exportName={`break_${method}`} />
