@@ -72,7 +72,7 @@ export function GlobalView() {
           {/* Bar chart */}
           <div className="mb-4 rounded-lg p-4" style={{ background: 'var(--bg-surface)' }}>
             <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={topPlayers} layout="vertical">
+              <BarChart data={topPlayers} layout="vertical" margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                 <defs>
                   <linearGradient id="gradPlayers" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.7} />
