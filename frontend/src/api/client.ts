@@ -8,6 +8,7 @@ import type {
   AnalyzeResponse,
   BreakSimulationResponse,
   PresetInfo,
+  SimulationPreset,
   PlayerStatsResponse,
   TeamStatsResponse,
 } from '../types'
@@ -75,6 +76,23 @@ export function fetchBreakSimulation(params: {
   return fetchJSON('/simulate/break', {
     method: 'POST',
     body: JSON.stringify(params),
+  })
+}
+
+export function fetchSimulationPresets(sportKey: string): Promise<{ presets: SimulationPreset[] }> {
+  return fetchJSON(`/simulation/presets/${sportKey}`)
+}
+
+export function saveSimulationPreset(sportKey: string, preset: SimulationPreset) {
+  return fetchJSON(`/simulation/presets/${sportKey}`, {
+    method: 'POST',
+    body: JSON.stringify(preset),
+  })
+}
+
+export function deleteSimulationPreset(sportKey: string, name: string) {
+  return fetchJSON(`/simulation/presets/${sportKey}/${encodeURIComponent(name)}`, {
+    method: 'DELETE',
   })
 }
 

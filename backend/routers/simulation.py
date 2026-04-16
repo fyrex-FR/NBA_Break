@@ -5,14 +5,20 @@ import os
 
 from fastapi import APIRouter, HTTPException
 
-from ..models.schemas import BreakSimulationRequest, BreakSimulationResponse
-from ..services.analysis_engine import load_master_data, enrich_dataframe
+from ..models.schemas import (
+    BreakSimulationRequest,
+    BreakSimulationResponse,
+    SimulationPreset,
+    SimulationPresetSaveRequest,
+)
+from ..services.analysis_engine import enrich_dataframe, load_master_data
 from ..services.break_engine import (
     build_break_simulation_pool,
     build_default_spots,
     build_deterministic_spot_summary,
     build_spot_player_map,
 )
+from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json
 
 router = APIRouter(prefix="/api", tags=["simulation"])
 
@@ -66,3 +72,77 @@ def simulate_break(req: BreakSimulationRequest):
         summary=summary,
         player_map=player_map_serializable,
     )
+
+
+# ---------------------------------------------------------------------------
+# Simulation Presets
+# ---------------------------------------------------------------------------
+
+SIM_PRESETS_KEY = "app/simulation_presets.json"
+
+
+def _load_sim_presets():
+    config = get_r2_config()
+    if not is_r2_configured(config):
+        return {}
+    try:
+        return read_r2_json(config, SIM_PRESETS_KEY)
+    except Exception:
+        return {}
+
+
+def _save_sim_presets(data):
+    config = get_r2_config()
+    if not is_r2_configured(config):
+        raise HTTPException(status_code=503, detail="R2 non configuré.")
+    write_r2_json(config, SIM_PRESETS_KEY, data)
+
+
+@router.get("/simulation/presets/{sport_key}")
+def list_sim_presets(sport_key: str):
+    """List saved simulation presets for a sport."""
+    all_presets = _load_sim_presets()
+    sport_presets = all_presets.get(sport_key, {})
+    return {
+        "presets": [
+            {
+                "name": name,
+                "checklist_ids": p["checklist_ids"],
+                "method": p["method"],
+                "extracted_players": p.get("extracted_players", []),
+                "hits_guaranteed": p.get("hits_guaranteed", {}),
+            }
+            for name, p in sport_presets.items()
+        ]
+    }
+
+
+@router.post("/simulation/presets/{sport_key}")
+def save_sim_preset(sport_key: str, req: SimulationPresetSaveRequest):
+    """Save or update a simulation preset."""
+    all_presets = _load_sim_presets()
+    if sport_key not in all_presets:
+        all_presets[sport_key] = {}
+
+    all_presets[sport_key][req.name] = {
+        "checklist_ids": req.checklist_ids,
+        "method": req.method,
+        "extracted_players": req.extracted_players,
+        "hits_guaranteed": req.hits_guaranteed,
+    }
+    _save_sim_presets(all_presets)
+    return {"status": "ok", "name": req.name}
+
+
+@router.delete("/simulation/presets/{sport_key}/{name}")
+def delete_sim_preset(sport_key: str, name: str):
+    """Delete a simulation preset."""
+    all_presets = _load_sim_presets()
+    sport_presets = all_presets.get(sport_key, {})
+    if name not in sport_presets:
+        raise HTTPException(status_code=404, detail=f"Preset '{name}' not found")
+
+    del sport_presets[name]
+    all_presets[sport_key] = sport_presets
+    _save_sim_presets(all_presets)
+    return {"status": "ok"}

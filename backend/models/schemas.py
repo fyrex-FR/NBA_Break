@@ -49,8 +49,20 @@ class PresetSaveRequest(BaseModel):
     checklist_ids: List[str]
 
 
-class KeywordOverridesUpdateRequest(BaseModel):
-    overrides: dict
+class SimulationPresetSaveRequest(BaseModel):
+    name: str
+    checklist_ids: List[str]
+    method: str
+    extracted_players: List[str] = []
+    hits_guaranteed: Dict[str, int] = {}
+
+
+class SimulationPreset(BaseModel):
+    name: str
+    checklist_ids: List[str]
+    method: str
+    extracted_players: List[str]
+    hits_guaranteed: Dict[str, int]
 
 
 # ---------------------------------------------------------------------------

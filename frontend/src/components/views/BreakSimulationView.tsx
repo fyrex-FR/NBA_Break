@@ -1,11 +1,12 @@
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
-import { fetchBreakSimulation } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { MultiSearchSelect } from '../shared/MultiSearchSelect'
-import type { BreakSpotRecord, BreakSimulationResponse } from '../../types'
+import { Save, Trash2, Download, Plus } from 'lucide-react'
+import { fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
+import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset } from '../../types'
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
@@ -60,7 +61,24 @@ export function BreakSimulationView() {
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
   const [extractedPlayers, setExtractedPlayers] = useState<string[]>([])
   const [panelOpen, setPanelOpen] = useState(true)
+
+  // Presets state
+  const [presets, setPresets] = useState<SimulationPreset[]>([])
+  const [newPresetName, setNewPresetName] = useState('')
+  const [presetsLoading, setPresetsLoading] = useState(false)
+  const [presetsOpen, setPresetsOpen] = useState(false)
+
   const resultsRef = useRef<HTMLDivElement>(null)
+
+  // Load presets on mount or sport change
+  useEffect(() => {
+    if (!selectedSport) return
+    setPresetsLoading(true)
+    fetchSimulationPresets(selectedSport)
+      .then(data => setPresets(data.presets))
+      .catch(err => console.error('Failed to fetch sim presets:', err))
+      .finally(() => setPresetsLoading(false))
+  }, [selectedSport])
 
   const checklistsInfo = useMemo(() =>
     selectedChecklistIds.map(id => availableChecklists.find(c => c.checklist_id === id)).filter(Boolean),
@@ -99,6 +117,58 @@ export function BreakSimulationView() {
     }
   }
 
+  async function handleSavePreset() {
+    if (!newPresetName.trim() || !selectedSport) return
+    const guaranteedMap: Record<string, number> = {}
+    for (const id of selectedChecklistIds) {
+      const raw = hitsGuaranteed[id]
+      const n = (raw !== undefined && raw !== '') ? parseInt(raw) : 0
+      guaranteedMap[id] = isNaN(n) ? 0 : Math.max(0, n)
+    }
+
+    const preset: SimulationPreset = {
+      name: newPresetName,
+      checklist_ids: selectedChecklistIds,
+      method,
+      extracted_players: extractedPlayers,
+      hits_guaranteed: guaranteedMap
+    }
+
+    try {
+      await saveSimulationPreset(selectedSport, preset)
+      const data = await fetchSimulationPresets(selectedSport)
+      setPresets(data.presets)
+      setNewPresetName('')
+    } catch (err: any) {
+      alert(err.message)
+    }
+  }
+
+  async function handleDeletePreset(name: string) {
+    if (!selectedSport || !confirm(`Supprimer la configuration "${name}" ?`)) return
+    try {
+      await deleteSimulationPreset(selectedSport, name)
+      setPresets(prev => prev.filter(p => p.name !== name))
+    } catch (err: any) {
+      alert(err.message)
+    }
+  }
+
+  function handleLoadPreset(p: SimulationPreset) {
+    // We can't directly set selectedChecklistIds because it's in the store
+    // But we can update the other local states
+    setMethod(p.method)
+    setExtractedPlayers(p.extracted_players)
+    const hg: Record<string, string> = {}
+    Object.entries(p.hits_guaranteed).forEach(([id, val]) => {
+      hg[id] = String(val)
+    })
+    setHitsGuaranteed(hg)
+    // For checklist IDs, we might need a store action or just inform the user that it loads selection too
+    useAppStore.getState().setSelectedChecklistIds(p.checklist_ids)
+    setPresetsOpen(false)
+  }
+
 
 
   return (
@@ -107,6 +177,86 @@ export function BreakSimulationView() {
       <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
         Renseignez les autos garanties par box pour pondérer le score.
       </p>
+
+      {/* Presets Management */}
+      <div className="mb-4 rounded-xl" style={{ border: '1px solid var(--border-subtle)' }}>
+        <button
+          onClick={() => setPresetsOpen(p => !p)}
+          className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left"
+          style={{ background: 'var(--bg-surface)' }}
+        >
+          <div className="flex items-center gap-2">
+            <Save size={14} style={{ color: 'var(--text-tertiary)' }} />
+            <span className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+              Configurations enregistrées
+            </span>
+          </div>
+          <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{presetsOpen ? '▲' : '▼'}</span>
+        </button>
+
+        {presetsOpen && (
+          <div className="px-4 pb-4 pt-2" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', borderRadius: '0 0 0.75rem 0.75rem' }}>
+            {/* List of presets */}
+            <div className="space-y-1 mb-4">
+              {presets.length === 0 && !presetsLoading && (
+                <p className="text-xs italic px-2 py-1" style={{ color: 'var(--text-quaternary)' }}>Aucune configuration sauvegardée.</p>
+              )}
+              {presetsLoading && <p className="text-xs px-2 py-1">Chargement...</p>}
+              {presets.map(p => (
+                <div key={p.name} className="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-[var(--bg-hover)] transition-colors group">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{p.name}</span>
+                    <span className="text-[10px]" style={{ color: 'var(--text-quaternary)' }}>
+                      {p.checklist_ids.length} checklists • {p.method}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      onClick={() => handleLoadPreset(p)}
+                      title="Charger"
+                      className="p-1.5 rounded-md hover:bg-[var(--bg-surface)] text-blue-400"
+                    >
+                      <Download size={14} />
+                    </button>
+                    <button
+                      onClick={() => handleDeletePreset(p.name)}
+                      title="Supprimer"
+                      className="p-1.5 rounded-md hover:bg-[var(--bg-surface)] text-red-400"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Save current config */}
+            <div className="flex gap-2 items-center pt-3 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
+              <input
+                type="text"
+                placeholder="Nom de la configuration..."
+                value={newPresetName}
+                onChange={(e) => setNewPresetName(e.target.value)}
+                className="flex-1 rounded-lg px-3 py-1.5 text-sm"
+                style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+              />
+              <button
+                onClick={handleSavePreset}
+                disabled={!newPresetName.trim() || selectedChecklistIds.length === 0}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                style={{
+                  background: 'var(--accent)',
+                  color: '#fff',
+                  opacity: (!newPresetName.trim() || selectedChecklistIds.length === 0) ? 0.5 : 1
+                }}
+              >
+                <Plus size={14} />
+                Enregistrer
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Hits garantis par checklist */}
       {checklistsInfo.length > 0 && (

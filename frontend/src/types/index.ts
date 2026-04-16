@@ -102,6 +102,14 @@ export interface PresetInfo {
   checklist_ids: string[]
 }
 
+export interface SimulationPreset {
+  name: string
+  checklist_ids: string[]
+  method: string
+  extracted_players: string[]
+  hits_guaranteed: Record<string, number>
+}
+
 // ---------------------------------------------------------------------------
 // View types
 // ---------------------------------------------------------------------------
