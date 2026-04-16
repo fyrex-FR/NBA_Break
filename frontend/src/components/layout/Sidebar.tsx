@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
 import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist } from '../../api/client'
+import {
+  Sun, Moon, Plus, FileSpreadsheet, UploadCloud, Copy, Check, Trash2,
+  ChevronDown, ChevronRight, Save, Play, Folder, Database
+} from 'lucide-react'
 
 import type { ChecklistInfo, PresetInfo } from '../../types'
 
@@ -10,6 +14,20 @@ type SidebarTab = 'selection' | 'presets'
 interface SidebarProps {
   isOpen: boolean
   onClose: () => void
+}
+
+function formatChecklistName(raw: string) {
+  const clean = raw.replace(/\.(parquet|xlsx)$/i, '')
+  const match = clean.match(/^(\d{4}-\d{2})-(.+)$/)
+  if (match) {
+    const year = match[1]
+    const name = match[2].replace(/-/g, ' ')
+    // title case
+    const titleCaseName = name.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+    return { name: titleCaseName, year }
+  }
+  const fallback = clean.replace(/-/g, ' ')
+  return { name: fallback.charAt(0).toUpperCase() + fallback.slice(1), year: '' }
 }
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
@@ -151,8 +169,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     }
   }
 
-  const currentSport = sports?.find((s) => s.key === selectedSport)
-
   return (
     <>
       {/* Mobile overlay */}
@@ -164,7 +180,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 w-72 flex flex-col h-dvh
+          fixed inset-y-0 left-0 z-50 w-80 flex flex-col h-dvh
           transition-transform duration-300 ease-in-out
           md:relative md:translate-x-0 md:flex-shrink-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
@@ -174,75 +190,82 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* ── Header fixe ── */}
         <div className="flex-shrink-0">
           {/* Logo NoClim */}
-          <div className="flex items-center gap-2.5 px-4 pt-3 pb-2">
-            <img src="/logo.png" alt="NoClim" className="w-7 h-7 flex-shrink-0" style={{ borderRadius: '20%' }} />
-            <span className="font-bold text-sm tracking-wide" style={{ color: 'var(--text-primary)' }}>NoClim</span>
+          <div className="flex items-center gap-3 px-5 pt-5 pb-3">
+            <img src="/logo.png" alt="NoClim" className="w-8 h-8 flex-shrink-0 shadow-sm" style={{ borderRadius: '24%' }} />
+            <span className="font-extrabold text-lg tracking-tight" style={{ color: 'var(--text-primary)' }}>NoClim</span>
           </div>
+
           {/* Titre + sport + bouton upload */}
-          <div className="flex items-center gap-2 px-4 py-3">
-            <span className="text-lg">{currentSport?.page_icon || '🏀'}</span>
-            <select
-              value={selectedSport}
-              onChange={(e) => setSport(e.target.value)}
-              className="flex-1 rounded-lg px-2 py-1.5 text-sm font-semibold"
-              style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', cursor: 'pointer' }}
-            >
-              {sports?.map((s) => (
-                <option key={s.key} value={s.key}>{s.page_icon} {s.label}</option>
-              ))}
-            </select>
+          <div className="flex items-center gap-2 px-4 py-2">
+            <div className="flex items-center bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-lg px-2 py-1.5 flex-1 shadow-sm">
+              <Database className="w-4 h-4 text-[var(--accent)] mr-2" />
+              <select
+                value={selectedSport}
+                onChange={(e) => setSport(e.target.value)}
+                className="flex-1 font-semibold text-sm outline-none bg-transparent cursor-pointer"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                {sports?.map((s) => (
+                  <option key={s.key} value={s.key}>{s.label}</option>
+                ))}
+              </select>
+            </div>
+
             <button
               onClick={toggleTheme}
               title={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
-              className="w-7 h-7 flex items-center justify-center rounded-md text-base flex-shrink-0"
-              style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+              className="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0"
+              style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
             >
-              {theme === 'dark' ? '☀️' : '🌙'}
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
             <button
               onClick={() => { setUploadOpen((v) => !v); setUploadStatus(null) }}
               title="Ajouter une checklist"
-              className="w-7 h-7 flex items-center justify-center rounded-md text-base transition-colors flex-shrink-0"
+              className="w-9 h-9 flex items-center justify-center rounded-lg transition-all flex-shrink-0 shadow-sm"
               style={{
                 background: uploadOpen ? 'var(--accent)' : 'var(--bg-surface)',
-                color: uploadOpen ? '#fff' : 'var(--text-tertiary)',
+                color: uploadOpen ? '#fff' : 'var(--text-secondary)',
                 border: '1px solid var(--border-subtle)',
               }}
             >
-              ⊕
+              <Plus className="w-5 h-5" />
             </button>
           </div>
 
           {/* Panel upload inline */}
           {uploadOpen && (
-            <div className="mx-4 mb-2 p-3 rounded-lg space-y-2" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+            <div className="mx-4 mb-3 p-4 rounded-xl space-y-3 shadow-glass" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
               <label
-                className="flex items-center justify-center gap-2 rounded-lg py-3 cursor-pointer text-xs"
+                className="flex items-center justify-center gap-2 rounded-lg py-4 cursor-pointer text-sm font-medium transition-colors"
                 style={{
                   border: `2px dashed ${uploadFile ? 'var(--accent)' : 'var(--border-standard)'}`,
-                  color: uploadFile ? 'var(--accent)' : 'var(--text-quaternary)',
+                  color: uploadFile ? 'var(--accent)' : 'var(--text-tertiary)',
+                  background: uploadFile ? 'transparent' : 'var(--bg-panel)'
                 }}
               >
-                <span>{uploadFile ? `📄 ${uploadFile.name}` : '+ Choisir un fichier .xlsx'}</span>
+                {uploadFile ? <FileSpreadsheet className="w-4 h-4" /> : <UploadCloud className="w-4 h-4" />}
+                <span>{uploadFile ? uploadFile.name : 'Choisir un fichier .xlsx'}</span>
                 <input type="file" accept=".xlsx,.xls" className="hidden" onChange={(e) => { setUploadFile(e.target.files?.[0] || null); setUploadStatus(null) }} />
               </label>
-              <label className="flex items-center gap-2 text-xs cursor-pointer" style={{ color: 'var(--text-secondary)' }}>
-                <input type="checkbox" checked={uploadOverwrite} onChange={(e) => setUploadOverwrite(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
+
+              <label className="flex items-center gap-2 text-sm cursor-pointer font-medium" style={{ color: 'var(--text-secondary)' }}>
+                <input type="checkbox" checked={uploadOverwrite} onChange={(e) => setUploadOverwrite(e.target.checked)} className="rounded" style={{ accentColor: 'var(--accent)' }} />
                 Remplacer si existant
               </label>
               <button
                 onClick={handleUpload}
                 disabled={!uploadFile || uploading}
-                className="w-full py-2 rounded-lg text-xs font-medium"
+                className="w-full py-2.5 rounded-lg text-sm font-semibold shadow-sm transition-colors flex items-center justify-center gap-2"
                 style={{
                   background: uploadFile && !uploading ? 'var(--accent)' : 'var(--bg-hover)',
                   color: uploadFile && !uploading ? '#fff' : 'var(--text-quaternary)',
                 }}
               >
-                {uploading ? '⏳ Upload...' : '⬆️ Envoyer'}
+                {uploading ? 'Upload en cours...' : 'Envoyer'}
               </button>
               {uploadStatus && (
-                <div className="text-xs px-2 py-1.5 rounded" style={{
+                <div className="text-sm px-3 py-2 rounded-lg" style={{
                   background: uploadStatus.type === 'ok' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
                   color: uploadStatus.type === 'ok' ? '#22c55e' : '#ef4444',
                 }}>
@@ -253,38 +276,49 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           )}
 
           {/* Onglets */}
-          <div className="flex mx-4 mb-2 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+          <div className="flex mx-4 mt-2 mb-3 rounded-lg overflow-hidden p-1 shadow-sm" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
             <button
               onClick={() => setTab('selection')}
-              className="flex-1 py-1.5 text-xs font-medium transition-colors"
-              style={{ background: tab === 'selection' ? 'var(--accent)' : 'transparent', color: tab === 'selection' ? '#fff' : 'var(--text-tertiary)' }}
+              className="flex-1 py-1.5 text-xs font-semibold rounded-md transition-all flex justify-center items-center gap-1.5"
+              style={{
+                background: tab === 'selection' ? 'var(--bg-panel)' : 'transparent',
+                color: tab === 'selection' ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                boxShadow: tab === 'selection' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+              }}
             >
-              📋 Sélection
+              <Folder className="w-3.5 h-3.5" /> Sélection
             </button>
             <button
               onClick={() => setTab('presets')}
-              className="flex-1 py-1.5 text-xs font-medium transition-colors"
-              style={{ background: tab === 'presets' ? 'var(--accent)' : 'transparent', color: tab === 'presets' ? '#fff' : 'var(--text-tertiary)' }}
+              className="flex-1 py-1.5 text-xs font-semibold rounded-md transition-all flex justify-center items-center gap-1.5"
+              style={{
+                background: tab === 'presets' ? 'var(--bg-panel)' : 'transparent',
+                color: tab === 'presets' ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                boxShadow: tab === 'presets' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+              }}
             >
-              💾 Presets{presets.length > 0 ? ` (${presets.length})` : ''}
+              <Save className="w-3.5 h-3.5" /> Presets{presets.length > 0 ? ` (${presets.length})` : ''}
             </button>
           </div>
 
           {/* Barre sélection — visible seulement sur l'onglet sélection */}
           {tab === 'selection' && (
-            <div className="flex items-center justify-between px-4 pb-2">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>
-                  {selectedCount > 0 ? `${selectedCount} / ${totalCount} sélectionnées` : `${totalCount} checklists`}
+            <div className="flex items-center justify-between px-5 pb-3">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
+                  {selectedCount > 0 ? `${selectedCount} / ${totalCount} sel.` : `${totalCount} items`}
                 </span>
                 {selectedCount > 0 && (
                   <button
                     onClick={() => { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 2000) }}
-                    className="text-xs px-1.5 py-0.5 rounded"
-                    style={{ color: copied ? '#22c55e' : 'var(--text-quaternary)', border: '1px solid var(--border-subtle)' }}
+                    className="text-xs px-2 py-1 rounded flex items-center transition-colors"
+                    style={{
+                      color: copied ? '#22c55e' : 'var(--text-secondary)',
+                      background: copied ? 'rgba(34,197,94,0.1)' : 'var(--bg-surface)'
+                    }}
                     title="Copier le lien de partage"
                   >
-                    {copied ? '✓ Copié' : '🔗'}
+                    {copied ? <><Check className="w-3 h-3 mr-1" /> Copié</> : <Copy className="w-3 h-3" />}
                   </button>
                 )}
               </div>
@@ -292,28 +326,28 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {selectedCount > 0 && (
                   <button
                     onClick={deselectAllChecklists}
-                    className="text-xs px-2 py-0.5 rounded"
-                    style={{ color: 'var(--text-quaternary)', border: '1px solid var(--border-subtle)' }}
+                    className="text-xs px-2 py-1 rounded transition-colors hover:text-red-400"
+                    style={{ color: 'var(--text-quaternary)', background: 'var(--bg-surface)' }}
                   >
-                    ✕ Effacer
+                    Effacer
                   </button>
                 )}
                 {confirmSelectAll ? (
                   <button
                     onClick={() => { selectAllChecklists(); setConfirmSelectAll(false) }}
-                    className="text-xs px-2 py-0.5 rounded font-medium"
-                    style={{ color: '#fff', background: 'var(--accent)' }}
+                    className="text-xs px-2 py-1 rounded font-semibold text-white shadow-sm"
+                    style={{ background: 'var(--accent)' }}
                     onBlur={() => setConfirmSelectAll(false)}
                     autoFocus
                   >
-                    ⚠️ {totalCount} — ok ?
+                    Confirmer
                   </button>
                 ) : (
                   !allSelected && (
                     <button
                       onClick={() => totalCount > 20 ? setConfirmSelectAll(true) : selectAllChecklists()}
-                      className="text-xs px-2 py-0.5 rounded"
-                      style={{ color: 'var(--accent)' }}
+                      className="text-xs px-2 py-1 rounded font-medium"
+                      style={{ color: 'var(--accent)', background: 'var(--bg-surface)' }}
                     >
                       Tout
                     </button>
@@ -325,9 +359,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         </div>
 
         {/* ── Contenu scrollable ── */}
-        <div className="flex-1 overflow-y-auto px-4 pb-2">
+        <div className="flex-1 overflow-y-auto px-4 pb-4">
           {tab === 'selection' ? (
-            <>
+            <div className="space-y-3">
               {sortedYears.map((year) => {
                 const yearChecklists = checklistsByYear[year]
                 const yearSelectedCount = yearChecklists.filter((cl) => selectedChecklistIds.includes(cl.checklist_id)).length
@@ -335,17 +369,17 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
                 const isOpen = openYears.has(year)
                 return (
-                  <div key={year} className="mb-1 rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                  <div key={year} className="rounded-xl overflow-hidden shadow-sm" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
                     {/* En-tête année — clic = expand/collapse */}
                     <div
-                      className="flex items-center gap-2 px-2.5 py-2 cursor-pointer select-none"
+                      className="flex items-center gap-3 px-4 py-3 cursor-pointer select-none hover:bg-[var(--bg-hover)] transition-colors"
                       onClick={() => toggleYearOpen(year)}
                     >
-                      <span className="text-xs flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>
-                        {isOpen ? '▾' : '▸'}
+                      <span className="flex-shrink-0 text-[var(--accent)]">
+                        {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                       </span>
-                      <span className="text-xs font-medium flex-1" style={{ color: 'var(--text-secondary)' }}>{year}</span>
-                      <span className="text-xs flex-shrink-0" style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
+                      <span className="font-bold text-sm flex-1 tracking-wide" style={{ color: 'var(--text-primary)' }}>{year}</span>
+                      <span className="text-xs font-semibold flex-shrink-0" style={{ color: yearSelectedCount > 0 ? 'var(--accent)' : 'var(--text-quaternary)' }}>
                         {yearSelectedCount}/{yearChecklists.length}
                       </span>
                       {/* Checkbox pour sélectionner/désélectionner toute l'année */}
@@ -355,112 +389,132 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         ref={(el) => { if (el) el.indeterminate = yearSelectedCount > 0 && !allYearSelected }}
                         onChange={(e) => { e.stopPropagation(); toggleYear(year) }}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-shrink-0"
+                        className="flex-shrink-0 rounded w-3.5 h-3.5 ml-2"
                         style={{ accentColor: 'var(--accent)', cursor: 'pointer' }}
                       />
                     </div>
                     {/* Checklists de l'année */}
                     {isOpen && (
-                      <div className="pb-1" style={{ borderTop: '1px solid var(--border-subtle)' }}>
-                        {yearChecklists.map((cl) => (
-                          <label
-                            key={cl.checklist_id}
-                            className="flex items-start gap-2 px-2.5 py-1.5 text-xs cursor-pointer"
-                            style={{ color: 'var(--text-secondary)' }}
-                            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={selectedChecklistIds.includes(cl.checklist_id)}
-                              onChange={() => toggleChecklist(cl.checklist_id)}
-                              className="rounded mt-0.5 flex-shrink-0"
-                              style={{ accentColor: 'var(--accent)' }}
-                            />
-                            <span className="flex-1 break-words leading-snug">{cl.checklist_name.replace('.parquet', '')}</span>
-                            <span className="flex-shrink-0" style={{ color: 'var(--text-quaternary)' }}>{cl.rows}</span>
-                          </label>
-                        ))}
+                      <div className="pb-2 pt-1 px-2" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+                        {yearChecklists.map((cl) => {
+                          const formatted = formatChecklistName(cl.checklist_name);
+                          const isSelected = selectedChecklistIds.includes(cl.checklist_id);
+                          return (
+                            <label
+                              key={cl.checklist_id}
+                              className={`flex items-start gap-3 px-3 py-2 text-sm cursor-pointer rounded-lg transition-colors my-0.5 ${isSelected ? 'bg-[var(--bg-hover)]' : 'hover:bg-[var(--bg-hover)]'}`}
+                              style={{ color: isSelected ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={isSelected}
+                                onChange={() => toggleChecklist(cl.checklist_id)}
+                                className="rounded mt-1 w-3.5 h-3.5 flex-shrink-0"
+                                style={{ accentColor: 'var(--accent)' }}
+                              />
+                              <div className="flex-1 flex flex-col justify-center">
+                                <span className="font-semibold">{formatted.name}</span>
+                                {formatted.year && <span className="text-xs text-[var(--text-tertiary)]">{formatted.year}</span>}
+                              </div>
+                              <span className="flex-shrink-0 text-xs font-medium py-1" style={{ color: 'var(--text-quaternary)' }}>{cl.rows} items</span>
+                            </label>
+                          )
+                        })}
                       </div>
                     )}
                   </div>
                 )
               })}
-            </>
+            </div>
           ) : (
-            <>
+            <div className="px-1">
               {/* Sauver preset */}
-              <div className="mb-4 mt-1">
-                <label className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-tertiary)' }}>
+              <div className="mb-6 mt-2 p-4 rounded-xl shadow-glass" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                <label className="text-sm font-semibold mb-2 block" style={{ color: 'var(--text-primary)' }}>
                   Sauver la sélection ({selectedCount})
                 </label>
-                <div className="flex gap-1.5">
+                <div className="flex gap-2 mt-3">
                   <input
                     type="text"
                     value={presetName}
                     onChange={(e) => setPresetName(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSavePreset()}
                     placeholder="Nom du preset..."
-                    className="flex-1 rounded-lg px-2.5 py-1.5 text-xs"
-                    style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+                    className="flex-1 rounded-lg px-3 py-2 text-sm outline-none transition-border"
+                    style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
                   />
                   <button
                     onClick={handleSavePreset}
                     disabled={!presetName.trim() || selectedCount === 0}
-                    className="px-2.5 py-1.5 rounded-lg text-xs font-medium"
+                    className="px-3 py-2 rounded-lg shadow-sm transition-colors"
                     style={{
-                      background: presetName.trim() && selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
+                      background: presetName.trim() && selectedCount > 0 ? 'var(--accent)' : 'var(--bg-hover)',
                       color: presetName.trim() && selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
                     }}
                   >
-                    💾
+                    <Save className="w-5 h-5" />
                   </button>
                 </div>
-                {presetMsg && <div className="text-xs mt-1" style={{ color: 'var(--accent)' }}>{presetMsg}</div>}
+                {presetMsg && <div className="text-sm font-medium mt-3" style={{ color: 'var(--accent)' }}>{presetMsg}</div>}
               </div>
 
               {/* Liste presets */}
-              <label className="text-xs font-medium mb-2 block" style={{ color: 'var(--text-tertiary)' }}>Presets sauvegardés</label>
+              <div className="flex items-center gap-2 mb-3 px-1">
+                <BookmarkIcon />
+                <label className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>Presets sauvegardés</label>
+              </div>
+
               {presets.length === 0 ? (
-                <div className="text-xs py-4 text-center" style={{ color: 'var(--text-quaternary)' }}>Aucun preset sauvegardé</div>
+                <div className="text-sm py-8 text-center rounded-xl dashed-border" style={{ color: 'var(--text-quaternary)', border: '1px dashed var(--border-solid)' }}>
+                  Aucun preset existant
+                </div>
               ) : (
-                <div className="space-y-1 mb-6">
+                <div className="space-y-2">
                   {presets.map((p) => (
-                    <div key={p.name} className="flex items-center gap-2 px-2 py-2 rounded text-xs group" style={{ border: '1px solid var(--border-subtle)' }}>
-                      <button onClick={() => handleLoadPreset(p)} className="flex-1 text-left truncate" style={{ color: 'var(--text-secondary)' }}>
-                        <span className="font-medium">{p.name}</span>
-                        <span className="ml-1.5" style={{ color: 'var(--text-quaternary)' }}>({p.checklist_ids.length})</span>
+                    <div key={p.name} className="flex items-center gap-3 px-3 py-3 rounded-xl group transition-all" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                      <button onClick={() => handleLoadPreset(p)} className="flex-1 text-left flex items-baseline gap-2 truncate">
+                        <span className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{p.name}</span>
+                        <span className="text-xs font-medium" style={{ color: 'var(--text-quaternary)' }}>{p.checklist_ids.length} items</span>
                       </button>
                       <button
                         onClick={() => handleDeletePreset(p.name)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity px-1"
-                        style={{ color: 'var(--text-quaternary)' }}
-                      >🗑️</button>
+                        className="opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-md hover:bg-red-500/10 text-[var(--text-quaternary)] hover:text-red-500"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </div>
                   ))}
                 </div>
               )}
-
-            </>
+            </div>
           )}
         </div>
 
         {/* ── Bouton Lancer — toujours visible ── */}
-        <div className="flex-shrink-0 p-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+        <div className="flex-shrink-0 p-5" style={{ background: 'var(--bg-panel)', borderTop: '1px solid var(--border-subtle)' }}>
           <button
             onClick={handleLancer}
             disabled={selectedCount === 0 || isAnalyzing}
-            className="w-full py-3 rounded-lg text-sm font-medium transition-colors"
+            className="w-full py-3.5 rounded-xl text-sm font-bold shadow-sm transition-all focus:ring-2 focus:ring-offset-2 focus:ring-[var(--accent)] focus:ring-offset-[var(--bg-panel)] flex items-center justify-center gap-2"
             style={{
               background: selectedCount > 0 ? 'var(--accent)' : 'var(--bg-surface)',
               color: selectedCount > 0 ? '#fff' : 'var(--text-quaternary)',
-              opacity: isAnalyzing ? 0.6 : 1,
+              opacity: isAnalyzing ? 0.8 : 1,
             }}
           >
-            {isAnalyzing ? '⏳ Analyse...' : selectedCount > 0 ? `🚀 Lancer (${selectedCount})` : 'Sélectionnez des checklists'}
+            {isAnalyzing ? 'Analyse en cours...' : (
+              <>
+                <Play className="w-4 h-4 fill-current" />
+                {selectedCount > 0 ? `LANCER L'ANALYSE (${selectedCount})` : 'SÉLECTIONNEZ DES DONNÉES'}
+              </>
+            )}
           </button>
         </div>
       </aside>
     </>
   )
+}
+
+function BookmarkIcon() {
+  return <Save className="w-4 h-4 text-[var(--text-tertiary)]" />;
 }

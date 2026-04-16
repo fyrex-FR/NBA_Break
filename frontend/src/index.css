@@ -1,51 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Dark theme (default) */
-:root, [data-theme="dark"] {
+:root,
+[data-theme="dark"] {
   --rc-year-color: rgba(255, 215, 0, 0.8);
-  --bg-primary: #08090a;
-  --bg-panel: #0f1011;
-  --bg-surface: #191a1b;
-  --bg-hover: #28282c;
-  --text-primary: #f7f8f8;
-  --text-secondary: #d0d6e0;
-  --text-tertiary: #8a8f98;
-  --text-quaternary: #72767f;
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-standard: rgba(255, 255, 255, 0.12);
-  --border-solid: #2a2c31;
-  --accent: #ff6b35;
-  --accent-hover: #ff8a5c;
+  --bg-primary: #0a0b0c;
+  --bg-panel: #111214;
+  --bg-surface: #1a1c1e;
+  --bg-hover: #292b2f;
+  --bg-glass: rgba(17, 18, 20, 0.6);
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-tertiary: #94a3b8;
+  --text-quaternary: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-standard: rgba(255, 255, 255, 0.1);
+  --border-solid: #334155;
+  --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --accent: #f97316;
+  --accent-hover: #fb923c;
 }
 
 /* Light theme — muted stone, no pure white */
 [data-theme="light"] {
   --rc-year-color: #92400e;
-  --bg-primary: #e8e8e5;      /* stone base, bien grisé */
-  --bg-panel: #eeeeed;        /* panels/sidebar: un cran plus clair */
-  --bg-surface: #f3f3f1;      /* surfaces/cartes: jamais blanc pur */
-  --bg-hover: #dfdfd9;        /* hover plus visible sur fond gris */
-  --text-primary: #1c1c1a;
-  --text-secondary: #3a3a37;
-  --text-tertiary: #6b6b65;
-  --text-quaternary: #9a9a94;
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-standard: rgba(0, 0, 0, 0.14);
-  --border-solid: #ccccc8;
-  --accent: #d95f28;
-  --accent-hover: #bf5222;
+  --bg-primary: #f8fafc;
+  --bg-panel: #ffffff;
+  --bg-surface: #f1f5f9;
+  --bg-hover: #e2e8f0;
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+  --text-quaternary: #94a3b8;
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-standard: rgba(0, 0, 0, 0.1);
+  --border-solid: #cbd5e1;
+  --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.05);
+  --accent: #ea580c;
+  --accent-hover: #f97316;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-glass);
+  border: 1px solid var(--border-subtle);
 }
 
 /* Sport-specific accents */
-[data-sport="nba"] { --accent: #ff6b35; --accent-hover: #ff8a5c; }
-[data-sport="nfl"] { --accent: #2ecc71; --accent-hover: #4ade80; }
-[data-sport="soccer"] { --accent: #0a84ff; --accent-hover: #3b9eff; }
-[data-sport="tennis"] { --accent: #006633; --accent-hover: #00994d; }
+[data-sport="nba"] {
+  --accent: #ff6b35;
+  --accent-hover: #ff8a5c;
+}
+
+[data-sport="nfl"] {
+  --accent: #2ecc71;
+  --accent-hover: #4ade80;
+}
+
+[data-sport="soccer"] {
+  --accent: #0a84ff;
+  --accent-hover: #3b9eff;
+}
+
+[data-sport="tennis"] {
+  --accent: #006633;
+  --accent-hover: #00994d;
+}
 
 body {
   margin: 0;
@@ -61,7 +98,20 @@ body {
 }
 
 /* Scrollbar styling */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-panel); }
-::-webkit-scrollbar-thumb { background: var(--border-solid); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text-quaternary); }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-solid);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-quaternary);
+}

@@ -18,6 +18,7 @@ import { DetectionView } from './components/views/DetectionView'
 import { RookiesView } from './components/views/RookiesView'
 import { TrendView } from './components/views/TrendView'
 import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
+import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,9 +32,10 @@ function MainContent() {
   if (isAnalyzing) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-center">
-          <div className="text-4xl mb-4 animate-pulse">⏳</div>
-          <p style={{ color: 'var(--text-secondary)' }}>Analyse en cours...</p>
+        <div className="text-center p-8 rounded-2xl glass-panel animate-pulse flex flex-col items-center">
+          <Loader2 className="w-12 h-12 mb-4 text-[var(--accent)] animate-spin" />
+          <p className="font-semibold text-lg" style={{ color: 'var(--text-primary)' }}>Analyse en cours...</p>
+          <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>Croisement des données en temps réel</p>
         </div>
       </div>
     )
@@ -41,20 +43,26 @@ function MainContent() {
 
   if (!analysisData) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-center max-w-lg px-6">
-          <img src="/logo.png" alt="NoClim" className="w-40 h-40 mb-6 mx-auto" style={{ borderRadius: '24%' }} />
-          <h2 className="text-3xl font-bold mb-3">NoClim</h2>
-          <p className="text-base mb-2" style={{ color: 'var(--text-secondary)' }}>
+      <div className="flex items-center justify-center h-full p-4">
+        <div className="text-center max-w-lg p-10 rounded-2xl glass-panel shadow-glass transform transition-all hover:scale-[1.01]">
+          <div className="relative inline-block mb-6 group">
+            <div className="absolute inset-0 bg-[var(--accent)] rounded-[24%] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+            <img src="/logo.png" alt="NoClim" className="relative w-32 h-32 mx-auto shadow-xl" style={{ borderRadius: '24%', border: '1px solid var(--border-subtle)' }} />
+          </div>
+          <h2 className="text-4xl font-extrabold mb-3 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-tertiary)]">
+            NoClim
+          </h2>
+          <p className="text-lg font-medium mb-4" style={{ color: 'var(--text-secondary)' }}>
             Parce que climatiser en silence, c'est un art.
           </p>
-          <p className="text-sm mb-6" style={{ color: 'var(--text-quaternary)' }}>
-            Sélectionne tes checklists à gauche, analyse tes spots et évite de te retrouver avec une carte base de 2012.
+          <div className="h-px w-16 bg-[var(--border-standard)] mx-auto mb-5"></div>
+          <p className="text-sm mb-6 leading-relaxed flex flex-col gap-2" style={{ color: 'var(--text-quaternary)' }}>
+            <span>Sélectionne tes checklists à gauche, analyse tes spots et évite de te retrouver avec une carte base de 2012.</span>
           </p>
-          <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-            Prêt à ne plus clim ? Clique sur
-            <span className="font-semibold" style={{ color: 'var(--accent)' }}> 🚀 Lancer</span>.
-          </p>
+          <div className="inline-flex items-center justify-center p-1 rounded-full bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-sm font-medium px-4 py-2 mt-2 gap-2" style={{ color: 'var(--text-primary)' }}>
+            <Play className="w-4 h-4 text-[var(--accent)]" />
+            <span>Sélectionnez des données pour lancer l'analyse</span>
+          </div>
         </div>
       </div>
     )
@@ -168,27 +176,28 @@ export default function App() {
           >
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-1.5 rounded-md"
+              className="p-1.5 rounded-md hover:bg-[var(--bg-hover)] transition-colors"
               style={{ color: 'var(--text-secondary)' }}
               aria-label="Ouvrir le menu"
             >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                <rect y="3" width="20" height="2" rx="1"/>
-                <rect y="9" width="20" height="2" rx="1"/>
-                <rect y="15" width="20" height="2" rx="1"/>
-              </svg>
+              <Menu className="w-5 h-5" />
             </button>
-            <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            <span className="text-base font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>
               NoClim
             </span>
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-3">
               {analysisData && (
-                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm" style={{ background: 'rgba(34,197,94,0.1)', color: '#22c55e', border: '1px solid rgba(34,197,94,0.2)' }}>
                   {analysisData.metadata.checklists_count} listes
                 </span>
               )}
-              <button onClick={toggleTheme} className="p-1.5 rounded-md text-base" style={{ color: 'var(--text-secondary)' }} title="Changer le thème">
-                {theme === 'dark' ? '☀️' : '🌙'}
+              <button
+                onClick={toggleTheme}
+                className="p-1.5 flex items-center justify-center rounded-lg hover:bg-[var(--bg-hover)] transition-colors"
+                style={{ color: 'var(--text-secondary)' }}
+                title="Changer le thème"
+              >
+                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
             </div>
           </div>

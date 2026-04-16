@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    color: #1c1c1a;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .cover {
+    background: #0f1011;
+    color: #f7f8f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    page-break-after: always;
+  }
+
+  .cover-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 24%;
+    margin-bottom: 32px;
+  }
+
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ff6b35;
+  }
+
+  .cover .subtitle {
+    font-size: 18px;
+    color: #8a8f98;
+    margin-bottom: 8px;
+  }
+
+  .cover .tagline {
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-top: 40px;
+    padding: 12px 24px;
+    background: rgba(255,107,53,0.1);
+    border: 1px solid rgba(255,107,53,0.3);
+    border-radius: 8px;
+    font-style: italic;
+  }
+
+  .page {
+    padding: 48px 56px;
+    max-width: 800px;
+    margin: 0 auto;
+    page-break-after: always;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ff6b3520;
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #ff6b35;
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1c1c1a;
+    margin: 28px 0 10px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    color: #3a3a37;
+    margin-bottom: 12px;
+  }
+
+  .screenshot-placeholder {
+    background: #f3f3f1;
+    border: 2px dashed #ccccc8;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    color: #9a9a94;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  .screenshot {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddddd8;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    margin: 16px 0;
+    display: block;
+  }
+
+  .tip {
+    background: #fff8f5;
+    border-left: 4px solid #ff6b35;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    color: #3a3a37;
+    font-size: 13px;
+  }
+
+  .tip strong {
+    color: #ff6b35;
+  }
+
+  .warning {
+    background: #fffbf0;
+    border-left: 4px solid #f59e0b;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    color: #3a3a37;
+    font-size: 13px;
+  }
+
+  .warning strong {
+    color: #d97706;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  thead tr {
+    background: #f3f3f1;
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: #1c1c1a;
+    border-bottom: 2px solid #ddddd8;
+  }
+
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #e8e8e5;
+    color: #3a3a37;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .badge-required {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  .badge-optional {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+
+  .badge-auto {
+    background: #dbeafe;
+    color: #2563eb;
+  }
+
+  .ui-element {
+    display: inline-block;
+    background: #1c1c1a;
+    color: #f7f8f8;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: monospace;
+  }
+
+  .section-intro {
+    color: #6b6b65;
+    font-size: 13px;
+    margin-bottom: 20px;
+    margin-top: 6px;
+  }
+
+  .example-table {
+    border: 1px solid #ddddd8;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+
+  .example-table table {
+    margin: 0;
+  }
+
+  .example-table thead tr {
+    background: #0f1011;
+  }
+
+  .example-table th {
+    color: #f7f8f8;
+    border-bottom: none;
+  }
+
+  .toc {
+    background: #f3f3f1;
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-top: 24px;
+  }
+
+  .toc-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #1c1c1a;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .toc ol {
+    padding-left: 20px;
+    color: #3a3a37;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e8e5;
+    font-size: 13px;
+  }
+
+  .checklist-item:last-child {
+    border-bottom: none;
+  }
+
+  .check {
+    color: #22c55e;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .faq-q {
+    font-weight: 600;
+    color: #1c1c1a;
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+
+  .faq-a {
+    color: #6b6b65;
+    font-size: 13px;
+    padding-left: 16px;
+    border-left: 2px solid #e8e8e5;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE DE COUVERTURE -->
+<div class="cover">
+  <img src="screenshots/01_accueil.png" style="width:100%; max-width:680px; border-radius:12px; margin-bottom:32px; border:1px solid rgba(255,255,255,0.08);" alt="NoClim accueil" />
+  <h1>NoClim</h1>
+  <div class="subtitle">Guide d'utilisation</div>
+  <div class="subtitle" style="font-size: 14px; color: #6f6f69;">Comment ajouter et gérer vos checklists</div>
+  <div class="tagline">
+    "Parce que climatiser en silence, c'est un art."
+  </div>
+</div>
+
+
+<!-- PAGE 1 : INTRODUCTION + SOMMAIRE -->
+<div class="page">
+  <h2>Introduction</h2>
+  <div class="section-intro">
+    NoClim est un outil d'analyse de checklists de cartes NBA. Il vous permet de visualiser vos checklists, d'identifier les meilleurs spots de break et de suivre les joueurs et équipes les plus représentés.
+  </div>
+
+  <p>Ce guide vous explique comment préparer et importer vos checklists dans l'application afin de commencer vos analyses.</p>
+
+  <div class="toc">
+    <div class="toc-title">Sommaire</div>
+    <ol>
+      <li>Préparer votre fichier checklist (format Excel)</li>
+      <li>Importer une checklist dans NoClim</li>
+      <li>Sélectionner et lancer une analyse</li>
+      <li>Gérer vos checklists (presets, suppression)</li>
+      <li>FAQ &amp; résolution de problèmes</li>
+    </ol>
+  </div>
+
+  <div class="tip" style="margin-top: 24px;">
+    <strong>💡 Astuce :</strong> NoClim supporte plusieurs checklists simultanément. Vous pouvez analyser toute une saison d'un coup !
+  </div>
+</div>
+
+
+<!-- PAGE 2 : PRÉPARER LE FICHIER -->
+<div class="page">
+  <h2>1. Préparer votre fichier checklist</h2>
+  <div class="section-intro">
+    NoClim accepte les fichiers Excel <strong>.xlsx</strong>. Votre fichier doit contenir un onglet nommé <span class="ui-element">Teams_clean</span> avec les colonnes suivantes.
+  </div>
+
+  <h3><span class="step-num">1</span>Colonnes requises</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Colonne</th>
+        <th>Statut</th>
+        <th>Description</th>
+        <th>Exemple</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Player</strong></td>
+        <td><span class="badge badge-required">Requis</span></td>
+        <td>Nom du joueur. Plusieurs joueurs séparés par <code>/</code></td>
+        <td>LeBron James</td>
+      </tr>
+      <tr>
+        <td><strong>Team</strong></td>
+        <td><span class="badge badge-required">Requis</span></td>
+        <td>Nom de l'équipe. Plusieurs équipes séparées par <code>/</code></td>
+        <td>Los Angeles Lakers</td>
+      </tr>
+      <tr>
+        <td><strong>Card Type</strong> <em>ou</em> <strong>Box Type</strong></td>
+        <td><span class="badge badge-required">Requis</span></td>
+        <td>Type de carte (Hobby, Retail, Base, Auto...)</td>
+        <td>Hobby</td>
+      </tr>
+      <tr>
+        <td><strong>Numbering</strong></td>
+        <td><span class="badge badge-optional">Optionnel</span></td>
+        <td>Numérotation de la carte (ex: /25, /99)</td>
+        <td>/99</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warning">
+    <strong>⚠️ Attention :</strong> Les lignes sans <strong>Player</strong> ou <strong>Team</strong> seront ignorées automatiquement lors de l'import.
+  </div>
+
+  <h3><span class="step-num">2</span>Colonnes ajoutées automatiquement</h3>
+  <p>Ces colonnes sont calculées par NoClim, vous n'avez pas à les renseigner :</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Colonne</th>
+        <th>Statut</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Year</strong></td>
+        <td><span class="badge badge-auto">Auto</span></td>
+        <td>Extrait du nom du fichier (ex: <em>2025-26</em>)</td>
+      </tr>
+      <tr>
+        <td><strong>Product</strong></td>
+        <td><span class="badge badge-auto">Auto</span></td>
+        <td>Extrait du nom du fichier (ex: <em>Topps Chrome</em>)</td>
+      </tr>
+      <tr>
+        <td><strong>Hits</strong></td>
+        <td><span class="badge badge-auto">Auto</span></td>
+        <td>Initialisé à 1 par défaut</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3><span class="step-num">3</span>Exemple de fichier valide</h3>
+
+  <div class="example-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Team</th>
+          <th>Card Type</th>
+          <th>Numbering</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LeBron James</td>
+          <td>Los Angeles Lakers</td>
+          <td>Base</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Stephen Curry</td>
+          <td>Golden State Warriors</td>
+          <td>Hobby</td>
+          <td>/99</td>
+        </tr>
+        <tr>
+          <td>Cooper Flagg</td>
+          <td>Dallas Mavericks</td>
+          <td>Hobby</td>
+          <td>/25</td>
+        </tr>
+        <tr>
+          <td>LeBron James / Anthony Davis</td>
+          <td>Los Angeles Lakers</td>
+          <td>Hobby</td>
+          <td>/10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip">
+    <strong>💡 Nommage du fichier :</strong> Incluez l'année et le produit dans le nom du fichier pour que NoClim l'extraie automatiquement.<br>
+    Exemple : <span class="ui-element">2025-26-Topps-Chrome-Basketball-Checklist.xlsx</span>
+  </div>
+</div>
+
+
+<!-- PAGE 3 : IMPORTER -->
+<div class="page">
+  <h2>2. Importer une checklist dans NoClim</h2>
+  <div class="section-intro">
+    L'import se fait directement depuis la barre latérale gauche de l'application.
+  </div>
+
+  <h3><span class="step-num">1</span>Ouvrir le panneau d'import</h3>
+  <p>Dans la barre latérale, cliquez sur l'icône <strong>📤 Upload</strong> en haut à droite. Un panneau s'ouvre en bas de la sidebar.</p>
+
+  <img src="screenshots/03_sidebar_upload_btn.png" class="screenshot" alt="Sidebar avec bouton upload" />
+
+  <h3><span class="step-num">2</span>Sélectionner votre fichier</h3>
+  <p>Cliquez sur <strong>"Choisir un fichier .xlsx"</strong> et sélectionnez votre fichier Excel depuis votre ordinateur. Le nom du fichier sélectionné s'affiche dans le panneau.</p>
+
+  <img src="screenshots/04_upload_panel.png" class="screenshot" alt="Panneau upload ouvert" />
+
+  <h3><span class="step-num">3</span>Option "Remplacer si existant"</h3>
+  <p>Si une checklist du même nom existe déjà, cochez <strong>"Remplacer si existant"</strong> pour l'écraser. Sans cette option, l'upload sera refusé si le fichier existe déjà.</p>
+
+  <div class="tip">
+    <strong>💡 Mise à jour :</strong> Utilisez l'option "Remplacer" quand vous recevez une version corrigée d'une checklist déjà importée.
+  </div>
+
+  <h3><span class="step-num">4</span>Lancer l'upload</h3>
+  <p>Cliquez sur le bouton <strong>"⬆️ Uploader"</strong>. Une fois terminé, vous verrez un message de confirmation :</p>
+
+  <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 12px 16px; font-family: monospace; font-size: 13px; color: #15803d; margin: 12px 0;">
+    ✅ 2025-26-topps-chrome-basketball-checklist — 1 257 lignes
+  </div>
+
+  <p>La checklist apparaît immédiatement dans la liste à gauche, prête à être sélectionnée.</p>
+
+  <img src="screenshots/02_sidebar_checklists.png" class="screenshot" alt="Checklists dans la sidebar après upload" />
+</div>
+
+
+<!-- PAGE 4 : SÉLECTIONNER ET ANALYSER -->
+<div class="page">
+  <h2>3. Sélectionner et lancer une analyse</h2>
+  <div class="section-intro">
+    Une fois vos checklists importées, vous pouvez les sélectionner et lancer une analyse complète.
+  </div>
+
+  <h3><span class="step-num">1</span>Naviguer par année</h3>
+  <p>Les checklists sont groupées par saison dans la barre latérale. Cliquez sur une année (ex: <strong>2025-26</strong>) pour déplier la liste des checklists disponibles.</p>
+
+  <img src="screenshots/02_sidebar_checklists.png" class="screenshot" alt="Sidebar avec checklists dépliées" />
+
+  <h3><span class="step-num">2</span>Sélectionner des checklists</h3>
+  <p>Cochez les checklists que vous souhaitez analyser. Vous pouvez en sélectionner plusieurs simultanément. Le compteur en haut indique le nombre de checklists sélectionnées.</p>
+
+  <div class="tip">
+    <strong>💡 Tout sélectionner :</strong> Cliquez sur <strong>"Tout"</strong> pour sélectionner toutes les checklists disponibles d'un seul coup.
+  </div>
+
+  <img src="screenshots/05_sidebar_selection.png" class="screenshot" alt="Checklists sélectionnées" />
+
+  <h3><span class="step-num">3</span>Lancer l'analyse</h3>
+  <p>Cliquez sur le bouton <strong>🚀 Lancer</strong> en bas de la sidebar. L'analyse se lance et les résultats apparaissent dans la zone principale.</p>
+
+  <img src="screenshots/07_vue_globale.png" class="screenshot" alt="Vue globale après analyse" />
+
+  <h3><span class="step-num">4</span>Naviguer dans les vues</h3>
+  <p>Une fois l'analyse lancée, plusieurs onglets sont disponibles :</p>
+
+  <div class="checklist-item">
+    <span class="check">🌍</span>
+    <div><strong>Vue Globale</strong> — Résumé complet : métriques, top joueurs, top équipes</div>
+  </div>
+  <div class="checklist-item">
+    <span class="check">💎</span>
+    <div><strong>Autos &amp; Patchs</strong> — Toutes les cartes autographiées et memorabilia</div>
+  </div>
+  <div class="checklist-item">
+    <span class="check">🔥</span>
+    <div><strong>Logoman</strong> — Les cartes les plus rares</div>
+  </div>
+  <div class="checklist-item">
+    <span class="check">🧩</span>
+    <div><strong>Simulation de Break</strong> — Analyse des spots par équipe, joueur ou lettre</div>
+  </div>
+  <div class="checklist-item">
+    <span class="check">📈</span>
+    <div><strong>Tendances</strong> — Évolution par année</div>
+  </div>
+  <div class="checklist-item">
+    <span class="check">⚖️</span>
+    <div><strong>Comparateur</strong> — Comparez jusqu'à 5 joueurs</div>
+  </div>
+</div>
+
+
+<!-- PAGE 5 : PRESETS -->
+<div class="page">
+  <h2>4. Gérer vos checklists avec les Presets</h2>
+  <div class="section-intro">
+    Les presets vous permettent de sauvegarder une sélection de checklists pour la réutiliser rapidement.
+  </div>
+
+  <h3><span class="step-num">1</span>Créer un preset</h3>
+  <p>
+    1. Sélectionnez les checklists que vous souhaitez sauvegarder<br>
+    2. Cliquez sur l'onglet <strong>Presets</strong> dans la sidebar<br>
+    3. Saisissez un nom (ex: <em>"Saison 25-26 complète"</em>)<br>
+    4. Cliquez sur <strong>"💾 Sauvegarder"</strong>
+  </p>
+
+  <img src="screenshots/09_presets.png" class="screenshot" alt="Onglet Presets" />
+
+  <h3><span class="step-num">2</span>Charger un preset</h3>
+  <p>Dans l'onglet <strong>Presets</strong>, cliquez sur le nom d'un preset pour charger automatiquement toute la sélection correspondante. Plus besoin de recocher une à une !</p>
+
+  <div class="tip">
+    <strong>💡 Partage :</strong> Utilisez le bouton <strong>🔗</strong> dans la sidebar pour copier un lien direct vers votre sélection actuelle. Partagez-le avec vos breakmates !
+  </div>
+
+  <h3><span class="step-num">3</span>Supprimer un preset</h3>
+  <p>Cliquez sur la croix <strong>✕</strong> à droite du preset pour le supprimer.</p>
+
+  <img src="screenshots/08_onglet_break.png" class="screenshot" alt="Simulation de break" />
+</div>
+
+
+<!-- PAGE 6 : FAQ -->
+<div class="page">
+  <h2>5. FAQ &amp; Résolution de problèmes</h2>
+
+  <div class="faq-q">❓ Mon fichier est refusé à l'upload, que faire ?</div>
+  <div class="faq-a">Vérifiez que votre fichier est bien au format <strong>.xlsx</strong> (pas .csv, pas .xls ancien format). L'onglet doit s'appeler exactement <strong>Teams_clean</strong>. Les colonnes <strong>Player</strong> et <strong>Team</strong> sont obligatoires.</div>
+
+  <div class="faq-q">❓ Mon fichier s'uploade mais il y a peu de lignes, c'est normal ?</div>
+  <div class="faq-a">Les lignes sans valeur dans la colonne Player ou Team sont automatiquement ignorées. Vérifiez que votre onglet Teams_clean ne contient pas de lignes vides en début de fichier.</div>
+
+  <div class="faq-q">❓ L'année et le produit ne sont pas bien détectés dans l'analyse</div>
+  <div class="faq-a">NoClim extrait l'année et le produit depuis le <strong>nom du fichier</strong>. Nommez votre fichier avec l'année en premier : <span class="ui-element">2025-26-Topps-Prizm-Basketball.xlsx</span></div>
+
+  <div class="faq-q">❓ Je veux mettre à jour une checklist existante</div>
+  <div class="faq-a">Importez à nouveau le fichier en cochant l'option <strong>"Remplacer si existant"</strong>. La checklist sera écrasée avec les nouvelles données.</div>
+
+  <div class="faq-q">❓ Les badges RC (Rookie Card) ne s'affichent pas pour certains joueurs</div>
+  <div class="faq-a">Le badge RC s'affiche uniquement si le joueur a une carte dans son <strong>année rookie</strong> parmi les checklists sélectionnées. Si vous n'avez pas sélectionné de checklist de son année rookie, le badge n'apparaît pas — c'est voulu !</div>
+
+  <div class="faq-q">❓ La simulation de break donne les mêmes scores partout</div>
+  <div class="faq-a">Si vous mélangez des boxes Hobby (avec autos garanties) et Retail (sans garantie), pensez à renseigner le nombre d'<strong>autos garanties par box</strong> dans le panneau de configuration de la simulation. Cela pondère les scores en conséquence.</div>
+
+  <div class="faq-q">❓ L'application ne répond pas / charge longtemps au premier accès</div>
+  <div class="faq-a">Le serveur peut mettre quelques secondes à démarrer après une période d'inactivité. Patientez 10-15 secondes et rechargez la page.</div>
+
+  <div style="margin-top: 40px; padding-top: 24px; border-top: 2px solid #e8e8e5; text-align: center; color: #9a9a94; font-size: 12px;">
+    NoClim — Guide v1.0 · Parce que climatiser en silence, c'est un art.
+  </div>
+</div>
+
+</body>
+</html>
