@@ -37,6 +37,7 @@ export function MultiSearchSelect({ options, value, onChange, placeholder = 'Sé
     function handleSelect(v: string) {
         onChange([...value, v])
         setQuery('')
+        setOpen(false)
         setHighlightIndex(-1)
     }
 
