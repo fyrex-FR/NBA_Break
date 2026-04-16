@@ -86,6 +86,16 @@ export interface BreakSpotRecord {
   'Hot Spot': string
 }
 
+export interface BreakCardDetail {
+  Spot: string
+  Player: string
+  Team: string
+  'Box Type': string
+  Numbering: string
+  Category: string
+  Checklist: string
+}
+
 export interface BreakSimulationResponse {
   spots: BreakSpotRecord[]
   summary: {
@@ -95,6 +105,7 @@ export interface BreakSimulationResponse {
     hot_threshold_pct: number
   }
   player_map: Record<string, string[]>
+  card_details: BreakCardDetail[]
 }
 
 export interface PresetInfo {

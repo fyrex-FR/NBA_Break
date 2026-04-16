@@ -287,6 +287,7 @@ def build_deterministic_spot_summary(
     teams_multi_per_spot = {spot: {} for spot in spots}
 
     extracted_set = set(extracted_players or [])
+    card_details = []
 
     for _, row in work.iterrows():
         player_list = row.get("Player List", [])
@@ -326,6 +327,17 @@ def build_deterministic_spot_summary(
 
         checklist_id = str(row.get("checklist_id", "") or "").strip()
         guaranteed = guaranteed_map.get(checklist_id, guaranteed_default)
+
+        for assigned_spot in targets:
+            card_details.append({
+                "Spot": assigned_spot,
+                "Player": str(row.get("Player", "") or "").strip(),
+                "Team": str(row.get("Team", "") or "").strip(),
+                "Box Type": str(row.get("Box Type", "") or "").strip(),
+                "Numbering": str(row.get("Numbering", "") or "").strip(),
+                "Category": category,
+                "Checklist": checklist_name,
+            })
 
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
@@ -426,4 +438,4 @@ def build_deterministic_spot_summary(
         "hot_spots": int((result_df["Hot Spot"] == "🔥 Hot").sum()),
         "hot_threshold_pct": round(hot_threshold_pct, 1),
     }
-    return result_df, summary
+    return result_df, summary, card_details

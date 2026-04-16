@@ -46,7 +46,7 @@ def simulate_break(req: BreakSimulationRequest):
     if not spots:
         raise HTTPException(status_code=400, detail=f"Aucun spot généré pour la méthode '{req.method}'. pool_empty={pool.empty}, extracted={req.extracted_players}, custom_spots={req.custom_spots}")
 
-    result_df, summary = build_deterministic_spot_summary(
+    result_df, summary, card_details = build_deterministic_spot_summary(
         pool,
         method=req.method,
         spots=spots,
@@ -71,6 +71,7 @@ def simulate_break(req: BreakSimulationRequest):
         spots=result_df.to_dict(orient="records"),
         summary=summary,
         player_map=player_map_serializable,
+        card_details=card_details,
     )
 
 

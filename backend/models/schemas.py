@@ -133,6 +133,7 @@ class BreakSimulationResponse(BaseModel):
     spots: List[dict]
     summary: dict
     player_map: Dict[str, List[str]]
+    card_details: List[dict] = []
 
 
 class ExportResponse(BaseModel):

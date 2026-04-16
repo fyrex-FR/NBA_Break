@@ -6,7 +6,7 @@ import { MetricCard } from '../shared/MetricCard'
 import { MultiSearchSelect } from '../shared/MultiSearchSelect'
 import { Save, Trash2, Download, Plus } from 'lucide-react'
 import { fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
-import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset } from '../../types'
+import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail } from '../../types'
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
@@ -169,7 +169,20 @@ export function BreakSimulationView() {
     setPresetsOpen(false)
   }
 
-
+  function exportCardDetails(cards: BreakCardDetail[], breakMethod: string) {
+    const headers = ['Spot', 'Player', 'Team', 'Box Type', 'Numbering', 'Category', 'Checklist']
+    const rows = cards.map(c => [
+      c.Spot, c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c.Checklist
+    ].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(','))
+    const csv = [headers.join(','), ...rows].join('\n')
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `break_${breakMethod}_cartes.csv`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
 
   return (
     <div>
@@ -367,6 +380,20 @@ export function BreakSimulationView() {
             <MetricCard label="Hot Spots" value={result.summary.hot_spots} icon="🔥" />
             <MetricCard label="Spots" value={result.spots.length} icon="🎯" />
           </div>
+
+          {/* Export cartes détaillées */}
+          {result.card_details && result.card_details.length > 0 && (
+            <div className="flex justify-end mb-3">
+              <button
+                onClick={() => exportCardDetails(result.card_details, method)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
+                style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+              >
+                <Download size={13} />
+                Exporter toutes les cartes avec spots
+              </button>
+            </div>
+          )}
 
           {/* Full table */}
           <DataTable data={result.spots} columns={spotColumns as any} pageSize={100} searchable searchPlaceholder="Rechercher un spot..." exportName={`break_${method}`} />
