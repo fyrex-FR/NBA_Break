@@ -44,7 +44,7 @@ def simulate_break(req: BreakSimulationRequest):
 
     spots = req.custom_spots or build_default_spots(pool, req.method, req.extracted_players)
     if not spots:
-        raise HTTPException(status_code=400, detail=f"Aucun spot généré pour la méthode '{req.method}'.")
+        raise HTTPException(status_code=400, detail=f"Aucun spot généré pour la méthode '{req.method}'. pool_empty={pool.empty}, extracted={req.extracted_players}, custom_spots={req.custom_spots}")
 
     result_df, summary = build_deterministic_spot_summary(
         pool,
