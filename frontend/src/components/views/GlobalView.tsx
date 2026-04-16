@@ -80,7 +80,7 @@ export function GlobalView() {
                   </linearGradient>
                 </defs>
                 <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                <YAxis type="category" dataKey="Player" width={120} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
+                <YAxis type="category" dataKey="Player" width={170} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
                 <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} labelStyle={{ color: 'var(--text-primary)' }} />
                 <Bar dataKey="Hits" fill="url(#gradPlayers)" radius={[0, 4, 4, 0]} />
               </BarChart>
@@ -111,7 +111,7 @@ export function GlobalView() {
                   </linearGradient>
                 </defs>
                 <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                <YAxis type="category" dataKey="Team" width={120} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
+                <YAxis type="category" dataKey="Team" width={170} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
                 <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} labelStyle={{ color: 'var(--text-primary)' }} />
                 <Bar dataKey="Hits" fill="url(#gradTeams)" radius={[0, 4, 4, 0]} />
               </BarChart>

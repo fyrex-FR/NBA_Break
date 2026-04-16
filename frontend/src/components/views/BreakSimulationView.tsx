@@ -115,38 +115,38 @@ export function BreakSimulationView() {
             <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{panelOpen ? '▲' : '▼'}</span>
           </button>
           {panelOpen && <div className="px-4 pb-4 pt-1" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', borderRadius: '0 0 0.75rem 0.75rem' }}>
-          <div className="space-y-2">
-            {checklistsInfo.map((cl) => (
-              <div key={cl!.checklist_id} className="flex items-center gap-3">
-                <span className="flex-1 text-sm truncate" style={{ color: 'var(--text-secondary)' }}>
-                  {cl!.checklist_name}
-                </span>
-                <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{cl!.year}</span>
-                <div className="flex items-center gap-1.5">
-                  <input
-                    type="number"
-                    min="0"
-                    max="20"
-                    placeholder="0"
-                    value={hitsGuaranteed[cl!.checklist_id] ?? ''}
-                    onChange={(e) => setHitsGuaranteed(prev => ({ ...prev, [cl!.checklist_id]: e.target.value }))}
-                    className="w-16 text-center rounded-lg px-2 py-1.5 text-sm"
-                    style={{
-                      background: 'var(--bg-primary)',
-                      border: '1px solid var(--border-standard)',
-                      color: 'var(--text-primary)',
-                    }}
-                  />
-                  <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>hits/box</span>
+            <div className="space-y-2">
+              {checklistsInfo.map((cl) => (
+                <div key={cl!.checklist_id} className="flex items-center gap-3">
+                  <span className="flex-1 text-sm truncate" style={{ color: 'var(--text-secondary)' }}>
+                    {cl!.checklist_name}
+                  </span>
+                  <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{cl!.year}</span>
+                  <div className="flex items-center gap-1.5">
+                    <input
+                      type="number"
+                      min="0"
+                      max="20"
+                      placeholder="0"
+                      value={hitsGuaranteed[cl!.checklist_id] ?? ''}
+                      onChange={(e) => setHitsGuaranteed(prev => ({ ...prev, [cl!.checklist_id]: e.target.value }))}
+                      className="w-16 text-center rounded-lg px-2 py-1.5 text-sm"
+                      style={{
+                        background: 'var(--bg-primary)',
+                        border: '1px solid var(--border-standard)',
+                        color: 'var(--text-primary)',
+                      }}
+                    />
+                    <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>hits/box</span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          {!hasAnyGuaranteed && (
-            <p className="text-xs mt-3" style={{ color: 'var(--text-quaternary)' }}>
-              Sans saisie, toutes les checklists ont un poids égal (×1).
-            </p>
-          )}
+              ))}
+            </div>
+            {!hasAnyGuaranteed && (
+              <p className="text-xs mt-3" style={{ color: 'var(--text-quaternary)' }}>
+                Sans saisie, toutes les checklists ont un poids égal (×1).
+              </p>
+            )}
           </div>}
         </div>
       )}
@@ -206,7 +206,7 @@ export function BreakSimulationView() {
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={topSpots} layout="vertical" margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                   <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Spot" width={160} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
+                  <YAxis type="category" dataKey="Spot" width={200} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
                   <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
                   <Bar dataKey="Break Score" fill="var(--accent)" radius={[0, 4, 4, 0]} />
                 </BarChart>
