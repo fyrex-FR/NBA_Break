@@ -150,7 +150,16 @@ def build_break_simulation_pool(df):
 # ---------------------------------------------------------------------------
 # Spot generation
 # ---------------------------------------------------------------------------
-
+def build_default_spots(pool_df, method, extracted_players=None):
+    if pool_df is None or pool_df.empty:
+        return []
+    if method == SIM_METHOD_LETTER:
+        return list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    if method == SIM_METHOD_TEAM:
+        teams = []
+        for values in pool_df["Team List"].tolist():
+            teams.extend(values)
+        return sorted(_ordered_unique(teams))
     if method == SIM_METHOD_PLAYER:
         players = []
         for values in pool_df["Player List"].tolist():
