@@ -24,8 +24,7 @@ export function GlobalView() {
 
   const { player_rankings, team_rankings, category_summary, metadata } = analysisData
 
-  const topPlayers = useMemo(() => player_rankings.slice(0, 15), [player_rankings])
-  const topTeams = useMemo(() => team_rankings.slice(0, 15), [team_rankings])
+
 
   function handlePlayerClick(row: RankingRecord) {
     if (row.Player) {
