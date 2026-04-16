@@ -63,7 +63,6 @@ DEFAULT_CATEGORY_RULES = {
         "glass canvas",
         "patented",
         "rock stars",
-        "profile signatures",
     ],
     "auto_mem": [
         "auto",
@@ -459,16 +458,12 @@ SPORT_PROFILES = {
             **DEFAULT_CATEGORY_RULES,
             "logoman": ["logo patch", "nameplate", "title belt patch", "chair"],
             "case_hit": DEFAULT_CATEGORY_RULES["case_hit"] + [
-                "color blast",
                 "prizmatic entrances",
                 "fearless",
                 "nebula",
                 "gold vinyl",
                 "super prime",
                 "championship ticket",
-                "rings",
-                "black",
-                "platinum",
             ],
             "auto_mem": DEFAULT_CATEGORY_RULES["auto_mem"] + [
                 "signatures",
