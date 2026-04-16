@@ -10,18 +10,14 @@ import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakC
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
-function buildSpotColumns(onSpotClick: (spot: string) => void) {
+function buildSpotColumns() {
   return [
     columnHelper.accessor('Spot', {
       header: 'Spot',
       cell: (info) => (
-        <button
-          onClick={() => onSpotClick(info.getValue())}
-          className="font-medium hover:underline text-left"
-          style={{ color: 'var(--accent)' }}
-        >
+        <span className="font-medium" style={{ color: 'var(--accent)' }}>
           {info.getValue()}
-        </button>
+        </span>
       ),
     }),
     columnHelper.accessor('Cartes', { header: 'Cartes' }),
@@ -403,7 +399,8 @@ export function BreakSimulationView() {
           {/* Full table */}
           <DataTable
             data={result.spots}
-            columns={buildSpotColumns(setSelectedSpot) as any}
+            columns={buildSpotColumns() as any}
+            onRowClick={(row: any) => setSelectedSpot(row.Spot)}
             pageSize={100}
             searchable
             searchPlaceholder="Rechercher un spot..."
@@ -467,9 +464,17 @@ export function BreakSimulationView() {
                           {spotCards.map((c, i) => (
                             <tr
                               key={i}
-                              style={{ background: i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)' }}
+                              style={{
+                                background: c.is_multi_ref
+                                  ? 'color-mix(in srgb, var(--accent) 6%, var(--bg-panel))'
+                                  : i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)',
+                                opacity: c.is_multi_ref ? 0.85 : 1,
+                              }}
                             >
-                              <td className="px-3 py-2" style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Player || '—'}</td>
+                              <td className="px-3 py-2" style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)' }}>
+                                <span>{c.Player || '—'}</span>
+                                {c.is_multi_ref && <span className="ml-1.5 text-[9px] px-1 py-0.5 rounded" style={{ background: 'var(--accent)', color: '#fff', opacity: 0.8 }}>multi</span>}
+                              </td>
                               <td className="px-3 py-2" style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Team || '—'}</td>
                               <td className="px-3 py-2" style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>{c['Box Type'] || '—'}</td>
                               <td className="px-3 py-2" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Numbering || '—'}</td>

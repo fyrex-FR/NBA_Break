@@ -95,6 +95,7 @@ export interface BreakCardDetail {
   Numbering: string
   Category: string
   Checklist: string
+  is_multi_ref?: boolean
 }
 
 export interface BreakSimulationResponse {

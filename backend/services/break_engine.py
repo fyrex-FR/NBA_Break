@@ -334,16 +334,32 @@ def build_deterministic_spot_summary(
         checklist_id = str(row.get("checklist_id", "") or "").strip()
         guaranteed = guaranteed_map.get(checklist_id, guaranteed_default)
 
+        base_card = {
+            "Player": str(row.get("Player", "") or "").strip(),
+            "Team": str(row.get("Team", "") or "").strip(),
+            "Box Type": str(row.get("Box Type", "") or "").strip(),
+            "Numbering": str(row.get("Numbering", "") or "").strip(),
+            "Category": category,
+            "Checklist": checklist_name,
+            "is_multi_ref": False,
+        }
+
         for assigned_spot in targets:
-            card_details.append({
-                "Spot": assigned_spot,
-                "Player": str(row.get("Player", "") or "").strip(),
-                "Team": str(row.get("Team", "") or "").strip(),
-                "Box Type": str(row.get("Box Type", "") or "").strip(),
-                "Numbering": str(row.get("Numbering", "") or "").strip(),
-                "Category": category,
-                "Checklist": checklist_name,
-            })
+            card_details.append({"Spot": assigned_spot, **base_card})
+
+        # Références croisées pour mode player_letter : carte multi visible dans les autres spots concernés
+        if method == SIM_METHOD_PLAYER_LETTER and is_multi_player:
+            assigned_spot = targets[0] if targets else None
+            for other_player in player_list:
+                if other_player == (player_list[0] if player_list else ""):
+                    continue  # déjà dans le spot principal
+                # Déterminer le spot de ce co-joueur
+                if other_player in extracted_set:
+                    other_spot = other_player
+                else:
+                    other_spot = extract_surname_initial(other_player)
+                if other_spot and other_spot in spot_set and other_spot != assigned_spot:
+                    card_details.append({"Spot": other_spot, **base_card, "is_multi_ref": True})
 
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
