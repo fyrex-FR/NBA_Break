@@ -457,14 +457,7 @@ SPORT_PROFILES = {
         "category_rules": {
             **DEFAULT_CATEGORY_RULES,
             "logoman": ["logo patch", "nameplate", "title belt patch", "chair"],
-            "case_hit": DEFAULT_CATEGORY_RULES["case_hit"] + [
-                "prizmatic entrances",
-                "fearless",
-                "nebula",
-                "gold vinyl",
-                "super prime",
-                "championship ticket",
-            ],
+            "case_hit": [],
             "auto_mem": DEFAULT_CATEGORY_RULES["auto_mem"] + [
                 "signatures",
                 "ticket",
