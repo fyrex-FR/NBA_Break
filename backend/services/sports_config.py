@@ -438,6 +438,74 @@ SPORT_PROFILES = {
             "futera",
         ],
     },
+    "wwe": {
+        "label": "WWE (Wrestling)",
+        "page_icon": "🤼",
+        "header_logo_url": "",
+        "header_title": "NoClim",
+        "header_subtitle": "Analysez vos checklists WWE pour optimiser vos picks de superstar et de brand.",
+        "sheet_names": ["Teams_clean"],
+        "team_aliases": {
+            "raw": "Raw",
+            "smackdown": "SmackDown",
+            "nxt": "NXT",
+            "nxt uk": "NXT UK",
+            "legend": "Legend",
+            "legends": "Legend",
+            "wwe": "WWE",
+            "ecw": "ECW",
+        },
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "logoman": ["logo patch", "nameplate", "title belt patch", "chair"],
+            "case_hit": DEFAULT_CATEGORY_RULES["case_hit"] + [
+                "color blast",
+                "prizmatic entrances",
+                "fearless",
+                "nebula",
+                "gold vinyl",
+                "super prime",
+                "championship ticket",
+                "rings",
+                "black",
+                "platinum",
+            ],
+            "auto_mem": DEFAULT_CATEGORY_RULES["auto_mem"] + [
+                "signatures",
+                "ticket",
+                "dual autograph",
+                "triple autograph",
+            ],
+        },
+        "hype_tiers": {
+            "Tier S": ["Cody Rhodes", "Roman Reigns", "The Rock", "John Cena", "CM Punk", "Gunther"],
+            "Tier A": ["Seth Rollins", "Rhea Ripley", "Becky Lynch", "Randy Orton", "Kevin Owens", "Sami Zayn"],
+            "Tier B": ["Bianca Belair", "LA Knight", "Trick Williams", "Jey Uso", "Drew McIntyre", "Jade Cargill"],
+        },
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": True,
+            "case_hits": True,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": [
+            "wwe",
+            "wrestling",
+            "topps wwe",
+            "panini wwe",
+            "smackdown",
+            "raw",
+            "nxt",
+            "finest wwe",
+            "chrome wwe",
+            "prizm wwe",
+            "universe wwe",
+        ],
+    },
     "tennis": {
         "label": "Tennis",
         "page_icon": "🎾",
@@ -602,7 +670,10 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
     soccer_strong = ["soccer", "uefa", "fifa", "premier league", "la liga", "serie a", "bundesliga", "merlin"]
     nfl_strong = ["nfl", "football", "super bowl", "draft picks"]
     nba_strong = ["nba", "basket", "basketball", "hoops"]
+    wwe_strong = ["wwe", "wrestling", "smackdown", "raw wwe", "nxt wwe"]
 
+    if any(h in normalized for h in wwe_strong):
+        return "wwe"
     if any(h in normalized for h in tennis_strong):
         return "tennis"
     if any(h in normalized for h in soccer_strong):
