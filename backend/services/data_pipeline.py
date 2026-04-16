@@ -144,14 +144,14 @@ def normalize_checklist_columns(df):
         work = work.rename(columns={"Card Type": "Box Type"})
 
     work = work[["Player", "Team", "Box Type", "Numbering"]].copy()
-    work = work.dropna(subset=["Player", "Team"])
+    work = work.dropna(subset=["Player"])
     work["Player"] = (
         work["Player"]
         .astype(str)
         .str.replace(r",$", "", regex=True)
         .str.strip()
     )
-    work["Team"] = work["Team"].astype(str).str.strip()
+    work["Team"] = work["Team"].fillna("").astype(str).str.strip()
     work["Box Type"] = work["Box Type"].astype(str).str.strip()
     work["Numbering"] = work["Numbering"].astype(str).str.strip()
     return work
@@ -292,7 +292,7 @@ def ensure_master_dataframe_schema(df, sport_key):
     work["File"] = work["File"].astype(str).str.strip()
     work["Sport"] = work["Sport"].astype(str).str.strip()
 
-    work = work[(work["Player"] != "") & (work["Team"] != "")].copy()
+    work = work[work["Player"] != ""].copy()
     return work[MASTER_COLUMNS].copy()
 
 
