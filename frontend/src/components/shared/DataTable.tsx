@@ -40,6 +40,8 @@ interface DataTableProps<T> {
   searchPlaceholder?: string
   /** Nom du fichier CSV exporté (sans extension). Ex: "LeBron_James", "Chicago_Bulls" */
   exportName?: string
+  /** Tri initial. Ex: [{ id: 'Break Score', desc: true }] */
+  initialSorting?: SortingState
 }
 
 export function DataTable<T>({
@@ -50,8 +52,9 @@ export function DataTable<T>({
   searchable = false,
   searchPlaceholder = 'Rechercher...',
   exportName,
+  initialSorting,
 }: DataTableProps<T>) {
-  const [sorting, setSorting] = useState<SortingState>([])
+  const [sorting, setSorting] = useState<SortingState>(initialSorting ?? [])
   const [globalFilter, setGlobalFilter] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [flashRowId, setFlashRowId] = useState<string | null>(null)

@@ -10,40 +10,44 @@ import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakC
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
-const spotColumns = [
-  columnHelper.accessor('Spot', { header: 'Spot' }),
-  columnHelper.accessor('Cartes', { header: 'Cartes' }),
-  columnHelper.accessor('Auto/Memo', { header: 'Auto/Memo' }),
-  columnHelper.accessor('Auto garanties', {
-    header: 'Auto garanties',
-    cell: (info) => {
-      const val = info.getValue() as number
-      return val > 0
-        ? <span className="font-medium" style={{ color: 'var(--accent)' }}>{val}</span>
-        : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-    },
-  }),
-  columnHelper.accessor('Case Hit', { header: 'Case Hit' }),
-  columnHelper.accessor('Logoman', { header: 'Logoman' }),
-  columnHelper.accessor('Break Score', { header: 'Score' }),
-  columnHelper.accessor('Part du break', { header: 'Part %', cell: (info) => `${info.getValue()}%` }),
-  columnHelper.accessor('Hot Spot', { header: 'Hot', cell: (info) => info.getValue() || '—' }),
-  columnHelper.accessor('Rareté', { header: 'Rareté' }),
-  columnHelper.accessor('Équipes', {
-    header: 'Équipes',
-    cell: (info) => {
-      const val = info.getValue()
-      return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[200px] truncate">{val}</span> : '—'
-    },
-  }),
-  columnHelper.accessor('Joueurs', {
-    header: 'Joueurs',
-    cell: (info) => {
-      const val = info.getValue()
-      return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[200px] truncate">{val}</span> : '—'
-    },
-  }),
-]
+function buildSpotColumns(onSpotClick: (spot: string) => void) {
+  return [
+    columnHelper.accessor('Spot', {
+      header: 'Spot',
+      cell: (info) => (
+        <button
+          onClick={() => onSpotClick(info.getValue())}
+          className="font-medium hover:underline text-left"
+          style={{ color: 'var(--accent)' }}
+        >
+          {info.getValue()}
+        </button>
+      ),
+    }),
+    columnHelper.accessor('Cartes', { header: 'Cartes' }),
+    columnHelper.accessor('Auto/Memo', { header: 'Auto/Memo' }),
+    columnHelper.accessor('Auto garanties', {
+      header: 'Garanties',
+      cell: (info) => {
+        const val = info.getValue() as number
+        return val > 0
+          ? <span className="font-medium" style={{ color: 'var(--accent)' }}>{val}</span>
+          : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+      },
+    }),
+    columnHelper.accessor('Nb Joueurs' as any, { header: 'Joueurs #' }),
+    columnHelper.accessor('Break Score', { header: 'Score' }),
+    columnHelper.accessor('Part du break', { header: 'Part %', cell: (info) => `${info.getValue()}%` }),
+    columnHelper.accessor('Hot Spot', { header: 'Hot', cell: (info) => info.getValue() || '—' }),
+    columnHelper.accessor('Joueurs', {
+      header: 'Joueurs',
+      cell: (info) => {
+        const val = info.getValue()
+        return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[240px] truncate">{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+      },
+    }),
+  ]
+}
 
 const METHODS = [
   { value: 'team', label: 'Break par Équipe' },
@@ -61,6 +65,7 @@ export function BreakSimulationView() {
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
   const [extractedPlayers, setExtractedPlayers] = useState<string[]>([])
   const [panelOpen, setPanelOpen] = useState(true)
+  const [selectedSpot, setSelectedSpot] = useState<string | null>(null)
 
   // Presets state
   const [presets, setPresets] = useState<SimulationPreset[]>([])
@@ -396,7 +401,90 @@ export function BreakSimulationView() {
           )}
 
           {/* Full table */}
-          <DataTable data={result.spots} columns={spotColumns as any} pageSize={100} searchable searchPlaceholder="Rechercher un spot..." exportName={`break_${method}`} />
+          <DataTable
+            data={result.spots}
+            columns={buildSpotColumns(setSelectedSpot) as any}
+            pageSize={100}
+            searchable
+            searchPlaceholder="Rechercher un spot..."
+            exportName={`break_${method}`}
+            initialSorting={[{ id: 'Break Score', desc: true }]}
+          />
+
+          {/* Panel détail d'un spot */}
+          {selectedSpot && (() => {
+            const spotCards = result.card_details.filter(c => c.Spot === selectedSpot)
+            const spotRow = result.spots.find(s => s.Spot === selectedSpot)
+            return (
+              <div
+                className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4"
+                style={{ background: 'rgba(0,0,0,0.6)' }}
+                onClick={() => setSelectedSpot(null)}
+              >
+                <div
+                  className="w-full max-w-2xl rounded-2xl overflow-hidden flex flex-col"
+                  style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', maxHeight: '80vh' }}
+                  onClick={e => e.stopPropagation()}
+                >
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <div>
+                      <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>
+                        Spot : {selectedSpot}
+                      </h3>
+                      {spotRow && (
+                        <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
+                          {spotRow.Cartes} carte{spotRow.Cartes > 1 ? 's' : ''} · {spotRow['Auto/Memo']} Auto/Memo · Score {spotRow['Break Score']} · {spotRow['Part du break']}%
+                          {spotRow['Hot Spot'] ? ' · 🔥 Hot' : ''}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => setSelectedSpot(null)}
+                      className="text-xl leading-none px-2 py-1 rounded-lg"
+                      style={{ color: 'var(--text-tertiary)' }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  {/* Liste des cartes */}
+                  <div className="overflow-y-auto flex-1 px-2 py-2">
+                    {spotCards.length === 0 ? (
+                      <p className="text-sm px-3 py-4 text-center" style={{ color: 'var(--text-quaternary)' }}>
+                        Aucune carte pour ce spot.
+                      </p>
+                    ) : (
+                      <table className="w-full text-xs">
+                        <thead>
+                          <tr style={{ background: 'var(--bg-surface)' }}>
+                            {['Joueur', 'Équipe', 'Type', 'Numérotation', 'Catégorie', 'Checklist'].map(h => (
+                              <th key={h} className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {spotCards.map((c, i) => (
+                            <tr
+                              key={i}
+                              style={{ background: i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)' }}
+                            >
+                              <td className="px-3 py-2" style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Player || '—'}</td>
+                              <td className="px-3 py-2" style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Team || '—'}</td>
+                              <td className="px-3 py-2" style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>{c['Box Type'] || '—'}</td>
+                              <td className="px-3 py-2" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Numbering || '—'}</td>
+                              <td className="px-3 py-2" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Category || '—'}</td>
+                              <td className="px-3 py-2 max-w-[140px] truncate" style={{ color: 'var(--text-quaternary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Checklist || '—'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )
+          })()}
         </div>
       )}
     </div>

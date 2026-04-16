@@ -287,6 +287,8 @@ def build_deterministic_spot_summary(
     teams_multi_per_spot = {spot: {} for spot in spots}
 
     extracted_set = set(extracted_players or [])
+    # Pour les spots-joueurs (player_letter) : co-joueurs des cartes multi
+    multi_partners_per_spot = {spot: set() for spot in spots}
     card_details = []
 
     for _, row in work.iterrows():
@@ -355,6 +357,11 @@ def build_deterministic_spot_summary(
                 checklists_per_spot[assigned_spot].add(checklist_name)
             for p in player_list:
                 players_per_spot[assigned_spot].add(p)
+            # Tracker les co-joueurs multi pour les spots-joueurs extraits
+            if method == SIM_METHOD_PLAYER_LETTER and assigned_spot in extracted_set and is_multi_player:
+                for p in player_list:
+                    if p != assigned_spot:
+                        multi_partners_per_spot[assigned_spot].add(p)
             if method == SIM_METHOD_PLAYER or method == SIM_METHOD_PLAYER_LETTER:
                 for team in team_list:
                     if team:
@@ -396,6 +403,17 @@ def build_deterministic_spot_summary(
             teams_parts.append(multi_str)
         teams_str = " | ".join(teams_parts) if teams_parts else ""
 
+        players_list = sorted(players_per_spot[spot])
+        # Formatage colonne Joueurs : différent selon spot-joueur extrait ou spot-lettre
+        if method == SIM_METHOD_PLAYER_LETTER and spot in extracted_set:
+            partners = sorted(multi_partners_per_spot[spot])
+            if partners:
+                joueurs_str = f"{spot} ; Multi: {', '.join(partners)}"
+            else:
+                joueurs_str = spot
+        else:
+            joueurs_str = ", ".join(players_list)
+
         row = {
             "Spot": spot,
             "Cartes": totals[spot]["Cartes"],
@@ -406,7 +424,8 @@ def build_deterministic_spot_summary(
             "Weighted Auto": totals[spot]["Weighted Auto"],
             "Rareté": rarity_label,
             "Équipes": teams_str,
-            "Joueurs": ", ".join(sorted(players_per_spot[spot])),
+            "Nb Joueurs": len(players_list),
+            "Joueurs": joueurs_str,
             "Checklists": ", ".join(sorted(checklists_per_spot[spot])),
         }
         rows.append(row)
