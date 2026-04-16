@@ -87,7 +87,6 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Players */}
           <div>
-            <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Joueurs</h3>
             <DataTable
               data={playerRankings}
               columns={playerCols as any}
@@ -100,7 +99,6 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
 
           {/* Teams */}
           <div>
-            <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Équipes</h3>
             <DataTable
               data={teamRankings}
               columns={teamCols as any}

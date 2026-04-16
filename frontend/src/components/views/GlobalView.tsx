@@ -64,9 +64,7 @@ export function GlobalView() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Players */}
         <div>
-          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Top Joueurs</h3>
 
-          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🏆 Top Joueurs</h3>
 
           <DataTable
             data={player_rankings}
@@ -80,9 +78,7 @@ export function GlobalView() {
 
         {/* Teams */}
         <div>
-          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Top Équipes</h3>
 
-          <h3 className="text-sm font-semibold mb-3 uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>🛡️ Top Équipes</h3>
 
           <DataTable
             data={team_rankings}
