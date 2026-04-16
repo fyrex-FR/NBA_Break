@@ -83,7 +83,7 @@ def extract_surname_initial(player_name):
     if not tokens:
         return ""
 
-    initial = tokens[-1][0].upper()
+    initial = tokens[0][0].upper()
     return initial if "A" <= initial <= "Z" else ""
 
 
