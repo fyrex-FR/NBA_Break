@@ -18,12 +18,14 @@ from .data_pipeline import split_slash_values
 SIM_METHOD_LETTER = "letter"
 SIM_METHOD_TEAM = "team"
 SIM_METHOD_PLAYER = "player"
+SIM_METHOD_PLAYER_LETTER = "player_letter"
 SIM_METHOD_CUSTOM = "custom"
 
 SIM_METHOD_LABELS = {
     SIM_METHOD_LETTER: "Break par Lettre (A-Z)",
     SIM_METHOD_TEAM: "Break par Équipe",
     SIM_METHOD_PLAYER: "Break par Joueur",
+    SIM_METHOD_PLAYER_LETTER: "Break par Joueur et Lettre (Mixte)",
     SIM_METHOD_CUSTOM: "Break Personnalisé",
 }
 
@@ -149,25 +151,17 @@ def build_break_simulation_pool(df):
 # Spot generation
 # ---------------------------------------------------------------------------
 
-def build_default_spots(pool_df, method):
-    if pool_df is None or pool_df.empty:
-        return []
-    if method == SIM_METHOD_LETTER:
-        return list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    if method == SIM_METHOD_TEAM:
-        teams = []
-        for values in pool_df["Team List"].tolist():
-            teams.extend(values)
-        return sorted(_ordered_unique(teams))
     if method == SIM_METHOD_PLAYER:
         players = []
         for values in pool_df["Player List"].tolist():
             players.extend(values)
         return sorted(_ordered_unique(players))
+    if method == SIM_METHOD_PLAYER_LETTER:
+        return list("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + (extracted_players or [])
     return []
 
 
-def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None, custom_spots=None):
+def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None, custom_spots=None, extracted_players=None):
     mapping = {}
     if pool_df is None or pool_df.empty:
         return mapping
@@ -204,6 +198,23 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
                 if player not in mapping:
                     mapping[player] = set()
                 mapping[player].add(player)
+        return mapping
+
+    if method == SIM_METHOD_PLAYER_LETTER:
+        mapping = {letter: set() for letter in list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+        extracted_set = set(extracted_players or [])
+        for spot in extracted_set:
+            mapping[spot] = set()
+
+        for _, row in pool_df.iterrows():
+            players = row.get("Player List", [])
+            for player in players:
+                if player in extracted_set:
+                    mapping[player].add(player)
+                else:
+                    initial = extract_surname_initial(player)
+                    if initial in mapping:
+                        mapping[initial].add(player)
         return mapping
 
     if method == SIM_METHOD_CUSTOM:
@@ -246,6 +257,7 @@ def build_deterministic_spot_summary(
     custom_scope="teams",
     custom_map=None,
     checklist_hits_guaranteed=None,
+    extracted_players=None,
 ):
     if pool_df is None or pool_df.empty or not spots:
         return pd.DataFrame(), {}
@@ -261,8 +273,11 @@ def build_deterministic_spot_summary(
     metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
+    players_per_spot = {spot: set() for spot in spots}
     teams_solo_per_spot = {spot: {} for spot in spots}
     teams_multi_per_spot = {spot: {} for spot in spots}
+
+    extracted_set = set(extracted_players or [])
 
     for _, row in work.iterrows():
         player_list = row.get("Player List", [])
@@ -280,6 +295,15 @@ def build_deterministic_spot_summary(
             targets = [s for s in team_list if s in spot_set]
         elif method == SIM_METHOD_PLAYER:
             targets = [s for s in player_list if s in spot_set]
+        elif method == SIM_METHOD_PLAYER_LETTER:
+            targets = []
+            for p in player_list:
+                if p in extracted_set:
+                    target = p
+                else:
+                    target = extract_surname_initial(p)
+                if target in spot_set:
+                    targets.append(target)
         elif method == SIM_METHOD_CUSTOM:
             if custom_scope == "players":
                 targets = [custom_map.get(p, "") for p in player_list]
@@ -304,7 +328,9 @@ def build_deterministic_spot_summary(
             totals[assigned_spot]["Weighted Auto"] += hits * guaranteed if is_auto else 0
             if checklist_name:
                 checklists_per_spot[assigned_spot].add(checklist_name)
-            if method == SIM_METHOD_PLAYER:
+            for p in player_list:
+                players_per_spot[assigned_spot].add(p)
+            if method == SIM_METHOD_PLAYER or method == SIM_METHOD_PLAYER_LETTER:
                 for team in team_list:
                     if team:
                         if is_multi_player:
@@ -355,6 +381,7 @@ def build_deterministic_spot_summary(
             "Weighted Auto": totals[spot]["Weighted Auto"],
             "Rareté": rarity_label,
             "Équipes": teams_str,
+            "Joueurs": ", ".join(sorted(players_per_spot[spot])),
             "Checklists": ", ".join(sorted(checklists_per_spot[spot])),
         }
         rows.append(row)

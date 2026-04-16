@@ -36,7 +36,7 @@ def simulate_break(req: BreakSimulationRequest):
     if pool.empty:
         raise HTTPException(status_code=400, detail="Pool de simulation vide.")
 
-    spots = req.custom_spots or build_default_spots(pool, req.method)
+    spots = req.custom_spots or build_default_spots(pool, req.method, req.extracted_players)
     if not spots:
         raise HTTPException(status_code=400, detail="Aucun spot généré.")
 
@@ -47,6 +47,7 @@ def simulate_break(req: BreakSimulationRequest):
         custom_scope=req.custom_scope,
         custom_map=req.custom_map,
         checklist_hits_guaranteed=req.checklist_hits_guaranteed,
+        extracted_players=req.extracted_players,
     )
 
     player_map = build_spot_player_map(
@@ -55,6 +56,7 @@ def simulate_break(req: BreakSimulationRequest):
         custom_scope=req.custom_scope,
         custom_map=req.custom_map,
         custom_spots=spots,
+        extracted_players=req.extracted_players,
     )
     # Convert sets to sorted lists for JSON serialization
     player_map_serializable = {k: sorted(v) for k, v in player_map.items()}

@@ -4,6 +4,7 @@ import { useAppStore } from '../../stores/appStore'
 import { fetchBreakSimulation } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { MultiSearchSelect } from '../shared/MultiSearchSelect'
 import type { BreakSpotRecord, BreakSimulationResponse } from '../../types'
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
@@ -31,7 +32,14 @@ const spotColumns = [
     header: 'Équipes',
     cell: (info) => {
       const val = info.getValue()
-      return val ? <span className="text-xs">{val.slice(0, 60)}{val.length > 60 ? '...' : ''}</span> : '—'
+      return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[200px] truncate">{val}</span> : '—'
+    },
+  }),
+  columnHelper.accessor('Joueurs', {
+    header: 'Joueurs',
+    cell: (info) => {
+      const val = info.getValue()
+      return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[200px] truncate">{val}</span> : '—'
     },
   }),
 ]
@@ -39,7 +47,8 @@ const spotColumns = [
 const METHODS = [
   { value: 'team', label: 'Break par Équipe' },
   { value: 'player', label: 'Break par Joueur' },
-  { value: 'letter', label: 'Break par Lettre (A-Z)' },
+  { value: 'letter', label: 'Break par Lettre' },
+  { value: 'player_letter', label: 'Mixte (Joueur + Lettre)' },
 ]
 
 export function BreakSimulationView() {
@@ -49,6 +58,7 @@ export function BreakSimulationView() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
+  const [extractedPlayers, setExtractedPlayers] = useState<string[]>([])
   const [panelOpen, setPanelOpen] = useState(true)
   const resultsRef = useRef<HTMLDivElement>(null)
 
@@ -76,6 +86,7 @@ export function BreakSimulationView() {
         master_key: masterKey,
         method,
         checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
+        extracted_players: extractedPlayers,
       })
       setResult(data)
       setPanelOpen(false)
@@ -162,6 +173,18 @@ export function BreakSimulationView() {
             ))}
           </select>
         </div>
+
+        {method === 'player_letter' && (
+          <div className="flex-1 min-w-[300px]">
+            <label className="text-xs font-medium block mb-1" style={{ color: 'var(--text-tertiary)' }}>Joueurs à sortir du break par lettre</label>
+            <MultiSearchSelect
+              options={useAppStore.getState().analysisData?.player_rankings.map(p => p.Player!).filter(Boolean) || []}
+              value={extractedPlayers}
+              onChange={setExtractedPlayers}
+              placeholder="Sélectionner les joueurs à isoler..."
+            />
+          </div>
+        )}
 
         <div className="flex items-end">
           <button

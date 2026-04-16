@@ -80,6 +80,7 @@ export interface BreakSpotRecord {
   Rareté: string
   Équipes: string
   Checklists: string
+  Joueurs: string
   'Break Score': number
   'Part du break': number
   'Hot Spot': string
