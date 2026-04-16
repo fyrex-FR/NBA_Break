@@ -206,7 +206,7 @@ export function BreakSimulationView() {
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={topSpots} layout="vertical" margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                   <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Spot" width={200} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
+                  <YAxis type="category" dataKey="Spot" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
                   <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
                   <Bar dataKey="Break Score" fill="var(--accent)" radius={[0, 4, 4, 0]} />
                 </BarChart>

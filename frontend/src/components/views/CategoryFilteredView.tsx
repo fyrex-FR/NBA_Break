@@ -93,7 +93,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={playerRankings.slice(0, 10)} layout="vertical">
                   <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Player" width={170} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
+                  <YAxis type="category" dataKey="Player" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
                   <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
                   <Bar dataKey="Hits" fill="var(--accent)" radius={[0, 4, 4, 0]} />
                 </BarChart>
@@ -116,7 +116,7 @@ export function CategoryFilteredView({ title, icon, category, description }: Cat
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={teamRankings.slice(0, 10)} layout="vertical">
                   <XAxis type="number" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="Team" width={170} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
+                  <YAxis type="category" dataKey="Team" width={150} tickFormatter={(v) => v.length > 20 ? v.substring(0, 18) + '…' : v} tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
                   <Tooltip contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }} />
                   <Bar dataKey="Hits" fill="var(--accent)" radius={[0, 4, 4, 0]} />
                 </BarChart>
