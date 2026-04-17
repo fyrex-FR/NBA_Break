@@ -79,6 +79,17 @@ export function fetchBreakSimulation(params: {
   })
 }
 
+export function fetchBreakPlayers(params: {
+  sport_key: string
+  checklist_ids: string[]
+  master_key?: string | null
+}): Promise<{ players: string[]; grouped: Record<string, string[]> }> {
+  return fetchJSON('/simulate/break/players', {
+    method: 'POST',
+    body: JSON.stringify(params),
+  })
+}
+
 export function fetchSimulationPresets(sportKey: string): Promise<{ presets: SimulationPreset[] }> {
   return fetchJSON(`/simulation/presets/${sportKey}`)
 }

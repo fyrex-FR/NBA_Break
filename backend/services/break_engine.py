@@ -68,7 +68,65 @@ def _clean_list_or_single(value):
     return [raw] if raw else []
 
 
+# Prefixes treated as articles/titles → their own initial is used (The Rock → T, El Hijo → E)
+_PREFIX_KEEP_INITIAL = {
+    "the", "le", "la", "les", "el", "los", "las", "l'", "al",
+    "von", "van", "de", "del", "della", "des", "du", "di",
+    "sir", "mr", "dr",
+}
+
+# Common first names: if first token is in this set → use LAST token as initial (surname)
+_FIRST_NAMES = {
+    "adam", "alberto", "alex", "aleister", "alexa", "alexis", "ali",
+    "andrade", "angelo", "apollo", "asuka",
+    "bayley", "becky", "beth", "bianca", "bigE", "big",
+    "braun", "bray", "bret", "brock",
+    "cactus", "candice", "carmella", "cesaro", "charlotte",
+    "corey", "cruz",
+    "damian", "dana", "daniel", "dean", "dexter", "diamond", "dominik", "drew",
+    "ember", "ezekiel",
+    "finn",
+    "george",
+    "heath", "heath",
+    "io", "ivan",
+    "jake", "jey", "jimmy", "john", "johnny", "jose", "juri",
+    "kevin", "kofi",
+    "lacey", "lana", "liv",
+    "mandy", "mansoor", "mark", "matt", "mia", "mike", "montez",
+    "naomi", "natalya", "nia", "nikki",
+    "otis",
+    "pat", "paul",
+    "raquel", "randy", "rey", "rhea", "rhyno", "rick", "riddle", "rob", "roman", "ruby",
+    "samoa", "sami", "santana", "scott", "seth", "shawn", "sheamus", "shinsuke",
+    "shotzi", "sika", "sonya",
+    "tamina", "titus",
+    "umaga",
+    "veer",
+    "xia",
+    "zelina",
+    # NBA / common
+    "lebron", "stephen", "kevin", "kyrie", "giannis", "kawhi", "luka", "devin",
+    "damian", "jimmy", "joel", "nikola", "chris", "james", "russell", "bradley",
+    "anthony", "paul", "draymond", "klay", "zion", "donovan", "trae", "bam",
+    "jayson", "jaylen", "marcus", "kemba", "mike", "ben", "pascal", "fred",
+    "brook", "al", "jrue", "tobias", "khris", "reggie", "terrence", "tim",
+    "charles", "clyde", "hakeem", "patrick", "isiah", "dominique", "scottie",
+    "magic", "larry", "kareem", "wilt", "oscar", "jerry", "elgin",
+}
+
+
 def extract_surname_initial(player_name):
+    """Return the 'letter slot' initial for a player name.
+
+    Rules (applied in order):
+    1. Strip suffixes (Jr., Sr., II, III, IV, V)
+    2. If first token (lowercased) is a known article/title prefix → use first token's initial
+       (The Rock → T, El Hijo → E, Von Erich → V)
+    3. If first token (lowercased) is a known first name → use last token's initial
+       (Shinsuke Nakamura → N, Brock Lesnar → L)
+    4. Otherwise → use first token's initial
+       (CM Punk → C, AJ Styles → A, RVD → R, Goldberg → G)
+    """
     text = "" if player_name is None else str(player_name).strip()
     if not text:
         return ""
@@ -83,7 +141,26 @@ def extract_surname_initial(player_name):
     if not tokens:
         return ""
 
-    initial = tokens[0][0].upper()
+    first_lower = tokens[0].lower()
+    first_token = tokens[0]
+
+    # Rule 2 – article/title prefix → its own initial
+    if first_lower in _PREFIX_KEEP_INITIAL:
+        initial = first_token[0].upper()
+        return initial if "A" <= initial <= "Z" else ""
+
+    # Rule 2b – all-caps short token (CM, AJ, RVD, DX...) → first token directly
+    if first_token.isupper() and len(first_token) <= 3:
+        initial = first_token[0].upper()
+        return initial if "A" <= initial <= "Z" else ""
+
+    # Rule 3 – known first name → last token (surname)
+    if first_lower in _FIRST_NAMES and len(tokens) > 1:
+        initial = tokens[-1][0].upper()
+        return initial if "A" <= initial <= "Z" else ""
+
+    # Rule 4 – fallback: first token
+    initial = first_token[0].upper()
     return initial if "A" <= initial <= "Z" else ""
 
 

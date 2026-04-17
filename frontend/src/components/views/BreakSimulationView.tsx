@@ -3,7 +3,7 @@ import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
-import { MultiSearchSelect } from '../shared/MultiSearchSelect'
+import { LetterAssignmentUI } from './LetterAssignmentUI'
 import { Save, Trash2, Download, Plus } from 'lucide-react'
 import { fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
 import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail } from '../../types'
@@ -49,7 +49,7 @@ const METHODS = [
   { value: 'team', label: 'Break par Équipe' },
   { value: 'player', label: 'Break par Joueur' },
   { value: 'letter', label: 'Break par Lettre' },
-  { value: 'player_letter', label: 'Mixte (Joueur + Lettre)' },
+  { value: 'letter_assignment', label: 'Break par Lettre (Assignation)' },
 ]
 
 export function BreakSimulationView() {
@@ -60,6 +60,10 @@ export function BreakSimulationView() {
   const [error, setError] = useState<string | null>(null)
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
   const [extractedPlayers, setExtractedPlayers] = useState<string[]>([])
+  // Letter Assignment mode state
+  const [letterCustomMap, setLetterCustomMap] = useState<Record<string, string>>({})
+  const [letterExtracted, setLetterExtracted] = useState<string[]>([])
+  const [letterCustomSpots, setLetterCustomSpots] = useState<string[]>([])
   const [panelOpen, setPanelOpen] = useState(true)
   const [selectedSpot, setSelectedSpot] = useState<string | null>(null)
 
@@ -88,24 +92,34 @@ export function BreakSimulationView() {
 
   const hasAnyGuaranteed = Object.values(hitsGuaranteed).some(v => parseInt(v) > 0)
 
-  async function handleSimulate() {
+  async function runSimulate(overrides?: {
+    method?: string
+    custom_map?: Record<string, string>
+    custom_spots?: string[]
+    extracted?: string[]
+  }) {
     setLoading(true)
     setError(null)
-    // Toutes les checklists sont envoyées : blank/0 = pas de garantie, >0 = garantie
     const guaranteedMap: Record<string, number> = {}
     for (const id of selectedChecklistIds) {
       const raw = hitsGuaranteed[id]
       const n = (raw !== undefined && raw !== '') ? parseInt(raw) : 0
       guaranteedMap[id] = isNaN(n) ? 0 : Math.max(0, n)
     }
+    const effectiveMethod = overrides?.method ?? method
+    // letter_assignment → send as custom with players scope
+    const apiMethod = effectiveMethod === 'letter_assignment' ? 'custom' : effectiveMethod
     try {
       const data = await fetchBreakSimulation({
         sport_key: selectedSport,
         checklist_ids: selectedChecklistIds,
         master_key: masterKey,
-        method,
+        method: apiMethod,
+        custom_scope: effectiveMethod === 'letter_assignment' ? 'players' : undefined,
+        custom_map: overrides?.custom_map,
+        custom_spots: overrides?.custom_spots,
         checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
-        extracted_players: extractedPlayers,
+        extracted_players: overrides?.extracted ?? extractedPlayers,
       })
       setResult(data)
       setPanelOpen(false)
@@ -116,6 +130,26 @@ export function BreakSimulationView() {
     } finally {
       setLoading(false)
     }
+  }
+
+  async function handleSimulate() {
+    await runSimulate()
+  }
+
+  function handleLetterAssignmentSubmit(params: {
+    custom_map: Record<string, string>
+    extracted_players: string[]
+    custom_spots: string[]
+  }) {
+    setLetterCustomMap(params.custom_map)
+    setLetterExtracted(params.extracted_players)
+    setLetterCustomSpots(params.custom_spots)
+    runSimulate({
+      method: 'letter_assignment',
+      custom_map: params.custom_map,
+      custom_spots: params.custom_spots,
+      extracted: params.extracted_players,
+    })
   }
 
   async function handleSavePreset() {
@@ -131,8 +165,9 @@ export function BreakSimulationView() {
       name: newPresetName,
       checklist_ids: selectedChecklistIds,
       method,
-      extracted_players: extractedPlayers,
-      hits_guaranteed: guaranteedMap
+      extracted_players: method === 'letter_assignment' ? letterExtracted : extractedPlayers,
+      hits_guaranteed: guaranteedMap,
+      custom_map: method === 'letter_assignment' ? letterCustomMap : undefined,
     }
 
     try {
@@ -156,16 +191,19 @@ export function BreakSimulationView() {
   }
 
   function handleLoadPreset(p: SimulationPreset) {
-    // We can't directly set selectedChecklistIds because it's in the store
-    // But we can update the other local states
     setMethod(p.method)
-    setExtractedPlayers(p.extracted_players)
+    if (p.method === 'letter_assignment') {
+      setLetterCustomMap(p.custom_map ?? {})
+      setLetterExtracted(p.extracted_players)
+      setLetterCustomSpots([])
+    } else {
+      setExtractedPlayers(p.extracted_players)
+    }
     const hg: Record<string, string> = {}
     Object.entries(p.hits_guaranteed).forEach(([id, val]) => {
       hg[id] = String(val)
     })
     setHitsGuaranteed(hg)
-    // For checklist IDs, we might need a store action or just inform the user that it loads selection too
     useAppStore.getState().setSelectedChecklistIds(p.checklist_ids)
     setPresetsOpen(false)
   }
@@ -323,7 +361,7 @@ export function BreakSimulationView() {
       )}
 
       {/* Controls */}
-      <div className="flex flex-wrap gap-3 mb-6">
+      <div className="flex flex-wrap gap-3 mb-4">
         <div>
           <label className="text-xs font-medium block mb-1" style={{ color: 'var(--text-tertiary)' }}>Méthode</label>
           <select
@@ -338,33 +376,39 @@ export function BreakSimulationView() {
           </select>
         </div>
 
-        {method === 'player_letter' && (
-          <div className="flex-1 min-w-[300px]">
-            <label className="text-xs font-medium block mb-1" style={{ color: 'var(--text-tertiary)' }}>Joueurs à sortir du break par lettre</label>
-            <MultiSearchSelect
-              options={useAppStore.getState().analysisData?.player_rankings.map(p => p.Player!).filter(Boolean) || []}
-              value={extractedPlayers}
-              onChange={setExtractedPlayers}
-              placeholder="Sélectionner les joueurs à isoler..."
-            />
+        {method !== 'letter_assignment' && (
+          <div className="flex items-end">
+            <button
+              onClick={handleSimulate}
+              disabled={loading || selectedChecklistIds.length === 0}
+              className="px-4 py-2 rounded-lg text-sm font-medium"
+              style={{
+                background: 'var(--accent)',
+                color: '#fff',
+                opacity: loading ? 0.6 : 1,
+              }}
+            >
+              {loading ? '⏳ Simulation...' : '🎲 Simuler'}
+            </button>
           </div>
         )}
-
-        <div className="flex items-end">
-          <button
-            onClick={handleSimulate}
-            disabled={loading || selectedChecklistIds.length === 0}
-            className="px-4 py-2 rounded-lg text-sm font-medium"
-            style={{
-              background: 'var(--accent)',
-              color: '#fff',
-              opacity: loading ? 0.6 : 1,
-            }}
-          >
-            {loading ? '⏳ Simulation...' : '🎲 Simuler'}
-          </button>
-        </div>
       </div>
+
+      {/* Letter Assignment UI */}
+      {method === 'letter_assignment' && (
+        <div className="mb-6 rounded-xl p-4" style={{ border: '1px solid var(--border-subtle)', background: 'var(--bg-surface)' }}>
+          <p className="text-xs font-medium uppercase tracking-wide mb-3" style={{ color: 'var(--text-tertiary)' }}>
+            Assignation des joueurs par lettre
+          </p>
+          <LetterAssignmentUI
+            onSubmit={handleLetterAssignmentSubmit}
+            initialCustomMap={Object.keys(letterCustomMap).length > 0 ? letterCustomMap : undefined}
+            initialExtractedPlayers={letterExtracted.length > 0 ? letterExtracted : undefined}
+            submitLabel={loading ? '⏳ Simulation...' : '🎲 Simuler'}
+            disabled={loading || selectedChecklistIds.length === 0}
+          />
+        </div>
+      )}
 
       {error && (
         <div className="rounded-lg px-4 py-2 mb-4 text-sm" style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>

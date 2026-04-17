@@ -55,6 +55,7 @@ class SimulationPresetSaveRequest(BaseModel):
     method: str
     extracted_players: List[str] = []
     hits_guaranteed: Dict[str, int] = {}
+    custom_map: Optional[Dict[str, str]] = None
 
 
 class SimulationPreset(BaseModel):
@@ -63,6 +64,7 @@ class SimulationPreset(BaseModel):
     method: str
     extracted_players: List[str]
     hits_guaranteed: Dict[str, int]
+    custom_map: Optional[Dict[str, str]] = None
 
 
 # ---------------------------------------------------------------------------

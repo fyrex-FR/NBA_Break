@@ -121,6 +121,7 @@ export interface SimulationPreset {
   method: string
   extracted_players: string[]
   hits_guaranteed: Record<string, number>
+  custom_map?: Record<string, string>
 }
 
 // ---------------------------------------------------------------------------

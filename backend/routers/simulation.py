@@ -17,6 +17,7 @@ from ..services.break_engine import (
     build_default_spots,
     build_deterministic_spot_summary,
     build_spot_player_map,
+    extract_surname_initial,
 )
 from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json
 
@@ -76,6 +77,48 @@ def simulate_break(req: BreakSimulationRequest):
 
 
 # ---------------------------------------------------------------------------
+# Letter assignment UI helper
+# ---------------------------------------------------------------------------
+
+@router.post("/simulate/break/players")
+def get_players_for_letter_break(req: BreakSimulationRequest):
+    """Return all players from the pool grouped by their computed initial letter.
+
+    Used by the Letter Assignment UI so the breaker can review/adjust assignments
+    before running the simulation.
+    """
+    try:
+        df = load_master_data(req.sport_key, req.checklist_ids, req.master_key)
+        df = enrich_dataframe(df, req.sport_key, _keyword_overrides)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    pool = build_break_simulation_pool(df)
+    if pool.empty:
+        return {"players": [], "grouped": {}}
+
+    # Collect unique players
+    all_players: set[str] = set()
+    for players in pool["Player List"].tolist():
+        all_players.update(players)
+
+    # Build grouped dict: letter → sorted list of players
+    grouped: dict[str, list[str]] = {ch: [] for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
+    for player in all_players:
+        initial = extract_surname_initial(player)
+        if initial in grouped:
+            grouped[initial].append(player)
+
+    for letter in grouped:
+        grouped[letter].sort()
+
+    return {
+        "players": sorted(all_players),
+        "grouped": grouped,
+    }
+
+
+# ---------------------------------------------------------------------------
 # Simulation Presets
 # ---------------------------------------------------------------------------
 
@@ -112,6 +155,7 @@ def list_sim_presets(sport_key: str):
                 "method": p["method"],
                 "extracted_players": p.get("extracted_players", []),
                 "hits_guaranteed": p.get("hits_guaranteed", {}),
+                "custom_map": p.get("custom_map", {}),
             }
             for name, p in sport_presets.items()
         ]
@@ -130,6 +174,7 @@ def save_sim_preset(sport_key: str, req: SimulationPresetSaveRequest):
         "method": req.method,
         "extracted_players": req.extracted_players,
         "hits_guaranteed": req.hits_guaranteed,
+        "custom_map": req.custom_map or {},
     }
     _save_sim_presets(all_presets)
     return {"status": "ok", "name": req.name}
