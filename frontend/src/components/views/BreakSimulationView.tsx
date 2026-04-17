@@ -193,7 +193,6 @@ export function BreakSimulationView() {
     if (p.method === 'letter_assignment') {
       setLetterCustomMap(p.custom_map ?? {})
       setLetterExtracted(p.extracted_players)
-      setLetterCustomSpots([])
     } else {
       setExtractedPlayers(p.extracted_players)
     }
