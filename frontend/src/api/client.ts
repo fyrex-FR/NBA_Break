@@ -83,7 +83,7 @@ export function fetchBreakPlayers(params: {
   sport_key: string
   checklist_ids: string[]
   master_key?: string | null
-}): Promise<{ players: string[]; grouped: Record<string, string[]> }> {
+}): Promise<{ players: string[]; grouped: Record<string, string[]>; stats: Record<string, { cards: number; auto: number }> }> {
   return fetchJSON('/simulate/break/players', {
     method: 'POST',
     body: JSON.stringify(params),

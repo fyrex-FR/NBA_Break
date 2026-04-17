@@ -95,16 +95,25 @@ def get_players_for_letter_break(req: BreakSimulationRequest):
 
     pool = build_break_simulation_pool(df)
     if pool.empty:
-        return {"players": [], "grouped": {}}
+        return {"players": [], "grouped": {}, "stats": {}}
 
-    # Collect unique players
-    all_players: set[str] = set()
-    for players in pool["Player List"].tolist():
-        all_players.update(players)
+    # Compute per-player stats: cards count + auto/memo count
+    from ..services.card_logic import CATEGORY_AUTO_MEM
+    player_stats: dict[str, dict] = {}
+    for _, row in pool.iterrows():
+        players = row.get("Player List", [])
+        hits = int(row.get("Hits", 1) or 1)
+        is_auto = bool(row.get("Is AutoMemo", False))
+        for player in players:
+            if player not in player_stats:
+                player_stats[player] = {"cards": 0, "auto": 0}
+            player_stats[player]["cards"] += hits
+            if is_auto:
+                player_stats[player]["auto"] += hits
 
     # Build grouped dict: letter → sorted list of players
     grouped: dict[str, list[str]] = {ch: [] for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
-    for player in all_players:
+    for player in player_stats:
         initial = extract_surname_initial(player)
         if initial in grouped:
             grouped[initial].append(player)
@@ -113,8 +122,9 @@ def get_players_for_letter_break(req: BreakSimulationRequest):
         grouped[letter].sort()
 
     return {
-        "players": sorted(all_players),
+        "players": sorted(player_stats.keys()),
         "grouped": grouped,
+        "stats": player_stats,
     }
 
 
