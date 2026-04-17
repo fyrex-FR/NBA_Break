@@ -183,6 +183,10 @@ def extract_surname_initial(player_name):
     text = "" if player_name is None else str(player_name).strip()
     if not text:
         return ""
+    # Strip leading quoted nickname: "The American Nightmare" Cody Rhodes → Cody Rhodes
+    text = re.sub(r'^["\u201c\u201d][^"\u201c\u201d]+["\u201c\u201d]\s*', '', text).strip()
+    if not text:
+        return ""
     text = re.sub(r"[^\w\s\-\']", " ", text)
     tokens = [t for t in text.split() if t]
     if not tokens:
