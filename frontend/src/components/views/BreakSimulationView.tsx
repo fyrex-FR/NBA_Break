@@ -220,6 +220,34 @@ export function BreakSimulationView() {
     URL.revokeObjectURL(url)
   }
 
+  function exportBySpot(spots: BreakSpotRecord[], cards: BreakCardDetail[], breakMethod: string) {
+    const esc = (v: unknown) => {
+      const s = String(v ?? '')
+      return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s
+    }
+    const lines: string[] = []
+    for (const spot of spots) {
+      lines.push(`Spot ${spot.Spot}`)
+      lines.push(['Joueur', 'Équipe', 'Type', 'Numérotation', 'Catégorie', 'Checklist'].join(','))
+      const spotCards = cards.filter(c => c.Spot === spot.Spot && !c.is_multi_ref)
+      if (spotCards.length === 0) {
+        lines.push('(aucune carte)')
+      } else {
+        for (const c of spotCards) {
+          lines.push([c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c.Checklist].map(esc).join(','))
+        }
+      }
+      lines.push('')
+    }
+    const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `break_${breakMethod}_par_spot.csv`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div>
       <h2 className="text-xl font-medium mb-1">🧩 Simulation de Break</h2>
@@ -423,16 +451,24 @@ export function BreakSimulationView() {
             <MetricCard label="Spots" value={result.spots.length} icon="🎯" />
           </div>
 
-          {/* Export cartes détaillées */}
+          {/* Export */}
           {result.card_details && result.card_details.length > 0 && (
-            <div className="flex justify-end mb-3">
+            <div className="flex justify-end gap-2 mb-3">
               <button
-                onClick={() => exportCardDetails(result.card_details, method)}
+                onClick={() => exportBySpot(result.spots, result.card_details, method)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
                 style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
               >
                 <Download size={13} />
-                Exporter toutes les cartes avec spots
+                Export par spot (CSV)
+              </button>
+              <button
+                onClick={() => exportCardDetails(result.card_details, method)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
+                style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+              >
+                <Download size={13} />
+                Toutes les cartes
               </button>
             </div>
           )}
