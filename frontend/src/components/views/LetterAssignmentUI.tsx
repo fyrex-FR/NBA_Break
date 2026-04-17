@@ -13,7 +13,7 @@
  *  - custom_spots: string[] (26 letters + extracted player names)
  */
 
-import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { fetchBreakPlayers } from '../../api/client'
 import { useAppStore } from '../../stores/appStore'
 import { UserX, RefreshCw } from 'lucide-react'
@@ -85,14 +85,6 @@ export function LetterAssignmentUI({
       .finally(() => setLoading(false))
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSport, selectedChecklistIds.join(','), masterKey])
-
-  // Effective assignment for a player: override if in assignment map, else default
-  const effectiveLetter = useCallback(
-    (player: string): string => {
-      return assignment[player] ?? defaultGrouped[Object.keys(defaultGrouped).find(l => defaultGrouped[l].includes(player)) ?? '']?.[0]?.[0] ?? '?'
-    },
-    [assignment, defaultGrouped],
-  )
 
   // Build the grouped view: letter → players currently assigned to it (excluding extracted)
   const grouped = useMemo(() => {

@@ -63,7 +63,6 @@ export function BreakSimulationView() {
   // Letter Assignment mode state
   const [letterCustomMap, setLetterCustomMap] = useState<Record<string, string>>({})
   const [letterExtracted, setLetterExtracted] = useState<string[]>([])
-  const [letterCustomSpots, setLetterCustomSpots] = useState<string[]>([])
   const [panelOpen, setPanelOpen] = useState(true)
   const [selectedSpot, setSelectedSpot] = useState<string | null>(null)
 
@@ -143,7 +142,6 @@ export function BreakSimulationView() {
   }) {
     setLetterCustomMap(params.custom_map)
     setLetterExtracted(params.extracted_players)
-    setLetterCustomSpots(params.custom_spots)
     runSimulate({
       method: 'letter_assignment',
       custom_map: params.custom_map,
