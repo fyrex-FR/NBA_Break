@@ -76,42 +76,87 @@ _PREFIX_KEEP_INITIAL = {
 }
 
 # Common first names: if first token is in this set → use LAST token as initial (surname)
+# Generated from WWE parquet + NBA common first names
 _FIRST_NAMES = {
-    "adam", "alberto", "alex", "aleister", "alexa", "alexis", "ali",
-    "andrade", "angelo", "apollo", "asuka",
-    "bayley", "becky", "beth", "bianca", "bigE", "big",
-    "braun", "bray", "bret", "brock",
-    "cactus", "candice", "carmella", "cesaro", "charlotte",
-    "corey", "cruz",
-    "damian", "dana", "daniel", "dean", "dexter", "diamond", "dominik", "drew",
-    "ember", "ezekiel",
-    "finn",
-    "george",
-    "heath", "heath",
-    "io", "ivan",
-    "jake", "jey", "jimmy", "john", "johnny", "jose", "juri",
-    "kevin", "kofi",
-    "lacey", "lana", "liv",
-    "mandy", "mansoor", "mark", "matt", "mia", "mike", "montez",
-    "naomi", "natalya", "nia", "nikki",
-    "otis",
-    "pat", "paul",
-    "raquel", "randy", "rey", "rhea", "rhyno", "rick", "riddle", "rob", "roman", "ruby",
-    "samoa", "sami", "santana", "scott", "seth", "shawn", "sheamus", "shinsuke",
-    "shotzi", "sika", "sonya",
-    "tamina", "titus",
+    # A
+    "aaron", "adam", "adriana", "adrianna", "akira", "alba", "aleah", "aleister",
+    "alex", "alexa", "alexander", "alexis", "ali", "alicia", "aliyah", "alundra",
+    "amari", "andrade", "andre", "angel", "angelo", "anthony", "aoife", "apollo",
+    "arianna", "ashante", "asuka", "austin",
+    # B
+    "bam", "baron", "bayley", "becky", "ben", "beth", "bianca", "billie", "billy",
+    "blair", "bo", "bobby", "bodhi", "braun", "bray", "bret", "brian", "brie",
+    "brinley", "brock", "bron", "bronco", "bronson", "brook", "brooks", "bruno",
+    "brutus", "byron",
+    # C
+    "cactus", "cameron", "candice", "carmella", "carmelo", "cathy", "cedric",
+    "cesaro", "cezar", "chad", "channing", "charlie", "charlotte", "chelsea",
+    "chris", "cody", "cora", "corey", "cruz",
+    # D
+    "dakota", "damian", "damon", "dana", "dani", "daniel", "danny", "dante",
+    "dash", "dave", "david", "dean", "devin", "dexter", "diamond", "dion",
+    "dolph", "dominik", "don", "donovan", "draymond", "drew", "duke", "dusty",
+    # E
+    "eddie", "eddy", "edris", "elektra", "elton", "ember", "emilia", "eric",
+    "erick", "ethan", "eugene", "eva", "ezekiel",
+    # F
+    "fabian", "fallon", "finn", "flash", "floyd", "fred", "freddie",
+    # G
+    "gable", "gene", "george", "giannis", "gigi", "giovanni", "greg",
+    # H
+    "hakeem", "hank", "harley", "heath", "hideo", "hulk", "humberto",
+    # I
+    "ikemen", "ilja", "indi", "io", "isiah", "isaiah", "isla", "ivy", "iyo", "izzi",
+    # J
+    "jack", "jacob", "jacy", "jade", "jagger", "jaida", "jakara", "jake", "james",
+    "jason", "javier", "jaxson", "jazmyn", "jeff", "jerry", "jey", "jim", "jimmy",
+    "jinder", "joaquin", "joe", "joel", "john", "johnny", "jonathan", "jordan",
+    "jordynne", "joseph", "josh", "julius", "jrue", "juri",
+    # K
+    "kacy", "kairi", "karl", "kareem", "karmen", "karrion", "kassius", "katana",
+    "kawhi", "kay", "kayden", "keith", "kelani", "kelly", "kemba", "ken", "kenny",
+    "kevin", "khris", "kiana", "killian", "kit", "klay", "kofi", "kona", "kurt",
+    "kyrie", "kyle",
+    # L
+    "lacey", "lana", "larry", "lash", "lebron", "lewis", "lex", "lexis", "lince",
+    "liv", "lola", "luca", "lucien", "ludwig", "luke", "luka", "lyra",
+    # M
+    "magic", "malcolm", "malik", "mandy", "mansoor", "marcel", "marcus", "maria",
+    "mark", "matt", "max", "maxxine", "meiko", "mia", "michael", "michelle",
+    "mick", "mickie", "mike", "molly", "montez", "mustafa", "myles",
+    # N
+    "naomi", "nash", "nathan", "natalya", "nia", "nick", "nikki", "nikkita",
+    "nikolai", "nikola", "noam",
+    # O
+    "oba", "odyssey", "oliver", "oney", "oro", "oscar", "otis",
+    # P
+    "pascal", "pat", "patrick", "paul", "persia", "pete", "peyton", "piper",
+    # R
+    "raquel", "randy", "raul", "razor", "reggie", "rey", "rhea", "rhyno",
+    "ric", "rick", "ricky", "riddick", "ridge", "riley", "rob", "robert",
+    "roderick", "roman", "ron", "ronda", "roxanne", "ruby", "russell",
+    # S
+    "sam", "sami", "samir", "samoa", "santana", "santos", "sarah", "sasha",
+    "scott", "scottie", "seth", "shane", "shaquille", "shawn", "shayna",
+    "sheamus", "shelton", "shinsuke", "shotzi", "sika", "sol", "solo", "sonya",
+    "stacy", "stephen", "stevie", "sunil",
+    # T
+    "tama", "tanga", "tamina", "tatum", "tavion", "taynara", "teddy", "tegan",
+    "terrence", "terry", "thea", "tiffany", "tim", "timothy", "tino", "titus",
+    "tobias", "tommaso", "tonga", "toni", "tony", "torrie", "trae", "trent",
+    "trick", "trish", "tucker", "tye", "tyler",
+    # U
     "umaga",
-    "veer",
-    "xia",
-    "zelina",
-    # NBA / common
-    "lebron", "stephen", "kevin", "kyrie", "giannis", "kawhi", "luka", "devin",
-    "damian", "jimmy", "joel", "nikola", "chris", "james", "russell", "bradley",
-    "anthony", "paul", "draymond", "klay", "zion", "donovan", "trae", "bam",
-    "jayson", "jaylen", "marcus", "kemba", "mike", "ben", "pascal", "fred",
-    "brook", "al", "jrue", "tobias", "khris", "reggie", "terrence", "tim",
-    "charles", "clyde", "hakeem", "patrick", "isiah", "dominique", "scottie",
-    "magic", "larry", "kareem", "wilt", "oscar", "jerry", "elgin",
+    # V
+    "valentina", "vanessa", "veer", "vic",
+    # W
+    "wade", "wendi", "wendy", "wes", "william", "wilt", "wren",
+    # X
+    "xavier", "xia", "xyon",
+    # Y
+    "yulisa",
+    # Z
+    "zack", "zelina", "zion", "zoey",
 }
 
 
