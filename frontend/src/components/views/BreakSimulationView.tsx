@@ -225,20 +225,47 @@ export function BreakSimulationView() {
       const s = String(v ?? '')
       return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s
     }
+
+    const isAuto = (c: BreakCardDetail) =>
+      c.Category === '💎 Auto/Mem' || c.Category === '💎 Auto/Memo'
+
     const lines: string[] = []
     for (const spot of spots) {
-      lines.push(`Spot ${spot.Spot}`)
-      lines.push(['Joueur', 'Équipe', 'Type', 'Numérotation', 'Catégorie', 'Checklist'].join(','))
       const spotCards = cards.filter(c => c.Spot === spot.Spot && !c.is_multi_ref)
+
+      // Spot header with totals
+      lines.push(`Spot ${spot.Spot} — ${spot.Cartes} carte${spot.Cartes > 1 ? 's' : ''} · ${spot['Auto/Memo']} Auto/Memo · Score ${spot['Break Score']}`)
+      lines.push(['Joueur', 'Équipe', 'Type', 'Numérotation', 'Catégorie', 'Checklist', 'Cartes', 'Auto/Memo'].join(','))
+
       if (spotCards.length === 0) {
-        lines.push('(aucune carte)')
+        lines.push('(aucune carte),,,,,,0,0')
       } else {
+        // Aggregate per player
+        const playerMap: Record<string, { cards: number; auto: number; rows: BreakCardDetail[] }> = {}
         for (const c of spotCards) {
-          lines.push([c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c.Checklist].map(esc).join(','))
+          const key = c.Player || '—'
+          if (!playerMap[key]) playerMap[key] = { cards: 0, auto: 0, rows: [] }
+          playerMap[key].cards += 1
+          if (isAuto(c)) playerMap[key].auto += 1
+          playerMap[key].rows.push(c)
         }
+
+        for (const [, data] of Object.entries(playerMap)) {
+          for (const c of data.rows) {
+            lines.push([
+              c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c.Checklist,
+              data.cards, data.auto,
+            ].map(esc).join(','))
+          }
+        }
+
+        // Subtotal row
+        const totalAuto = spotCards.filter(isAuto).length
+        lines.push(['TOTAL', '', '', '', '', '', spotCards.length, totalAuto].map(esc).join(','))
       }
       lines.push('')
     }
+
     const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
