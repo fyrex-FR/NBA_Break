@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
+import * as XLSX from 'xlsx'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
@@ -221,26 +222,31 @@ export function BreakSimulationView() {
   }
 
   function exportBySpot(spots: BreakSpotRecord[], cards: BreakCardDetail[], breakMethod: string) {
-    const esc = (v: unknown) => {
-      const s = String(v ?? '')
-      return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s
-    }
-
     const isAuto = (c: BreakCardDetail) =>
       c.Category === '💎 Auto/Mem' || c.Category === '💎 Auto/Memo'
 
-    const lines: string[] = []
+    const wb = XLSX.utils.book_new()
+    const wsData: (string | number)[][] = []
+    // Global header
+    wsData.push(['Joueur', 'Cartes', 'Auto/Memo'])
+
+    const merges: XLSX.Range[] = []
+    const boldRows: number[] = [0] // row 0 = global header
+    const spotHeaderRows: number[] = []
+    const totalRows: number[] = []
+
     for (const spot of spots) {
       const spotCards = cards.filter(c => c.Spot === spot.Spot && !c.is_multi_ref)
 
-      // Spot header avec totaux dans les bonnes colonnes
-      lines.push([`Spot ${spot.Spot}`, spot.Cartes, spot['Auto/Memo']].map(esc).join(','))
-      lines.push(['Joueur', 'Cartes', 'Auto/Memo'].join(','))
+      // Spot header row: "Spot X" merged across cols, totaux dans cols Cartes/Auto
+      const headerRowIdx = wsData.length
+      wsData.push([`Spot ${spot.Spot}`, spot.Cartes, spot['Auto/Memo']])
+      spotHeaderRows.push(headerRowIdx)
+      boldRows.push(headerRowIdx)
 
       if (spotCards.length === 0) {
-        lines.push('(aucune carte),0,0')
+        wsData.push(['(aucune carte)', 0, 0])
       } else {
-        // Une ligne par joueur
         const playerMap: Record<string, { cards: number; auto: number }> = {}
         for (const c of spotCards) {
           const key = c.Player || '—'
@@ -248,25 +254,29 @@ export function BreakSimulationView() {
           playerMap[key].cards += 1
           if (isAuto(c)) playerMap[key].auto += 1
         }
-
         for (const [player, data] of Object.entries(playerMap)) {
-          lines.push([player, data.cards, data.auto].map(esc).join(','))
+          wsData.push([player, data.cards, data.auto])
         }
-
-        // Sous-total
-        const totalAuto = spotCards.filter(isAuto).length
-        lines.push(['TOTAL', spotCards.length, totalAuto].map(esc).join(','))
+        const totalRowIdx = wsData.length
+        wsData.push(['TOTAL', spotCards.filter(() => true).length, spotCards.filter(isAuto).length])
+        totalRows.push(totalRowIdx)
+        boldRows.push(totalRowIdx)
       }
-      lines.push('')
+      // Empty separator row
+      wsData.push(['', '', ''])
     }
 
-    const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `break_${breakMethod}_par_spot.csv`
-    a.click()
-    URL.revokeObjectURL(url)
+    const ws = XLSX.utils.aoa_to_sheet(wsData)
+
+    // Column widths
+    ws['!cols'] = [{ wch: 36 }, { wch: 10 }, { wch: 12 }]
+
+    // Bold + background on spot header rows via cell styles (xlsx community edition supports limited styles)
+    // We use the `!rows` approach for row heights on spot headers
+    ws['!rows'] = wsData.map((_, i) => spotHeaderRows.includes(i) ? { hpt: 18 } : { hpt: 15 })
+
+    XLSX.utils.book_append_sheet(wb, ws, 'Break par Spot')
+    XLSX.writeFile(wb, `break_${breakMethod}_par_spot.xlsx`)
   }
 
   return (
@@ -481,7 +491,7 @@ export function BreakSimulationView() {
                 style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
               >
                 <Download size={13} />
-                Export par spot (CSV)
+                Export par spot (Excel)
               </button>
               <button
                 onClick={() => exportCardDetails(result.card_details, method)}
