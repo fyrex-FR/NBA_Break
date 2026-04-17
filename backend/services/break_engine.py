@@ -81,76 +81,84 @@ _FIRST_NAMES = {
     # A
     "aaron", "adam", "adriana", "adrianna", "akira", "alba", "aleah", "aleister",
     "alex", "alexa", "alexander", "alexis", "ali", "alicia", "aliyah", "alundra",
-    "amari", "andrade", "andre", "angel", "angelo", "anthony", "aoife", "apollo",
-    "arianna", "ashante", "asuka", "austin",
+    "amale", "amari", "andrade", "andre", "angel", "angelo", "anthony", "aoife",
+    "apollo", "arianna", "ashante", "asuka", "austin",
     # B
-    "bam", "baron", "bayley", "becky", "ben", "beth", "bianca", "billie", "billy",
-    "blair", "bo", "bobby", "bodhi", "braun", "bray", "bret", "brian", "brie",
-    "brinley", "brock", "bron", "bronco", "bronson", "brook", "brooks", "bruno",
-    "brutus", "byron",
+    "bam", "baron", "batista", "bayley", "becky", "ben", "berto", "beth",
+    "bianca", "billie", "billy", "blair", "blake", "bo", "bobby", "bodhi",
+    "booker", "brandi", "braun", "bray", "bret", "brian", "brie", "brinley",
+    "brock", "bron", "bronco", "bronson", "brook", "brooks", "brother", "bruno",
+    "brutus", "bubba", "byron",
     # C
-    "cactus", "cameron", "candice", "carmella", "carmelo", "cathy", "cedric",
-    "cesaro", "cezar", "chad", "channing", "charlie", "charlotte", "chelsea",
-    "chris", "cody", "cora", "corey", "cruz",
+    "cactus", "cameron", "candice", "carlee", "carmella", "carmelo", "cathy",
+    "cedric", "cesaro", "cezar", "chad", "channing", "charlie", "charlotte",
+    "chelsea", "chris", "cody", "cora", "corey", "cruz",
     # D
     "dakota", "damian", "damon", "dana", "dani", "daniel", "danny", "dante",
     "dash", "dave", "david", "dean", "devin", "dexter", "diamond", "dion",
-    "dolph", "dominik", "don", "donovan", "draymond", "drew", "duke", "dusty",
+    "dolph", "dominik", "don", "donovan", "dory", "draymond", "drew", "duke",
+    "dusty",
     # E
-    "eddie", "eddy", "edris", "elektra", "elton", "ember", "emilia", "eric",
-    "erick", "ethan", "eugene", "eva", "ezekiel",
+    "eddie", "eddy", "edge", "edris", "elektra", "elton", "ember", "emilia",
+    "eric", "erick", "ethan", "eugene", "eva", "evolution", "ezekiel",
     # F
     "fabian", "fallon", "finn", "flash", "floyd", "fred", "freddie",
     # G
-    "gable", "gene", "george", "giannis", "gigi", "giovanni", "greg",
+    "gable", "gene", "george", "giannis", "gigi", "giovanni", "giulia",
+    "goldberg", "gorilla", "grayson", "greg",
     # H
-    "hakeem", "hank", "harley", "heath", "hideo", "hulk", "humberto",
+    "hakeem", "hank", "happy", "harley", "heath", "hideo", "hulk", "humberto",
+    "hunter",
     # I
-    "ikemen", "ilja", "indi", "io", "isiah", "isaiah", "isla", "ivy", "iyo", "izzi",
+    "ikemen", "ilja", "indi", "io", "isaac", "isiah", "isaiah", "isla", "ivy",
+    "iyo", "izzi",
     # J
-    "jack", "jacob", "jacy", "jade", "jagger", "jaida", "jakara", "jake", "james",
-    "jason", "javier", "jaxson", "jazmyn", "jeff", "jerry", "jey", "jim", "jimmy",
-    "jinder", "joaquin", "joe", "joel", "john", "johnny", "jonathan", "jordan",
-    "jordynne", "joseph", "josh", "julius", "jrue", "juri",
+    "jack", "jacob", "jacy", "jade", "jagger", "jaida", "jakara", "jake",
+    "james", "jason", "javier", "jaxson", "jazmyn", "jeff", "jerry", "jey",
+    "jim", "jimmy", "jinder", "joaquin", "joe", "joel", "john", "johnny",
+    "jonathan", "jordan", "jordynne", "joseph", "josh", "julius", "jrue", "juri",
     # K
-    "kacy", "kairi", "karl", "kareem", "karmen", "karrion", "kassius", "katana",
-    "kawhi", "kay", "kayden", "keith", "kelani", "kelly", "kemba", "ken", "kenny",
-    "kevin", "khris", "kiana", "killian", "kit", "klay", "kofi", "kona", "kurt",
-    "kyrie", "kyle",
+    "kacy", "kairi", "kama", "karl", "kareem", "karmen", "karrion", "kassius",
+    "katana", "kawhi", "kay", "kayden", "keith", "kelani", "kelly", "kemba",
+    "ken", "kendal", "kenny", "kevin", "khris", "kiana", "killian", "kit",
+    "klay", "kofi", "koko", "kona", "kurt", "kyrie", "kyle",
     # L
-    "lacey", "lana", "larry", "lash", "lebron", "lewis", "lex", "lexis", "lince",
-    "liv", "lola", "luca", "lucien", "ludwig", "luke", "luka", "lyra",
+    "lacey", "lainey", "lana", "larry", "lash", "lebron", "lewis", "lex",
+    "lexis", "lilian", "lince", "lita", "liv", "lola", "luca", "lucien",
+    "ludwig", "luke", "luka", "lyra",
     # M
-    "magic", "malcolm", "malik", "mandy", "mansoor", "marcel", "marcus", "maria",
-    "mark", "matt", "max", "maxxine", "meiko", "mia", "michael", "michelle",
-    "mick", "mickie", "mike", "molly", "montez", "mustafa", "myles",
+    "madcap", "magic", "malcolm", "malik", "mandy", "mankind", "mansoor",
+    "marcel", "marcus", "maria", "mark", "matt", "max", "maxxine", "meiko",
+    "mia", "michael", "michelle", "mick", "mickie", "mike", "molly", "montez",
+    "mustafa", "myles",
     # N
     "naomi", "nash", "nathan", "natalya", "nia", "nick", "nikki", "nikkita",
     "nikolai", "nikola", "noam",
     # O
-    "oba", "odyssey", "oliver", "oney", "oro", "oscar", "otis",
+    "oba", "odyssey", "oliver", "oney", "oro", "oscar", "osiris", "otis",
     # P
     "pascal", "pat", "patrick", "paul", "persia", "pete", "peyton", "piper",
     # R
-    "raquel", "randy", "raul", "razor", "reggie", "rey", "rhea", "rhyno",
-    "ric", "rick", "ricky", "riddick", "ridge", "riley", "rob", "robert",
-    "roderick", "roman", "ron", "ronda", "roxanne", "ruby", "russell",
+    "rampage", "randy", "raquel", "raul", "razor", "reggie", "rey", "rhea",
+    "rhyno", "ric", "rick", "ricky", "riddick", "ridge", "riley", "rob",
+    "robert", "roderick", "roman", "ron", "ronda", "roxanne", "ruby", "russell",
     # S
-    "sam", "sami", "samir", "samoa", "santana", "santos", "sarah", "sasha",
-    "scott", "scottie", "seth", "shane", "shaquille", "shawn", "shayna",
+    "sam", "sami", "samir", "samoa", "santana", "santos", "saquon", "sarah",
+    "sasha", "scott", "scottie", "seth", "shane", "shaquille", "shawn", "shayna",
     "sheamus", "shelton", "shinsuke", "shotzi", "sika", "sol", "solo", "sonya",
-    "stacy", "stephen", "stevie", "sunil",
+    "stacy", "stephen", "stephanie", "stevie", "sunil",
     # T
     "tama", "tanga", "tamina", "tatum", "tavion", "taynara", "teddy", "tegan",
-    "terrence", "terry", "thea", "tiffany", "tim", "timothy", "tino", "titus",
-    "tobias", "tommaso", "tonga", "toni", "tony", "torrie", "trae", "trent",
-    "trick", "trish", "tucker", "tye", "tyler",
+    "terra", "terrence", "terry", "thea", "tiffany", "tim", "timothy", "tino",
+    "titus", "tobias", "tommaso", "tonga", "toni", "tony", "torrie", "trae",
+    "trent", "trick", "trish", "tucker", "tye", "tyler", "tyra", "tyriek",
+    "tyson",
     # U
     "umaga",
     # V
-    "valentina", "vanessa", "veer", "vic",
+    "valentina", "vanessa", "veer", "velveteen", "vic", "vinny",
     # W
-    "wade", "wendi", "wendy", "wes", "william", "wilt", "wren",
+    "wade", "wendi", "wendy", "wes", "william", "wilt", "wren", "wyatt",
     # X
     "xavier", "xia", "xyon",
     # Y
