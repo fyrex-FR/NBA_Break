@@ -233,8 +233,8 @@ export function BreakSimulationView() {
     for (const spot of spots) {
       const spotCards = cards.filter(c => c.Spot === spot.Spot && !c.is_multi_ref)
 
-      // Spot header with totals
-      lines.push(`Spot ${spot.Spot} — ${spot.Cartes} carte${spot.Cartes > 1 ? 's' : ''} · ${spot['Auto/Memo']} Auto/Memo · Score ${spot['Break Score']}`)
+      // Spot header avec totaux dans les bonnes colonnes
+      lines.push([`Spot ${spot.Spot}`, spot.Cartes, spot['Auto/Memo']].map(esc).join(','))
       lines.push(['Joueur', 'Cartes', 'Auto/Memo'].join(','))
 
       if (spotCards.length === 0) {
