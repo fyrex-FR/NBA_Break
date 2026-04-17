@@ -230,7 +230,6 @@ export function BreakSimulationView() {
     // Global header
     wsData.push(['Joueur', 'Cartes', 'Auto/Memo'])
 
-    const merges: XLSX.Range[] = []
     const boldRows: number[] = [0] // row 0 = global header
     const spotHeaderRows: number[] = []
     const totalRows: number[] = []
