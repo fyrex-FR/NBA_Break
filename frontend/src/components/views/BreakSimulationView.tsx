@@ -235,33 +235,27 @@ export function BreakSimulationView() {
 
       // Spot header with totals
       lines.push(`Spot ${spot.Spot} — ${spot.Cartes} carte${spot.Cartes > 1 ? 's' : ''} · ${spot['Auto/Memo']} Auto/Memo · Score ${spot['Break Score']}`)
-      lines.push(['Joueur', 'Équipe', 'Type', 'Numérotation', 'Catégorie', 'Checklist', 'Cartes', 'Auto/Memo'].join(','))
+      lines.push(['Joueur', 'Cartes', 'Auto/Memo'].join(','))
 
       if (spotCards.length === 0) {
-        lines.push('(aucune carte),,,,,,0,0')
+        lines.push('(aucune carte),0,0')
       } else {
-        // Aggregate per player
-        const playerMap: Record<string, { cards: number; auto: number; rows: BreakCardDetail[] }> = {}
+        // Une ligne par joueur
+        const playerMap: Record<string, { cards: number; auto: number }> = {}
         for (const c of spotCards) {
           const key = c.Player || '—'
-          if (!playerMap[key]) playerMap[key] = { cards: 0, auto: 0, rows: [] }
+          if (!playerMap[key]) playerMap[key] = { cards: 0, auto: 0 }
           playerMap[key].cards += 1
           if (isAuto(c)) playerMap[key].auto += 1
-          playerMap[key].rows.push(c)
         }
 
-        for (const [, data] of Object.entries(playerMap)) {
-          for (const c of data.rows) {
-            lines.push([
-              c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c.Checklist,
-              data.cards, data.auto,
-            ].map(esc).join(','))
-          }
+        for (const [player, data] of Object.entries(playerMap)) {
+          lines.push([player, data.cards, data.auto].map(esc).join(','))
         }
 
-        // Subtotal row
+        // Sous-total
         const totalAuto = spotCards.filter(isAuto).length
-        lines.push(['TOTAL', '', '', '', '', '', spotCards.length, totalAuto].map(esc).join(','))
+        lines.push(['TOTAL', spotCards.length, totalAuto].map(esc).join(','))
       }
       lines.push('')
     }
