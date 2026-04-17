@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
-import * as XLSX from 'xlsx'
+import ExcelJS from 'exceljs'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
@@ -221,31 +221,43 @@ export function BreakSimulationView() {
     URL.revokeObjectURL(url)
   }
 
-  function exportBySpot(spots: BreakSpotRecord[], cards: BreakCardDetail[], breakMethod: string) {
+  async function exportBySpot(spots: BreakSpotRecord[], cards: BreakCardDetail[], breakMethod: string) {
     const isAuto = (c: BreakCardDetail) =>
       c.Category === '💎 Auto/Mem' || c.Category === '💎 Auto/Memo'
 
-    const wb = XLSX.utils.book_new()
-    const wsData: (string | number)[][] = []
-    // Global header
-    wsData.push(['Joueur', 'Cartes', 'Auto/Memo'])
+    const wb = new ExcelJS.Workbook()
+    const ws = wb.addWorksheet('Break par Spot')
+    ws.columns = [
+      { key: 'joueur', width: 38 },
+      { key: 'cartes', width: 10 },
+      { key: 'auto', width: 12 },
+    ]
 
-    const boldRows: number[] = [0] // row 0 = global header
-    const spotHeaderRows: number[] = []
-    const totalRows: number[] = []
+    // Global column header
+    const headerRow = ws.addRow(['Joueur', 'Cartes', 'Auto/Memo'])
+    headerRow.eachCell(cell => {
+      cell.font = { bold: true, color: { argb: 'FFFFFFFF' } }
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF374151' } }
+      cell.alignment = { horizontal: 'center' }
+    })
 
     for (const spot of spots) {
       const spotCards = cards.filter(c => c.Spot === spot.Spot && !c.is_multi_ref)
 
-      // Spot header row: "Spot X" merged across cols, totaux dans cols Cartes/Auto
-      const headerRowIdx = wsData.length
-      wsData.push([`Spot ${spot.Spot}`, spot.Cartes, spot['Auto/Memo']])
-      spotHeaderRows.push(headerRowIdx)
-      boldRows.push(headerRowIdx)
+      // Spot header row
+      const spotRow = ws.addRow([`Spot ${spot.Spot}`, spot.Cartes, spot['Auto/Memo']])
+      spotRow.height = 18
+      spotRow.eachCell(cell => {
+        cell.font = { bold: true, size: 12, color: { argb: 'FFFFFFFF' } }
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } }
+        cell.alignment = { horizontal: cell.address.startsWith('A') ? 'left' : 'center' }
+      })
 
       if (spotCards.length === 0) {
-        wsData.push(['(aucune carte)', 0, 0])
+        const emptyRow = ws.addRow(['(aucune carte)', 0, 0])
+        emptyRow.getCell(1).font = { italic: true, color: { argb: 'FF9CA3AF' } }
       } else {
+        // Aggregate per player
         const playerMap: Record<string, { cards: number; auto: number }> = {}
         for (const c of spotCards) {
           const key = c.Player || '—'
@@ -253,29 +265,53 @@ export function BreakSimulationView() {
           playerMap[key].cards += 1
           if (isAuto(c)) playerMap[key].auto += 1
         }
+        let rowIdx = 0
         for (const [player, data] of Object.entries(playerMap)) {
-          wsData.push([player, data.cards, data.auto])
+          const r = ws.addRow([player, data.cards, data.auto])
+          r.getCell(1).alignment = { horizontal: 'left' }
+          r.getCell(2).alignment = { horizontal: 'center' }
+          r.getCell(3).alignment = { horizontal: 'center' }
+          // Alternating row background
+          if (rowIdx % 2 === 1) {
+            r.eachCell(cell => {
+              cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF3F4F6' } }
+            })
+          }
+          rowIdx++
         }
-        const totalRowIdx = wsData.length
-        wsData.push(['TOTAL', spotCards.filter(() => true).length, spotCards.filter(isAuto).length])
-        totalRows.push(totalRowIdx)
-        boldRows.push(totalRowIdx)
+        // TOTAL row
+        const totalRow = ws.addRow(['TOTAL', spotCards.length, spotCards.filter(isAuto).length])
+        totalRow.eachCell(cell => {
+          cell.font = { bold: true }
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFDBEAFE' } }
+          cell.alignment = { horizontal: cell.address.startsWith('A') ? 'left' : 'center' }
+        })
       }
-      // Empty separator row
-      wsData.push(['', '', ''])
+
+      // Empty separator
+      ws.addRow([])
     }
 
-    const ws = XLSX.utils.aoa_to_sheet(wsData)
+    // Borders on all non-empty rows
+    ws.eachRow(row => {
+      row.eachCell(cell => {
+        cell.border = {
+          top: { style: 'thin', color: { argb: 'FFE5E7EB' } },
+          bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } },
+          left: { style: 'thin', color: { argb: 'FFE5E7EB' } },
+          right: { style: 'thin', color: { argb: 'FFE5E7EB' } },
+        }
+      })
+    })
 
-    // Column widths
-    ws['!cols'] = [{ wch: 36 }, { wch: 10 }, { wch: 12 }]
-
-    // Bold + background on spot header rows via cell styles (xlsx community edition supports limited styles)
-    // We use the `!rows` approach for row heights on spot headers
-    ws['!rows'] = wsData.map((_, i) => spotHeaderRows.includes(i) ? { hpt: 18 } : { hpt: 15 })
-
-    XLSX.utils.book_append_sheet(wb, ws, 'Break par Spot')
-    XLSX.writeFile(wb, `break_${breakMethod}_par_spot.xlsx`)
+    const buffer = await wb.xlsx.writeBuffer()
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `break_${breakMethod}_par_spot.xlsx`
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
   return (
@@ -485,7 +521,7 @@ export function BreakSimulationView() {
           {result.card_details && result.card_details.length > 0 && (
             <div className="flex justify-end gap-2 mb-3">
               <button
-                onClick={() => exportBySpot(result.spots, result.card_details, method)}
+                onClick={() => void exportBySpot(result.spots, result.card_details, method)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
                 style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
               >
