@@ -8,6 +8,7 @@ import { useAppStore } from '../../stores/appStore'
 import { RefreshCw } from 'lucide-react'
 
 const ALPHABET = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+const DIGITS = Array.from('0123456789')
 
 interface Props {
   onSubmit: (params: {
@@ -70,20 +71,28 @@ export function LetterAssignmentUI({
     for (const [letter, players] of Object.entries(defaultGrouped)) {
       if (players.includes(player)) return letter
     }
-    return '?'
+    // Fallback: digits → '#', letters → first char
+    if (/^\d/.test(player)) return '#'
+    const first = player[0]?.toUpperCase()
+    return ALPHABET.includes(first) ? first : '#'
   }
 
   const grouped = useMemo(() => {
     const extractedArr = Array.from(extracted)
     const result: Record<string, string[]> = Object.fromEntries(ALPHABET.map(l => [l, []]))
-    // Add named-spot buckets for extracted players
+    result['#'] = []
     for (const spot of extractedArr) result[spot] = []
     for (const player of allPlayers) {
       if (extracted.has(player)) continue
       const slot = assignment[player] ?? getDefaultLetter(player)
-      if (slot && result[slot] !== undefined) result[slot].push(player)
+      if (slot && result[slot] !== undefined) {
+        result[slot].push(player)
+      } else if (slot === '#' || /^\d/.test(player)) {
+        result['#'].push(player)
+      }
     }
     for (const l of ALPHABET) result[l].sort()
+    result['#'].sort()
     for (const spot of extractedArr) result[spot].sort()
     return result
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,13 +123,13 @@ export function LetterAssignmentUI({
         : (assignment[player] ?? getDefaultLetter(player))
     }
     const extractedArr = Array.from(extracted)
-    onSubmit({ custom_map, extracted_players: extractedArr, custom_spots: [...ALPHABET, ...extractedArr] })
+    onSubmit({ custom_map, extracted_players: extractedArr, custom_spots: ['#', ...ALPHABET, ...extractedArr] })
   }
 
   const searchLower = search.toLowerCase()
   const extractedSorted = Array.from(extracted).sort()
-  // All slots: alphabet + named spots (named spots shown first so they're visible)
-  const allSlots = [...extractedSorted, ...ALPHABET]
+  // All slots: named spots first, then #, then A-Z
+  const allSlots = [...extractedSorted, '#', ...ALPHABET]
   const filteredLetters = allSlots.filter(slot =>
     !search || (grouped[slot] ?? []).some(p => p.toLowerCase().includes(searchLower))
   )
@@ -247,6 +256,7 @@ export function LetterAssignmentUI({
                             className="text-xs rounded-lg px-2 py-1"
                             style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)', minWidth: '3.5rem' }}
                           >
+                            <option value="#">#</option>
                             {ALPHABET.map(l => <option key={l} value={l}>{l}</option>)}
                             {extractedSorted.length > 0 && (
                               <>
