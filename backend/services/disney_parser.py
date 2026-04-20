@@ -9,8 +9,8 @@ Output columns: Player, Team, Box Type, Numbering, Hits
 - Player     = Disney character name
 - Team       = Film / Franchise
 - Box Type   = Section name (Base Set, Autographs, Relics, insert set name…)
-- Numbering  = "" (parallels ignored)
-- Hits       = 1 for Autographs/Relics, 0 for Base/Inserts
+- Numbering  = card numbering if present (e.g. /87), else ""
+- Hits       = 1 always (category auto_mem handles hit classification)
 """
 
 import re
@@ -19,12 +19,15 @@ import io
 import pandas as pd
 
 
-# Hits is always 1 (card count per slot) — the category (auto_mem) handles hit classification
-# We keep this list only for future use if needed
-_AUTO_RELIC_KEYWORDS = ["autograph", "auto", "relic", "memorabilia", "cut sig", "comic cuts"]
-
 # Sections to skip entirely (sketch cards = artist names, not characters)
 _SKIP_SECTION_KEYWORDS = ["sketch card"]
+
+# Characters whose names contain hyphens and must not be split
+# (used in auto parsing where col2 = "(Character-Film)")
+_HYPHEN_CHARACTERS = {
+    "G2-4T", "R2-D2", "C-3PO", "BB-8", "D-O", "R5-D4", "K-2SO",
+    "AT-AT", "RX-24", "M-O",
+}
 
 
 def _is_data_row(c0: str) -> bool:
@@ -38,30 +41,39 @@ def _clean(val) -> str:
     return re.sub(r",\s*$", "", str(val).strip())
 
 
-def _hits_for_section(section: str) -> int:
-    return 1
-
-
 def _skip_section(section: str) -> bool:
     lower = section.lower()
     return any(k in lower for k in _SKIP_SECTION_KEYWORDS)
 
 
-def _parse_2025_auto(c1: str, c2: str):
-    """2025 format: col1=actor, col2='(Character-Film)' → return (character, film)."""
+def _is_numbering(s: str) -> bool:
+    """True if s looks like a card numbering (e.g. /87, /25)."""
+    return bool(re.match(r"^/\d+$", s.strip()))
+
+
+def _parse_auto_col2(c2: str):
+    """Parse '(Character-Film)' from auto col2.
+
+    Handles hyphenated character names like G2-4T, R2-D2 by checking
+    known hyphen characters first, then splitting on last '-' that is
+    not part of a known character name.
+    """
     inner = re.sub(r"^\(|\)$", "", c2.strip())
+    if not inner:
+        return "", ""
+
+    # Try each known hyphen character first
+    for char in sorted(_HYPHEN_CHARACTERS, key=len, reverse=True):
+        if inner.startswith(char + "-"):
+            rest = inner[len(char) + 1:]
+            return char, rest.strip()
+
+    # Generic: split on first '-'
     if "-" in inner:
-        parts = inner.split("-", 1)
-        return _clean(parts[0]), _clean(parts[1])
-    return _clean(inner), ""
+        idx = inner.index("-")
+        return inner[:idx].strip(), inner[idx + 1:].strip()
 
-
-def _parse_2026_auto(row, ncols: int):
-    """2026 format: col3=character, col4=film."""
-    c3 = _clean(row.iloc[3]) if ncols > 3 else ""
-    c4 = _clean(row.iloc[4]) if ncols > 4 else ""
-    film = re.sub(r"^\(|\)$", "", c4).strip()
-    return c3, film
+    return inner.strip(), ""
 
 
 def parse_disney_checklist(file_data: bytes) -> pd.DataFrame:
@@ -101,6 +113,8 @@ def parse_disney_checklist(file_data: bytes) -> pd.DataFrame:
     rows: list[dict] = []
     current_section = "Base Set"
     skip = False
+    is_auto_section = False
+    in_sketch_cards = False
 
     for _, row in df_raw.iterrows():
         c0 = _clean(row.iloc[0])
@@ -112,27 +126,57 @@ def parse_disney_checklist(file_data: bytes) -> pd.DataFrame:
 
         if not _is_data_row(c0):
             # Section header
+            lower = c0.lower()
+            if "sketch card" in lower:
+                in_sketch_cards = True
+            # After sketch cards, any header that looks like a person name (no Disney keywords)
+            # is still a sketch card artist — keep skipping
+            if in_sketch_cards and not any(k in lower for k in [
+                "base", "insert", "auto", "relic", "chrome", "topps", "foil",
+                "die cut", "sticker", "poster", "land", "castle", "tapest",
+            ]):
+                skip = True
+            else:
+                in_sketch_cards = False
+                skip = _skip_section(c0)
             current_section = c0
-            skip = _skip_section(c0)
+            is_auto_section = any(k in lower for k in ["autograph", "auto", "cut sig"])
             continue
 
         if skip or not c1:
             continue
 
-        hits = _hits_for_section(current_section)
+        # Skip sketch card artist rows where col0 == col1 (artist name repeated)
+        if in_sketch_cards and c0 == c1:
+            continue
 
-        if hits == 1 and c2.startswith("("):
-            # 2025 auto format: col2 = "(Character-Film)"
-            player, team = _parse_2025_auto(c1, c2)
-        elif hits == 1 and ncols >= 5 and _clean(row.iloc[3] if ncols > 3 else None):
+        numbering = ""
+
+        if is_auto_section and c2.startswith("("):
+            # Auto format: col1=actor (ignored), col2='(Character-Film)'
+            player, team = _parse_auto_col2(c2)
+        elif ncols >= 5 and _clean(row.iloc[3] if ncols > 3 else None):
             # 2026 auto format: col3=character, col4=film
-            player, team = _parse_2026_auto(row, ncols)
+            c3 = _clean(row.iloc[3])
+            c4 = _clean(row.iloc[4]) if ncols > 4 else ""
+            player = c3
+            team = re.sub(r"^\(|\)$", "", c4).strip()
         else:
-            # Base / insert: col1=character, col2=film
+            # Base / insert: col1=character, col2=film (or numbering)
             player = _clean(c1)
-            # Strip "(THEN-Land)" / "(NOW-Land)" format
-            team = re.sub(r"^\((?:THEN|NOW)-", "", c2)
-            team = re.sub(r"\)$", "", team).strip()
+            if _is_numbering(c2):
+                # col2 is a numbering (e.g. /87), no team
+                numbering = c2.strip()
+                team = ""
+            else:
+                # Strip "(THEN-Land)" / "(NOW-Land)" — keep THEN/NOW in player name for dedup
+                if re.match(r"^\((?:THEN|NOW)-", c2):
+                    variant = re.match(r"^\((THEN|NOW)-", c2).group(1)
+                    player = f"{player} ({variant})"
+                    team = re.sub(r"^\((?:THEN|NOW)-", "", c2)
+                    team = re.sub(r"\)$", "", team).strip()
+                else:
+                    team = re.sub(r"\)$", "", c2).strip()
 
         if not player:
             continue
@@ -141,8 +185,8 @@ def parse_disney_checklist(file_data: bytes) -> pd.DataFrame:
             "Player": player,
             "Team": team,
             "Box Type": current_section,
-            "Numbering": "",
-            "Hits": hits,
+            "Numbering": numbering,
+            "Hits": 1,
         })
 
     if not rows:
