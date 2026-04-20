@@ -79,6 +79,23 @@ def parse_disney_checklist(file_data: bytes) -> pd.DataFrame:
 
     buf.seek(0)
     df_raw = pd.read_excel(buf, sheet_name="Full Checklist", header=None, engine="openpyxl")
+
+    # Detect pre-formatted files (header row: Player, Team, Box Type, Numbering, Hits)
+    first_row = [str(v).strip() for v in df_raw.iloc[0]]
+    if "Player" in first_row and "Box Type" in first_row:
+        buf.seek(0)
+        df_clean = pd.read_excel(buf, sheet_name="Full Checklist", header=0, engine="openpyxl")
+        df_clean.columns = [str(c).strip() for c in df_clean.columns]
+        df_clean = df_clean[["Player", "Team", "Box Type", "Numbering", "Hits"]].copy()
+        df_clean["Player"] = df_clean["Player"].astype(str).str.strip()
+        df_clean["Team"] = df_clean["Team"].fillna("").astype(str).str.strip()
+        df_clean["Box Type"] = df_clean["Box Type"].astype(str).str.strip()
+        df_clean["Numbering"] = df_clean["Numbering"].fillna("").astype(str).str.strip()
+        df_clean["Hits"] = pd.to_numeric(df_clean["Hits"], errors="coerce").fillna(0).astype(int)
+        df_clean = df_clean.drop_duplicates(subset=["Player", "Box Type"]).reset_index(drop=True)
+        df_clean = df_clean[df_clean["Player"].str.len() > 0].copy()
+        return df_clean
+
     ncols = df_raw.shape[1]
 
     rows: list[dict] = []
