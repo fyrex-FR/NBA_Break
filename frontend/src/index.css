@@ -84,6 +84,16 @@
   --accent-hover: #00994d;
 }
 
+[data-sport="wwe"] {
+  --accent: #e8002d;
+  --accent-hover: #ff1a44;
+}
+
+[data-sport="disney"] {
+  --accent: #006ec7;
+  --accent-hover: #1a8de0;
+}
+
 body {
   margin: 0;
   background: var(--bg-primary);

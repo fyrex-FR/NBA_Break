@@ -190,10 +190,19 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* ── Header fixe ── */}
         <div className="flex-shrink-0">
           {/* Logo NoClim */}
-          <div className="flex items-center gap-3 px-5 pt-5 pb-3">
-            <img src="/logo.png" alt="NoClim" className="w-8 h-8 flex-shrink-0 shadow-sm" style={{ borderRadius: '24%' }} />
-            <span className="font-extrabold text-lg tracking-tight" style={{ color: 'var(--text-primary)' }}>NoClim</span>
-          </div>
+          {(() => {
+            const currentSport = sports?.find(s => s.key === selectedSport)
+            const icon = currentSport?.page_icon
+            return (
+              <div className="flex items-center gap-3 px-5 pt-5 pb-3">
+                {icon
+                  ? <span className="text-2xl w-8 h-8 flex items-center justify-center flex-shrink-0">{icon}</span>
+                  : <img src="/logo.png" alt="NoClim" className="w-8 h-8 flex-shrink-0 shadow-sm" style={{ borderRadius: '24%' }} />
+                }
+                <span className="font-extrabold text-lg tracking-tight" style={{ color: 'var(--text-primary)' }}>NoClim</span>
+              </div>
+            )
+          })()}</div>
 
           {/* Titre + sport + bouton upload */}
           <div className="flex items-center gap-2 px-4 py-2">
