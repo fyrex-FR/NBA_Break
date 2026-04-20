@@ -123,6 +123,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const sortedYears = Object.keys(checklistsByYear).sort().reverse()
   const visibleSelectedCount = filteredChecklists.filter((c) => selectedChecklistIds.includes(c.checklist_id)).length
   const visibleRows = filteredChecklists.reduce((sum, c) => sum + c.rows, 0)
+  const selectedChecklistDetails = sortChecklists(
+    availableChecklists.filter((c) => selectedChecklistIds.includes(c.checklist_id)),
+    'year',
+  )
+  const selectedRows = selectedChecklistDetails.reduce((sum, c) => sum + c.rows, 0)
   const effectiveOpenYears = checklistQuery.trim() || selectedOnly || productFilter !== 'all'
     ? new Set(sortedYears)
     : openYears
@@ -509,6 +514,59 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                   />
                 </div>
               </div>
+
+              {selectedChecklistDetails.length > 0 && (
+                <div className="rounded-xl p-3 space-y-3" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>Selection active</p>
+                      <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                        {selectedChecklistDetails.length} checklist{selectedChecklistDetails.length > 1 ? 's' : ''} · {selectedRows.toLocaleString('fr-FR')} lignes
+                      </div>
+                    </div>
+                    <button
+                      onClick={deselectAllChecklists}
+                      className="text-xs px-2.5 py-1.5 rounded-full"
+                      style={{ background: 'var(--bg-panel)', color: 'var(--text-quaternary)', border: '1px solid var(--border-standard)' }}
+                    >
+                      Tout vider
+                    </button>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    {selectedChecklistDetails.slice(0, 6).map((cl) => {
+                      const formatted = formatChecklistName(cl.checklist_name)
+                      return (
+                        <div
+                          key={cl.checklist_id}
+                          className="flex items-center gap-2 rounded-lg px-2.5 py-2"
+                          style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-subtle)' }}
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium truncate" style={{ color: 'var(--text-primary)' }}>{formatted.name}</div>
+                            <div className="text-xs" style={{ color: 'var(--text-quaternary)' }}>
+                              {cl.year || formatted.year || 'Inconnue'} · {cl.rows.toLocaleString('fr-FR')} lignes
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => toggleChecklist(cl.checklist_id)}
+                            className="px-2 py-1 rounded text-xs"
+                            style={{ color: 'var(--text-quaternary)', background: 'transparent' }}
+                            title="Retirer de la selection"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      )
+                    })}
+                    {selectedChecklistDetails.length > 6 && (
+                      <div className="text-xs px-2.5 pt-1" style={{ color: 'var(--text-quaternary)' }}>
+                        +{selectedChecklistDetails.length - 6} autre{selectedChecklistDetails.length - 6 > 1 ? 's' : ''} checklist{selectedChecklistDetails.length - 6 > 1 ? 's' : ''}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {filteredChecklists.length === 0 ? (
                 <div className="text-sm py-10 text-center rounded-xl" style={{ color: 'var(--text-quaternary)', border: '1px dashed var(--border-solid)' }}>

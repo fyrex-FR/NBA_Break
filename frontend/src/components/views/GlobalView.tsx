@@ -1,16 +1,26 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { PlayerCell } from '../shared/PlayerCell'
-import type { RankingRecord } from '../../types'
+import type { RankingRecord, CardRecord } from '../../types'
 import { CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN } from '../../types'
 
 const columnHelper = createColumnHelper<RankingRecord>()
+type RankingMode = 'volume' | 'premium' | 'auto' | 'case'
+
+interface TopRow extends RankingRecord {
+  Premium: number
+  Auto: number
+  Case: number
+  Checklists: number
+  'Premium %': number
+}
 
 export function GlobalView() {
   const { analysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
+  const [rankingMode, setRankingMode] = useState<RankingMode>('volume')
   if (!analysisData) return null
 
   const { player_rankings, team_rankings, category_summary, metadata } = analysisData
@@ -31,6 +41,18 @@ export function GlobalView() {
       header: 'Cartes',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
+    columnHelper.accessor('Premium' as never, {
+      header: 'Premium',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor('Premium %' as never, {
+      header: '% premium',
+      cell: (info) => `${info.getValue()}%`,
+    }),
+    columnHelper.accessor('Checklists' as never, {
+      header: 'Checklists',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
   ], [])
 
   const teamColumns = useMemo(() => [
@@ -39,7 +61,23 @@ export function GlobalView() {
       header: 'Cartes',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
+    columnHelper.accessor('Premium' as never, {
+      header: 'Premium',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor('Premium %' as never, {
+      header: '% premium',
+      cell: (info) => `${info.getValue()}%`,
+    }),
+    columnHelper.accessor('Checklists' as never, {
+      header: 'Checklists',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
   ], [teamLabel])
+
+  const topTables = useMemo(() => buildTopTables(analysisData.cards), [analysisData.cards])
+  const playerRows = useMemo(() => sortTopRows(topTables.players, rankingMode), [topTables.players, rankingMode])
+  const teamRows = useMemo(() => sortTopRows(topTables.teams, rankingMode), [topTables.teams, rankingMode])
 
   const checklistRadar = useMemo(() => {
     const checklistStats = new Map<string, {
@@ -99,6 +137,14 @@ export function GlobalView() {
     setTargetTeam(row.Team)
     setActiveView('🛡️ Analyse Équipe')
   }
+
+  const rankingLabel = rankingMode === 'premium'
+    ? 'tries par premium'
+    : rankingMode === 'auto'
+      ? 'tries par auto/mem'
+      : rankingMode === 'case'
+        ? 'tries par case hit'
+        : 'tries par volume'
 
   return (
     <div>
@@ -165,22 +211,49 @@ export function GlobalView() {
         </div>
       )}
 
+      <div className="flex items-center gap-2 flex-wrap mb-4">
+        <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>Classement</span>
+        {([
+          ['volume', 'Volume'],
+          ['premium', 'Premium'],
+          ['auto', 'Auto/Mem'],
+          ['case', 'Case Hit'],
+        ] as const).map(([mode, label]) => {
+          const active = rankingMode === mode
+          return (
+            <button
+              key={mode}
+              onClick={() => setRankingMode(mode)}
+              className="px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
+              style={{
+                background: active ? 'var(--accent)' : 'var(--bg-surface)',
+                color: active ? '#fff' : 'var(--text-secondary)',
+                border: `1px solid ${active ? 'var(--accent)' : 'var(--border-subtle)'}`,
+              }}
+            >
+              {label}
+            </button>
+          )
+        })}
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
           <div className="mb-3">
             <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Top joueurs</h3>
             <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              Clique une ligne pour basculer directement sur l analyse detaillee.
+              Clique une ligne pour basculer directement sur l analyse detaillee, {rankingLabel}.
             </p>
           </div>
 
           <DataTable
-            data={player_rankings}
+            data={playerRows}
             columns={playerColumns as any}
             onRowClick={handlePlayerClick}
             searchable
             searchPlaceholder="Rechercher un joueur..."
             exportName="joueurs_global"
+            initialSorting={[{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'Auto' : 'Case', desc: true }]}
           />
         </div>
 
@@ -188,20 +261,77 @@ export function GlobalView() {
           <div className="mb-3">
             <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>{teamHeading}</h3>
             <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              {teamDescription}
+              {teamDescription} Les colonnes premium et couverture aident a arbitrer plus vite.
             </p>
           </div>
 
           <DataTable
-            data={team_rankings}
+            data={teamRows}
             columns={teamColumns as any}
             onRowClick={handleTeamClick}
             searchable
             searchPlaceholder={teamSearchPlaceholder}
             exportName="equipes_global"
+            initialSorting={[{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'Auto' : 'Case', desc: true }]}
           />
         </div>
       </div>
     </div>
   )
+}
+
+function buildTopTables(cards: CardRecord[]) {
+  const players = buildEntityRows(cards, 'player')
+  const teams = buildEntityRows(cards, 'team')
+  return { players, teams }
+}
+
+function buildEntityRows(cards: CardRecord[], kind: 'player' | 'team'): TopRow[] {
+  const stats = new Map<string, { hits: number; premium: number; auto: number; caseHit: number; checklists: Set<string> }>()
+
+  for (const card of cards) {
+    const values = (kind === 'player' ? card.Player : card.Team)
+      .split('/')
+      .map((v) => v.trim())
+      .filter(Boolean)
+
+    for (const value of values) {
+      const current = stats.get(value) || { hits: 0, premium: 0, auto: 0, caseHit: 0, checklists: new Set<string>() }
+      current.hits += card.Hits
+      current.checklists.add(card.checklist_name || card.File)
+      if (card.Category === CATEGORY_AUTO_MEM) {
+        current.auto += card.Hits
+        current.premium += card.Hits
+      }
+      if (card.Category === CATEGORY_CASE_HIT) {
+        current.caseHit += card.Hits
+        current.premium += card.Hits
+      }
+      if (card.Category === CATEGORY_LOGOMAN) {
+        current.premium += card.Hits
+      }
+      stats.set(value, current)
+    }
+  }
+
+  return Array.from(stats.entries()).map(([name, row]) => ({
+    ...(kind === 'player' ? { Player: name } : { Team: name }),
+    Hits: row.hits,
+    Premium: row.premium,
+    Auto: row.auto,
+    Case: row.caseHit,
+    Checklists: row.checklists.size,
+    'Premium %': row.hits > 0 ? Math.round((row.premium / row.hits) * 100) : 0,
+  }))
+}
+
+function sortTopRows(rows: TopRow[], mode: RankingMode) {
+  const sorted = [...rows]
+  sorted.sort((a, b) => {
+    if (mode === 'premium') return b.Premium - a.Premium || b.Hits - a.Hits || b.Checklists - a.Checklists
+    if (mode === 'auto') return b.Auto - a.Auto || b.Premium - a.Premium || b.Hits - a.Hits
+    if (mode === 'case') return b.Case - a.Case || b.Premium - a.Premium || b.Hits - a.Hits
+    return b.Hits - a.Hits || b.Premium - a.Premium || b.Checklists - a.Checklists
+  })
+  return sorted
 }
