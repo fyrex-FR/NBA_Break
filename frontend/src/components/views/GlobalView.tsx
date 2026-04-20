@@ -86,53 +86,6 @@ export function GlobalView() {
   const playerRows = useMemo(() => sortTopRows(topTables.players, rankingMode), [topTables.players, rankingMode])
   const teamRows = useMemo(() => sortTopRows(topTables.teams, rankingMode), [topTables.teams, rankingMode])
 
-  const checklistRadar = useMemo(() => {
-    const checklistStats = new Map<string, {
-      checklist_name: string
-      total: number
-      premium: number
-      auto: number
-      caseHit: number
-      logoman: number
-      year: string
-    }>()
-
-    for (const card of analysisData.cards) {
-      const checklistKey = card.checklist_name || card.File
-      const entry = checklistStats.get(checklistKey) || {
-        checklist_name: checklistKey,
-        total: 0,
-        premium: 0,
-        auto: 0,
-        caseHit: 0,
-        logoman: 0,
-        year: card.Year,
-      }
-      entry.total += card.Hits
-      if (card.Category === CATEGORY_AUTO_MEM) {
-        entry.auto += card.Hits
-        entry.premium += card.Hits
-      }
-      if (card.Category === CATEGORY_CASE_HIT) {
-        entry.caseHit += card.Hits
-        entry.premium += card.Hits
-      }
-      if (card.Category === CATEGORY_LOGOMAN) {
-        entry.logoman += card.Hits
-        entry.premium += card.Hits
-      }
-      checklistStats.set(checklistKey, entry)
-    }
-
-    return Array.from(checklistStats.values())
-      .map((item) => ({
-        ...item,
-        premiumRate: item.total > 0 ? Math.round((item.premium / item.total) * 100) : 0,
-      }))
-      .sort((a, b) => b.premiumRate - a.premiumRate || b.premium - a.premium || b.total - a.total)
-      .slice(0, 3)
-  }, [analysisData.cards])
-
   function handlePlayerClick(row: RankingRecord) {
     if (!row.Player) return
     setTargetPlayer(row.Player)
@@ -171,52 +124,6 @@ export function GlobalView() {
         <MetricCard label="Auto/Mem" value={category_summary.auto_mem} icon="💎" valueColor="#3b82f6" />
         <MetricCard label="Base/Autre" value={category_summary.base_other} icon="📄" />
       </div>
-
-      {checklistRadar.length > 0 && (
-        <div className="rounded-2xl p-4 mb-6" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>Checklist Radar</p>
-              <h3 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>Les plus denses de la selection</h3>
-            </div>
-            <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>
-              Premium = auto + case + logoman
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
-            {checklistRadar.map((item, index) => (
-              <div key={item.checklist_name} className="rounded-xl px-3.5 py-3" style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-subtle)' }}>
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div className="min-w-0">
-                    <div className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>
-                      #{index + 1} {item.year ? `· ${item.year}` : ''}
-                    </div>
-                    <div className="text-sm font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
-                      {item.checklist_name.replace('.parquet', '')}
-                    </div>
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <div className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{item.premiumRate}%</div>
-                    <div className="text-[11px]" style={{ color: 'var(--text-quaternary)' }}>premium</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-xs flex-wrap" style={{ color: 'var(--text-tertiary)' }}>
-                  <span>{item.premium} premium</span>
-                  <span>·</span>
-                  <span>{item.total} lignes</span>
-                  <span>·</span>
-                  <span>{item.auto} auto</span>
-                  <span>·</span>
-                  <span>{item.caseHit} case</span>
-                  <span>·</span>
-                  <span>{item.logoman} logoman</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       <div className="flex items-center gap-2 flex-wrap mb-4">
         <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>Classement</span>
