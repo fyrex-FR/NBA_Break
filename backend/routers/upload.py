@@ -74,20 +74,18 @@ async def upload_checklist(
     if not overwrite and r2_object_exists(config, parquet_key):
         raise HTTPException(status_code=409, detail=f"Le fichier '{parquet_name}' existe déjà. Activez le remplacement.")
 
-    # Upload individual parquet
-    upload_parquet_dataframe(config, parquet_key, df)
-
-    # Merge into master
     master_key = master_parquet_key_for_sport(sport_key)
-    try:
+    if r2_object_exists(config, master_key):
         existing_master = read_r2_parquet(config, master_key)
         existing_master = ensure_master_dataframe_schema(existing_master, sport_key)
         # Remove old rows for this checklist
         existing_master = existing_master[existing_master["checklist_id"] != checklist_id].copy()
         merged = pd.concat([existing_master, ensure_master_dataframe_schema(df, sport_key)], ignore_index=True)
-    except Exception:
+    else:
         merged = ensure_master_dataframe_schema(df, sport_key)
 
+    # Upload individual parquet
+    upload_parquet_dataframe(config, parquet_key, df)
     upload_parquet_dataframe(config, master_key, merged)
 
     return {

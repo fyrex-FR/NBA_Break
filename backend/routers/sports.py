@@ -3,7 +3,7 @@
 from fastapi import APIRouter, HTTPException
 
 from ..services.sports_config import SPORT_PROFILES, get_sport_profile
-from ..services.r2_storage import get_r2_config, is_r2_configured, list_r2_parquet_keys, read_r2_parquet
+from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_parquet
 from ..services.data_pipeline import (
     ensure_master_dataframe_schema,
     build_master_catalog,
@@ -64,19 +64,8 @@ def list_checklists(sport_key: str):
     except Exception:
         pass
 
-    # Fallback to individual parquet listing
-    keys = list_r2_parquet_keys(config, sport_key)
-    checklists = [
-        {
-            "checklist_id": k.split("/")[-1].replace(".parquet", ""),
-            "checklist_name": k.split("/")[-1],
-            "year": "",
-            "rows": 0,
-        }
-        for k in keys
-    ]
     return {
-        "checklists": checklists,
+        "checklists": [],
         "master_key": None,
-        "source_mode": "legacy",
+        "source_mode": "none",
     }

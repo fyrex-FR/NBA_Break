@@ -4,7 +4,7 @@ import { useAppStore } from '../../stores/appStore'
 import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist } from '../../api/client'
 import {
   Sun, Moon, Plus, FileSpreadsheet, UploadCloud, Copy, Check, Trash2,
-  ChevronDown, ChevronRight, Save, Play, Folder, Database
+  ChevronDown, ChevronRight, Save, Play, Folder, Database, Search, ArrowDownAZ, ArrowUpZA, Rows3
 } from 'lucide-react'
 
 import type { ChecklistInfo, PresetInfo } from '../../types'
@@ -30,6 +30,18 @@ function formatChecklistName(raw: string) {
   return { name: fallback.charAt(0).toUpperCase() + fallback.slice(1), year: '' }
 }
 
+function sortChecklists(checklists: ChecklistInfo[], mode: 'year' | 'rows_desc' | 'rows_asc' | 'name_asc' | 'name_desc') {
+  const sorted = [...checklists]
+  sorted.sort((a, b) => {
+    if (mode === 'rows_desc') return b.rows - a.rows || a.checklist_name.localeCompare(b.checklist_name)
+    if (mode === 'rows_asc') return a.rows - b.rows || a.checklist_name.localeCompare(b.checklist_name)
+    if (mode === 'name_desc') return b.checklist_name.localeCompare(a.checklist_name)
+    if (mode === 'name_asc') return a.checklist_name.localeCompare(b.checklist_name)
+    return a.checklist_name.localeCompare(b.checklist_name)
+  })
+  return sorted
+}
+
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const {
     selectedSport, setSport,
@@ -52,6 +64,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [uploadOverwrite, setUploadOverwrite] = useState(false)
   const [uploadStatus, setUploadStatus] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null)
   const [uploading, setUploading] = useState(false)
+  const [checklistQuery, setChecklistQuery] = useState('')
+  const [selectedOnly, setSelectedOnly] = useState(false)
+  const [productFilter, setProductFilter] = useState('all')
+  const [sortMode, setSortMode] = useState<'year' | 'rows_desc' | 'rows_asc' | 'name_asc' | 'name_desc'>('year')
   const queryClient = useQueryClient()
 
   const { data: sports } = useQuery({ queryKey: ['sports'], queryFn: fetchSports })
@@ -77,20 +93,55 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     }
   }, [checklistsData])
 
-  const checklistsByYear = availableChecklists.reduce<Record<string, ChecklistInfo[]>>((acc, c) => {
+  const availableProducts = Array.from(new Set(
+    availableChecklists.map((c) => formatChecklistName(c.checklist_name).name),
+  )).sort((a, b) => a.localeCompare(b))
+
+  const filteredChecklists = availableChecklists.filter((c) => {
+    if (selectedOnly && !selectedChecklistIds.includes(c.checklist_id)) return false
+    if (productFilter !== 'all' && formatChecklistName(c.checklist_name).name !== productFilter) return false
+    if (!checklistQuery.trim()) return true
+
+    const q = checklistQuery.trim().toLowerCase()
+    const formatted = formatChecklistName(c.checklist_name)
+    const haystack = [
+      c.checklist_name,
+      c.checklist_id,
+      formatted.name,
+      formatted.year,
+      c.year,
+    ].join(' ').toLowerCase()
+    return haystack.includes(q)
+  })
+
+  const checklistsByYear = filteredChecklists.reduce<Record<string, ChecklistInfo[]>>((acc, c) => {
     const year = c.year || 'Inconnue'
     if (!acc[year]) acc[year] = []
     acc[year].push(c)
     return acc
   }, {})
   const sortedYears = Object.keys(checklistsByYear).sort().reverse()
+  const visibleSelectedCount = filteredChecklists.filter((c) => selectedChecklistIds.includes(c.checklist_id)).length
+  const visibleRows = filteredChecklists.reduce((sum, c) => sum + c.rows, 0)
+  const effectiveOpenYears = checklistQuery.trim() || selectedOnly || productFilter !== 'all'
+    ? new Set(sortedYears)
+    : openYears
 
   const selectedCount = selectedChecklistIds.length
   const totalCount = availableChecklists.length
   const allSelected = selectedCount === totalCount && totalCount > 0
+  const allVisibleSelected = filteredChecklists.length > 0 && filteredChecklists.every((c) => selectedChecklistIds.includes(c.checklist_id))
+  const hasSelectionFilters = !!checklistQuery.trim() || selectedOnly || productFilter !== 'all'
 
-  function toggleYear(year: string) {
-    const ids = checklistsByYear[year].map((c) => c.checklist_id)
+  function selectVisibleChecklists() {
+    setSelectedChecklistIds(Array.from(new Set([
+      ...selectedChecklistIds,
+      ...filteredChecklists.map((c) => c.checklist_id),
+    ])))
+  }
+
+  function toggleYear(year: string, yearChecklists: ChecklistInfo[]) {
+    const ids = yearChecklists.map((c) => c.checklist_id)
     const allYearSelected = ids.every((id) => selectedChecklistIds.includes(id))
     if (allYearSelected) {
       setSelectedChecklistIds(selectedChecklistIds.filter((id) => !ids.includes(id)))
@@ -315,7 +366,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div className="flex items-center justify-between px-5 pb-3">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
-                  {selectedCount > 0 ? `${selectedCount} / ${totalCount} sel.` : `${totalCount} items`}
+                  {filteredChecklists.length !== totalCount
+                    ? `${visibleSelectedCount} / ${filteredChecklists.length} visibles`
+                    : selectedCount > 0 ? `${selectedCount} / ${totalCount} sel.` : `${totalCount} items`}
                 </span>
                 {selectedCount > 0 && (
                   <button
@@ -343,7 +396,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 )}
                 {confirmSelectAll ? (
                   <button
-                    onClick={() => { selectAllChecklists(); setConfirmSelectAll(false) }}
+                    onClick={() => {
+                      hasSelectionFilters ? selectVisibleChecklists() : selectAllChecklists()
+                      setConfirmSelectAll(false)
+                    }}
                     className="text-xs px-2 py-1 rounded font-semibold text-white shadow-sm"
                     style={{ background: 'var(--accent)' }}
                     onBlur={() => setConfirmSelectAll(false)}
@@ -352,13 +408,18 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     Confirmer
                   </button>
                 ) : (
-                  !allSelected && (
+                  !(hasSelectionFilters ? allVisibleSelected : allSelected) && (
                     <button
-                      onClick={() => totalCount > 20 ? setConfirmSelectAll(true) : selectAllChecklists()}
+                      onClick={() => {
+                        const volume = hasSelectionFilters ? filteredChecklists.length : totalCount
+                        if (volume > 20) setConfirmSelectAll(true)
+                        else if (hasSelectionFilters) selectVisibleChecklists()
+                        else selectAllChecklists()
+                      }}
                       className="text-xs px-2 py-1 rounded font-medium"
                       style={{ color: 'var(--accent)', background: 'var(--bg-surface)' }}
                     >
-                      Tout
+                      {hasSelectionFilters ? 'Tout visible' : 'Tout'}
                     </button>
                   )
                 )}
@@ -371,12 +432,96 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="flex-1 overflow-y-auto px-4 pb-4">
           {tab === 'selection' ? (
             <div className="space-y-3">
+              <div className="rounded-xl p-3 space-y-3" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                <div className="relative">
+                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-quaternary)' }} />
+                  <input
+                    type="text"
+                    value={checklistQuery}
+                    onChange={(e) => setChecklistQuery(e.target.value)}
+                    placeholder="Rechercher une checklist, année, id..."
+                    className="w-full rounded-lg pl-9 pr-3 py-2 text-sm"
+                    style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <select
+                    value={productFilter}
+                    onChange={(e) => setProductFilter(e.target.value)}
+                    className="rounded-lg px-3 py-2 text-sm"
+                    style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+                  >
+                    <option value="all">Tous les produits</option>
+                    {availableProducts.map((product) => (
+                      <option key={product} value={product}>{product}</option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={sortMode}
+                    onChange={(e) => setSortMode(e.target.value as typeof sortMode)}
+                    className="rounded-lg px-3 py-2 text-sm"
+                    style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+                  >
+                    <option value="year">Tri: année / alpha</option>
+                    <option value="rows_desc">Tri: plus de lignes</option>
+                    <option value="rows_asc">Tri: moins de lignes</option>
+                    <option value="name_asc">Tri: A → Z</option>
+                    <option value="name_desc">Tri: Z → A</option>
+                  </select>
+                </div>
+
+                <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    onClick={() => setSelectedOnly((v) => !v)}
+                    className="text-xs px-2.5 py-1.5 rounded-full transition-colors"
+                    style={{
+                      background: selectedOnly ? 'var(--accent)' : 'var(--bg-panel)',
+                      color: selectedOnly ? '#fff' : 'var(--text-secondary)',
+                      border: `1px solid ${selectedOnly ? 'var(--accent)' : 'var(--border-standard)'}`,
+                    }}
+                  >
+                    {selectedOnly ? 'Sélection active' : 'Voir sélection'}
+                  </button>
+                  {(checklistQuery || productFilter !== 'all' || selectedOnly) && (
+                    <button
+                      onClick={() => {
+                        setChecklistQuery('')
+                        setProductFilter('all')
+                        setSelectedOnly(false)
+                      }}
+                      className="text-xs px-2.5 py-1.5 rounded-full"
+                      style={{ background: 'var(--bg-panel)', color: 'var(--text-quaternary)', border: '1px solid var(--border-standard)' }}
+                    >
+                      Réinitialiser
+                    </button>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-3 gap-2">
+                  <FilterStat icon={<Folder className="w-3.5 h-3.5" />} label="Visibles" value={filteredChecklists.length} />
+                  <FilterStat icon={<Rows3 className="w-3.5 h-3.5" />} label="Lignes" value={visibleRows.toLocaleString('fr-FR')} />
+                  <FilterStat
+                    icon={sortMode === 'name_desc' ? <ArrowUpZA className="w-3.5 h-3.5" /> : <ArrowDownAZ className="w-3.5 h-3.5" />}
+                    label="Tri"
+                    value={sortMode === 'rows_desc' ? 'Dense' : sortMode === 'rows_asc' ? 'Léger' : sortMode === 'name_desc' ? 'Z-A' : sortMode === 'name_asc' ? 'A-Z' : 'Saison'}
+                  />
+                </div>
+              </div>
+
+              {filteredChecklists.length === 0 ? (
+                <div className="text-sm py-10 text-center rounded-xl" style={{ color: 'var(--text-quaternary)', border: '1px dashed var(--border-solid)' }}>
+                  Aucun résultat pour les filtres courants.
+                </div>
+              ) : (
+                <>
               {sortedYears.map((year) => {
-                const yearChecklists = checklistsByYear[year]
+                const yearChecklists = sortChecklists(checklistsByYear[year], sortMode)
                 const yearSelectedCount = yearChecklists.filter((cl) => selectedChecklistIds.includes(cl.checklist_id)).length
                 const allYearSelected = yearSelectedCount === yearChecklists.length
 
-                const isOpen = openYears.has(year)
+                const isOpen = effectiveOpenYears.has(year)
                 return (
                   <div key={year} className="rounded-xl overflow-hidden shadow-sm" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
                     {/* En-tête année — clic = expand/collapse */}
@@ -396,7 +541,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         type="checkbox"
                         checked={allYearSelected}
                         ref={(el) => { if (el) el.indeterminate = yearSelectedCount > 0 && !allYearSelected }}
-                        onChange={(e) => { e.stopPropagation(); toggleYear(year) }}
+                        onChange={(e) => { e.stopPropagation(); toggleYear(year, yearChecklists) }}
                         onClick={(e) => e.stopPropagation()}
                         className="flex-shrink-0 rounded w-3.5 h-3.5 ml-2"
                         style={{ accentColor: 'var(--accent)', cursor: 'pointer' }}
@@ -434,6 +579,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                   </div>
                 )
               })}
+                </>
+              )}
             </div>
           ) : (
             <div className="px-1">
@@ -526,4 +673,16 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
 function BookmarkIcon() {
   return <Save className="w-4 h-4 text-[var(--text-tertiary)]" />;
+}
+
+function FilterStat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string | number }) {
+  return (
+    <div className="rounded-lg px-2.5 py-2" style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-subtle)' }}>
+      <div className="flex items-center justify-between mb-1" style={{ color: 'var(--text-quaternary)' }}>
+        {icon}
+        <span className="text-[10px] font-semibold uppercase tracking-wide">{label}</span>
+      </div>
+      <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{value}</div>
+    </div>
+  )
 }
