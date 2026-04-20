@@ -7,7 +7,6 @@ import { PlayerCell } from '../shared/PlayerCell'
 import type { RankingRecord, CardRecord } from '../../types'
 import { CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN } from '../../types'
 
-const columnHelper = createColumnHelper<RankingRecord>()
 type RankingMode = 'volume' | 'premium' | 'auto' | 'case'
 
 interface TopRow extends RankingRecord {
@@ -18,12 +17,14 @@ interface TopRow extends RankingRecord {
   'Premium %': number
 }
 
+const columnHelper = createColumnHelper<TopRow>()
+
 export function GlobalView() {
   const { analysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
   const [rankingMode, setRankingMode] = useState<RankingMode>('volume')
   if (!analysisData) return null
 
-  const { player_rankings, team_rankings, category_summary, metadata } = analysisData
+  const { category_summary, metadata } = analysisData
   const isDisney = metadata.sport_key === 'disney'
   const teamLabel = isDisney ? 'Univers/Lieux' : 'Equipes'
   const teamSearchPlaceholder = isDisney ? 'Rechercher un univers ou lieu...' : 'Rechercher une equipe...'
@@ -41,15 +42,18 @@ export function GlobalView() {
       header: 'Cartes',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
-    columnHelper.accessor('Premium' as never, {
+    columnHelper.accessor((row) => row.Premium, {
+      id: 'Premium',
       header: 'Premium',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
-    columnHelper.accessor('Premium %' as never, {
+    columnHelper.accessor((row) => row['Premium %'], {
+      id: 'Premium %',
       header: '% premium',
       cell: (info) => `${info.getValue()}%`,
     }),
-    columnHelper.accessor('Checklists' as never, {
+    columnHelper.accessor((row) => row.Checklists, {
+      id: 'Checklists',
       header: 'Checklists',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
@@ -61,15 +65,18 @@ export function GlobalView() {
       header: 'Cartes',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
-    columnHelper.accessor('Premium' as never, {
+    columnHelper.accessor((row) => row.Premium, {
+      id: 'Premium',
       header: 'Premium',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
-    columnHelper.accessor('Premium %' as never, {
+    columnHelper.accessor((row) => row['Premium %'], {
+      id: 'Premium %',
       header: '% premium',
       cell: (info) => `${info.getValue()}%`,
     }),
-    columnHelper.accessor('Checklists' as never, {
+    columnHelper.accessor((row) => row.Checklists, {
+      id: 'Checklists',
       header: 'Checklists',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
