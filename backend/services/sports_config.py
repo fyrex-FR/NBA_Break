@@ -494,6 +494,42 @@ SPORT_PROFILES = {
             "universe wwe",
         ],
     },
+    "disney": {
+        "label": "Disney",
+        "page_icon": "🏰",
+        "header_logo_url": "",
+        "header_title": "NoClim",
+        "header_subtitle": "Analysez vos checklists Disney pour optimiser vos picks de personnages et franchises.",
+        "sheet_names": ["Full Checklist"],
+        "disney_parser": True,
+        "team_aliases": {},
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "auto_mem": DEFAULT_CATEGORY_RULES["auto_mem"] + [
+                "cut sig",
+                "comic cuts",
+            ],
+            "case_hit": [],
+            "logoman": [],
+        },
+        "hype_tiers": {},
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": False,
+            "case_hits": False,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": [
+            "disney",
+            "topps disney",
+            "disneyland",
+            "pixar",
+        ],
+    },
     "tennis": {
         "label": "Tennis",
         "page_icon": "🎾",
@@ -658,8 +694,11 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
     soccer_strong = ["soccer", "uefa", "fifa", "premier league", "la liga", "serie a", "bundesliga", "merlin"]
     nfl_strong = ["nfl", "football", "super bowl", "draft picks"]
     nba_strong = ["nba", "basket", "basketball", "hoops"]
+    disney_strong = ["disney", "disneyland", "topps disney", "pixar"]
     wwe_strong = ["wwe", "wrestling", "smackdown", "raw wwe", "nxt wwe"]
 
+    if any(h in normalized for h in disney_strong):
+        return "disney"
     if any(h in normalized for h in wwe_strong):
         return "wwe"
     if any(h in normalized for h in tennis_strong):

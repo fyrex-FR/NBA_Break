@@ -13,6 +13,7 @@ from ..services.data_pipeline import (
     extract_year,
     extract_product,
 )
+from ..services.disney_parser import parse_disney_checklist
 from ..services.r2_storage import (
     get_r2_config,
     is_r2_configured,
@@ -38,12 +39,15 @@ async def upload_checklist(
         raise HTTPException(status_code=503, detail="R2 non configuré.")
 
     sport_profile = get_sport_profile(sport_key)
-    sheet_names = sport_profile.get("sheet_names", ["Teams_clean"])
     team_aliases = sport_profile.get("team_aliases", {})
 
     file_data = await file.read()
     try:
-        df = read_uploaded_checklist(file_data, sheet_names)
+        if sport_profile.get("disney_parser"):
+            df = parse_disney_checklist(file_data)
+        else:
+            sheet_names = sport_profile.get("sheet_names", ["Teams_clean"])
+            df = read_uploaded_checklist(file_data, sheet_names)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -52,7 +56,9 @@ async def upload_checklist(
 
     # Add metadata
     filename = file.filename or "upload.xlsx"
-    df["Hits"] = 1
+    # Disney parser already sets Hits per row — other parsers default to 1
+    if "Hits" not in df.columns:
+        df["Hits"] = 1
     df["File"] = filename
     df["Year"] = extract_year(filename, sport_key)
     df["Product"] = extract_product(filename)
