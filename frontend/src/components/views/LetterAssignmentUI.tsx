@@ -8,7 +8,6 @@ import { useAppStore } from '../../stores/appStore'
 import { RefreshCw } from 'lucide-react'
 
 const ALPHABET = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-const DIGITS = Array.from('0123456789')
 
 interface Props {
   onSubmit: (params: {
