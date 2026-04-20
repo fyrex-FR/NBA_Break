@@ -74,13 +74,17 @@ export function LetterAssignmentUI({
   }
 
   const grouped = useMemo(() => {
+    const extractedArr = Array.from(extracted)
     const result: Record<string, string[]> = Object.fromEntries(ALPHABET.map(l => [l, []]))
+    // Add named-spot buckets for extracted players
+    for (const spot of extractedArr) result[spot] = []
     for (const player of allPlayers) {
       if (extracted.has(player)) continue
-      const letter = assignment[player] ?? getDefaultLetter(player)
-      if (letter && result[letter] !== undefined) result[letter].push(player)
+      const slot = assignment[player] ?? getDefaultLetter(player)
+      if (slot && result[slot] !== undefined) result[slot].push(player)
     }
     for (const l of ALPHABET) result[l].sort()
+    for (const spot of extractedArr) result[spot].sort()
     return result
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allPlayers, assignment, extracted, defaultGrouped])
@@ -114,10 +118,12 @@ export function LetterAssignmentUI({
   }
 
   const searchLower = search.toLowerCase()
-  const filteredLetters = ALPHABET.filter(letter =>
-    !search || grouped[letter].some(p => p.toLowerCase().includes(searchLower))
-  )
   const extractedSorted = Array.from(extracted).sort()
+  // All slots: alphabet + named spots (named spots shown first so they're visible)
+  const allSlots = [...extractedSorted, ...ALPHABET]
+  const filteredLetters = allSlots.filter(slot =>
+    !search || (grouped[slot] ?? []).some(p => p.toLowerCase().includes(searchLower))
+  )
 
   if (!selectedChecklistIds.length) {
     return (
@@ -189,16 +195,17 @@ export function LetterAssignmentUI({
         <div className="space-y-1">
           {filteredLetters.map(letter => {
             const players = search
-              ? grouped[letter].filter(p => p.toLowerCase().includes(searchLower))
-              : grouped[letter]
+              ? (grouped[letter] ?? []).filter(p => p.toLowerCase().includes(searchLower))
+              : (grouped[letter] ?? [])
+            const isNamedSpot = extractedSorted.includes(letter)
 
             return (
-              <div key={letter} className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border-subtle)' }}>
-                {/* Letter header */}
-                <div className="flex items-center gap-3 px-4 py-2" style={{ background: 'var(--bg-surface)' }}>
-                  <span className="text-base font-bold w-6 text-center" style={{ color: 'var(--accent)' }}>{letter}</span>
+              <div key={letter} className="rounded-xl overflow-hidden" style={{ border: `1px solid ${isNamedSpot ? 'color-mix(in srgb, var(--accent) 40%, transparent)' : 'var(--border-subtle)'}` }}>
+                {/* Slot header */}
+                <div className="flex items-center gap-3 px-4 py-2" style={{ background: isNamedSpot ? 'color-mix(in srgb, var(--accent) 12%, var(--bg-surface))' : 'var(--bg-surface)' }}>
+                  <span className={`font-bold text-center ${isNamedSpot ? 'text-sm' : 'text-base w-6'}`} style={{ color: 'var(--accent)' }}>{letter}</span>
                   <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>
-                    {grouped[letter].length} joueur{grouped[letter].length !== 1 ? 's' : ''}
+                    {(grouped[letter] ?? []).length} joueur{(grouped[letter] ?? []).length !== 1 ? 's' : ''}
                   </span>
                 </div>
 
@@ -207,6 +214,7 @@ export function LetterAssignmentUI({
                     {players.map((player, i) => {
                       const currentLetter = assignment[player] ?? letter
                       const isChanged = currentLetter !== getDefaultLetter(player)
+                      const isInNamedSpot = isNamedSpot
                       const st = playerStats[player]
                       return (
                         <div
@@ -232,7 +240,7 @@ export function LetterAssignmentUI({
                             </span>
                           )}
 
-                          {/* Letter selector */}
+                          {/* Letter / spot selector */}
                           <select
                             value={currentLetter}
                             onChange={e => handleReassign(player, e.target.value)}
@@ -240,17 +248,27 @@ export function LetterAssignmentUI({
                             style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)', minWidth: '3.5rem' }}
                           >
                             {ALPHABET.map(l => <option key={l} value={l}>{l}</option>)}
+                            {extractedSorted.length > 0 && (
+                              <>
+                                <option disabled>──────</option>
+                                {extractedSorted.map(spot => (
+                                  <option key={spot} value={spot}>{spot}</option>
+                                ))}
+                              </>
+                            )}
                           </select>
 
-                          {/* Extract button */}
-                          <button
-                            onClick={() => handleExtract(player)}
-                            className="px-2.5 py-1 rounded-lg text-xs font-medium whitespace-nowrap"
-                            style={{ background: 'var(--bg-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
-                            title="Créer un spot dédié"
-                          >
-                            Spot dédié
-                          </button>
+                          {/* Extract button — hidden if already in a named spot */}
+                          {!isInNamedSpot && (
+                            <button
+                              onClick={() => handleExtract(player)}
+                              className="px-2.5 py-1 rounded-lg text-xs font-medium whitespace-nowrap"
+                              style={{ background: 'var(--bg-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
+                              title="Créer un spot dédié"
+                            >
+                              Spot dédié
+                            </button>
+                          )}
                         </div>
                       )
                     })}
