@@ -202,7 +202,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <span className="font-extrabold text-lg tracking-tight" style={{ color: 'var(--text-primary)' }}>NoClim</span>
               </div>
             )
-          })()}</div>
+          })()}
 
           {/* Titre + sport + bouton upload */}
           <div className="flex items-center gap-2 px-4 py-2">
