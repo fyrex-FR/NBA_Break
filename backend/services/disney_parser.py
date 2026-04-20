@@ -19,7 +19,8 @@ import io
 import pandas as pd
 
 
-# Sections whose names contain these keywords → Hits = 1
+# Hits is always 1 (card count per slot) — the category (auto_mem) handles hit classification
+# We keep this list only for future use if needed
 _AUTO_RELIC_KEYWORDS = ["autograph", "auto", "relic", "memorabilia", "cut sig", "comic cuts"]
 
 # Sections to skip entirely (sketch cards = artist names, not characters)
@@ -38,8 +39,7 @@ def _clean(val) -> str:
 
 
 def _hits_for_section(section: str) -> int:
-    lower = section.lower()
-    return 1 if any(k in lower for k in _AUTO_RELIC_KEYWORDS) else 0
+    return 1
 
 
 def _skip_section(section: str) -> bool:
@@ -91,7 +91,7 @@ def parse_disney_checklist(file_data: bytes) -> pd.DataFrame:
         df_clean["Team"] = df_clean["Team"].fillna("").astype(str).str.strip()
         df_clean["Box Type"] = df_clean["Box Type"].astype(str).str.strip()
         df_clean["Numbering"] = df_clean["Numbering"].fillna("").astype(str).str.strip()
-        df_clean["Hits"] = pd.to_numeric(df_clean["Hits"], errors="coerce").fillna(0).astype(int)
+        df_clean["Hits"] = 1
         df_clean = df_clean.drop_duplicates(subset=["Player", "Box Type"]).reset_index(drop=True)
         df_clean = df_clean[df_clean["Player"].str.len() > 0].copy()
         return df_clean
