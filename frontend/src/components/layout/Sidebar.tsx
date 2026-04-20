@@ -140,7 +140,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     ])))
   }
 
-  function toggleYear(year: string, yearChecklists: ChecklistInfo[]) {
+  function toggleYear(yearChecklists: ChecklistInfo[]) {
     const ids = yearChecklists.map((c) => c.checklist_id)
     const allYearSelected = ids.every((id) => selectedChecklistIds.includes(id))
     if (allYearSelected) {
@@ -541,7 +541,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         type="checkbox"
                         checked={allYearSelected}
                         ref={(el) => { if (el) el.indeterminate = yearSelectedCount > 0 && !allYearSelected }}
-                        onChange={(e) => { e.stopPropagation(); toggleYear(year, yearChecklists) }}
+                        onChange={(e) => { e.stopPropagation(); toggleYear(yearChecklists) }}
                         onClick={(e) => e.stopPropagation()}
                         className="flex-shrink-0 rounded w-3.5 h-3.5 ml-2"
                         style={{ accentColor: 'var(--accent)', cursor: 'pointer' }}
