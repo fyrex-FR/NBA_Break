@@ -224,7 +224,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     setDeleteError(null)
     try {
       await deleteChecklist(selectedSport, deleteTarget, deleteToken)
-      setSelectedChecklistIds((prev) => prev.filter((id) => id !== deleteTarget))
+      setSelectedChecklistIds(selectedChecklistIds.filter((id) => id !== deleteTarget))
       queryClient.invalidateQueries({ queryKey: ['checklists', selectedSport] })
       setDeleteTarget(null)
       setDeleteToken('')
