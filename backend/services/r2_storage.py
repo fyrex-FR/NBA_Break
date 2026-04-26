@@ -142,3 +142,8 @@ def write_r2_json(config, key, data):
         Body=payload,
         ContentType="application/json",
     )
+
+
+def delete_r2_object(config, key):
+    client = make_r2_client(config)
+    client.delete_object(Bucket=config["bucket"], Key=key)

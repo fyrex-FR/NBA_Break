@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
-import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist } from '../../api/client'
+import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist, deleteChecklist } from '../../api/client'
 import {
   Sun, Moon, Plus, FileSpreadsheet, UploadCloud, Copy, Check, Trash2,
   ChevronDown, ChevronRight, Save, Play, Folder, Database, Search, ArrowDownAZ, ArrowUpZA, Rows3
@@ -68,6 +68,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [selectedOnly, setSelectedOnly] = useState(false)
   const [productFilter, setProductFilter] = useState('all')
   const [sortMode, setSortMode] = useState<'year' | 'rows_desc' | 'rows_asc' | 'name_asc' | 'name_desc'>('year')
+  const [deletingChecklistId, setDeletingChecklistId] = useState<string | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null)
+  const [deleteToken, setDeleteToken] = useState('')
+  const [deleteError, setDeleteError] = useState<string | null>(null)
   const queryClient = useQueryClient()
 
   const { data: sports } = useQuery({ queryKey: ['sports'], queryFn: fetchSports })
@@ -206,6 +210,30 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   function handleLoadPreset(preset: PresetInfo) {
     setSelectedChecklistIds(preset.checklist_ids)
     setTab('selection')
+  }
+
+  async function handleDeleteChecklist(checklistId: string) {
+    setDeleteTarget(checklistId)
+    setDeleteToken('')
+    setDeleteError(null)
+  }
+
+  async function confirmDeleteChecklist() {
+    if (!deleteTarget) return
+    setDeletingChecklistId(deleteTarget)
+    setDeleteError(null)
+    try {
+      await deleteChecklist(selectedSport, deleteTarget, deleteToken)
+      setSelectedChecklistIds((prev) => prev.filter((id) => id !== deleteTarget))
+      queryClient.invalidateQueries({ queryKey: ['checklists', selectedSport] })
+      setDeleteTarget(null)
+      setDeleteToken('')
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Erreur'
+      setDeleteError(msg.includes('401') || msg.includes('Token') ? 'Token invalide.' : msg)
+    } finally {
+      setDeletingChecklistId(null)
+    }
   }
 
   async function handleUpload() {
@@ -612,24 +640,33 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                           const formatted = formatChecklistName(cl.checklist_name);
                           const isSelected = selectedChecklistIds.includes(cl.checklist_id);
                           return (
-                            <label
+                            <div
                               key={cl.checklist_id}
-                              className={`flex items-start gap-3 px-3 py-2 text-sm cursor-pointer rounded-lg transition-colors my-0.5 ${isSelected ? 'bg-[var(--bg-hover)]' : 'hover:bg-[var(--bg-hover)]'}`}
+                              className={`group flex items-start gap-3 px-3 py-2 text-sm rounded-lg transition-colors my-0.5 ${isSelected ? 'bg-[var(--bg-hover)]' : 'hover:bg-[var(--bg-hover)]'}`}
                               style={{ color: isSelected ? 'var(--text-primary)' : 'var(--text-secondary)' }}
                             >
                               <input
                                 type="checkbox"
                                 checked={isSelected}
                                 onChange={() => toggleChecklist(cl.checklist_id)}
-                                className="rounded mt-1 w-3.5 h-3.5 flex-shrink-0"
+                                className="rounded mt-1 w-3.5 h-3.5 flex-shrink-0 cursor-pointer"
                                 style={{ accentColor: 'var(--accent)' }}
                               />
-                              <div className="flex-1 flex flex-col justify-center">
+                              <div className="flex-1 flex flex-col justify-center cursor-pointer" onClick={() => toggleChecklist(cl.checklist_id)}>
                                 <span className="font-semibold">{formatted.name}</span>
                                 {formatted.year && <span className="text-xs text-[var(--text-tertiary)]">{formatted.year}</span>}
                               </div>
                               <span className="flex-shrink-0 text-xs font-medium py-1" style={{ color: 'var(--text-quaternary)' }}>{cl.rows} items</span>
-                            </label>
+                              <button
+                                onClick={(e) => { e.preventDefault(); handleDeleteChecklist(cl.checklist_id) }}
+                                disabled={deletingChecklistId === cl.checklist_id}
+                                className="opacity-0 group-hover:opacity-100 flex-shrink-0 p-1 rounded transition-opacity hover:text-red-400"
+                                style={{ color: 'var(--text-quaternary)' }}
+                                title="Supprimer"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
                           )
                         })}
                       </div>
@@ -725,6 +762,40 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </button>
         </div>
       </aside>
+
+      {/* Modale suppression checklist */}
+      {deleteTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.6)' }}>
+          <div className="rounded-xl p-6 w-80 shadow-xl" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)' }}>
+            <h3 className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Supprimer la checklist</h3>
+            <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Cette action est irréversible. Entrez le token admin pour confirmer.</p>
+            <input
+              type="password"
+              autoFocus
+              value={deleteToken}
+              onChange={(e) => setDeleteToken(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && confirmDeleteChecklist()}
+              placeholder="Token admin..."
+              className="w-full rounded-lg px-3 py-2 text-sm outline-none mb-3"
+              style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+            />
+            {deleteError && <p className="text-xs text-red-400 mb-3">{deleteError}</p>}
+            <div className="flex gap-2 justify-end">
+              <button
+                onClick={() => setDeleteTarget(null)}
+                className="px-3 py-1.5 text-sm rounded-lg"
+                style={{ background: 'var(--bg-hover)', color: 'var(--text-secondary)' }}
+              >Annuler</button>
+              <button
+                onClick={confirmDeleteChecklist}
+                disabled={!deleteToken.trim() || !!deletingChecklistId}
+                className="px-3 py-1.5 text-sm rounded-lg font-semibold"
+                style={{ background: deleteToken.trim() ? 'var(--accent)' : 'var(--bg-hover)', color: deleteToken.trim() ? '#fff' : 'var(--text-quaternary)' }}
+              >Supprimer</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

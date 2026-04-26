@@ -239,6 +239,13 @@ export function fetchRookies(sportKey: string): Promise<{ rookies: RookieRecord[
   return fetchJSON(`/rookies/${sportKey}`)
 }
 
+export function deleteChecklist(sportKey: string, checklistId: string, adminToken: string): Promise<{ status: string; checklist_id: string; rows_removed: number }> {
+  return fetchJSON(`/upload/${sportKey}/${encodeURIComponent(checklistId)}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Token': adminToken },
+  })
+}
+
 export function saveOverrides(
   sportKey: string,
   autoMem: string[],

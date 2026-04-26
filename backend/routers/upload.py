@@ -1,6 +1,8 @@
 """Upload endpoint for Excel checklists."""
 
-from fastapi import APIRouter, HTTPException, UploadFile, File, Form
+import os
+from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Header
+from typing import Optional
 
 from ..services.sports_config import get_sport_profile
 from ..services.data_pipeline import (
@@ -20,6 +22,7 @@ from ..services.r2_storage import (
     read_r2_parquet,
     upload_parquet_dataframe,
     r2_object_exists,
+    delete_r2_object,
 )
 
 import pandas as pd
@@ -94,3 +97,41 @@ async def upload_checklist(
         "checklist_name": parquet_name,
         "rows": len(df),
     }
+
+
+@router.delete("/upload/{sport_key}/{checklist_id}")
+async def delete_checklist(sport_key: str, checklist_id: str, x_admin_token: Optional[str] = Header(None)):
+    """Delete a checklist from R2 and remove its rows from the master parquet."""
+    admin_token = os.getenv("ADMIN_DELETE_TOKEN", "")
+    if not admin_token or x_admin_token != admin_token:
+        raise HTTPException(status_code=401, detail="Token invalide.")
+
+    config = get_r2_config()
+    if not is_r2_configured(config):
+        raise HTTPException(status_code=503, detail="R2 non configuré.")
+
+    master_key = master_parquet_key_for_sport(sport_key)
+    if not r2_object_exists(config, master_key):
+        raise HTTPException(status_code=404, detail="Master parquet introuvable.")
+
+    master = read_r2_parquet(config, master_key)
+    master = ensure_master_dataframe_schema(master, sport_key)
+
+    checklist_rows = master[master["checklist_id"] == checklist_id]
+    if checklist_rows.empty:
+        raise HTTPException(status_code=404, detail=f"Checklist '{checklist_id}' introuvable.")
+
+    checklist_names = checklist_rows["checklist_name"].unique()
+    rows_before = len(master)
+    master = master[master["checklist_id"] != checklist_id].copy()
+    rows_removed = rows_before - len(master)
+
+    upload_parquet_dataframe(config, master_key, master)
+
+    # Delete individual parquet files (best effort)
+    for name in checklist_names:
+        parquet_key = f"parquet/{sport_key}/{name}"
+        if r2_object_exists(config, parquet_key):
+            delete_r2_object(config, parquet_key)
+
+    return {"status": "ok", "checklist_id": checklist_id, "rows_removed": rows_removed}
