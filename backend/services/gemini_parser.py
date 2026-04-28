@@ -104,10 +104,15 @@ def _detect_columns_with_gemini(sample_rows: list[dict]) -> dict:
         raise ValueError(f"Gemini column detection {resp.status_code}: {resp.text[:200]}")
 
     raw = resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
-    raw = raw.strip("` \n")
-    if raw.startswith("json"):
-        raw = raw[4:].strip()
-    return json.loads(raw)
+    # Retire les balises markdown éventuelles
+    raw = re.sub(r'^```[a-z]*\s*', '', raw, flags=re.IGNORECASE)
+    raw = re.sub(r'\s*```$', '', raw)
+    raw = raw.strip()
+    # Extrait le premier objet JSON trouvé dans la réponse
+    m = re.search(r'\{[^{}]*\}', raw, re.DOTALL)
+    if not m:
+        raise ValueError(f"Pas de JSON dans la réponse Gemini : {raw[:200]}")
+    return json.loads(m.group())
 
 
 def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
