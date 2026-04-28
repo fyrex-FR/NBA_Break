@@ -39,7 +39,7 @@ def _extract_json(text: str) -> dict:
     return json.loads(text)
 
 
-def parse_with_gemini(raw_content: str) -> dict:
+def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict:
     """Send raw checklist content to Gemini Flash and return normalized rows.
 
     Returns:
@@ -55,7 +55,11 @@ def parse_with_gemini(raw_content: str) -> dict:
         system_instruction=SYSTEM_PROMPT,
     )
 
-    response = model.generate_content(raw_content)
+    prompt = raw_content
+    if instructions:
+        prompt = f"{raw_content}\n\n---\nInstructions supplémentaires : {instructions}"
+
+    response = model.generate_content(prompt)
     result = _extract_json(response.text)
 
     if "rows" not in result or not isinstance(result["rows"], list):

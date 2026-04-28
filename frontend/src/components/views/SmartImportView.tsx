@@ -17,6 +17,7 @@ export function SmartImportView() {
   const [rows, setRows] = useState<Row[]>([])
   const [overwrite, setOverwrite] = useState(false)
   const [importedCount, setImportedCount] = useState(0)
+  const [instructions, setInstructions] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
 
   async function handlePreview() {
@@ -24,7 +25,7 @@ export function SmartImportView() {
     setLoading(true)
     setError(null)
     try {
-      const res = await smartPreview(selectedSport, { text: text || undefined, file: file || undefined })
+      const res = await smartPreview(selectedSport, { text: text || undefined, file: file || undefined, instructions: instructions || undefined })
       setChecklistName(res.checklist_name)
       setRows(res.rows)
       setStep('preview')
@@ -57,6 +58,7 @@ export function SmartImportView() {
     setChecklistName('')
     setError(null)
     setOverwrite(false)
+    setInstructions('')
   }
 
   function updateRow(index: number, field: keyof Row, value: string) {
@@ -119,6 +121,21 @@ export function SmartImportView() {
               </p>
             )}
             <input ref={fileRef} type="file" accept=".xlsx,.xls,.csv,.txt" className="hidden" onChange={(e) => setFile(e.target.files?.[0] || null)} />
+          </div>
+
+          {/* Instructions optionnelles */}
+          <div className="rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+            <label className="text-sm font-semibold mb-2 block" style={{ color: 'var(--text-primary)' }}>
+              Instructions pour Gemini <span className="font-normal" style={{ color: 'var(--text-quaternary)' }}>(optionnel)</span>
+            </label>
+            <input
+              type="text"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              placeholder='ex : "Le sport est NFL", "Ignore les lignes sans numérotation"...'
+              className="w-full rounded-lg px-3 py-2 text-sm outline-none"
+              style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+            />
           </div>
 
           {error && <p className="text-sm text-red-400">{error}</p>}

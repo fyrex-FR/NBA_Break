@@ -46,6 +46,7 @@ async def smart_preview(
     sport_key: str = Form(...),
     text: Optional[str] = Form(None),
     file: Optional[UploadFile] = File(None),
+    instructions: Optional[str] = Form(None),
 ):
     """Parse raw content with Gemini and return a preview — nothing is written to R2."""
     if not text and not file:
@@ -58,7 +59,7 @@ async def smart_preview(
         raw_content = text
 
     try:
-        result = parse_with_gemini(raw_content)
+        result = parse_with_gemini(raw_content, instructions=instructions)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:

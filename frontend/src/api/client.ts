@@ -241,12 +241,13 @@ export function fetchRookies(sportKey: string): Promise<{ rookies: RookieRecord[
 
 export async function smartPreview(
   sportKey: string,
-  payload: { text?: string; file?: File },
+  payload: { text?: string; file?: File; instructions?: string },
 ): Promise<{ checklist_name: string; sport_key: string; rows: { Player: string; Team: string; 'Box Type': string; Numbering: string }[]; row_count: number }> {
   const form = new FormData()
   form.append('sport_key', sportKey)
   if (payload.file) form.append('file', payload.file)
   if (payload.text) form.append('text', payload.text)
+  if (payload.instructions) form.append('instructions', payload.instructions)
   const res = await fetch(`${BASE}/upload/smart/preview`, { method: 'POST', body: form })
   if (!res.ok) {
     const body = await res.json().catch(() => ({}))

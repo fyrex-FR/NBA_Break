@@ -85,6 +85,10 @@ export function GlobalView() {
   const topTables = useMemo(() => buildTopTables(analysisData.cards), [analysisData.cards])
   const playerRows = useMemo(() => sortTopRows(topTables.players, rankingMode), [topTables.players, rankingMode])
   const teamRows = useMemo(() => sortTopRows(topTables.teams, rankingMode), [topTables.teams, rankingMode])
+  const rankingSorting = useMemo(
+    () => [{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'Auto' : 'Case', desc: true }],
+    [rankingMode],
+  )
 
   function handlePlayerClick(row: RankingRecord) {
     if (!row.Player) return
@@ -167,7 +171,7 @@ export function GlobalView() {
             searchable
             searchPlaceholder="Rechercher un joueur..."
             exportName="joueurs_global"
-            initialSorting={[{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'Auto' : 'Case', desc: true }]}
+            initialSorting={rankingSorting}
           />
         </div>
 
@@ -186,7 +190,7 @@ export function GlobalView() {
             searchable
             searchPlaceholder={teamSearchPlaceholder}
             exportName="equipes_global"
-            initialSorting={[{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'Auto' : 'Case', desc: true }]}
+            initialSorting={rankingSorting}
           />
         </div>
       </div>

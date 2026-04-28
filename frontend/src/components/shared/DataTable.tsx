@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   useReactTable,
   getCoreRowModel,
@@ -59,6 +59,10 @@ export function DataTable<T>({
   const [menuOpen, setMenuOpen] = useState(false)
   const [flashRowId, setFlashRowId] = useState<string | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setSorting(initialSorting ?? [])
+  }, [initialSorting])
 
   const showSearch = searchable || data.length > 20
 
