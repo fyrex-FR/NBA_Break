@@ -4,9 +4,11 @@ import os
 import json
 import re
 
-from google import genai
-from google.genai import types as genai_types
+import httpx
 
+
+_GEMINI_MODEL = "gemini-2.5-flash"
+_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 SYSTEM_PROMPT = """Tu reçois un contenu brut : texte collé, tableau, CSV ou Excel converti en texte.
 C'est une checklist de cartes sportives.
@@ -26,7 +28,7 @@ Règles strictes :
 - Player : nom du joueur (obligatoire — ignore toute ligne sans joueur identifiable)
 - Team : équipe ou nationalité (chaîne vide si inconnu)
 - Box Type : type de carte tel que Base, Rookie, Auto, Patch, Refractor, Prizm, etc. (chaîne vide si non précisé)
-- Numbering : numérotation ex "25" ou "/25" ou "/99" — garde uniquement le nombre ou chaîne vide
+- Numbering : tirage limité uniquement ex "/25", "/99", "/149" — NE PAS confondre avec le numéro de carte (ex: #42) qui est toujours présent. Si pas de tirage explicite, laisse vide
 - Ne crée pas de lignes dupliquées (même joueur + même Box Type = une seule ligne)
 - Ne génère pas de données inventées — si une valeur est absente, laisse la chaîne vide
 
@@ -34,41 +36,48 @@ Règles spécifiques aux fichiers Excel Beckett :
 - Si un onglet "Teams" est présent, utilise-le EN PRIORITÉ — il est organisé par équipe et contient toutes les cartes sans doublons de couleurs
 - Évite l'onglet "Master" ou tout onglet nommé "Master Checklist" — il liste toutes les variations de couleurs/parallels et génèrerait des doublons inutiles
 - Si l'onglet "Teams" est absent, additionne les onglets Base, Insert(s), Auto(graph(s)), Memo(rabilia) pour construire la checklist complète
-- Attention à la numérotation : chaque carte a un numéro de carte (ex: #42) qui n'est PAS la numérotation — la numérotation est le tirage limité ex "/25", "/99", "/149". Si tu ne vois pas de tirage explicite, laisse Numbering vide
 """
 
 
 def _extract_json(text: str) -> dict:
     text = text.strip()
-    text = re.sub(r"^```(?:json)?\s*", "", text)
-    text = re.sub(r"\s*```$", "", text)
+    if text.startswith("```"):
+        text = text.split("```")[1]
+        if text.startswith("json"):
+            text = text[4:]
+        text = text.strip()
     return json.loads(text)
 
 
 def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict:
-    """Send raw checklist content to Gemini Flash and return normalized rows.
-
-    Returns:
-        {"checklist_name": str, "rows": [{"Player", "Team", "Box Type", "Numbering"}, ...]}
-    """
+    """Send raw checklist content to Gemini and return normalized rows."""
     api_key = os.getenv("GEMINI_API_KEY", "")
     if not api_key:
         raise ValueError("GEMINI_API_KEY non configurée.")
-
-    client = genai.Client(api_key=api_key)
 
     prompt = raw_content
     if instructions:
         prompt = f"{raw_content}\n\n---\nInstructions supplémentaires : {instructions}"
 
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt,
-        config=genai_types.GenerateContentConfig(
-            system_instruction=SYSTEM_PROMPT,
-        ),
-    )
-    result = _extract_json(response.text)
+    url = f"{_API_BASE}/{_GEMINI_MODEL}:generateContent?key={api_key}"
+    payload = {
+        "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "maxOutputTokens": 8192,
+        },
+    }
+
+    with httpx.Client(timeout=120) as client:
+        resp = client.post(url, json=payload)
+
+    if resp.status_code != 200:
+        raise ValueError(f"Gemini API {resp.status_code}: {resp.text[:300]}")
+
+    data = resp.json()
+    raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+    result = _extract_json(raw)
 
     if "rows" not in result or not isinstance(result["rows"], list):
         raise ValueError("Réponse Gemini invalide : champ 'rows' manquant.")
@@ -96,7 +105,7 @@ def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict
 # Onglets à ignorer (variations/parallels)
 _SKIP_SHEETS = {"master", "master checklist", "checklist", "parallels"}
 
-# Onglets prioritaires (par ordre de préférence)
+# Onglets prioritaires
 _PRIORITY_SHEETS = ["teams", "team"]
 
 # Onglets à combiner si Teams absent
@@ -105,13 +114,7 @@ _COMBINE_SHEETS = ["base", "inserts", "insert", "autographs", "autograph", "auto
 
 
 def extract_text_from_file(file_bytes: bytes, filename: str) -> str:
-    """Extract raw text from uploaded file (Excel or CSV).
-
-    For Beckett-style Excel files:
-    - Prioritizes the 'Teams' sheet if present
-    - Skips 'Master' and similar sheets
-    - Falls back to combining Base/Insert/Auto/Memo sheets
-    """
+    """Extract raw text from uploaded file (Excel or CSV)."""
     import io
     import pandas as pd
 
@@ -130,12 +133,12 @@ def extract_text_from_file(file_bytes: bytes, filename: str) -> str:
             return ""
         return f"[Feuille: {name}]\n{df.to_csv(index=False, header=False)}"
 
-    # 1. Cherche un onglet Teams en priorité
+    # 1. Priorité à l'onglet Teams
     for key in _PRIORITY_SHEETS:
         if key in sheets_lower:
             return read_sheet(sheets_lower[key])
 
-    # 2. Combine Base + Inserts + Autos + Memo en ignorant Master
+    # 2. Combine Base + Inserts + Autos + Memo
     combine_parts = []
     for key in _COMBINE_SHEETS:
         if key in sheets_lower and key not in _SKIP_SHEETS:
