@@ -87,7 +87,7 @@ function MainContent() {
   }
 
   const renderView = () => {
-    switch (activeView) {
+    switch (activeView as string) {
       case '🌍 Vue Globale':
         return <GlobalView />
       case '💎 Autos & Patchs':
