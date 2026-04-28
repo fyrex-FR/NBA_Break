@@ -42,6 +42,14 @@ function MainContent() {
     )
   }
 
+  if (activeView === '📥 Import Intelligent') {
+    return (
+      <div className="p-4 md:p-6">
+        <SmartImportView />
+      </div>
+    )
+  }
+
   if (!analysisData) {
     return (
       <div className="flex items-center justify-center h-full p-4">
@@ -63,6 +71,15 @@ function MainContent() {
           <div className="inline-flex items-center justify-center p-1 rounded-full bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-sm font-medium px-4 py-2 mt-2 gap-2" style={{ color: 'var(--text-primary)' }}>
             <Play className="w-4 h-4 text-[var(--accent)]" />
             <span>Sélectionnez des données pour lancer l'analyse</span>
+          </div>
+          <div className="mt-4">
+            <button
+              onClick={() => useAppStore.getState().setActiveView('📥 Import Intelligent')}
+              className="text-sm underline"
+              style={{ color: 'var(--accent)' }}
+            >
+              📥 Importer une checklist via IA
+            </button>
           </div>
         </div>
       </div>
