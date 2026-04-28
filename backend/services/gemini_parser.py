@@ -64,7 +64,7 @@ def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict
         "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
         "generationConfig": {
-            "maxOutputTokens": 8192,
+            "maxOutputTokens": 65536,
         },
     }
 
