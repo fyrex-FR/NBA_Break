@@ -67,131 +67,119 @@ def _is_card_number(val) -> bool:
         return False
 
 
-def _col_stats(df: pd.DataFrame, c: int) -> dict:
-    """Calcule les stats d'une colonne pour la détection de rôle."""
-    col = df[c].dropna().astype(str).str.strip()
-    col = col[col.str.lower() != "nan"]
-    if col.empty:
-        return {"empty": True}
-    n = len(col)
-    num_ratio = col.apply(_is_card_number).mean()
-    unique_ratio = col.nunique() / n
-    repeat_ratio = 1 - unique_ratio  # élevé si beaucoup de répétitions (ex: équipe)
-    avg_len = col.str.len().mean()
-    numbering_ratio = col.apply(lambda v: bool(re.match(r'^/?\d{1,4}$', v))).mean()
-    return {
-        "empty": False,
-        "n": n,
-        "num_ratio": num_ratio,
-        "unique_ratio": unique_ratio,
-        "repeat_ratio": repeat_ratio,
-        "avg_len": avg_len,
-        "numbering_ratio": numbering_ratio,
+_COLUMN_DETECT_PROMPT = """Tu reçois un tableau (lignes JSON) extrait d'un fichier Excel Beckett — onglet Teams d'une checklist de cartes sportives.
+
+Chaque ligne est un dict {"0": val, "1": val, ...} où les clés sont les indices de colonnes.
+
+Identifie quel indice de colonne correspond à chaque rôle :
+- player : nom du joueur (texte, très varié, une valeur par joueur)
+- team : équipe ou nationalité (texte, se répète souvent — même équipe pour plusieurs joueurs)
+- box_type : type de carte (Base, Auto, Patch, Rookie...) — peut être absent
+- numbering : tirage limité format /99 /199 etc. — peut être absent
+- card_num : numéro de carte (entier, ex: 1, 42, 150) — à ignorer dans le parsing
+
+Retourne UNIQUEMENT un objet JSON valide, sans markdown :
+{"player": 3, "team": 0, "box_type": 1, "numbering": null, "card_num": 2}
+
+Si un rôle est absent mets null. Ne devine pas — si tu n'es pas sûr mets null.
+"""
+
+
+def _detect_columns_with_gemini(sample_rows: list[dict]) -> dict:
+    """Envoie un échantillon de lignes à Gemini pour identifier les indices de colonnes."""
+    api_key = os.getenv("GEMINI_API_KEY", "")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY non configurée.")
+
+    sample_text = json.dumps(sample_rows, ensure_ascii=False)
+    url = f"{_API_BASE}/{_GEMINI_MODEL}:generateContent?key={api_key}"
+    payload = {
+        "system_instruction": {"parts": [{"text": _COLUMN_DETECT_PROMPT}]},
+        "contents": [{"role": "user", "parts": [{"text": sample_text}]}],
+        "generationConfig": {"maxOutputTokens": 256},
     }
+    with httpx.Client(timeout=30) as client:
+        resp = client.post(url, json=payload)
+    if resp.status_code != 200:
+        raise ValueError(f"Gemini column detection {resp.status_code}: {resp.text[:200]}")
+
+    raw = resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+    raw = raw.strip("` \n")
+    if raw.startswith("json"):
+        raw = raw[4:].strip()
+    return json.loads(raw)
 
 
 def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
-    """Parse l'onglet Teams de Beckett — détection de colonnes entièrement dynamique.
+    """Parse l'onglet Teams de Beckett.
 
-    Aucune position n'est supposée fixe. On identifie chaque rôle par ses propriétés :
-    - Numbering : >30% des valeurs matchent /NNN
-    - Card number : >50% sont des entiers positifs
-    - Player : haute unicité, texte long, non numérique
-    - Team : haute répétition (une équipe apparaît pour N joueurs), non numérique
-    - Box type : répétition intermédiaire (moins que team, plus que player)
-    - Variants (ex: "- Concourse") : colonnes restantes, ignorées
+    Envoie les 30 premières lignes à Gemini pour identifier les indices de colonnes,
+    puis parse tout le DataFrame avec cette carte — aucune position supposée fixe.
     """
-    numbering_pattern = re.compile(r'^/?\d{1,4}$')
-    rows = []
+    numbering_pattern = re.compile(r'^/?\d{1,5}$')
     df = df.dropna(how="all").reset_index(drop=True)
-    ncols = df.shape[1]
 
-    stats = {}
-    for c in range(ncols):
-        stats[c] = _col_stats(df, c)
-
-    non_empty_cols = [c for c in range(ncols) if not stats[c].get("empty")]
-    if not non_empty_cols:
-        return []
-
-    # 1. Numbering : colonne dont >30% des valeurs matchent /NNN
-    numbering_col = None
-    for c in non_empty_cols:
-        if stats[c]["numbering_ratio"] > 0.3:
-            numbering_col = c
+    # Prépare un échantillon lisible pour Gemini (30 premières lignes non vides)
+    sample = []
+    for _, row in df.head(50).iterrows():
+        line = {}
+        for c in range(df.shape[1]):
+            v = row.iloc[c]
+            if v is not None and not (isinstance(v, float) and v != v):
+                line[str(c)] = str(v).strip()
+        if line:
+            sample.append(line)
+        if len(sample) >= 30:
             break
 
-    # 2. Card number : colonne dont >50% sont des entiers positifs
-    card_num_col = None
-    for c in non_empty_cols:
-        if c == numbering_col:
-            continue
-        if stats[c]["num_ratio"] > 0.5:
-            card_num_col = c
-            break
-
-    # Colonnes texte candidates (ni numbering ni card num)
-    text_cols = [c for c in non_empty_cols if c not in {numbering_col, card_num_col} and stats[c]["num_ratio"] < 0.3]
-
-    if not text_cols:
+    if not sample:
         return []
 
-    # 3. Player : score = unicité × longueur moyenne
-    #    Le joueur a le plus de valeurs uniques et des noms longs
-    player_col = max(text_cols, key=lambda c: stats[c]["unique_ratio"] * min(stats[c]["avg_len"] / 10, 2))
+    col_map = _detect_columns_with_gemini(sample)
 
-    remaining_text = [c for c in text_cols if c != player_col]
+    def _idx(role: str) -> int | None:
+        v = col_map.get(role)
+        return int(v) if v is not None else None
 
-    # 4. Team : parmi les restantes, la plus haute répétition ET longueur raisonnable (>3 chars avg)
-    #    (une équipe = quelques dizaines de lignes → repeat_ratio élevé)
-    team_col = None
-    if remaining_text:
-        team_col = max(remaining_text, key=lambda c: stats[c]["repeat_ratio"] * min(stats[c]["avg_len"] / 5, 2))
+    player_col = _idx("player")
+    team_col = _idx("team")
+    box_type_col = _idx("box_type")
+    numbering_col = _idx("numbering")
 
-    # 5. Box type : parmi les restantes (après player et team), plus basse unicité
-    bt_candidates = [c for c in remaining_text if c != team_col]
-    box_type_col = None
-    if bt_candidates:
-        box_type_col = min(bt_candidates, key=lambda c: stats[c]["unique_ratio"])
+    if player_col is None:
+        return []
 
-    # Tout ce qui reste (variants, sous-types de parallèles) est ignoré
+    def _get_cell(row, col):
+        if col is None or col >= df.shape[1]:
+            return ""
+        raw = row.iloc[col]
+        if raw is None or (isinstance(raw, float) and raw != raw):
+            return ""
+        v = str(raw).strip()
+        return "" if v.lower() == "nan" else v
 
     seen: set[tuple] = set()
+    rows = []
     for _, row in df.iterrows():
-        if player_col is None:
-            continue
-        _raw = row.iloc[player_col] if player_col < len(row) else None
-        raw_player = "" if _raw is None or (isinstance(_raw, float) and _raw != _raw) else str(_raw).strip()
-        if not raw_player or raw_player.lower() == "nan" or _is_card_number(raw_player):
+        player = _get_cell(row, player_col)
+        if not player or _is_card_number(player):
             continue
 
-        def _get(col):
-            if col is None or col >= len(row):
-                return ""
-            raw = row.iloc[col]
-            v = "" if raw is None or (isinstance(raw, float) and raw != raw) else str(raw).strip()
-            return "" if v.lower() == "nan" else v
-
-        team = _get(team_col)
-        box_type = _get(box_type_col)
+        team = _get_cell(row, team_col)
+        box_type = _get_cell(row, box_type_col)
 
         numbering = ""
         if numbering_col is not None:
-            raw_num = _get(numbering_col)
+            raw_num = _get_cell(row, numbering_col)
             if raw_num and numbering_pattern.match(raw_num):
                 numbering = raw_num if raw_num.startswith("/") else f"/{raw_num}"
 
-        key = (raw_player.lower(), box_type.lower())
+        key = (player.lower(), box_type.lower())
         if key in seen:
             continue
         seen.add(key)
 
-        rows.append({
-            "Player": raw_player,
-            "Team": team,
-            "Box Type": box_type,
-            "Numbering": numbering,
-        })
+        rows.append({"Player": player, "Team": team, "Box Type": box_type, "Numbering": numbering})
 
     return rows
 
