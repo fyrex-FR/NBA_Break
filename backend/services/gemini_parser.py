@@ -26,14 +26,19 @@ Règles strictes :
 - Team : équipe ou nationalité (chaîne vide si inconnu)
 - Box Type : type de carte tel que Base, Rookie, Auto, Patch, Refractor, Prizm, etc. (chaîne vide si non précisé)
 - Numbering : numérotation ex "25" ou "/25" ou "/99" — garde uniquement le nombre ou chaîne vide
-- Ne crée pas de lignes dupliquées
+- Ne crée pas de lignes dupliquées (même joueur + même Box Type = une seule ligne)
 - Ne génère pas de données inventées — si une valeur est absente, laisse la chaîne vide
+
+Règles spécifiques aux fichiers Excel Beckett :
+- Si un onglet "Teams" est présent, utilise-le EN PRIORITÉ — il est organisé par équipe et contient toutes les cartes sans doublons de couleurs
+- Évite l'onglet "Master" ou tout onglet nommé "Master Checklist" — il liste toutes les variations de couleurs/parallels et génèrerait des doublons inutiles
+- Si l'onglet "Teams" est absent, additionne les onglets Base, Insert(s), Auto(graph(s)), Memo(rabilia) pour construire la checklist complète
+- Dans l'onglet Teams, le format typique est : colonne 0 = équipe, colonne 1 = type de carte, colonne 2 = numéro, colonne 3 = joueur
 """
 
 
 def _extract_json(text: str) -> dict:
     text = text.strip()
-    # Strip markdown code fences if present
     text = re.sub(r"^```(?:json)?\s*", "", text)
     text = re.sub(r"\s*```$", "", text)
     return json.loads(text)
@@ -65,7 +70,6 @@ def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict
     if "rows" not in result or not isinstance(result["rows"], list):
         raise ValueError("Réponse Gemini invalide : champ 'rows' manquant.")
 
-    # Sanitize rows
     clean_rows = []
     for row in result["rows"]:
         if not isinstance(row, dict):
@@ -86,20 +90,64 @@ def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict
     }
 
 
+# Onglets à ignorer (variations/parallels)
+_SKIP_SHEETS = {"master", "master checklist", "checklist", "parallels"}
+
+# Onglets prioritaires (par ordre de préférence)
+_PRIORITY_SHEETS = ["teams", "team"]
+
+# Onglets à combiner si Teams absent
+_COMBINE_SHEETS = ["base", "inserts", "insert", "autographs", "autograph", "autos", "auto",
+                   "memorabilia", "memo", "rookies", "rookie", "signatures", "signature"]
+
+
 def extract_text_from_file(file_bytes: bytes, filename: str) -> str:
-    """Extract raw text from uploaded file (Excel or CSV)."""
+    """Extract raw text from uploaded file (Excel or CSV).
+
+    For Beckett-style Excel files:
+    - Prioritizes the 'Teams' sheet if present
+    - Skips 'Master' and similar sheets
+    - Falls back to combining Base/Insert/Auto/Memo sheets
+    """
     import io
     import pandas as pd
 
     fname = filename.lower()
-    if fname.endswith((".xlsx", ".xls")):
-        xls = pd.ExcelFile(io.BytesIO(file_bytes), engine="openpyxl")
-        parts = []
-        for sheet in xls.sheet_names:
-            df = pd.read_excel(io.BytesIO(file_bytes), sheet_name=sheet, engine="openpyxl", header=None)
-            parts.append(f"[Feuille: {sheet}]\n{df.to_csv(index=False, header=False)}")
-        return "\n\n".join(parts)
-    elif fname.endswith(".csv"):
+    if not fname.endswith((".xlsx", ".xls")):
         return file_bytes.decode("utf-8", errors="replace")
-    else:
-        return file_bytes.decode("utf-8", errors="replace")
+
+    buf = io.BytesIO(file_bytes)
+    xls = pd.ExcelFile(buf, engine="openpyxl")
+    sheet_names = xls.sheet_names
+    sheets_lower = {s.lower().strip(): s for s in sheet_names}
+
+    def read_sheet(name: str) -> str:
+        df = pd.read_excel(buf, sheet_name=name, engine="openpyxl", header=None)
+        if df.empty:
+            return ""
+        return f"[Feuille: {name}]\n{df.to_csv(index=False, header=False)}"
+
+    # 1. Cherche un onglet Teams en priorité
+    for key in _PRIORITY_SHEETS:
+        if key in sheets_lower:
+            return read_sheet(sheets_lower[key])
+
+    # 2. Combine Base + Inserts + Autos + Memo en ignorant Master
+    combine_parts = []
+    for key in _COMBINE_SHEETS:
+        if key in sheets_lower and key not in _SKIP_SHEETS:
+            content = read_sheet(sheets_lower[key])
+            if content:
+                combine_parts.append(content)
+
+    if combine_parts:
+        return "\n\n".join(combine_parts)
+
+    # 3. Fallback : tous les onglets sauf ceux à ignorer
+    parts = []
+    for name in sheet_names:
+        if name.lower().strip() not in _SKIP_SHEETS:
+            content = read_sheet(name)
+            if content:
+                parts.append(content)
+    return "\n\n".join(parts) if parts else read_sheet(sheet_names[0])
