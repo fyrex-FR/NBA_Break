@@ -4,7 +4,8 @@ import os
 import json
 import re
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types as genai_types
 
 
 SYSTEM_PROMPT = """Tu reçois un contenu brut : texte collé, tableau, CSV ou Excel converti en texte.
@@ -54,17 +55,19 @@ def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict
     if not api_key:
         raise ValueError("GEMINI_API_KEY non configurée.")
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(
-        model_name="gemini-2.0-flash",
-        system_instruction=SYSTEM_PROMPT,
-    )
+    client = genai.Client(api_key=api_key)
 
     prompt = raw_content
     if instructions:
         prompt = f"{raw_content}\n\n---\nInstructions supplémentaires : {instructions}"
 
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=prompt,
+        config=genai_types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+        ),
+    )
     result = _extract_json(response.text)
 
     if "rows" not in result or not isinstance(result["rows"], list):
