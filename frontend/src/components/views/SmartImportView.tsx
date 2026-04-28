@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { smartPreview, smartConfirm } from '../../api/client'
-import { Upload, Sparkles, Check, RotateCcw, Trash2 } from 'lucide-react'
+import { Upload, Sparkles, Check, RotateCcw, Trash2, ArrowLeft } from 'lucide-react'
 
 type Row = { Player: string; Team: string; 'Box Type': string; Numbering: string }
 type Step = 'input' | 'preview' | 'done'
 
 export function SmartImportView() {
-  const { selectedSport } = useAppStore()
+  const { selectedSport, analysisData, setActiveView } = useAppStore()
   const [step, setStep] = useState<Step>('input')
   const [text, setText] = useState('')
   const [file, setFile] = useState<File | null>(null)
@@ -72,13 +72,27 @@ export function SmartImportView() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
       <div className="mb-6">
-        <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <Sparkles className="w-5 h-5" style={{ color: 'var(--accent)' }} />
-          Import Intelligent
-        </h2>
-        <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>
-          Collez n'importe quel contenu ou uploadez un fichier — Gemini s'occupe de la mise en forme.
-        </p>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+              <Sparkles className="w-5 h-5" style={{ color: 'var(--accent)' }} />
+              Import Intelligent
+            </h2>
+            <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>
+              Collez n'importe quel contenu ou uploadez un fichier — Gemini s'occupe de la mise en forme.
+            </p>
+          </div>
+          {analysisData && (
+            <button
+              onClick={() => setActiveView('🌍 Vue Globale')}
+              className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg hover:bg-[var(--bg-hover)] transition-colors shrink-0"
+              style={{ color: 'var(--text-secondary)', border: '1px solid var(--border-subtle)' }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Retour
+            </button>
+          )}
+        </div>
       </div>
 
       {step === 'input' && (
