@@ -96,7 +96,7 @@ def _detect_columns_with_gemini(sample_rows: list[dict]) -> dict:
     payload = {
         "system_instruction": {"parts": [{"text": _COLUMN_DETECT_PROMPT}]},
         "contents": [{"role": "user", "parts": [{"text": sample_text}]}],
-        "generationConfig": {"maxOutputTokens": 256},
+        "generationConfig": {"maxOutputTokens": 512},
     }
     with httpx.Client(timeout=30) as client:
         resp = client.post(url, json=payload)
@@ -126,7 +126,7 @@ def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
 
     # Prépare un échantillon lisible pour Gemini (30 premières lignes non vides)
     sample = []
-    for _, row in df.head(50).iterrows():
+    for _, row in df.head(30).iterrows():
         line = {}
         for c in range(df.shape[1]):
             v = row.iloc[c]
@@ -134,7 +134,7 @@ def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
                 line[str(c)] = str(v).strip()
         if line:
             sample.append(line)
-        if len(sample) >= 30:
+        if len(sample) >= 15:
             break
 
     if not sample:
