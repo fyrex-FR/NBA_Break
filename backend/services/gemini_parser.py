@@ -67,78 +67,130 @@ def _is_card_number(val) -> bool:
         return False
 
 
+def _col_stats(df: pd.DataFrame, c: int) -> dict:
+    """Calcule les stats d'une colonne pour la détection de rôle."""
+    col = df[c].dropna().astype(str).str.strip()
+    col = col[col.str.lower() != "nan"]
+    if col.empty:
+        return {"empty": True}
+    n = len(col)
+    num_ratio = col.apply(_is_card_number).mean()
+    unique_ratio = col.nunique() / n
+    repeat_ratio = 1 - unique_ratio  # élevé si beaucoup de répétitions (ex: équipe)
+    avg_len = col.str.len().mean()
+    numbering_ratio = col.apply(lambda v: bool(re.match(r'^/?\d{1,4}$', v))).mean()
+    return {
+        "empty": False,
+        "n": n,
+        "num_ratio": num_ratio,
+        "unique_ratio": unique_ratio,
+        "repeat_ratio": repeat_ratio,
+        "avg_len": avg_len,
+        "numbering_ratio": numbering_ratio,
+    }
+
+
 def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
-    """Parse l'onglet Teams de Beckett.
+    """Parse l'onglet Teams de Beckett — détection de colonnes entièrement dynamique.
 
-    Structure typique : équipe | box type | numéro carte | joueur | (RC optionnel)
-    Mais les colonnes peuvent varier — on les détecte dynamiquement.
+    Aucune position n'est supposée fixe. On identifie chaque rôle par ses propriétés :
+    - Numbering : >30% des valeurs matchent /NNN
+    - Card number : >50% sont des entiers positifs
+    - Player : haute unicité, texte long, non numérique
+    - Team : haute répétition (une équipe apparaît pour N joueurs), non numérique
+    - Box type : répétition intermédiaire (moins que team, plus que player)
+    - Variants (ex: "- Concourse") : colonnes restantes, ignorées
     """
+    numbering_pattern = re.compile(r'^/?\d{1,4}$')
     rows = []
-    df = df.dropna(how="all")
-
-    # Détecter les colonnes : cherche celle qui contient des équipes NBA connues
-    # et celle qui contient des noms de joueurs (strings longs)
-    # Heuristique : col équipe = répétitions fréquentes d'une même valeur
-    # col joueur = valeurs uniques longues
-    # col box type = valeurs courtes répétées (Base, Auto, etc.)
-    # col numéro = entiers
-
+    df = df.dropna(how="all").reset_index(drop=True)
     ncols = df.shape[1]
 
-    # Score chaque colonne
-    col_scores = {}
+    stats = {}
     for c in range(ncols):
-        col = df[c].dropna().astype(str)
-        numeric_ratio = col.apply(_is_card_number).mean()
-        unique_ratio = col.nunique() / max(len(col), 1)
-        avg_len = col.str.len().mean()
-        repeat_ratio = 1 - unique_ratio
-        col_scores[c] = {
-            "numeric": numeric_ratio,
-            "unique": unique_ratio,
-            "avg_len": avg_len,
-            "repeat": repeat_ratio,
-        }
+        stats[c] = _col_stats(df, c)
 
-    # Colonne équipe : haute répétition, longueur moyenne (~15 chars)
-    team_col = max(range(ncols), key=lambda c: col_scores[c]["repeat"] * (col_scores[c]["avg_len"] > 5))
+    non_empty_cols = [c for c in range(ncols) if not stats[c].get("empty")]
+    if not non_empty_cols:
+        return []
 
-    # Colonne numéro de carte : haute proportion de numériques
-    num_candidates = sorted(range(ncols), key=lambda c: -col_scores[c]["numeric"])
-    card_num_col = num_candidates[0] if col_scores[num_candidates[0]]["numeric"] > 0.5 else None
+    # 1. Numbering : colonne dont >30% des valeurs matchent /NNN
+    numbering_col = None
+    for c in non_empty_cols:
+        if stats[c]["numbering_ratio"] > 0.3:
+            numbering_col = c
+            break
 
-    # Colonne joueur : haute unicité, longueur moyenne (~15 chars), pas numérique
-    player_col = max(
-        [c for c in range(ncols) if c != team_col and c != card_num_col],
-        key=lambda c: col_scores[c]["unique"] * (1 - col_scores[c]["numeric"]) * (col_scores[c]["avg_len"] > 5),
-        default=None,
-    )
+    # 2. Card number : colonne dont >50% sont des entiers positifs
+    card_num_col = None
+    for c in non_empty_cols:
+        if c == numbering_col:
+            continue
+        if stats[c]["num_ratio"] > 0.5:
+            card_num_col = c
+            break
 
-    # Colonne box type : restante avec faible unicité et courte
-    used = {team_col, card_num_col, player_col}
-    remaining = [c for c in range(ncols) if c not in used]
+    # Colonnes texte candidates (ni numbering ni card num)
+    text_cols = [c for c in non_empty_cols if c not in {numbering_col, card_num_col} and stats[c]["num_ratio"] < 0.3]
+
+    if not text_cols:
+        return []
+
+    # 3. Player : score = unicité × longueur moyenne
+    #    Le joueur a le plus de valeurs uniques et des noms longs
+    player_col = max(text_cols, key=lambda c: stats[c]["unique_ratio"] * min(stats[c]["avg_len"] / 10, 2))
+
+    remaining_text = [c for c in text_cols if c != player_col]
+
+    # 4. Team : parmi les restantes, la plus haute répétition ET longueur raisonnable (>3 chars avg)
+    #    (une équipe = quelques dizaines de lignes → repeat_ratio élevé)
+    team_col = None
+    if remaining_text:
+        team_col = max(remaining_text, key=lambda c: stats[c]["repeat_ratio"] * min(stats[c]["avg_len"] / 5, 2))
+
+    # 5. Box type : parmi les restantes (après player et team), plus basse unicité
+    bt_candidates = [c for c in remaining_text if c != team_col]
     box_type_col = None
-    if remaining:
-        box_type_col = min(remaining, key=lambda c: col_scores[c]["unique"])
+    if bt_candidates:
+        box_type_col = min(bt_candidates, key=lambda c: stats[c]["unique_ratio"])
 
+    # Tout ce qui reste (variants, sous-types de parallèles) est ignoré
+
+    seen: set[tuple] = set()
     for _, row in df.iterrows():
         if player_col is None:
             continue
-        player = str(row.get(player_col, "") or "").strip()
-        if not player or player.lower() == "nan" or _is_card_number(player):
+        _raw = row.iloc[player_col] if player_col < len(row) else None
+        raw_player = "" if _raw is None or (isinstance(_raw, float) and _raw != _raw) else str(_raw).strip()
+        if not raw_player or raw_player.lower() == "nan" or _is_card_number(raw_player):
             continue
-        team = str(row.get(team_col, "") or "").strip() if team_col is not None else ""
-        if team.lower() == "nan":
-            team = ""
-        box_type = str(row.get(box_type_col, "") or "").strip() if box_type_col is not None else ""
-        if box_type.lower() == "nan":
-            box_type = ""
+
+        def _get(col):
+            if col is None or col >= len(row):
+                return ""
+            raw = row.iloc[col]
+            v = "" if raw is None or (isinstance(raw, float) and raw != raw) else str(raw).strip()
+            return "" if v.lower() == "nan" else v
+
+        team = _get(team_col)
+        box_type = _get(box_type_col)
+
+        numbering = ""
+        if numbering_col is not None:
+            raw_num = _get(numbering_col)
+            if raw_num and numbering_pattern.match(raw_num):
+                numbering = raw_num if raw_num.startswith("/") else f"/{raw_num}"
+
+        key = (raw_player.lower(), box_type.lower())
+        if key in seen:
+            continue
+        seen.add(key)
 
         rows.append({
-            "Player": player,
+            "Player": raw_player,
             "Team": team,
             "Box Type": box_type,
-            "Numbering": "",
+            "Numbering": numbering,
         })
 
     return rows
