@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import Optional
 import pandas as pd
 
-from ..services.gemini_parser import parse_with_gemini, extract_text_from_file
+from ..services.gemini_parser import parse_with_gemini, parse_excel_beckett
 from ..services.data_pipeline import (
     ensure_master_dataframe_schema,
     master_parquet_key_for_sport,
@@ -52,18 +52,21 @@ async def smart_preview(
     if not text and not file:
         raise HTTPException(status_code=400, detail="Fournissez du texte ou un fichier.")
 
-    if file:
-        file_bytes = await file.read()
-        raw_content = extract_text_from_file(file_bytes, file.filename or "upload")
-    else:
-        raw_content = text
-
     try:
-        result = parse_with_gemini(raw_content, instructions=instructions)
+        if file:
+            file_bytes = await file.read()
+            fname = (file.filename or "upload").lower()
+            if fname.endswith((".xlsx", ".xls")):
+                result = parse_excel_beckett(file_bytes, file.filename or "upload")
+            else:
+                raw_content = file_bytes.decode("utf-8", errors="replace")
+                result = parse_with_gemini(raw_content, instructions=instructions)
+        else:
+            result = parse_with_gemini(text or "", instructions=instructions)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=502, detail=f"Erreur Gemini : {e}")
+        raise HTTPException(status_code=502, detail=f"Erreur parsing : {e}")
 
     return {
         "checklist_name": result["checklist_name"],
