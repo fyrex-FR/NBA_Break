@@ -145,6 +145,7 @@ export type ViewName =
   | '⚖️ Comparateur Joueurs'
   | '🧩 Simulation de Break'
   | '📤 Export'
+  | '📥 Import Intelligent'
 
 export interface PlayerSeason {
   season: string

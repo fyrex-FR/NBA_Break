@@ -17,6 +17,7 @@ import { ExportView } from './components/views/ExportView'
 import { DetectionView } from './components/views/DetectionView'
 import { RookiesView } from './components/views/RookiesView'
 import { TrendView } from './components/views/TrendView'
+import { SmartImportView } from './components/views/SmartImportView'
 import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
 import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
 
@@ -119,6 +120,8 @@ function MainContent() {
         return <BreakSimulationView />
       case '📤 Export':
         return <ExportView />
+      case '📥 Import Intelligent':
+        return <SmartImportView />
       default:
         return (
           <div className="flex items-center justify-center py-20">

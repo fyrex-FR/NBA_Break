@@ -11,7 +11,7 @@ load_dotenv()  # Load .env file before anything else
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import sports, analysis, simulation, presets, export, upload, overrides, players, rookies
+from .routers import sports, analysis, simulation, presets, export, upload, overrides, players, rookies, smart_upload
 
 app = FastAPI(
     title="Checklist Optimizer API",
@@ -43,3 +43,4 @@ app.include_router(upload.router)
 app.include_router(overrides.router)
 app.include_router(players.router)
 app.include_router(rookies.router)
+app.include_router(smart_upload.router)

@@ -239,6 +239,31 @@ export function fetchRookies(sportKey: string): Promise<{ rookies: RookieRecord[
   return fetchJSON(`/rookies/${sportKey}`)
 }
 
+export async function smartPreview(
+  sportKey: string,
+  payload: { text?: string; file?: File },
+): Promise<{ checklist_name: string; sport_key: string; rows: { Player: string; Team: string; 'Box Type': string; Numbering: string }[]; row_count: number }> {
+  const form = new FormData()
+  form.append('sport_key', sportKey)
+  if (payload.file) form.append('file', payload.file)
+  if (payload.text) form.append('text', payload.text)
+  const res = await fetch(`${BASE}/upload/smart/preview`, { method: 'POST', body: form })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error(body.detail || `HTTP ${res.status}`)
+  }
+  return res.json()
+}
+
+export function smartConfirm(params: {
+  sport_key: string
+  checklist_name: string
+  rows: { Player: string; Team: string; 'Box Type': string; Numbering: string }[]
+  overwrite?: boolean
+}): Promise<{ status: string; checklist_id: string; checklist_name: string; rows: number }> {
+  return fetchJSON('/upload/smart/confirm', { method: 'POST', body: JSON.stringify(params) })
+}
+
 export function deleteChecklist(sportKey: string, checklistId: string, adminToken: string): Promise<{ status: string; checklist_id: string; rows_removed: number }> {
   return fetchJSON(`/upload/${sportKey}/${encodeURIComponent(checklistId)}`, {
     method: 'DELETE',
