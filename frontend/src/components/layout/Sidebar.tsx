@@ -50,6 +50,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     selectAllChecklists, deselectAllChecklists,
     masterKey, setMasterKey,
     setAnalysisData, setIsAnalyzing, isAnalyzing,
+    setActiveView,
     theme, toggleTheme,
   } = useAppStore()
 
@@ -176,6 +177,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     try {
       const data = await fetchAnalysis(selectedSport, selectedChecklistIds, masterKey)
       setAnalysisData(data)
+      setActiveView('🌍 Vue Globale')
     } catch (err) {
       console.error('Analysis failed:', err)
       setAnalysisData(null)
