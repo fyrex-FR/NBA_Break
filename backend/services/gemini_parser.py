@@ -33,7 +33,7 @@ Règles spécifiques aux fichiers Excel Beckett :
 - Si un onglet "Teams" est présent, utilise-le EN PRIORITÉ — il est organisé par équipe et contient toutes les cartes sans doublons de couleurs
 - Évite l'onglet "Master" ou tout onglet nommé "Master Checklist" — il liste toutes les variations de couleurs/parallels et génèrerait des doublons inutiles
 - Si l'onglet "Teams" est absent, additionne les onglets Base, Insert(s), Auto(graph(s)), Memo(rabilia) pour construire la checklist complète
-- Dans l'onglet Teams, le format typique est : colonne 0 = équipe, colonne 1 = type de carte, colonne 2 = numéro, colonne 3 = joueur
+- Attention à la numérotation : chaque carte a un numéro de carte (ex: #42) qui n'est PAS la numérotation — la numérotation est le tirage limité ex "/25", "/99", "/149". Si tu ne vois pas de tirage explicite, laisse Numbering vide
 """
 
 
