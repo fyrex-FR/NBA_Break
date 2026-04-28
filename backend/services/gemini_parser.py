@@ -96,7 +96,7 @@ def _detect_columns_with_gemini(sample_rows: list[dict]) -> dict:
     payload = {
         "system_instruction": {"parts": [{"text": _COLUMN_DETECT_PROMPT}]},
         "contents": [{"role": "user", "parts": [{"text": sample_text}]}],
-        "generationConfig": {"maxOutputTokens": 512},
+        "generationConfig": {"maxOutputTokens": 1024},
     }
     with httpx.Client(timeout=30) as client:
         resp = client.post(url, json=payload)
@@ -109,10 +109,11 @@ def _detect_columns_with_gemini(sample_rows: list[dict]) -> dict:
     raw = re.sub(r'\s*```$', '', raw)
     raw = raw.strip()
     # Extrait le premier objet JSON trouvé dans la réponse
-    m = re.search(r'\{[^{}]*\}', raw, re.DOTALL)
-    if not m:
+    start = raw.find('{')
+    end = raw.rfind('}')
+    if start == -1 or end == -1 or end <= start:
         raise ValueError(f"Pas de JSON dans la réponse Gemini : {raw[:200]}")
-    return json.loads(m.group())
+    return json.loads(raw[start:end + 1])
 
 
 def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
