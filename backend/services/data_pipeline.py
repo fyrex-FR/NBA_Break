@@ -15,6 +15,17 @@ from .sports_config import DEFAULT_SPORT_KEY
 from .r2_storage import is_r2_uri, r2_uri_to_key, source_filename, source_label
 
 
+def _normalize_player_name(name: str) -> str:
+    """Convertit 'Nom, Prénom' → 'Prénom Nom' et retire les virgules parasites."""
+    name = name.strip()
+    if ',' in name:
+        parts = [p.strip() for p in name.split(',', 1)]
+        if len(parts) == 2 and parts[1]:
+            return f"{parts[1]} {parts[0]}"
+        return parts[0]
+    return name
+
+
 # ---------------------------------------------------------------------------
 # Metadata extraction
 # ---------------------------------------------------------------------------
@@ -281,7 +292,7 @@ def ensure_master_dataframe_schema(df, sport_key):
         if col not in work.columns:
             work[col] = ""
 
-    work["Player"] = work["Player"].astype(str).str.strip()
+    work["Player"] = work["Player"].astype(str).str.strip().apply(_normalize_player_name)
     work["Team"] = work["Team"].astype(str).str.strip()
     work["Box Type"] = work["Box Type"].astype(str).str.strip()
     work["Numbering"] = work["Numbering"].astype(str).str.strip()
