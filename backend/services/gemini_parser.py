@@ -58,6 +58,19 @@ _SHEET_BOX_TYPE = {
 }
 
 
+def _normalize_player(name: str) -> str:
+    """Convertit 'Nom, Prénom' → 'Prénom Nom' et retire les virgules parasites."""
+    name = name.strip()
+    # "Murray, Dejounte" → "Dejounte Murray"
+    if ',' in name:
+        parts = [p.strip() for p in name.split(',', 1)]
+        if len(parts) == 2 and parts[1]:
+            name = f"{parts[1]} {parts[0]}"
+        else:
+            name = parts[0]
+    return name.strip()
+
+
 def _is_card_number(val) -> bool:
     """True si la valeur est un numéro de carte entier (pas un texte de header)."""
     try:
@@ -167,7 +180,7 @@ def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
     seen: set[tuple] = set()
     rows = []
     for _, row in df.iterrows():
-        player = _get_cell(row, player_col)
+        player = _normalize_player(_get_cell(row, player_col))
         if not player or _is_card_number(player):
             continue
 
@@ -235,7 +248,7 @@ def _parse_standard_sheet(df: pd.DataFrame, default_box_type: str = "") -> list[
             # Ligne de carte
             if player_col is None:
                 continue
-            player = str(row.get(player_col, "") or "").strip()
+            player = _normalize_player(str(row.get(player_col, "") or "").strip())
             if not player or player.lower() == "nan":
                 continue
             team = str(row.get(team_col, "") or "").strip() if team_col is not None else ""
@@ -356,7 +369,7 @@ def parse_with_gemini(raw_content: str, instructions: str | None = None) -> dict
     for row in result["rows"]:
         if not isinstance(row, dict):
             continue
-        player = str(row.get("Player") or "").strip()
+        player = _normalize_player(str(row.get("Player") or "").strip())
         if not player:
             continue
         clean_rows.append({
