@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide utilisateur — NoClim</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg-panel: #1a1d27;
+      --bg-card: #1f2335;
+      --border: #2a2f45;
+      --accent: #6c63ff;
+      --accent2: #4ade80;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --text-dim: #4a5568;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 2rem;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    nav .logo img { width: 32px; height: 32px; border-radius: 8px; }
+    nav .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      margin-left: auto;
+      flex-wrap: wrap;
+    }
+    nav .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    nav .nav-links a:hover { background: var(--bg-card); color: var(--text); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(108,99,255,0.18) 0%, transparent 70%);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #fff 30%, #6c63ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-inline: auto;
+    }
+    .hero .badge {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.3rem 1rem;
+      border-radius: 999px;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a78bfa;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* LAYOUT */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+
+    /* SECTION */
+    section { margin-top: 4rem; }
+    section > h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .card p { font-size: 0.875rem; color: var(--text-muted); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(108,99,255,0.2);
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #a78bfa;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-body h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .step-body p { font-size: 0.875rem; color: var(--text-muted); }
+
+    /* DETAIL BLOCKS */
+    .detail-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .detail-block h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .detail-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .detail-block ul li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .detail-block ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+    .detail-block ul li strong { color: var(--text); }
+
+    /* TIP */
+    .tip {
+      background: rgba(74,222,128,0.07);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: #86efac;
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .tip::before { content: '💡'; flex-shrink: 0; }
+
+    /* TAG */
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .tag-auto { background: rgba(108,99,255,0.2); color: #a78bfa; }
+    .tag-case { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .tag-logo { background: rgba(239,68,68,0.15); color: #f87171; }
+    .tag-base { background: rgba(100,116,139,0.2); color: #94a3b8; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav .nav-links { display: none; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .step { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">
+    <img src="/logo.png" alt="NoClim" />
+    NoClim
+  </a>
+  <div class="nav-links">
+    <a href="#demarrer">Démarrer</a>
+    <a href="#importer">Importer</a>
+    <a href="#analyser">Analyser</a>
+    <a href="#break">Break</a>
+    <a href="#outils">Outils</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">Guide utilisateur</div>
+  <h1>Tout ce que NoClim<br>peut faire pour toi</h1>
+  <p>Analyse tes checklists, identifie les meilleurs spots, simule tes breaks — tout en un.</p>
+</div>
+
+<div class="container">
+
+  <!-- DÉMARRER -->
+  <section id="demarrer">
+    <h2>🚀 Démarrer en 4 étapes</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Choisis ton sport</h3>
+          <p>Dans la sidebar à gauche, sélectionne le sport (NBA, NFL, etc.). Chaque sport a ses propres checklists et sa propre logique d'analyse.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Sélectionne tes checklists</h3>
+          <p>Coche les checklists que tu veux analyser. Tu peux filtrer par nom, trier par année ou nombre de lignes. Regroupe tes sélections habituelles en <strong>presets</strong> pour les recharger en un clic.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Lance l'analyse</h3>
+          <p>Clique sur le bouton <strong>LANCER</strong> en bas de la sidebar. L'analyse croise toutes les checklists sélectionnées en temps réel.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Explore les résultats</h3>
+          <p>Navigue entre les vues via les onglets en haut. Clique sur un joueur ou une équipe pour plonger dans le détail.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tip">Tu peux partager ta sélection en copiant le lien depuis la sidebar — l'URL contient les checklists cochées.</div>
+  </section>
+
+  <!-- IMPORTER -->
+  <section id="importer">
+    <h2>📥 Importer des checklists</h2>
+
+    <div class="detail-block">
+      <h3>📄 Upload direct (Excel)</h3>
+      <ul>
+        <li>Clique sur l'icône <strong>upload</strong> en haut de la sidebar</li>
+        <li>Dépose un fichier <strong>.xlsx</strong> — format standard ou format Beckett</li>
+        <li>Le fichier est parsé automatiquement, sans IA</li>
+        <li>Active <strong>"Remplacer si existant"</strong> pour écraser une version précédente</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>🤖 Import Intelligent (via IA)</h3>
+      <ul>
+        <li>Accède à la vue <strong>📥 Import Intelligent</strong> depuis les outils ou le lien sur l'écran d'accueil</li>
+        <li><strong>Texte</strong> : colle n'importe quel contenu — tableau copié depuis un site, CSV, liste, etc.</li>
+        <li><strong>Fichier</strong> : dépose un .xlsx Beckett — Gemini détecte les colonnes automatiquement</li>
+        <li>Ajoute des <strong>instructions optionnelles</strong> pour guider l'IA (ex : "Le sport est NFL")</li>
+        <li>Une <strong>prévisualisation éditable</strong> s'affiche avant confirmation — modifie ou supprime des lignes si besoin</li>
+        <li>Renomme la checklist, puis clique <strong>Confirmer l'import</strong></li>
+      </ul>
+      <div class="tip">L'IA normalise automatiquement les noms des joueurs (format "Nom, Prénom" → "Prénom Nom").</div>
+    </div>
+
+    <div class="detail-block">
+      <h3>🗑️ Supprimer une checklist</h3>
+      <ul>
+        <li>Survole une checklist dans la sidebar — une icône <strong>corbeille</strong> apparaît</li>
+        <li>Un token admin est requis pour confirmer la suppression</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ANALYSER -->
+  <section id="analyser">
+    <h2>📊 Les vues d'analyse</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🌍</div>
+        <h3>Vue Globale</h3>
+        <p>Synthèse complète : top joueurs, top équipes, répartition par catégorie. Point d'entrée principal après l'analyse.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💎</div>
+        <h3>Autos & Patchs</h3>
+        <p>Tous les joueurs et équipes avec des cartes Auto ou Memorabilia dans ta sélection.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Logoman</h3>
+        <p>Les cartes Logoman uniquement — les plus rares. Classement par joueur et équipe.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Case Hits</h3>
+        <p>Inserts spéciaux (Downtown, Kaboom, Color Blast…) filtrés et classés.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👥</div>
+        <h3>Multi-Joueurs</h3>
+        <p>Cartes avec plusieurs joueurs. Filtre par joueur pour voir toutes ses cartes combo.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Tendances</h3>
+        <p>Évolution du nombre de cartes par année. Compare jusqu'à 20 joueurs ou équipes sur un graphique.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧨</div>
+        <h3>Rookies</h3>
+        <p>Toutes les Rookie Cards détectées, filtrables par saison. Affiche le draft pick quand disponible.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <div class="detail-block">
+        <h3>🔍 Analyse Joueur</h3>
+        <ul>
+          <li>Sélectionne n'importe quel joueur via le dropdown ou en cliquant dessus dans un tableau</li>
+          <li>Voir sa <strong>photo, position, équipe, pays</strong> et badges (RC, Actif/Retraité)</li>
+          <li>Stats détaillées : total cartes, Logoman, Case Hit, Auto/Mem, Base</li>
+          <li>Tableau complet de toutes ses cartes filtrable par catégorie</li>
+          <li>Stats NBA en direct si sport = NBA</li>
+        </ul>
+      </div>
+      <div class="detail-block">
+        <h3>🛡️ Analyse Équipe</h3>
+        <ul>
+          <li>Même logique que l'analyse joueur, mais par équipe</li>
+          <li>Standing NBA en direct (conférence, W-L, série en cours)</li>
+          <li>Tableau de tous les joueurs de l'équipe avec leurs cartes</li>
+        </ul>
+      </div>
+      <div class="detail-block">
+        <h3>📁 Analyse par Fichier</h3>
+        <ul>
+          <li>Sélectionne une checklist précise pour voir son contenu complet</li>
+          <li>KPIs : joueurs uniques, équipes, Logoman, Case Hit</li>
+          <li>Export CSV du contenu</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip">Dans les tableaux Vue Globale, tu peux classer par <strong>Volume</strong>, <strong>Premium</strong>, <strong>Auto/Mem</strong> ou <strong>Case Hit</strong> pour affiner ton analyse selon l'objectif du break.</div>
+  </section>
+
+  <!-- BREAK -->
+  <section id="break">
+    <h2>🧩 Simulation de Break</h2>
+
+    <div class="detail-block">
+      <h3>Configurer les autos garanties</h3>
+      <ul>
+        <li>Pour chaque checklist sélectionnée, saisis le <strong>nombre de hits par box</strong></li>
+        <li>Sans saisie, toutes les checklists ont un poids égal</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>Choisir la méthode de break</h3>
+      <ul>
+        <li><strong>Par Équipe</strong> — chaque spot = une équipe NBA</li>
+        <li><strong>Par Joueur</strong> — chaque spot = un joueur</li>
+        <li><strong>Par Lettre</strong> — chaque spot = une ou plusieurs lettres de l'alphabet (les noms commençant par un chiffre vont dans le spot <strong>#</strong>)</li>
+        <li><strong>Par Lettre (Assignation)</strong> — mode avancé : réassigne manuellement les joueurs entre les lettres, ou crée des <strong>spots dédiés</strong> pour les stars</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>Lire les résultats</h3>
+      <ul>
+        <li><strong>Break Score</strong> : indicateur global de valeur du spot (plus c'est élevé, mieux c'est)</li>
+        <li><strong>Hot Spots</strong> : spots avec un ratio Auto/Mem particulièrement élevé</li>
+        <li><strong>Part %</strong> : part du spot dans le total des cartes</li>
+        <li>Clique sur un spot pour voir le <strong>détail de toutes ses cartes</strong></li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>Exporter</h3>
+      <ul>
+        <li><strong>Excel par spot</strong> : un onglet par spot avec les joueurs agrégés</li>
+        <li><strong>CSV complet</strong> : toutes les cartes de tous les spots</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>Presets de simulation</h3>
+      <ul>
+        <li>Sauvegarde ta configuration (méthode + autos garanties) sous un nom</li>
+        <li>Recharge-la en un clic pour la prochaine session</li>
+      </ul>
+    </div>
+
+    <div class="tip">Le mode <strong>Assignation par Lettre</strong> est idéal pour les breaks "random" où tu veux équilibrer la valeur entre les spots tout en mettant les stars en avant.</div>
+  </section>
+
+  <!-- OUTILS -->
+  <section id="outils">
+    <h2>🛠️ Outils avancés</h2>
+
+    <div class="detail-block">
+      <h3>⚖️ Comparateur Joueurs</h3>
+      <ul>
+        <li>Compare jusqu'à <strong>5 joueurs</strong> côte à côte</li>
+        <li>5 métriques : Total cartes, Logoman, Case Hit, Auto/Mem, Checklists</li>
+        <li>Barres proportionnelles — le meilleur du groupe = 100%</li>
+        <li>Idéal pour arbitrer entre joueurs sur le marché</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>🧪 Détection Auto/Mem & Case Hit</h3>
+      <ul>
+        <li>Liste tous les <strong>types de cartes</strong> présents dans ta sélection</li>
+        <li>Coche <span class="tag tag-auto">💎 Auto/Mem</span> ou <span class="tag tag-case">✨ Case Hit</span> pour chaque type mal classé</li>
+        <li>Enregistre les corrections — elles s'appliquent à toutes les analyses suivantes</li>
+        <li>Utile quand un type de carte n'est pas reconnu automatiquement</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>📤 Export Personnalisé</h3>
+      <ul>
+        <li>Choisis les <strong>colonnes</strong> à inclure : équipe, joueur, nombre de cartes</li>
+        <li>Filtre par <strong>catégorie</strong> : <span class="tag tag-auto">💎 Auto/Mem</span> <span class="tag tag-case">✨ Case Hit</span> <span class="tag tag-logo">🔥 Logoman</span> <span class="tag tag-base">📄 Base</span></li>
+        <li>Choisis le tri (par équipe ou par joueur)</li>
+        <li>Télécharge en <strong>Excel</strong> en un clic</li>
+      </ul>
+    </div>
+
+    <div class="detail-block">
+      <h3>🏷️ Catégories de cartes</h3>
+      <p style="font-size:0.875rem; color: var(--text-muted); margin-bottom: 0.75rem;">NoClim classe automatiquement les cartes en 4 catégories :</p>
+      <ul>
+        <li><span class="tag tag-logo">🔥 Logoman</span> — cartes Logoman, les plus rares</li>
+        <li><span class="tag tag-case">✨ Case Hit</span> — inserts spéciaux (Downtown, Kaboom…)</li>
+        <li><span class="tag tag-auto">💎 Auto/Mem</span> — autographes et memorabilia</li>
+        <li><span class="tag tag-base">📄 Base/Autre</span> — tout le reste</li>
+      </ul>
+      <div class="tip">Si une carte est mal classée, utilise la vue <strong>🧪 Détection</strong> pour corriger.</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  NoClim — Guide utilisateur · Toutes les données sont les tiennes.
+</footer>
+
+</body>
+</html>
