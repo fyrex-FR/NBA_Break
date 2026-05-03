@@ -23,6 +23,20 @@ function buildSpotColumns() {
     }),
     columnHelper.accessor('Cartes', { header: 'Cartes' }),
     columnHelper.accessor('Auto/Memo', { header: 'Auto/Memo' }),
+    columnHelper.accessor('Logoman', {
+      header: '🔥',
+      cell: (info) => {
+        const val = info.getValue() as number
+        return val > 0 ? <span className="font-medium" style={{ color: '#f87171' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+      },
+    }),
+    columnHelper.accessor('Case Hit', {
+      header: '✨',
+      cell: (info) => {
+        const val = info.getValue() as number
+        return val > 0 ? <span className="font-medium" style={{ color: '#fbbf24' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+      },
+    }),
     columnHelper.accessor('Auto garanties', {
       header: 'Garanties',
       cell: (info) => {
