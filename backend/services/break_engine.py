@@ -584,7 +584,7 @@ def build_deterministic_spot_summary(
     if result_df.empty:
         return result_df, {}
 
-    result_df["Break Score"] = (result_df["Weighted Auto"] * 3) + (result_df["Case Hit"] * 5)
+    result_df["Break Score"] = (result_df["Weighted Auto"] * 3) + (result_df["Case Hit"] * 5) + (result_df["Logoman"] * 8)
     result_df.drop(columns=["Weighted Auto"], inplace=True)
 
     total_break_score = result_df["Break Score"].sum()
