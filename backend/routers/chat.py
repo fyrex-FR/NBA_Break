@@ -40,10 +40,23 @@ Réponds UNIQUEMENT avec le JSON.
 """
 
 _ANSWER_PROMPT = """Tu es un assistant spécialisé dans les cartes sportives (NBA, NFL, Soccer).
-Réponds en français, de façon concise et pratique.
-Utilise les données fournies pour répondre précisément. Si les données sont insuffisantes, dis-le sans inventer.
+Réponds en français, de façon concise.
 
-Si tu mentionnes un joueur précis présent dans les données, termine ta réponse par cette ligne exacte :
+RÈGLES STRICTES :
+- Utilise UNIQUEMENT les données fournies. N'invente aucun nom de série, aucune carte, aucun chiffre absent des données.
+- Si une information n'est pas dans les données, dis "je n'ai pas cette information".
+- Ne complète jamais avec ta connaissance générale des cartes.
+
+Si la question porte sur un joueur, réponds avec ce format exact :
+Joueur : <Prénom Nom>
+Équipe : <équipe>
+Checklists : <nb distinct checklist_name>
+Cartes totales : <nb lignes>
+Auto/Mem : <nb>
+Logoman : <nb>
+Case Hit : <nb>
+
+Si tu mentionnes un joueur précis, termine par cette ligne exacte :
 [VOIR_JOUEUR:Prénom Nom]
 """
 
@@ -90,7 +103,7 @@ def _extract_json(text: str) -> dict:
 
 
 def _build_context(df, entities: dict) -> str:
-    """Filter enriched DataFrame to ≤30 relevant rows and format as text."""
+    """Filter enriched DataFrame and return aggregated stats + detail rows."""
     player = (entities.get("player") or "").strip()
     team = (entities.get("team") or "").strip()
     intent = entities.get("intent", "general")
@@ -105,23 +118,35 @@ def _build_context(df, entities: dict) -> str:
         mask = result["Team"].str.contains(team, case=False, na=False)
         result = result[mask]
 
-    # Pour auto_list, filtre sur les cartes premium uniquement
-    if intent == "auto_list" and not result.empty:
-        premium_cats = {CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT}
-        premium = result[result["Category"].isin(premium_cats)]
-        if not premium.empty:
-            result = premium
-
-    result = result.head(30)
-
     if result.empty:
         return ""
 
-    cols = [c for c in ["Player", "Team", "Box Type", "Numbering", "Category", "checklist_name"] if c in result.columns]
     lines = []
-    for _, row in result[cols].iterrows():
-        parts = [f"{c}: {row[c]}" for c in cols if str(row[c]) not in ("", "nan")]
-        lines.append(" | ".join(parts))
+
+    # Toujours inclure les stats agrégées quand un joueur est ciblé
+    if player:
+        premium_cats = {CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT}
+        team_val = result["Team"].iloc[0] if "Team" in result.columns else ""
+        nb_checklists = result["checklist_name"].nunique() if "checklist_name" in result.columns else "?"
+        nb_total = len(result)
+        nb_auto = int((result["Category"] == CATEGORY_AUTO_MEM).sum())
+        nb_logoman = int((result["Category"] == CATEGORY_LOGOMAN).sum())
+        nb_case = int((result["Category"] == CATEGORY_CASE_HIT).sum())
+        lines.append(f"STATS AGRÉGÉES — {result['Player'].iloc[0]} ({team_val})")
+        lines.append(f"Checklists : {nb_checklists} | Cartes totales : {nb_total} | Auto/Mem : {nb_auto} | Logoman : {nb_logoman} | Case Hit : {nb_case}")
+        lines.append("")
+
+    # Pour auto_list, détail des cartes premium uniquement
+    if intent == "auto_list" and player:
+        premium_cats = {CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT}
+        detail = result[result["Category"].isin(premium_cats)].head(30)
+        if not detail.empty:
+            lines.append("DÉTAIL CARTES PREMIUM :")
+            cols = [c for c in ["Box Type", "Numbering", "Category", "checklist_name"] if c in detail.columns]
+            for _, row in detail[cols].iterrows():
+                parts = [f"{c}: {row[c]}" for c in cols if str(row[c]) not in ("", "nan")]
+                lines.append(" | ".join(parts))
+
     return "\n".join(lines)
 
 
