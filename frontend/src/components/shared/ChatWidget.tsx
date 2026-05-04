@@ -35,13 +35,11 @@ function buildContext(data: AnalyzeResponse) {
     }
   }
 
-  // Garde uniquement les joueurs avec au moins une carte premium, ou top 100 par nb de cartes
-  const all = Array.from(map.entries()).map(([player, stats]) => ({ player, ...stats }))
-  const withPremium = all.filter(p => p.auto_mem + p.logoman + p.case_hit > 0)
-  const rest = all.filter(p => p.auto_mem + p.logoman + p.case_hit === 0)
-    .sort((a, b) => b.cards - a.cards)
-    .slice(0, 100)
-  return [...withPremium, ...rest]
+  // Garde uniquement les joueurs avec au moins une carte premium
+  return Array.from(map.entries())
+    .map(([player, stats]) => ({ player, ...stats }))
+    .filter(p => p.auto_mem + p.logoman + p.case_hit > 0)
+    .sort((a, b) => (b.auto_mem + b.logoman + b.case_hit) - (a.auto_mem + a.logoman + a.case_hit))
 }
 
 const VOIR_JOUEUR_RE = /\[VOIR_JOUEUR:([^\]]+)\]/
