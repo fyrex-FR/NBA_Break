@@ -401,7 +401,7 @@ def build_deterministic_spot_summary(
     custom_map=None,
     checklist_hits_guaranteed=None,
     extracted_players=None,
-    rookie_names=None,
+    rookie_year_map=None,
 ):
     if pool_df is None or pool_df.empty or not spots:
         return pd.DataFrame(), {}
@@ -414,7 +414,7 @@ def build_deterministic_spot_summary(
     # En mode garantie : défaut 0 (ne contribue pas). Sans config : défaut 1 (comportement original).
     guaranteed_default = 0 if guaranteed_mode else 1
 
-    rookie_set = {n.lower().strip() for n in (rookie_names or [])}
+    rookie_year_map = rookie_year_map or {}  # {player_lower: "2024-25"}
 
     metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto",
                    "Cartes RC", "Auto/Memo RC", "Case Hit RC", "Logoman RC"]
@@ -499,7 +499,14 @@ def build_deterministic_spot_summary(
                 if other_spot and other_spot in spot_set and other_spot != assigned_spot:
                     card_details.append({"Spot": other_spot, **base_card, "is_multi_ref": True})
 
-        is_rc = any(p.lower().strip() in rookie_set for p in player_list) if rookie_set else False
+        card_year = str(row.get("Year", "") or "").strip()  # ex: "2024-25"
+        is_rc = (
+            rookie_year_map and
+            any(
+                rookie_year_map.get(p.lower().strip()) == card_year
+                for p in player_list
+            )
+        )
 
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits

@@ -48,15 +48,19 @@ def simulate_break(req: BreakSimulationRequest):
     if not spots:
         raise HTTPException(status_code=400, detail=f"Aucun spot généré pour la méthode '{req.method}'. pool_empty={pool.empty}, extracted={req.extracted_players}, custom_spots={req.custom_spots}")
 
-    # Charge la liste des rookies de la saison courante uniquement
-    rookie_names = []
+    # Charge le mapping joueur → year_start pour les colonnes RC
+    # Une carte est RC si l'année de sa checklist correspond au year_start du joueur
+    rookie_year_map: dict[str, str] = {}
     try:
         config = get_r2_config()
         if is_r2_configured(config):
             rdf = read_r2_parquet(config, ROOKIES_KEY)
             rdf["year_start"] = rdf["year_start"].astype("Int64")
-            current_season = rdf["year_start"].max()
-            rookie_names = rdf[rdf["year_start"] == current_season]["player_name"].dropna().tolist()
+            for _, row in rdf.dropna(subset=["player_name", "year_start"]).iterrows():
+                year = int(row["year_start"])
+                # year_start=2024 → saison "2024-25"
+                season_str = f"{year}-{str(year + 1)[-2:]}"
+                rookie_year_map[row["player_name"].strip().lower()] = season_str
     except Exception:
         pass
 
@@ -68,7 +72,7 @@ def simulate_break(req: BreakSimulationRequest):
         custom_map=req.custom_map,
         checklist_hits_guaranteed=req.checklist_hits_guaranteed,
         extracted_players=req.extracted_players,
-        rookie_names=rookie_names,
+        rookie_year_map=rookie_year_map,
     )
 
     player_map = build_spot_player_map(
