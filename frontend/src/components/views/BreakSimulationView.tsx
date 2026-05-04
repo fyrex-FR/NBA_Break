@@ -115,7 +115,7 @@ export function BreakSimulationView() {
   // Letter Assignment mode state
   const [letterCustomMap, setLetterCustomMap] = useState<Record<string, string>>({})
   const [letterExtracted, setLetterExtracted] = useState<string[]>([])
-  const [panelOpen, setPanelOpen] = useState(true)
+  const [panelOpen, setPanelOpen] = useState(false)
   const [selectedSpot, setSelectedSpot] = useState<string | null>(null)
 
   // Presets state
