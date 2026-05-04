@@ -500,13 +500,6 @@ def build_deterministic_spot_summary(
                     card_details.append({"Spot": other_spot, **base_card, "is_multi_ref": True})
 
         card_year = str(row.get("Year", "") or "").strip()  # ex: "2024-25"
-        is_rc = (
-            rookie_year_map and
-            any(
-                rookie_year_map.get(p.lower().strip()) == card_year
-                for p in player_list
-            )
-        )
 
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
@@ -518,7 +511,9 @@ def build_deterministic_spot_summary(
             totals[assigned_spot]["Logoman"] += hits if is_logoman else 0
             totals[assigned_spot]["Auto garanties"] += hits if (is_auto and guaranteed > 0) else 0
             totals[assigned_spot]["Weighted Auto"] += hits * guaranteed if is_auto else 0
-            if is_rc:
+            # RC : le spot lui-même doit être rookie ET la carte dans son année rookie
+            spot_rc_year = rookie_year_map.get(assigned_spot.lower().strip()) if rookie_year_map else None
+            if spot_rc_year and spot_rc_year == card_year:
                 totals[assigned_spot]["Cartes RC"] += hits
                 totals[assigned_spot]["Auto/Memo RC"] += hits if is_auto else 0
                 totals[assigned_spot]["Case Hit RC"] += hits if is_case else 0
