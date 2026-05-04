@@ -65,6 +65,7 @@ async def chat(req: ChatRequest):
         "model": _MODEL,
         "messages": messages,
         "stream": True,
+        "options": {"num_ctx": 32768},
     }
 
     async def generate():
