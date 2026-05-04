@@ -215,7 +215,7 @@ export function DataTable<T>({
           <span>
             Page {table.getState().pagination.pageIndex + 1} / {table.getPageCount()} ({data.length} lignes)
           </span>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
@@ -228,6 +228,25 @@ export function DataTable<T>({
             >
               ← Précédent
             </button>
+            <input
+              type="number"
+              min={1}
+              max={table.getPageCount()}
+              defaultValue={table.getState().pagination.pageIndex + 1}
+              key={table.getState().pagination.pageIndex}
+              onBlur={e => {
+                const page = Number(e.target.value) - 1
+                if (page >= 0 && page < table.getPageCount()) table.setPageIndex(page)
+              }}
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  const page = Number((e.target as HTMLInputElement).value) - 1
+                  if (page >= 0 && page < table.getPageCount()) table.setPageIndex(page)
+                }
+              }}
+              className="w-14 text-center px-1 py-1 rounded text-sm"
+              style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+            />
             <button
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}

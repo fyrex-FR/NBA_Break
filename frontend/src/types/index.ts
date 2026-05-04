@@ -73,10 +73,14 @@ export interface AnalyzeResponse {
 export interface BreakSpotRecord {
   Spot: string
   Cartes: number
+  'Cartes RC': number
   'Auto/Memo': number
+  'Auto/Memo RC': number
   'Auto garanties': number
   'Case Hit': number
+  'Case Hit RC': number
   Logoman: number
+  'Logoman RC': number
   Rareté: string
   Équipes: string
   Checklists: string

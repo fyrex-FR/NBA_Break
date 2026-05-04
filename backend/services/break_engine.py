@@ -401,6 +401,7 @@ def build_deterministic_spot_summary(
     custom_map=None,
     checklist_hits_guaranteed=None,
     extracted_players=None,
+    rookie_names=None,
 ):
     if pool_df is None or pool_df.empty or not spots:
         return pd.DataFrame(), {}
@@ -413,7 +414,10 @@ def build_deterministic_spot_summary(
     # En mode garantie : défaut 0 (ne contribue pas). Sans config : défaut 1 (comportement original).
     guaranteed_default = 0 if guaranteed_mode else 1
 
-    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto"]
+    rookie_set = {n.lower().strip() for n in (rookie_names or [])}
+
+    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto",
+                   "Cartes RC", "Auto/Memo RC", "Case Hit RC", "Logoman RC"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     players_per_spot = {spot: set() for spot in spots}
@@ -495,14 +499,23 @@ def build_deterministic_spot_summary(
                 if other_spot and other_spot in spot_set and other_spot != assigned_spot:
                     card_details.append({"Spot": other_spot, **base_card, "is_multi_ref": True})
 
+        is_rc = any(p.lower().strip() in rookie_set for p in player_list) if rookie_set else False
+
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
             is_auto = row.get("Is AutoMemo", False)
+            is_case = row.get("Is CaseHit", False)
+            is_logoman = category == CATEGORY_LOGOMAN
             totals[assigned_spot]["Auto/Memo"] += hits if is_auto else 0
-            totals[assigned_spot]["Case Hit"] += hits if row.get("Is CaseHit", False) else 0
-            totals[assigned_spot]["Logoman"] += hits if category == CATEGORY_LOGOMAN else 0
+            totals[assigned_spot]["Case Hit"] += hits if is_case else 0
+            totals[assigned_spot]["Logoman"] += hits if is_logoman else 0
             totals[assigned_spot]["Auto garanties"] += hits if (is_auto and guaranteed > 0) else 0
             totals[assigned_spot]["Weighted Auto"] += hits * guaranteed if is_auto else 0
+            if is_rc:
+                totals[assigned_spot]["Cartes RC"] += hits
+                totals[assigned_spot]["Auto/Memo RC"] += hits if is_auto else 0
+                totals[assigned_spot]["Case Hit RC"] += hits if is_case else 0
+                totals[assigned_spot]["Logoman RC"] += hits if is_logoman else 0
             if checklist_name:
                 checklists_per_spot[assigned_spot].add(checklist_name)
             for p in player_list:
@@ -567,9 +580,13 @@ def build_deterministic_spot_summary(
         row = {
             "Spot": spot,
             "Cartes": totals[spot]["Cartes"],
+            "Cartes RC": totals[spot]["Cartes RC"],
             "Auto/Memo": totals[spot]["Auto/Memo"],
+            "Auto/Memo RC": totals[spot]["Auto/Memo RC"],
             "Case Hit": totals[spot]["Case Hit"],
+            "Case Hit RC": totals[spot]["Case Hit RC"],
             "Logoman": totals[spot]["Logoman"],
+            "Logoman RC": totals[spot]["Logoman RC"],
             "Auto garanties": totals[spot]["Auto garanties"],
             "Weighted Auto": totals[spot]["Weighted Auto"],
             "Rareté": rarity_label,
@@ -600,7 +617,7 @@ def build_deterministic_spot_summary(
         lambda x: "🔥 Hot" if x >= hot_threshold_pct else ""
     )
 
-    for col in ["Cartes", "Auto/Memo", "Case Hit", "Break Score", "Auto garanties"]:
+    for col in ["Cartes", "Cartes RC", "Auto/Memo", "Auto/Memo RC", "Case Hit", "Case Hit RC", "Logoman RC", "Break Score", "Auto garanties"]:
         if col in result_df.columns:
             result_df[col] = result_df[col].astype(int)
 

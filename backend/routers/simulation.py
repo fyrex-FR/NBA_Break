@@ -19,7 +19,8 @@ from ..services.break_engine import (
     build_spot_player_map,
     extract_surname_initial,
 )
-from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json
+from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json, read_r2_parquet
+from .rookies import ROOKIES_KEY
 
 router = APIRouter(prefix="/api", tags=["simulation"])
 
@@ -47,6 +48,16 @@ def simulate_break(req: BreakSimulationRequest):
     if not spots:
         raise HTTPException(status_code=400, detail=f"Aucun spot généré pour la méthode '{req.method}'. pool_empty={pool.empty}, extracted={req.extracted_players}, custom_spots={req.custom_spots}")
 
+    # Charge la liste des rookies pour les colonnes RC
+    rookie_names = []
+    try:
+        config = get_r2_config()
+        if is_r2_configured(config):
+            rdf = read_r2_parquet(config, ROOKIES_KEY)
+            rookie_names = rdf["player_name"].dropna().tolist()
+    except Exception:
+        pass
+
     result_df, summary, card_details = build_deterministic_spot_summary(
         pool,
         method=req.method,
@@ -55,6 +66,7 @@ def simulate_break(req: BreakSimulationRequest):
         custom_map=req.custom_map,
         checklist_hits_guaranteed=req.checklist_hits_guaranteed,
         extracted_players=req.extracted_players,
+        rookie_names=rookie_names,
     )
 
     player_map = build_spot_player_map(
