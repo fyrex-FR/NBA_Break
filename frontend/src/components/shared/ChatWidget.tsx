@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { MessageCircle, X, Send, Loader2, ExternalLink } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
-import type { AnalyzeResponse } from '../../types'
-import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from '../../types'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -11,50 +9,16 @@ interface Message {
 }
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
-
-function buildContext(data: AnalyzeResponse) {
-  const map = new Map<string, { team: string; cards: number; auto_mem: number; logoman: number; case_hit: number }>()
-
-  for (const card of data.cards) {
-    const player = card.Player
-    if (!player || player.includes('/')) continue
-    const existing = map.get(player)
-    if (!existing) {
-      map.set(player, {
-        team: card.Team,
-        cards: 1,
-        auto_mem: card.Category === CATEGORY_AUTO_MEM ? 1 : 0,
-        logoman: card.Category === CATEGORY_LOGOMAN ? 1 : 0,
-        case_hit: card.Category === CATEGORY_CASE_HIT ? 1 : 0,
-      })
-    } else {
-      existing.cards++
-      if (card.Category === CATEGORY_AUTO_MEM) existing.auto_mem++
-      if (card.Category === CATEGORY_LOGOMAN) existing.logoman++
-      if (card.Category === CATEGORY_CASE_HIT) existing.case_hit++
-    }
-  }
-
-  // Garde uniquement les joueurs avec au moins une carte premium
-  return Array.from(map.entries())
-    .map(([player, stats]) => ({ player, ...stats }))
-    .filter(p => p.auto_mem + p.logoman + p.case_hit > 0)
-    .sort((a, b) => (b.auto_mem + b.logoman + b.case_hit) - (a.auto_mem + a.logoman + a.case_hit))
-}
-
 const VOIR_JOUEUR_RE = /\[VOIR_JOUEUR:([^\]]+)\]/
 
 function parseMessage(content: string): { text: string; playerLink?: string } {
   const match = content.match(VOIR_JOUEUR_RE)
   if (!match) return { text: content }
-  return {
-    text: content.replace(VOIR_JOUEUR_RE, '').trim(),
-    playerLink: match[1].trim(),
-  }
+  return { text: content.replace(VOIR_JOUEUR_RE, '').trim(), playerLink: match[1].trim() }
 }
 
 export default function ChatWidget() {
-  const { analysisData, setActiveView, setTargetPlayer } = useAppStore()
+  const { selectedSport, selectedChecklistIds, masterKey, setActiveView, setTargetPlayer } = useAppStore()
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -85,13 +49,16 @@ export default function ChatWidget() {
     setLoading(true)
     setMessages([...newMessages, { role: 'assistant', content: '' }])
 
-    const context = analysisData ? buildContext(analysisData) : null
-
     try {
       const res = await fetch(`${BASE}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages.map(m => ({ role: m.role, content: m.content })), context }),
+        body: JSON.stringify({
+          messages: newMessages.map(m => ({ role: m.role, content: m.content })),
+          sport_key: selectedSport,
+          checklist_ids: selectedChecklistIds,
+          master_key: masterKey,
+        }),
       })
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
@@ -140,11 +107,9 @@ export default function ChatWidget() {
             )}
             {messages.map((msg, i) => (
               <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                <div
-                  className={`max-w-[85%] rounded-lg px-3 py-2 whitespace-pre-wrap ${
-                    msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-100'
-                  }`}
-                >
+                <div className={`max-w-[85%] rounded-lg px-3 py-2 whitespace-pre-wrap ${
+                  msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-100'
+                }`}>
                   {msg.content}
                   {msg.role === 'assistant' && loading && i === messages.length - 1 && msg.content === '' && (
                     <Loader2 className="w-3 h-3 animate-spin inline" />
