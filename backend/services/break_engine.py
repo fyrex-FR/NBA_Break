@@ -469,6 +469,12 @@ def build_deterministic_spot_summary(
             targets = [s for s in targets if s in spot_set]
 
         targets = _ordered_unique(targets)
+
+        # Track checklists pour tous les joueurs de la carte, même hors-spot
+        if checklist_name:
+            for p in player_list:
+                player_all_checklists.setdefault(p, set()).add(checklist_name)
+
         if not targets:
             continue
 
@@ -527,8 +533,6 @@ def build_deterministic_spot_summary(
                 checklists_per_spot[assigned_spot].add(checklist_name)
             for p in player_list:
                 players_per_spot[assigned_spot].add(p)
-                if checklist_name:
-                    player_all_checklists.setdefault(p, set()).add(checklist_name)
             # Tracker les co-joueurs multi pour les spots-joueurs extraits
             if method == SIM_METHOD_PLAYER_LETTER and assigned_spot in extracted_set and is_multi_player:
                 for p in player_list:
