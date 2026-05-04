@@ -11,7 +11,12 @@ import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakC
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
-function buildSpotColumns() {
+function buildSpotColumns(method: string) {
+  const isPlayerMethod = method === 'player' || method === 'letter_assignment'
+
+  const rcCell = (val: number) =>
+    val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+
   return [
     columnHelper.accessor('Spot', {
       header: 'Spot',
@@ -24,18 +29,12 @@ function buildSpotColumns() {
     columnHelper.accessor('Cartes', { header: 'Cartes' }),
     columnHelper.accessor('Cartes RC', {
       header: 'RC',
-      cell: (info) => {
-        const val = (info.getValue() as number) ?? 0
-        return val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-      },
+      cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Auto/Memo', { header: 'Auto/Memo' }),
     columnHelper.accessor('Auto/Memo RC', {
       header: 'Auto RC',
-      cell: (info) => {
-        const val = (info.getValue() as number) ?? 0
-        return val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-      },
+      cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Logoman', {
       header: '🔥',
@@ -46,10 +45,7 @@ function buildSpotColumns() {
     }),
     columnHelper.accessor('Logoman RC', {
       header: '🔥RC',
-      cell: (info) => {
-        const val = (info.getValue() as number) ?? 0
-        return val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-      },
+      cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Case Hit', {
       header: '✨',
@@ -60,10 +56,7 @@ function buildSpotColumns() {
     }),
     columnHelper.accessor('Case Hit RC', {
       header: '✨RC',
-      cell: (info) => {
-        const val = (info.getValue() as number) ?? 0
-        return val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-      },
+      cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Auto garanties', {
       header: 'Garanties',
@@ -74,7 +67,9 @@ function buildSpotColumns() {
           : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
       },
     }),
-    columnHelper.accessor('Nb Joueurs' as any, { header: 'Joueurs #' }),
+    ...(!isPlayerMethod ? [
+      columnHelper.accessor('Nb Joueurs' as any, { header: 'Joueurs #' }),
+    ] : []),
     columnHelper.accessor('Immaculate Only', {
       header: 'Immacu. Only',
       cell: (info) => {
@@ -87,13 +82,23 @@ function buildSpotColumns() {
     columnHelper.accessor('Break Score', { header: 'Score' }),
     columnHelper.accessor('Part du break', { header: 'Part %', cell: (info) => `${info.getValue()}%` }),
     columnHelper.accessor('Hot Spot', { header: 'Hot', cell: (info) => info.getValue() || '—' }),
-    columnHelper.accessor('Joueurs', {
-      header: 'Joueurs',
-      cell: (info) => {
-        const val = info.getValue()
-        return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[240px] truncate">{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-      },
-    }),
+    ...(!isPlayerMethod ? [
+      columnHelper.accessor('Joueurs', {
+        header: 'Joueurs',
+        cell: (info) => {
+          const val = info.getValue()
+          return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[240px] truncate">{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+        },
+      }),
+    ] : [
+      columnHelper.accessor('Équipes', {
+        header: 'Équipes',
+        cell: (info) => {
+          const val = info.getValue()
+          return val ? <span className="text-[10px] leading-tight opacity-70 block max-w-[240px] truncate">{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+        },
+      }),
+    ]),
   ]
 }
 
@@ -593,7 +598,7 @@ export function BreakSimulationView() {
           {/* Full table */}
           <DataTable
             data={result.spots}
-            columns={buildSpotColumns() as any}
+            columns={buildSpotColumns(method) as any}
             onRowClick={(row: any) => setSelectedSpot(row.Spot)}
             pageSize={100}
             searchable
