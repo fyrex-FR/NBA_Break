@@ -580,8 +580,14 @@ def build_deterministic_spot_summary(
         teams_str = " | ".join(teams_parts) if teams_parts else ""
 
         players_list = sorted(players_per_spot[spot])
+        # Pour un break par joueur, le spot EST le joueur — on check uniquement lui.
+        # Pour les autres méthodes, on check tous les joueurs du spot.
+        if method in (SIM_METHOD_PLAYER, SIM_METHOD_PLAYER_LETTER):
+            _immacu_candidates = [spot]
+        else:
+            _immacu_candidates = list(players_per_spot[spot])
         immaculate_only = sum(
-            1 for p in players_per_spot[spot]
+            1 for p in _immacu_candidates
             if player_all_checklists.get(p)
             and all("immaculate" in cl.lower() for cl in player_all_checklists[p])
         )
