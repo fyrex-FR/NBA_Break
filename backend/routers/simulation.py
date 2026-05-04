@@ -2,6 +2,7 @@
 
 import json
 import os
+import unicodedata
 
 from fastapi import APIRouter, HTTPException
 
@@ -50,6 +51,16 @@ def simulate_break(req: BreakSimulationRequest):
 
     # Charge le mapping joueur → year_start pour les colonnes RC
     # Une carte est RC si l'année de sa checklist correspond au year_start du joueur
+    # Aliases: nba_rookies.parquet name → pool name (lowercase, no accents)
+    _ROOKIE_ALIASES: dict[str, str] = {
+        "alex sarr": "alexandre sarr",
+    }
+
+    def _normalize_name(name: str) -> str:
+        """Lowercase + strip accents (NFD decomposition)."""
+        nfd = unicodedata.normalize("NFD", name)
+        return "".join(c for c in nfd if unicodedata.category(c) != "Mn").lower().strip()
+
     rookie_year_map: dict[str, str] = {}
     try:
         config = get_r2_config()
@@ -60,7 +71,12 @@ def simulate_break(req: BreakSimulationRequest):
                 year = int(row["year_start"])
                 # year_start=2024 → saison "2024-25"
                 season_str = f"{year}-{str(year + 1)[-2:]}"
-                rookie_year_map[row["player_name"].strip().lower()] = season_str
+                normalized = _normalize_name(row["player_name"])
+                rookie_year_map[normalized] = season_str
+                # Also register alias if one exists
+                alias = _ROOKIE_ALIASES.get(normalized)
+                if alias:
+                    rookie_year_map[alias] = season_str
     except Exception:
         pass
 

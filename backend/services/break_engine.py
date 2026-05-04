@@ -4,6 +4,7 @@ Extracted from app.py lines 430-795 — zero Streamlit dependency.
 """
 
 import re
+import unicodedata
 
 import pandas as pd
 
@@ -512,7 +513,9 @@ def build_deterministic_spot_summary(
             totals[assigned_spot]["Auto garanties"] += hits if (is_auto and guaranteed > 0) else 0
             totals[assigned_spot]["Weighted Auto"] += hits * guaranteed if is_auto else 0
             # RC : le spot lui-même doit être rookie ET la carte dans son année rookie
-            spot_rc_year = rookie_year_map.get(assigned_spot.lower().strip()) if rookie_year_map else None
+            _nfd = unicodedata.normalize("NFD", assigned_spot)
+            _spot_key = "".join(c for c in _nfd if unicodedata.category(c) != "Mn").lower().strip()
+            spot_rc_year = rookie_year_map.get(_spot_key) if rookie_year_map else None
             if spot_rc_year and spot_rc_year == card_year:
                 totals[assigned_spot]["Cartes RC"] += hits
                 totals[assigned_spot]["Auto/Memo RC"] += hits if is_auto else 0
