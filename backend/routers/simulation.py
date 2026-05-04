@@ -48,13 +48,15 @@ def simulate_break(req: BreakSimulationRequest):
     if not spots:
         raise HTTPException(status_code=400, detail=f"Aucun spot généré pour la méthode '{req.method}'. pool_empty={pool.empty}, extracted={req.extracted_players}, custom_spots={req.custom_spots}")
 
-    # Charge la liste des rookies pour les colonnes RC
+    # Charge la liste des rookies de la saison courante uniquement
     rookie_names = []
     try:
         config = get_r2_config()
         if is_r2_configured(config):
             rdf = read_r2_parquet(config, ROOKIES_KEY)
-            rookie_names = rdf["player_name"].dropna().tolist()
+            rdf["year_start"] = rdf["year_start"].astype("Int64")
+            current_season = rdf["year_start"].max()
+            rookie_names = rdf[rdf["year_start"] == current_season]["player_name"].dropna().tolist()
     except Exception:
         pass
 
