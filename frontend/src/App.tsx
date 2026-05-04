@@ -20,6 +20,7 @@ import { TrendView } from './components/views/TrendView'
 import { SmartImportView } from './components/views/SmartImportView'
 import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
 import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
+import ChatWidget from './components/shared/ChatWidget'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -223,6 +224,7 @@ export default function App() {
           </div>
           <MainContent />
         </main>
+        <ChatWidget />
       </div>
     </QueryClientProvider>
   )
