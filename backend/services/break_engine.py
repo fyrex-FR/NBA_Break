@@ -422,8 +422,8 @@ def build_deterministic_spot_summary(
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     players_per_spot = {spot: set() for spot in spots}
-    # player → set of checklist names seen for that spot (to detect Immaculate-only players)
-    player_checklists_per_spot: dict[str, dict[str, set]] = {spot: {} for spot in spots}
+    # player → set of ALL checklist names across the entire pool (not per spot)
+    player_all_checklists: dict[str, set] = {}
     teams_solo_per_spot = {spot: {} for spot in spots}
     teams_multi_per_spot = {spot: {} for spot in spots}
 
@@ -528,7 +528,7 @@ def build_deterministic_spot_summary(
             for p in player_list:
                 players_per_spot[assigned_spot].add(p)
                 if checklist_name:
-                    player_checklists_per_spot[assigned_spot].setdefault(p, set()).add(checklist_name)
+                    player_all_checklists.setdefault(p, set()).add(checklist_name)
             # Tracker les co-joueurs multi pour les spots-joueurs extraits
             if method == SIM_METHOD_PLAYER_LETTER and assigned_spot in extracted_set and is_multi_player:
                 for p in player_list:
@@ -577,8 +577,9 @@ def build_deterministic_spot_summary(
 
         players_list = sorted(players_per_spot[spot])
         immaculate_only = sum(
-            1 for p, cls in player_checklists_per_spot[spot].items()
-            if cls and all("immaculate" in cl.lower() for cl in cls)
+            1 for p in players_per_spot[spot]
+            if player_all_checklists.get(p)
+            and all("immaculate" in cl.lower() for cl in player_all_checklists[p])
         )
         # Formatage colonne Joueurs : différent selon spot-joueur extrait ou spot-lettre
         if method == SIM_METHOD_PLAYER_LETTER and spot in extracted_set:
