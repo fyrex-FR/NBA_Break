@@ -75,6 +75,15 @@ function buildSpotColumns() {
       },
     }),
     columnHelper.accessor('Nb Joueurs' as any, { header: 'Joueurs #' }),
+    columnHelper.accessor('Immaculate Only', {
+      header: 'Immacu. Only',
+      cell: (info) => {
+        const v = info.getValue() as number
+        return v > 0
+          ? <span style={{ color: '#a78bfa', fontWeight: 600 }}>{v}</span>
+          : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+      },
+    }),
     columnHelper.accessor('Break Score', { header: 'Score' }),
     columnHelper.accessor('Part du break', { header: 'Part %', cell: (info) => `${info.getValue()}%` }),
     columnHelper.accessor('Hot Spot', { header: 'Hot', cell: (info) => info.getValue() || '—' }),

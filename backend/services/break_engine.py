@@ -422,6 +422,8 @@ def build_deterministic_spot_summary(
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     players_per_spot = {spot: set() for spot in spots}
+    # player → set of checklist names seen for that spot (to detect Immaculate-only players)
+    player_checklists_per_spot: dict[str, dict[str, set]] = {spot: {} for spot in spots}
     teams_solo_per_spot = {spot: {} for spot in spots}
     teams_multi_per_spot = {spot: {} for spot in spots}
 
@@ -525,6 +527,8 @@ def build_deterministic_spot_summary(
                 checklists_per_spot[assigned_spot].add(checklist_name)
             for p in player_list:
                 players_per_spot[assigned_spot].add(p)
+                if checklist_name:
+                    player_checklists_per_spot[assigned_spot].setdefault(p, set()).add(checklist_name)
             # Tracker les co-joueurs multi pour les spots-joueurs extraits
             if method == SIM_METHOD_PLAYER_LETTER and assigned_spot in extracted_set and is_multi_player:
                 for p in player_list:
@@ -572,6 +576,10 @@ def build_deterministic_spot_summary(
         teams_str = " | ".join(teams_parts) if teams_parts else ""
 
         players_list = sorted(players_per_spot[spot])
+        immaculate_only = sum(
+            1 for p, cls in player_checklists_per_spot[spot].items()
+            if cls and all("immaculate" in cl.lower() for cl in cls)
+        )
         # Formatage colonne Joueurs : différent selon spot-joueur extrait ou spot-lettre
         if method == SIM_METHOD_PLAYER_LETTER and spot in extracted_set:
             partners = sorted(multi_partners_per_spot[spot])
@@ -597,6 +605,7 @@ def build_deterministic_spot_summary(
             "Rareté": rarity_label,
             "Équipes": teams_str,
             "Nb Joueurs": len(players_list),
+            "Immaculate Only": immaculate_only,
             "Joueurs": joueurs_str,
             "Checklists": ", ".join(sorted(checklists_per_spot[spot])),
         }

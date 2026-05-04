@@ -85,6 +85,7 @@ export interface BreakSpotRecord {
   Équipes: string
   Checklists: string
   'Nb Joueurs': number
+  'Immaculate Only': number
   Joueurs: string
   'Break Score': number
   'Part du break': number
