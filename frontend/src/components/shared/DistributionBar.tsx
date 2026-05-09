@@ -31,6 +31,7 @@ export function DistributionBar({ data, title }: DistributionBarProps) {
         {sorted.map((d, i) => (
           <div
             key={d.name}
+            title={`${d.name.replace('.parquet', '')} · ${d.value}`}
             style={{
               width: `${(d.value / total) * 100}%`,
               background: PALETTE[i % PALETTE.length],
@@ -43,11 +44,11 @@ export function DistributionBar({ data, title }: DistributionBarProps) {
       {/* Legend - compact, max 6 shown */}
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         {sorted.slice(0, 6).map((d, i) => {
-          const label = d.name.replace('.parquet', '').slice(0, 25)
+          const label = d.name.replace('.parquet', '')
           return (
-            <div key={d.name} className="flex items-center gap-1.5 text-xs">
+            <div key={d.name} className="flex min-w-0 items-center gap-1.5 text-xs" title={`${label} · ${d.value}`}>
               <div className="w-2 h-2 rounded-full" style={{ background: PALETTE[i % PALETTE.length] }} />
-              <span className="truncate max-w-[120px]" style={{ color: 'var(--text-secondary)' }}>{label}</span>
+              <span className="max-w-[260px] truncate" style={{ color: 'var(--text-secondary)' }}>{label}</span>
               <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{d.value}</span>
             </div>
           )
