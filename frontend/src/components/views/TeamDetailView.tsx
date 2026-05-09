@@ -15,6 +15,19 @@ import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
+type PlayerSummaryRow = {
+  Player: string
+  Hits: number
+  AutoMem: number
+  Logoman: number
+  CaseHit: number
+  BaseOther: number
+  Checklists: number
+  Score: number
+}
+
+const playerSummaryColumnHelper = createColumnHelper<PlayerSummaryRow>()
+
 const cardColumns = [
   columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
   columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
@@ -22,8 +35,19 @@ const cardColumns = [
   columnHelper.accessor('checklist_name', { header: 'Checklist', cell: (info) => info.getValue()?.replace('.parquet', '') }),
 ]
 
+const playerSummaryColumns = [
+  playerSummaryColumnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
+  playerSummaryColumnHelper.accessor('Hits', { header: 'Cartes' }),
+  playerSummaryColumnHelper.accessor('AutoMem', { header: 'Auto/Mem' }),
+  playerSummaryColumnHelper.accessor('Logoman', { header: 'Logoman' }),
+  playerSummaryColumnHelper.accessor('CaseHit', { header: 'Case Hit' }),
+  playerSummaryColumnHelper.accessor('BaseOther', { header: 'Base/Autre' }),
+  playerSummaryColumnHelper.accessor('Checklists', { header: 'Checklists' }),
+  playerSummaryColumnHelper.accessor('Score', { header: 'Score', cell: (info) => Math.round(info.getValue() ?? 0) }),
+]
+
 export function TeamDetailView() {
-  const { analysisData, targetTeam, setTargetTeam, selectedSport } = useAppStore()
+  const { analysisData, targetTeam, setTargetTeam, setTargetPlayer, setActiveView, selectedSport } = useAppStore()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
   const selectedTeam = targetTeam || ''
 
@@ -68,6 +92,48 @@ export function TeamDetailView() {
   const caseHitCount = teamCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)
   const autoMemCount = teamCards.filter((c) => c.Category === CATEGORY_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const uniquePlayers = new Set(teamCards.flatMap((c) => c.Player.split('/').map((p) => p.trim()).filter(Boolean))).size
+
+  const playerSummaryRows = useMemo(() => {
+    const map = new Map<string, PlayerSummaryRow & { checklistSet: Set<string> }>()
+
+    for (const card of teamCards) {
+      const players = card.Player.split('/').map((p) => p.trim()).filter(Boolean)
+      for (const player of players) {
+        const row = map.get(player) ?? {
+          Player: player,
+          Hits: 0,
+          AutoMem: 0,
+          Logoman: 0,
+          CaseHit: 0,
+          BaseOther: 0,
+          Checklists: 0,
+          Score: 0,
+          checklistSet: new Set<string>(),
+        }
+
+        const hits = card.Hits || 0
+        row.Hits += hits
+        row.Score += card.Score || 0
+        row.checklistSet.add(card.checklist_name || card.File || card.checklist_id || 'unknown')
+
+        if (card.Category === CATEGORY_AUTO_MEM) row.AutoMem += hits
+        else if (card.Category === CATEGORY_LOGOMAN) row.Logoman += hits
+        else if (card.Category === CATEGORY_CASE_HIT) row.CaseHit += hits
+        else row.BaseOther += hits
+
+        map.set(player, row)
+      }
+    }
+
+    return Array.from(map.values())
+      .map(({ checklistSet, ...row }) => ({ ...row, Checklists: checklistSet.size }))
+      .sort((a, b) => b.Score - a.Score || b.AutoMem - a.AutoMem || b.Hits - a.Hits || a.Player.localeCompare(b.Player))
+  }, [teamCards])
+
+  function handlePlayerSummaryClick(row: PlayerSummaryRow) {
+    setTargetPlayer(row.Player)
+    setActiveView('🔍 Analyse Joueur')
+  }
 
   return (
     <div>
@@ -138,6 +204,23 @@ export function TeamDetailView() {
               <TeamStatsPanel teamName={selectedTeam} />
             </div>
           )}
+
+          <div className="mb-6">
+            <div className="mb-3">
+              <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Résumé joueurs</h3>
+              <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+                Vue compilée des joueurs de l'équipe : volume, auto/memo, hits premium et score. Clique un joueur pour ouvrir son détail.
+              </p>
+            </div>
+            <DataTable
+              data={playerSummaryRows}
+              columns={playerSummaryColumns as any}
+              pageSize={25}
+              exportName={`${selectedTeam.replace(/\s+/g, '_')}_joueurs`}
+              initialSorting={[{ id: 'Score', desc: true }]}
+              onRowClick={handlePlayerSummaryClick}
+            />
+          </div>
 
           <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} />
         </>
