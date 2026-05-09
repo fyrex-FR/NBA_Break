@@ -32,7 +32,14 @@ const cardColumns = [
   columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
   columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
-  columnHelper.accessor('checklist_name', { header: 'Checklist', cell: (info) => info.getValue()?.replace('.parquet', '') }),
+  columnHelper.accessor('checklist_name', {
+    header: 'Checklist',
+    cell: (info) => {
+      const fullName = info.getValue() || info.row.original.File || ''
+      const name = fullName.replace('.parquet', '')
+      return <span title={name} className="inline-block max-w-[260px] whitespace-normal break-words align-top">{name}</span>
+    },
+  }),
 ]
 
 const playerSummaryColumns = [

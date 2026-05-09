@@ -22,7 +22,13 @@ const columns = [
   columnHelper.accessor('Team', { header: 'Équipe(s)' }),
   columnHelper.accessor('Box Type', { header: 'Type' }),
   columnHelper.accessor('Category', { header: 'Catégorie' }),
-  columnHelper.accessor('File', { header: 'Checklist' }),
+  columnHelper.accessor('File', {
+    header: 'Checklist',
+    cell: (info) => {
+      const name = (info.getValue() ?? '').replace('.parquet', '')
+      return <span title={name} className="inline-block max-w-[260px] whitespace-normal break-words align-top">{name}</span>
+    },
+  }),
 ]
 
 export function MultiPlayersView() {

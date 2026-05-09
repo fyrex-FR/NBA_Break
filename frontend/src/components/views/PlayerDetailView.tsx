@@ -53,12 +53,19 @@ export function PlayerDetailView() {
     columnHelper.accessor('checklist_name', {
       header: 'Checklist',
       cell: (info) => {
-        const name = info.getValue()?.replace('.parquet', '')
+        const fullName = info.getValue() || info.row.original.File || ''
+        const name = fullName.replace('.parquet', '')
         const year = parseInt(info.row.original.Year, 10)
         const isRookieYear = rookie && year === rookie.year_start
-        if (!isRookieYear) return <span>{name}</span>
+        if (!isRookieYear) {
+          return (
+            <span title={name} className="inline-block max-w-[260px] whitespace-normal break-words align-top">
+              {name}
+            </span>
+          )
+        }
         return (
-          <span className="flex items-center gap-1.5">
+          <span title={name} className="flex max-w-[280px] items-start gap-1.5 whitespace-normal break-words">
             <RCBadge size="sm" />
             <span>{name}</span>
           </span>
