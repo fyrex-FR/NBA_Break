@@ -26,10 +26,20 @@ from .rookies import ROOKIES_KEY
 router = APIRouter(prefix="/api", tags=["simulation"])
 
 _OVERRIDES_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "keyword_overrides.json")
-_keyword_overrides = {}
-if os.path.exists(_OVERRIDES_PATH):
-    with open(_OVERRIDES_PATH, "r", encoding="utf-8") as f:
-        _keyword_overrides = json.load(f)
+_KEYWORD_OVERRIDES_R2_KEY = "app/keyword_overrides.json"
+
+
+def _load_keyword_overrides():
+    config = get_r2_config()
+    if is_r2_configured(config):
+        try:
+            return read_r2_json(config, _KEYWORD_OVERRIDES_R2_KEY)
+        except Exception:
+            pass
+    if os.path.exists(_OVERRIDES_PATH):
+        with open(_OVERRIDES_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
 
 
 @router.post("/simulate/break", response_model=BreakSimulationResponse)
@@ -37,7 +47,7 @@ def simulate_break(req: BreakSimulationRequest):
     """Run a break simulation."""
     try:
         df = load_master_data(req.sport_key, req.checklist_ids, req.master_key)
-        df = enrich_dataframe(df, req.sport_key, _keyword_overrides)
+        df = enrich_dataframe(df, req.sport_key, _load_keyword_overrides())
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -113,7 +123,7 @@ def get_players_for_letter_break(req: BreakSimulationRequest):
     """
     try:
         df = load_master_data(req.sport_key, req.checklist_ids, req.master_key)
-        df = enrich_dataframe(df, req.sport_key, _keyword_overrides)
+        df = enrich_dataframe(df, req.sport_key, _load_keyword_overrides())
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
