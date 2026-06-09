@@ -1,12 +1,14 @@
 """Upload endpoint for Excel checklists."""
 
 import os
+from io import BytesIO
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Header
 from typing import Optional
 
 from ..services.sports_config import get_sport_profile
 from ..services.data_pipeline import (
     read_uploaded_checklist,
+    normalize_checklist_columns,
     checklist_name_from_filename,
     normalize_checklist_id,
     master_parquet_key_for_sport,
@@ -46,7 +48,10 @@ async def upload_checklist(
 
     file_data = await file.read()
     try:
-        if sport_profile.get("disney_parser"):
+        filename = file.filename or "upload"
+        if filename.lower().endswith(".csv"):
+            df = normalize_checklist_columns(pd.read_csv(BytesIO(file_data)))
+        elif sport_profile.get("disney_parser"):
             df = parse_disney_checklist(file_data)
         else:
             sheet_names = sport_profile.get("sheet_names", ["Teams_clean"])

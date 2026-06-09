@@ -13,9 +13,13 @@ export function DetectionView() {
   const [textFilter, setTextFilter] = useState('')
   const [selectedFiles, setSelectedFiles] = useState<string[]>([])
 
-  // Track overrides per normalized box type
+  // Track overrides per checklist + normalized box type
   const [autoSet, setAutoSet] = useState<Set<string>>(new Set())
   const [caseSet, setCaseSet] = useState<Set<string>>(new Set())
+
+  function scopedKey(candidate: CardTypeCandidate): string {
+    return `${candidate.checklist_id || candidate.file}||${candidate.norm}`
+  }
 
   // Load candidates
   useEffect(() => {
@@ -30,8 +34,9 @@ export function DetectionView() {
         const auto = new Set<string>()
         const cas = new Set<string>()
         for (const c of data.candidates) {
-          if (c.is_auto) auto.add(c.norm)
-          if (c.is_case) cas.add(c.norm)
+          const key = scopedKey(c)
+          if (c.is_auto) auto.add(key)
+          if (c.is_case) cas.add(key)
         }
         setAutoSet(auto)
         setCaseSet(cas)
@@ -64,31 +69,35 @@ export function DetectionView() {
     return map
   }, [filtered])
 
-  function toggleAuto(norm: string, _boxType: string) {
+  function toggleAuto(item: CardTypeCandidate) {
     setAutoSet((prev) => {
       const next = new Set(prev)
-      if (next.has(norm)) next.delete(norm)
-      else next.add(norm)
+      const key = scopedKey(item)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
       return next
     })
   }
 
-  function toggleCase(norm: string, _boxType: string) {
+  function toggleCase(item: CardTypeCandidate) {
     setCaseSet((prev) => {
       const next = new Set(prev)
-      if (next.has(norm)) next.delete(norm)
-      else next.add(norm)
+      const key = scopedKey(item)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
       return next
     })
   }
 
-  // Resolve box_type labels from norm keys
-  function resolveLabels(normSet: Set<string>): string[] {
-    const normToLabel = new Map<string, string>()
+  function resolveScopedRows(keySet: Set<string>) {
+    const keyToCandidate = new Map<string, CardTypeCandidate>()
     for (const c of candidates) {
-      if (!normToLabel.has(c.norm)) normToLabel.set(c.norm, c.box_type)
+      if (!keyToCandidate.has(scopedKey(c))) keyToCandidate.set(scopedKey(c), c)
     }
-    return Array.from(normSet).map((n) => normToLabel.get(n) || n)
+    return Array.from(keySet)
+      .map((key) => keyToCandidate.get(key))
+      .filter((c): c is CardTypeCandidate => Boolean(c))
+      .map((c) => ({ checklist_id: c.checklist_id, file: c.file, box_type: c.box_type }))
   }
 
   async function handleSave() {
@@ -97,10 +106,12 @@ export function DetectionView() {
     try {
       const result = await saveOverrides(
         selectedSport,
-        resolveLabels(autoSet),
-        resolveLabels(caseSet),
+        undefined,
+        undefined,
+        resolveScopedRows(autoSet),
+        resolveScopedRows(caseSet),
       )
-      setMsg(`Sauvegardé : ${result.auto_mem_count} Auto/Mem, ${result.case_hit_count} Case Hit`)
+      setMsg(`Sauvegardé : ${result.scoped_auto_mem_count} Auto/Mem scoped, ${result.scoped_case_hit_count} Case Hit scoped`)
       setTimeout(() => setMsg(null), 3000)
     } catch (err: any) {
       setMsg(`Erreur : ${err.message}`)
@@ -204,16 +215,16 @@ export function DetectionView() {
                       <div className="w-20 text-center">
                         <input
                           type="checkbox"
-                          checked={autoSet.has(item.norm)}
-                          onChange={() => toggleAuto(item.norm, item.box_type)}
+                          checked={autoSet.has(scopedKey(item))}
+                          onChange={() => toggleAuto(item)}
                           style={{ accentColor: '#3b82f6' }}
                         />
                       </div>
                       <div className="w-20 text-center">
                         <input
                           type="checkbox"
-                          checked={caseSet.has(item.norm)}
-                          onChange={() => toggleCase(item.norm, item.box_type)}
+                          checked={caseSet.has(scopedKey(item))}
+                          onChange={() => toggleCase(item)}
                           style={{ accentColor: '#eab308' }}
                         />
                       </div>

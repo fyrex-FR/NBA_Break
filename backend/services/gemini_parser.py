@@ -57,6 +57,17 @@ _SHEET_BOX_TYPE = {
     "signatures": "Auto", "signature": "Auto",
 }
 
+_NBA_TEAMS = {
+    "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets",
+    "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets",
+    "Detroit Pistons", "Golden State Warriors", "Houston Rockets", "Indiana Pacers",
+    "Los Angeles Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat",
+    "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks",
+    "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns",
+    "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors",
+    "Utah Jazz", "Washington Wizards",
+}
+
 
 def _normalize_player(name: str) -> str:
     """Convertit 'Nom, Prénom' → 'Prénom Nom' et retire les virgules parasites."""
@@ -78,6 +89,124 @@ def _is_card_number(val) -> bool:
         return n == int(n) and n > 0
     except (ValueError, TypeError):
         return False
+
+
+def _clean_cell(value) -> str:
+    if value is None or (isinstance(value, float) and value != value):
+        return ""
+    text = str(value).strip()
+    return "" if text.lower() == "nan" else text
+
+
+def _clean_numbering(value) -> str:
+    text = _clean_cell(value)
+    if not text:
+        return ""
+    if re.fullmatch(r"1/1", text):
+        return "1/1"
+    if re.fullmatch(r"/\d{1,5}", text):
+        return text
+    if re.fullmatch(r"\d{1,5}", text):
+        return f"/{text}"
+    return ""
+
+
+def _append_note_box_type(box_type: str, note: str) -> str:
+    note = _clean_cell(note).strip()
+    if not note:
+        return box_type
+    note = re.sub(r"^\s*[-–—]\s*", "", note).strip()
+    if not note or re.fullmatch(r"RC", note, re.IGNORECASE) or _clean_numbering(note):
+        return box_type
+    if note.lower() in box_type.lower():
+        return box_type
+    return f"{box_type} - {note}".strip(" -")
+
+
+def _parse_beckett_teams_fixed(df: pd.DataFrame) -> list[dict]:
+    """Parse Beckett's Teams tab when it uses the common fixed layout.
+
+    Typical columns are: Team, Card Type, Card #, Player, Numbering/RC/Note,
+    with an optional extra note/sub-brand column for products like Chronicles.
+    """
+    work = df.dropna(how="all").reset_index(drop=True)
+    if work.shape[1] < 4:
+        return []
+
+    first_col = work[0].map(_clean_cell)
+    team_hits = first_col.isin(_NBA_TEAMS).sum()
+    if team_hits < 10:
+        return []
+
+    seen: set[tuple] = set()
+    rows = []
+    for _, row in work.iterrows():
+        team = _clean_cell(row.iloc[0] if work.shape[1] > 0 else "")
+        box_type = _clean_cell(row.iloc[1] if work.shape[1] > 1 else "")
+        player = _normalize_player(_clean_cell(row.iloc[3] if work.shape[1] > 3 else ""))
+        if team not in _NBA_TEAMS or not player:
+            continue
+
+        note_1 = _clean_cell(row.iloc[4] if work.shape[1] > 4 else "")
+        note_2 = _clean_cell(row.iloc[5] if work.shape[1] > 5 else "")
+        numbering = _clean_numbering(note_1) or _clean_numbering(note_2)
+        box_type = _append_note_box_type(box_type or "Base", note_1)
+        box_type = _append_note_box_type(box_type, note_2)
+        if re.fullmatch(r"RC", note_1, re.IGNORECASE) and "rookie" not in box_type.lower():
+            box_type = f"{box_type} RC".strip()
+
+        key = (player.lower(), team.lower(), box_type.lower(), numbering)
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append({"Player": player, "Team": team, "Box Type": box_type, "Numbering": numbering})
+
+    return rows
+
+
+def _parse_cardboard_connection_sheet(df: pd.DataFrame) -> list[dict]:
+    """Parse Cardboard Connection exports: CARD SET, CARD #, ATHLETE, TEAM, SEQ."""
+    work = df.dropna(how="all").reset_index(drop=True)
+    if work.empty:
+        return []
+
+    header_idx = None
+    for idx, row in work.head(10).iterrows():
+        cells = [_clean_cell(v).upper() for v in row.tolist()]
+        if "CARD SET" in cells and "ATHLETE" in cells and "TEAM" in cells:
+            header_idx = idx
+            break
+    if header_idx is None:
+        return []
+
+    headers = [_clean_cell(v).upper() for v in work.iloc[header_idx].tolist()]
+    try:
+        set_col = headers.index("CARD SET")
+        player_col = headers.index("ATHLETE")
+        team_col = headers.index("TEAM")
+    except ValueError:
+        return []
+    seq_col = headers.index("SEQ") if "SEQ" in headers else None
+
+    seen: set[tuple] = set()
+    rows = []
+    for _, row in work.iloc[header_idx + 1:].iterrows():
+        box_type = _clean_cell(row.iloc[set_col] if set_col < work.shape[1] else "")
+        player = _normalize_player(_clean_cell(row.iloc[player_col] if player_col < work.shape[1] else ""))
+        team = _clean_cell(row.iloc[team_col] if team_col < work.shape[1] else "")
+        if not box_type or not player:
+            continue
+        numbering = _clean_numbering(row.iloc[seq_col]) if seq_col is not None and seq_col < work.shape[1] else ""
+        box_type = re.sub(r"^\s*(?:19|20)\d{2}(?:-\d{2})?\s+Panini\s+", "", box_type, flags=re.IGNORECASE)
+        box_type = re.sub(r"^\s*(?:19|20)\d{2}(?:-\d{2})?\s+", "", box_type, flags=re.IGNORECASE)
+        box_type = re.sub(r"^\s*Impeccable Basketball\s*-\s*", "", box_type, flags=re.IGNORECASE)
+        box_type = re.sub(r"^\s*Recon Basketball\s*-\s*", "", box_type, flags=re.IGNORECASE)
+        key = (player.lower(), team.lower(), box_type.lower(), numbering)
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append({"Player": player, "Team": team, "Box Type": box_type, "Numbering": numbering})
+    return rows
 
 
 _COLUMN_DETECT_PROMPT = """Tu reçois un tableau (lignes JSON) extrait d'un fichier Excel Beckett — onglet Teams d'une checklist de cartes sportives.
@@ -135,8 +264,11 @@ def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
     Envoie les 30 premières lignes à Gemini pour identifier les indices de colonnes,
     puis parse tout le DataFrame avec cette carte — aucune position supposée fixe.
     """
-    numbering_pattern = re.compile(r'^/?\d{1,5}$')
     df = df.dropna(how="all").reset_index(drop=True)
+
+    fixed_rows = _parse_beckett_teams_fixed(df)
+    if fixed_rows:
+        return fixed_rows
 
     # Prépare un échantillon lisible pour Gemini (30 premières lignes non vides)
     sample = []
@@ -187,13 +319,9 @@ def _parse_teams_sheet(df: pd.DataFrame) -> list[dict]:
         team = _get_cell(row, team_col)
         box_type = _get_cell(row, box_type_col)
 
-        numbering = ""
-        if numbering_col is not None:
-            raw_num = _get_cell(row, numbering_col)
-            if raw_num and numbering_pattern.match(raw_num):
-                numbering = raw_num if raw_num.startswith("/") else f"/{raw_num}"
+        numbering = _clean_numbering(_get_cell(row, numbering_col)) if numbering_col is not None else ""
 
-        key = (player.lower(), box_type.lower())
+        key = (player.lower(), team.lower(), box_type.lower(), numbering)
         if key in seen:
             continue
         seen.add(key)
@@ -307,6 +435,10 @@ def parse_excel_beckett(file_bytes: bytes, filename: str) -> dict:
         key = name.lower().strip()
         if key not in _SKIP_SHEETS:
             df = pd.read_excel(buf, sheet_name=name, engine="openpyxl", header=None)
+            rows = _parse_cardboard_connection_sheet(df)
+            if rows:
+                all_rows.extend(rows)
+                continue
             rows = _parse_standard_sheet(df, default_box_type=name)
             all_rows.extend(rows)
 

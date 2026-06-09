@@ -186,6 +186,7 @@ export interface CardTypeCandidate {
   norm: string
   hits: number
   file: string
+  checklist_id: string
   current_category: string
   is_auto: boolean
   is_case: boolean
@@ -274,11 +275,18 @@ export function deleteChecklist(sportKey: string, checklistId: string, adminToke
 
 export function saveOverrides(
   sportKey: string,
-  autoMem: string[],
-  caseHit: string[],
-): Promise<{ status: string; auto_mem_count: number; case_hit_count: number }> {
+  autoMem?: string[],
+  caseHit?: string[],
+  scopedAutoMem?: { checklist_id: string; file?: string; box_type: string }[],
+  scopedCaseHit?: { checklist_id: string; file?: string; box_type: string }[],
+): Promise<{ status: string; auto_mem_count: number; case_hit_count: number; scoped_auto_mem_count: number; scoped_case_hit_count: number }> {
+  const body: Record<string, unknown> = { sport_key: sportKey }
+  if (autoMem) body.auto_mem = autoMem
+  if (caseHit) body.case_hit = caseHit
+  if (scopedAutoMem) body.scoped_auto_mem = scopedAutoMem
+  if (scopedCaseHit) body.scoped_case_hit = scopedCaseHit
   return fetchJSON('/overrides/save', {
     method: 'POST',
-    body: JSON.stringify({ sport_key: sportKey, auto_mem: autoMem, case_hit: caseHit }),
+    body: JSON.stringify(body),
   })
 }

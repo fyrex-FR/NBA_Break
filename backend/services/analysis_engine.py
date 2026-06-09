@@ -42,6 +42,36 @@ def normalize_box_type_text(value):
     return text
 
 
+def normalize_scope_text(value):
+    return normalize_box_type_text(value)
+
+
+def _build_scoped_override_sets(keyword_overrides_root, sport_keys):
+    scoped_root = keyword_overrides_root.get("scoped_category_by_sport", {})
+    if not isinstance(scoped_root, dict):
+        return {}, {}
+
+    auto_sets = {}
+    case_sets = {}
+    for sk in sport_keys:
+        sport_scoped = scoped_root.get(sk, {})
+        if not isinstance(sport_scoped, dict):
+            continue
+        for target, bucket in ((auto_sets, "auto_mem"), (case_sets, "case_hit")):
+            values = sport_scoped.get(bucket, {})
+            if not isinstance(values, dict):
+                continue
+            parsed = {}
+            for scope, box_types in values.items():
+                if not isinstance(box_types, list):
+                    continue
+                parsed[normalize_scope_text(scope)] = {
+                    normalize_box_type_text(v) for v in box_types if str(v).strip()
+                }
+            target[sk] = parsed
+    return auto_sets, case_sets
+
+
 def normalize_player_name(name):
     if pd.isna(name):
         return name
@@ -129,6 +159,9 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
         case_values = sport_overrides.get("case_hit", []) if isinstance(sport_overrides, dict) else []
         auto_override_sets[sk] = {normalize_box_type_text(v) for v in auto_values if str(v).strip()}
         case_override_sets[sk] = {normalize_box_type_text(v) for v in case_values if str(v).strip()}
+    scoped_auto_sets, scoped_case_sets = _build_scoped_override_sets(
+        keyword_overrides_root, sport_rule_map.keys()
+    )
 
     # Vectorized category assignment
     df["Normalized Box Type"] = df["Box Type"].apply(normalize_box_type_text)
@@ -141,6 +174,8 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
         rules = sport_rule_map.get(sk, category_rules)
         auto_set = auto_override_sets.get(sk, set())
         case_set = case_override_sets.get(sk, set())
+        scoped_auto = scoped_auto_sets.get(sk, {})
+        scoped_case = scoped_case_sets.get(sk, {})
         local_map = (
             df.loc[mask, ["Normalized Box Type", "Box Type"]]
             .drop_duplicates(subset=["Normalized Box Type"])
@@ -163,6 +198,29 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
             .map(norm_to_category)
             .fillna(CATEGORY_BASE_OTHER)
         )
+
+        if scoped_auto or scoped_case:
+            scope_series = (
+                df.loc[mask, "checklist_id"].astype(str)
+                if "checklist_id" in df.columns
+                else df.loc[mask, "File"].astype(str)
+                if "File" in df.columns
+                else pd.Series([""] * int(mask.sum()), index=df.loc[mask].index)
+            )
+            scope_series = scope_series.apply(normalize_scope_text)
+            norm_series = df.loc[mask, "Normalized Box Type"]
+            scoped_case_mask = [
+                norm in scoped_case.get(scope, set())
+                for scope, norm in zip(scope_series, norm_series)
+            ]
+            scoped_auto_mask = [
+                norm in scoped_auto.get(scope, set())
+                for scope, norm in zip(scope_series, norm_series)
+            ]
+            scoped_case_index = df.loc[mask].index[scoped_case_mask]
+            scoped_auto_index = df.loc[mask].index[scoped_auto_mask]
+            df.loc[scoped_auto_index, "Category"] = CATEGORY_AUTO_MEM
+            df.loc[scoped_case_index, "Category"] = CATEGORY_CASE_HIT
     df.drop(columns=["Normalized Box Type"], inplace=True, errors="ignore")
     df["Rarity Mult"] = df["Numbering"].apply(rarity_multiplier)
     df["Score"] = df["Category"].apply(calculate_score) * df["Rarity Mult"]

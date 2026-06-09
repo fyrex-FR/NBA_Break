@@ -47,6 +47,7 @@ class CardTypeCandidate(BaseModel):
     norm: str
     hits: int
     file: str
+    checklist_id: str = ""
     current_category: str
     is_auto: bool
     is_case: bool
@@ -65,8 +66,10 @@ class DetectRequest(BaseModel):
 
 class SaveOverridesRequest(BaseModel):
     sport_key: str
-    auto_mem: List[str]
-    case_hit: List[str]
+    auto_mem: Optional[List[str]] = None
+    case_hit: Optional[List[str]] = None
+    scoped_auto_mem: List[Dict[str, str]] = []
+    scoped_case_hit: List[Dict[str, str]] = []
 
 
 @router.post("/detect")
@@ -85,17 +88,35 @@ def detect_card_types(req: DetectRequest):
     sport_overrides = effective.get(req.sport_key, {})
     current_auto_set = {normalize_box_type_text(v) for v in (sport_overrides.get("auto_mem", []) if isinstance(sport_overrides, dict) else [])}
     current_case_set = {normalize_box_type_text(v) for v in (sport_overrides.get("case_hit", []) if isinstance(sport_overrides, dict) else [])}
+    scoped_root = overrides_root.get("scoped_category_by_sport", {})
+    sport_scoped = scoped_root.get(req.sport_key, {}) if isinstance(scoped_root, dict) else {}
+    scoped_auto = sport_scoped.get("auto_mem", {}) if isinstance(sport_scoped, dict) else {}
+    scoped_case = sport_scoped.get("case_hit", {}) if isinstance(sport_scoped, dict) else {}
+    scoped_auto_sets = {
+        normalize_box_type_text(scope): {normalize_box_type_text(v) for v in values}
+        for scope, values in scoped_auto.items()
+        if isinstance(values, list)
+    }
+    scoped_case_sets = {
+        normalize_box_type_text(scope): {normalize_box_type_text(v) for v in values}
+        for scope, values in scoped_case.items()
+        if isinstance(values, list)
+    }
 
     # Build review: group by File + Box Type
     if df.empty or "Box Type" not in df.columns or "Category" not in df.columns or "File" not in df.columns:
         return DetectionResponse(candidates=[], files=[])
 
+    if "checklist_id" not in df.columns:
+        df["checklist_id"] = ""
+
     grouped = (
-        df.groupby(["File", "Box Type"], dropna=False)
+        df.groupby(["File", "checklist_id", "Box Type"], dropna=False)
         .agg(Hits=("Hits", "sum"), Category=("Category", lambda x: x.value_counts().idxmax()))
         .reset_index()
     )
     grouped["File"] = grouped["File"].astype(str).str.strip()
+    grouped["checklist_id"] = grouped["checklist_id"].astype(str).str.strip()
     grouped["Box Type"] = grouped["Box Type"].astype(str).str.strip()
     grouped = grouped[(grouped["File"] != "") & (grouped["Box Type"] != "")].copy()
     grouped["Norm"] = grouped["Box Type"].apply(normalize_box_type_text)
@@ -111,14 +132,16 @@ def detect_card_types(req: DetectRequest):
     candidates = []
     for _, row in candidates_df.iterrows():
         norm = row["Norm"]
+        scope = normalize_box_type_text(row["checklist_id"] or row["File"])
         candidates.append(CardTypeCandidate(
             box_type=row["Box Type"],
             norm=norm,
             hits=int(row["Hits"]),
             file=row["File"],
+            checklist_id=row["checklist_id"],
             current_category=row["Category"],
-            is_auto=norm in current_auto_set,
-            is_case=norm in current_case_set,
+            is_auto=norm in current_auto_set or norm in scoped_auto_sets.get(scope, set()),
+            is_case=norm in current_case_set or norm in scoped_case_sets.get(scope, set()),
         ))
 
     files = sorted(candidates_df["File"].unique().tolist())
@@ -131,18 +154,51 @@ def save_overrides(req: SaveOverridesRequest):
     overrides_root = _load_overrides()
 
     # Case hit has priority over auto_mem
-    case_norm = {normalize_box_type_text(v) for v in req.case_hit}
-    final_auto = sorted(v for v in req.auto_mem if normalize_box_type_text(v) not in case_norm)
-    final_case = sorted(req.case_hit)
-
     by_sport = overrides_root.get("exact_category_by_sport", {})
     if not isinstance(by_sport, dict):
         by_sport = {}
-    by_sport[req.sport_key] = {
-        "auto_mem": final_auto,
-        "case_hit": final_case,
-    }
+    current_exact = by_sport.get(req.sport_key, {})
+    if not isinstance(current_exact, dict):
+        current_exact = {}
+    if req.auto_mem is None and req.case_hit is None:
+        final_auto = sorted(current_exact.get("auto_mem", []))
+        final_case = sorted(current_exact.get("case_hit", []))
+    else:
+        auto_mem = req.auto_mem or []
+        case_hit = req.case_hit or []
+        case_norm = {normalize_box_type_text(v) for v in case_hit}
+        final_auto = sorted(v for v in auto_mem if normalize_box_type_text(v) not in case_norm)
+        final_case = sorted(case_hit)
+    by_sport[req.sport_key] = {"auto_mem": final_auto, "case_hit": final_case}
     overrides_root["exact_category_by_sport"] = by_sport
+
+    scoped_by_sport = overrides_root.get("scoped_category_by_sport", {})
+    if not isinstance(scoped_by_sport, dict):
+        scoped_by_sport = {}
+    sport_scoped = scoped_by_sport.get(req.sport_key, {})
+    if not isinstance(sport_scoped, dict):
+        sport_scoped = {}
+
+    def _merge_scoped(existing, rows):
+        merged = existing if isinstance(existing, dict) else {}
+        for row in rows:
+            scope = str(row.get("checklist_id") or row.get("file") or "").strip()
+            box_type = str(row.get("box_type") or "").strip()
+            if not scope or not box_type:
+                continue
+            values = merged.get(scope, [])
+            if not isinstance(values, list):
+                values = []
+            norm_seen = {normalize_box_type_text(v) for v in values}
+            if normalize_box_type_text(box_type) not in norm_seen:
+                values.append(box_type)
+            merged[scope] = sorted(values)
+        return merged
+
+    sport_scoped["auto_mem"] = _merge_scoped(sport_scoped.get("auto_mem", {}), req.scoped_auto_mem)
+    sport_scoped["case_hit"] = _merge_scoped(sport_scoped.get("case_hit", {}), req.scoped_case_hit)
+    scoped_by_sport[req.sport_key] = sport_scoped
+    overrides_root["scoped_category_by_sport"] = scoped_by_sport
 
     # Cleanup legacy key
     legacy = overrides_root.get("auto_mem_exact_by_sport", {})
@@ -156,4 +212,6 @@ def save_overrides(req: SaveOverridesRequest):
         "status": "ok",
         "auto_mem_count": len(final_auto),
         "case_hit_count": len(final_case),
+        "scoped_auto_mem_count": sum(len(v) for v in sport_scoped.get("auto_mem", {}).values() if isinstance(v, list)),
+        "scoped_case_hit_count": sum(len(v) for v in sport_scoped.get("case_hit", {}).values() if isinstance(v, list)),
     }
