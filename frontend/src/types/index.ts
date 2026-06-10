@@ -13,6 +13,10 @@ export interface ChecklistInfo {
   checklist_name: string
   year: string
   rows: number
+  canonical_checklist_id?: string
+  legacy_checklist_ids?: string[]
+  display_name?: string
+  normalization_status?: string
 }
 
 export interface ChecklistsResponse {

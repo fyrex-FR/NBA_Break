@@ -16,7 +16,13 @@ interface SidebarProps {
   onClose: () => void
 }
 
-function formatChecklistName(raw: string) {
+function formatChecklistName(raw: string, displayName?: string) {
+  if (displayName?.trim()) {
+    const cleanDisplay = displayName.trim()
+    const match = cleanDisplay.match(/^(\d{4}-\d{2})\s+(.+)$/)
+    if (match) return { name: match[2], year: match[1] }
+    return { name: cleanDisplay, year: '' }
+  }
   const clean = raw.replace(/\.(parquet|xlsx)$/i, '')
   const match = clean.match(/^(\d{4}-\d{2})-(.+)$/)
   if (match) {
@@ -33,11 +39,13 @@ function formatChecklistName(raw: string) {
 function sortChecklists(checklists: ChecklistInfo[], mode: 'year' | 'rows_desc' | 'rows_asc' | 'name_asc' | 'name_desc') {
   const sorted = [...checklists]
   sorted.sort((a, b) => {
-    if (mode === 'rows_desc') return b.rows - a.rows || a.checklist_name.localeCompare(b.checklist_name)
-    if (mode === 'rows_asc') return a.rows - b.rows || a.checklist_name.localeCompare(b.checklist_name)
-    if (mode === 'name_desc') return b.checklist_name.localeCompare(a.checklist_name)
-    if (mode === 'name_asc') return a.checklist_name.localeCompare(b.checklist_name)
-    return a.checklist_name.localeCompare(b.checklist_name)
+    const aName = a.display_name || a.checklist_name
+    const bName = b.display_name || b.checklist_name
+    if (mode === 'rows_desc') return b.rows - a.rows || aName.localeCompare(bName)
+    if (mode === 'rows_asc') return a.rows - b.rows || aName.localeCompare(bName)
+    if (mode === 'name_desc') return bName.localeCompare(aName)
+    if (mode === 'name_asc') return aName.localeCompare(bName)
+    return aName.localeCompare(bName)
   })
   return sorted
 }
@@ -99,19 +107,22 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   }, [checklistsData])
 
   const availableProducts = Array.from(new Set(
-    availableChecklists.map((c) => formatChecklistName(c.checklist_name).name),
+    availableChecklists.map((c) => formatChecklistName(c.checklist_name, c.display_name).name),
   )).sort((a, b) => a.localeCompare(b))
 
   const filteredChecklists = availableChecklists.filter((c) => {
     if (selectedOnly && !selectedChecklistIds.includes(c.checklist_id)) return false
-    if (productFilter !== 'all' && formatChecklistName(c.checklist_name).name !== productFilter) return false
+    if (productFilter !== 'all' && formatChecklistName(c.checklist_name, c.display_name).name !== productFilter) return false
     if (!checklistQuery.trim()) return true
 
     const q = checklistQuery.trim().toLowerCase()
-    const formatted = formatChecklistName(c.checklist_name)
+    const formatted = formatChecklistName(c.checklist_name, c.display_name)
     const haystack = [
       c.checklist_name,
       c.checklist_id,
+      c.canonical_checklist_id,
+      ...(c.legacy_checklist_ids || []),
+      c.display_name,
       formatted.name,
       formatted.year,
       c.year,
@@ -565,7 +576,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
                   <div className="space-y-1.5">
                     {selectedChecklistDetails.slice(0, 6).map((cl) => {
-                      const formatted = formatChecklistName(cl.checklist_name)
+                      const formatted = formatChecklistName(cl.checklist_name, cl.display_name)
                       return (
                         <div
                           key={cl.checklist_id}
@@ -639,7 +650,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     {isOpen && (
                       <div className="pb-2 pt-1 px-2" style={{ borderTop: '1px solid var(--border-subtle)' }}>
                         {yearChecklists.map((cl) => {
-                          const formatted = formatChecklistName(cl.checklist_name);
+                          const formatted = formatChecklistName(cl.checklist_name, cl.display_name);
                           const isSelected = selectedChecklistIds.includes(cl.checklist_id);
                           return (
                             <div
