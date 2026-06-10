@@ -88,11 +88,6 @@
   "scoped_category_by_sport": {
     "nba": {
       "auto_mem": {
-        "2025-26-topps-signature-class-basketball-checklist": [
-          "Eternal Marks",
-          "Manuscripts",
-          "Shadow Scripts"
-        ],
         "2020-21-panini-black-basketball-checklist": [
           "Platinum - 1/1"
         ],
@@ -106,6 +101,7 @@
         "2020-21-panini-flawless-basketball-checklist": [
           "Championship Tags",
           "Dual Logoman",
+          "Legendary Scripts",
           "Logoman",
           "Logoman Autographs",
           "Platinum - 1/1",
@@ -131,6 +127,9 @@
           "Immaculate Rookie Introductions",
           "Logoman",
           "Logoman Autographs",
+          "Marks of Greatness",
+          "Modern Marks",
+          "Modern Marks - no base version",
           "Platinum - 1/1",
           "Platinum - 1/1 (no Nunn)",
           "Sneak Peek - Brand Logo",
@@ -153,14 +152,18 @@
           "Black Mosaic - 1/1",
           "Gold Vinyl - 1/1",
           "Platinum - 1/1",
-          "Red Wave"
+          "Red Wave",
+          "Rookie Scripts - no base version"
         ],
         "2020-21-panini-national-treasures-basketball-checklist": [
           "Colossal Logoman",
           "Gold Vinyl - 1/1",
           "Gold Vinyl - 1/1 (no Garnett)",
+          "Lasting Legacies",
+          "Lasting Legacies - no base version",
           "Lasting Legacies Prime",
           "Logoman Autographs",
+          "Penmanship - no base version",
           "Personalized",
           "Platinum - 1/1",
           "Rookie Logoman",
@@ -171,7 +174,10 @@
           "Super Prime - 1/1 (no Gay, Herro)",
           "Super Prime - 1/1 (no Tate)",
           "Treasured Tags",
-          "Tremendous Treasures Prime"
+          "Tremendous Treasures",
+          "Tremendous Treasures - no base version",
+          "Tremendous Treasures Prime",
+          "Validating Marks"
         ],
         "2020-21-panini-noir-basketball-checklist": [
           "Brand Logo - /5 (Ball 1/1)",
@@ -203,6 +209,7 @@
           "Championship Tags",
           "Dual Logoman",
           "Fully Endorsed",
+          "Legendary Scripts",
           "Logoman",
           "Logoman Autographs",
           "Mastercraft",
@@ -221,8 +228,11 @@
           "Immaculate Rookie Introductions",
           "Logoman",
           "Logoman Autographs",
+          "Marks of Greatness",
+          "Modern Marks",
           "Platinum - 1/1",
           "Prime - /3",
+          "Sneak Peek",
           "Sneak Peek - Brand Logo",
           "Sneak Peek - Heel Logo",
           "Sole of the Game",
@@ -237,6 +247,7 @@
         "2021-22-panini-national-treasures-basketball-checklist": [
           "Colossal Logoman",
           "Lasting Legacies",
+          "Lasting Legacies - no base version",
           "Lasting Legacies Prime",
           "Lasting Legacies Super Prime",
           "Logoman Autographs",
@@ -257,7 +268,9 @@
           "Super Prime - 1/1 (no Haliburton, Pritchard, Tatum)",
           "Super Prime - 1/1 (no Haliburton, Tatum, Walker, White)",
           "Super Prime - 1/1 (no Odom)",
-          "Treasured Tags"
+          "Treasured Tags",
+          "Tremendous Treasures",
+          "Validating Marks"
         ],
         "2021-22-panini-noir-basketball-checklist": [
           "Brand Logo - /5 (no Bouknight, Jones, Thor)",
@@ -293,6 +306,7 @@
           "Championship Tags",
           "Dual Logoman",
           "Fully Endorsed",
+          "Legendary Scripts",
           "Logoman",
           "Logoman Autographs",
           "Mastercraft",
@@ -318,7 +332,9 @@
           "Immaculate Rookie Introductions",
           "Logoman",
           "Logoman Autographs",
+          "Modern Marks",
           "Platinum - 1/1",
+          "Sneak Peek",
           "Sneak Peek - Brand Logo",
           "Sneak Peek - Heel Logo",
           "Sole of the Game",
@@ -327,6 +343,7 @@
         ],
         "2022-23-panini-national-treasures-basketball-checklist": [
           "Colossal Logoman",
+          "Lasting Legacies",
           "Lasting Legacies Prime",
           "Logoman Autographs",
           "Platinum - 1/1",
@@ -344,7 +361,10 @@
           "Treasured Tags",
           "Tremendous Treasures",
           "Tremendous Treasures Prime",
-          "Tremendous Treasures Super Prime"
+          "Tremendous Treasures Super Prime",
+          "Validating Marks",
+          "zzz2021-22 Penmanship",
+          "zzz2021-22 Validating Marks"
         ],
         "2022-23-panini-noir-basketball-checklist": [
           "Brand Logo - /5",
@@ -375,9 +395,12 @@
           "Super Prime - 1/1"
         ],
         "2023-24-panini-flawless-basketball-checklist": [
+          "2022-23 Legendary Scripts",
           "Championship Tags",
           "Dual Logoman",
+          "Flawless Penmanship",
           "Fully Endorsed",
+          "Legendary Scripts",
           "Logoman",
           "Logoman Autographs",
           "Mastercraft",
@@ -622,6 +645,7 @@
           "Checkerboard - 1/1 (no Bouknight)",
           "Gold Vinyl - 1/1",
           "Gold Vinyl - 1/1 (no Barkley, Bouknight)",
+          "Opti-Graphs",
           "Opti-Graphs Pulsar"
         ],
         "2021-22-panini-mosaic-basketball-checklist": [
@@ -687,6 +711,98 @@
         "2020-21-panini-revolution-basketball-checklist": [
           "Autographs Fractal",
           "Kaleido - 1/1"
+        ],
+        "2025-26-topps-signature-class-basketball-checklist": [
+          "Eternal Marks",
+          "Manuscripts",
+          "Shadow Scripts"
+        ],
+        "2012-13-panini-gold-standard-basketball-checklist": [
+          "Bullion Brand Logos"
+        ],
+        "2023-24-panini-donruss-optic-basketball-checklist": [
+          "Opti-Graphs Holo"
+        ],
+        "2023-24-panini-immaculate-basketball-checklist": [
+          "All Star Weekend Brand Logos",
+          "Brand Logos",
+          "Modern Marks",
+          "Sneak Peek",
+          "Sole of the Game",
+          "Team Slogans",
+          "The Standard"
+        ],
+        "2023-24-panini-national-treasures-basketball-checklist": [
+          "2022-23 Penmanship",
+          "2022-23 Validating Marks",
+          "Treasured Tags",
+          "Tremendous Treasures"
+        ],
+        "2023-24-panini-noir-basketball-checklist": [
+          "NBA Finals Championship Tags"
+        ],
+        "2023-24-topps-cosmic-chrome-basketball-checklist": [
+          "Milky Way Marks Refractors"
+        ],
+        "2024-25-panini-donruss-optic-basketball-checklist": [
+          "Opti-Graphs Choice"
+        ],
+        "2024-25-panini-immaculate-basketball-checklist": [
+          "2023-24 Immaculate Collection Basketball - Modern Marks",
+          "Brand Logos",
+          "Modern Marks",
+          "Sneak Peek - Brand Logo",
+          "Sneak Peek - Heel Logo",
+          "Sole of the Game",
+          "Team Slogans",
+          "The Standard"
+        ],
+        "2024-25-panini-national-treasures-basketball-checklist": [
+          "Tremendous Treasures"
+        ],
+        "2024-25-panini-noir-basketball-checklist": [
+          "Tag Line"
+        ],
+        "2024-25-panini-obsidian-basketball-checklist": [
+          "Update - 2022-23 Donruss Optic Basketball - Opti-Graphs"
+        ],
+        "2025-26-topps-basketball-checklist": [
+          "Contemporary Marks",
+          "Havoc Marks",
+          "Marks of Excellence",
+          "Sole Ambition"
+        ],
+        "2025-26-topps-bowman-basketball-checklist": [
+          "Future Script"
+        ],
+        "2025-26-topps-midnight-basketball-checklist": [
+          "Dark Marks",
+          "Dark Marks Rookies",
+          "Midngiht Oil Marks"
+        ]
+      },
+      "case_hit": {
+        "2022-23-panini-donruss-basketball-checklist": [
+          "Animation"
+        ],
+        "2023-24-panini-donruss-basketball-checklist": [
+          "Animation"
+        ],
+        "2023-24-panini-donruss-optic-basketball-checklist": [
+          "Alter Ego",
+          "Slammy!"
+        ],
+        "2024-25-panini-donruss-basketball-checklist": [
+          "Animation"
+        ],
+        "2024-25-panini-donruss-optic-basketball-checklist": [
+          "Alter Ego",
+          "Slammy!"
+        ],
+        "2025-26-panini-donruss-basketball-checklist": [
+          "Alter Ego",
+          "Animation",
+          "Slammy"
         ]
       }
     }
