@@ -30,6 +30,7 @@ from .data_pipeline import (
     ensure_master_dataframe_schema,
 )
 from .r2_storage import read_r2_parquet, get_r2_config, is_r2_configured
+from .checklist_aliases import load_checklist_aliases, equivalent_checklist_ids
 
 
 # ---------------------------------------------------------------------------
@@ -108,7 +109,10 @@ def load_master_data(sport_key, checklist_ids, master_key):
     master_df["Team"] = master_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
 
     if checklist_ids:
-        selected_ids = {str(v) for v in checklist_ids if str(v).strip()}
+        aliases_root = load_checklist_aliases()
+        selected_ids = set()
+        for value in checklist_ids:
+            selected_ids.update(equivalent_checklist_ids(sport_key, value, aliases_root))
         if selected_ids:
             master_df = master_df[master_df["checklist_id"].astype(str).isin(selected_ids)].copy()
 
@@ -162,6 +166,7 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
     scoped_auto_sets, scoped_case_sets = _build_scoped_override_sets(
         keyword_overrides_root, sport_rule_map.keys()
     )
+    aliases_root = load_checklist_aliases()
 
     # Vectorized category assignment
     df["Normalized Box Type"] = df["Box Type"].apply(normalize_box_type_text)
@@ -210,11 +215,11 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
             scope_series = scope_series.apply(normalize_scope_text)
             norm_series = df.loc[mask, "Normalized Box Type"]
             scoped_case_mask = [
-                norm in scoped_case.get(scope, set())
+                any(norm in scoped_case.get(normalize_scope_text(alias), set()) for alias in equivalent_checklist_ids(sk, scope, aliases_root) or {scope})
                 for scope, norm in zip(scope_series, norm_series)
             ]
             scoped_auto_mask = [
-                norm in scoped_auto.get(scope, set())
+                any(norm in scoped_auto.get(normalize_scope_text(alias), set()) for alias in equivalent_checklist_ids(sk, scope, aliases_root) or {scope})
                 for scope, norm in zip(scope_series, norm_series)
             ]
             scoped_case_index = df.loc[mask].index[scoped_case_mask]

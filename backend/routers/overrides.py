@@ -12,6 +12,11 @@ from ..services.analysis_engine import load_master_data, enrich_dataframe, norma
 from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json
 from ..services.sports_config import get_effective_exact_category_by_sport
 from ..services.card_logic import CATEGORY_BASE_OTHER
+from ..services.checklist_aliases import (
+    canonical_checklist_id,
+    equivalent_checklist_ids,
+    load_checklist_aliases,
+)
 
 router = APIRouter(prefix="/api/overrides", tags=["overrides"])
 
@@ -76,6 +81,7 @@ class SaveOverridesRequest(BaseModel):
 def detect_card_types(req: DetectRequest):
     """Get card types that are candidates for reclassification."""
     overrides_root = _load_overrides()
+    aliases_root = load_checklist_aliases()
 
     try:
         df = load_master_data(req.sport_key, req.checklist_ids, req.master_key)
@@ -133,6 +139,10 @@ def detect_card_types(req: DetectRequest):
     for _, row in candidates_df.iterrows():
         norm = row["Norm"]
         scope = normalize_box_type_text(row["checklist_id"] or row["File"])
+        equivalent_scopes = {
+            normalize_box_type_text(v)
+            for v in equivalent_checklist_ids(req.sport_key, row["checklist_id"], aliases_root)
+        } or {scope}
         candidates.append(CardTypeCandidate(
             box_type=row["Box Type"],
             norm=norm,
@@ -140,8 +150,8 @@ def detect_card_types(req: DetectRequest):
             file=row["File"],
             checklist_id=row["checklist_id"],
             current_category=row["Category"],
-            is_auto=norm in current_auto_set or norm in scoped_auto_sets.get(scope, set()),
-            is_case=norm in current_case_set or norm in scoped_case_sets.get(scope, set()),
+            is_auto=norm in current_auto_set or any(norm in scoped_auto_sets.get(s, set()) for s in equivalent_scopes),
+            is_case=norm in current_case_set or any(norm in scoped_case_sets.get(s, set()) for s in equivalent_scopes),
         ))
 
     files = sorted(candidates_df["File"].unique().tolist())
@@ -152,6 +162,7 @@ def detect_card_types(req: DetectRequest):
 def save_overrides(req: SaveOverridesRequest):
     """Save updated auto_mem and case_hit overrides for a sport."""
     overrides_root = _load_overrides()
+    aliases_root = load_checklist_aliases()
 
     # Case hit has priority over auto_mem
     by_sport = overrides_root.get("exact_category_by_sport", {})
@@ -183,6 +194,7 @@ def save_overrides(req: SaveOverridesRequest):
         merged = existing if isinstance(existing, dict) else {}
         for row in rows:
             scope = str(row.get("checklist_id") or row.get("file") or "").strip()
+            scope = canonical_checklist_id(req.sport_key, scope, aliases_root)
             box_type = str(row.get("box_type") or "").strip()
             if not scope or not box_type:
                 continue

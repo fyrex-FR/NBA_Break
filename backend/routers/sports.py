@@ -9,6 +9,7 @@ from ..services.data_pipeline import (
     build_master_catalog,
     master_parquet_key_for_sport,
 )
+from ..services.checklist_aliases import load_checklist_aliases, alias_metadata_for_id
 
 router = APIRouter(prefix="/api/sports", tags=["sports"])
 
@@ -55,6 +56,14 @@ def list_checklists(sport_key: str):
         master_df = read_r2_parquet(config, master_key)
         master_df = ensure_master_dataframe_schema(master_df, sport_key)
         catalog = build_master_catalog(master_df, sport_key)
+        aliases_root = load_checklist_aliases()
+        if not catalog.empty:
+            alias_rows = [
+                alias_metadata_for_id(sport_key, row.get("checklist_id"), aliases_root)
+                for row in catalog.to_dict(orient="records")
+            ]
+            alias_df = catalog.__class__(alias_rows)
+            catalog = catalog.reset_index(drop=True).join(alias_df)
         checklists = catalog.to_dict(orient="records")
         return {
             "checklists": checklists,

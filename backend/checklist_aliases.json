@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "sports": {
+    "nba": {
+      "legacy_to_canonical": {
+        "2010-11-panini-season-update-clean": "2010-11-panini-season-update-basketball-checklist",
+        "2012-13-panini-gold-standard": "2012-13-panini-gold-standard-basketball-checklist",
+        "2012-13-panini-prestige": "2012-13-panini-prestige-basketball-checklist",
+        "2013-14-panini-prestige": "2013-14-panini-prestige-basketball-checklist",
+        "2013-14-panini-totally-certified": "2013-14-panini-totally-certified-basketball-checklist",
+        "2017-18-donruss-optic-clean": "2017-18-panini-donruss-optic-basketball-checklist",
+        "2017-18-panini-chronicles-clean": "2017-18-panini-chronicles-basketball-checklist",
+        "2017-18-panini-prestige-clean": "2017-18-panini-prestige-basketball-checklist",
+        "2018-19-panini-chronicles-clean": "2018-19-panini-chronicles-basketball-checklist",
+        "2018-19-panini-court-kings-clean": "2018-19-panini-court-kings-basketball-checklist",
+        "2018-19-panini-nba-hoops-clean": "2018-19-panini-nba-hoops-basketball-checklist",
+        "2019-20-donruss-optic-basketball-checklist": "2019-20-panini-donruss-optic-basketball-checklist",
+        "2019-20-panini-nba-hoops-premium-stock-checklist": "2019-20-panini-nba-hoops-premium-stock-basketball-checklist",
+        "2020-21-donruss-basketball-checklist": "2020-21-panini-donruss-basketball-checklist",
+        "2020-21-donruss-optic-basketball-checklist": "2020-21-panini-donruss-optic-basketball-checklist",
+        "2020-21-panini-court-kings-basketball-clean": "2020-21-panini-court-kings-basketball-checklist",
+        "2020-21-panini-nba-hoops": "2020-21-panini-nba-hoops-basketball-checklist",
+        "2020-21-panini-prizm-basketball-checklist-1": "2020-21-panini-prizm-basketball-checklist",
+        "2021-22-donruss-optic-basketball-checklist": "2021-22-panini-donruss-optic-basketball-checklist",
+        "2021-22-panini-illusions-basketball-checklist-1": "2021-22-panini-illusions-basketball-checklist",
+        "2021-22-panini-prizm-basketball-checklist-1": "2021-22-panini-prizm-basketball-checklist",
+        "2022-23-donruss-optic-basketball-checklist": "2022-23-panini-donruss-optic-basketball-checklist",
+        "2022-23-panini-contenders-optic-basketball-checklist-1": "2022-23-panini-contenders-optic-basketball-checklist",
+        "2023-24-donruss-elite-basketball-checklist": "2023-24-panini-donruss-elite-basketball-checklist",
+        "2023-24-donruss-optic-basketball-checklist": "2023-24-panini-donruss-optic-basketball-checklist",
+        "2023-24-panini-national-treasures": "2023-24-panini-national-treasures-basketball-checklist",
+        "2023-24-panini-one-and-one-basketball-checklist": "2023-24-panini-one-one-basketball-checklist",
+        "2023-24-panini-origins-basketball-clean": "2023-24-panini-origins-basketball-checklist",
+        "2023-24-panini-prizm-monopoly-basketball-clean": "2023-24-panini-prizm-monopoly-basketball-checklist",
+        "2023-24-topps-midnight-basketball-clean": "2023-24-topps-midnight-basketball-checklist",
+        "2024-25-donruss-basketball-checklist": "2024-25-panini-donruss-basketball-checklist",
+        "2024-25-donruss-optic-basketball-checklist": "2024-25-panini-donruss-optic-basketball-checklist",
+        "2024-25-panini-immaculate-basketball": "2024-25-panini-immaculate-basketball-checklist",
+        "2024-25-panini-obsidian-basketball-2": "2024-25-panini-obsidian-basketball-checklist",
+        "2024-25-panini-one-and-one-basketball-checklist": "2024-25-panini-one-one-basketball-checklist",
+        "2024-25-panini-photogenic-basketball": "2024-25-panini-photogenic-basketball-checklist",
+        "2024-25-panini-prizm-basketball-checklist-1": "2024-25-panini-prizm-basketball-checklist",
+        "2025-26-topps-basketball-clean": "2025-26-topps-basketball-checklist",
+        "2025-26-topps-finest-basketball-clean": "2025-26-topps-finest-basketball-checklist"
+      },
+      "canonical_to_legacy": {
+        "2010-11-panini-season-update-basketball-checklist": [
+          "2010-11-panini-season-update-clean"
+        ],
+        "2012-13-panini-gold-standard-basketball-checklist": [
+          "2012-13-panini-gold-standard"
+        ],
+        "2012-13-panini-prestige-basketball-checklist": [
+          "2012-13-panini-prestige"
+        ],
+        "2013-14-panini-prestige-basketball-checklist": [
+          "2013-14-panini-prestige"
+        ],
+        "2013-14-panini-totally-certified-basketball-checklist": [
+          "2013-14-panini-totally-certified"
+        ],
+        "2017-18-panini-chronicles-basketball-checklist": [
+          "2017-18-panini-chronicles-clean"
+        ],
+        "2017-18-panini-donruss-optic-basketball-checklist": [
+          "2017-18-donruss-optic-clean"
+        ],
+        "2017-18-panini-prestige-basketball-checklist": [
+          "2017-18-panini-prestige-clean"
+        ],
+        "2018-19-panini-chronicles-basketball-checklist": [
+          "2018-19-panini-chronicles-clean"
+        ],
+        "2018-19-panini-court-kings-basketball-checklist": [
+          "2018-19-panini-court-kings-clean"
+        ],
+        "2018-19-panini-nba-hoops-basketball-checklist": [
+          "2018-19-panini-nba-hoops-clean"
+        ],
+        "2019-20-panini-donruss-optic-basketball-checklist": [
+          "2019-20-donruss-optic-basketball-checklist"
+        ],
+        "2019-20-panini-nba-hoops-premium-stock-basketball-checklist": [
+          "2019-20-panini-nba-hoops-premium-stock-checklist"
+        ],
+        "2020-21-panini-court-kings-basketball-checklist": [
+          "2020-21-panini-court-kings-basketball-clean"
+        ],
+        "2020-21-panini-donruss-basketball-checklist": [
+          "2020-21-donruss-basketball-checklist"
+        ],
+        "2020-21-panini-donruss-optic-basketball-checklist": [
+          "2020-21-donruss-optic-basketball-checklist"
+        ],
+        "2020-21-panini-nba-hoops-basketball-checklist": [
+          "2020-21-panini-nba-hoops"
+        ],
+        "2020-21-panini-prizm-basketball-checklist": [
+          "2020-21-panini-prizm-basketball-checklist-1"
+        ],
+        "2021-22-panini-donruss-optic-basketball-checklist": [
+          "2021-22-donruss-optic-basketball-checklist"
+        ],
+        "2021-22-panini-illusions-basketball-checklist": [
+          "2021-22-panini-illusions-basketball-checklist-1"
+        ],
+        "2021-22-panini-prizm-basketball-checklist": [
+          "2021-22-panini-prizm-basketball-checklist-1"
+        ],
+        "2022-23-panini-contenders-optic-basketball-checklist": [
+          "2022-23-panini-contenders-optic-basketball-checklist-1"
+        ],
+        "2022-23-panini-donruss-optic-basketball-checklist": [
+          "2022-23-donruss-optic-basketball-checklist"
+        ],
+        "2023-24-panini-donruss-elite-basketball-checklist": [
+          "2023-24-donruss-elite-basketball-checklist"
+        ],
+        "2023-24-panini-donruss-optic-basketball-checklist": [
+          "2023-24-donruss-optic-basketball-checklist"
+        ],
+        "2023-24-panini-national-treasures-basketball-checklist": [
+          "2023-24-panini-national-treasures"
+        ],
+        "2023-24-panini-one-one-basketball-checklist": [
+          "2023-24-panini-one-and-one-basketball-checklist"
+        ],
+        "2023-24-panini-origins-basketball-checklist": [
+          "2023-24-panini-origins-basketball-clean"
+        ],
+        "2023-24-panini-prizm-monopoly-basketball-checklist": [
+          "2023-24-panini-prizm-monopoly-basketball-clean"
+        ],
+        "2023-24-topps-midnight-basketball-checklist": [
+          "2023-24-topps-midnight-basketball-clean"
+        ],
+        "2024-25-panini-donruss-basketball-checklist": [
+          "2024-25-donruss-basketball-checklist"
+        ],
+        "2024-25-panini-donruss-optic-basketball-checklist": [
+          "2024-25-donruss-optic-basketball-checklist"
+        ],
+        "2024-25-panini-immaculate-basketball-checklist": [
+          "2024-25-panini-immaculate-basketball"
+        ],
+        "2024-25-panini-obsidian-basketball-checklist": [
+          "2024-25-panini-obsidian-basketball-2"
+        ],
+        "2024-25-panini-one-one-basketball-checklist": [
+          "2024-25-panini-one-and-one-basketball-checklist"
+        ],
+        "2024-25-panini-photogenic-basketball-checklist": [
+          "2024-25-panini-photogenic-basketball"
+        ],
+        "2024-25-panini-prizm-basketball-checklist": [
+          "2024-25-panini-prizm-basketball-checklist-1"
+        ],
+        "2025-26-topps-basketball-checklist": [
+          "2025-26-topps-basketball-clean"
+        ],
+        "2025-26-topps-finest-basketball-checklist": [
+          "2025-26-topps-finest-basketball-clean"
+        ]
+      }
+    }
+  }
+}
