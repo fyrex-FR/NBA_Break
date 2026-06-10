@@ -47,7 +47,8 @@
         "2021-22-chronicles": "2021-22-panini-chronicles-basketball-checklist",
         "2017-18-hoops": "2017-18-panini-nba-hoops-basketball-checklist",
         "2013-14-panini": "2013-14-panini-basketball-checklist",
-        "2012-13-totally-certified-hobby-checklist": "2012-13-panini-totally-certified-basketball-checklist"
+        "2012-13-totally-certified-hobby-checklist": "2012-13-panini-totally-certified-basketball-checklist",
+        "2025-26-bowman-basketball-checklist": "2025-26-topps-bowman-basketball-checklist"
       },
       "canonical_to_legacy": {
         "2010-11-panini-season-update-basketball-checklist": [
@@ -181,6 +182,9 @@
         ],
         "2025-26-topps-basketball-checklist": [
           "2025-26-topps-basketball-clean"
+        ],
+        "2025-26-topps-bowman-basketball-checklist": [
+          "2025-26-bowman-basketball-checklist"
         ],
         "2025-26-topps-finest-basketball-checklist": [
           "2025-26-topps-finest-basketball-clean"
