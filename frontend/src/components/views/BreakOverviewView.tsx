@@ -15,13 +15,13 @@ function normKey(s: string): string {
     .trim()
 }
 
+interface PlayerStat { name: string; cards: number; premium: number }
+
 interface TeamStat {
   cards: number
   auto: number
-  caseHit: number
-  logoman: number
   premium: number
-  score: number
+  players: Map<string, PlayerStat>
 }
 
 interface SpotRow {
@@ -29,24 +29,13 @@ interface SpotRow {
   Statut: string
   Prix: number | null
   Cartes: number
-  Premium: number
-  Score: number
   'Auto/Mem': number
-  'Case Hit': number
-  Logoman: number
-  '€/Score': number | null
-  Valeur: number | null // premium-share / price-share
+  Premium: number
+  topPlayers: PlayerStat[]
   hasData: boolean
 }
 
 const columnHelper = createColumnHelper<SpotRow>()
-
-function valueBadge(v: number | null): { label: string; color: string; bg: string } | null {
-  if (v == null) return null
-  if (v >= 1.25) return { label: 'Bon plan', color: '#22c55e', bg: 'rgba(34,197,94,0.12)' }
-  if (v <= 0.75) return { label: 'Surcoté', color: '#ef4444', bg: 'rgba(239,68,68,0.12)' }
-  return { label: 'Correct', color: 'var(--text-tertiary)', bg: 'var(--bg-surface)' }
-}
 
 export function BreakOverviewView() {
   const { breakContext, analysisData, clearBreakContext, setTargetTeam, setActiveView } = useAppStore()
@@ -57,50 +46,46 @@ export function BreakOverviewView() {
     const cards: CardRecord[] = analysisData?.cards ?? []
     for (const card of cards) {
       const teams = card.Team.split('/').map((t) => t.trim()).filter(Boolean)
+      const players = card.Player.split('/').map((p) => p.trim()).filter(Boolean)
+      const isAuto = card.Category === CATEGORY_AUTO_MEM
+      const isPremium = isAuto || card.Category === CATEGORY_CASE_HIT || card.Category === CATEGORY_LOGOMAN
       for (const t of teams) {
         const key = normKey(t)
-        const cur = stats.get(key) || { cards: 0, auto: 0, caseHit: 0, logoman: 0, premium: 0, score: 0 }
+        const cur = stats.get(key) || { cards: 0, auto: 0, premium: 0, players: new Map<string, PlayerStat>() }
         cur.cards += card.Hits
-        cur.score += card.Score || 0
-        if (card.Category === CATEGORY_AUTO_MEM) { cur.auto += card.Hits; cur.premium += card.Hits }
-        if (card.Category === CATEGORY_CASE_HIT) { cur.caseHit += card.Hits; cur.premium += card.Hits }
-        if (card.Category === CATEGORY_LOGOMAN) { cur.logoman += card.Hits; cur.premium += card.Hits }
+        if (isAuto) cur.auto += card.Hits
+        if (isPremium) cur.premium += card.Hits
+        for (const pl of players) {
+          const pk = normKey(pl)
+          const pe = cur.players.get(pk) || { name: pl, cards: 0, premium: 0 }
+          pe.cards += card.Hits
+          if (isPremium) pe.premium += card.Hits
+          cur.players.set(pk, pe)
+        }
         stats.set(key, cur)
       }
     }
     return stats
   }, [analysisData])
 
-  const { rows, totalScore } = useMemo(() => {
+  const rows = useMemo<SpotRow[]>(() => {
     const spots: BreakSpot[] = breakContext?.detail.spots ?? []
-    const interim = spots.map((s) => {
-      const st = teamStats.get(normKey(s.team)) || teamStats.get(normKey(s.name))
-      return { spot: s, st }
-    })
-    const totalScore = interim.reduce((acc, x) => acc + (x.st?.score ?? 0), 0)
-    const grilleTotal = breakContext?.detail.grille_total ?? 0
-    const built: SpotRow[] = interim.map(({ spot, st }) => {
-      const price = spot.price_eur
-      const score = st?.score ?? 0
-      const priceShare = price != null && grilleTotal > 0 ? price / grilleTotal : null
-      const scoreShare = totalScore > 0 ? score / totalScore : null
-      const value = priceShare && priceShare > 0 && scoreShare != null ? scoreShare / priceShare : null
+    return spots.map((spot) => {
+      const st = teamStats.get(normKey(spot.team)) || teamStats.get(normKey(spot.name))
+      const topPlayers = st
+        ? [...st.players.values()].sort((a, b) => b.premium - a.premium || b.cards - a.cards).slice(0, 5)
+        : []
       return {
         Équipe: spot.team || spot.name,
         Statut: spot.status,
-        Prix: price,
+        Prix: spot.price_eur,
         Cartes: st?.cards ?? 0,
-        Premium: st?.premium ?? 0,
-        Score: Math.round(score),
         'Auto/Mem': st?.auto ?? 0,
-        'Case Hit': st?.caseHit ?? 0,
-        Logoman: st?.logoman ?? 0,
-        '€/Score': price != null && score > 0 ? Math.round((price / score) * 100) / 100 : null,
-        Valeur: value != null ? Math.round(value * 100) / 100 : null,
+        Premium: st?.premium ?? 0,
+        topPlayers,
         hasData: !!st,
       }
     })
-    return { rows: built, totalScore }
   }, [breakContext, teamStats])
 
   const columns = useMemo(() => [
@@ -119,18 +104,25 @@ export function BreakOverviewView() {
       },
     }),
     columnHelper.accessor('Cartes', { header: 'Cartes', cell: (i) => i.getValue() }),
+    columnHelper.accessor('Auto/Mem', { header: 'Auto/Mem', cell: (i) => i.getValue() }),
     columnHelper.accessor('Premium', { header: 'Premium', cell: (i) => i.getValue() }),
-    columnHelper.accessor('Score', { header: 'Score', cell: (i) => i.getValue() }),
-    columnHelper.accessor('€/Score', { header: '€/Score', cell: (i) => (i.getValue() != null ? i.getValue() : '—') }),
-    columnHelper.accessor('Valeur', {
-      header: 'Valeur',
-      cell: (i) => {
-        const badge = valueBadge(i.getValue())
-        if (!badge) return <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+    columnHelper.display({
+      id: 'TopJoueurs',
+      header: 'Top joueurs (premium)',
+      cell: ({ row }) => {
+        const list = row.original.topPlayers
+        if (!list.length) return <span style={{ color: 'var(--text-quaternary)' }}>—</span>
         return (
-          <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: badge.bg, color: badge.color }}>
-            {badge.label} {i.getValue()}×
-          </span>
+          <div className="flex flex-wrap gap-1">
+            {list.map((p, idx) => (
+              <span key={idx} className="text-xs px-1.5 py-0.5 rounded-md whitespace-nowrap" style={{
+                background: p.premium > 0 ? 'rgba(249,115,22,0.13)' : 'var(--bg-surface)',
+                color: p.premium > 0 ? 'var(--accent)' : 'var(--text-tertiary)',
+              }}>
+                {p.name}{p.premium > 0 ? ` ·${p.premium}` : ''}
+              </span>
+            ))}
+          </div>
         )
       },
     }),
@@ -140,14 +132,14 @@ export function BreakOverviewView() {
   const { detail } = breakContext
 
   const visibleRows = showSold ? rows : rows.filter((r) => r.Statut.toUpperCase() !== 'SOLD')
-  const hasAnyData = totalScore > 0
+  const hasAnyData = rows.some((r) => r.Cartes > 0)
   const unmatched = detail.unmatched_products ?? []
   const mappedCount = detail.detected_products.filter((p) => p.status === 'mapped').length
   const coverageMsg: Record<string, { text: string; color: string }> = {
     complete: { text: `Tous les produits du break ont été reconnus (${mappedCount}).`, color: '#22c55e' },
-    partial: { text: `${mappedCount} produit(s) reconnu(s), ${unmatched.length} non reconnu(s) — chiffres premium partiels.`, color: '#eab308' },
+    partial: { text: `${mappedCount} produit(s) reconnu(s), ${unmatched.length} non reconnu(s) — chiffres partiels.`, color: '#eab308' },
     unmapped: { text: `Aucun produit reconnu (${unmatched.length} à vérifier). Sélectionne les checklists à gauche.`, color: '#ef4444' },
-    unknown: { text: 'Aucun produit reconnu automatiquement. Sélectionne les checklists du break à gauche pour voir les chiffres premium.', color: '#ef4444' },
+    unknown: { text: 'Aucun produit reconnu automatiquement. Sélectionne les checklists du break à gauche pour voir les chiffres.', color: '#ef4444' },
   }
   const cov = coverageMsg[detail.coverage] ?? coverageMsg.unknown
 
@@ -218,21 +210,21 @@ export function BreakOverviewView() {
         )}
       </div>
 
-      {!hasAnyData ? (
-        <div className="text-center py-10 rounded-xl" style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-subtle)' }}>
+      {!hasAnyData && (
+        <div className="text-center py-10 rounded-xl mb-4" style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-subtle)' }}>
           <div className="text-3xl mb-2">🎟️</div>
           <p className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>
-            Prix des spots affichés, mais pas de données premium à croiser.
+            Prix des spots affichés, mais pas encore de données à croiser.
           </p>
           <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
             Sélectionne les checklists correspondant au break dans la barre de gauche.
           </p>
         </div>
-      ) : null}
+      )}
 
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
         <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-          Trié par valeur (part premium / part du prix). Clique une équipe pour son détail.
+          Cartes, autos et top joueurs (par cartes premium) de chaque spot — à toi de juger la valeur réelle. Clique une équipe pour son détail.
         </p>
         <label className="flex items-center gap-1.5 text-xs cursor-pointer" style={{ color: 'var(--text-secondary)' }}>
           <input type="checkbox" checked={showSold} onChange={(e) => setShowSold(e.target.checked)} style={{ accentColor: 'var(--accent)' }} />
@@ -247,7 +239,7 @@ export function BreakOverviewView() {
         searchable
         searchPlaceholder="Rechercher une équipe..."
         exportName={`break_${detail.title || 'voggt'}`}
-        initialSorting={[{ id: 'Valeur', desc: true }]}
+        initialSorting={[{ id: 'Premium', desc: true }]}
       />
     </div>
   )
