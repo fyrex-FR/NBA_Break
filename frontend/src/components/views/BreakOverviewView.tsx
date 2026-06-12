@@ -28,6 +28,7 @@ interface SpotRow {
   Équipe: string
   Statut: string
   Prix: number | null
+  priceSource?: string
   Cartes: number
   'Auto/Mem': number
   Premium: number
@@ -79,6 +80,7 @@ export function BreakOverviewView() {
         Équipe: spot.team || spot.name,
         Statut: spot.status,
         Prix: spot.price_eur,
+        priceSource: spot.price_source,
         Cartes: st?.cards ?? 0,
         'Auto/Mem': st?.auto ?? 0,
         Premium: st?.premium ?? 0,
@@ -90,7 +92,21 @@ export function BreakOverviewView() {
 
   const columns = useMemo(() => [
     columnHelper.accessor('Équipe', { header: 'Équipe', cell: (i) => i.getValue() }),
-    columnHelper.accessor('Prix', { header: 'Prix', cell: (i) => (i.getValue() != null ? `${i.getValue()}€` : '—') }),
+    columnHelper.accessor('Prix', {
+      header: 'Prix',
+      cell: (i) => {
+        const v = i.getValue()
+        if (v == null) return '—'
+        const src = i.row.original.priceSource
+        if (src === 'start') {
+          return <span style={{ color: 'var(--text-quaternary)' }} title="Prix de départ d'enchère (équipe aléatoire) — pas le prix final">{v}€ <span className="text-[10px]">dép.</span></span>
+        }
+        if (src === 'live') {
+          return <span style={{ color: '#22c55e' }} title="Enchère en cours">{v}€ <span className="text-[10px]">live</span></span>
+        }
+        return `${v}€`
+      },
+    }),
     columnHelper.accessor('Statut', {
       header: 'Statut',
       cell: (i) => {
@@ -231,6 +247,12 @@ export function BreakOverviewView() {
           Afficher les vendus
         </label>
       </div>
+
+      {(detail.auction_unresolved ?? 0) > 0 && (
+        <div className="mb-2 px-3 py-2 rounded-lg text-xs" style={{ background: 'rgba(234,179,8,0.1)', color: '#eab308' }}>
+          🔨 {detail.auction_unresolved} spot(s) aux enchères à équipe aléatoire — pas de prix par équipe. Le « {''}1€ dép. » est le prix de départ, pas le prix final.
+        </div>
+      )}
 
       <DataTable
         data={visibleRows}

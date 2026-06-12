@@ -137,6 +137,12 @@ BREAK_DETAILS_QUERY = '''query GetBreakDetails($nodeId: ID!, $first: Int!, $afte
 ''' + PRODUCT_CARD_FRAGMENT
 
 
+# Persisted-query hashes for auction price queries (Voggt only accepts
+# registered hashes, so these are sent hash-only — no query string).
+HASH_SHOW_CURRENT_AUCTION = "376d944483380a0f72dfac30489f9038c14d98abca4f5fb29d897048fa938c31"
+HASH_SHOW_PRODUCTS_ALL_TAB = "2b3aa99462d8c6a2cc31bbfe7673d40252004dc6212c02677bcaa2049db182a1"
+
+
 class VoggtError(RuntimeError):
     """Raised when Voggt cannot be reached or returns an unexpected response."""
 
@@ -233,6 +239,27 @@ def _prime(client: httpx.Client, referer: str) -> None:
         pass
 
 
+def _gql_persisted(client: httpx.Client, operation: str, sha256: str, variables: dict, referer: str) -> dict:
+    """Call a registered persisted query by hash only (no query string)."""
+    payload = {
+        "operationName": operation,
+        "variables": variables,
+        "extensions": {"persistedQuery": {"version": 1, "sha256Hash": sha256}},
+    }
+    headers = {**_headers(), "referer": referer}
+    try:
+        r = client.post(VOGGT_GRAPHQL, headers=headers, json=payload, timeout=60)
+    except httpx.HTTPError as exc:
+        raise VoggtError(f"Connexion Voggt impossible: {exc}") from exc
+    if r.status_code != 200:
+        raise VoggtError(f"Voggt a refusé la requête {operation} (HTTP {r.status_code}).")
+    data = r.json()
+    if data.get("errors"):
+        raise VoggtError(f"Erreur GraphQL Voggt ({operation}): {data['errors']}")
+    return data.get("data") or {}
+
+
+
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
@@ -296,6 +323,7 @@ def fetch_break_spots(break_id: str, show_id: str | None = None) -> BreakDetails
                     "name": p.get("name") or "",
                     "price": _money_from_product(p),
                     "status": p.get("status") or "UNKNOWN",
+                    "type": p.get("type"),
                     "availableQuantity": p.get("availableQuantity"),
                     "image": (p.get("images") or {}).get("webPUrl") if isinstance(p.get("images"), dict) else None,
                 })
@@ -306,3 +334,74 @@ def fetch_break_spots(break_id: str, show_id: str | None = None) -> BreakDetails
         break_id=break_id, title=title, description=description,
         available=available, total=total, spots=spots,
     )
+
+
+# ---------------------------------------------------------------------------
+# Auction prices (final / live), via separate registered queries
+# ---------------------------------------------------------------------------
+
+def fetch_current_auction(show_id: str) -> dict | None:
+    """Current/last auction of a show (live bid when IN_PROGRESS).
+
+    Returns {product_id, name, amount_cents, status} or None.
+    """
+    node_id = f"Show|{show_id}"
+    referer = f"https://voggt.com/fr/shows/{show_id}"
+    with httpx.Client(follow_redirects=True) as client:
+        _prime(client, referer)
+        d = _gql_persisted(client, "GetShowCurrentAuction", HASH_SHOW_CURRENT_AUCTION,
+                           {"showId": node_id}, referer)
+    show = d.get("show") or {}
+    ca = show.get("currentAuction")
+    if not ca:
+        return None
+    product = ca.get("product") or {}
+    return {
+        "product_id": product.get("id"),
+        "name": product.get("name") or "",
+        "amount_cents": ca.get("amount"),
+        "status": ca.get("status"),
+    }
+
+
+def fetch_show_products(show_id: str) -> list[dict]:
+    """All products of a show (the "All" tab), with final amounts for sold ones.
+
+    Returns a list of {name, type, amount_cents, sold}.
+    Sold auctions appear as OrderedProduct with the realized hammer price.
+    """
+    node_id = f"Show|{show_id}"
+    referer = f"https://voggt.com/fr/shows/{show_id}"
+    out: list[dict] = []
+    after = None
+    with httpx.Client(follow_redirects=True) as client:
+        _prime(client, referer)
+        while True:
+            d = _gql_persisted(client, "GetShowProductsAllTab", HASH_SHOW_PRODUCTS_ALL_TAB,
+                               {"nodeId": node_id, "after": after, "first": 30, "filterByText": ""}, referer)
+            node = d.get("node") or {}
+            conn = node.get("products") or {}
+            for edge in conn.get("edges", []):
+                sp = (edge.get("node") or {}).get("showProduct") or {}
+                tn = sp.get("__typename")
+                if tn == "OrderedProduct":
+                    amount = (sp.get("amountWithCurrency") or {}).get("amount")
+                    out.append({
+                        "name": sp.get("name") or "",
+                        "type": sp.get("type"),
+                        "amount_cents": amount,
+                        "sold": True,
+                    })
+                elif tn == "Product":
+                    amount = sp.get("fixedAmountV2") or sp.get("startingAmount") or sp.get("originalAmount")
+                    out.append({
+                        "name": sp.get("name") or "",
+                        "type": sp.get("type"),
+                        "amount_cents": amount,
+                        "sold": str(sp.get("status")).upper() == "SOLD",
+                    })
+            pi = conn.get("pageInfo") or {}
+            if not pi.get("hasNextPage"):
+                break
+            after = pi.get("endCursor")
+    return out

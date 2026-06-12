@@ -171,6 +171,7 @@ export interface BreakSpot {
   team: string
   price: string | null
   price_eur: number | null
+  price_source?: 'fixed' | 'final' | 'live' | 'start'
   status: string
   availableQuantity: number | null
   image?: string | null
@@ -192,6 +193,7 @@ export interface VoggtBreakDetail {
   spots: BreakSpot[]
   grille_total: number
   grille_dispo: number
+  auction_unresolved?: number
 }
 
 /** Active break context. When set, the app is in "show mode". */
