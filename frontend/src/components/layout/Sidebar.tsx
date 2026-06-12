@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 
 import type { ChecklistInfo, PresetInfo } from '../../types'
+import { BreakModePanel } from './BreakModePanel'
 
 type SidebarTab = 'selection' | 'presets'
 
@@ -478,6 +479,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="flex-1 overflow-y-auto px-4 pb-4">
           {tab === 'selection' ? (
             <div className="space-y-3">
+              <BreakModePanel onAfterLoad={onClose} />
               <div className="rounded-xl p-3 space-y-3" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
                 <div className="relative">
                   <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-quaternary)' }} />

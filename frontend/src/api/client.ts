@@ -11,6 +11,8 @@ import type {
   SimulationPreset,
   PlayerStatsResponse,
   TeamStatsResponse,
+  VoggtShowResponse,
+  VoggtBreakDetail,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -289,4 +291,18 @@ export function saveOverrides(
     method: 'POST',
     body: JSON.stringify(body),
   })
+}
+
+// ---------------------------------------------------------------------------
+// Voggt break scouting
+// ---------------------------------------------------------------------------
+
+export function fetchVoggtShow(url: string): Promise<VoggtShowResponse> {
+  return fetchJSON(`/break/show?url=${encodeURIComponent(url)}`)
+}
+
+export function fetchVoggtBreak(breakId: string, showId?: string | null): Promise<VoggtBreakDetail> {
+  const params = new URLSearchParams({ break_id: breakId })
+  if (showId) params.set('show_id', showId)
+  return fetchJSON(`/break/detail?${params.toString()}`)
 }

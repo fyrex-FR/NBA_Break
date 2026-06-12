@@ -124,6 +124,76 @@ export interface PresetInfo {
   checklist_ids: string[]
 }
 
+// ---------------------------------------------------------------------------
+// Voggt break scouting
+// ---------------------------------------------------------------------------
+
+export interface DetectedProduct {
+  label: string
+  sport_key: string
+  checklist_id: string | null
+  status: 'mapped' | 'unmapped'
+  reason?: string | null
+  source?: 'rule' | 'catalog'
+  score?: number
+  matched_products?: string[]
+}
+
+export type BreakCoverage = 'unknown' | 'unmapped' | 'partial' | 'complete'
+
+export interface VoggtBreakSummary {
+  break_id: string
+  title: string
+  available: number | null
+  total: number | null
+  cover_url: string | null
+  sport_guess: string | null
+  coverage: BreakCoverage
+  checklist_ids: string[]
+  checklist_ids_by_sport: Record<string, string[]>
+  detected_products: DetectedProduct[]
+}
+
+export interface VoggtShowResponse {
+  show_id: string
+  breaks: VoggtBreakSummary[]
+}
+
+export interface BreakSpot {
+  id: string
+  name: string
+  team: string
+  price: string | null
+  price_eur: number | null
+  status: string
+  availableQuantity: number | null
+  image?: string | null
+}
+
+export interface VoggtBreakDetail {
+  break_id: string
+  show_id: string | null
+  title: string
+  description: string
+  available: number | null
+  total: number | null
+  sport: string | null
+  coverage: BreakCoverage
+  checklist_ids: string[]
+  checklist_ids_by_sport: Record<string, string[]>
+  detected_products: DetectedProduct[]
+  unmapped_products: DetectedProduct[]
+  spots: BreakSpot[]
+  grille_total: number
+  grille_dispo: number
+}
+
+/** Active break context. When set, the app is in "show mode". */
+export interface BreakContext {
+  showId: string
+  detail: VoggtBreakDetail
+}
+
 export interface SimulationPreset {
   name: string
   checklist_ids: string[]
@@ -155,6 +225,7 @@ export type ViewName =
   | '🧩 Simulation de Break'
   | '📤 Export'
   | '📥 Import Intelligent'
+  | '🎲 État du Break'
 
 export interface PlayerSeason {
   season: string

@@ -18,6 +18,7 @@ import { DetectionView } from './components/views/DetectionView'
 import { RookiesView } from './components/views/RookiesView'
 import { TrendView } from './components/views/TrendView'
 import { SmartImportView } from './components/views/SmartImportView'
+import { BreakOverviewView } from './components/views/BreakOverviewView'
 import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
 import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
 import ChatWidget from './components/shared/ChatWidget'
@@ -29,7 +30,7 @@ const queryClient = new QueryClient({
 })
 
 function MainContent() {
-  const { analysisData, activeView, isAnalyzing } = useAppStore()
+  const { analysisData, activeView, isAnalyzing, breakContext } = useAppStore()
 
   if (isAnalyzing) {
     return (
@@ -51,7 +52,9 @@ function MainContent() {
     )
   }
 
-  if (!analysisData) {
+  const inBreakOverview = activeView === '🎲 État du Break' && !!breakContext
+
+  if (!analysisData && !inBreakOverview) {
     return (
       <div className="flex items-center justify-center h-full p-4">
         <div className="text-center max-w-lg p-10 rounded-2xl glass-panel shadow-glass transform transition-all hover:scale-[1.01]">
@@ -140,6 +143,8 @@ function MainContent() {
         return <ExportView />
       case '📥 Import Intelligent':
         return <SmartImportView />
+      case '🎲 État du Break':
+        return <BreakOverviewView />
       default:
         return (
           <div className="flex items-center justify-center py-20">
@@ -156,7 +161,7 @@ function MainContent() {
 
   return (
     <div className="p-4 md:p-6">
-      <ViewTabs enabledViews={analysisData.enabled_views} />
+      {analysisData && <ViewTabs enabledViews={analysisData.enabled_views} />}
       <div key={activeView} style={{ animation: 'fadeIn 0.15s ease-out' }}>
         {renderView()}
       </div>

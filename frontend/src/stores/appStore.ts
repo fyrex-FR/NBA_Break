@@ -5,7 +5,7 @@
 
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { ViewName, AnalyzeResponse, ChecklistInfo } from '../types'
+import type { ViewName, AnalyzeResponse, ChecklistInfo, BreakContext } from '../types'
 
 interface AppState {
   // Theme
@@ -46,6 +46,11 @@ interface AppState {
   setTargetPlayer: (player: string | null) => void
   targetTeam: string | null
   setTargetTeam: (team: string | null) => void
+
+  // Break mode (Voggt show context). When set, the app shows the break overview.
+  breakContext: BreakContext | null
+  setBreakContext: (ctx: BreakContext | null) => void
+  clearBreakContext: () => void
 }
 
 export const useAppStore = create<AppState>()(
@@ -98,6 +103,11 @@ export const useAppStore = create<AppState>()(
       setTargetPlayer: (player) => set({ targetPlayer: player }),
       targetTeam: null,
       setTargetTeam: (team) => set({ targetTeam: team }),
+
+      // Break mode
+      breakContext: null,
+      setBreakContext: (ctx) => set({ breakContext: ctx }),
+      clearBreakContext: () => set({ breakContext: null }),
     }),
     {
       name: 'checklist-optimizer',
