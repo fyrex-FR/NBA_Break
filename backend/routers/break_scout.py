@@ -117,6 +117,11 @@ def get_break_detail(
             if cands and len(set(cands)) == 1:
                 price_eur, source = _eur(cands[0]), "final"
 
+        # Auction with no resolvable final/live price: don't show the 1€ start
+        # as if it were the price — surface it as "enchère" with no amount.
+        if source == "start":
+            price_eur = None
+
         spots.append({
             **s,
             "team": normalize_team_name(s.get("name") or ""),
