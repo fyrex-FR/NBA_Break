@@ -170,7 +170,7 @@ export function BreakModePanel({ onAfterLoad }: BreakModePanelProps) {
                     <span className="block text-[10px]" style={{ color: 'var(--text-tertiary)' }}>
                       {b.available ?? '?'}/{b.total ?? '?'} spots
                       {b.coverage === 'complete' && ' · ✅ reconnu'}
-                      {b.coverage === 'partial' && ' · ⚠️ partiel'}
+                      {b.coverage === 'partial' && ` · ⚠️ ${b.unmatched_products?.length ?? 0} non reconnu(s)`}
                       {(b.coverage === 'unknown' || b.coverage === 'unmapped') && ' · ❔ non reconnu'}
                     </span>
                   </span>

@@ -141,10 +141,12 @@ export function BreakOverviewView() {
 
   const visibleRows = showSold ? rows : rows.filter((r) => r.Statut.toUpperCase() !== 'SOLD')
   const hasAnyData = totalScore > 0
+  const unmatched = detail.unmatched_products ?? []
+  const mappedCount = detail.detected_products.filter((p) => p.status === 'mapped').length
   const coverageMsg: Record<string, { text: string; color: string }> = {
-    complete: { text: 'Produits reconnus — analyse complète.', color: '#22c55e' },
-    partial: { text: 'Analyse partielle — au moins un produit du break n\'est pas mappé.', color: '#eab308' },
-    unmapped: { text: 'Produits détectés mais aucune checklist mappée. Sélectionne les checklists à gauche.', color: '#ef4444' },
+    complete: { text: `Tous les produits du break ont été reconnus (${mappedCount}).`, color: '#22c55e' },
+    partial: { text: `${mappedCount} produit(s) reconnu(s), ${unmatched.length} non reconnu(s) — chiffres premium partiels.`, color: '#eab308' },
+    unmapped: { text: `Aucun produit reconnu (${unmatched.length} à vérifier). Sélectionne les checklists à gauche.`, color: '#ef4444' },
     unknown: { text: 'Aucun produit reconnu automatiquement. Sélectionne les checklists du break à gauche pour voir les chiffres premium.', color: '#ef4444' },
   }
   const cov = coverageMsg[detail.coverage] ?? coverageMsg.unknown
@@ -198,6 +200,21 @@ export function BreakOverviewView() {
               </li>
             ))}
           </ul>
+        )}
+        {unmatched.length > 0 && (
+          <div className="mt-2 pt-2" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+            <div className="text-xs font-semibold mb-1" style={{ color: '#ef4444' }}>
+              ⚠️ {unmatched.length} produit(s) non reconnu(s) — à vérifier / sélectionner à la main :
+            </div>
+            <ul className="space-y-0.5" style={{ color: 'var(--text-tertiary)' }}>
+              {unmatched.map((p, idx) => (
+                <li key={idx} className="text-xs">
+                  ❌ {p.label}
+                  {p.reason && <span style={{ color: 'var(--text-quaternary)' }}> — {p.reason}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
 

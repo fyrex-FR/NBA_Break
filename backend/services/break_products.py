@@ -208,58 +208,105 @@ def guess_sport(title: str, description: str, detection: dict | None = None) -> 
 def detect_break(title: str, description: str) -> dict:
     """Full break detection: curated regex rules + catalog auto-matching.
 
-    Returns the regex detection shape augmented with auto-matched checklists,
-    a resolved ``sport``, and per-product match metadata.
+    Tracks, line by line, which products of the break were recognized and which
+    were NOT, so the UI can show what is missing instead of falsely going green.
+
+    Returns:
+        detected_products: mapped products only (rule + catalog).
+        unmatched_products: products that could not be matched (regex rules with
+            no checklist + extracted product lines unmatched by the catalog).
+        checklist_ids / checklist_ids_by_sport, coverage, sport.
     """
-    from .break_match import get_catalog, match_break_checklists, detect_sport
+    from .break_match import (
+        get_catalog,
+        match_break_checklists,
+        detect_sport,
+        extract_break_products,
+    )
 
-    det = detect_products(title, description)
-    sport = guess_sport(title, description, det) or detect_sport(title, description)
+    rule = detect_products(title, description)
+    sport = guess_sport(title, description, rule) or detect_sport(title, description)
 
-    auto_matches = []
+    catalog = []
     if sport:
         try:
             catalog = list(get_catalog(sport))
-            if catalog:
-                auto_matches = match_break_checklists(title, description, catalog)
         except Exception:
-            auto_matches = []
+            catalog = []
 
-    existing_ids = set(det["checklist_ids"])
-    sport_ids = det["checklist_ids_by_sport"].setdefault(sport, []) if sport else []
-    for m in auto_matches:
-        cid = m["checklist_id"]
-        if cid in existing_ids:
-            continue
-        existing_ids.add(cid)
-        if cid not in sport_ids:
-            sport_ids.append(cid)
-        det["detected_products"].append({
-            "label": m.get("checklist_name") or cid,
-            "sport_key": sport,
-            "checklist_id": cid,
-            "status": "mapped",
-            "source": "catalog",
-            "score": round(float(m.get("score", 0)), 2),
-            "matched_products": m.get("products", []),
-            "reason": None,
-        })
+    matches = match_break_checklists(title, description, catalog) if catalog else []
+    matched_lines = {ml for m in matches for ml in m.get("products", [])}
 
-    # Mark regex-detected products with a source flag for the UI.
-    for p in det["detected_products"]:
-        p.setdefault("source", "rule")
+    # Regexes of curated rules that mapped to a checklist — used so a product
+    # recognized by a rule isn't also reported as "unmatched" at the line level.
+    hay = f"{title or ''}\n{description or ''}"
+    mapped_rule_regexes = [
+        r["regex"] for r in PRODUCT_RULES
+        if r.get("checklist_id") and r["regex"].search(hay)
+    ]
 
-    det["checklist_ids"] = [cid for ids in det["checklist_ids_by_sport"].values() for cid in ids]
+    checklist_ids_by_sport = {k: list(v) for k, v in rule["checklist_ids_by_sport"].items()}
+    seen_ids = set(rule["checklist_ids"])
+    detected = []
 
-    unmapped = det["unmapped_products"]
-    if not det["detected_products"]:
-        det["coverage"] = "unknown"
-    elif unmapped and det["checklist_ids"]:
-        det["coverage"] = "partial"
-    elif unmapped and not det["checklist_ids"]:
-        det["coverage"] = "unmapped"
+    # Mapped products from curated regex rules.
+    for p in rule["detected_products"]:
+        if p.get("checklist_id"):
+            detected.append({**p, "source": "rule"})
+
+    # Mapped products from the catalog auto-matcher.
+    if sport:
+        sport_ids = checklist_ids_by_sport.setdefault(sport, [])
+        for m in matches:
+            cid = m["checklist_id"]
+            if cid in seen_ids:
+                continue
+            seen_ids.add(cid)
+            if cid not in sport_ids:
+                sport_ids.append(cid)
+            detected.append({
+                "label": m.get("checklist_name") or cid,
+                "sport_key": sport,
+                "checklist_id": cid,
+                "status": "mapped",
+                "source": "catalog",
+                "score": round(float(m.get("score", 0)), 2),
+                "matched_products": m.get("products", []),
+                "reason": None,
+            })
+
+    checklist_ids = [cid for ids in checklist_ids_by_sport.values() for cid in ids]
+
+    # Unmatched: regex products with no checklist + extracted lines the catalog
+    # could not recognize (only when a catalog was actually available to check).
+    unmatched = [
+        {"label": p["label"], "reason": p.get("reason") or "non mappé"}
+        for p in rule["unmapped_products"]
+    ]
+    if catalog:
+        for line in extract_break_products(title, description):
+            if line in matched_lines:
+                continue
+            if any(rx.search(line) for rx in mapped_rule_regexes):
+                continue
+            unmatched.append({"label": line, "reason": "non reconnu dans le catalogue"})
+
+    has_mapped = bool(checklist_ids)
+    has_unmatched = bool(unmatched)
+    if not has_mapped and not has_unmatched:
+        coverage = "unknown"
+    elif has_mapped and not has_unmatched:
+        coverage = "complete"
+    elif has_mapped and has_unmatched:
+        coverage = "partial"
     else:
-        det["coverage"] = "complete"
+        coverage = "unmapped"
 
-    det["sport"] = sport
-    return det
+    return {
+        "detected_products": detected,
+        "unmatched_products": unmatched,
+        "checklist_ids": checklist_ids,
+        "checklist_ids_by_sport": checklist_ids_by_sport,
+        "coverage": coverage,
+        "sport": sport,
+    }

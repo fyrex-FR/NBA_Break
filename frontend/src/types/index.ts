@@ -141,6 +141,11 @@ export interface DetectedProduct {
 
 export type BreakCoverage = 'unknown' | 'unmapped' | 'partial' | 'complete'
 
+export interface UnmatchedProduct {
+  label: string
+  reason?: string
+}
+
 export interface VoggtBreakSummary {
   break_id: string
   title: string
@@ -152,6 +157,7 @@ export interface VoggtBreakSummary {
   checklist_ids: string[]
   checklist_ids_by_sport: Record<string, string[]>
   detected_products: DetectedProduct[]
+  unmatched_products: UnmatchedProduct[]
 }
 
 export interface VoggtShowResponse {
@@ -182,7 +188,7 @@ export interface VoggtBreakDetail {
   checklist_ids: string[]
   checklist_ids_by_sport: Record<string, string[]>
   detected_products: DetectedProduct[]
-  unmapped_products: DetectedProduct[]
+  unmatched_products: UnmatchedProduct[]
   spots: BreakSpot[]
   grille_total: number
   grille_dispo: number

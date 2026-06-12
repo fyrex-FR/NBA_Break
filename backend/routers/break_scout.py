@@ -53,6 +53,7 @@ def get_show_breaks(url: str = Query(..., description="Voggt show URL or id")):
             "checklist_ids": detection["checklist_ids"],
             "checklist_ids_by_sport": detection["checklist_ids_by_sport"],
             "detected_products": detection["detected_products"],
+            "unmatched_products": detection["unmatched_products"],
         })
 
     return {"show_id": show_id, "breaks": items}
@@ -99,7 +100,7 @@ def get_break_detail(
         "checklist_ids": detection["checklist_ids"],
         "checklist_ids_by_sport": detection["checklist_ids_by_sport"],
         "detected_products": detection["detected_products"],
-        "unmapped_products": detection["unmapped_products"],
+        "unmatched_products": detection["unmatched_products"],
         "spots": spots,
         "grille_total": grille_total,
         "grille_dispo": grille_dispo,
