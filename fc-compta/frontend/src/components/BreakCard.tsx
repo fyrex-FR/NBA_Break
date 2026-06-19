@@ -1,5 +1,6 @@
+import { useState, useMemo } from 'react'
 import type { BreakReport } from '../types'
-import { AlertTriangle, CheckCircle, XCircle, Info, Package, TrendingUp } from 'lucide-react'
+import { AlertTriangle, CheckCircle, XCircle, Info, Package, TrendingUp, ExternalLink } from 'lucide-react'
 
 interface Props { data: BreakReport }
 
@@ -9,7 +10,45 @@ const SEVERITY_STYLE = {
   info: { bg: 'rgba(59,130,246,0.1)', color: '#3b82f6', Icon: Info },
 }
 
+function parseFormula(input: string): number | null {
+  const trimmed = input.trim()
+  if (!trimmed) return null
+  // Allow simple expressions: number, number*number, number+number
+  if (/^[\d.,\s*+\-/()]+$/.test(trimmed)) {
+    try {
+      const result = new Function(`return (${trimmed.replace(/,/g, '.')})`)()
+      return typeof result === 'number' && isFinite(result) ? Math.round(result * 100) / 100 : null
+    } catch { return null }
+  }
+  return null
+}
+
+function buildChecklistUrl(sportKey: string, checklistId: string): string {
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify([checklistId]))))
+  return `https://checklist.cardvaults.app?sport=${sportKey}&s=${encoded}`
+}
+
 export function BreakCard({ data }: Props) {
+  const [overrides, setOverrides] = useState<Record<number, string>>({})
+
+  // Recalculate box costs with overrides
+  const { effectiveBoxCost, effectiveMargin, effectiveMarginPct } = useMemo(() => {
+    let total = 0
+    for (let i = 0; i < data.box_estimates.length; i++) {
+      const override = overrides[i]
+      if (override !== undefined) {
+        const parsed = parseFormula(override)
+        total += parsed ?? 0
+      } else {
+        total += data.box_estimates[i].total_price_eur ?? 0
+      }
+    }
+    total = Math.round(total * 100) / 100
+    const margin = data.grille_announced > 0 && total > 0 ? Math.round((data.grille_announced - total) * 100) / 100 : null
+    const marginPct = margin != null && data.grille_announced > 0 ? Math.round((margin / data.grille_announced) * 1000) / 10 : null
+    return { effectiveBoxCost: total, effectiveMargin: margin, effectiveMarginPct: marginPct }
+  }, [data.box_estimates, data.grille_announced, overrides])
+
   if (data.error) {
     return (
       <div className="rounded-xl p-5" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
@@ -19,7 +58,8 @@ export function BreakCard({ data }: Props) {
     )
   }
 
-  const hasMargin = data.margin_eur != null && data.total_box_cost > 0
+  const hasMargin = effectiveMargin != null && effectiveBoxCost > 0
+  const hasAnyOverride = Object.keys(overrides).length > 0
 
   return (
     <div className="rounded-xl p-5" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
@@ -50,41 +90,57 @@ export function BreakCard({ data }: Props) {
         {hasMargin ? (
           <Metric
             label="Marge estimée"
-            value={`${data.margin_eur}€ (${data.margin_pct}%)`}
-            color={data.margin_pct! > 40 ? 'var(--red)' : data.margin_pct! > 20 ? 'var(--yellow)' : 'var(--green)'}
+            value={`${effectiveMargin}€ (${effectiveMarginPct}%)`}
+            color={effectiveMarginPct! > 40 ? 'var(--red)' : effectiveMarginPct! > 20 ? 'var(--yellow)' : 'var(--green)'}
           />
         ) : (
           <Metric label="Marge" value="—" muted />
         )}
       </div>
 
-      {/* Box cost estimation */}
-      {data.box_estimates.length > 0 && data.total_box_cost > 0 && (
+      {/* Box cost estimation — always show if products detected */}
+      {data.box_estimates.length > 0 && (
         <div className="mb-4 p-3 rounded-lg" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
           <div className="flex items-center gap-2 mb-2">
             <Package className="w-4 h-4" style={{ color: 'var(--accent)' }} />
             <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-2)' }}>
-              Coût estimé des box: {data.total_box_cost}€
+              Coût des box: {effectiveBoxCost > 0 ? `${effectiveBoxCost}€` : '—'}
+              {hasAnyOverride && <span className="ml-1" style={{ color: 'var(--accent)' }}>(modifié)</span>}
             </span>
           </div>
-          <div className="space-y-1">
-            {data.box_estimates.map((e, idx) => (
-              <div key={idx} className="flex items-center justify-between text-xs">
-                <span style={{ color: 'var(--text-2)' }}>
-                  {e.quantity > 1 ? `${e.quantity}× ` : ''}{e.product} <span style={{ color: 'var(--text-3)' }}>({e.box_type})</span>
-                </span>
-                <span style={{ color: e.total_price_eur ? 'var(--text)' : 'var(--text-3)' }}>
-                  {e.total_price_eur ? `${e.total_price_eur}€` : '?'}
-                  {e.confidence != null && e.confidence < 0.8 && <span className="ml-1" style={{ color: 'var(--yellow)' }}>~</span>}
-                </span>
-              </div>
-            ))}
+          <div className="space-y-1.5">
+            {data.box_estimates.map((e, idx) => {
+              const overrideVal = overrides[idx] ?? ''
+              const parsed = overrideVal ? parseFormula(overrideVal) : null
+              return (
+                <div key={idx} className="flex items-center gap-2 text-xs">
+                  <span className="flex-1" style={{ color: 'var(--text-2)' }}>
+                    {e.quantity > 1 ? `${e.quantity}× ` : ''}{e.product} <span style={{ color: 'var(--text-3)' }}>({e.box_type})</span>
+                  </span>
+                  <input
+                    type="text"
+                    value={overrideVal}
+                    onChange={(ev) => setOverrides({ ...overrides, [idx]: ev.target.value })}
+                    placeholder={e.total_price_eur ? `${e.total_price_eur}` : 'prix ou formule'}
+                    className="w-24 px-2 py-0.5 rounded text-right text-xs outline-none"
+                    style={{
+                      background: 'var(--bg)',
+                      border: '1px solid var(--border)',
+                      color: overrideVal && parsed != null ? 'var(--text)' : overrideVal ? 'var(--red)' : 'var(--text-3)',
+                    }}
+                  />
+                  <span className="w-14 text-right" style={{ color: parsed != null ? 'var(--accent)' : e.total_price_eur ? 'var(--text)' : 'var(--text-3)' }}>
+                    {parsed != null ? `${parsed}€` : e.total_price_eur ? `${e.total_price_eur}€` : '?'}
+                  </span>
+                </div>
+              )
+            })}
           </div>
           {hasMargin && (
             <div className="mt-2 pt-2 flex items-center gap-2 text-xs font-semibold" style={{ borderTop: '1px solid var(--border)' }}>
-              <TrendingUp className="w-3.5 h-3.5" style={{ color: data.margin_pct! > 40 ? 'var(--red)' : 'var(--accent)' }} />
-              <span style={{ color: data.margin_pct! > 40 ? 'var(--red)' : 'var(--text)' }}>
-                Marge breaker: {data.margin_eur}€ ({data.margin_pct}% de la grille)
+              <TrendingUp className="w-3.5 h-3.5" style={{ color: effectiveMarginPct! > 40 ? 'var(--red)' : 'var(--accent)' }} />
+              <span style={{ color: effectiveMarginPct! > 40 ? 'var(--red)' : 'var(--text)' }}>
+                Marge breaker: {effectiveMargin}€ ({effectiveMarginPct}% de la grille)
               </span>
             </div>
           )}
@@ -106,14 +162,29 @@ export function BreakCard({ data }: Props) {
         </div>
       )}
 
-      {/* Detected products */}
+      {/* Detected products with checklist links */}
       {data.detected_products.length > 0 && (
         <div className="text-xs" style={{ color: 'var(--text-3)' }}>
           <span className="font-semibold">Produits détectés: </span>
           {data.detected_products.map((p, idx) => (
             <span key={idx}>
               {idx > 0 && ' · '}
-              {p.status === 'mapped' ? '✅' : '❌'} {p.label}
+              {p.checklist_id ? (
+                <a
+                  href={buildChecklistUrl(p.sport_key, p.checklist_id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-0.5 hover:underline"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  ✅ {p.label}
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              ) : (
+                <span>
+                  {p.status === 'mapped' ? '✅' : '❌'} {p.label}
+                </span>
+              )}
               {p.source === 'catalog' && p.score != null && ` (${Math.round(p.score * 100)}%)`}
             </span>
           ))}
@@ -123,7 +194,7 @@ export function BreakCard({ data }: Props) {
       {/* Unmatched products */}
       {data.unmatched_products.length > 0 && (
         <div className="mt-1 text-xs" style={{ color: 'var(--yellow)' }}>
-          ⚠️ Non reconnus: {data.unmatched_products.map((p) => p.label).join(', ')}
+          Non reconnus: {data.unmatched_products.map((p) => p.label).join(', ')}
         </div>
       )}
     </div>
