@@ -60,5 +60,9 @@ Code Annexe (ne pas push)/
 frontend/node_modules/
 frontend/dist/
 
+# FC Compta frontend
+fc-compta/frontend/node_modules/
+fc-compta/frontend/dist/
+
 # Environment
 .env

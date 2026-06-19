@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: fc-compta-api
+    runtime: python
+    rootDir: .
+    buildCommand: pip install -r fc-compta/app/requirements.txt && pip install -r backend/requirements.txt
+    startCommand: uvicorn fc-compta.app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: VOGGT_USER_AGENT
+        sync: false
+      - key: VOGGT_STICKY_VERSION
+        sync: false
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET
+        sync: false
+      - key: R2_ENDPOINT
+        sync: false

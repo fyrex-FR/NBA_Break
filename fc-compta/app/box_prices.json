@@ -1,0 +1,102 @@
+{
+  "_comment": "Prix estimés retail en euros par type de box. Source: prix marché FR moyen. À compléter au fil du temps.",
+  "nba": {
+    "hobby": {
+      "Panini Prizm": 450,
+      "Panini Donruss Optic": 220,
+      "Panini Donruss": 160,
+      "Panini Select": 280,
+      "Panini Totally Certified": 180,
+      "Panini Immaculate": 900,
+      "Panini National Treasures": 1200,
+      "Panini Phoenix": 180,
+      "Panini Mosaic": 160,
+      "Panini Hoops": 130,
+      "Topps Bowman Basketball": 180,
+      "Topps Signature Class": 250,
+      "Panini Court Kings": 200,
+      "Panini Revolution": 150,
+      "Panini Crown Royale": 200,
+      "Panini Contenders": 220,
+      "Panini Noir": 700
+    },
+    "mega": {
+      "Panini Prizm": 65,
+      "Panini Donruss Optic": 50,
+      "Panini Donruss": 30,
+      "Panini Select": 60,
+      "Panini Phoenix": 40,
+      "Panini Mosaic": 35,
+      "Panini Hoops": 25,
+      "Topps Bowman Basketball": 35,
+      "Topps Signature Class": 45,
+      "Panini Totally Certified": 40
+    },
+    "blaster": {
+      "Panini Prizm": 40,
+      "Panini Donruss Optic": 30,
+      "Panini Donruss": 22,
+      "Panini Select": 35,
+      "Panini Phoenix": 25,
+      "Panini Mosaic": 25,
+      "Panini Hoops": 20,
+      "Topps Bowman Basketball": 25,
+      "Panini Totally Certified": 28
+    },
+    "value": {
+      "Panini Prizm": 25,
+      "Panini Donruss Optic": 20,
+      "Panini Donruss": 15,
+      "Panini Hoops": 12,
+      "Topps Bowman Basketball": 15,
+      "Topps Signature Class": 20
+    },
+    "pack": {
+      "Panini Prizm": 12,
+      "Panini Donruss Optic": 8,
+      "Panini Donruss": 5,
+      "Panini Hoops": 4
+    }
+  },
+  "nfl": {
+    "hobby": {
+      "Panini Prizm": 400,
+      "Panini Donruss Optic": 200,
+      "Panini Mosaic": 140,
+      "Panini Select": 250,
+      "Panini Contenders": 200
+    },
+    "mega": {
+      "Panini Prizm": 60,
+      "Panini Donruss Optic": 45,
+      "Panini Mosaic": 30,
+      "Panini Select": 50
+    },
+    "blaster": {
+      "Panini Prizm": 35,
+      "Panini Donruss Optic": 28,
+      "Panini Mosaic": 22,
+      "Panini Select": 30
+    }
+  },
+  "soccer": {
+    "hobby": {
+      "Topps Chrome UEFA": 250,
+      "Topps Merlin UEFA": 200,
+      "Topps UEFA Club Competitions": 180,
+      "Topps Carnaval UEFA": 160,
+      "Panini Prizm Premier League": 300
+    },
+    "mega": {
+      "Topps Chrome UEFA": 50,
+      "Topps Merlin UEFA": 40,
+      "Topps UEFA Club Competitions": 35,
+      "Topps Carnaval UEFA": 30
+    },
+    "blaster": {
+      "Topps Chrome UEFA": 30,
+      "Topps UEFA Club Competitions": 22,
+      "Topps Carnaval UEFA": 20
+    }
+  }
+}
