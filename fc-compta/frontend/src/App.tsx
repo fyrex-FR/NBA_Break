@@ -21,7 +21,13 @@ export default function App() {
   async function handleAuditA() {
     if (!urlA.trim()) return
     setLoadingA(true); setErrorA(null); setReportA(null); setSelectedA(null)
-    try { setReportA(await fetchAudit(urlA.trim())) }
+    try {
+      const r = await fetchAudit(urlA.trim())
+      setReportA(r)
+      // Auto-select if only 1 break
+      const valid = r.breaks.filter(b => !b.error)
+      if (valid.length === 1) setSelectedA(valid[0])
+    }
     catch (err) { setErrorA(err instanceof Error ? err.message : 'Erreur') }
     finally { setLoadingA(false) }
   }
@@ -29,7 +35,25 @@ export default function App() {
   async function handleAuditB() {
     if (!urlB.trim()) return
     setLoadingB(true); setErrorB(null); setReportB(null); setSelectedB(null)
-    try { setReportB(await fetchAudit(urlB.trim())) }
+    try {
+      const r = await fetchAudit(urlB.trim())
+      setReportB(r)
+      // Auto-select: if only 1 break, pick it. Otherwise try to match by similar title to A.
+      const valid = r.breaks.filter(b => !b.error)
+      if (valid.length === 1) {
+        setSelectedB(valid[0])
+      } else if (valid.length > 1 && selectedA) {
+        const aWords = new Set(selectedA.title.toLowerCase().split(/\s+/).filter(w => w.length > 3))
+        let bestMatch = valid[0]
+        let bestScore = 0
+        for (const b of valid) {
+          const bWords = b.title.toLowerCase().split(/\s+/).filter(w => w.length > 3)
+          const score = bWords.filter(w => aWords.has(w)).length
+          if (score > bestScore) { bestScore = score; bestMatch = b }
+        }
+        if (bestScore > 0) setSelectedB(bestMatch)
+      }
+    }
     catch (err) { setErrorB(err instanceof Error ? err.message : 'Erreur') }
     finally { setLoadingB(false) }
   }
