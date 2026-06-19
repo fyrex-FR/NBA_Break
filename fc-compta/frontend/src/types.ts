@@ -63,15 +63,22 @@ export interface SpotInfo {
 }
 
 export interface CompareAnalysis {
-  prix_marge: string
-  splits: string
-  contenu: string
-  red_flags: string
+  spot_comparison: SpotComparison[]
+  global_analysis: string
   verdict: string
 }
 
+export interface SpotComparison {
+  team: string
+  price_a: string | null
+  price_b: string | null
+  split_a: number
+  split_b: number
+  notes: string
+}
+
 export interface CompareResponse {
-  break_a: Record<string, unknown>
-  break_b: Record<string, unknown>
+  break_a_summary: Record<string, unknown>
+  break_b_summary: Record<string, unknown>
   analysis: CompareAnalysis
 }

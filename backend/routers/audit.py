@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+from collections import Counter
 
 import httpx
 from fastapi import APIRouter, HTTPException, Query
@@ -19,50 +20,83 @@ _GEMINI_MODEL = "gemini-2.5-flash"
 _GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 _COMPARE_SYSTEM_PROMPT = """Tu es un expert en breaks de cartes sportives (NBA, NFL, soccer).
-On te donne deux breaks à comparer. Analyse-les et retourne UNIQUEMENT un objet JSON valide (pas de markdown, pas de ```, pas d'explication autour).
+On te donne deux breaks avec leur liste de spots (equipes + prix). Compare-les.
+
+Retourne UNIQUEMENT un objet JSON valide (pas de markdown, pas de ```, pas d'explication autour).
 
 Format JSON attendu:
 {
-  "prix_marge": "Analyse comparative des prix et marges (2-3 phrases)",
-  "splits": "Analyse des splits de teams — spots dupliqués signifient que la team est splitée entre plusieurs acheteurs (2-3 phrases)",
-  "contenu": "Comparaison de la qualité du contenu — types de box (hobby > mega > blaster > value), nombre de box, produits premium vs budget (2-3 phrases)",
-  "red_flags": "Signaux d'alerte — incohérences, prix suspects, choses anormales (2-3 phrases, ou 'Aucun red flag détecté' si tout est clean)",
-  "verdict": "Résumé en 1 phrase: quel break est le plus intéressant et pourquoi"
+  "spot_comparison": [
+    {
+      "team": "Lakers",
+      "price_a": "45€",
+      "price_b": "38€",
+      "split_a": 1,
+      "split_b": 2,
+      "notes": "Split en 2 chez B, prix total 76€ vs 45€ chez A"
+    }
+  ],
+  "global_analysis": "Analyse globale en 3-5 phrases: differences de structure, pricing, contenu, red flags",
+  "verdict": "Resume en 1 phrase: quel break est le plus interessant et pourquoi"
 }
 
-Sois direct, factuel, en français. Si une info manque, dis-le."""
+Regles pour spot_comparison:
+- Regroupe les spots par equipe (team name normalise)
+- split_a / split_b = combien de fois cette equipe apparait dans chaque break (1 = complet, 2+ = splitte)
+- Si une equipe est absente d'un break, price = null et split = 0
+- Ne liste que les equipes ou il y a une difference notable (prix, split, absence). Max 15 lignes.
+- notes: court commentaire sur la difference
+
+Regles pour global_analysis:
+- Compare les prix moyens par spot
+- Signale les splits (quand un break split des teams et pas l'autre)
+- Compare le contenu (produits, types de box)
+- Signale les red flags (incoherences, prix suspects)
+- Prends en compte le cout des box fourni pour calculer la marge reelle
+
+Sois direct, factuel, en francais."""
 
 
 class CompareRequest(BaseModel):
     break_a: dict
     break_b: dict
+    box_cost_a: float | None = None
+    box_cost_b: float | None = None
 
 
-def _summarize_break(b: dict) -> dict:
-    """Condense a break report for the LLM prompt."""
+def _build_spots_summary(spots: list[dict]) -> list[dict]:
+    """Build a condensed spots list with prices and split counts."""
+    name_data: dict[str, list] = {}
+    for s in spots:
+        name = s.get("name") or "?"
+        price = s.get("price_eur")
+        name_data.setdefault(name, []).append(price)
+    return [
+        {"team": name, "count": len(prices), "prices": [p for p in prices if p is not None]}
+        for name, prices in name_data.items()
+    ]
+
+
+def _summarize_for_llm(b: dict, box_cost_override: float | None) -> dict:
+    """Full break summary for LLM including all spots."""
     spots = b.get("spots", [])
-    names = [s.get("name", "") for s in spots]
-    from collections import Counter
-    dupes = {n: c for n, c in Counter(names).items() if c > 1 and n}
+    spots_summary = _build_spots_summary(spots)
+    box_cost = box_cost_override if box_cost_override is not None else b.get("total_box_cost", 0)
+    grille = b.get("grille_announced", 0)
+    margin = round(grille - box_cost, 2) if grille and box_cost else None
+
     return {
         "title": b.get("title", ""),
         "sport": b.get("sport", ""),
         "total_spots": b.get("total_spots", 0),
-        "sold_count": b.get("sold_count", 0),
-        "grille_announced": b.get("grille_announced", 0),
-        "total_sold": b.get("total_sold", 0),
-        "auction_unresolved": b.get("auction_unresolved", 0),
-        "margin_eur": b.get("margin_eur"),
-        "margin_pct": b.get("margin_pct"),
-        "total_box_cost": b.get("total_box_cost", 0),
-        "box_estimates": [
-            {"product": e.get("product", ""), "box_type": e.get("box_type"), "quantity": e.get("quantity", 1), "unit_price_eur": e.get("unit_price_eur")}
-            for e in b.get("box_estimates", [])
-        ],
-        "detected_products": [p.get("label", "") for p in b.get("detected_products", [])],
+        "grille_total": grille,
+        "prix_moyen_spot": round(grille / len(spots), 2) if spots and grille else None,
+        "cout_box": box_cost,
+        "marge": margin,
+        "produits": [p.get("label", "") for p in b.get("detected_products", [])],
+        "box_types": [e.get("box_type") for e in b.get("box_estimates", []) if e.get("box_type")],
         "inconsistencies": [i.get("message", "") for i in b.get("inconsistencies", [])],
-        "splits": dupes if dupes else None,
-        "prix_par_spot_moyen": round(b["grille_announced"] / b["total_spots"], 2) if b.get("total_spots") and b.get("grille_announced") else None,
+        "spots": spots_summary,
     }
 
 
@@ -79,15 +113,15 @@ def run_audit(url: str = Query(..., description="URL ou ID du show Voggt")):
 
 @router.post("/compare")
 def compare_breaks(req: CompareRequest):
-    """Compare two breaks using Gemini AI analysis."""
+    """Compare two breaks spot-by-spot using Gemini AI."""
     api_key = os.getenv("GEMINI_API_KEY", "")
     if not api_key:
-        raise HTTPException(status_code=500, detail="GEMINI_API_KEY non configurée.")
+        raise HTTPException(status_code=500, detail="GEMINI_API_KEY non configuree.")
 
-    summary_a = _summarize_break(req.break_a)
-    summary_b = _summarize_break(req.break_b)
+    summary_a = _summarize_for_llm(req.break_a, req.box_cost_a)
+    summary_b = _summarize_for_llm(req.break_b, req.box_cost_b)
 
-    user_prompt = f"""Compare ces deux breaks:
+    user_prompt = f"""Compare ces deux breaks spot par spot:
 
 BREAK A:
 {json.dumps(summary_a, ensure_ascii=False, indent=2)}
@@ -99,17 +133,16 @@ BREAK B:
     payload = {
         "system_instruction": {"parts": [{"text": _COMPARE_SYSTEM_PROMPT}]},
         "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
-        "generationConfig": {"maxOutputTokens": 2048},
+        "generationConfig": {"maxOutputTokens": 4096},
     }
 
     try:
-        with httpx.Client(timeout=30) as client:
+        with httpx.Client(timeout=45) as client:
             resp = client.post(url, json=payload)
         if resp.status_code != 200:
             raise HTTPException(status_code=502, detail=f"Gemini API {resp.status_code}")
         data = resp.json()
         raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-        # Strip markdown fences if present
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
             if raw.endswith("```"):
@@ -117,13 +150,13 @@ BREAK B:
             raw = raw.strip()
         analysis = json.loads(raw)
     except json.JSONDecodeError:
-        analysis = {"verdict": raw, "prix_marge": "", "splits": "", "contenu": "", "red_flags": ""}
+        analysis = {"spot_comparison": [], "global_analysis": raw, "verdict": ""}
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Erreur Gemini: {exc}")
 
     return {
-        "break_a": summary_a,
-        "break_b": summary_b,
+        "break_a_summary": summary_a,
+        "break_b_summary": summary_b,
         "analysis": analysis,
     }
 
