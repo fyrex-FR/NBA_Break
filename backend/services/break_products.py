@@ -272,6 +272,7 @@ def detect_break(title: str, description: str) -> dict:
                 "source": "catalog",
                 "score": round(float(m.get("score", 0)), 2),
                 "matched_products": m.get("products", []),
+                "alternatives": m.get("alternatives", []),
                 "reason": None,
             })
 

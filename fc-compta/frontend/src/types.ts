@@ -34,6 +34,7 @@ export interface DetectedProduct {
   status: string
   source?: string
   score?: number
+  alternatives?: { checklist_id: string; checklist_name: string; year: string; score: number }[]
 }
 
 export interface BoxEstimate {

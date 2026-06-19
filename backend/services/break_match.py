@@ -139,7 +139,8 @@ def _year_affinity(product: str, item_year: str) -> bool:
 def match_break_checklists(title: str, description: str, catalog: list[dict], threshold: float = 0.42) -> list[dict]:
     """Return checklist matches for a break, deduped by checklist_id.
 
-    Each match: {checklist_id, checklist_name, year, score, products}.
+    Each match: {checklist_id, checklist_name, year, score, products, alternatives}.
+    alternatives is a list of close matches (within 0.05 of the best score).
     """
     products = extract_break_products(title, description)
     raw_matches = []
@@ -150,19 +151,37 @@ def match_break_checklists(title: str, description: str, catalog: list[dict], th
         if not product_tokens:
             continue
 
-        best = None
+        # Collect all scores above threshold
+        scored = []
         for item in catalog:
             haystack = normalize_match_text(f"{item.get('checklist_name', '')} {item.get('checklist_id', '')}")
             score = match_score(product_norm, product_tokens, haystack)
-            if best is None or score > best["score"]:
-                best = {**item, "score": score}
-            elif score == best["score"]:
-                # Tie-break: prefer the checklist whose season is in the product line.
-                if _year_affinity(product, item.get("year", "")) and not _year_affinity(product, best.get("year", "")):
-                    best = {**item, "score": score}
+            if score >= threshold:
+                scored.append({**item, "score": score})
 
-        if best and best["score"] >= threshold:
-            raw_matches.append({**best, "product": product})
+        if not scored:
+            continue
+
+        # Sort by score desc, then apply year affinity tiebreaker for top candidates
+        scored.sort(key=lambda x: -x["score"])
+        best = scored[0]
+        # Year affinity tiebreaker among equally-scored top candidates
+        top_score = best["score"]
+        for candidate in scored[1:]:
+            if candidate["score"] < top_score:
+                break
+            if _year_affinity(product, candidate.get("year", "")) and not _year_affinity(product, best.get("year", "")):
+                best = candidate
+                break
+
+        # Alternatives: other checklists within 0.05 of the best, excluding the best itself
+        alternatives = [
+            {"checklist_id": s["checklist_id"], "checklist_name": s.get("checklist_name", ""), "year": s.get("year", ""), "score": round(s["score"], 3)}
+            for s in scored
+            if s["checklist_id"] != best["checklist_id"] and s["score"] >= best["score"] - 0.05
+        ][:3]
+
+        raw_matches.append({**best, "product": product, "alternatives": alternatives})
 
     return _dedupe_by_checklist(raw_matches)
 

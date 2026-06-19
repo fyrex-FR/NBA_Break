@@ -165,11 +165,11 @@ export function BreakCard({ data }: Props) {
 
       {/* Detected products with checklist links */}
       {data.detected_products.length > 0 && (
-        <div className="text-xs" style={{ color: 'var(--text-3)' }}>
+        <div className="text-xs space-y-1" style={{ color: 'var(--text-3)' }}>
           <span className="font-semibold">Produits détectés: </span>
           {data.detected_products.map((p, idx) => (
-            <span key={idx}>
-              {idx > 0 && ' · '}
+            <div key={idx} className="inline-block">
+              {idx > 0 && <span> · </span>}
               {p.checklist_id ? (
                 <a
                   href={buildChecklistUrl(p.sport_key, p.checklist_id)}
@@ -178,16 +178,33 @@ export function BreakCard({ data }: Props) {
                   className="inline-flex items-center gap-0.5 hover:underline"
                   style={{ color: 'var(--accent)' }}
                 >
-                  ✅ {p.label}
+                  {p.label}
                   <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               ) : (
-                <span>
-                  {p.status === 'mapped' ? '✅' : '❌'} {p.label}
-                </span>
+                <span>{p.label}</span>
               )}
               {p.source === 'catalog' && p.score != null && ` (${Math.round(p.score * 100)}%)`}
-            </span>
+              {p.alternatives && p.alternatives.length > 0 && (
+                <span className="ml-1">
+                  <span style={{ color: 'var(--yellow)' }}>ou </span>
+                  {p.alternatives.map((alt, ai) => (
+                    <span key={ai}>
+                      {ai > 0 && ', '}
+                      <a
+                        href={buildChecklistUrl(p.sport_key, alt.checklist_id)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                        style={{ color: 'var(--yellow)' }}
+                      >
+                        {alt.checklist_name} ({Math.round(alt.score * 100)}%)
+                      </a>
+                    </span>
+                  ))}
+                </span>
+              )}
+            </div>
           ))}
         </div>
       )}
