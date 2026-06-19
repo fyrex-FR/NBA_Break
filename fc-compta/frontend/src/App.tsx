@@ -73,9 +73,7 @@ export default function App() {
   return (
     <div className="min-h-screen px-4 py-8 max-w-6xl mx-auto">
       <header className="text-center mb-10">
-        <h1 className="text-3xl font-extrabold tracking-tight mb-2">
-          <span className="opacity-60">🔍</span> FC Compta
-        </h1>
+        <img src="/logo.png" alt="FC Compta" className="h-16 mx-auto mb-3" />
         <p className="text-sm" style={{ color: 'var(--text-2)' }}>
           Vérification de breaks Voggt — grille, incohérences, marge estimée.
         </p>
