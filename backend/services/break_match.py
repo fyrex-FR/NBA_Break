@@ -71,7 +71,7 @@ _INTRO_RE = re.compile(
     r"\b(?:ce|this)\s+(?:boxbreak|break)\s+(?:comprend|includes|contains|contient)\s*:?", re.I
 )
 _BREAK_WORD_RE = re.compile(r"\b(?:boxbreak|break)\b", re.I)
-_SPLIT_RE = re.compile(r"\s*(?:\(\s*\d+\s*\)|\b\d+\s*x\b|•|\n|;)\s*", re.I)
+_SPLIT_RE = re.compile(r"\s*(?:\(\s*\d+\s*\)|\b\d+\s*x\b|•|\n|;|\+)\s*", re.I)
 
 
 def extract_break_products(title: str, description: str) -> list[str]:
@@ -92,6 +92,9 @@ def extract_break_products(title: str, description: str) -> list[str]:
         if normalize_match_text(item) == title_norm:
             continue
         if is_break_packaging_line(item):
+            continue
+        # Skip lines with no brand and no season — description text, not a product name
+        if not _BRAND_RE.search(item) and not _SEASON_RE.search(item):
             continue
         out.append(item)
     # If nothing extracted (e.g. title-only break with no description),
