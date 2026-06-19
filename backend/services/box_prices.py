@@ -11,7 +11,7 @@ import os
 import re
 import unicodedata
 
-_PRICES_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "box_prices.json")
+_PRICES_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "box_prices.json")
 _cache: dict | None = None
 
 

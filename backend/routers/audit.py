@@ -1,10 +1,10 @@
-"""Audit endpoints."""
+"""Audit endpoints — FC Compta break verification."""
 
 from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException, Query
 
-from backend.services.voggt_client import VoggtError
+from ..services.voggt_client import VoggtError
 from ..services.audit_engine import audit_show
 from ..services import box_prices
 

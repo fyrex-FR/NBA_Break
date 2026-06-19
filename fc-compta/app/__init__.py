@@ -1,1 +1,0 @@
-# fc-compta backend package

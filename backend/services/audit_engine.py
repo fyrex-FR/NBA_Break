@@ -10,7 +10,7 @@ import re
 import unicodedata
 from collections import Counter
 
-from backend.services.voggt_client import (
+from .voggt_client import (
     fetch_break_list,
     fetch_break_spots,
     fetch_show_products,
@@ -18,7 +18,7 @@ from backend.services.voggt_client import (
     parse_show_id,
     VoggtError,
 )
-from backend.services.break_products import detect_break, normalize_key
+from .break_products import detect_break, normalize_key
 
 from .box_prices import estimate_price, detect_box_type
 
