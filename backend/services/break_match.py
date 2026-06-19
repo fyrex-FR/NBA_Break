@@ -16,7 +16,7 @@ import re
 import unicodedata
 from functools import lru_cache
 
-_GENERIC_RE = re.compile(r"\b(box|boite|hobby|jumbo|mega|value|basketball|cards?|checklist)\b", re.I)
+_GENERIC_RE = re.compile(r"\b(box|boite|hobby|jumbo|mega|value|basketball|cards?|checklist|case|mixer|random|pyt|pick|your|team|break|spot|spots|nba|nfl|mlb|soccer|football|baseball)\b", re.I)
 _SEASON_RE = re.compile(r"\b(20)?(\d{2})\s*[/\-]\s*(\d{2})\b")
 
 
@@ -94,6 +94,10 @@ def extract_break_products(title: str, description: str) -> list[str]:
         if is_break_packaging_line(item):
             continue
         out.append(item)
+    # If nothing extracted (e.g. title-only break with no description),
+    # use the title itself as the product to match against the catalog.
+    if not out and title:
+        out = [title]
     return out[:12]
 
 
