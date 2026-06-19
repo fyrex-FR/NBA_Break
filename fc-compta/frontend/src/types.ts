@@ -61,3 +61,17 @@ export interface SpotInfo {
   status: string
   type: string
 }
+
+export interface CompareAnalysis {
+  prix_marge: string
+  splits: string
+  contenu: string
+  red_flags: string
+  verdict: string
+}
+
+export interface CompareResponse {
+  break_a: Record<string, unknown>
+  break_b: Record<string, unknown>
+  analysis: CompareAnalysis
+}
