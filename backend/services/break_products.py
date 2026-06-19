@@ -72,6 +72,18 @@ PRODUCT_RULES = [
         "sport_key": "soccer",
         "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
     },
+    {
+        "label": "Topps Chrome Cactus Jack X NBA All Star Game 2025/26",
+        "regex": re.compile(r"\bcactus\s*jack\b.*\ball\s*star\b.*\b(?:25|2025)\s*[/\-]?\s*(?:26|2026)\b|\ball\s*star\b.*\bcactus\s*jack\b.*\b(?:25|2025)\s*[/\-]?\s*(?:26|2026)\b", re.I),
+        "sport_key": "nba",
+        "checklist_id": "2025-26-topps-chrome-cactus-jack-x-nba-all-star-game-basketball-checklist",
+    },
+    {
+        "label": "Topps Chrome X Cactus Jack Basketball 2025/26",
+        "regex": re.compile(r"\bcactus\s*jack\b.*\b(?:25|2025)\s*[/\-]?\s*(?:26|2026)\b|\b(?:25|2025)\s*[/\-]?\s*(?:26|2026)\b.*\bcactus\s*jack\b", re.I),
+        "sport_key": "nba",
+        "checklist_id": "2025-26-topps-chrome-x-cactus-jack-basketball-checklist",
+    },
 ]
 
 
