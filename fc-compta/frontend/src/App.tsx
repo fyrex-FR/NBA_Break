@@ -77,7 +77,7 @@ export default function App() {
 
       {/* ── Header ── */}
       <header className="flex flex-col items-center mb-10 gap-3">
-        <img src="/logo.png" alt="FC Compta" className="h-24" />
+        <img src="/logo.png" alt="FC Compta" className="h-80" />
         <p className="text-xs" style={{ color: 'var(--text-3)' }}>
           Vérification de breaks Voggt — grille, incohérences, marge estimée.
         </p>
