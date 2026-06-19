@@ -6,6 +6,8 @@ import { Loader2, Sparkles, ArrowRight, AlertTriangle } from 'lucide-react'
 interface Props {
   breakA: BreakReport
   breakB: BreakReport
+  sellerA: string | null
+  sellerB: string | null
   onClose: () => void
 }
 
@@ -21,7 +23,7 @@ function parseFormula(input: string): number | null {
   return null
 }
 
-export function CompareView({ breakA, breakB, onClose }: Props) {
+export function CompareView({ breakA, breakB, sellerA, sellerB, onClose }: Props) {
   const [boxCostA, setBoxCostA] = useState('')
   const [boxCostB, setBoxCostB] = useState('')
   const [analysis, setAnalysis] = useState<CompareAnalysis | null>(null)
@@ -94,6 +96,7 @@ export function CompareView({ breakA, breakB, onClose }: Props) {
         <SummaryCard
           label="A"
           color="var(--accent)"
+          seller={sellerA}
           title={breakA.title}
           grille={grilleA}
           spots={breakA.total_spots}
@@ -108,6 +111,7 @@ export function CompareView({ breakA, breakB, onClose }: Props) {
         <SummaryCard
           label="B"
           color="#3b82f6"
+          seller={sellerB}
           title={breakB.title}
           grille={grilleB}
           spots={breakB.total_spots}
@@ -193,18 +197,19 @@ export function CompareView({ breakA, breakB, onClose }: Props) {
   )
 }
 
-function SummaryCard({ label, color, title, grille, spots, avg, margin, products, boxCostInput, onBoxCostChange, parsedCost, originalCost }: {
-  label: string; color: string; title: string; grille: number; spots: number; avg: number | null
+function SummaryCard({ label, color, seller, title, grille, spots, avg, margin, products, boxCostInput, onBoxCostChange, parsedCost, originalCost }: {
+  label: string; color: string; seller: string | null; title: string; grille: number; spots: number; avg: number | null
   margin: number | null; products: string[]; boxCostInput: string; onBoxCostChange: (v: string) => void
   parsedCost: number | null; originalCost: number
 }) {
   const effectiveCost = parsedCost ?? originalCost
   return (
     <div className="rounded-xl p-4" style={{ background: 'var(--surface)', border: `1px solid ${color}30` }}>
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex items-center gap-2 mb-1">
         <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: `${color}20`, color }}>{label}</span>
-        <span className="text-sm font-semibold truncate" style={{ color: 'var(--text)' }}>{title}</span>
+        {seller && <span className="text-xs font-bold" style={{ color }}>{seller}</span>}
       </div>
+      <div className="text-sm font-semibold truncate mb-3" style={{ color: 'var(--text)' }}>{title}</div>
       <div className="grid grid-cols-3 gap-2 mb-3 text-center">
         <div>
           <div className="text-[10px] uppercase" style={{ color: 'var(--text-3)' }}>Grille</div>

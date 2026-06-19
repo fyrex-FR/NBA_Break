@@ -405,3 +405,30 @@ def fetch_show_products(show_id: str) -> list[dict]:
                 break
             after = pi.get("endCursor")
     return out
+
+
+def fetch_show_seller(show_id: str) -> str | None:
+    """Extract seller username from the show page HTML (Apollo cache in __NEXT_DATA__)."""
+    import json as _json
+    url = f"https://voggt.com/fr/shows/{show_id}"
+    try:
+        with httpx.Client(follow_redirects=True) as client:
+            resp = client.get(url, headers={"user-agent": _browser_ua()}, timeout=15)
+        if resp.status_code != 200:
+            return None
+        m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.+?)</script>', resp.text)
+        if not m:
+            return None
+        data = _json.loads(m.group(1))
+        ip_str = data.get("props", {}).get("pageProps", {}).get("initialProps", "")
+        if not ip_str:
+            return None
+        cache = _json.loads(ip_str)
+        show = cache.get(f"Show:Show|{show_id}", {})
+        seller_ref = (show.get("seller") or {}).get("__ref", "")
+        if not seller_ref:
+            return None
+        user = cache.get(seller_ref, {})
+        return user.get("username") or None
+    except Exception:
+        return None

@@ -15,6 +15,7 @@ from .voggt_client import (
     fetch_break_spots,
     fetch_show_products,
     fetch_current_auction,
+    fetch_show_seller,
     parse_show_id,
     VoggtError,
 )
@@ -189,6 +190,9 @@ def audit_show(url: str) -> dict:
     show_id = parse_show_id(url)
     breaks_list = fetch_break_list(show_id)
 
+    # Fetch seller name
+    seller = fetch_show_seller(show_id)
+
     # Fetch show-level sold products (for price resolution)
     try:
         ordered = fetch_show_products(show_id)
@@ -263,6 +267,7 @@ def audit_show(url: str) -> dict:
     return {
         "show_id": show_id,
         "show_url": f"https://voggt.com/fr/shows/{show_id}",
+        "seller": seller,
         "breaks_count": len(break_reports),
         "breaks": break_reports,
     }

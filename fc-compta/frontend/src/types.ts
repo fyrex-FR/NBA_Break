@@ -1,6 +1,7 @@
 export interface AuditReport {
   show_id: string
   show_url: string
+  seller: string | null
   breaks_count: number
   breaks: BreakReport[]
 }

@@ -164,6 +164,8 @@ export default function App() {
           <CompareView
             breakA={selectedA!}
             breakB={selectedB!}
+            sellerA={reportA?.seller ?? null}
+            sellerB={reportB?.seller ?? null}
             onClose={() => { setSelectedA(null); setSelectedB(null) }}
           />
         </div>
@@ -193,7 +195,9 @@ export default function App() {
         <div>
           <div className="text-center mb-6">
             <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ background: 'var(--surface-2)', color: 'var(--text-2)' }}>
-              Show {reportA.show_id} — {reportA.breaks_count} break{reportA.breaks_count > 1 ? 's' : ''}
+              {reportA.seller && <span className="font-bold" style={{ color: 'var(--text)' }}>{reportA.seller}</span>}
+              {reportA.seller && ' — '}
+              {reportA.breaks_count} break{reportA.breaks_count > 1 ? 's' : ''}
             </span>
           </div>
           <div className="space-y-6 max-w-3xl mx-auto">
@@ -220,7 +224,9 @@ function BreakColumn({ report, label, color, selected, onSelect }: {
     <div>
       <div className="text-center mb-4">
         <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ background: `${color}15`, color }}>
-          {label} — {report.breaks_count} break{report.breaks_count > 1 ? 's' : ''}
+          {report.seller && <span className="font-bold">{report.seller}</span>}
+          {report.seller && ' — '}
+          {report.breaks_count} break{report.breaks_count > 1 ? 's' : ''}
         </span>
       </div>
       <div className="space-y-4">
