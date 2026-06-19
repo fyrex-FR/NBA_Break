@@ -6,9 +6,13 @@ inconsistencies, and returns a structured report.
 
 from __future__ import annotations
 
+import json
+import os
 import re
 import unicodedata
 from collections import Counter
+
+import httpx
 
 from .voggt_client import (
     fetch_break_list,
@@ -145,6 +149,77 @@ def _resolve_prices(spots: list[dict], ordered: list[dict], current: dict | None
 
 
 # ---------------------------------------------------------------------------
+# Gemini product extraction
+# ---------------------------------------------------------------------------
+
+_GEMINI_MODEL = "gemini-2.5-flash"
+_GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
+
+_PRODUCT_EXTRACT_PROMPT = """Tu analyses le titre et la description d'un break de cartes sportives (Voggt).
+Identifie tous les PRODUITS (boîtes/packs) mentionnés avec leur quantité et type de box.
+
+Retourne UNIQUEMENT un tableau JSON valide, sans markdown, sans explication.
+
+Format :
+[
+  {"label": "Topps Chrome X Cactus Jack Basketball 2025/26", "quantity": 2, "box_type": "hobby"},
+  {"label": "Panini NBA Hoops Basketball 2025/26", "quantity": 1, "box_type": "hobby"}
+]
+
+Règles :
+- label : nom complet normalisé du produit (marque + collection + sport + saison)
+- quantity : entier, défaut 1 si non précisé
+- box_type : "hobby", "blaster", "jumbo", "mega", "retail" — null si non précisé
+- N'invente pas. Aucun produit trouvé → retourne []
+- Ignore les textes descriptifs non-produits (slots, autos, numérotées, etc.)
+"""
+
+
+def _gemini_extract_products(title: str, description: str) -> list[dict]:
+    """Ask Gemini to identify products + quantities from a break title/description.
+
+    Returns [{label, quantity, box_type}] or [] on failure / no API key.
+    """
+    api_key = os.getenv("GEMINI_API_KEY", "")
+    if not api_key:
+        return []
+
+    user_text = f"Titre: {title or ''}\nDescription: {(description or '')[:500]}"
+    url = f"{_GEMINI_BASE}/{_GEMINI_MODEL}:generateContent?key={api_key}"
+    payload = {
+        "system_instruction": {"parts": [{"text": _PRODUCT_EXTRACT_PROMPT}]},
+        "contents": [{"role": "user", "parts": [{"text": user_text}]}],
+        "generationConfig": {"maxOutputTokens": 1024},
+    }
+
+    try:
+        with httpx.Client(timeout=15) as client:
+            resp = client.post(url, json=payload)
+        if resp.status_code != 200:
+            return []
+        raw = resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+        raw = re.sub(r"^```[a-z]*\s*", "", raw, flags=re.I)
+        raw = re.sub(r"\s*```$", "", raw).strip()
+        start, end = raw.find("["), raw.rfind("]")
+        if start == -1 or end == -1:
+            return []
+        result = json.loads(raw[start : end + 1])
+        if not isinstance(result, list):
+            return []
+        return [
+            {
+                "label": str(p.get("label", "")).strip(),
+                "quantity": max(1, int(p.get("quantity") or 1)),
+                "box_type": str(p.get("box_type") or "").strip() or None,
+            }
+            for p in result
+            if isinstance(p, dict) and p.get("label")
+        ]
+    except Exception:
+        return []
+
+
+# ---------------------------------------------------------------------------
 # Box cost estimation
 # ---------------------------------------------------------------------------
 
@@ -165,6 +240,26 @@ def _estimate_box_costs(detected_products: list[dict], sport: str, description: 
             break
 
         box_type = detect_box_type(label) or detect_box_type(description)
+        est = estimate_price(sport, label, box_type)
+        estimates.append({
+            "product": label,
+            "quantity": qty,
+            "box_type": box_type,
+            "unit_price_eur": est["price_eur"] if est else None,
+            "total_price_eur": (est["price_eur"] * qty) if est else None,
+            "matched_reference": est["product_match"] if est else None,
+            "confidence": est["confidence"] if est else None,
+        })
+    return estimates
+
+
+def _estimate_box_costs_from_gemini(gemini_products: list[dict], sport: str) -> list[dict]:
+    """Build box estimates from Gemini-extracted products (have accurate quantities)."""
+    estimates = []
+    for p in gemini_products:
+        label = p["label"]
+        qty = p.get("quantity", 1)
+        box_type = p.get("box_type") or detect_box_type(label)
         est = estimate_price(sport, label, box_type)
         estimates.append({
             "product": label,
@@ -216,9 +311,32 @@ def audit_show(url: str) -> dict:
             })
             continue
 
-        # Detect products
+        # Detect products (regex rules + catalog)
         detection = detect_break(details.title, details.description)
         sport = detection.get("sport") or "nba"
+
+        # Gemini product extraction — better labels and accurate quantities
+        gemini_products = _gemini_extract_products(details.title, details.description or "")
+
+        # Merge Gemini detections into detected_products (adds products not caught by rules/catalog)
+        if gemini_products:
+            existing_lower = {p["label"].lower() for p in detection.get("detected_products", [])}
+            for gp in gemini_products:
+                if gp["label"].lower() not in existing_lower:
+                    detection.setdefault("detected_products", []).append({
+                        "label": gp["label"],
+                        "sport_key": sport,
+                        "checklist_id": None,
+                        "status": "gemini",
+                        "source": "gemini",
+                    })
+                    existing_lower.add(gp["label"].lower())
+            # Remove from unmatched_products anything Gemini now covers
+            gemini_lower = {gp["label"].lower() for gp in gemini_products}
+            detection["unmatched_products"] = [
+                u for u in detection.get("unmatched_products", [])
+                if u["label"].lower() not in gemini_lower
+            ]
 
         # Resolve prices
         spots = _resolve_prices(details.spots, ordered, current)
@@ -234,8 +352,11 @@ def audit_show(url: str) -> dict:
         sold_count = sum(1 for s in spots if str(s.get("status")).upper() in ("SOLD", "UNAVAILABLE"))
         dispo_count = sum(1 for s in spots if str(s.get("status")).upper() not in ("SOLD", "UNAVAILABLE"))
 
-        # Box cost estimation
-        box_estimates = _estimate_box_costs(detection.get("detected_products", []), sport, details.description)
+        # Box cost estimation — use Gemini products when available (accurate quantities)
+        if gemini_products:
+            box_estimates = _estimate_box_costs_from_gemini(gemini_products, sport)
+        else:
+            box_estimates = _estimate_box_costs(detection.get("detected_products", []), sport, details.description)
         total_box_cost = sum(e["total_price_eur"] or 0 for e in box_estimates)
         margin = round(grille_announced - total_box_cost, 2) if total_box_cost > 0 and grille_announced > 0 else None
         margin_pct = round((margin / grille_announced) * 100, 1) if margin is not None and grille_announced > 0 else None
