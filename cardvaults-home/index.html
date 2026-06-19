@@ -109,8 +109,10 @@
     .card[data-color="gold"]::before { background: radial-gradient(ellipse at top left, rgba(234,179,8,0.06), transparent 70%); }
 
     .card-icon {
-      font-size: 1.5rem;
-      line-height: 1;
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 10px;
     }
 
     .card-title {
@@ -172,7 +174,7 @@
 
     <a href="https://fccompta.cardvaults.app" class="card" data-color="orange">
       <span class="card-arrow">↗</span>
-      <div class="card-icon">📊</div>
+      <img src="logo-fccompta.png" alt="FC Compta" class="card-icon" />
       <div class="card-title">FC Compta</div>
       <p class="card-desc">
         Vérifie un break Voggt en live — grille de prix, marge estimée du vendeur,
@@ -183,7 +185,7 @@
 
     <a href="https://checklist.cardvaults.app" class="card" data-color="blue">
       <span class="card-arrow">↗</span>
-      <div class="card-icon">📋</div>
+      <img src="logo-checklist.png" alt="Checklist" class="card-icon" />
       <div class="card-title">Checklist</div>
       <p class="card-desc">
         Explore les checklists NBA, NFL et soccer — filtre par équipe, type de carte,
@@ -194,7 +196,7 @@
 
     <a href="https://collection.cardvaults.app" class="card" data-color="gold">
       <span class="card-arrow">↗</span>
-      <div class="card-icon">🗂️</div>
+      <img src="https://collection.cardvaults.app/logo.png" alt="Collection" class="card-icon" />
       <div class="card-title">Collection</div>
       <p class="card-desc">
         Gère et valorise ta collection de cartes sportives.
