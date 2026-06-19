@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import type { BreakReport } from '../types'
-import { AlertTriangle, CheckCircle, XCircle, Info, Package, TrendingUp, ExternalLink } from 'lucide-react'
+import { AlertTriangle, CheckCircle, XCircle, Info, Package, TrendingUp, ExternalLink, ChevronDown } from 'lucide-react'
 
 interface Props { data: BreakReport }
 
@@ -30,6 +30,7 @@ function buildChecklistUrl(sportKey: string, checklistId: string): string {
 
 export function BreakCard({ data }: Props) {
   const [overrides, setOverrides] = useState<Record<number, string>>({})
+  const [showSpots, setShowSpots] = useState(false)
 
   // Recalculate box costs with overrides
   const { effectiveBoxCost, effectiveMargin, effectiveMarginPct } = useMemo(() => {
@@ -195,6 +196,67 @@ export function BreakCard({ data }: Props) {
       {data.unmatched_products.length > 0 && (
         <div className="mt-1 text-xs" style={{ color: 'var(--yellow)' }}>
           Non reconnus: {data.unmatched_products.map((p) => p.label).join(', ')}
+        </div>
+      )}
+
+      {/* Spots detail (collapsible) */}
+      {data.spots.length > 0 && (
+        <div className="mt-4">
+          <button
+            onClick={() => setShowSpots(!showSpots)}
+            className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide cursor-pointer"
+            style={{ color: 'var(--text-2)', background: 'none', border: 'none', padding: 0 }}
+          >
+            <ChevronDown
+              className="w-3.5 h-3.5 transition-transform"
+              style={{ transform: showSpots ? 'rotate(180deg)' : 'rotate(0)' }}
+            />
+            Détail des spots ({data.spots.length})
+          </button>
+          {showSpots && (
+            <div className="mt-2 rounded-lg overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+              <table className="w-full text-xs">
+                <thead>
+                  <tr style={{ background: 'var(--surface-2)' }}>
+                    <th className="text-left px-3 py-1.5 font-semibold" style={{ color: 'var(--text-2)' }}>Équipe</th>
+                    <th className="text-right px-3 py-1.5 font-semibold" style={{ color: 'var(--text-2)' }}>Prix</th>
+                    <th className="text-center px-3 py-1.5 font-semibold" style={{ color: 'var(--text-2)' }}>Source</th>
+                    <th className="text-center px-3 py-1.5 font-semibold" style={{ color: 'var(--text-2)' }}>Statut</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.spots.map((spot, idx) => (
+                    <tr key={idx} style={{ borderTop: '1px solid var(--border)' }}>
+                      <td className="px-3 py-1.5" style={{ color: 'var(--text)' }}>{spot.name}</td>
+                      <td className="px-3 py-1.5 text-right" style={{ color: spot.price_eur != null ? 'var(--text)' : 'var(--text-3)' }}>
+                        {spot.price_eur != null ? `${spot.price_eur}€` : '—'}
+                      </td>
+                      <td className="px-3 py-1.5 text-center">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold" style={{
+                          background: spot.price_source === 'final' ? 'rgba(34,197,94,0.1)' :
+                                     spot.price_source === 'live' ? 'rgba(59,130,246,0.1)' :
+                                     spot.price_source === 'auction' ? 'rgba(234,179,8,0.1)' : 'rgba(255,255,255,0.05)',
+                          color: spot.price_source === 'final' ? 'var(--green)' :
+                                 spot.price_source === 'live' ? '#3b82f6' :
+                                 spot.price_source === 'auction' ? 'var(--yellow)' : 'var(--text-3)',
+                        }}>
+                          {spot.price_source}
+                        </span>
+                      </td>
+                      <td className="px-3 py-1.5 text-center">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold" style={{
+                          background: spot.status === 'SOLD' || spot.status === 'UNAVAILABLE' ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.05)',
+                          color: spot.status === 'SOLD' || spot.status === 'UNAVAILABLE' ? 'var(--green)' : 'var(--text-3)',
+                        }}>
+                          {spot.status === 'UNAVAILABLE' ? 'VENDU' : spot.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
     </div>
