@@ -16,7 +16,7 @@ import re
 import unicodedata
 from functools import lru_cache
 
-_GENERIC_RE = re.compile(r"\b(box|boite|hobby|jumbo|mega|value|basketball|cards?|checklist|case|mixer|random|pyt|pick|your|team|break|spot|spots|nba|nfl|mlb|soccer|football|baseball)\b", re.I)
+_GENERIC_RE = re.compile(r"\b(box|boite|hobby|jumbo|mega|value|basketball|cards?|checklist|case|mixer|random|pyt|pick|your|team|break|spot|spots)\b", re.I)
 _SEASON_RE = re.compile(r"\b(20)?(\d{2})\s*[/\-]\s*(\d{2})\b")
 
 
