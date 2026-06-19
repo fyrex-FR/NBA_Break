@@ -133,24 +133,37 @@ BREAK B:
     payload = {
         "system_instruction": {"parts": [{"text": _COMPARE_SYSTEM_PROMPT}]},
         "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
-        "generationConfig": {"maxOutputTokens": 4096},
+        "generationConfig": {
+            "maxOutputTokens": 8192,
+            "responseMimeType": "application/json",
+        },
     }
 
     try:
-        with httpx.Client(timeout=45) as client:
+        with httpx.Client(timeout=60) as client:
             resp = client.post(url, json=payload)
         if resp.status_code != 200:
             raise HTTPException(status_code=502, detail=f"Gemini API {resp.status_code}")
         data = resp.json()
         raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        # Strip markdown fences if present
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
             if raw.endswith("```"):
                 raw = raw[:-3]
             raw = raw.strip()
-        analysis = json.loads(raw)
-    except json.JSONDecodeError:
-        analysis = {"spot_comparison": [], "global_analysis": raw, "verdict": ""}
+        try:
+            analysis = json.loads(raw)
+        except json.JSONDecodeError:
+            # Try to fix truncated JSON by closing it
+            for suffix in [']"}', '"}', '"]', '"]}', '}']:
+                try:
+                    analysis = json.loads(raw + suffix)
+                    break
+                except json.JSONDecodeError:
+                    continue
+            else:
+                analysis = {"spot_comparison": [], "global_analysis": raw[:500], "verdict": "Erreur: reponse IA tronquee"}
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Erreur Gemini: {exc}")
 
