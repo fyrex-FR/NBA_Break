@@ -1,0 +1,657 @@
+{
+  "generated_at": "2026-07-30T09:50:33.287043+00:00",
+  "sport_key": "nba",
+  "master_key": "parquet_master/nba.parquet",
+  "applied": true,
+  "backup_key": "backups/parquet_master/nba/beckett-sheet-20260730-095031.parquet",
+  "bytes_written": 645554,
+  "source_files_discovered": 163,
+  "source_files_parsed_with_signals": 102,
+  "source_checklists_with_signals": 89,
+  "source_signal_rows": 56875,
+  "source_parse_errors": [
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/beckett_2022_23/2022-23-Donruss-Basketball-Checklist.xlsx",
+      "checklist_id": "2022-23-donruss-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/beckett_2022_23/2022-23-Donruss-Elite-Basketball-Checklist.xlsx",
+      "checklist_id": "2022-23-donruss-elite-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba/2023-24-panini-donruss-basketball-checklist.xlsx",
+      "checklist_id": "2023-24-panini-donruss-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_2020_2022/2020-21-panini-impeccable-basketball-checklist.xlsx",
+      "checklist_id": "2020-21-panini-impeccable-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_2020_2022/2022-23-panini-donruss-basketball-checklist.xlsx",
+      "checklist_id": "2022-23-panini-donruss-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_2020_2022/2022-23-panini-donruss-elite-basketball-checklist.xlsx",
+      "checklist_id": "2022-23-panini-donruss-elite-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2020-21-panini-certified-basketball-checklist.xlsx",
+      "checklist_id": "2020-21-panini-certified-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2020-21-panini-donruss-optic-basketball-checklist.xlsx",
+      "checklist_id": "2020-21-panini-donruss-optic-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2020-21-panini-illusions-basketball-checklist.xlsx",
+      "checklist_id": "2020-21-panini-illusions-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2020-21-panini-obsidian-basketball-checklist.xlsx",
+      "checklist_id": "2020-21-panini-obsidian-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2021-22-panini-recon-basketball-checklist.xlsx",
+      "checklist_id": "2021-22-panini-recon-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2021-22-panini-spectra-basketball-checklist.xlsx",
+      "checklist_id": "2021-22-panini-spectra-basketball-checklist",
+      "sheet": "Memorabilia"
+    },
+    {
+      "error": "0",
+      "source_path": "/home/fxa/.openclaw/workspace/data/checklist_sources_nba_history/2022-23-panini-prizm-basketball-checklist.xlsx",
+      "checklist_id": "2022-23-panini-prizm-basketball-checklist",
+      "sheet": "Memorabilia"
+    }
+  ],
+  "master_rows": 155004,
+  "matched_master_rows": 7917,
+  "changed_rows": 1062,
+  "changed_checklists": 17,
+  "change_counts": {
+    "auto_mem->auto": 592,
+    "auto_mem->mem": 470
+  },
+  "source_conflicts": {},
+  "hit_type_counts_before": {
+    "none": 77129,
+    "auto": 43567,
+    "mem": 19970,
+    "auto_mem": 14338
+  },
+  "hit_type_counts_after": {
+    "none": 77129,
+    "auto": 44159,
+    "mem": 20440,
+    "auto_mem": 13276
+  },
+  "top_changes": [
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "The Standard",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 99,
+      "examples": [
+        "Trae Young",
+        "Dejounte Murray",
+        "Onyeka Okongwu",
+        "John Collins",
+        "Robert Williams III"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "The Standard",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 92,
+      "examples": [
+        "Onyeka Okongwu",
+        "Dennis Johnson",
+        "Payton Pritchard",
+        "Pete Maravich",
+        "Larry Bird"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "box_type": "The Standard",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 74,
+      "examples": [
+        "Trae Young",
+        "John Collins",
+        "Jayson Tatum",
+        "Jaylen Brown",
+        "Dennis Johnson"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "Sneak Peek - Laces",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 72,
+      "examples": [
+        "Onyeka Okongwu",
+        "Dominique Wilkins",
+        "Aaron Nesmith",
+        "Evan Fournier",
+        "Payton Pritchard"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-national-treasures-basketball-checklist",
+      "box_type": "Lasting Legacies",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 43,
+      "examples": [
+        "Grant Williams",
+        "Robert Parish",
+        "Enes Freedom",
+        "Kelly Oubre Jr.",
+        "Kirk Hinrich"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-court-kings-basketball-checklist",
+      "box_type": "Masterstrokes",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 38,
+      "examples": [
+        "Kevin Willis",
+        "Jalen Johnson",
+        "Al Horford",
+        "Derrick White",
+        "Robert Williams III"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-nba-hoops-basketball-checklist",
+      "box_type": "Rookie Sweaters",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 33,
+      "examples": [
+        "Jalen Johnson",
+        "Cameron Thomas",
+        "Day'Ron Sharpe",
+        "Kai Jones",
+        "James Bouknight"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-nba-hoops-basketball-checklist",
+      "box_type": "Rookie Sweaters",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 33,
+      "examples": [
+        "AJ Griffin",
+        "Mark Williams",
+        "Dalen Terry",
+        "Christian Braun",
+        "Peyton Watson"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-absolute-memorabilia-basketball-checklist",
+      "box_type": "Veteran Tools of the Trade Level 1",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 30,
+      "examples": [
+        "Marcus Smart",
+        "James Harden",
+        "Cody Zeller",
+        "Otto Porter Jr.",
+        "Kevin Love"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Rookie Introductions",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 30,
+      "examples": [
+        "Nathan Knight",
+        "Onyeka Okongwu",
+        "Aaron Nesmith",
+        "Reggie Perry",
+        "LaMelo Ball"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Rookie Introductions",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 29,
+      "examples": [
+        "James Bouknight",
+        "Ayo Dosunmu",
+        "Bones Hyland",
+        "Cade Cunningham",
+        "Isaiah Livers"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Rookie Introductions",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 29,
+      "examples": [
+        "AJ Griffin",
+        "Mark Williams",
+        "Dalen Terry",
+        "Jaden Hardy",
+        "Christian Braun"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-national-treasures-basketball-checklist",
+      "box_type": "Tremendous Treasures",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 29,
+      "examples": [
+        "Trae Young",
+        "John Collins",
+        "De'Andre Hunter",
+        "Jaylen Brown",
+        "Ben Simmons"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-impeccable-basketball-checklist",
+      "box_type": "Canvas Creations",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 27,
+      "examples": [
+        "Spud Webb",
+        "John Collins",
+        "Trae Young",
+        "Larry Bird",
+        "Robert Parish"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "Team Slogans",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 25,
+      "examples": [
+        "John Collins",
+        "Joe Harris",
+        "LaMelo Ball",
+        "Kevin Love",
+        "Isaac Okoro"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-flawless-basketball-checklist",
+      "box_type": "Fully Endorsed",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 25,
+      "examples": [
+        "Trae Young",
+        "Jayson Tatum",
+        "Kevin Durant",
+        "Kyrie Irving",
+        "LaMelo Ball"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-court-kings-basketball-checklist",
+      "box_type": "Brush Strokes",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 25,
+      "examples": [
+        "Grant Williams",
+        "Derrick White",
+        "Ayo Dosunmu",
+        "Alex Caruso",
+        "Spencer Dinwiddie"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-flawless-basketball-checklist",
+      "box_type": "Fully Endorsed",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 25,
+      "examples": [
+        "Trae Young",
+        "Jayson Tatum",
+        "Kevin Durant",
+        "LaMelo Ball",
+        "Luka Doncic"
+      ]
+    },
+    {
+      "checklist_id": "2023-24-panini-flawless-basketball-checklist",
+      "box_type": "Fully Endorsed",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 25,
+      "examples": [
+        "Brandon Miller",
+        "Luka Doncic",
+        "Dereck Lively II",
+        "Nikola Jokic",
+        "Ausar Thompson"
+      ]
+    },
+    {
+      "checklist_id": "2023-24-panini-crown-royale-basketball-checklist",
+      "box_type": "Silhouettes",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 21,
+      "examples": [
+        "Onyeka Okongwu",
+        "Jrue Holiday",
+        "Joakim Noah",
+        "Jalen Duren",
+        "Jaden Ivey"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Award Winners",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 20,
+      "examples": [
+        "Spud Webb",
+        "Paul Pierce",
+        "Jason Kidd",
+        "Luka Doncic",
+        "Ben Wallace"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "box_type": "Team Slogans",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 20,
+      "examples": [
+        "John Collins",
+        "James Bouknight",
+        "LaMelo Ball",
+        "Evan Mobley",
+        "Darius Garland"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "Team Slogans",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 20,
+      "examples": [
+        "Trae Young",
+        "LaMelo Ball",
+        "Darius Garland",
+        "Jaden Ivey",
+        "Jalen Duren"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-crown-royale-basketball-checklist",
+      "box_type": "Silhouettes",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 19,
+      "examples": [
+        "Paul Pierce",
+        "Vince Carter",
+        "Mike Miller",
+        "Adrian Dantley",
+        "Jonathan Kuminga"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Hall of Fame Inductions",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 18,
+      "examples": [
+        "Robert Parish",
+        "Dino Radja",
+        "Dikembe Mutombo",
+        "Grant Hill",
+        "Isiah Thomas"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-national-treasures-basketball-checklist",
+      "box_type": "Personalized",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 18,
+      "examples": [
+        "Trae Young",
+        "Jayson Tatum",
+        "Kevin Durant",
+        "LaMelo Ball",
+        "Luka Doncic"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Legends",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 18,
+      "examples": [
+        "Larry Bird",
+        "Nate Archibald",
+        "Robert Parish",
+        "Bob Cousy",
+        "Larry Johnson"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Legends",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 17,
+      "examples": [
+        "Dominique Wilkins",
+        "Larry Bird",
+        "Bob Cousy",
+        "Robert Parish",
+        "Dirk Nowitzki"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Award Winners",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 15,
+      "examples": [
+        "Bob Cousy",
+        "Larry Bird",
+        "Dirk Nowitzki",
+        "Nikola Jokic",
+        "Dennis Rodman"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-flawless-basketball-checklist",
+      "box_type": "Mastercraft",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 15,
+      "examples": [
+        "Jayson Tatum",
+        "Luka Doncic",
+        "Dirk Nowitzki",
+        "Nikola Jokic",
+        "Stephen Curry"
+      ]
+    },
+    {
+      "checklist_id": "2023-24-panini-flawless-basketball-checklist",
+      "box_type": "Mastercraft",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 15,
+      "examples": [
+        "Jayson Tatum",
+        "Luka Doncic",
+        "Nikola Jokic",
+        "Stephen Curry",
+        "Kawhi Leonard"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-flawless-basketball-checklist",
+      "box_type": "Mastercraft",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 10,
+      "examples": [
+        "Jayson Tatum",
+        "Larry Bird",
+        "Kevin Durant",
+        "LaMelo Ball",
+        "Luka Doncic"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Championship Runs",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 10,
+      "examples": [
+        "Bob Cousy",
+        "Toni Kukoc",
+        "Steve Kerr",
+        "Rasheed Wallace",
+        "Stephen Curry"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-contenders-basketball-checklist",
+      "box_type": "Veteran Season Ticket",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 9,
+      "examples": [
+        "Paul Pierce",
+        "Jayson Tatum",
+        "Luka Doncic",
+        "Hakeem Olajuwon",
+        "Ja Morant"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Award Winners",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 9,
+      "examples": [
+        "Larry Bird",
+        "Stephen Curry",
+        "Hakeem Olajuwon",
+        "Ja Morant",
+        "Kareem Abdul-Jabbar"
+      ]
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Milestones",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 8,
+      "examples": [
+        "Trae Young",
+        "LaMelo Ball",
+        "Luka Doncic",
+        "Nikola Jokic",
+        "Stephen Curry"
+      ]
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Milestones",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 8,
+      "examples": [
+        "Luka Doncic",
+        "Nikola Jokic",
+        "Stephen Curry",
+        "Jalen Green",
+        "Ja Morant"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "Immaculate Milestones",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "auto",
+      "rows": 8,
+      "examples": [
+        "Paul Pierce",
+        "Luka Doncic",
+        "Nikola Jokic",
+        "Stephen Curry",
+        "Josh Giddey"
+      ]
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "box_type": "All-Time",
+      "old_hit_type": "auto_mem",
+      "new_hit_type": "mem",
+      "rows": 1,
+      "examples": [
+        "LeBron James"
+      ]
+    }
+  ]
+}

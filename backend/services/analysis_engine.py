@@ -190,6 +190,16 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
     aliases_root = load_checklist_aliases()
 
     # Vectorized category assignment
+    existing_hit_type = (
+        df["Hit Type"].fillna(HIT_TYPE_NONE).astype(str)
+        if "Hit Type" in df.columns
+        else pd.Series([HIT_TYPE_NONE] * len(df), index=df.index)
+    )
+    existing_category = (
+        df["Category"].fillna("").astype(str)
+        if "Category" in df.columns
+        else pd.Series([""] * len(df), index=df.index)
+    )
     df["Normalized Box Type"] = df["Box Type"].apply(normalize_box_type_text)
     df["Category"] = CATEGORY_BASE_OTHER
     sport_series = (
@@ -244,6 +254,23 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
             .map(norm_to_hit_type)
             .fillna(HIT_TYPE_NONE)
         )
+        persisted_hit_type = existing_hit_type.loc[mask]
+        persisted_category = existing_category.loc[mask]
+        persisted_index = persisted_hit_type[
+            persisted_hit_type.isin([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM])
+        ].index
+        if len(persisted_index) > 0:
+            df.loc[persisted_index, "Hit Type"] = persisted_hit_type.loc[persisted_index].values
+            persisted_regular_index = persisted_index[
+                ~persisted_category.loc[persisted_index].isin([CATEGORY_LOGOMAN, CATEGORY_CASE_HIT])
+            ]
+            df.loc[persisted_regular_index, "Category"] = (
+                persisted_hit_type.loc[persisted_regular_index].apply(category_from_hit_type).values
+            )
+            persisted_premium_index = persisted_index[
+                persisted_category.loc[persisted_index].isin([CATEGORY_LOGOMAN, CATEGORY_CASE_HIT])
+            ]
+            df.loc[persisted_premium_index, "Category"] = persisted_category.loc[persisted_premium_index].values
 
         if scoped_auto_only or scoped_mem or scoped_auto_mem or scoped_case:
             scope_series = (
