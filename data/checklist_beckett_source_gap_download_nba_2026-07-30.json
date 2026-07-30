@@ -1,0 +1,1438 @@
+{
+  "generated_at": "2026-07-30T10:12:11Z",
+  "missing_local_xlsx_count": 76,
+  "out_dir": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30",
+  "counts": {
+    "downloaded": 50,
+    "no_beckett_excel": 26
+  },
+  "entries": [
+    {
+      "canonical_id": "2010-11-panini-season-update-basketball-checklist",
+      "display_name": "2010-11 Panini Season Update Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2010-11-panini-season-update-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "display_name": "2012-13 Panini Gold Standard Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2012-13-panini-gold-standard-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2012-13-panini-hoops-basketball-checklist",
+      "display_name": "2012-13 Panini Hoops Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2012-13-panini-hoops-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2012-13-panini-prestige-basketball-checklist",
+      "display_name": "2012-13 Panini Prestige Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2012-13-panini-prestige-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2012-13-panini-totally-certified-basketball-checklist",
+      "display_name": "2012-13 Panini Totally Certified Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2012-13-panini-totally-certified-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2013-14-panini-basketball-checklist",
+      "display_name": "2013-14 Panini Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2013-14-panini-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2013-14-panini-prestige-basketball-checklist",
+      "display_name": "2013-14 Panini Prestige Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2013-14-panini-prestige-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2013-14-panini-totally-certified-basketball-checklist",
+      "display_name": "2013-14 Panini Totally Certified Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2013-14-panini-totally-certified-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2014-15-panini-donruss-basketball-checklist",
+      "display_name": "2014-15 Panini Donruss Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2014-15-panini-donruss-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2014-15-donruss-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2016-17-panini-donruss-basketball-checklist",
+      "display_name": "2016-17 Panini Donruss Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2016-17-panini-donruss-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2016-17-donruss-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2017-18-panini-chronicles-basketball-checklist",
+      "display_name": "2017-18 Panini Chronicles Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2017-18-panini-chronicles-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2017-18-panini-donruss-optic-basketball-checklist",
+      "display_name": "2017-18 Panini Donruss Optic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2017-18-panini-donruss-optic-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2017-18-donruss-optic-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2017-18-panini-nba-hoops-basketball-checklist",
+      "display_name": "2017-18 Panini NBA Hoops Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2017-18-panini-nba-hoops-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2017-18-panini-hoops-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2017-18-panini-prestige-basketball-checklist",
+      "display_name": "2017-18 Panini Prestige Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2017-18-panini-prestige-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2017-18-panini-status-basketball-checklist",
+      "display_name": "2017-18 Panini Status Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2017-18-panini-status-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2018-19-panini-chronicles-basketball-checklist",
+      "display_name": "2018-19 Panini Chronicles Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2018-19-panini-chronicles-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2018-19-panini-contenders-basketball-checklist",
+      "display_name": "2018-19 Panini Contenders Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2018-19-panini-contenders-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2018-19-panini-court-kings-basketball-checklist",
+      "display_name": "2018-19 Panini Court Kings Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2018-19-panini-court-kings-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2018-19-panini-nba-hoops-basketball-checklist",
+      "display_name": "2018-19 Panini NBA Hoops Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2018-19-panini-nba-hoops-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2018-19-panini-hoops-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2018-19-panini-status-basketball-checklist",
+      "display_name": "2018-19 Panini Status Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2018-19-panini-status-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2019-20-panini-donruss-optic-basketball-checklist",
+      "display_name": "2019-20 Panini Donruss Optic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2019-20-panini-donruss-optic-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2019-20-donruss-optic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2019-20-panini-nba-hoops-premium-stock-basketball-checklist",
+      "display_name": "2019-20 Panini NBA Hoops Premium Stock Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2019-20-panini-nba-hoops-premium-stock-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        },
+        {
+          "url": "https://www.beckett.com/news/2019-20-panini-hoops-premium-stock-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2021-22-panini-chronicles-basketball-checklist",
+      "display_name": "2021-22 Panini Chronicles Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2021-22-panini-chronicles-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2022/09/2021-22-Panini-Chronicles-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2021-22-panini-chronicles-basketball-checklist.xlsx",
+      "bytes": 436872,
+      "sha256": "627b2a85cbce2a7d0c6fbbb7f2888284f5b30e1bff30087b405c4d8e0bae7c35",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2021-22-panini-court-kings-basketball-checklist",
+      "display_name": "2021-22 Panini Court Kings Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2021-22-panini-court-kings-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2021-22-panini-select-basketball-checklist",
+      "display_name": "2021-22 Panini Select Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2021-22-panini-select-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2022/10/2021-22-Select-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2021-22-panini-select-basketball-checklist.xlsx",
+      "bytes": 376958,
+      "sha256": "12a4b66b747fd0d2de7e810db7eb3c1158badd95cbfa91f437f9186df6e36cb3",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-contenders-optic-basketball-checklist",
+      "display_name": "2023-24 Panini Contenders Optic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-contenders-optic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/01/2023-24-Panini-Contenders-Optic-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-contenders-optic-basketball-checklist.xlsx",
+      "bytes": 179871,
+      "sha256": "b878d93b7859e3ab387e993d67e391284910b7e7283d94161c8c9ee8382c227d",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-court-kings-basketball-checklist",
+      "display_name": "2023-24 Panini Court Kings Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-court-kings-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/02/2023-24-Panini-Court-Kings-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-court-kings-basketball-checklist.xlsx",
+      "bytes": 132803,
+      "sha256": "9a86b5a89912a089676ca3308863a4d0e336be4fe3ab8eb55f2c3d1fb5b2056b",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-donruss-elite-basketball-checklist",
+      "display_name": "2023-24 Panini Donruss Elite Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-donruss-elite-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/03/2023-24-Donruss-Elite-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-donruss-elite-basketball-checklist.xlsx",
+      "bytes": 249013,
+      "sha256": "75627833dd797a26ecb7a2ae638deeffddbd5e21087b8de9457d55ebbb858f45",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-donruss-optic-basketball-checklist",
+      "display_name": "2023-24 Panini Donruss Optic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-donruss-optic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/06/2023-24-Donruss-Optic-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-donruss-optic-basketball-checklist.xlsx",
+      "bytes": 494822,
+      "sha256": "58310ab46bf1357d116ae9351316b5aa1bbd32ad6d677f8ac3d0a17604ab3e35",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-hoops-premium-stock-basketball-checklist",
+      "display_name": "2023-24 Panini Hoops Premium Stock Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-hoops-premium-stock-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/10/2023-24-Panini-Hoops-Premium-Stock-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-hoops-premium-stock-basketball-checklist.xlsx",
+      "bytes": 383433,
+      "sha256": "9d592690f7881c3cca68ee417422a208502377013c42f8f3ba53606e77157737",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-immaculate-basketball-checklist",
+      "display_name": "2023-24 Panini Immaculate Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-immaculate-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/04/2023-24-Panini-Immaculate-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-immaculate-basketball-checklist.xlsx",
+      "bytes": 319466,
+      "sha256": "f11e43230ac1e64b92e78bbd4f6b29c8108e2c908f8730f404ed7bfcbdce69df",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-mosaic-basketball-checklist",
+      "display_name": "2023-24 Panini Mosaic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-mosaic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/08/2023-24-Panini-Mosaic-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-mosaic-basketball-checklist.xlsx",
+      "bytes": 443578,
+      "sha256": "64df0fcc0186c608224a501c8f1e4d487aa8629805f4127225db3f86375a23cf",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-national-treasures-basketball-checklist",
+      "display_name": "2023-24 Panini National Treasures Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-national-treasures-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/01/2023-24-Panini-National-Treasures-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-national-treasures-basketball-checklist.xlsx",
+      "bytes": 330769,
+      "sha256": "b5157c463c5a783e2f5514d590c064b8af13f5681ac337cfc9c5e9e16cdeba14",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-nba-hoops-basketball-checklist",
+      "display_name": "2023-24 Panini NBA Hoops Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-nba-hoops-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2023/11/2023-24-Panini-NBA-Hoops-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-nba-hoops-basketball-checklist.xlsx",
+      "bytes": 310627,
+      "sha256": "245429a239c4f31016c15c70790da3448ec6930179afe6f363bd50b98d9620c1",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-noir-basketball-checklist",
+      "display_name": "2023-24 Panini Noir Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-noir-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/10/2023-24-Panini-Noir-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-noir-basketball-checklist.xlsx",
+      "bytes": 191331,
+      "sha256": "b8622320d3e305411f8f92cbe9390123141d22ffb2ae3294bb8d27c56dc92b46",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-obsidian-basketball-checklist",
+      "display_name": "2023-24 Panini Obsidian Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-obsidian-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/05/2023-24-Panini-Obsidian-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-obsidian-basketball-checklist.xlsx",
+      "bytes": 285440,
+      "sha256": "0ffee22e66779a72a5d38d007aa2d76eeba5d17c58d5bd288b35f6724c291762",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-one-one-basketball-checklist",
+      "display_name": "2023-24 Panini One One Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-one-and-one-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/12/2023-24-Panini-One-and-One-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-one-one-basketball-checklist.xlsx",
+      "bytes": 124037,
+      "sha256": "9b60d50cc09e1372f81581d4408a3991fe2f04cd9ddb3001c76796718619f143",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-origins-basketball-checklist",
+      "display_name": "2023-24 Panini Origins Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-origins-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/04/2023-24-Panini-Origins-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-origins-basketball-checklist.xlsx",
+      "bytes": 127664,
+      "sha256": "d5dbad430da292d039cb0870f8aad79a46aba535bb35719289b6064cd64ea917",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-phoenix-basketball-checklist",
+      "display_name": "2023-24 Panini Phoenix Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-phoenix-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/09/2023-24-Panini-Phoenix-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-phoenix-basketball-checklist.xlsx",
+      "bytes": 543603,
+      "sha256": "a45e8f18a5e5c0006646e1c784b67dd109259be00044eadbfa206fde16db6684",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-photogenic-basketball-checklist",
+      "display_name": "2023-24 Panini Photogenic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-photogenic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/05/2023-24-Panini-PhotoGenic-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-photogenic-basketball-checklist.xlsx",
+      "bytes": 119797,
+      "sha256": "13a8c9edcb4a8efe0ecefb502d2846a2a077841b029acadc1afcb1abc7d0991c",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-prizm-basketball-checklist",
+      "display_name": "2023-24 Panini Prizm Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-prizm-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/01/2023-24-Panini-Prizm-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-prizm-basketball-checklist.xlsx",
+      "bytes": 696253,
+      "sha256": "d5e9b72711823be5a57081166aeeb5cf249adc7ea801bef00d0e52ddf984ea85",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-prizm-monopoly-basketball-checklist",
+      "display_name": "2023-24 Panini Prizm Monopoly Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-prizm-monopoly-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/02/2023-24-Panini-Prizm-Monopoly-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-prizm-monopoly-basketball-checklist.xlsx",
+      "bytes": 65657,
+      "sha256": "8dff1bcaf0d0bf39c4ba44de0c7f8ad3f53787b6db95d25103e9245b344722fe",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-recon-basketball-checklist",
+      "display_name": "2023-24 Panini Recon Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-recon-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/04/2023-24-Panini-Recon-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-recon-basketball-checklist.xlsx",
+      "bytes": 205724,
+      "sha256": "09e7b80a7b40eab9f632747637ed4176a997631090a5dc80f34864211181f032",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-revolution-basketball-checklist",
+      "display_name": "2023-24 Panini Revolution Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-revolution-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/03/2023-24-Panini-Revolution-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-revolution-basketball-checklist.xlsx",
+      "bytes": 119079,
+      "sha256": "2082bc729f4c919659d2a78d7b706c6162d8a520500e7211b04acfe80ca5ec2a",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-select-basketball-checklist",
+      "display_name": "2023-24 Panini Select Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-select-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/04/2023-24-Panini-Select-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-select-basketball-checklist.xlsx",
+      "bytes": 821341,
+      "sha256": "bf91d9f72f4fae5286b96d5c9267ce619e955a8e11c927758cd22db5602d6225",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-panini-spectra-basketball-checklist",
+      "display_name": "2023-24 Panini Spectra Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-panini-spectra-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/09/2023-24-Panini-Spectra-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-panini-spectra-basketball-checklist.xlsx",
+      "bytes": 262818,
+      "sha256": "b5efa63b9ec156f3beb95bb04ff2ad9e1e715a4ab6c087c96f31708a00b76944",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2023-24-topps-midnight-basketball-checklist",
+      "display_name": "2023-24 Topps Midnight Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2023-24-topps-midnight-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2024/12/2023-24-Topps-Midnight-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2023-24-topps-midnight-basketball-checklist.xlsx",
+      "bytes": 93901,
+      "sha256": "125aeb1159319134bbe7b3546c7791f2f12cf8c2cc1197a46d654aef193e551c",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-court-kings-basketball-checklist",
+      "display_name": "2024-25 Panini Court Kings Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-court-kings-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/02/2024-25-Panini-Court-Kings-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-court-kings-basketball-checklist.xlsx",
+      "bytes": 166315,
+      "sha256": "90d00ea4dae25d8faa4c92d085d47edc043ee8e758d268200183f94022617e81",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-donruss-basketball-checklist",
+      "display_name": "2024-25 Panini Donruss Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-donruss-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/03/2024-25-Donruss-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-donruss-basketball-checklist.xlsx",
+      "bytes": 487284,
+      "sha256": "5bfc921a9baef3b5f2a6c053205da153324c9179c53dca00a398ba7d07d4d874",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-donruss-optic-basketball-checklist",
+      "display_name": "2024-25 Panini Donruss Optic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-donruss-optic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/08/2024-25-Donruss-Optic-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-donruss-optic-basketball-checklist.xlsx",
+      "bytes": 836115,
+      "sha256": "48e599c93f17d9ec676bb3a2217dcdaa89cbeefca003fed6a939e7d2c04cfb97",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-immaculate-basketball-checklist",
+      "display_name": "2024-25 Panini Immaculate Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-immaculate-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/09/2024-25-Panini-Immaculate-Basketball.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-immaculate-basketball-checklist.xlsx",
+      "bytes": 479931,
+      "sha256": "23784ff66cac65706a4bd8735dccde646d411088083ca4e70fd49ac59a9b8596",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-mosaic-basketball-checklist",
+      "display_name": "2024-25 Panini Mosaic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-mosaic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-national-treasures-basketball-checklist",
+      "display_name": "2024-25 Panini National Treasures Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-national-treasures-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/08/2024-25-Panini-National-Treasures-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-national-treasures-basketball-checklist.xlsx",
+      "bytes": 372160,
+      "sha256": "288a5f436e4deb9322e9bd17fb8a660f0e37790daf5ce161891810e1c0d28925",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-nba-hoops-basketball-checklist",
+      "display_name": "2024-25 Panini NBA Hoops Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-nba-hoops-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/01/2024-25-Panini-NBA-Hoops-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-nba-hoops-basketball-checklist.xlsx",
+      "bytes": 520388,
+      "sha256": "b87b45faade4eeef320b47461f661a20d9dd27d8da116e2dcb4087118838419b",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-noir-basketball-checklist",
+      "display_name": "2024-25 Panini Noir Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-noir-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/07/2024-25-Panini-Noir-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-noir-basketball-checklist.xlsx",
+      "bytes": 400027,
+      "sha256": "6f26adf8f4cfaa259a1bc1b70f63f4730c178aa91193d3fe5a0a02e910297428",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-obsidian-basketball-checklist",
+      "display_name": "2024-25 Panini Obsidian Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-obsidian-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/09/2024-25-Panini-Obsidian-Basketball.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-obsidian-basketball-checklist.xlsx",
+      "bytes": 342507,
+      "sha256": "75a61ae44f1bb569fd436ff97c2d5d9d13b8c9cb07075b72055c84c00f3630a9",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-one-one-basketball-checklist",
+      "display_name": "2024-25 Panini One One Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-one-one-basketball-cards",
+          "status": "error",
+          "warning": "http_404"
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-origins-basketball-checklist",
+      "display_name": "2024-25 Panini Origins Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-origins-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/03/2024-25-Panini-Origins-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-origins-basketball-checklist.xlsx",
+      "bytes": 176174,
+      "sha256": "deb007215357f79b593367612463d9e5c4e007ff42b9645e95cff33648c52285",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-photogenic-basketball-checklist",
+      "display_name": "2024-25 Panini Photogenic Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-photogenic-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/07/2024-25-Panini-Photogenic-Basketball.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-photogenic-basketball-checklist.xlsx",
+      "bytes": 168051,
+      "sha256": "f2df03b9ffe6004b595e6808052e338aec48c6203cc2daa35e90ac99c5c7a640",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-prizm-basketball-checklist",
+      "display_name": "2024-25 Panini Prizm Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-prizm-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/02/2024-25-Panini-Prizm-Basketball-Checklist-1.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-prizm-basketball-checklist.xlsx",
+      "bytes": 764573,
+      "sha256": "76eae18f6a593ee942bcddb4ab70a97e5962572fc1388cb8390fd082939e7c75",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-prizm-black-basketball-checklist",
+      "display_name": "2024-25 Panini Prizm Black Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-prizm-black-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/09/2024-25-Panini-Prizm-Black-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-prizm-black-basketball-checklist.xlsx",
+      "bytes": 422249,
+      "sha256": "6744afbec2281810488da8b3987049846f976ca93834abd7577b08f3d7c55c87",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-revolution-basketball-checklist",
+      "display_name": "2024-25 Panini Revolution Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-revolution-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/05/2024-25-Panini-Revolution-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-revolution-basketball-checklist.xlsx",
+      "bytes": 229952,
+      "sha256": "5987e8bfaf8e4343960b383d7fa8f0576aac141178427f2e7d404c0b62a5bb41",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-select-basketball-checklist",
+      "display_name": "2024-25 Panini Select Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-select-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [],
+      "status": "no_beckett_excel",
+      "local_path": null,
+      "bytes": 0,
+      "sha256": null,
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-silhouette-basketball-checklist",
+      "display_name": "2024-25 Panini Silhouette Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-silhouette-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/08/2024-25-Panini-Silhouette-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-silhouette-basketball-checklist.xlsx",
+      "bytes": 321381,
+      "sha256": "2e6d46776731eb2d9d2bc01e84788abf7b47273dc4067ddab7611d082a294361",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-panini-totally-certified-basketball-checklist",
+      "display_name": "2024-25 Panini Totally Certified Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-panini-totally-certified-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/03/2024-25-Panini-Totally-Certified-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-panini-totally-certified-basketball-checklist.xlsx",
+      "bytes": 263733,
+      "sha256": "120d9a842e6659fdba4ecbd07afbbaf6190edd7decde586db50e95f6fc2272f2",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2024-25-topps-inception-basketball-checklist",
+      "display_name": "2024-25 Topps Inception Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2024-25-topps-inception-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/09/2024-25-Topps-Inception-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2024-25-topps-inception-basketball-checklist.xlsx",
+      "bytes": 51420,
+      "sha256": "f0cba3a713b62b0a8ce31eb8192f4d907d4a7fe9c34f7570a4a61b76525b566d",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-panini-donruss-basketball-checklist",
+      "display_name": "2025-26 Panini Donruss Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-donruss-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/05/2025-26-Donruss-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-panini-donruss-basketball-checklist.xlsx",
+      "bytes": 658823,
+      "sha256": "b8fc5baefd3295c4c656b6eacd5a8f1aea1e01b6b8b56cde4683c0f20d65132d",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-panini-signature-series-basketball-checklist",
+      "display_name": "2025-26 Panini Signature Series Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-panini-signature-series-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/05/2025-26-Panini-Signature-Series-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-panini-signature-series-basketball-checklist.xlsx",
+      "bytes": 151475,
+      "sha256": "097506ce7691a03dc9d99c15028846bd34c516044918b5f3c95f9e421e5a09b5",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-basketball-checklist",
+      "display_name": "2025-26 Topps Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/10/2025-26-Topps-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-basketball-checklist.xlsx",
+      "bytes": 129038,
+      "sha256": "86f7b8002bebdf136e81f79181bcfd03ba6ff5c4b316590609cb0058ed3edcf4",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-bowman-basketball-checklist",
+      "display_name": "2025-26 Topps Bowman Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-bowman-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/03/2025-26-Bowman-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-bowman-basketball-checklist.xlsx",
+      "bytes": 129278,
+      "sha256": "d28f28776781300bbe73c1581ffa351006a6efe15e42cc743b75468bc700c104",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-chrome-basketball-checklist",
+      "display_name": "2025-26 Topps Chrome Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-chrome-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2025/11/2025-26-Topps-Chrome-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-chrome-basketball-checklist.xlsx",
+      "bytes": 103111,
+      "sha256": "718c1e15cdd487507fef86b720e977760905ab56b4d05876db57b6d7f9b5ddde",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-cosmic-chrome-basketball-checklist",
+      "display_name": "2025-26 Topps Cosmic Chrome Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-cosmic-chrome-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/03/2025-26-Topps-Cosmic-Chrome-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-cosmic-chrome-basketball-checklist.xlsx",
+      "bytes": 71956,
+      "sha256": "5dfbaf23be93cf3ddc8aa95a5ec982989dab72ec8c0b3b9cd005c5b9fccf7f88",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-finest-basketball-checklist",
+      "display_name": "2025-26 Topps Finest Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-finest-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/02/2025-26-Topps-Finest-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-finest-basketball-checklist.xlsx",
+      "bytes": 73729,
+      "sha256": "0a2a90d8a199510d98994e897f02158b259901d70a805e8d16f95c1d439691e7",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-midnight-basketball-checklist",
+      "display_name": "2025-26 Topps Midnight Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-midnight-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://beckett-www.s3.amazonaws.com/news/news-content/uploads/2026/01/2025-26-Topps-Midnight-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-midnight-basketball-checklist.xlsx",
+      "bytes": 57339,
+      "sha256": "32623d3ec73d3e6981a8554958d7d7e3bc2b512d2026a4d946f56a63fff2501a",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-nba-hoops-basketball-checklist",
+      "display_name": "2025-26 Topps NBA Hoops Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-nba-hoops-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/04/2025-26-Topps-NBA-Hoops-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-nba-hoops-basketball-checklist.xlsx",
+      "bytes": 85388,
+      "sha256": "7657c0164fcc0879e661160fcb157421c040ff6c67300439d967c7329478e36c",
+      "warning": ""
+    },
+    {
+      "canonical_id": "2025-26-topps-signature-class-basketball-checklist",
+      "display_name": "2025-26 Topps Signature Class Basketball",
+      "checked_urls": [
+        {
+          "url": "https://www.beckett.com/news/2025-26-topps-signature-class-basketball-cards",
+          "status": "ok",
+          "warning": ""
+        }
+      ],
+      "download_links": [
+        "https://img.beckett.com/news/news-content/uploads/2026/04/2025-26-Topps-Signature-Class-Basketball-Checklist.xlsx"
+      ],
+      "status": "downloaded",
+      "local_path": "/home/fxa/.openclaw/workspace/projects/NBA_Break/data/checklist_sources_nba_gap_2026-07-30/2025-26-topps-signature-class-basketball-checklist.xlsx",
+      "bytes": 98109,
+      "sha256": "f150b709d70f7ef7568f090f3068db6ea9d1bb942a775a74561a004d6d077161",
+      "warning": ""
+    }
+  ]
+}
