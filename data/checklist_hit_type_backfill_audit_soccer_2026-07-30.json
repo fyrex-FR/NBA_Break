@@ -1,0 +1,2023 @@
+{
+  "generated_at": "2026-07-30T09:28:20.896364+00:00",
+  "sport_key": "soccer",
+  "master_key": "parquet_master/soccer.parquet",
+  "input_parquet": null,
+  "total_rows": 13030,
+  "hit_type_counts": {
+    "Auto": 3499,
+    "Auto/Memo": 856,
+    "Memo": 1105,
+    "None": 7570
+  },
+  "category_counts": {
+    "📄 Base/Autre": 7165,
+    "✍️ Auto": 3499,
+    "✨ Case Hit": 405,
+    "🧵 Memo": 1105,
+    "💎 Auto/Mem": 856
+  },
+  "top_hit_card_types": [
+    {
+      "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Finest-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Base Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 157,
+      "hits": 157
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "MLS Debut Patch Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 157,
+      "hits": 157
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Archival Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 149,
+      "hits": 149
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Chrome Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 108,
+      "hits": 108
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "Chrome Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Base Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 91,
+      "hits": 91
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Base Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 83,
+      "hits": 83
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-sapphire-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Sapphire-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Sapphire Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 75,
+      "hits": 75
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "MLS Renaissance Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 67,
+      "hits": 67
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Marbleized Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 65,
+      "hits": 65
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Chrome Legends Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 65,
+      "hits": 65
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Road To Glory Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 63,
+      "hits": 63
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Topps Superstar Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 62,
+      "hits": 62
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "MLS x Apple TV Patches Superfractors",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 60,
+      "hits": 60
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 56,
+      "hits": 56
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Autographed UEFA Respect Foundation Patch Book Card",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 52,
+      "hits": 52
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Meaningful Material",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 50,
+      "hits": 50
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Starball Commemorative Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 50,
+      "hits": 50
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Ultimate Stage Chrome",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 50,
+      "hits": 50
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Global Graphs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 49,
+      "hits": 49
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Autographed Memorabilia Color",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 48,
+      "hits": 48
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "International Ink",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 48,
+      "hits": 48
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Penmanship",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 48,
+      "hits": 48
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 48,
+      "hits": 48
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Auto Noir",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 47,
+      "hits": 47
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-sapphire-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Sapphire-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Legend Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 47,
+      "hits": 47
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "2012 Prizm Throwback Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 47,
+      "hits": 47
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Autographed Memorabilia Black and White",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 46,
+      "hits": 46
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Black Lazer Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 45,
+      "hits": 45
+    },
+    {
+      "checklist_id": "2025-26-donruss-road-to-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Donruss-Road-to-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 44,
+      "hits": 44
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Auto Noir Color",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 44,
+      "hits": 44
+    },
+    {
+      "checklist_id": "2025-26-topps-fc-barcelona-team-set",
+      "checklist_name": "2025-26-Topps-FC-Barcelona-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 42,
+      "hits": 42
+    },
+    {
+      "checklist_id": "2025-26-donruss-road-to-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Donruss-Road-to-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Beautiful Game Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 41,
+      "hits": 41
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Legacy Laces Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 40,
+      "hits": 40
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Gold Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 40,
+      "hits": 40
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "1955 Topps Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 40,
+      "hits": 40
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Momentous Material Jumbo Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 38,
+      "hits": 38
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Merlin's Match Ball Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 37,
+      "hits": 37
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Select Few Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 37,
+      "hits": 37
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Dual Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 36,
+      "hits": 36
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Box Office Materials",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 35,
+      "hits": 35
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Casting Call Materials",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 35,
+      "hits": 35
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "New Wave Jerseys",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 35,
+      "hits": 35
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Screenplay Jerseys",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 35,
+      "hits": 35
+    },
+    {
+      "checklist_id": "2025-26-panini-pitch-kings-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Pitch-Kings-Soccer-Checklist.parquet",
+      "box_type": "Brush Strokes",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 35,
+      "hits": 35
+    },
+    {
+      "checklist_id": "2025-26-topps-real-madrid-cf-team-set",
+      "checklist_name": "2025-26-Topps-Real-Madrid-CF-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 34,
+      "hits": 34
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Seismic Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 33,
+      "hits": 33
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Atomic Material",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Galaxy Gear",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Lightning Strike",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Volcanic Material Signatures",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-topps-fc-bayern-m-nchen-team-set",
+      "checklist_name": "2025-26-Topps-FC-Bayern-München-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-topps-juventus-fc-team-set",
+      "checklist_name": "2025-26-Topps-Juventus-FC-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-topps-manchester-united-team-set",
+      "checklist_name": "2025-26-Topps-Manchester-United-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Topps Superstar Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 32,
+      "hits": 32
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Freeze Frame Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 31,
+      "hits": 31
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Cosmic Storm",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 31,
+      "hits": 31
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Eruption",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 31,
+      "hits": 31
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Solar Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 31,
+      "hits": 31
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Twilight Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 31,
+      "hits": 31
+    },
+    {
+      "checklist_id": "2025-26-panini-pitch-kings-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Pitch-Kings-Soccer-Checklist.parquet",
+      "box_type": "Fresh Paint",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 31,
+      "hits": 31
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Framed Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Elegant Decor Materials",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Prequel Materials",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Matrix Material Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Scorched Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Select Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Jumbo Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Select Memorabilia",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Select Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-topps-arsenal-fc-team-set",
+      "checklist_name": "2025-26-Topps-Arsenal-FC-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-topps-chelsea-fc-team-set",
+      "checklist_name": "2025-26-Topps-Chelsea-FC-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-topps-focus-liverpool-fc",
+      "checklist_name": "2025-26-Topps-Focus-Liverpool-FC.parquet",
+      "box_type": "Apshots Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Home Pitch Advantage",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "MLS Anniversary Autograph Booklet",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "Topps 1995 Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Trio Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 30,
+      "hits": 30
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Spotlight Signatures Vertical",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 29,
+      "hits": 29
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Jumbo Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 29,
+      "hits": 29
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Ultimate Stage Chrome Cards Autograph",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 29,
+      "hits": 29
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Showtime Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 28,
+      "hits": 28
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Cutting Edge",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 28,
+      "hits": 28
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Dual Jersey Ink",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 28,
+      "hits": 28
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Trifecta Material",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 28,
+      "hits": 28
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Pitchside Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 28,
+      "hits": 28
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Select Memorabilia",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 28,
+      "hits": 28
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Showrunner Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 27,
+      "hits": 27
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Snapshot Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 27,
+      "hits": 27
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Magmatic Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 27,
+      "hits": 27
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Pitchside Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 27,
+      "hits": 27
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 27,
+      "hits": 27
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Sorcerers Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 26,
+      "hits": 26
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Select Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 26,
+      "hits": 26
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 26,
+      "hits": 26
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Single Player Signature Swatches Dual Relic Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Brand Logos",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Iconic Materials",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Midnight Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Tremendous Tags",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Select Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-topps-focus-liverpool-fc",
+      "checklist_name": "2025-26-Topps-Focus-Liverpool-FC.parquet",
+      "box_type": "Den Hour Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-26-topps-paris-saint-germain-team-set",
+      "checklist_name": "2025-26-Topps-Paris-Saint-Germain-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 25,
+      "hits": 25
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Merlin's Dual Match Ball Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 24,
+      "hits": 24
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "NEONoir Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 24,
+      "hits": 24
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Spotlight Signatures Horizontal",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 24,
+      "hits": 24
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Team Logos",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 24,
+      "hits": 24
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Global Attraction Summer of 2026 Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 24,
+      "hits": 24
+    },
+    {
+      "checklist_id": "2025-26-topps-paris-saint-germain-team-set",
+      "checklist_name": "2025-26-Topps-Paris-Saint-Germain-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 24,
+      "hits": 24
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Showpiece Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Single Player Triple Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "A-List Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Country Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Shadow Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2025-26-panini-pitch-kings-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Pitch-Kings-Soccer-Checklist.parquet",
+      "box_type": "Legacy Portrait Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2025-26-topps-manchester-city-team-set",
+      "checklist_name": "2025-26-Topps-Manchester-City-Team-Set.parquet",
+      "box_type": "Base Cards Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 23,
+      "hits": 23
+    },
+    {
+      "checklist_id": "2025-26-topps-carnaval-uefa",
+      "checklist_name": "2025-26-Topps-Carnaval-UEFA.parquet",
+      "box_type": "Carnaval Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 22,
+      "hits": 22
+    },
+    {
+      "checklist_id": "2025-26-topps-fc-barcelona-team-set",
+      "checklist_name": "2025-26-Topps-FC-Barcelona-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 22,
+      "hits": 22
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Legendary Ink Framed Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 20,
+      "hits": 20
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Sneaker Spotlight",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 20,
+      "hits": 20
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Vintage Art",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 20,
+      "hits": 20
+    },
+    {
+      "checklist_id": "2025-26-topps-focus-liverpool-fc",
+      "checklist_name": "2025-26-Topps-Focus-Liverpool-FC.parquet",
+      "box_type": "Viewfinder Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 20,
+      "hits": 20
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "UEFA Respect Foundation Patches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 19,
+      "hits": 19
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "European Kings Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 19,
+      "hits": 19
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Premium Class Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 19,
+      "hits": 19
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Quad Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 19,
+      "hits": 19
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Select Stars Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 18,
+      "hits": 18
+    },
+    {
+      "checklist_id": "2025-26-topps-arsenal-fc-team-set",
+      "checklist_name": "2025-26-Topps-Arsenal-FC-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 18,
+      "hits": 18
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Ageless Alchemy Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 17,
+      "hits": 17
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Premium Class Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 17,
+      "hits": 17
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Select Few Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 16,
+      "hits": 16
+    },
+    {
+      "checklist_id": "2025-26-topps-manchester-city-team-set",
+      "checklist_name": "2025-26-Topps-Manchester-City-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 16,
+      "hits": 16
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-sapphire-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Sapphire-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Sapphire Selections Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 15,
+      "hits": 15
+    },
+    {
+      "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Finest-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Prized Footballers Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 15,
+      "hits": 15
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Regency Chrome Cards Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 15,
+      "hits": 15
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Momentous Material Jumbo Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 14,
+      "hits": 14
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Mystics Nights Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 14,
+      "hits": 14
+    },
+    {
+      "checklist_id": "2025-26-topps-chelsea-fc-team-set",
+      "checklist_name": "2025-26-Topps-Chelsea-FC-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 14,
+      "hits": 14
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Triple Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 14,
+      "hits": 14
+    },
+    {
+      "checklist_id": "2025-26-topps-juventus-fc-team-set",
+      "checklist_name": "2025-26-Topps-Juventus-FC-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 14,
+      "hits": 14
+    },
+    {
+      "checklist_id": "2025-26-topps-fc-bayern-m-nchen-team-set",
+      "checklist_name": "2025-26-Topps-FC-Bayern-München-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 13,
+      "hits": 13
+    },
+    {
+      "checklist_id": "2025-26-topps-real-madrid-cf-team-set",
+      "checklist_name": "2025-26-Topps-Real-Madrid-CF-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 13,
+      "hits": 13
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "Chrome Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 13,
+      "hits": 13
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Hat Trick Triple Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 12,
+      "hits": 12
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Rookie Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 12,
+      "hits": 12
+    },
+    {
+      "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Finest-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 12,
+      "hits": 12
+    },
+    {
+      "checklist_id": "2025-26-topps-manchester-united-team-set",
+      "checklist_name": "2025-26-Topps-Manchester-United-Team-Set.parquet",
+      "box_type": "Bonafide Baller Autograph Variation",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 12,
+      "hits": 12
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Roots Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 12,
+      "hits": 12
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Superior Signatures Veterans & Rookies",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 11,
+      "hits": 11
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Home/Away Dual Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Fire And Ice Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Dual Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Dual Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Finest-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Arrivals Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Finest-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Bloodline Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Finest-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Century's Finest Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2025-26-topps-focus-liverpool-fc",
+      "checklist_name": "2025-26-Topps-Focus-Liverpool-FC.parquet",
+      "box_type": "Omatic Distortion Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 10,
+      "hits": 10
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Hat Trick Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Momentous Material Prime Patch Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Framed Autographed Patches",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2025-26-donruss-road-to-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Donruss-Road-to-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Beautiful Game Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Ligue-1-Soccer-Checklist.parquet",
+      "box_type": "Autographed Memorabilia",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Best of the Best: Legendary Numbers Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "1994 Team USA Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 9,
+      "hits": 9
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Archival Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 8,
+      "hits": 8
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Kit Construction Triple Relics Book Cards",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 8,
+      "hits": 8
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Autographed Memorabilia",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 8,
+      "hits": 8
+    },
+    {
+      "checklist_id": "2025-26-topps-focus-liverpool-fc",
+      "checklist_name": "2025-26-Topps-Focus-Liverpool-FC.parquet",
+      "box_type": "Synergy Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 8,
+      "hits": 8
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Home/Away Dual Relic Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 7,
+      "hits": 7
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Rookie Connection Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 7,
+      "hits": 7
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Rookie Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 7,
+      "hits": 7
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Superior Signatures Legends",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 7,
+      "hits": 7
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Future Stars Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 7,
+      "hits": 7
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Kit Construction Triple Relics Autograph Book Card",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 6,
+      "hits": 6
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Future Stars Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 6,
+      "hits": 6
+    },
+    {
+      "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+      "checklist_name": "2025-25-Topps-Merlin-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Autograph Wizard Variations",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 5,
+      "hits": 5
+    },
+    {
+      "checklist_id": "2025-26-panini-pitch-kings-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Pitch-Kings-Soccer-Checklist.parquet",
+      "box_type": "Legacy Portrait Signatures - NO JADE OR OBSIDIAN",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 5,
+      "hits": 5
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Piece Of Club History Autographed Booklets",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 5,
+      "hits": 5
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "UCL Final Performers Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 5,
+      "hits": 5
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Teammates Dual Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 5,
+      "hits": 5
+    },
+    {
+      "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2026-Panini-Prizm-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Signature Moments",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 5,
+      "hits": 5
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-sapphire-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Sapphire-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Future Stars Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 4,
+      "hits": 4
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Bowman UEFA Youth League Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 4,
+      "hits": 4
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Museum Rookie Connection Dual Autograph Relic Cards",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Noir-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Sneaker Spotlight Signatures",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Cutting Edge - NO BASE",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Trifecta Material - NO BASE",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Select Few Signatures - NO BLUE PULSAR",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-UEFA-Club-Competitions-Soccer-Checklist.parquet",
+      "box_type": "Quad Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+      "checklist_name": "2025-26-Topps-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Griezmann UCL Milestone Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 3,
+      "hits": 3
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Select Signatures - NO BLUE PULSAR",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 2,
+      "hits": 2
+    },
+    {
+      "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+      "checklist_name": "2025-Topps-Chrome-MLS-Soccer-Checklist.parquet",
+      "box_type": "MLS Renaissance Autographed Relics",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 2,
+      "hits": 2
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Supreme Materials Relic Book Card",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Supreme Script Legendary Autographed Book Card",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+      "checklist_name": "2024-25-Topps-Museum-Collection-UEFA-Club-Competitions-Checklist.parquet",
+      "box_type": "Supreme Script Legendary Autographed Relic Book Card",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Dual Jersey Ink - NO BASE",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Obsidian-Soccer-Checklist.parquet",
+      "box_type": "Scorched Signatures - NO BASE",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2025-26-panini-pitch-kings-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Pitch-Kings-Soccer-Checklist.parquet",
+      "box_type": "Fresh Paint - ONLY MASTERPIECE",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Autographed Memorabilia - NO BASE OR BLUE PULSAR",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 1,
+      "hits": 1
+    },
+    {
+      "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+      "checklist_name": "2025-26-Panini-Select-Road-To-Fifa-World-Cup-Soccer-Checklist.parquet",
+      "box_type": "Autographed Memorabilia - NO UNNUMERED PARALLELS",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 1,
+      "hits": 1
+    }
+  ],
+  "uncertain_keyword_rows": []
+}
