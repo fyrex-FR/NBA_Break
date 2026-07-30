@@ -13,7 +13,7 @@ import { SearchSelect } from '../shared/SearchSelect'
 import { PlayerStatsPanel } from '../shared/PlayerStatsPanel'
 import { RCBadge } from '../shared/RCBadge'
 import { useRookies } from '../../hooks/useRookies'
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
+import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 import { AWARD_LABELS } from '../../constants/awards'
 
@@ -114,7 +114,10 @@ export function PlayerDetailView() {
   const totalHits = playerCards.reduce((s, c) => s + c.Hits, 0)
   const logomanCount = playerCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)
   const caseHitCount = playerCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)
-  const autoMemCount = playerCards.filter((c) => c.Category === CATEGORY_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
+  const autoCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO).reduce((s, c) => s + c.Hits, 0)
+  const memCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM).reduce((s, c) => s + c.Hits, 0)
+  const autoMemCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
+  const baseOtherCount = playerCards.filter((c) => c.Category === CATEGORY_BASE_OTHER).reduce((s, c) => s + c.Hits, 0)
   const uniqueChecklists = new Set(playerCards.map((c) => c.checklist_name)).size
   const totalChecklists = analysisData.metadata.checklists_count
 
@@ -184,13 +187,15 @@ export function PlayerDetailView() {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+          <div className="grid grid-cols-3 md:grid-cols-7 gap-3 mb-6">
             <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
             <MetricCard label="Checklists" value={`${uniqueChecklists}/${totalChecklists}`} icon="📁" />
             <MetricCard label="Logoman" value={logomanCount} icon="🔥" valueColor="#ef4444" />
             <MetricCard label="Case Hit" value={caseHitCount} icon="✨" valueColor="#eab308" />
-            <MetricCard label="Auto/Mem" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
-            <MetricCard label="Base/Autre" value={totalHits - logomanCount - caseHitCount - autoMemCount} icon="📄" />
+            <MetricCard label="Auto" value={autoCount} icon="✍️" valueColor="#0ea5e9" />
+            <MetricCard label="Memo" value={memCount} icon="🧵" valueColor="#14b8a6" />
+            <MetricCard label="Auto/Memo" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
+            <MetricCard label="Base/Autre" value={baseOtherCount} icon="📄" />
           </div>
 
           {/* Distribution bars */}

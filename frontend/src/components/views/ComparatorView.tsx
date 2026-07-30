@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { SearchSelect } from '../shared/SearchSelect'
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
+import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 const MAX_PLAYERS = 5
 const PLAYER_COLORS = ['#ff6b35', '#3b82f6', '#22c55e', '#a78bfa', '#eab308']
@@ -19,7 +19,7 @@ const METRICS: { key: keyof Omit<PlayerStat, 'name'>; label: string; icon: strin
   { key: 'total',      label: 'Total cartes', icon: '📊', color: '#94a3b8' },
   { key: 'logoman',    label: 'Logoman',      icon: '🔥', color: '#ef4444' },
   { key: 'caseHit',    label: 'Case Hit',     icon: '✨', color: '#eab308' },
-  { key: 'autoMem',    label: 'Auto/Mem',     icon: '💎', color: '#3b82f6' },
+  { key: 'autoMem',    label: 'Hits',         icon: '💎', color: '#3b82f6' },
   { key: 'checklists', label: 'Checklists',   icon: '📁', color: '#22c55e' },
 ]
 
@@ -48,7 +48,7 @@ export function ComparatorView() {
     return {
       name,
       total:      cards.reduce((s, c) => s + c.Hits, 0),
-      autoMem:    cards.filter((c) => c.Category === CATEGORY_AUTO_MEM).reduce((s, c) => s + c.Hits, 0),
+      autoMem:    cards.filter((c) => [HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(c['Hit Type'] || '')).reduce((s, c) => s + c.Hits, 0),
       caseHit:    cards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0),
       logoman:    cards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0),
       checklists: new Set(cards.map((c) => c.checklist_name)).size,

@@ -5,7 +5,7 @@ import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { PlayerCell } from '../shared/PlayerCell'
 import type { RankingRecord, CardRecord } from '../../types'
-import { CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN } from '../../types'
+import { CATEGORY_CASE_HIT, CATEGORY_LOGOMAN, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 type RankingMode = 'volume' | 'premium' | 'auto' | 'case'
 
@@ -103,9 +103,9 @@ export function GlobalView() {
   }
 
   const rankingLabel = rankingMode === 'premium'
-    ? 'tries par premium'
+      ? 'tries par premium'
     : rankingMode === 'auto'
-      ? 'tries par auto/mem'
+      ? 'tries par hits auto/memo'
       : rankingMode === 'case'
         ? 'tries par case hit'
         : 'tries par volume'
@@ -122,10 +122,13 @@ export function GlobalView() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
         <MetricCard label="Logoman" value={category_summary.logoman} icon="🔥" valueColor="#ef4444" />
         <MetricCard label="Case Hit" value={category_summary.case_hit} icon="✨" valueColor="#eab308" />
-        <MetricCard label="Auto/Mem" value={category_summary.auto_mem} icon="💎" valueColor="#3b82f6" />
+        <MetricCard label="Auto" value={category_summary.auto} icon="✍️" valueColor="#0ea5e9" />
+        <MetricCard label="Memo" value={category_summary.mem} icon="🧵" valueColor="#14b8a6" />
+        <MetricCard label="Auto/Memo" value={category_summary.auto_mem} icon="💎" valueColor="#3b82f6" />
+        <MetricCard label="Hits total" value={category_summary.hit_total} icon="🎯" valueColor="#6366f1" />
         <MetricCard label="Base/Autre" value={category_summary.base_other} icon="📄" />
       </div>
 
@@ -134,7 +137,7 @@ export function GlobalView() {
         {([
           ['volume', 'Volume'],
           ['premium', 'Premium'],
-          ['auto', 'Auto/Mem'],
+          ['auto', 'Hits'],
           ['case', 'Case Hit'],
         ] as const).map(([mode, label]) => {
           const active = rankingMode === mode
@@ -217,7 +220,7 @@ function buildEntityRows(cards: CardRecord[], kind: 'player' | 'team'): TopRow[]
       const current = stats.get(value) || { hits: 0, premium: 0, auto: 0, caseHit: 0, checklists: new Set<string>() }
       current.hits += card.Hits
       current.checklists.add(card.checklist_name || card.File)
-      if (card.Category === CATEGORY_AUTO_MEM) {
+      if ([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(card['Hit Type'] || '')) {
         current.auto += card.Hits
         current.premium += card.Hits
       }

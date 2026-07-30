@@ -31,7 +31,10 @@ function buildSpotColumns(method: string) {
       header: 'RC',
       cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
-    columnHelper.accessor('Auto/Memo', { header: 'Auto/Memo' }),
+    columnHelper.accessor('Auto', { header: 'Auto' }),
+    columnHelper.accessor('Memo', { header: 'Memo' }),
+    columnHelper.accessor('Auto/Memo', { header: 'A+M' }),
+    columnHelper.accessor('Total Hits', { header: 'Hits' }),
     columnHelper.accessor('Auto/Memo RC', {
       header: 'Auto RC',
       cell: (info) => rcCell((info.getValue() as number) ?? 0),
@@ -263,9 +266,9 @@ export function BreakSimulationView() {
   }
 
   function exportCardDetails(cards: BreakCardDetail[], breakMethod: string) {
-    const headers = ['Spot', 'Player', 'Team', 'Box Type', 'Numbering', 'Category', 'Checklist']
+    const headers = ['Spot', 'Player', 'Team', 'Box Type', 'Numbering', 'Category', 'Hit Type', 'Checklist']
     const rows = cards.map(c => [
-      c.Spot, c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c.Checklist
+      c.Spot, c.Player, c.Team, c['Box Type'], c.Numbering, c.Category, c['Hit Type'], c.Checklist
     ].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(','))
     const csv = [headers.join(','), ...rows].join('\n')
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
@@ -279,7 +282,7 @@ export function BreakSimulationView() {
 
   async function exportBySpot(spots: BreakSpotRecord[], cards: BreakCardDetail[], breakMethod: string) {
     const isAuto = (c: BreakCardDetail) =>
-      c.Category === '💎 Auto/Mem' || c.Category === '💎 Auto/Memo'
+      ['auto', 'mem', 'auto_mem'].includes(c['Hit Type'] || '')
 
     const wb = new ExcelJS.Workbook()
     const ws = wb.addWorksheet('Break par Spot')

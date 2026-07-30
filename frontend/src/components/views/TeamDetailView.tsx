@@ -10,7 +10,7 @@ import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { SearchSelect } from '../shared/SearchSelect'
 import { TeamStatsPanel } from '../shared/TeamStatsPanel'
 import { PlayerCell } from '../shared/PlayerCell'
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM } from '../../types'
+import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
@@ -97,7 +97,10 @@ export function TeamDetailView() {
   const totalHits = teamCards.reduce((s, c) => s + c.Hits, 0)
   const logomanCount = teamCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)
   const caseHitCount = teamCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)
-  const autoMemCount = teamCards.filter((c) => c.Category === CATEGORY_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
+  const autoCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO).reduce((s, c) => s + c.Hits, 0)
+  const memCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM).reduce((s, c) => s + c.Hits, 0)
+  const autoMemCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
+  const baseOtherCount = teamCards.filter((c) => c.Category === CATEGORY_BASE_OTHER).reduce((s, c) => s + c.Hits, 0)
   const uniquePlayers = new Set(teamCards.flatMap((c) => c.Player.split('/').map((p) => p.trim()).filter(Boolean))).size
 
   const playerSummaryRows = useMemo(() => {
@@ -123,10 +126,11 @@ export function TeamDetailView() {
         row.Score += card.Score || 0
         row.checklistSet.add(card.checklist_name || card.File || card.checklist_id || 'unknown')
 
-        if (card.Category === CATEGORY_AUTO_MEM) row.AutoMem += hits
-        else if (card.Category === CATEGORY_LOGOMAN) row.Logoman += hits
+        const isHit = [HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(card['Hit Type'] || '')
+        if (isHit) row.AutoMem += hits
+        if (card.Category === CATEGORY_LOGOMAN) row.Logoman += hits
         else if (card.Category === CATEGORY_CASE_HIT) row.CaseHit += hits
-        else row.BaseOther += hits
+        else if (!isHit) row.BaseOther += hits
 
         map.set(player, row)
       }
@@ -188,13 +192,15 @@ export function TeamDetailView() {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+          <div className="grid grid-cols-3 md:grid-cols-7 gap-3 mb-6">
             <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
             <MetricCard label="Joueurs" value={uniquePlayers} icon="🎴" />
             <MetricCard label="Logoman" value={logomanCount} icon="🔥" valueColor="#ef4444" />
             <MetricCard label="Case Hit" value={caseHitCount} icon="✨" valueColor="#eab308" />
-            <MetricCard label="Auto/Mem" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
-            <MetricCard label="Base/Autre" value={totalHits - logomanCount - caseHitCount - autoMemCount} icon="📄" />
+            <MetricCard label="Auto" value={autoCount} icon="✍️" valueColor="#0ea5e9" />
+            <MetricCard label="Memo" value={memCount} icon="🧵" valueColor="#14b8a6" />
+            <MetricCard label="Auto/Memo" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
+            <MetricCard label="Base/Autre" value={baseOtherCount} icon="📄" />
           </div>
 
           <div className="mb-6">

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { exportXlsx, downloadTemplate } from '../../api/client'
+import { HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
   return (
@@ -46,7 +47,7 @@ export function ExportView() {
   const estimatedRows = analysisData.cards.filter((c) => {
     if (includeLogoman && c.Category === '🔥 Logoman') return true
     if (includeCase && c.Category === '✨ Case Hit') return true
-    if (includeAuto && c.Category === '💎 Auto/Mem') return true
+    if (includeAuto && [HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(c['Hit Type'] || '')) return true
     if (includeBase && c.Category === '📄 Base/Autre') return true
     return false
   }).reduce((s, c) => s + c.Hits, 0)
@@ -99,7 +100,7 @@ export function ExportView() {
         {/* Catégories */}
         <div className="rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
           <h3 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-tertiary)' }}>🏷️ CATÉGORIES</h3>
-          <Toggle checked={includeAuto}    onChange={setIncludeAuto}    label="💎 Auto/Memo" />
+          <Toggle checked={includeAuto}    onChange={setIncludeAuto}    label="💎 Hits Auto/Memo" />
           <Toggle checked={includeCase}    onChange={setIncludeCase}    label="✨ Case Hits" />
           <Toggle checked={includeLogoman} onChange={setIncludeLogoman} label="🔥 Logoman" />
           <Toggle checked={includeBase}    onChange={setIncludeBase}    label="📄 Base/Autre" />

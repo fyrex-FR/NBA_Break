@@ -16,7 +16,7 @@ from typing import Literal
 from fastapi import APIRouter, HTTPException, Query
 
 from ..services.analysis_engine import run_analysis
-from ..services.card_logic import CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN
+from ..services.card_logic import CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM
 from ..services.data_pipeline import master_parquet_key_for_sport, split_slash_values
 from ..routers.presets import _load_all_presets
 from ..services.player_stats import get_player_stats
@@ -160,9 +160,10 @@ def _resolve_entity(name: str, candidates: list[str], entity_type: SummaryType) 
 
 
 def _category_counts(df) -> dict:
+    hit_mask = df["Hit Type"].isin([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM]) if "Hit Type" in df else df["Category"].eq(CATEGORY_AUTO_MEM)
     return {
         "cards_total": int(len(df)),
-        "auto_mem": int((df["Category"] == CATEGORY_AUTO_MEM).sum()) if "Category" in df else 0,
+        "auto_mem": int(hit_mask.sum()) if "Category" in df else 0,
         "logoman": int((df["Category"] == CATEGORY_LOGOMAN).sum()) if "Category" in df else 0,
         "case_hit": int((df["Category"] == CATEGORY_CASE_HIT).sum()) if "Category" in df else 0,
     }
@@ -225,7 +226,8 @@ def jarvis_summary(
         payload["teams"] = teams
         payload["premium_cards"] = entity_df[
             entity_df["Category"].isin([CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT])
-        ][[c for c in ["Box Type", "Numbering", "Category", "checklist_name"] if c in entity_df.columns]].head(20).to_dict(orient="records")
+            | (entity_df["Hit Type"].isin([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM]) if "Hit Type" in entity_df else False)
+        ][[c for c in ["Box Type", "Numbering", "Category", "Hit Type", "checklist_name"] if c in entity_df.columns]].head(20).to_dict(orient="records")
         if include_nba_stats and sport_key == "nba":
             try:
                 stats = get_player_stats(resolved)

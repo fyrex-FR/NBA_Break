@@ -11,6 +11,7 @@ import pandas as pd
 
 from .analysis_engine import normalize_player_name
 from .data_pipeline import get_checklist_labels
+from .card_logic import HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM
 
 
 def build_export_dataframe(
@@ -50,8 +51,13 @@ def build_export_dataframe(
     if include_cards:
         agg_dict["Cartes"] = ("Hits", "sum")
     if include_auto:
-        exp_df["_auto"] = (exp_df["Category"] == "💎 Auto/Mem").astype(int) * exp_df["Hits"]
-        agg_dict["Auto/Memo"] = ("_auto", "sum")
+        hit_type = exp_df["Hit Type"].astype(str) if "Hit Type" in exp_df.columns else pd.Series([""] * len(exp_df), index=exp_df.index)
+        exp_df["_auto"] = (hit_type == HIT_TYPE_AUTO).astype(int) * exp_df["Hits"]
+        exp_df["_mem"] = (hit_type == HIT_TYPE_MEM).astype(int) * exp_df["Hits"]
+        exp_df["_auto_mem"] = (hit_type == HIT_TYPE_AUTO_MEM).astype(int) * exp_df["Hits"]
+        agg_dict["Auto"] = ("_auto", "sum")
+        agg_dict["Memo"] = ("_mem", "sum")
+        agg_dict["Auto/Memo"] = ("_auto_mem", "sum")
     if include_case:
         exp_df["_case"] = (exp_df["Category"] == "✨ Case Hit").astype(int) * exp_df["Hits"]
         agg_dict["Case Hits"] = ("_case", "sum")

@@ -37,6 +37,7 @@ export interface CardRecord {
   checklist_id: string
   checklist_name: string
   Category: string
+  'Hit Type'?: string
   'Rarity Mult': number
   Score: number
   Sport: string
@@ -51,7 +52,10 @@ export interface RankingRecord {
 export interface CategorySummary {
   logoman: number
   case_hit: number
+  auto: number
+  mem: number
   auto_mem: number
+  hit_total: number
   base_other: number
 }
 
@@ -78,8 +82,14 @@ export interface BreakSpotRecord {
   Spot: string
   Cartes: number
   'Cartes RC': number
+  Auto?: number
+  'Auto RC'?: number
+  Memo?: number
+  'Memo RC'?: number
   'Auto/Memo': number
   'Auto/Memo RC': number
+  'Total Hits'?: number
+  'Total Hits RC'?: number
   'Auto garanties': number
   'Case Hit': number
   'Case Hit RC': number
@@ -103,6 +113,7 @@ export interface BreakCardDetail {
   'Box Type': string
   Numbering: string
   Category: string
+  'Hit Type'?: string
   Checklist: string
   is_multi_ref?: boolean
 }
@@ -312,4 +323,10 @@ export interface TeamStatsResponse {
 export const CATEGORY_LOGOMAN = '🔥 Logoman'
 export const CATEGORY_CASE_HIT = '✨ Case Hit'
 export const CATEGORY_AUTO_MEM = '💎 Auto/Mem'
+export const CATEGORY_AUTO = '✍️ Auto'
+export const CATEGORY_MEM = '🧵 Memo'
 export const CATEGORY_BASE_OTHER = '📄 Base/Autre'
+
+export const HIT_TYPE_AUTO = 'auto'
+export const HIT_TYPE_MEM = 'mem'
+export const HIT_TYPE_AUTO_MEM = 'auto_mem'

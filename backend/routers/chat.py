@@ -17,7 +17,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from ..services.analysis_engine import run_analysis, enrich_dataframe, load_master_data
-from ..services.card_logic import CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT
+from ..services.card_logic import CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/chat", tags=["chat"])
@@ -125,11 +125,10 @@ def _build_context(df, entities: dict) -> str:
 
     # Toujours inclure les stats agrégées quand un joueur est ciblé
     if player:
-        premium_cats = {CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT}
         team_val = result["Team"].iloc[0] if "Team" in result.columns else ""
         nb_checklists = result["checklist_name"].nunique() if "checklist_name" in result.columns else "?"
         nb_total = len(result)
-        nb_auto = int((result["Category"] == CATEGORY_AUTO_MEM).sum())
+        nb_auto = int(result["Hit Type"].isin([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM]).sum()) if "Hit Type" in result else int((result["Category"] == CATEGORY_AUTO_MEM).sum())
         nb_logoman = int((result["Category"] == CATEGORY_LOGOMAN).sum())
         nb_case = int((result["Category"] == CATEGORY_CASE_HIT).sum())
         lines.append(f"STATS AGRÉGÉES — {result['Player'].iloc[0]} ({team_val})")
@@ -139,10 +138,11 @@ def _build_context(df, entities: dict) -> str:
     # Pour auto_list, détail des cartes premium uniquement
     if intent == "auto_list" and player:
         premium_cats = {CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT}
-        detail = result[result["Category"].isin(premium_cats)].head(30)
+        hit_mask = result["Hit Type"].isin([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM]) if "Hit Type" in result else result["Category"].eq(CATEGORY_AUTO_MEM)
+        detail = result[result["Category"].isin(premium_cats) | hit_mask].head(30)
         if not detail.empty:
             lines.append("DÉTAIL CARTES PREMIUM :")
-            cols = [c for c in ["Box Type", "Numbering", "Category", "checklist_name"] if c in detail.columns]
+            cols = [c for c in ["Box Type", "Numbering", "Category", "Hit Type", "checklist_name"] if c in detail.columns]
             for _, row in detail[cols].iterrows():
                 parts = [f"{c}: {row[c]}" for c in cols if str(row[c]) not in ("", "nan")]
                 lines.append(" | ".join(parts))

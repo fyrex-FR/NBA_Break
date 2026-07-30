@@ -14,6 +14,8 @@ export function DetectionView() {
   const [selectedFiles, setSelectedFiles] = useState<string[]>([])
 
   // Track overrides per checklist + normalized box type
+  const [autoOnlySet, setAutoOnlySet] = useState<Set<string>>(new Set())
+  const [memSet, setMemSet] = useState<Set<string>>(new Set())
   const [autoSet, setAutoSet] = useState<Set<string>>(new Set())
   const [caseSet, setCaseSet] = useState<Set<string>>(new Set())
 
@@ -31,13 +33,19 @@ export function DetectionView() {
         setFiles(data.files)
         setSelectedFiles(data.files)
         // Init sets from current overrides
+        const autoOnly = new Set<string>()
+        const mem = new Set<string>()
         const auto = new Set<string>()
         const cas = new Set<string>()
         for (const c of data.candidates) {
           const key = scopedKey(c)
+          if (c.is_auto_only) autoOnly.add(key)
+          if (c.is_mem) mem.add(key)
           if (c.is_auto) auto.add(key)
           if (c.is_case) cas.add(key)
         }
+        setAutoOnlySet(autoOnly)
+        setMemSet(mem)
         setAutoSet(auto)
         setCaseSet(cas)
       })
@@ -69,14 +77,43 @@ export function DetectionView() {
     return map
   }, [filtered])
 
-  function toggleAuto(item: CardTypeCandidate) {
-    setAutoSet((prev) => {
+  function clearHitType(key: string) {
+    setAutoOnlySet((prev) => {
       const next = new Set(prev)
-      const key = scopedKey(item)
-      if (next.has(key)) next.delete(key)
-      else next.add(key)
+      next.delete(key)
       return next
     })
+    setMemSet((prev) => {
+      const next = new Set(prev)
+      next.delete(key)
+      return next
+    })
+    setAutoSet((prev) => {
+      const next = new Set(prev)
+      next.delete(key)
+      return next
+    })
+  }
+
+  function toggleAutoOnly(item: CardTypeCandidate) {
+    const key = scopedKey(item)
+    const active = autoOnlySet.has(key)
+    clearHitType(key)
+    if (!active) setAutoOnlySet((prev) => new Set(prev).add(key))
+  }
+
+  function toggleMem(item: CardTypeCandidate) {
+    const key = scopedKey(item)
+    const active = memSet.has(key)
+    clearHitType(key)
+    if (!active) setMemSet((prev) => new Set(prev).add(key))
+  }
+
+  function toggleAuto(item: CardTypeCandidate) {
+    const key = scopedKey(item)
+    const active = autoSet.has(key)
+    clearHitType(key)
+    if (!active) setAutoSet((prev) => new Set(prev).add(key))
   }
 
   function toggleCase(item: CardTypeCandidate) {
@@ -108,10 +145,14 @@ export function DetectionView() {
         selectedSport,
         undefined,
         undefined,
+        undefined,
+        undefined,
+        resolveScopedRows(autoOnlySet),
+        resolveScopedRows(memSet),
         resolveScopedRows(autoSet),
         resolveScopedRows(caseSet),
       )
-      setMsg(`Sauvegardé : ${result.scoped_auto_mem_count} Auto/Mem scoped, ${result.scoped_case_hit_count} Case Hit scoped`)
+      setMsg(`Sauvegardé : ${result.scoped_auto_count} Auto, ${result.scoped_mem_count} Memo, ${result.scoped_auto_mem_count} Auto/Memo, ${result.scoped_case_hit_count} Case Hit`)
       setTimeout(() => setMsg(null), 3000)
     } catch (err: any) {
       setMsg(`Erreur : ${err.message}`)
@@ -120,9 +161,11 @@ export function DetectionView() {
     }
   }
 
+  const autoOnlyCount = autoOnlySet.size
+  const memCount = memSet.size
   const autoCount = autoSet.size
   const caseCount = caseSet.size
-  const overlapCount = [...autoSet].filter((n) => caseSet.has(n)).length
+  const overlapCount = [...new Set([...autoOnlySet, ...memSet, ...autoSet])].filter((n) => caseSet.has(n)).length
 
   if (loading) {
     return (
@@ -137,9 +180,9 @@ export function DetectionView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">🧪 Détection Auto/Mem + Case Hit</h2>
+      <h2 className="text-xl font-medium mb-1">🧪 Détection Hits + Case Hit</h2>
       <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
-        Coche Auto/Mem et/ou Case Hit pour chaque Card Type, puis enregistre.
+        Coche Auto, Memo, Auto/Memo et/ou Case Hit pour chaque Card Type, puis enregistre.
       </p>
 
       {candidates.length === 0 ? (
@@ -173,7 +216,9 @@ export function DetectionView() {
 
           {/* Stats bar */}
           <div className="flex items-center gap-4 mb-4 text-xs" style={{ color: 'var(--text-tertiary)' }}>
-            <span>💎 {autoCount} Auto/Mem</span>
+            <span>✍️ {autoOnlyCount} Auto</span>
+            <span>🧵 {memCount} Memo</span>
+            <span>💎 {autoCount} Auto/Memo</span>
             <span>✨ {caseCount} Case Hit</span>
             {overlapCount > 0 && (
               <span style={{ color: '#eab308' }}>⚠ {overlapCount} en doublon (priorité Case Hit)</span>
@@ -197,7 +242,9 @@ export function DetectionView() {
                   <div className="flex items-center gap-2 py-1.5 text-xs font-medium" style={{ color: 'var(--text-quaternary)', borderBottom: '1px solid var(--border-subtle)' }}>
                     <div className="flex-1">Card Type</div>
                     <div className="w-14 text-center">Hits</div>
-                    <div className="w-20 text-center">Auto/Mem</div>
+                    <div className="w-16 text-center">Auto</div>
+                    <div className="w-16 text-center">Memo</div>
+                    <div className="w-20 text-center">Auto/Memo</div>
                     <div className="w-20 text-center">Case Hit</div>
                   </div>
                   {items.map((item) => (
@@ -211,6 +258,22 @@ export function DetectionView() {
                       </div>
                       <div className="w-14 text-center text-xs" style={{ color: 'var(--text-quaternary)' }}>
                         {item.hits}
+                      </div>
+                      <div className="w-16 text-center">
+                        <input
+                          type="checkbox"
+                          checked={autoOnlySet.has(scopedKey(item))}
+                          onChange={() => toggleAutoOnly(item)}
+                          style={{ accentColor: '#0ea5e9' }}
+                        />
+                      </div>
+                      <div className="w-16 text-center">
+                        <input
+                          type="checkbox"
+                          checked={memSet.has(scopedKey(item))}
+                          onChange={() => toggleMem(item)}
+                          style={{ accentColor: '#14b8a6' }}
+                        />
                       </div>
                       <div className="w-20 text-center">
                         <input

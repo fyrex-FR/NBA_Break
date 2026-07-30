@@ -19,7 +19,7 @@ import { RookiesView } from './components/views/RookiesView'
 import { TrendView } from './components/views/TrendView'
 import { SmartImportView } from './components/views/SmartImportView'
 import { BreakOverviewView } from './components/views/BreakOverviewView'
-import { CATEGORY_AUTO_MEM, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from './types'
+import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM } from './types'
 import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
 import ChatWidget from './components/shared/ChatWidget'
 
@@ -97,10 +97,10 @@ function MainContent() {
       case '💎 Autos & Patchs':
         return (
           <CategoryFilteredView
-            title="Autos & Patchs"
+            title="Hits Auto / Memo"
             icon="💎"
-            category={CATEGORY_AUTO_MEM}
-            description="Cartes autographiées et memorabilia (patches, swatches, etc.)."
+            hitTypes={[HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM]}
+            description="Cartes autographiées, memorabilia pur et auto/memorabilia."
           />
         )
       case '🔥 Logoman':

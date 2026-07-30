@@ -8,7 +8,7 @@ import unicodedata
 
 import pandas as pd
 
-from .card_logic import CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN
+from .card_logic import CATEGORY_AUTO, CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN, CATEGORY_MEM, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM
 from .data_pipeline import split_slash_values
 
 
@@ -256,6 +256,9 @@ def build_break_simulation_pool(df):
     work["Team"] = work["Team"].astype(str).str.strip()
     work["Box Type"] = work["Box Type"].astype(str).str.strip()
     work["Category"] = work["Category"].astype(str).str.strip()
+    if "Hit Type" not in work.columns:
+        work["Hit Type"] = ""
+    work["Hit Type"] = work["Hit Type"].astype(str).str.strip()
     work["Hits"] = (
         pd.to_numeric(work["Hits"], errors="coerce")
         .fillna(1)
@@ -270,7 +273,11 @@ def build_break_simulation_pool(df):
     if work.empty:
         return pd.DataFrame()
 
-    work["Is AutoMemo"] = work["Category"].eq(CATEGORY_AUTO_MEM)
+    hit_type = work["Hit Type"]
+    work["Is AutoOnly"] = hit_type.eq(HIT_TYPE_AUTO) | work["Category"].eq(CATEGORY_AUTO)
+    work["Is Memo"] = hit_type.eq(HIT_TYPE_MEM) | work["Category"].eq(CATEGORY_MEM)
+    work["Is AutoMemoOnly"] = hit_type.eq(HIT_TYPE_AUTO_MEM) | work["Category"].eq(CATEGORY_AUTO_MEM)
+    work["Is AutoMemo"] = work["Is AutoOnly"] | work["Is Memo"] | work["Is AutoMemoOnly"]
     work["Is CaseHit"] = work["Category"].eq(CATEGORY_CASE_HIT)
 
     work["Initial List"] = work["Player List"].apply(
@@ -417,8 +424,8 @@ def build_deterministic_spot_summary(
 
     rookie_year_map = rookie_year_map or {}  # {player_lower: "2024-25"}
 
-    metric_cols = ["Cartes", "Auto/Memo", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto",
-                   "Cartes RC", "Auto/Memo RC", "Case Hit RC", "Logoman RC"]
+    metric_cols = ["Cartes", "Auto", "Memo", "Auto/Memo", "Total Hits", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto",
+                   "Cartes RC", "Auto RC", "Memo RC", "Auto/Memo RC", "Total Hits RC", "Case Hit RC", "Logoman RC"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     players_per_spot = {spot: set() for spot in spots}
@@ -487,6 +494,7 @@ def build_deterministic_spot_summary(
             "Box Type": str(row.get("Box Type", "") or "").strip(),
             "Numbering": str(row.get("Numbering", "") or "").strip(),
             "Category": category,
+            "Hit Type": str(row.get("Hit Type", "") or "").strip(),
             "Checklist": checklist_name,
             "is_multi_ref": False,
         }
@@ -512,10 +520,16 @@ def build_deterministic_spot_summary(
 
         for assigned_spot in targets:
             totals[assigned_spot]["Cartes"] += hits
+            is_auto_only = row.get("Is AutoOnly", False)
+            is_memo = row.get("Is Memo", False)
+            is_auto_mem = row.get("Is AutoMemoOnly", False)
             is_auto = row.get("Is AutoMemo", False)
             is_case = row.get("Is CaseHit", False)
             is_logoman = category == CATEGORY_LOGOMAN
-            totals[assigned_spot]["Auto/Memo"] += hits if is_auto else 0
+            totals[assigned_spot]["Auto"] += hits if is_auto_only else 0
+            totals[assigned_spot]["Memo"] += hits if is_memo else 0
+            totals[assigned_spot]["Auto/Memo"] += hits if is_auto_mem else 0
+            totals[assigned_spot]["Total Hits"] += hits if is_auto else 0
             totals[assigned_spot]["Case Hit"] += hits if is_case else 0
             totals[assigned_spot]["Logoman"] += hits if is_logoman else 0
             totals[assigned_spot]["Auto garanties"] += hits if (is_auto and guaranteed > 0) else 0
@@ -526,7 +540,10 @@ def build_deterministic_spot_summary(
             spot_rc_year = rookie_year_map.get(_spot_key) if rookie_year_map else None
             if spot_rc_year and spot_rc_year == card_year:
                 totals[assigned_spot]["Cartes RC"] += hits
-                totals[assigned_spot]["Auto/Memo RC"] += hits if is_auto else 0
+                totals[assigned_spot]["Auto RC"] += hits if is_auto_only else 0
+                totals[assigned_spot]["Memo RC"] += hits if is_memo else 0
+                totals[assigned_spot]["Auto/Memo RC"] += hits if is_auto_mem else 0
+                totals[assigned_spot]["Total Hits RC"] += hits if is_auto else 0
                 totals[assigned_spot]["Case Hit RC"] += hits if is_case else 0
                 totals[assigned_spot]["Logoman RC"] += hits if is_logoman else 0
             if checklist_name:
@@ -548,7 +565,7 @@ def build_deterministic_spot_summary(
 
     rows = []
     for spot in spots:
-        auto_val = totals[spot]["Auto/Memo"]
+        auto_val = totals[spot]["Total Hits"]
         case_val = totals[spot]["Case Hit"]
         rarity_signal = auto_val + (2.0 * case_val)
         if rarity_signal < 1.0:
@@ -605,8 +622,14 @@ def build_deterministic_spot_summary(
             "Spot": spot,
             "Cartes": totals[spot]["Cartes"],
             "Cartes RC": totals[spot]["Cartes RC"],
+            "Auto": totals[spot]["Auto"],
+            "Auto RC": totals[spot]["Auto RC"],
+            "Memo": totals[spot]["Memo"],
+            "Memo RC": totals[spot]["Memo RC"],
             "Auto/Memo": totals[spot]["Auto/Memo"],
             "Auto/Memo RC": totals[spot]["Auto/Memo RC"],
+            "Total Hits": totals[spot]["Total Hits"],
+            "Total Hits RC": totals[spot]["Total Hits RC"],
             "Case Hit": totals[spot]["Case Hit"],
             "Case Hit RC": totals[spot]["Case Hit RC"],
             "Logoman": totals[spot]["Logoman"],
@@ -642,7 +665,7 @@ def build_deterministic_spot_summary(
         lambda x: "🔥 Hot" if x >= hot_threshold_pct else ""
     )
 
-    for col in ["Cartes", "Cartes RC", "Auto/Memo", "Auto/Memo RC", "Case Hit", "Case Hit RC", "Logoman RC", "Break Score", "Auto garanties"]:
+    for col in ["Cartes", "Cartes RC", "Auto", "Auto RC", "Memo", "Memo RC", "Auto/Memo", "Auto/Memo RC", "Total Hits", "Total Hits RC", "Case Hit", "Case Hit RC", "Logoman RC", "Break Score", "Auto garanties"]:
         if col in result_df.columns:
             result_df[col] = result_df[col].astype(int)
 

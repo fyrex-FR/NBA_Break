@@ -85,6 +85,56 @@ DEFAULT_CATEGORY_RULES = {
         "signing",
         "laundry",
     ],
+    "auto": [
+        "auto",
+        "autograph",
+        "autographs",
+        "signature",
+        "signatures",
+        "signed",
+        "ink",
+        "scripts",
+        "script",
+        "graphs",
+        "significance",
+        "penmanship",
+        "endorsement",
+        "endorsements",
+        "signing",
+    ],
+    "mem": [
+        "patch",
+        "patches",
+        "relic",
+        "relics",
+        "mem",
+        "memorabilia",
+        "jersey",
+        "jerseys",
+        "material",
+        "materials",
+        "gear",
+        "swatch",
+        "swatches",
+        "thread",
+        "threads",
+        "fabric",
+        "laundry",
+        "tag",
+        "tags",
+        "logo",
+        "logos",
+        "logoman",
+        "brand logo",
+        "cutting edge",
+        "sneaker",
+        "sneakers",
+        "shoe",
+        "shoes",
+        "sole",
+        "nameplate",
+        "prime",
+    ],
 }
 
 AUTO_SPORT_KEY = "auto"
@@ -616,6 +666,8 @@ def get_base_exact_category_by_sport():
         if not isinstance(sport_base, dict):
             sport_base = {}
         output[sk] = {
+            "auto": _normalized_exact_list(sport_base.get("auto", [])),
+            "mem": _normalized_exact_list(sport_base.get("mem", [])),
             "auto_mem": _normalized_exact_list(sport_base.get("auto_mem", [])),
             "case_hit": _normalized_exact_list(sport_base.get("case_hit", [])),
         }
@@ -636,15 +688,19 @@ def get_effective_exact_category_by_sport(keyword_overrides_root):
     all_sport_keys = set(effective.keys()) | set(by_sport.keys()) | set(legacy_auto.keys())
 
     for sk in sorted(all_sport_keys):
-        sport_base = effective.get(sk, {"auto_mem": [], "case_hit": []})
+        sport_base = effective.get(sk, {"auto": [], "mem": [], "auto_mem": [], "case_hit": []})
         sport_runtime = by_sport.get(sk, {})
         if not isinstance(sport_runtime, dict):
             sport_runtime = {}
 
+        runtime_auto_only = sport_runtime.get("auto", None)
+        runtime_mem = sport_runtime.get("mem", None)
         runtime_auto = sport_runtime.get("auto_mem", None)
         runtime_case = sport_runtime.get("case_hit", None)
         legacy_values = legacy_auto.get(sk, [])
 
+        auto_only_values = runtime_auto_only if isinstance(runtime_auto_only, list) else sport_base.get("auto", [])
+        mem_values = runtime_mem if isinstance(runtime_mem, list) else sport_base.get("mem", [])
         auto_values = runtime_auto if isinstance(runtime_auto, list) else sport_base.get("auto_mem", [])
         case_values = runtime_case if isinstance(runtime_case, list) else sport_base.get("case_hit", [])
 
@@ -652,6 +708,8 @@ def get_effective_exact_category_by_sport(keyword_overrides_root):
             auto_values = list(auto_values) + legacy_values
 
         effective[sk] = {
+            "auto": _normalized_exact_list(auto_only_values),
+            "mem": _normalized_exact_list(mem_values),
             "auto_mem": _normalized_exact_list(auto_values),
             "case_hit": _normalized_exact_list(case_values),
         }

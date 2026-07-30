@@ -4,11 +4,13 @@
  * Segments and legend items are clickable to filter.
  */
 
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
+import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO, CATEGORY_MEM, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
 
 const COLORS: Record<string, string> = {
   [CATEGORY_LOGOMAN]: '#ef4444',
   [CATEGORY_CASE_HIT]: '#eab308',
+  [CATEGORY_AUTO]: '#0ea5e9',
+  [CATEGORY_MEM]: '#14b8a6',
   [CATEGORY_AUTO_MEM]: '#3b82f6',
   [CATEGORY_BASE_OTHER]: '#475569',
 }
@@ -16,7 +18,9 @@ const COLORS: Record<string, string> = {
 const LABELS: Record<string, string> = {
   [CATEGORY_LOGOMAN]: 'Logoman',
   [CATEGORY_CASE_HIT]: 'Case Hit',
-  [CATEGORY_AUTO_MEM]: 'Auto/Mem',
+  [CATEGORY_AUTO]: 'Auto',
+  [CATEGORY_MEM]: 'Memo',
+  [CATEGORY_AUTO_MEM]: 'Auto/Memo',
   [CATEGORY_BASE_OTHER]: 'Base',
 }
 
@@ -31,7 +35,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
   const total = data.reduce((s, d) => s + d.value, 0)
   if (total === 0) return null
 
-  const order = [CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER]
+  const order = [CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO, CATEGORY_MEM, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER]
   const sorted = order
     .map((cat) => data.find((d) => d.name === cat))
     .filter((d): d is { name: string; value: number } => !!d && d.value > 0)

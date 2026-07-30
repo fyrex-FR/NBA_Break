@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from ..services.analysis_engine import load_master_data, enrich_dataframe, normalize_box_type_text
 from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json
 from ..services.sports_config import get_effective_exact_category_by_sport
-from ..services.card_logic import CATEGORY_BASE_OTHER
+from ..services.card_logic import CATEGORY_BASE_OTHER, HIT_TYPE_NONE
 from ..services.checklist_aliases import (
     canonical_checklist_id,
     equivalent_checklist_ids,
@@ -54,6 +54,9 @@ class CardTypeCandidate(BaseModel):
     file: str
     checklist_id: str = ""
     current_category: str
+    hit_type: str = "none"
+    is_auto_only: bool = False
+    is_mem: bool = False
     is_auto: bool
     is_case: bool
 
@@ -71,8 +74,12 @@ class DetectRequest(BaseModel):
 
 class SaveOverridesRequest(BaseModel):
     sport_key: str
+    auto: Optional[List[str]] = None
+    mem: Optional[List[str]] = None
     auto_mem: Optional[List[str]] = None
     case_hit: Optional[List[str]] = None
+    scoped_auto: List[Dict[str, str]] = []
+    scoped_mem: List[Dict[str, str]] = []
     scoped_auto_mem: List[Dict[str, str]] = []
     scoped_case_hit: List[Dict[str, str]] = []
 
@@ -92,12 +99,26 @@ def detect_card_types(req: DetectRequest):
     # Get current override sets for this sport
     effective = get_effective_exact_category_by_sport(overrides_root)
     sport_overrides = effective.get(req.sport_key, {})
+    current_auto_only_set = {normalize_box_type_text(v) for v in (sport_overrides.get("auto", []) if isinstance(sport_overrides, dict) else [])}
+    current_mem_set = {normalize_box_type_text(v) for v in (sport_overrides.get("mem", []) if isinstance(sport_overrides, dict) else [])}
     current_auto_set = {normalize_box_type_text(v) for v in (sport_overrides.get("auto_mem", []) if isinstance(sport_overrides, dict) else [])}
     current_case_set = {normalize_box_type_text(v) for v in (sport_overrides.get("case_hit", []) if isinstance(sport_overrides, dict) else [])}
     scoped_root = overrides_root.get("scoped_category_by_sport", {})
     sport_scoped = scoped_root.get(req.sport_key, {}) if isinstance(scoped_root, dict) else {}
+    scoped_auto_only = sport_scoped.get("auto", {}) if isinstance(sport_scoped, dict) else {}
+    scoped_mem = sport_scoped.get("mem", {}) if isinstance(sport_scoped, dict) else {}
     scoped_auto = sport_scoped.get("auto_mem", {}) if isinstance(sport_scoped, dict) else {}
     scoped_case = sport_scoped.get("case_hit", {}) if isinstance(sport_scoped, dict) else {}
+    scoped_auto_only_sets = {
+        normalize_box_type_text(scope): {normalize_box_type_text(v) for v in values}
+        for scope, values in scoped_auto_only.items()
+        if isinstance(values, list)
+    }
+    scoped_mem_sets = {
+        normalize_box_type_text(scope): {normalize_box_type_text(v) for v in values}
+        for scope, values in scoped_mem.items()
+        if isinstance(values, list)
+    }
     scoped_auto_sets = {
         normalize_box_type_text(scope): {normalize_box_type_text(v) for v in values}
         for scope, values in scoped_auto.items()
@@ -118,7 +139,11 @@ def detect_card_types(req: DetectRequest):
 
     grouped = (
         df.groupby(["File", "checklist_id", "Box Type"], dropna=False)
-        .agg(Hits=("Hits", "sum"), Category=("Category", lambda x: x.value_counts().idxmax()))
+        .agg(
+            Hits=("Hits", "sum"),
+            Category=("Category", lambda x: x.value_counts().idxmax()),
+            **{"Hit Type": ("Hit Type", lambda x: x.value_counts().idxmax() if len(x) else "none")},
+        )
         .reset_index()
     )
     grouped["File"] = grouped["File"].astype(str).str.strip()
@@ -130,6 +155,9 @@ def detect_card_types(req: DetectRequest):
     # Candidates: Base/Other OR already overridden
     candidate_mask = (
         (grouped["Category"] == CATEGORY_BASE_OTHER)
+        | (grouped["Hit Type"].astype(str) != HIT_TYPE_NONE)
+        | grouped["Norm"].isin(current_auto_only_set)
+        | grouped["Norm"].isin(current_mem_set)
         | grouped["Norm"].isin(current_auto_set)
         | grouped["Norm"].isin(current_case_set)
     )
@@ -150,6 +178,9 @@ def detect_card_types(req: DetectRequest):
             file=row["File"],
             checklist_id=row["checklist_id"],
             current_category=row["Category"],
+            hit_type=str(row.get("Hit Type", "none") or "none"),
+            is_auto_only=norm in current_auto_only_set or any(norm in scoped_auto_only_sets.get(s, set()) for s in equivalent_scopes),
+            is_mem=norm in current_mem_set or any(norm in scoped_mem_sets.get(s, set()) for s in equivalent_scopes),
             is_auto=norm in current_auto_set or any(norm in scoped_auto_sets.get(s, set()) for s in equivalent_scopes),
             is_case=norm in current_case_set or any(norm in scoped_case_sets.get(s, set()) for s in equivalent_scopes),
         ))
@@ -171,16 +202,23 @@ def save_overrides(req: SaveOverridesRequest):
     current_exact = by_sport.get(req.sport_key, {})
     if not isinstance(current_exact, dict):
         current_exact = {}
-    if req.auto_mem is None and req.case_hit is None:
+    if req.auto is None and req.mem is None and req.auto_mem is None and req.case_hit is None:
+        final_auto_only = sorted(current_exact.get("auto", []))
+        final_mem = sorted(current_exact.get("mem", []))
         final_auto = sorted(current_exact.get("auto_mem", []))
         final_case = sorted(current_exact.get("case_hit", []))
     else:
+        auto_only = req.auto or []
+        mem = req.mem or []
         auto_mem = req.auto_mem or []
         case_hit = req.case_hit or []
         case_norm = {normalize_box_type_text(v) for v in case_hit}
+        auto_mem_norm = {normalize_box_type_text(v) for v in auto_mem}
+        final_auto_only = sorted(v for v in auto_only if normalize_box_type_text(v) not in case_norm and normalize_box_type_text(v) not in auto_mem_norm)
+        final_mem = sorted(v for v in mem if normalize_box_type_text(v) not in case_norm and normalize_box_type_text(v) not in auto_mem_norm)
         final_auto = sorted(v for v in auto_mem if normalize_box_type_text(v) not in case_norm)
         final_case = sorted(case_hit)
-    by_sport[req.sport_key] = {"auto_mem": final_auto, "case_hit": final_case}
+    by_sport[req.sport_key] = {"auto": final_auto_only, "mem": final_mem, "auto_mem": final_auto, "case_hit": final_case}
     overrides_root["exact_category_by_sport"] = by_sport
 
     scoped_by_sport = overrides_root.get("scoped_category_by_sport", {})
@@ -207,6 +245,8 @@ def save_overrides(req: SaveOverridesRequest):
             merged[scope] = sorted(values)
         return merged
 
+    sport_scoped["auto"] = _merge_scoped(sport_scoped.get("auto", {}), req.scoped_auto)
+    sport_scoped["mem"] = _merge_scoped(sport_scoped.get("mem", {}), req.scoped_mem)
     sport_scoped["auto_mem"] = _merge_scoped(sport_scoped.get("auto_mem", {}), req.scoped_auto_mem)
     sport_scoped["case_hit"] = _merge_scoped(sport_scoped.get("case_hit", {}), req.scoped_case_hit)
     scoped_by_sport[req.sport_key] = sport_scoped
@@ -222,8 +262,12 @@ def save_overrides(req: SaveOverridesRequest):
 
     return {
         "status": "ok",
+        "auto_count": len(final_auto_only),
+        "mem_count": len(final_mem),
         "auto_mem_count": len(final_auto),
         "case_hit_count": len(final_case),
+        "scoped_auto_count": sum(len(v) for v in sport_scoped.get("auto", {}).values() if isinstance(v, list)),
+        "scoped_mem_count": sum(len(v) for v in sport_scoped.get("mem", {}).values() if isinstance(v, list)),
         "scoped_auto_mem_count": sum(len(v) for v in sport_scoped.get("auto_mem", {}).values() if isinstance(v, list)),
         "scoped_case_hit_count": sum(len(v) for v in sport_scoped.get("case_hit", {}).values() if isinstance(v, list)),
     }

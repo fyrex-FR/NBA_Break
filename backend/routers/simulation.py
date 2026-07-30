@@ -131,8 +131,7 @@ def get_players_for_letter_break(req: BreakSimulationRequest):
     if pool.empty:
         return {"players": [], "grouped": {}, "stats": {}}
 
-    # Compute per-player stats: cards count + auto/memo count
-    from ..services.card_logic import CATEGORY_AUTO_MEM
+    # Compute per-player stats: cards count + hit count
     player_stats: dict[str, dict] = {}
     for _, row in pool.iterrows():
         players = row.get("Player List", [])

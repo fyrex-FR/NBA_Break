@@ -16,17 +16,22 @@ const columnHelper = createColumnHelper<RankingRecord>()
 interface CategoryFilteredViewProps {
   title: string
   icon: string
-  category: string
+  category?: string
+  hitTypes?: string[]
   description: string
 }
 
-export function CategoryFilteredView({ title, icon, category, description }: CategoryFilteredViewProps) {
+export function CategoryFilteredView({ title, icon, category, hitTypes, description }: CategoryFilteredViewProps) {
   const { analysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
   if (!analysisData) return null
 
   const filtered = useMemo(
-    () => analysisData.cards.filter((c) => c.Category === category),
-    [analysisData.cards, category],
+    () => analysisData.cards.filter((c) => {
+      if (hitTypes?.length) return hitTypes.includes(c['Hit Type'] || '')
+      if (category) return c.Category === category
+      return true
+    }),
+    [analysisData.cards, category, hitTypes],
   )
 
   const playerRankings = useMemo(() => {

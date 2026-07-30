@@ -10,13 +10,21 @@ import json
 import pandas as pd
 
 from .card_logic import (
+    CATEGORY_AUTO,
     CATEGORY_AUTO_MEM,
     CATEGORY_BASE_OTHER,
     CATEGORY_CASE_HIT,
     CATEGORY_LOGOMAN,
+    CATEGORY_MEM,
+    HIT_TYPE_AUTO,
+    HIT_TYPE_AUTO_MEM,
+    HIT_TYPE_MEM,
+    HIT_TYPE_NONE,
     build_hype_map,
     calculate_score,
     categorize_card,
+    category_from_hit_type,
+    classify_hit_type,
     get_hype_multiplier,
     rarity_multiplier,
 )
@@ -50,15 +58,22 @@ def normalize_scope_text(value):
 def _build_scoped_override_sets(keyword_overrides_root, sport_keys):
     scoped_root = keyword_overrides_root.get("scoped_category_by_sport", {})
     if not isinstance(scoped_root, dict):
-        return {}, {}
+        return {}, {}, {}, {}
 
-    auto_sets = {}
+    auto_only_sets = {}
+    mem_sets = {}
+    auto_mem_sets = {}
     case_sets = {}
     for sk in sport_keys:
         sport_scoped = scoped_root.get(sk, {})
         if not isinstance(sport_scoped, dict):
             continue
-        for target, bucket in ((auto_sets, "auto_mem"), (case_sets, "case_hit")):
+        for target, bucket in (
+            (auto_only_sets, "auto"),
+            (mem_sets, "mem"),
+            (auto_mem_sets, "auto_mem"),
+            (case_sets, "case_hit"),
+        ):
             values = sport_scoped.get(bucket, {})
             if not isinstance(values, dict):
                 continue
@@ -70,7 +85,7 @@ def _build_scoped_override_sets(keyword_overrides_root, sport_keys):
                     normalize_box_type_text(v) for v in box_types if str(v).strip()
                 }
             target[sk] = parsed
-    return auto_sets, case_sets
+    return auto_only_sets, mem_sets, auto_mem_sets, case_sets
 
 
 def normalize_player_name(name):
@@ -156,14 +171,20 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
     effective_exact_by_sport = get_effective_exact_category_by_sport(keyword_overrides_root)
 
     auto_override_sets = {}
+    auto_only_override_sets = {}
+    mem_override_sets = {}
     case_override_sets = {}
     for sk in sport_rule_map.keys():
         sport_overrides = effective_exact_by_sport.get(sk, {})
         auto_values = sport_overrides.get("auto_mem", []) if isinstance(sport_overrides, dict) else []
+        auto_only_values = sport_overrides.get("auto", []) if isinstance(sport_overrides, dict) else []
+        mem_values = sport_overrides.get("mem", []) if isinstance(sport_overrides, dict) else []
         case_values = sport_overrides.get("case_hit", []) if isinstance(sport_overrides, dict) else []
         auto_override_sets[sk] = {normalize_box_type_text(v) for v in auto_values if str(v).strip()}
+        auto_only_override_sets[sk] = {normalize_box_type_text(v) for v in auto_only_values if str(v).strip()}
+        mem_override_sets[sk] = {normalize_box_type_text(v) for v in mem_values if str(v).strip()}
         case_override_sets[sk] = {normalize_box_type_text(v) for v in case_values if str(v).strip()}
-    scoped_auto_sets, scoped_case_sets = _build_scoped_override_sets(
+    scoped_auto_only_sets, scoped_mem_sets, scoped_auto_mem_sets, scoped_case_sets = _build_scoped_override_sets(
         keyword_overrides_root, sport_rule_map.keys()
     )
     aliases_root = load_checklist_aliases()
@@ -177,9 +198,13 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
     for sk in sport_series.dropna().astype(str).unique().tolist():
         mask = sport_series == sk
         rules = sport_rule_map.get(sk, category_rules)
-        auto_set = auto_override_sets.get(sk, set())
+        auto_only_set = auto_only_override_sets.get(sk, set())
+        mem_set = mem_override_sets.get(sk, set())
+        auto_mem_set = auto_override_sets.get(sk, set())
         case_set = case_override_sets.get(sk, set())
-        scoped_auto = scoped_auto_sets.get(sk, {})
+        scoped_auto_only = scoped_auto_only_sets.get(sk, {})
+        scoped_mem = scoped_mem_sets.get(sk, {})
+        scoped_auto_mem = scoped_auto_mem_sets.get(sk, {})
         scoped_case = scoped_case_sets.get(sk, {})
         local_map = (
             df.loc[mask, ["Normalized Box Type", "Box Type"]]
@@ -190,21 +215,37 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
         )
 
         norm_to_category = {}
+        norm_to_hit_type = {}
         for norm_box, raw_box in local_map.items():
+            hit_type = classify_hit_type(raw_box, rules)
+            if norm_box in auto_mem_set:
+                hit_type = hit_type if hit_type != HIT_TYPE_NONE else HIT_TYPE_AUTO_MEM
+            elif norm_box in auto_only_set:
+                hit_type = HIT_TYPE_AUTO
+            elif norm_box in mem_set:
+                hit_type = HIT_TYPE_MEM
+            norm_to_hit_type[norm_box] = hit_type
+
             if norm_box in case_set:
                 norm_to_category[norm_box] = CATEGORY_CASE_HIT
-            elif norm_box in auto_set:
-                norm_to_category[norm_box] = CATEGORY_AUTO_MEM
             else:
-                norm_to_category[norm_box] = categorize_card(raw_box, rules)
+                category = categorize_card(raw_box, rules)
+                if category in (CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER) and hit_type != HIT_TYPE_NONE:
+                    category = category_from_hit_type(hit_type)
+                norm_to_category[norm_box] = category
 
         df.loc[mask, "Category"] = (
             df.loc[mask, "Normalized Box Type"]
             .map(norm_to_category)
             .fillna(CATEGORY_BASE_OTHER)
         )
+        df.loc[mask, "Hit Type"] = (
+            df.loc[mask, "Normalized Box Type"]
+            .map(norm_to_hit_type)
+            .fillna(HIT_TYPE_NONE)
+        )
 
-        if scoped_auto or scoped_case:
+        if scoped_auto_only or scoped_mem or scoped_auto_mem or scoped_case:
             scope_series = (
                 df.loc[mask, "checklist_id"].astype(str)
                 if "checklist_id" in df.columns
@@ -219,12 +260,33 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
                 for scope, norm in zip(scope_series, norm_series)
             ]
             scoped_auto_mask = [
-                any(norm in scoped_auto.get(normalize_scope_text(alias), set()) for alias in equivalent_checklist_ids(sk, scope, aliases_root) or {scope})
+                any(norm in scoped_auto_mem.get(normalize_scope_text(alias), set()) for alias in equivalent_checklist_ids(sk, scope, aliases_root) or {scope})
+                for scope, norm in zip(scope_series, norm_series)
+            ]
+            scoped_auto_only_mask = [
+                any(norm in scoped_auto_only.get(normalize_scope_text(alias), set()) for alias in equivalent_checklist_ids(sk, scope, aliases_root) or {scope})
+                for scope, norm in zip(scope_series, norm_series)
+            ]
+            scoped_mem_mask = [
+                any(norm in scoped_mem.get(normalize_scope_text(alias), set()) for alias in equivalent_checklist_ids(sk, scope, aliases_root) or {scope})
                 for scope, norm in zip(scope_series, norm_series)
             ]
             scoped_case_index = df.loc[mask].index[scoped_case_mask]
             scoped_auto_index = df.loc[mask].index[scoped_auto_mask]
-            df.loc[scoped_auto_index, "Category"] = CATEGORY_AUTO_MEM
+            scoped_auto_only_index = df.loc[mask].index[scoped_auto_only_mask]
+            scoped_mem_index = df.loc[mask].index[scoped_mem_mask]
+            df.loc[scoped_auto_only_index, "Hit Type"] = HIT_TYPE_AUTO
+            df.loc[scoped_auto_only_index, "Category"] = CATEGORY_AUTO
+            df.loc[scoped_mem_index, "Hit Type"] = HIT_TYPE_MEM
+            df.loc[scoped_mem_index, "Category"] = CATEGORY_MEM
+            scoped_auto_needs_fallback = df.loc[scoped_auto_index, "Hit Type"].eq(HIT_TYPE_NONE)
+            scoped_auto_fallback_index = df.loc[scoped_auto_index].index[scoped_auto_needs_fallback]
+            df.loc[scoped_auto_fallback_index, "Hit Type"] = HIT_TYPE_AUTO_MEM
+            scoped_auto_category_index = df.loc[
+                scoped_auto_index,
+            ].index[~df.loc[scoped_auto_index, "Category"].isin([CATEGORY_LOGOMAN, CATEGORY_CASE_HIT])]
+            scoped_auto_category = df.loc[scoped_auto_category_index, "Hit Type"].apply(category_from_hit_type)
+            df.loc[scoped_auto_category_index, "Category"] = scoped_auto_category.values
             df.loc[scoped_case_index, "Category"] = CATEGORY_CASE_HIT
     df.drop(columns=["Normalized Box Type"], inplace=True, errors="ignore")
     df["Rarity Mult"] = df["Numbering"].apply(rarity_multiplier)
@@ -305,10 +367,17 @@ def compute_category_summary(df):
     if df is None or df.empty or "Category" not in df.columns:
         return {}
     counts = df["Category"].value_counts().to_dict()
+    hit_counts = df["Hit Type"].value_counts().to_dict() if "Hit Type" in df.columns else {}
+    auto_count = int(hit_counts.get(HIT_TYPE_AUTO, counts.get(CATEGORY_AUTO, 0)))
+    mem_count = int(hit_counts.get(HIT_TYPE_MEM, counts.get(CATEGORY_MEM, 0)))
+    auto_mem_count = int(hit_counts.get(HIT_TYPE_AUTO_MEM, counts.get(CATEGORY_AUTO_MEM, 0)))
     return {
         "logoman": int(counts.get(CATEGORY_LOGOMAN, 0)),
         "case_hit": int(counts.get(CATEGORY_CASE_HIT, 0)),
-        "auto_mem": int(counts.get(CATEGORY_AUTO_MEM, 0)),
+        "auto": auto_count,
+        "mem": mem_count,
+        "auto_mem": auto_mem_count,
+        "hit_total": auto_count + mem_count + auto_mem_count,
         "base_other": int(counts.get(CATEGORY_BASE_OTHER, 0)),
     }
 

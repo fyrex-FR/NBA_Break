@@ -190,6 +190,9 @@ export interface CardTypeCandidate {
   file: string
   checklist_id: string
   current_category: string
+  hit_type: string
+  is_auto_only: boolean
+  is_mem: boolean
   is_auto: boolean
   is_case: boolean
 }
@@ -277,14 +280,22 @@ export function deleteChecklist(sportKey: string, checklistId: string, adminToke
 
 export function saveOverrides(
   sportKey: string,
+  auto?: string[],
+  mem?: string[],
   autoMem?: string[],
   caseHit?: string[],
+  scopedAuto?: { checklist_id: string; file?: string; box_type: string }[],
+  scopedMem?: { checklist_id: string; file?: string; box_type: string }[],
   scopedAutoMem?: { checklist_id: string; file?: string; box_type: string }[],
   scopedCaseHit?: { checklist_id: string; file?: string; box_type: string }[],
-): Promise<{ status: string; auto_mem_count: number; case_hit_count: number; scoped_auto_mem_count: number; scoped_case_hit_count: number }> {
+): Promise<{ status: string; auto_count: number; mem_count: number; auto_mem_count: number; case_hit_count: number; scoped_auto_count: number; scoped_mem_count: number; scoped_auto_mem_count: number; scoped_case_hit_count: number }> {
   const body: Record<string, unknown> = { sport_key: sportKey }
+  if (auto) body.auto = auto
+  if (mem) body.mem = mem
   if (autoMem) body.auto_mem = autoMem
   if (caseHit) body.case_hit = caseHit
+  if (scopedAuto) body.scoped_auto = scopedAuto
+  if (scopedMem) body.scoped_mem = scopedMem
   if (scopedAutoMem) body.scoped_auto_mem = scopedAutoMem
   if (scopedCaseHit) body.scoped_case_hit = scopedCaseHit
   return fetchJSON('/overrides/save', {

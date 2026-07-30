@@ -108,7 +108,10 @@ class RankingRecord(BaseModel):
 class CategorySummary(BaseModel):
     logoman: int = 0
     case_hit: int = 0
+    auto: int = 0
+    mem: int = 0
     auto_mem: int = 0
+    hit_total: int = 0
     base_other: int = 0
 
 

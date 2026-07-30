@@ -4,12 +4,21 @@ import re
 CATEGORY_LOGOMAN = "🔥 Logoman"
 CATEGORY_CASE_HIT = "✨ Case Hit"
 CATEGORY_AUTO_MEM = "💎 Auto/Mem"
+CATEGORY_AUTO = "✍️ Auto"
+CATEGORY_MEM = "🧵 Memo"
 CATEGORY_BASE_OTHER = "📄 Base/Autre"
+
+HIT_TYPE_NONE = "none"
+HIT_TYPE_AUTO = "auto"
+HIT_TYPE_MEM = "mem"
+HIT_TYPE_AUTO_MEM = "auto_mem"
 
 CATEGORY_FILTER_OPTIONS = [
     "Tous",
     CATEGORY_LOGOMAN,
     CATEGORY_CASE_HIT,
+    CATEGORY_AUTO,
+    CATEGORY_MEM,
     CATEGORY_AUTO_MEM,
     CATEGORY_BASE_OTHER,
 ]
@@ -41,11 +50,73 @@ def categorize_card(box_type, category_rules):
     return CATEGORY_BASE_OTHER
 
 
+def classify_hit_type(box_type, category_rules):
+    """Classify autograph/memorabilia signal independently from premium category."""
+    text = str(box_type or "").lower()
+
+    auto_keywords = category_rules.get("auto", [])
+    if not auto_keywords:
+        auto_keywords = category_rules.get("auto_mem", [])
+
+    mem_keywords = category_rules.get("mem", [])
+    if not mem_keywords:
+        mem_keywords = [
+            "patch",
+            "patches",
+            "swatch",
+            "swatches",
+            "jersey",
+            "material",
+            "materials",
+            "memorabilia",
+            "relic",
+            "relics",
+            "logo",
+            "logos",
+            "logoman",
+            "tag",
+            "tags",
+            "laundry",
+            "sneaker",
+            "sneakers",
+            "shoe",
+            "shoes",
+            "sole",
+            "brand logo",
+            "cutting edge",
+            "nameplate",
+            "prime",
+        ]
+
+    has_auto = any(k in text for k in auto_keywords)
+    has_mem = any(k in text for k in mem_keywords)
+
+    if has_auto and has_mem:
+        return HIT_TYPE_AUTO_MEM
+    if has_auto:
+        return HIT_TYPE_AUTO
+    if has_mem:
+        return HIT_TYPE_MEM
+    return HIT_TYPE_NONE
+
+
+def category_from_hit_type(hit_type):
+    if hit_type == HIT_TYPE_AUTO:
+        return CATEGORY_AUTO
+    if hit_type == HIT_TYPE_MEM:
+        return CATEGORY_MEM
+    if hit_type == HIT_TYPE_AUTO_MEM:
+        return CATEGORY_AUTO_MEM
+    return CATEGORY_BASE_OTHER
+
+
 def calculate_score(category):
     weights = {
         CATEGORY_LOGOMAN: 1000,
         CATEGORY_CASE_HIT: 500,
-        CATEGORY_AUTO_MEM: 20,
+        CATEGORY_AUTO_MEM: 30,
+        CATEGORY_AUTO: 20,
+        CATEGORY_MEM: 8,
         CATEGORY_BASE_OTHER: 1,
     }
     return weights.get(category, 1)

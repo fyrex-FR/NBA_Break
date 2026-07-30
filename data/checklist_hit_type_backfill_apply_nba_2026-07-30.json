@@ -1,0 +1,1059 @@
+{
+  "generated_at": "2026-07-30T09:13:56.928466+00:00",
+  "sport_key": "nba",
+  "master_key": "parquet_master/nba.parquet",
+  "backup_key": "backups/parquet_master/nba/20260730-091351.parquet",
+  "applied": true,
+  "bytes_written": 645377,
+  "input_parquet": "R2 master",
+  "total_rows": 155004,
+  "total_rows_before": 155004,
+  "total_rows_after": 155004,
+  "columns_before": [
+    "Player",
+    "Team",
+    "Box Type",
+    "Numbering",
+    "Hits",
+    "File",
+    "Year",
+    "Product",
+    "Sport",
+    "checklist_id",
+    "checklist_name"
+  ],
+  "columns_after": [
+    "Player",
+    "Team",
+    "Box Type",
+    "Numbering",
+    "Hits",
+    "File",
+    "Year",
+    "Product",
+    "Sport",
+    "checklist_id",
+    "checklist_name",
+    "Category",
+    "Hit Type"
+  ],
+  "hit_type_counts_before": {},
+  "hit_type_counts": {
+    "Auto": 43567,
+    "Auto/Memo": 14338,
+    "Memo": 19970,
+    "None": 77129
+  },
+  "category_counts_before": {},
+  "category_counts": {
+    "📄 Base/Autre": 73794,
+    "✍️ Auto": 43372,
+    "🧵 Memo": 18222,
+    "💎 Auto/Mem": 13629,
+    "✨ Case Hit": 3423,
+    "🔥 Logoman": 2564
+  },
+  "top_hit_card_types": [
+    {
+      "checklist_id": "2013-14-panini-totally-certified-basketball-checklist",
+      "checklist_name": "2013-14-Panini-Totally-Certified-Basketball-Checklist.parquet",
+      "box_type": "Totally Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 261,
+      "hits": 261
+    },
+    {
+      "checklist_id": "2013-14-panini-totally-certified-basketball-checklist",
+      "checklist_name": "2013-14-Panini-Totally-Certified-Basketball-Checklist.parquet",
+      "box_type": "Materials",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 200,
+      "hits": 200
+    },
+    {
+      "checklist_id": "2013-14-panini-totally-certified-basketball-checklist",
+      "checklist_name": "2013-14-Panini-Totally-Certified-Basketball-Checklist.parquet",
+      "box_type": "Materials Prime",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 200,
+      "hits": 200
+    },
+    {
+      "checklist_id": "2025-26-panini-donruss-basketball-checklist",
+      "checklist_name": "2025-26-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Base Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 196,
+      "hits": 196
+    },
+    {
+      "checklist_id": "2012-13-panini-totally-certified-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Totally-Certified-Basketball-Checklist.parquet",
+      "box_type": "Totally Memorabilia",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 195,
+      "hits": 195
+    },
+    {
+      "checklist_id": "2012-13-panini-totally-certified-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Totally-Certified-Basketball-Checklist.parquet",
+      "box_type": "Totally Memorabilia Prime",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 194,
+      "hits": 194
+    },
+    {
+      "checklist_id": "2023-24-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2023-24-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Colossal Logoman",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🔥 Logoman",
+      "rows": 192,
+      "hits": 192
+    },
+    {
+      "checklist_id": "2024-25-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2024-25-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Colossal Logoman",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🔥 Logoman",
+      "rows": 185,
+      "hits": 185
+    },
+    {
+      "checklist_id": "2024-25-panini-prizm-black-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Prizm-Black-Basketball-Checklist.parquet",
+      "box_type": "Base Autographs Prizms Silver",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 177,
+      "hits": 177
+    },
+    {
+      "checklist_id": "2012-13-panini-hoops-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 157,
+      "hits": 157
+    },
+    {
+      "checklist_id": "2022-23-panini-flawless-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Flawless-Basketball-Checklist.parquet",
+      "box_type": "Bill Russell Tribute Patch",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 143,
+      "hits": 143
+    },
+    {
+      "checklist_id": "2025-26-panini-donruss-basketball-checklist",
+      "checklist_name": "2025-26-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Base Optic Autographs Holo",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 140,
+      "hits": 140
+    },
+    {
+      "checklist_id": "2024-25-panini-mosaic-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Mosaic-Basketball-Checklist.parquet",
+      "box_type": "Scripts",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 132,
+      "hits": 132
+    },
+    {
+      "checklist_id": "2010-11-panini-season-update-basketball-checklist",
+      "checklist_name": "2010-11-Panini-Season-Update-Basketball-Checklist.parquet",
+      "box_type": "Rookie Duals Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 131,
+      "hits": 131
+    },
+    {
+      "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Gold-Standard-Basketball-Checklist.parquet",
+      "box_type": "Bullion Brand Logos",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Gold-Standard-Basketball-Checklist.parquet",
+      "box_type": "Marks of Gold Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Gold-Standard-Basketball-Checklist.parquet",
+      "box_type": "Marks of Gold Autographs Printing Plates",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2012-13-panini-totally-certified-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Totally-Certified-Basketball-Checklist.parquet",
+      "box_type": "Totally Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2014-15-panini-donruss-basketball-checklist",
+      "checklist_name": "2014-15-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Status Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2017-18-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2017-18-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2019-20-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2019-20-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2020-21-panini-donruss-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Jersey Series",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2020-21-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2020-21-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2020-21-panini-prizm-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Prizm-Basketball-Checklist.parquet",
+      "box_type": "Sensational Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2020-21-panini-prizm-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Prizm-Basketball-Checklist.parquet",
+      "box_type": "Sensational Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2021-22-panini-mosaic-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Mosaic-Basketball-Checklist.parquet",
+      "box_type": "Autographs Fast Break",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2021-22-panini-prizm-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Prizm-Basketball-Checklist.parquet",
+      "box_type": "Sensational Swatches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2022-23-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2022-23-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2022-23-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2022-23-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Colossal Logoman",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🔥 Logoman",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2023-24-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2023-24-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2024-25-panini-mosaic-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Mosaic-Basketball-Checklist.parquet",
+      "box_type": "Autographs Fast Break",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2024-25-panini-silhouette-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Silhouette-Basketball-Checklist.parquet",
+      "box_type": "NBA Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2024-25-panini-silhouette-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Silhouette-Basketball-Checklist.parquet",
+      "box_type": "Threads",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2025-26-topps-bowman-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Bowman-Basketball-Checklist.parquet",
+      "box_type": "Paper Prospect Retail Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2025-26-topps-holiday-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Holiday-Basketball-Checklist.parquet",
+      "box_type": "Player Relics",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 100,
+      "hits": 100
+    },
+    {
+      "checklist_id": "2017-18-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2017-18-Panini-Nba-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2017-18-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2017-18-Panini-Nba-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance Gold",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2020-21-panini-mosaic-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Mosaic-Basketball-Checklist.parquet",
+      "box_type": "Autographs Fast Break",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2020-21-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2020-21-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Colossal Logoman",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🔥 Logoman",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2021-22-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2021-22-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Opti-Graphs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Patches - Jersey Number",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "The Standard",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2023-24-panini-immaculate-basketball-checklist",
+      "checklist_name": "2023-24-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Patches",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2024-25-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2024-25-Panini-NBA-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2024-25-topps-chrome-basketball-checklist",
+      "checklist_name": "2024-25-Topps-Chrome-Basketball-Checklist.parquet",
+      "box_type": "Chromographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2025-26-topps-bowman-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Bowman-Basketball-Checklist.parquet",
+      "box_type": "Chrome Prospect Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2025-26-topps-bowman-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Bowman-Basketball-Checklist.parquet",
+      "box_type": "Paper Rookie And Veterans Retail Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 99,
+      "hits": 99
+    },
+    {
+      "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Gold-Standard-Basketball-Checklist.parquet",
+      "box_type": "Black Gold Threads",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Gold-Standard-Basketball-Checklist.parquet",
+      "box_type": "Black Gold Threads Prime",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+      "checklist_name": "2012-13-Panini-Gold-Standard-Basketball-Checklist.parquet",
+      "box_type": "Black Gold Threads Printing Plates",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2020-21-panini-donruss-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Patches - Jersey Number",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2020-21-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Nba-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2021-22-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2021-22-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Colossal Logoman",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🔥 Logoman",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2023-24-panini-prizm-deca-basketball-checklist",
+      "checklist_name": "2023-24-Panini-Prizm-Deca-Basketball-Checklist.parquet",
+      "box_type": "Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2023-24-topps-chrome-sapphire-basketball-checklist",
+      "checklist_name": "2023-24-Topps-Chrome-Sapphire-Basketball-Checklist.parquet",
+      "box_type": "Topps Chrome Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2024-25-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Fast Break Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2025-26-topps-bowman-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Bowman-Basketball-Checklist.parquet",
+      "box_type": "Chrome Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-update-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Update-Basketball-Checklist.parquet",
+      "box_type": "Chrome Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 98,
+      "hits": 98
+    },
+    {
+      "checklist_id": "2016-17-panini-donruss-basketball-checklist",
+      "checklist_name": "2016-17-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Memorabilia",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2020-21-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2020-21-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Jersey Treasures",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2022-23-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Nba-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2023-24-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2023-24-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2023-24-topps-cosmic-chrome-basketball-checklist",
+      "checklist_name": "2023-24-Topps-Cosmic-Chrome-Basketball-Checklist.parquet",
+      "box_type": "Cosmic Chrome Autographs Refractors",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2024-25-panini-immaculate-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Premium Patch Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2024-25-panini-revolution-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Revolution-Basketball-Checklist.parquet",
+      "box_type": "Revolution Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 97,
+      "hits": 97
+    },
+    {
+      "checklist_id": "2017-18-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2017-18-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 96,
+      "hits": 96
+    },
+    {
+      "checklist_id": "2021-22-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 96,
+      "hits": 96
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Premium Patch Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 96,
+      "hits": 96
+    },
+    {
+      "checklist_id": "2022-23-panini-mosaic-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Mosaic-Basketball-Checklist.parquet",
+      "box_type": "Autographs Fast Break",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 96,
+      "hits": 96
+    },
+    {
+      "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Patches - Team Logo",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2022-23-panini-donruss-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2022-23-panini-flux-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Flux-Basketball-Checklist.parquet",
+      "box_type": "Equinox Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2022-23-panini-national-treasures-basketball-checklist",
+      "checklist_name": "2022-23-Panini-National-Treasures-Basketball-Checklist.parquet",
+      "box_type": "Jersey Treasures",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2023-24-panini-mosaic-basketball-checklist",
+      "checklist_name": "2023-24-Panini-Mosaic-Basketball-Checklist.parquet",
+      "box_type": "Autographs Fast Break",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2024-25-panini-silhouette-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Silhouette-Basketball-Checklist.parquet",
+      "box_type": "Silhouette Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2025-26-topps-holiday-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Holiday-Basketball-Checklist.parquet",
+      "box_type": "Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 95,
+      "hits": 95
+    },
+    {
+      "checklist_id": "2017-18-panini-status-basketball-checklist",
+      "checklist_name": "2017-18-Panini-Status-Basketball-Checklist.parquet",
+      "box_type": "New Breed Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 94,
+      "hits": 94
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Premium Patch Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 94,
+      "hits": 94
+    },
+    {
+      "checklist_id": "2021-22-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Nba-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 94,
+      "hits": 94
+    },
+    {
+      "checklist_id": "2023-24-topps-chrome-basketball-checklist",
+      "checklist_name": "2023-24-Topps-Chrome-Basketball-Checklist.parquet",
+      "box_type": "Topps Chrome Autographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 94,
+      "hits": 94
+    },
+    {
+      "checklist_id": "2024-25-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 94,
+      "hits": 94
+    },
+    {
+      "checklist_id": "2021-22-panini-donruss-basketball-checklist",
+      "checklist_name": "2021-22-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 93,
+      "hits": 93
+    },
+    {
+      "checklist_id": "2023-24-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2023-24-Panini-NBA-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 93,
+      "hits": 93
+    },
+    {
+      "checklist_id": "2024-25-panini-donruss-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Donruss-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 93,
+      "hits": 93
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-update-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Update-Basketball-Checklist.parquet",
+      "box_type": "Chromographs",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 93,
+      "hits": 93
+    },
+    {
+      "checklist_id": "2025-26-topps-chrome-update-basketball-checklist",
+      "checklist_name": "2025-26-Topps-Chrome-Update-Basketball-Checklist.parquet",
+      "box_type": "NBA Debut Patch Autographs",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 93,
+      "hits": 93
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "The Standard",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 92,
+      "hits": 92
+    },
+    {
+      "checklist_id": "2024-25-panini-silhouette-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Silhouette-Basketball-Checklist.parquet",
+      "box_type": "Silhouettes",
+      "hit_type": "auto_mem",
+      "hit_type_label": "Auto/Memo",
+      "category": "💎 Auto/Mem",
+      "rows": 92,
+      "hits": 92
+    },
+    {
+      "checklist_id": "2024-25-panini-prizm-deca-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Prizm-Deca-Basketball-Checklist.parquet",
+      "box_type": "Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 91,
+      "hits": 91
+    },
+    {
+      "checklist_id": "2018-19-panini-nba-hoops-basketball-checklist",
+      "checklist_name": "2018-19-Panini-Nba-Hoops-Basketball-Checklist.parquet",
+      "box_type": "Great SIGnificance",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 90,
+      "hits": 90
+    },
+    {
+      "checklist_id": "2019-20-panini-donruss-optic-basketball-checklist",
+      "checklist_name": "2019-20-Panini-Donruss-Optic-Basketball-Checklist.parquet",
+      "box_type": "Signature Series",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 90,
+      "hits": 90
+    },
+    {
+      "checklist_id": "2022-23-panini-prizm-basketball-checklist",
+      "checklist_name": "2022-23-Panini-Prizm-Basketball-Checklist.parquet",
+      "box_type": "Sensational Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 90,
+      "hits": 90
+    },
+    {
+      "checklist_id": "2024-25-panini-immaculate-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Patches - Team Logo",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 90,
+      "hits": 90
+    },
+    {
+      "checklist_id": "2024-25-panini-prizm-black-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Prizm-Black-Basketball-Checklist.parquet",
+      "box_type": "Sensational Signatures",
+      "hit_type": "auto",
+      "hit_type_label": "Auto",
+      "category": "✍️ Auto",
+      "rows": 90,
+      "hits": 90
+    },
+    {
+      "checklist_id": "2024-25-panini-silhouette-basketball-checklist",
+      "checklist_name": "2024-25-Panini-Silhouette-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Memorabilia",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 90,
+      "hits": 90
+    },
+    {
+      "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+      "checklist_name": "2020-21-Panini-Immaculate-Basketball-Checklist.parquet",
+      "box_type": "Jumbo Patches - Team Logo",
+      "hit_type": "mem",
+      "hit_type_label": "Memo",
+      "category": "🧵 Memo",
+      "rows": 89,
+      "hits": 89
+    }
+  ],
+  "uncertain_keyword_rows": []
+}

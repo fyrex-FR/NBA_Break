@@ -203,6 +203,8 @@ MASTER_COLUMNS = [
     "Sport",
     "checklist_id",
     "checklist_name",
+    "Category",
+    "Hit Type",
 ]
 
 
@@ -287,6 +289,12 @@ def ensure_master_dataframe_schema(df, sport_key):
         work["Hits"] = 1
     else:
         work["Hits"] = pd.to_numeric(work["Hits"], errors="coerce").fillna(1).astype(int)
+
+    for col in ["Category", "Hit Type"]:
+        if col not in work.columns:
+            work[col] = ""
+        else:
+            work[col] = work[col].astype(str).str.strip()
 
     for col in MASTER_COLUMNS:
         if col not in work.columns:
