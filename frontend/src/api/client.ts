@@ -13,6 +13,7 @@ import type {
   TeamStatsResponse,
   VoggtShowResponse,
   VoggtBreakDetail,
+  MarvelAttributionCard,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -301,6 +302,28 @@ export function saveOverrides(
   return fetchJSON('/overrides/save', {
     method: 'POST',
     body: JSON.stringify(body),
+  })
+}
+
+// ---------------------------------------------------------------------------
+// Marvel attribution overrides
+// ---------------------------------------------------------------------------
+
+export function fetchMarvelAttributions(params: {
+  checklist_ids: string[]
+  master_key?: string | null
+  hits_only?: boolean
+}): Promise<{ cards: MarvelAttributionCard[]; overrides_count: number }> {
+  return fetchJSON('/marvel/attributions/detect', {
+    method: 'POST',
+    body: JSON.stringify(params),
+  })
+}
+
+export function saveMarvelAttributions(items: MarvelAttributionCard[]): Promise<{ status: string; overrides_count: number }> {
+  return fetchJSON('/marvel/attributions/save', {
+    method: 'POST',
+    body: JSON.stringify({ items }),
   })
 }
 

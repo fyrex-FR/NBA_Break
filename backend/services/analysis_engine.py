@@ -39,6 +39,7 @@ from .data_pipeline import (
 )
 from .r2_storage import read_r2_parquet, get_r2_config, is_r2_configured
 from .checklist_aliases import load_checklist_aliases, equivalent_checklist_ids
+from .marvel_attributions import apply_marvel_attributions
 
 
 # ---------------------------------------------------------------------------
@@ -120,6 +121,8 @@ def load_master_data(sport_key, checklist_ids, master_key):
     master_df = read_r2_parquet(config, master_key)
     sport_profile = get_sport_profile(sport_key)
     master_df = ensure_master_dataframe_schema(master_df, sport_key)
+    if sport_key == "marvel":
+        master_df = apply_marvel_attributions(master_df)
     team_aliases = sport_profile.get("team_aliases", {})
     master_df["Team"] = master_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
 
@@ -478,6 +481,7 @@ def run_analysis(sport_key, checklist_ids, master_key=None, keyword_overrides_ro
     hype_map = build_hype_map(sport_profile.get("hype_tiers", {}))
     top_rookies_by_year = sport_profile.get("top_rookies_by_year", {})
     enabled_views = compute_enabled_views(sport_profile, category_rules, hype_map, top_rookies_by_year)
+    enabled_views["marvel_attribution"] = sport_key == "marvel"
 
     # Metadata
     all_players = set()

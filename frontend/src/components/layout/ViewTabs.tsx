@@ -34,6 +34,7 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
     short: '🛠️',
     views: [
       { name: '🧪 Détection Auto/Mem', key: 'detection', short: 'Détection' },
+      { name: '🦸 Attribution Marvel', key: 'marvel_attribution', short: 'Marvel' },
       { name: '⚖️ Comparateur Joueurs', key: 'comparator', short: 'Comparer' },
       { name: '📥 Import Intelligent', key: 'smart_import', short: 'Import IA' },
     ],

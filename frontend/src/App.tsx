@@ -15,6 +15,7 @@ import { ComparatorView } from './components/views/ComparatorView'
 import { BreakSimulationView } from './components/views/BreakSimulationView'
 import { ExportView } from './components/views/ExportView'
 import { DetectionView } from './components/views/DetectionView'
+import { MarvelAttributionView } from './components/views/MarvelAttributionView'
 import { RookiesView } from './components/views/RookiesView'
 import { TrendView } from './components/views/TrendView'
 import { SmartImportView } from './components/views/SmartImportView'
@@ -135,6 +136,8 @@ function MainContent() {
         return <RookiesView />
       case '🧪 Détection Auto/Mem':
         return <DetectionView />
+      case '🦸 Attribution Marvel':
+        return <MarvelAttributionView />
       case '⚖️ Comparateur Joueurs':
         return <ComparatorView />
       case '🧩 Simulation de Break':

@@ -240,6 +240,7 @@ export type ViewName =
   | '🛡️ Analyse Équipe'
   | '📁 Par Fichier'
   | '🧪 Détection Auto/Mem'
+  | '🦸 Attribution Marvel'
   | '⚖️ Comparateur Joueurs'
   | '🧩 Simulation de Break'
   | '📤 Export'
@@ -330,3 +331,20 @@ export const CATEGORY_BASE_OTHER = '📄 Base/Autre'
 export const HIT_TYPE_AUTO = 'auto'
 export const HIT_TYPE_MEM = 'mem'
 export const HIT_TYPE_AUTO_MEM = 'auto_mem'
+
+export interface MarvelAttributionCard {
+  key: string
+  checklist_id: string
+  checklist_name: string
+  number: string
+  box_type: string
+  hits: number
+  category: string
+  hit_type: string
+  source_player: string
+  source_team: string
+  player: string
+  team: string
+  note: string
+  is_overridden: boolean
+}
