@@ -343,6 +343,8 @@ export interface MarvelAttributionCard {
   hit_type: string
   source_player: string
   source_team: string
+  source_kind: string
+  source_label: string
   player: string
   team: string
   note: string

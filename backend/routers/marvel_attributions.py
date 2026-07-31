@@ -18,6 +18,7 @@ from ..services.marvel_attributions import (
     normalize_attribution_text,
     save_marvel_attributions,
 )
+from ..services.marvel_parser import _ARTIST_AUTOGRAPH_SUBJECTS
 from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, read_r2_parquet
 
 
@@ -77,6 +78,8 @@ class MarvelAttributionCard(BaseModel):
     hit_type: str
     source_player: str
     source_team: str
+    source_kind: str = "source"
+    source_label: str = ""
     player: str
     team: str
     note: str = ""
@@ -128,6 +131,18 @@ def detect_marvel_attributions(req: MarvelAttributionDetectRequest):
         override = items.get(key, {}) if isinstance(items.get(key, {}), dict) else {}
         source_player = normalize_attribution_text(raw_df.loc[idx].get("Player", ""))
         source_team = normalize_attribution_text(raw_df.loc[idx].get("Team", ""))
+        player = normalize_attribution_text(override.get("player", "")) or source_player
+        team = normalize_attribution_text(override.get("team", "")) or source_team
+        source_kind = "manual" if override else "source"
+        source_label = ""
+        parser_artists = _parser_artist_sources(
+            checklist_id=normalize_attribution_text(row.get("checklist_id", "")),
+            box_type=normalize_attribution_text(row.get("Box Type", "")),
+            player=source_player,
+        )
+        if parser_artists:
+            source_kind = "parser"
+            source_label = f"Parser artiste: {parser_artists}"
         cards.append(MarvelAttributionCard(
             key=key,
             checklist_id=normalize_attribution_text(row.get("checklist_id", "")),
@@ -139,8 +154,10 @@ def detect_marvel_attributions(req: MarvelAttributionDetectRequest):
             hit_type=normalize_attribution_text(row.get("Hit Type", "")),
             source_player=source_player,
             source_team=source_team,
-            player=normalize_attribution_text(override.get("player", "")) or source_player,
-            team=normalize_attribution_text(override.get("team", "")) or source_team,
+            source_kind=source_kind,
+            source_label=source_label,
+            player=player,
+            team=team,
             note=normalize_attribution_text(override.get("note", "")),
             is_overridden=bool(override),
         ))
@@ -182,3 +199,27 @@ def save_marvel_attribution_overrides(req: MarvelAttributionSaveRequest):
     root["items"] = dict(sorted(items.items()))
     save_marvel_attributions(root)
     return {"status": "ok", "overrides_count": len(root["items"])}
+
+
+def _parser_artist_sources(checklist_id: str, box_type: str, player: str) -> str:
+    if "artist" not in box_type.lower() or "auto" not in box_type.lower():
+        return ""
+    checklist = checklist_id.lower()
+    if "deadpool" in checklist:
+        mapping = _ARTIST_AUTOGRAPH_SUBJECTS.get("deadpool", {})
+    elif "comic-book-heroes" in checklist:
+        mapping = _ARTIST_AUTOGRAPH_SUBJECTS.get("comic_book_heroes", {})
+    else:
+        mapping = {}
+    if not mapping:
+        return ""
+    artists = [
+        _title_artist(artist)
+        for artist, subject in mapping.items()
+        if normalize_attribution_text(subject).lower() == normalize_attribution_text(player).lower()
+    ]
+    return " / ".join(artists)
+
+
+def _title_artist(value: str) -> str:
+    return " ".join(part.capitalize() if part.lower() != "jr." else "Jr." for part in value.split())

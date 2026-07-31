@@ -192,6 +192,11 @@ export function MarvelAttributionView() {
                     <td className="px-3 py-2 align-top" style={{ color: 'var(--text-secondary)' }}>
                       <div>{card.source_player}</div>
                       <div className="text-xs mt-1" style={{ color: 'var(--text-quaternary)' }}>{card.source_team || '-'}</div>
+                      {card.source_label && (
+                        <div className="text-xs mt-2 rounded-md px-2 py-1" style={{ color: 'var(--accent)', background: 'color-mix(in srgb, var(--accent) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--accent) 25%, transparent)' }}>
+                          {card.source_label}
+                        </div>
+                      )}
                     </td>
                     <td className="px-3 py-2 align-top">
                       <input
