@@ -222,4 +222,13 @@ def _parser_artist_sources(checklist_id: str, box_type: str, player: str) -> str
 
 
 def _title_artist(value: str) -> str:
+    overrides = {
+        "ed mcguinness": "Ed McGuinness",
+        "mike mckone": "Mike McKone",
+        "steve mcniven": "Steve McNiven",
+        "mike deodato jr.": "Mike Deodato Jr.",
+    }
+    normalized = normalize_attribution_text(value).lower()
+    if normalized in overrides:
+        return overrides[normalized]
     return " ".join(part.capitalize() if part.lower() != "jr." else "Jr." for part in value.split())
