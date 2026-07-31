@@ -25,6 +25,10 @@ _KNOWN_FRANCHISES = [
     "Deadpool",
     "Fantastic Four",
     "Guardians of the Galaxy",
+    "Thunderbolts",
+    "Eternals",
+    "Agatha All Along",
+    "Ant-Man",
     "Black Panther",
     "Captain America",
     "Iron Man",
@@ -65,13 +69,26 @@ _CHARACTER_FRANCHISE_HINTS = {
     "black panther": "Black Panther",
     "doctor strange": "Doctor Strange",
     "daredevil": "Daredevil",
+    "punisher": "Daredevil",
+    "frank castle": "Daredevil",
+    "bullseye": "Daredevil",
     "mr. fantastic": "Fantastic Four",
+    "mister fantastic": "Fantastic Four",
     "invisible woman": "Fantastic Four",
     "human torch": "Fantastic Four",
     "the thing": "Fantastic Four",
+    "galactus": "Fantastic Four",
     "star-lord": "Guardians of the Galaxy",
     "groot": "Guardians of the Galaxy",
     "gamora": "Guardians of the Galaxy",
+    "rocket": "Guardians of the Galaxy",
+    "sentry": "Thunderbolts",
+    "john f. walker": "Thunderbolts",
+    "maya lopez": "Daredevil",
+    "agatha harkness": "Agatha All Along",
+    "billy maximoff": "Agatha All Along",
+    "ant-man": "Ant-Man",
+    "the wasp": "Ant-Man",
 }
 
 
@@ -110,6 +127,50 @@ def _subject_from_text(text: str) -> str:
         if subject:
             return subject
     return re.sub(r"\s*\([^)]*\)\s*$", "", clean).strip()
+
+
+def _character_from_parenthetical(value: str) -> str:
+    text = _clean(value)
+    if not text:
+        return ""
+    characters = []
+    for match in re.finditer(r"\(([^()]*)\)", text):
+        inside = match.group(1).strip()
+        if not inside:
+            continue
+        if re.fullmatch(r"\d{4}", inside):
+            continue
+        character = re.split(r"\s+-\s+|-(?=[A-Za-z])", inside, maxsplit=1)[0].strip()
+        if character:
+            characters.append(character)
+    return "/".join(dict.fromkeys(characters))
+
+
+def _subject_for_break(raw: str, section: str = "") -> str:
+    """Return the claimable break subject, not the signer/artist when both exist."""
+    clean = _clean(raw)
+    if not clean:
+        return ""
+
+    character = _character_from_parenthetical(clean)
+    if character:
+        return character
+
+    as_match = re.search(r"\bas\s+(.+)$", clean, flags=re.IGNORECASE)
+    if as_match:
+        return as_match.group(1).strip()
+
+    subject = _subject_from_text(clean)
+    lower_section = section.lower()
+    if "autographed comic clippings" in lower_section and " - " in subject:
+        title = subject.split(" - ", 1)[1].strip()
+        title = re.sub(r"\s*\([^)]*\).*", "", title).strip()
+        title = re.sub(r"\s+#\S+.*", "", title).strip()
+        if title:
+            return title
+    if ("artist auto" in lower_section or "animation cels" in lower_section) and " - " in subject:
+        return subject.split(" - ", 1)[0].strip()
+    return subject
 
 
 def _infer_team(subject: str, section: str, product_hint: str) -> str:
@@ -185,15 +246,23 @@ def _parse_headered_sheet(df: pd.DataFrame, product_hint: str) -> list[dict]:
 
     rows = []
     for _, row in work.iloc[header_idx + 1:].iterrows():
-        subject = _subject_from_text(row.iloc[player_col] if player_col < work.shape[1] else "")
+        box_type = _clean(row.iloc[box_col] if box_col is not None and box_col < work.shape[1] else "")
+        raw_subject = _clean(row.iloc[player_col] if player_col < work.shape[1] else "")
+        subject = _subject_for_break(raw_subject, box_type)
         if not subject:
             continue
-        box_type = _clean(row.iloc[box_col] if box_col is not None and box_col < work.shape[1] else "")
         team = _clean(row.iloc[team_col] if team_col is not None and team_col < work.shape[1] else "")
         if not team:
             team = _infer_team(subject, box_type, product_hint)
         numbering = _clean_numbering(row.iloc[numbering_col]) if numbering_col is not None and numbering_col < work.shape[1] else ""
-        rows.append({"Player": subject, "Team": team, "Box Type": box_type or "Base", "Numbering": numbering, "Hits": 1})
+        rows.append({
+            "Player": subject,
+            "Team": team,
+            "Box Type": box_type or "Base",
+            "Numbering": numbering,
+            "Hits": 1,
+            "_raw_subject": raw_subject,
+        })
     return rows
 
 
@@ -224,11 +293,13 @@ def _parse_section_sheet(df: pd.DataFrame, sheet_name: str, product_hint: str) -
         if skip_section or not c1:
             continue
 
-        subject = _subject_from_text(c2 if c2.startswith("(") else c1)
+        raw_subject = c3 if c3.startswith("(") else c2 if c2.startswith("(") else c1
+        context = " ".join(part for part in [current_section, c1, c2, c3] if part)
+        subject = _subject_for_break(raw_subject, current_section)
         if not subject:
             continue
 
-        team = _infer_team(subject, current_section, product_hint)
+        team = _infer_team(subject, context, product_hint)
         numbering = _clean_numbering(c2) or _clean_numbering(c3)
         rows.append({
             "Player": subject,
@@ -236,6 +307,7 @@ def _parse_section_sheet(df: pd.DataFrame, sheet_name: str, product_hint: str) -
             "Box Type": current_section or sheet_name,
             "Numbering": numbering,
             "Hits": 1,
+            "_raw_subject": raw_subject,
         })
 
     return rows
@@ -261,7 +333,7 @@ def _fill_generic_teams(rows: list[dict]) -> list[dict]:
 
 
 def _dedup(rows: list[dict]) -> list[dict]:
-    seen = set()
+    by_key = {}
     out = []
     for row in rows:
         key = (
@@ -270,9 +342,13 @@ def _dedup(rows: list[dict]) -> list[dict]:
             row.get("Box Type", "").lower(),
             row.get("Numbering", ""),
         )
-        if key in seen:
+        if key in by_key:
+            existing_raw = _clean(by_key[key].get("_raw_subject", "")).lower()
+            current_raw = _clean(row.get("_raw_subject", "")).lower()
+            if current_raw and current_raw != existing_raw:
+                by_key[key]["Hits"] = int(by_key[key].get("Hits", 1) or 1) + int(row.get("Hits", 1) or 1)
             continue
-        seen.add(key)
+        by_key[key] = row
         out.append(row)
     return out
 
