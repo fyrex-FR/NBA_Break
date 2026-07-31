@@ -7,6 +7,7 @@ from typing import Optional
 import pandas as pd
 
 from ..services.gemini_parser import parse_with_gemini, parse_excel_beckett
+from ..services.marvel_parser import parse_marvel_checklist
 from ..services.data_pipeline import (
     ensure_master_dataframe_schema,
     master_parquet_key_for_sport,
@@ -56,7 +57,13 @@ async def smart_preview(
         if file:
             file_bytes = await file.read()
             fname = (file.filename or "upload").lower()
-            if fname.endswith((".xlsx", ".xls")):
+            if sport_key == "marvel" and fname.endswith((".xlsx", ".xls")):
+                df = parse_marvel_checklist(file_bytes, file.filename or "upload")
+                result = {
+                    "checklist_name": file.filename or "upload",
+                    "rows": df[["Player", "Team", "Box Type", "Numbering"]].to_dict(orient="records"),
+                }
+            elif fname.endswith((".xlsx", ".xls")):
                 result = parse_excel_beckett(file_bytes, file.filename or "upload")
             else:
                 raw_content = file_bytes.decode("utf-8", errors="replace")

@@ -18,6 +18,7 @@ from ..services.data_pipeline import (
     extract_product,
 )
 from ..services.disney_parser import parse_disney_checklist
+from ..services.marvel_parser import parse_marvel_checklist
 from ..services.r2_storage import (
     get_r2_config,
     is_r2_configured,
@@ -51,6 +52,8 @@ async def upload_checklist(
         filename = file.filename or "upload"
         if filename.lower().endswith(".csv"):
             df = normalize_checklist_columns(pd.read_csv(BytesIO(file_data)))
+        elif sport_profile.get("marvel_parser"):
+            df = parse_marvel_checklist(file_data, filename)
         elif sport_profile.get("disney_parser"):
             df = parse_disney_checklist(file_data)
         else:

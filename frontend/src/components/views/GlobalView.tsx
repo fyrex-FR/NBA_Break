@@ -25,12 +25,12 @@ export function GlobalView() {
   if (!analysisData) return null
 
   const { category_summary, metadata } = analysisData
-  const isDisney = metadata.sport_key === 'disney'
-  const teamLabel = isDisney ? 'Univers/Lieux' : 'Equipes'
-  const teamSearchPlaceholder = isDisney ? 'Rechercher un univers ou lieu...' : 'Rechercher une equipe...'
-  const teamHeading = isDisney ? 'Top univers / lieux' : 'Top equipes'
-  const teamDescription = isDisney
-    ? 'Lecture rapide des franchises, univers et lieux les plus presents.'
+  const isEntertainment = metadata.sport_key === 'disney' || metadata.sport_key === 'marvel'
+  const teamLabel = isEntertainment ? 'Univers/Franchises' : 'Equipes'
+  const teamSearchPlaceholder = isEntertainment ? 'Rechercher un univers ou une franchise...' : 'Rechercher une equipe...'
+  const teamHeading = isEntertainment ? 'Top univers / franchises' : 'Top equipes'
+  const teamDescription = isEntertainment
+    ? 'Lecture rapide des franchises, univers et familles de personnages les plus presents.'
     : 'Lecture rapide des volumes avant d entrer dans le detail equipe.'
 
   const playerColumns = useMemo(() => [

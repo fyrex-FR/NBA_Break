@@ -57,6 +57,10 @@ export function TeamDetailView() {
   const { analysisData, targetTeam, setTargetTeam, setTargetPlayer, setActiveView, selectedSport } = useAppStore()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
   const selectedTeam = targetTeam || ''
+  const isEntertainment = selectedSport === 'disney' || selectedSport === 'marvel'
+  const teamLabel = isEntertainment ? 'univers / franchise' : 'equipe'
+  const teamTitle = isEntertainment ? '🛡️ Analyse Univers / Franchise' : '🛡️ Analyse Équipe'
+  const teamPlaceholder = isEntertainment ? 'Tapez un univers ou une franchise...' : "Tapez un nom d'équipe..."
 
   const { data: teamInfo } = useQuery({
     queryKey: ['team-stats', selectedTeam],
@@ -174,21 +178,21 @@ export function TeamDetailView() {
           </div>
         </div>
       ) : (
-        <h2 className="text-xl font-medium mb-4">🛡️ Analyse Équipe</h2>
+        <h2 className="text-xl font-medium mb-4">{teamTitle}</h2>
       )}
 
       <SearchSelect
         options={allTeams}
         value={selectedTeam}
         onChange={(v) => setTargetTeam(v || null)}
-        placeholder="Tapez un nom d'équipe..."
+        placeholder={teamPlaceholder}
       />
 
       {!selectedTeam ? (
         <div className="text-center py-16">
           <div className="text-4xl mb-3">🛡️</div>
-          <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Sélectionnez une équipe</p>
-          <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Ou cliquez sur une équipe depuis la Vue Globale</p>
+          <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Sélectionnez un {teamLabel}</p>
+          <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Ou cliquez depuis la Vue Globale</p>
         </div>
       ) : (
         <>
@@ -222,7 +226,7 @@ export function TeamDetailView() {
             <div className="mb-3">
               <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Résumé joueurs</h3>
               <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-                Vue compilée des joueurs de l'équipe : volume, auto/memo, hits premium et score. Clique un joueur pour ouvrir son détail.
+                Vue compilée des joueurs de ce {teamLabel} : volume, auto/memo, hits premium et score. Clique un joueur pour ouvrir son détail.
               </p>
             </div>
             <DataTable

@@ -580,6 +580,85 @@ SPORT_PROFILES = {
             "pixar",
         ],
     },
+    "marvel": {
+        "label": "Marvel / Super-héros",
+        "page_icon": "🦸",
+        "header_logo_url": "",
+        "header_title": "NoClim",
+        "header_subtitle": "Analysez vos checklists Marvel et super-héros par personnages, franchises et univers.",
+        "sheet_names": ["Full Checklist"],
+        "marvel_parser": True,
+        "team_aliases": {
+            "avenger": "Avengers",
+            "avengers": "Avengers",
+            "x-men": "X-Men",
+            "xmen": "X-Men",
+            "spider-man": "Spider-Man",
+            "spiderman": "Spider-Man",
+            "deadpool": "Deadpool",
+            "fantastic four": "Fantastic Four",
+            "guardians": "Guardians of the Galaxy",
+            "guardians of the galaxy": "Guardians of the Galaxy",
+            "marvel studios": "Marvel Studios",
+            "mcu": "Marvel Studios",
+            "marvel comics": "Marvel Comics",
+            "marvel": "Marvel",
+        },
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "logoman": [],
+            "auto": DEFAULT_CATEGORY_RULES["auto"] + ["creator autograph", "actor autograph"],
+            "mem": DEFAULT_CATEGORY_RULES["mem"] + ["relic", "costume", "prop", "film cel", "animation cel"],
+            "auto_mem": DEFAULT_CATEGORY_RULES["auto_mem"] + [
+                "sketch",
+                "comic cut",
+                "comic cuts",
+                "cut signature",
+                "creator autograph",
+                "actor autograph",
+                "costume relic",
+                "prop relic",
+            ],
+            "case_hit": DEFAULT_CATEGORY_RULES["case_hit"] + [
+                "jambalaya",
+                "planet metal",
+                "platinum portraits",
+                "precious metal gems",
+                "pmg",
+                "golden treasures",
+                "superfractor",
+                "red refractor",
+                "black refractor",
+            ],
+        },
+        "hype_tiers": {
+            "Tier S": ["Spider-Man", "Wolverine", "Deadpool", "Iron Man", "Captain America", "Doctor Doom"],
+            "Tier A": ["Venom", "Thor", "Hulk", "Black Panther", "Doctor Strange", "Thanos"],
+            "Tier B": ["Daredevil", "Storm", "Magneto", "Cyclops", "Black Widow", "Loki"],
+        },
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": False,
+            "case_hits": True,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": [
+            "marvel",
+            "super hero",
+            "superhero",
+            "avengers",
+            "deadpool",
+            "spider-man",
+            "x-men",
+            "fleer ultra avengers",
+            "kakawow cosmos marvel",
+            "comic book heroes",
+        ],
+    },
     "tennis": {
         "label": "Tennis",
         "page_icon": "🎾",
@@ -753,8 +832,11 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
     nfl_strong = ["nfl", "football", "super bowl", "draft picks"]
     nba_strong = ["nba", "basket", "basketball", "hoops"]
     disney_strong = ["disney", "disneyland", "topps disney", "pixar"]
+    marvel_strong = ["marvel", "deadpool", "avengers", "spider-man", "x-men", "comic book heroes"]
     wwe_strong = ["wwe", "wrestling", "smackdown", "raw wwe", "nxt wwe"]
 
+    if any(h in normalized for h in marvel_strong):
+        return "marvel"
     if any(h in normalized for h in disney_strong):
         return "disney"
     if any(h in normalized for h in wwe_strong):
