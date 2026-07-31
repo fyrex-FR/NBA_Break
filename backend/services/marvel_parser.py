@@ -27,6 +27,7 @@ _KNOWN_FRANCHISES = [
     "Guardians of the Galaxy",
     "Thunderbolts",
     "Eternals",
+    "X-Force",
     "Agatha All Along",
     "Ant-Man",
     "Black Panther",
@@ -48,10 +49,14 @@ _CHARACTER_FRANCHISE_HINTS = {
     "cable": "Deadpool",
     "domino": "Deadpool",
     "negasonic teenage warhead": "Deadpool",
+    "headpool": "Deadpool",
     "spider-man": "Spider-Man",
     "peter parker": "Spider-Man",
     "miles morales": "Spider-Man",
+    "ghost-spider": "Spider-Man",
+    "mary jane watson": "Spider-Man",
     "venom": "Spider-Man",
+    "banshee": "X-Men",
     "wolverine": "X-Men",
     "logan": "X-Men",
     "cyclops": "X-Men",
@@ -82,6 +87,7 @@ _CHARACTER_FRANCHISE_HINTS = {
     "groot": "Guardians of the Galaxy",
     "gamora": "Guardians of the Galaxy",
     "rocket": "Guardians of the Galaxy",
+    "black bolt": "Marvel Comics",
     "sentry": "Thunderbolts",
     "john f. walker": "Thunderbolts",
     "maya lopez": "Daredevil",
@@ -89,6 +95,30 @@ _CHARACTER_FRANCHISE_HINTS = {
     "billy maximoff": "Agatha All Along",
     "ant-man": "Ant-Man",
     "the wasp": "Ant-Man",
+}
+
+_ARTIST_AUTOGRAPH_SUBJECTS = {
+    "deadpool": {
+        "carlo barberi": "Deadpool",
+        "ed mcguinness": "Deadpool/Headpool",
+        "mark brooks": "Deadpool",
+        "mike mckone": "Deadpool",
+        "paco medina": "Deadpool",
+        "ryan brown": "Deadpool",
+    },
+    "comic_book_heroes": {
+        "adam kubert": "Wolverine",
+        "andy kubert": "Banshee",
+        "esad ribic": "Wolverine",
+        "frank miller": "Daredevil",
+        "greg capullo": "X-Force",
+        "joshua cassara": "Hulk",
+        "mark brooks": "Ghost-Spider",
+        "mike deodato jr.": "Mary Jane Watson",
+        "ryan ottley": "Hulk",
+        "ryan stegman": "Venom",
+        "steve mcniven": "Black Bolt",
+    },
 }
 
 
@@ -173,6 +203,19 @@ def _subject_for_break(raw: str, section: str = "") -> str:
     return subject
 
 
+def _artist_subject_for_product(raw: str, section: str, product_hint: str) -> str:
+    if "artist autograph" not in section.lower() and "artist auto" not in section.lower():
+        return ""
+
+    artist = _clean(raw).lower()
+    product = product_hint.lower()
+    if "deadpool" in product:
+        return _ARTIST_AUTOGRAPH_SUBJECTS["deadpool"].get(artist, "")
+    if "comic book heroes" in product or "1975" in product:
+        return _ARTIST_AUTOGRAPH_SUBJECTS["comic_book_heroes"].get(artist, "")
+    return ""
+
+
 def _infer_team(subject: str, section: str, product_hint: str) -> str:
     haystacks = [section, subject, product_hint]
     for hay in haystacks:
@@ -248,7 +291,7 @@ def _parse_headered_sheet(df: pd.DataFrame, product_hint: str) -> list[dict]:
     for _, row in work.iloc[header_idx + 1:].iterrows():
         box_type = _clean(row.iloc[box_col] if box_col is not None and box_col < work.shape[1] else "")
         raw_subject = _clean(row.iloc[player_col] if player_col < work.shape[1] else "")
-        subject = _subject_for_break(raw_subject, box_type)
+        subject = _artist_subject_for_product(raw_subject, box_type, product_hint) or _subject_for_break(raw_subject, box_type)
         if not subject:
             continue
         team = _clean(row.iloc[team_col] if team_col is not None and team_col < work.shape[1] else "")
@@ -295,7 +338,7 @@ def _parse_section_sheet(df: pd.DataFrame, sheet_name: str, product_hint: str) -
 
         raw_subject = c3 if c3.startswith("(") else c2 if c2.startswith("(") else c1
         context = " ".join(part for part in [current_section, c1, c2, c3] if part)
-        subject = _subject_for_break(raw_subject, current_section)
+        subject = _artist_subject_for_product(raw_subject, current_section, product_hint) or _subject_for_break(raw_subject, current_section)
         if not subject:
             continue
 
@@ -334,6 +377,7 @@ def _fill_generic_teams(rows: list[dict]) -> list[dict]:
 
 def _dedup(rows: list[dict]) -> list[dict]:
     by_key = {}
+    raw_values_by_key: dict[tuple, set[str]] = {}
     out = []
     for row in rows:
         key = (
@@ -342,13 +386,14 @@ def _dedup(rows: list[dict]) -> list[dict]:
             row.get("Box Type", "").lower(),
             row.get("Numbering", ""),
         )
+        current_raw = _clean(row.get("_raw_subject", "")).lower()
         if key in by_key:
-            existing_raw = _clean(by_key[key].get("_raw_subject", "")).lower()
-            current_raw = _clean(row.get("_raw_subject", "")).lower()
-            if current_raw and current_raw != existing_raw:
+            if current_raw and current_raw not in raw_values_by_key[key]:
                 by_key[key]["Hits"] = int(by_key[key].get("Hits", 1) or 1) + int(row.get("Hits", 1) or 1)
+                raw_values_by_key[key].add(current_raw)
             continue
         by_key[key] = row
+        raw_values_by_key[key] = {current_raw} if current_raw else set()
         out.append(row)
     return out
 
