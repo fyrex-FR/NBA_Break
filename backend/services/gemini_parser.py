@@ -39,7 +39,7 @@ Règles strictes :
 _SKIP_SHEETS = {"master", "master checklist", "parallels"}
 
 # Onglets Teams prioritaires
-_PRIORITY_SHEETS = ["teams", "team"]
+_PRIORITY_SHEETS = ["teams", "team", "team sets", "team set"]
 
 # Onglets à combiner si pas de Teams
 _COMBINE_SHEETS = [
@@ -135,16 +135,27 @@ def _parse_beckett_teams_fixed(df: pd.DataFrame) -> list[dict]:
 
     first_col = work[0].map(_clean_cell)
     team_hits = first_col.isin(_NBA_TEAMS).sum()
-    if team_hits < 10:
+
+    # Newer Topps files commonly use:
+    # Card Type | Card # | Player | Team | Note
+    fourth_col = work[3].map(_clean_cell) if work.shape[1] > 3 else None
+    fourth_col_team_hits = fourth_col.isin(_NBA_TEAMS).sum() if fourth_col is not None else 0
+    topps_layout = fourth_col_team_hits >= 10
+    if team_hits < 10 and not topps_layout:
         return []
 
     seen: set[tuple] = set()
     rows = []
     for _, row in work.iterrows():
-        team = _clean_cell(row.iloc[0] if work.shape[1] > 0 else "")
-        box_type = _clean_cell(row.iloc[1] if work.shape[1] > 1 else "")
-        player = _normalize_player(_clean_cell(row.iloc[3] if work.shape[1] > 3 else ""))
-        if team not in _NBA_TEAMS or not player:
+        if topps_layout:
+            box_type = _clean_cell(row.iloc[0])
+            player = _normalize_player(_clean_cell(row.iloc[2]))
+            team = _clean_cell(row.iloc[3])
+        else:
+            team = _clean_cell(row.iloc[0] if work.shape[1] > 0 else "")
+            box_type = _clean_cell(row.iloc[1] if work.shape[1] > 1 else "")
+            player = _normalize_player(_clean_cell(row.iloc[3] if work.shape[1] > 3 else ""))
+        if not team or not player:
             continue
 
         note_1 = _clean_cell(row.iloc[4] if work.shape[1] > 4 else "")
@@ -446,11 +457,16 @@ def parse_excel_beckett(file_bytes: bytes, filename: str) -> dict:
 
 
 def _dedup(rows: list[dict]) -> list[dict]:
-    """Déduplique par (Player, Box Type)."""
+    """Déduplique sans écraser une carte présente pour plusieurs équipes."""
     seen = set()
     out = []
     for r in rows:
-        key = (r["Player"].lower(), r["Box Type"].lower())
+        key = (
+            r["Player"].lower(),
+            r.get("Team", "").lower(),
+            r["Box Type"].lower(),
+            r.get("Numbering", ""),
+        )
         if key not in seen:
             seen.add(key)
             out.append(r)
