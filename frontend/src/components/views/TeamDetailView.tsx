@@ -57,7 +57,7 @@ const playerSummaryColumns = [
             <span
               className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
               style={{ background: 'rgba(234,179,8,0.14)', color: '#eab308' }}
-              title={`${multiCount} carte(s) multi-joueurs avec plusieurs équipes : ce joueur apparaît ici via une carte partagée.`}
+              title={`${multiCount} carte(s) multi-joueurs avec plusieurs équipes : ce joueur est lié à cette équipe via une carte partagée.`}
             >
               multi-team
             </span>
@@ -137,11 +137,8 @@ export function TeamDetailView() {
     for (const card of teamCards) {
       const players = card.Player.split('/').map((p) => p.trim()).filter(Boolean)
       const teams = card.Team.split('/').map((t) => t.trim()).filter(Boolean)
-      const isAlignedMultiTeamCard = players.length > 1 && players.length === teams.length && teams.length > 1
+      const isCrossTeamMultiPlayerCard = players.length > 1 && teams.length > 1 && teams.includes(selectedTeam)
       for (const player of players) {
-        const playerIndex = players.indexOf(player)
-        const resolvedPlayerTeam = isAlignedMultiTeamCard ? teams[playerIndex] : null
-        const isCrossTeamMultiPlayer = isAlignedMultiTeamCard && resolvedPlayerTeam !== selectedTeam
         const row = map.get(player) ?? {
           Player: player,
           Hits: 0,
@@ -166,7 +163,7 @@ export function TeamDetailView() {
         if (card['Hit Type'] === HIT_TYPE_AUTO) row.Auto += hits
         if (card['Hit Type'] === HIT_TYPE_MEM) row.Memo += hits
         if (card['Hit Type'] === HIT_TYPE_AUTO_MEM) row.AutoMemo += hits
-        if (isCrossTeamMultiPlayer) row.MultiTeamCards += 1
+        if (isCrossTeamMultiPlayerCard) row.MultiTeamCards += hits
         if (card.Category === CATEGORY_LOGOMAN) row.Logoman += hits
         else if (card.Category === CATEGORY_CASE_HIT) row.CaseHit += hits
         else if (!isHit) row.BaseOther += hits
