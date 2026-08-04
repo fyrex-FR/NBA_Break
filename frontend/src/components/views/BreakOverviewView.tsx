@@ -4,7 +4,7 @@ import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import type { BreakSpot, CardRecord } from '../../types'
-import { CATEGORY_AUTO_MEM, CATEGORY_CASE_HIT, CATEGORY_LOGOMAN } from '../../types'
+import { CATEGORY_CASE_HIT, CATEGORY_LOGOMAN, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 function normKey(s: string): string {
   return (s || '')
@@ -20,6 +20,8 @@ interface PlayerStat { name: string; cards: number; premium: number }
 interface TeamStat {
   cards: number
   auto: number
+  memo: number
+  autoMemo: number
   premium: number
   players: Map<string, PlayerStat>
 }
@@ -30,7 +32,10 @@ interface SpotRow {
   Prix: number | null
   priceSource?: string
   Cartes: number
-  'Auto/Mem': number
+  Auto: number
+  Memo: number
+  'A+M': number
+  Hits: number
   Premium: number
   topPlayers: PlayerStat[]
   hasData: boolean
@@ -48,13 +53,15 @@ export function BreakOverviewView() {
     for (const card of cards) {
       const teams = card.Team.split('/').map((t) => t.trim()).filter(Boolean)
       const players = card.Player.split('/').map((p) => p.trim()).filter(Boolean)
-      const isAuto = card.Category === CATEGORY_AUTO_MEM
-      const isPremium = isAuto || card.Category === CATEGORY_CASE_HIT || card.Category === CATEGORY_LOGOMAN
+      const isHit = [HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(card['Hit Type'] || '')
+      const isPremium = isHit || card.Category === CATEGORY_CASE_HIT || card.Category === CATEGORY_LOGOMAN
       for (const t of teams) {
         const key = normKey(t)
-        const cur = stats.get(key) || { cards: 0, auto: 0, premium: 0, players: new Map<string, PlayerStat>() }
+        const cur = stats.get(key) || { cards: 0, auto: 0, memo: 0, autoMemo: 0, premium: 0, players: new Map<string, PlayerStat>() }
         cur.cards += card.Hits
-        if (isAuto) cur.auto += card.Hits
+        if (card['Hit Type'] === HIT_TYPE_AUTO) cur.auto += card.Hits
+        if (card['Hit Type'] === HIT_TYPE_MEM) cur.memo += card.Hits
+        if (card['Hit Type'] === HIT_TYPE_AUTO_MEM) cur.autoMemo += card.Hits
         if (isPremium) cur.premium += card.Hits
         for (const pl of players) {
           const pk = normKey(pl)
@@ -82,7 +89,10 @@ export function BreakOverviewView() {
         Prix: spot.price_eur,
         priceSource: spot.price_source,
         Cartes: st?.cards ?? 0,
-        'Auto/Mem': st?.auto ?? 0,
+        Auto: st?.auto ?? 0,
+        Memo: st?.memo ?? 0,
+        'A+M': st?.autoMemo ?? 0,
+        Hits: st ? st.auto + st.memo + st.autoMemo : 0,
         Premium: st?.premium ?? 0,
         topPlayers,
         hasData: !!st,
@@ -120,7 +130,10 @@ export function BreakOverviewView() {
       },
     }),
     columnHelper.accessor('Cartes', { header: 'Cartes', cell: (i) => i.getValue() }),
-    columnHelper.accessor('Auto/Mem', { header: 'Auto/Mem', cell: (i) => i.getValue() }),
+    columnHelper.accessor('Hits', { header: 'Hits', cell: (i) => i.getValue() }),
+    columnHelper.accessor('Auto', { header: 'Auto', cell: (i) => i.getValue() }),
+    columnHelper.accessor('Memo', { header: 'Memo', cell: (i) => i.getValue() }),
+    columnHelper.accessor('A+M', { header: 'A+M', cell: (i) => i.getValue() }),
     columnHelper.accessor('Premium', { header: 'Premium', cell: (i) => i.getValue() }),
     columnHelper.display({
       id: 'TopJoueurs',

@@ -11,7 +11,10 @@ type RankingMode = 'volume' | 'premium' | 'auto' | 'case'
 
 interface TopRow extends RankingRecord {
   Premium: number
+  HitTotal: number
   Auto: number
+  Memo: number
+  AutoMemo: number
   Case: number
   Checklists: number
   'Premium %': number
@@ -47,6 +50,26 @@ export function GlobalView() {
       header: 'Premium',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
+    columnHelper.accessor((row) => row.HitTotal, {
+      id: 'HitTotal',
+      header: 'Hits',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor((row) => row.Auto, {
+      id: 'Auto',
+      header: 'Auto',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor((row) => row.Memo, {
+      id: 'Memo',
+      header: 'Memo',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor((row) => row.AutoMemo, {
+      id: 'AutoMemo',
+      header: 'A+M',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
     columnHelper.accessor((row) => row['Premium %'], {
       id: 'Premium %',
       header: '% premium',
@@ -70,6 +93,26 @@ export function GlobalView() {
       header: 'Premium',
       cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
     }),
+    columnHelper.accessor((row) => row.HitTotal, {
+      id: 'HitTotal',
+      header: 'Hits',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor((row) => row.Auto, {
+      id: 'Auto',
+      header: 'Auto',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor((row) => row.Memo, {
+      id: 'Memo',
+      header: 'Memo',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
+    columnHelper.accessor((row) => row.AutoMemo, {
+      id: 'AutoMemo',
+      header: 'A+M',
+      cell: (info) => info.getValue()?.toLocaleString('fr-FR'),
+    }),
     columnHelper.accessor((row) => row['Premium %'], {
       id: 'Premium %',
       header: '% premium',
@@ -86,7 +129,7 @@ export function GlobalView() {
   const playerRows = useMemo(() => sortTopRows(topTables.players, rankingMode), [topTables.players, rankingMode])
   const teamRows = useMemo(() => sortTopRows(topTables.teams, rankingMode), [topTables.teams, rankingMode])
   const rankingSorting = useMemo(
-    () => [{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'Auto' : 'Case', desc: true }],
+    () => [{ id: rankingMode === 'volume' ? 'Hits' : rankingMode === 'premium' ? 'Premium' : rankingMode === 'auto' ? 'HitTotal' : 'Case', desc: true }],
     [rankingMode],
   )
 
@@ -208,7 +251,7 @@ function buildTopTables(cards: CardRecord[]) {
 }
 
 function buildEntityRows(cards: CardRecord[], kind: 'player' | 'team'): TopRow[] {
-  const stats = new Map<string, { hits: number; premium: number; auto: number; caseHit: number; checklists: Set<string> }>()
+  const stats = new Map<string, { hits: number; premium: number; auto: number; memo: number; autoMemo: number; caseHit: number; checklists: Set<string> }>()
 
   for (const card of cards) {
     const values = (kind === 'player' ? card.Player : card.Team)
@@ -217,13 +260,15 @@ function buildEntityRows(cards: CardRecord[], kind: 'player' | 'team'): TopRow[]
       .filter(Boolean)
 
     for (const value of values) {
-      const current = stats.get(value) || { hits: 0, premium: 0, auto: 0, caseHit: 0, checklists: new Set<string>() }
+      const current = stats.get(value) || { hits: 0, premium: 0, auto: 0, memo: 0, autoMemo: 0, caseHit: 0, checklists: new Set<string>() }
       current.hits += card.Hits
       current.checklists.add(card.checklist_name || card.File)
       if ([HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(card['Hit Type'] || '')) {
-        current.auto += card.Hits
         current.premium += card.Hits
       }
+      if (card['Hit Type'] === HIT_TYPE_AUTO) current.auto += card.Hits
+      if (card['Hit Type'] === HIT_TYPE_MEM) current.memo += card.Hits
+      if (card['Hit Type'] === HIT_TYPE_AUTO_MEM) current.autoMemo += card.Hits
       if (card.Category === CATEGORY_CASE_HIT) {
         current.caseHit += card.Hits
         current.premium += card.Hits
@@ -239,7 +284,10 @@ function buildEntityRows(cards: CardRecord[], kind: 'player' | 'team'): TopRow[]
     ...(kind === 'player' ? { Player: name } : { Team: name }),
     Hits: row.hits,
     Premium: row.premium,
+    HitTotal: row.auto + row.memo + row.autoMemo,
     Auto: row.auto,
+    Memo: row.memo,
+    AutoMemo: row.autoMemo,
     Case: row.caseHit,
     Checklists: row.checklists.size,
     'Premium %': row.hits > 0 ? Math.round((row.premium / row.hits) * 100) : 0,
@@ -250,7 +298,7 @@ function sortTopRows(rows: TopRow[], mode: RankingMode) {
   const sorted = [...rows]
   sorted.sort((a, b) => {
     if (mode === 'premium') return b.Premium - a.Premium || b.Hits - a.Hits || b.Checklists - a.Checklists
-    if (mode === 'auto') return b.Auto - a.Auto || b.Premium - a.Premium || b.Hits - a.Hits
+    if (mode === 'auto') return (b.Auto + b.Memo + b.AutoMemo) - (a.Auto + a.Memo + a.AutoMemo) || b.Premium - a.Premium || b.Hits - a.Hits
     if (mode === 'case') return b.Case - a.Case || b.Premium - a.Premium || b.Hits - a.Hits
     return b.Hits - a.Hits || b.Premium - a.Premium || b.Checklists - a.Checklists
   })

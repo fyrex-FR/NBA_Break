@@ -18,7 +18,10 @@ const columnHelper = createColumnHelper<CardRecord>()
 type PlayerSummaryRow = {
   Player: string
   Hits: number
-  AutoMem: number
+  Auto: number
+  Memo: number
+  AutoMemo: number
+  MultiTeamCards: number
   Logoman: number
   CaseHit: number
   BaseOther: number
@@ -43,9 +46,30 @@ const cardColumns = [
 ]
 
 const playerSummaryColumns = [
-  playerSummaryColumnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
+  playerSummaryColumnHelper.accessor('Player', {
+    header: 'Joueur',
+    cell: (info) => {
+      const multiCount = info.row.original.MultiTeamCards
+      return (
+        <span className="flex flex-wrap items-center gap-1.5">
+          <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection />
+          {multiCount > 0 && (
+            <span
+              className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
+              style={{ background: 'rgba(234,179,8,0.14)', color: '#eab308' }}
+              title={`${multiCount} carte(s) multi-joueurs avec plusieurs équipes : ce joueur apparaît ici via une carte partagée.`}
+            >
+              multi-team
+            </span>
+          )}
+        </span>
+      )
+    },
+  }),
   playerSummaryColumnHelper.accessor('Hits', { header: 'Cartes' }),
-  playerSummaryColumnHelper.accessor('AutoMem', { header: 'Auto/Mem' }),
+  playerSummaryColumnHelper.accessor('Auto', { header: 'Auto' }),
+  playerSummaryColumnHelper.accessor('Memo', { header: 'Memo' }),
+  playerSummaryColumnHelper.accessor('AutoMemo', { header: 'A+M' }),
   playerSummaryColumnHelper.accessor('Logoman', { header: 'Logoman' }),
   playerSummaryColumnHelper.accessor('CaseHit', { header: 'Case Hit' }),
   playerSummaryColumnHelper.accessor('BaseOther', { header: 'Base/Autre' }),
@@ -112,11 +136,19 @@ export function TeamDetailView() {
 
     for (const card of teamCards) {
       const players = card.Player.split('/').map((p) => p.trim()).filter(Boolean)
+      const teams = card.Team.split('/').map((t) => t.trim()).filter(Boolean)
+      const isAlignedMultiTeamCard = players.length > 1 && players.length === teams.length && teams.length > 1
       for (const player of players) {
+        const playerIndex = players.indexOf(player)
+        const resolvedPlayerTeam = isAlignedMultiTeamCard ? teams[playerIndex] : null
+        const isCrossTeamMultiPlayer = isAlignedMultiTeamCard && resolvedPlayerTeam !== selectedTeam
         const row = map.get(player) ?? {
           Player: player,
           Hits: 0,
-          AutoMem: 0,
+          Auto: 0,
+          Memo: 0,
+          AutoMemo: 0,
+          MultiTeamCards: 0,
           Logoman: 0,
           CaseHit: 0,
           BaseOther: 0,
@@ -131,7 +163,10 @@ export function TeamDetailView() {
         row.checklistSet.add(card.checklist_name || card.File || card.checklist_id || 'unknown')
 
         const isHit = [HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(card['Hit Type'] || '')
-        if (isHit) row.AutoMem += hits
+        if (card['Hit Type'] === HIT_TYPE_AUTO) row.Auto += hits
+        if (card['Hit Type'] === HIT_TYPE_MEM) row.Memo += hits
+        if (card['Hit Type'] === HIT_TYPE_AUTO_MEM) row.AutoMemo += hits
+        if (isCrossTeamMultiPlayer) row.MultiTeamCards += 1
         if (card.Category === CATEGORY_LOGOMAN) row.Logoman += hits
         else if (card.Category === CATEGORY_CASE_HIT) row.CaseHit += hits
         else if (!isHit) row.BaseOther += hits
@@ -142,8 +177,8 @@ export function TeamDetailView() {
 
     return Array.from(map.values())
       .map(({ checklistSet, ...row }) => ({ ...row, Checklists: checklistSet.size }))
-      .sort((a, b) => b.Score - a.Score || b.AutoMem - a.AutoMem || b.Hits - a.Hits || a.Player.localeCompare(b.Player))
-  }, [teamCards])
+      .sort((a, b) => b.Score - a.Score || (b.Auto + b.Memo + b.AutoMemo) - (a.Auto + a.Memo + a.AutoMemo) || b.Hits - a.Hits || a.Player.localeCompare(b.Player))
+  }, [teamCards, selectedTeam])
 
   function handlePlayerSummaryClick(row: PlayerSummaryRow) {
     setTargetPlayer(row.Player)
