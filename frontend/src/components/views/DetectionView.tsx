@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchDetection, saveOverrides, type CardTypeCandidate } from '../../api/client'
+import { HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 export function DetectionView() {
   const { selectedSport, selectedChecklistIds, masterKey } = useAppStore()
@@ -23,6 +24,22 @@ export function DetectionView() {
     return `${candidate.checklist_id || candidate.file}||${candidate.norm}`
   }
 
+  function isCurrentAutoOnly(candidate: CardTypeCandidate): boolean {
+    return candidate.hit_type === HIT_TYPE_AUTO
+  }
+
+  function isCurrentMem(candidate: CardTypeCandidate): boolean {
+    return candidate.hit_type === HIT_TYPE_MEM
+  }
+
+  function isCurrentAutoMem(candidate: CardTypeCandidate): boolean {
+    return candidate.hit_type === HIT_TYPE_AUTO_MEM
+  }
+
+  function isCurrentCaseHit(candidate: CardTypeCandidate): boolean {
+    return candidate.current_category.toLowerCase().includes('case hit')
+  }
+
   // Load candidates
   useEffect(() => {
     if (selectedChecklistIds.length === 0) return
@@ -39,10 +56,10 @@ export function DetectionView() {
         const cas = new Set<string>()
         for (const c of data.candidates) {
           const key = scopedKey(c)
-          if (c.is_auto_only) autoOnly.add(key)
-          if (c.is_mem) mem.add(key)
-          if (c.is_auto) auto.add(key)
-          if (c.is_case) cas.add(key)
+          if (c.is_auto_only || isCurrentAutoOnly(c)) autoOnly.add(key)
+          if (c.is_mem || isCurrentMem(c)) mem.add(key)
+          if (c.is_auto || isCurrentAutoMem(c)) auto.add(key)
+          if (c.is_case || isCurrentCaseHit(c)) cas.add(key)
         }
         setAutoOnlySet(autoOnly)
         setMemSet(mem)
@@ -237,62 +254,64 @@ export function DetectionView() {
                   <span>{file.replace('.parquet', '')}</span>
                   <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{items.length} types</span>
                 </summary>
-                <div className="px-4 pb-3">
-                  {/* Header row */}
-                  <div className="flex items-center gap-2 py-1.5 text-xs font-medium" style={{ color: 'var(--text-quaternary)', borderBottom: '1px solid var(--border-subtle)' }}>
-                    <div className="flex-1">Card Type</div>
-                    <div className="w-14 text-center">Hits</div>
-                    <div className="w-16 text-center">Auto</div>
-                    <div className="w-16 text-center">Memo</div>
-                    <div className="w-20 text-center">Auto/Memo</div>
-                    <div className="w-20 text-center">Case Hit</div>
-                  </div>
-                  {items.map((item) => (
-                    <div
-                      key={`${item.file}||${item.box_type}`}
-                      className="flex items-center gap-2 py-1.5 text-sm"
-                      style={{ borderBottom: '1px solid var(--border-subtle)' }}
-                    >
-                      <div className="flex-1 truncate" style={{ color: 'var(--text-secondary)' }}>
-                        {item.box_type}
-                      </div>
-                      <div className="w-14 text-center text-xs" style={{ color: 'var(--text-quaternary)' }}>
-                        {item.hits}
-                      </div>
-                      <div className="w-16 text-center">
-                        <input
-                          type="checkbox"
-                          checked={autoOnlySet.has(scopedKey(item))}
-                          onChange={() => toggleAutoOnly(item)}
-                          style={{ accentColor: '#0ea5e9' }}
-                        />
-                      </div>
-                      <div className="w-16 text-center">
-                        <input
-                          type="checkbox"
-                          checked={memSet.has(scopedKey(item))}
-                          onChange={() => toggleMem(item)}
-                          style={{ accentColor: '#14b8a6' }}
-                        />
-                      </div>
-                      <div className="w-20 text-center">
-                        <input
-                          type="checkbox"
-                          checked={autoSet.has(scopedKey(item))}
-                          onChange={() => toggleAuto(item)}
-                          style={{ accentColor: '#3b82f6' }}
-                        />
-                      </div>
-                      <div className="w-20 text-center">
-                        <input
-                          type="checkbox"
-                          checked={caseSet.has(scopedKey(item))}
-                          onChange={() => toggleCase(item)}
-                          style={{ accentColor: '#eab308' }}
-                        />
-                      </div>
+                <div className="px-4 pb-3 overflow-x-auto">
+                  <div className="min-w-[540px]">
+                    {/* Header row */}
+                    <div className="flex items-center gap-2 py-1.5 text-xs font-medium" style={{ color: 'var(--text-quaternary)', borderBottom: '1px solid var(--border-subtle)' }}>
+                      <div className="flex-1 min-w-[150px]">Card Type</div>
+                      <div className="w-14 text-center">Hits</div>
+                      <div className="w-16 text-center">Auto</div>
+                      <div className="w-16 text-center">Memo</div>
+                      <div className="w-20 text-center">Auto/Memo</div>
+                      <div className="w-20 text-center">Case Hit</div>
                     </div>
-                  ))}
+                    {items.map((item) => (
+                      <div
+                        key={`${item.file}||${item.box_type}`}
+                        className="flex items-center gap-2 py-1.5 text-sm"
+                        style={{ borderBottom: '1px solid var(--border-subtle)' }}
+                      >
+                        <div className="flex-1 min-w-[150px] truncate" style={{ color: 'var(--text-secondary)' }} title={item.box_type}>
+                          {item.box_type}
+                        </div>
+                        <div className="w-14 text-center text-xs" style={{ color: 'var(--text-quaternary)' }}>
+                          {item.hits}
+                        </div>
+                        <div className="w-16 text-center">
+                          <input
+                            type="checkbox"
+                            checked={autoOnlySet.has(scopedKey(item))}
+                            onChange={() => toggleAutoOnly(item)}
+                            style={{ accentColor: '#0ea5e9' }}
+                          />
+                        </div>
+                        <div className="w-16 text-center">
+                          <input
+                            type="checkbox"
+                            checked={memSet.has(scopedKey(item))}
+                            onChange={() => toggleMem(item)}
+                            style={{ accentColor: '#14b8a6' }}
+                          />
+                        </div>
+                        <div className="w-20 text-center">
+                          <input
+                            type="checkbox"
+                            checked={autoSet.has(scopedKey(item))}
+                            onChange={() => toggleAuto(item)}
+                            style={{ accentColor: '#3b82f6' }}
+                          />
+                        </div>
+                        <div className="w-20 text-center">
+                          <input
+                            type="checkbox"
+                            checked={caseSet.has(scopedKey(item))}
+                            onChange={() => toggleCase(item)}
+                            style={{ accentColor: '#eab308' }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </details>
             ))}
