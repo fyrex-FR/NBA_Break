@@ -10,6 +10,8 @@ import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { SearchSelect } from '../shared/SearchSelect'
 import { TeamStatsPanel } from '../shared/TeamStatsPanel'
 import { PlayerCell } from '../shared/PlayerCell'
+import { OddsBadgeList, discreetBadges } from '../shared/OddsBadge'
+import { useOddsBadges } from '../../hooks/useOddsBadges'
 import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 
@@ -30,20 +32,6 @@ type PlayerSummaryRow = {
 }
 
 const playerSummaryColumnHelper = createColumnHelper<PlayerSummaryRow>()
-
-const cardColumns = [
-  columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
-  columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
-  columnHelper.accessor('Box Type', { header: 'Type' }),
-  columnHelper.accessor('checklist_name', {
-    header: 'Checklist',
-    cell: (info) => {
-      const fullName = info.getValue() || info.row.original.File || ''
-      const name = fullName.replace('.parquet', '')
-      return <span title={name} className="inline-block max-w-[260px] whitespace-normal break-words align-top">{name}</span>
-    },
-  }),
-]
 
 const playerSummaryColumns = [
   playerSummaryColumnHelper.accessor('Player', {
@@ -79,7 +67,34 @@ const playerSummaryColumns = [
 
 export function TeamDetailView() {
   const { analysisData, targetTeam, setTargetTeam, setTargetPlayer, setActiveView, selectedSport } = useAppStore()
+  const { badgesFor } = useOddsBadges()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
+
+  const cardColumns = useMemo(() => [
+    columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
+    columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
+    columnHelper.accessor('Box Type', {
+      header: 'Type',
+      cell: (info) => {
+        const card = info.row.original
+        const entry = badgesFor(card.checklist_id, card['Box Type'])
+        return (
+          <span className="inline-flex flex-wrap items-center gap-1.5">
+            <span>{info.getValue()}</span>
+            {entry && <OddsBadgeList codes={discreetBadges(entry.badges)} bestByGroup={entry.best_by_group} />}
+          </span>
+        )
+      },
+    }),
+    columnHelper.accessor('checklist_name', {
+      header: 'Checklist',
+      cell: (info) => {
+        const fullName = info.getValue() || info.row.original.File || ''
+        const name = fullName.replace('.parquet', '')
+        return <span title={name} className="inline-block max-w-[260px] whitespace-normal break-words align-top">{name}</span>
+      },
+    }),
+  ], [badgesFor])
   const selectedTeam = targetTeam || ''
   const isEntertainment = selectedSport === 'disney' || selectedSport === 'marvel'
   const teamLabel = isEntertainment ? 'univers / franchise' : 'equipe'

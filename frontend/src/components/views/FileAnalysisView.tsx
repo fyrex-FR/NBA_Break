@@ -4,21 +4,36 @@ import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
+import { OddsBadgeList, discreetBadges } from '../shared/OddsBadge'
+import { useOddsBadges } from '../../hooks/useOddsBadges'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from '../../types'
 import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
-const cardColumns = [
-  columnHelper.accessor('Player', { header: 'Joueur' }),
-  columnHelper.accessor('Team', { header: 'Équipe' }),
-  columnHelper.accessor('Box Type', { header: 'Type' }),
-  columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
-]
-
 export function FileAnalysisView() {
   const { analysisData } = useAppStore()
   const [selectedFile, setSelectedFile] = useState('')
+  const { badgesFor } = useOddsBadges()
+
+  const cardColumns = useMemo(() => [
+    columnHelper.accessor('Player', { header: 'Joueur' }),
+    columnHelper.accessor('Team', { header: 'Équipe' }),
+    columnHelper.accessor('Box Type', {
+      header: 'Type',
+      cell: (info) => {
+        const card = info.row.original
+        const entry = badgesFor(card.checklist_id, card['Box Type'])
+        return (
+          <span className="inline-flex flex-wrap items-center gap-1.5">
+            <span>{info.getValue()}</span>
+            {entry && <OddsBadgeList codes={discreetBadges(entry.badges)} bestByGroup={entry.best_by_group} />}
+          </span>
+        )
+      },
+    }),
+    columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
+  ], [badgesFor])
 
   if (!analysisData) return null
 

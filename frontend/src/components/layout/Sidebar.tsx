@@ -1,14 +1,21 @@
-import { useEffect, useState } from 'react'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect, useMemo, useState } from 'react'
+import { useQueries, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
-import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist, deleteChecklist } from '../../api/client'
+import { fetchSports, fetchChecklists, fetchAnalysis, fetchPresets, savePreset, deletePreset, uploadChecklist, deleteChecklist, fetchOddsIndex, fetchOddsSheet } from '../../api/client'
 import {
   Sun, Moon, Plus, FileSpreadsheet, UploadCloud, Copy, Check, Trash2,
-  ChevronDown, ChevronRight, Save, Play, Folder, Database, Search, ArrowDownAZ, ArrowUpZA, Rows3
+  ChevronDown, ChevronRight, Save, Play, Folder, Database, Search, ArrowDownAZ, ArrowUpZA, Rows3, Target
 } from 'lucide-react'
 
-import type { ChecklistInfo, PresetInfo } from '../../types'
+import type { ChecklistInfo, OddsConfig, PresetInfo } from '../../types'
 import { BreakModePanel } from './BreakModePanel'
+
+const ODDS_CHANNEL_LABELS_FR: Record<string, string> = {
+  hobby: 'Hobby',
+  retail: 'Retail',
+  special: 'Spécial',
+}
+const ODDS_CHANNEL_ORDER = ['hobby', 'retail', 'special']
 
 type SidebarTab = 'selection' | 'presets'
 
@@ -61,6 +68,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     setAnalysisData, setIsAnalyzing, isAnalyzing,
     setActiveView,
     theme, toggleTheme,
+    selectedConfigKey, setSelectedConfigKey,
   } = useAppStore()
 
   const [tab, setTab] = useState<SidebarTab>('selection')
@@ -99,6 +107,42 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   })
 
   const presets: PresetInfo[] = presetsData?.presets || []
+
+  // ── Odds Topps : indicateur "a une feuille d'odds" + sélecteur de config ──
+  const { data: oddsIndexData } = useQuery({
+    queryKey: ['odds-index', selectedSport],
+    queryFn: () => fetchOddsIndex(selectedSport),
+    enabled: !!selectedSport,
+    retry: false,
+    staleTime: 5 * 60 * 1000,
+  })
+  const oddsChecklistIds = useMemo(() => new Set(oddsIndexData?.checklist_ids ?? []), [oddsIndexData])
+
+  const selectedChecklistIdsWithOdds = useMemo(
+    () => selectedChecklistIds.filter((id) => oddsChecklistIds.has(id)),
+    [selectedChecklistIds, oddsChecklistIds],
+  )
+
+  const oddsSheetQueries = useQueries({
+    queries: selectedChecklistIdsWithOdds.map((id) => ({
+      queryKey: ['odds-sheet', selectedSport, id],
+      queryFn: () => fetchOddsSheet(selectedSport, id),
+      enabled: !!selectedSport,
+      retry: false,
+      staleTime: 5 * 60 * 1000,
+    })),
+  })
+
+  // Union des configs des checklists sélectionnées qui ont une feuille d'odds, dédupliquées par clé.
+  const oddsConfigOptions = useMemo(() => {
+    const byKey = new Map<string, OddsConfig>()
+    for (const q of oddsSheetQueries) {
+      for (const c of q.data?.configs ?? []) {
+        if (!byKey.has(c.key)) byKey.set(c.key, c)
+      }
+    }
+    return Array.from(byKey.values())
+  }, [oddsSheetQueries])
 
   useEffect(() => {
     if (checklistsData) {
@@ -480,6 +524,39 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           {tab === 'selection' ? (
             <div className="space-y-3">
               <BreakModePanel onAfterLoad={onClose} />
+
+              {oddsConfigOptions.length > 0 && (
+                <div className="rounded-xl p-3 space-y-2" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+                  <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+                    <Target className="w-3.5 h-3.5 text-[var(--accent)]" /> Je break du...
+                  </label>
+                  <select
+                    value={selectedConfigKey ?? ''}
+                    onChange={(e) => setSelectedConfigKey(e.target.value || null)}
+                    className="w-full rounded-lg px-3 py-2 text-sm"
+                    style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+                  >
+                    <option value="">Aucune</option>
+                    {ODDS_CHANNEL_ORDER.map((channel) => {
+                      const opts = oddsConfigOptions.filter((c) => c.channel === channel)
+                      if (opts.length === 0) return null
+                      return (
+                        <optgroup key={channel} label={ODDS_CHANNEL_LABELS_FR[channel] || channel}>
+                          {opts.map((c) => (
+                            <option key={c.key} value={c.key}>{c.label}</option>
+                          ))}
+                        </optgroup>
+                      )
+                    })}
+                  </select>
+                  {selectedConfigKey && (
+                    <p className="text-[11px] leading-snug" style={{ color: 'var(--text-quaternary)' }}>
+                      Les pastilles « Best » et la pondération du break tiennent compte de cette configuration.
+                    </p>
+                  )}
+                </div>
+              )}
+
               <div className="rounded-xl p-3 space-y-3" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
                 <div className="relative">
                   <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-quaternary)' }} />
@@ -668,7 +745,18 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 style={{ accentColor: 'var(--accent)' }}
                               />
                               <div className="flex-1 flex flex-col justify-center cursor-pointer" onClick={() => toggleChecklist(cl.checklist_id)}>
-                                <span className="font-semibold">{formatted.name}</span>
+                                <span className="font-semibold flex items-center gap-1.5">
+                                  {formatted.name}
+                                  {oddsChecklistIds.has(cl.checklist_id) && (
+                                    <span
+                                      className="flex-shrink-0 inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+                                      style={{ background: 'color-mix(in srgb, var(--accent) 16%, transparent)', color: 'var(--accent)' }}
+                                      title="Feuille d'odds Topps disponible pour ce produit"
+                                    >
+                                      <Target className="w-2.5 h-2.5" /> odds
+                                    </span>
+                                  )}
+                                </span>
                                 {formatted.year && <span className="text-xs text-[var(--text-tertiary)]">{formatted.year}</span>}
                               </div>
                               <span className="flex-shrink-0 text-xs font-medium py-1" style={{ color: 'var(--text-quaternary)' }}>{cl.rows} items</span>

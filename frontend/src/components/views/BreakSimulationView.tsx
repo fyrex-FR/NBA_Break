@@ -11,7 +11,13 @@ import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakC
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
-function buildSpotColumns(method: string) {
+interface OddsColumnFlags {
+  partAttendue: boolean
+  breakScoreOdds: boolean
+  hitsPerBox: boolean
+}
+
+function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
   const isPlayerMethod = method === 'player' || method === 'letter_assignment'
 
   const rcCell = (val: number) =>
@@ -84,6 +90,42 @@ function buildSpotColumns(method: string) {
     }),
     columnHelper.accessor('Break Score', { header: 'Score' }),
     columnHelper.accessor('Part du break', { header: 'Part %', cell: (info) => `${info.getValue()}%` }),
+    // Colonnes odds — injectées uniquement quand le champ correspondant est présent
+    // dans les données renvoyées par l'API (une configuration est sélectionnée et
+    // une feuille d'odds existe pour la sélection). Aucun changement sinon.
+    ...(oddsCols.partAttendue ? [
+      columnHelper.accessor('Part attendue' as any, {
+        header: 'Part attendue',
+        cell: (info: any) => {
+          const v = info.getValue()
+          return v === undefined || v === null
+            ? <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+            : <span style={{ color: 'var(--accent)' }}>{Number(v).toFixed(2)}%</span>
+        },
+      }),
+    ] : []),
+    ...(oddsCols.breakScoreOdds ? [
+      columnHelper.accessor('Break Score (odds)' as any, {
+        header: 'Score (odds)',
+        cell: (info: any) => {
+          const v = info.getValue()
+          return v === undefined || v === null
+            ? <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+            : <span className="font-medium" style={{ color: '#a78bfa' }}>{Number(v).toLocaleString('fr-FR', { maximumFractionDigits: 3 })}</span>
+        },
+      }),
+    ] : []),
+    ...(oddsCols.hitsPerBox ? [
+      columnHelper.accessor('Hits / box' as any, {
+        header: 'Hits/box',
+        cell: (info: any) => {
+          const v = info.getValue()
+          return v === undefined || v === null
+            ? <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+            : <span>{Number(v).toLocaleString('fr-FR', { maximumFractionDigits: 3 })}</span>
+        },
+      }),
+    ] : []),
     columnHelper.accessor('Hot Spot', { header: 'Hot', cell: (info) => info.getValue() || '—' }),
     ...(!isPlayerMethod ? [
       columnHelper.accessor('Joueurs', {
@@ -113,7 +155,7 @@ const METHODS = [
 ]
 
 export function BreakSimulationView() {
-  const { selectedSport, selectedChecklistIds, masterKey, availableChecklists } = useAppStore()
+  const { selectedSport, selectedChecklistIds, masterKey, availableChecklists, selectedConfigKey, setActiveView } = useAppStore()
   const [method, setMethod] = useState('team')
   const [result, setResult] = useState<BreakSimulationResponse | null>(null)
   const [loading, setLoading] = useState(false)
@@ -125,6 +167,8 @@ export function BreakSimulationView() {
   const [letterExtracted, setLetterExtracted] = useState<string[]>([])
   const [panelOpen, setPanelOpen] = useState(false)
   const [selectedSpot, setSelectedSpot] = useState<string | null>(null)
+  // Trie sur le Break Score pondéré par les odds plutôt que sur le Break Score historique.
+  const [sortByOdds, setSortByOdds] = useState(false)
 
   // Presets state
   const [presets, setPresets] = useState<SimulationPreset[]>([])
@@ -133,6 +177,10 @@ export function BreakSimulationView() {
   const [presetsOpen, setPresetsOpen] = useState(false)
 
   const resultsRef = useRef<HTMLDivElement>(null)
+  // Derniers paramètres envoyés à /simulate/break (hors config_key), pour pouvoir
+  // relancer la simulation quand la configuration odds change sans rejouer tout
+  // le formulaire (méthode lettre-assignation incluse).
+  const lastRunParamsRef = useRef<Omit<Parameters<typeof fetchBreakSimulation>[0], 'config_key'> | null>(null)
 
   // Load presets on mount or sport change
   useEffect(() => {
@@ -168,18 +216,20 @@ export function BreakSimulationView() {
     const effectiveMethod = overrides?.method ?? method
     // letter_assignment → send as custom with players scope
     const apiMethod = effectiveMethod === 'letter_assignment' ? 'custom' : effectiveMethod
+    const params = {
+      sport_key: selectedSport,
+      checklist_ids: selectedChecklistIds,
+      master_key: masterKey,
+      method: apiMethod,
+      custom_scope: effectiveMethod === 'letter_assignment' ? 'players' : undefined,
+      custom_map: overrides?.custom_map,
+      custom_spots: overrides?.custom_spots,
+      checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
+      extracted_players: overrides?.extracted ?? extractedPlayers,
+    }
+    lastRunParamsRef.current = params
     try {
-      const data = await fetchBreakSimulation({
-        sport_key: selectedSport,
-        checklist_ids: selectedChecklistIds,
-        master_key: masterKey,
-        method: apiMethod,
-        custom_scope: effectiveMethod === 'letter_assignment' ? 'players' : undefined,
-        custom_map: overrides?.custom_map,
-        custom_spots: overrides?.custom_spots,
-        checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
-        extracted_players: overrides?.extracted ?? extractedPlayers,
-      })
+      const data = await fetchBreakSimulation({ ...params, config_key: selectedConfigKey })
       setResult(data)
       setPanelOpen(false)
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
@@ -190,6 +240,21 @@ export function BreakSimulationView() {
       setLoading(false)
     }
   }
+
+  // Relance automatiquement la dernière simulation quand la configuration odds
+  // change (sélecteur global "je break du..."), pour que les colonnes Part
+  // attendue / Break Score (odds) reflètent toujours la config ouverte. Ne fait
+  // rien tant qu'aucune simulation n'a été lancée.
+  useEffect(() => {
+    if (!lastRunParamsRef.current) return
+    setLoading(true)
+    setError(null)
+    fetchBreakSimulation({ ...lastRunParamsRef.current, config_key: selectedConfigKey })
+      .then((data) => setResult(data))
+      .catch((err: any) => { setError(err.message || 'Erreur lors de la simulation.'); setResult(null) })
+      .finally(() => setLoading(false))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedConfigKey])
 
   async function handleSimulate() {
     await runSimulate()
@@ -566,8 +631,45 @@ export function BreakSimulationView() {
         </div>
       )}
 
-      {result && (
+      {result && (() => {
+        const oddsCols: OddsColumnFlags = {
+          partAttendue: result.spots.some((s) => s['Part attendue'] !== undefined),
+          breakScoreOdds: result.spots.some((s) => s['Break Score (odds)'] !== undefined),
+          hitsPerBox: result.spots.some((s) => s['Hits / box'] !== undefined),
+        }
+        const hasOdds = oddsCols.partAttendue || oddsCols.breakScoreOdds
+        const coverage = result.summary.odds_coverage
+        const sortKey = sortByOdds && oddsCols.breakScoreOdds ? 'Break Score (odds)' : 'Break Score'
+
+        return (
         <div ref={resultsRef}>
+          {/* Bandeau de couverture odds — uniquement si une pondération a été calculée. */}
+          {hasOdds && coverage !== undefined && (
+            coverage < 0.8 ? (
+              <div
+                className="flex flex-wrap items-center justify-between gap-3 rounded-lg px-4 py-3 mb-4 text-sm"
+                style={{ background: 'rgba(234,179,8,0.12)', border: '1px solid rgba(234,179,8,0.4)', color: 'var(--text-primary)' }}
+              >
+                <span>
+                  ⚠️ Couverture odds partielle : <strong style={{ color: '#eab308' }}>{(coverage * 100).toFixed(0)}%</strong> de
+                  la masse de probabilité est rattachée à des cartes de la checklist. Complète le mapping pour
+                  fiabiliser le classement pondéré.
+                </span>
+                <button
+                  onClick={() => setActiveView('🔗 Mapping Odds')}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap"
+                  style={{ background: '#eab308', color: '#1c1917' }}
+                >
+                  Corriger le mapping
+                </button>
+              </div>
+            ) : (
+              <p className="text-xs mb-4" style={{ color: 'var(--text-quaternary)' }}>
+                ✓ Couverture odds : {(coverage * 100).toFixed(0)}%
+              </p>
+            )
+          )}
+
           {/* Summary KPIs */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
             <MetricCard label="Total Cartes" value={result.summary.total_cartes} icon="📊" />
@@ -576,38 +678,54 @@ export function BreakSimulationView() {
             <MetricCard label="Spots" value={result.spots.length} icon="🎯" />
           </div>
 
-          {/* Export */}
-          {result.card_details && result.card_details.length > 0 && (
-            <div className="flex justify-end gap-2 mb-3">
+          {/* Export + tri odds */}
+          <div className="flex flex-wrap items-center justify-end gap-2 mb-3">
+            {oddsCols.breakScoreOdds && (
               <button
-                onClick={() => void exportBySpot(result.spots, result.card_details, method)}
+                onClick={() => setSortByOdds((v) => !v)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-                style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+                style={{
+                  background: sortByOdds ? 'var(--accent)' : 'var(--bg-surface)',
+                  border: `1px solid ${sortByOdds ? 'var(--accent)' : 'var(--border-standard)'}`,
+                  color: sortByOdds ? '#fff' : 'var(--text-secondary)',
+                }}
+                title="Bascule le tri du tableau entre le Break Score historique et le Break Score pondéré par les odds"
               >
-                <Download size={13} />
-                Export par spot (Excel)
+                🎯 Trier par Score (odds)
               </button>
-              <button
-                onClick={() => exportCardDetails(result.card_details, method)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-                style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
-              >
-                <Download size={13} />
-                Toutes les cartes
-              </button>
-            </div>
-          )}
+            )}
+            {result.card_details && result.card_details.length > 0 && (
+              <>
+                <button
+                  onClick={() => void exportBySpot(result.spots, result.card_details, method)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
+                  style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+                >
+                  <Download size={13} />
+                  Export par spot (Excel)
+                </button>
+                <button
+                  onClick={() => exportCardDetails(result.card_details, method)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
+                  style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+                >
+                  <Download size={13} />
+                  Toutes les cartes
+                </button>
+              </>
+            )}
+          </div>
 
           {/* Full table */}
           <DataTable
             data={result.spots}
-            columns={buildSpotColumns(method) as any}
+            columns={buildSpotColumns(method, oddsCols) as any}
             onRowClick={(row: any) => setSelectedSpot(row.Spot)}
             pageSize={100}
             searchable
             searchPlaceholder="Rechercher un spot..."
             exportName={`break_${method}`}
-            initialSorting={[{ id: 'Break Score', desc: true }]}
+            initialSorting={[{ id: sortKey, desc: true }]}
           />
 
           {/* Panel détail d'un spot */}
@@ -693,7 +811,8 @@ export function BreakSimulationView() {
             )
           })()}
         </div>
-      )}
+        )
+      })()}
     </div>
   )
 }

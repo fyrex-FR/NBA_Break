@@ -12,7 +12,9 @@ import { DistributionBar } from '../shared/DistributionBar'
 import { SearchSelect } from '../shared/SearchSelect'
 import { PlayerStatsPanel } from '../shared/PlayerStatsPanel'
 import { RCBadge } from '../shared/RCBadge'
+import { OddsBadgeList, discreetBadges } from '../shared/OddsBadge'
 import { useRookies } from '../../hooks/useRookies'
+import { useOddsBadges } from '../../hooks/useOddsBadges'
 import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 import { AWARD_LABELS } from '../../constants/awards'
@@ -22,6 +24,7 @@ const columnHelper = createColumnHelper<CardRecord>()
 export function PlayerDetailView() {
   const { analysisData, targetPlayer, setTargetPlayer, selectedSport } = useAppStore()
   const { getRookie } = useRookies()
+  const { badgesFor } = useOddsBadges()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
 
   const selectedPlayer = targetPlayer || ''
@@ -48,7 +51,19 @@ export function PlayerDetailView() {
       header: 'Catégorie',
       cell: (info) => <CategoryBadge category={info.getValue()} />,
     }),
-    columnHelper.accessor('Box Type', { header: 'Type' }),
+    columnHelper.accessor('Box Type', {
+      header: 'Type',
+      cell: (info) => {
+        const card = info.row.original
+        const entry = badgesFor(card.checklist_id, card['Box Type'])
+        return (
+          <span className="inline-flex flex-wrap items-center gap-1.5">
+            <span>{info.getValue()}</span>
+            {entry && <OddsBadgeList codes={discreetBadges(entry.badges)} bestByGroup={entry.best_by_group} />}
+          </span>
+        )
+      },
+    }),
     columnHelper.accessor('Team', { header: 'Équipe' }),
     columnHelper.accessor('checklist_name', {
       header: 'Checklist',
@@ -72,7 +87,7 @@ export function PlayerDetailView() {
         )
       },
     }),
-  ], [rookie])
+  ], [rookie, badgesFor])
 
   if (!analysisData) return null
 

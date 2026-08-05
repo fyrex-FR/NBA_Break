@@ -9,9 +9,20 @@ import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { PlayerCell } from '../shared/PlayerCell'
-import type { RankingRecord } from '../../types'
+import { OddsBadge } from '../shared/OddsBadge'
+import { useOddsBadges } from '../../hooks/useOddsBadges'
+import type { OddsBadgeCode, RankingRecord } from '../../types'
 
 const columnHelper = createColumnHelper<RankingRecord>()
+
+// Ordre de rareté croissant — sert à retenir la carte la plus rare d'un
+// joueur/équipe quand plusieurs cartes ont des odds connues dans la sélection.
+const RARITY_ORDER: Record<string, number> = { sp: 1, ssp: 2, case_hit: 3 }
+
+function rarestBadge(a: OddsBadgeCode | undefined, b: OddsBadgeCode): OddsBadgeCode {
+  if (!a) return b
+  return (RARITY_ORDER[b] ?? 0) > (RARITY_ORDER[a] ?? 0) ? b : a
+}
 
 interface CategoryFilteredViewProps {
   title: string
@@ -23,6 +34,7 @@ interface CategoryFilteredViewProps {
 
 export function CategoryFilteredView({ title, icon, category, hitTypes, description }: CategoryFilteredViewProps) {
   const { analysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
+  const { badgesFor } = useOddsBadges()
   if (!analysisData) return null
 
   const filtered = useMemo(
@@ -33,6 +45,35 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
     }),
     [analysisData.cards, category, hitTypes],
   )
+
+  // Cette vue n'a pas de colonne "Box Type" par carte (rankings agrégés) : on
+  // reporte la pastille odds la plus discrète possible — la rareté de la
+  // carte la plus rare avec des odds connues parmi celles du joueur/équipe.
+  const playerRarity = useMemo(() => {
+    const map = new Map<string, OddsBadgeCode>()
+    for (const card of filtered) {
+      const entry = badgesFor(card.checklist_id, card['Box Type'])
+      const rarity = entry?.badges.find((b) => b in RARITY_ORDER)
+      if (!rarity) continue
+      for (const p of card.Player.split('/').map((s) => s.trim()).filter(Boolean)) {
+        map.set(p, rarestBadge(map.get(p), rarity))
+      }
+    }
+    return map
+  }, [filtered, badgesFor])
+
+  const teamRarity = useMemo(() => {
+    const map = new Map<string, OddsBadgeCode>()
+    for (const card of filtered) {
+      const entry = badgesFor(card.checklist_id, card['Box Type'])
+      const rarity = entry?.badges.find((b) => b in RARITY_ORDER)
+      if (!rarity) continue
+      for (const t of card.Team.split('/').map((s) => s.trim()).filter(Boolean)) {
+        map.set(t, rarestBadge(map.get(t), rarity))
+      }
+    }
+    return map
+  }, [filtered, badgesFor])
 
   const playerRankings = useMemo(() => {
     const map = new Map<string, number>()
@@ -61,14 +102,37 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
       .sort((a, b) => b.Hits - a.Hits)
   }, [filtered])
 
+  // On n'ajoute la colonne "Rareté odds" que si au moins une carte de la
+  // sélection en a une — sinon la colonne resterait vide en permanence sur
+  // 99% des produits (non-Topps), ce qui n'est ni discret ni utile.
   const playerCols = [
     columnHelper.accessor('Player', { header: 'Joueur', cell: (info) => <PlayerCell name={info.getValue() ?? ''} requireRookieInSelection /> }),
     columnHelper.accessor('Hits', { header: 'Cartes', cell: (info) => info.getValue()?.toLocaleString('fr-FR') }),
+    ...(playerRarity.size > 0 ? [
+      columnHelper.display({
+        id: 'oddsRarity',
+        header: 'Rareté odds',
+        cell: (info: any) => {
+          const code = playerRarity.get(info.row.original.Player || '')
+          return code ? <OddsBadge code={code} /> : null
+        },
+      }),
+    ] : []),
   ]
 
   const teamCols = [
     columnHelper.accessor('Team', { header: 'Équipe' }),
     columnHelper.accessor('Hits', { header: 'Cartes', cell: (info) => info.getValue()?.toLocaleString('fr-FR') }),
+    ...(teamRarity.size > 0 ? [
+      columnHelper.display({
+        id: 'oddsRarity',
+        header: 'Rareté odds',
+        cell: (info: any) => {
+          const code = teamRarity.get(info.row.original.Team || '')
+          return code ? <OddsBadge code={code} /> : null
+        },
+      }),
+    ] : []),
   ]
 
   return (
