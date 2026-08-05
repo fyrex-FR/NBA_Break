@@ -410,6 +410,7 @@ def build_deterministic_spot_summary(
     checklist_hits_guaranteed=None,
     extracted_players=None,
     rookie_year_map=None,
+    odds_context=None,
 ):
     if pool_df is None or pool_df.empty or not spots:
         return pd.DataFrame(), {}
@@ -424,8 +425,15 @@ def build_deterministic_spot_summary(
 
     rookie_year_map = rookie_year_map or {}  # {player_lower: "2024-25"}
 
+    # Pondération odds : optionnelle, n'affecte rien quand absente/vide (non-régression).
+    pull_rate_by_key = (odds_context or {}).get("pull_rate_by_key") or {}
+    odds_enabled = bool(odds_context) and bool(pull_rate_by_key)
+    packs_per_box = (odds_context or {}).get("packs_per_box") if odds_enabled else None
+
     metric_cols = ["Cartes", "Auto", "Memo", "Auto/Memo", "Total Hits", "Case Hit", "Logoman", "Auto garanties", "Weighted Auto",
                    "Cartes RC", "Auto RC", "Memo RC", "Auto/Memo RC", "Total Hits RC", "Case Hit RC", "Logoman RC"]
+    if odds_enabled:
+        metric_cols = metric_cols + ["Pull Rate", "Break Score (odds)"]
     totals = {spot: {col: 0 for col in metric_cols} for spot in spots}
     checklists_per_spot = {spot: set() for spot in spots}
     players_per_spot = {spot: set() for spot in spots}
@@ -488,6 +496,13 @@ def build_deterministic_spot_summary(
         checklist_id = str(row.get("checklist_id", "") or "").strip()
         guaranteed = guaranteed_map.get(checklist_id, guaranteed_default)
 
+        pull_rate = 0.0
+        card_score = 0.0
+        if odds_enabled:
+            box_type = str(row.get("Box Type", "") or "").strip()
+            pull_rate = float(pull_rate_by_key.get((checklist_id, box_type), 0.0) or 0.0)
+            card_score = float(row.get("Score", 0.0) or 0.0)
+
         base_card = {
             "Player": str(row.get("Player", "") or "").strip(),
             "Team": str(row.get("Team", "") or "").strip(),
@@ -534,6 +549,9 @@ def build_deterministic_spot_summary(
             totals[assigned_spot]["Logoman"] += hits if is_logoman else 0
             totals[assigned_spot]["Auto garanties"] += hits if (is_auto and guaranteed > 0) else 0
             totals[assigned_spot]["Weighted Auto"] += hits * guaranteed if is_auto else 0
+            if odds_enabled:
+                totals[assigned_spot]["Pull Rate"] += hits * pull_rate
+                totals[assigned_spot]["Break Score (odds)"] += hits * pull_rate * card_score
             # RC : le spot lui-même doit être rookie ET la carte dans son année rookie
             _nfd = unicodedata.normalize("NFD", assigned_spot)
             _spot_key = "".join(c for c in _nfd if unicodedata.category(c) != "Mn").lower().strip()
@@ -643,6 +661,12 @@ def build_deterministic_spot_summary(
             "Joueurs": joueurs_str,
             "Checklists": ", ".join(sorted(checklists_per_spot[spot])),
         }
+        if odds_enabled:
+            pull_rate_sum = totals[spot]["Pull Rate"]
+            row["Break Score (odds)"] = totals[spot]["Break Score (odds)"]
+            row["_pull_rate_sum"] = pull_rate_sum
+            if packs_per_box:
+                row["Hits / box"] = round(pull_rate_sum * packs_per_box, 3)
         rows.append(row)
 
     result_df = pd.DataFrame(rows)
@@ -669,6 +693,15 @@ def build_deterministic_spot_summary(
         if col in result_df.columns:
             result_df[col] = result_df[col].astype(int)
 
+    if odds_enabled and "_pull_rate_sum" in result_df.columns:
+        total_pull_rate = result_df["_pull_rate_sum"].sum()
+        if total_pull_rate > 0:
+            result_df["Part attendue"] = (result_df["_pull_rate_sum"] / total_pull_rate * 100).round(2)
+        else:
+            result_df["Part attendue"] = 0.0
+        result_df.drop(columns=["_pull_rate_sum"], inplace=True)
+        result_df["Break Score (odds)"] = result_df["Break Score (odds)"].round(3)
+
     total_cartes = int(result_df["Cartes"].sum())
     summary = {
         "total_cartes": total_cartes,
@@ -676,4 +709,6 @@ def build_deterministic_spot_summary(
         "hot_spots": int((result_df["Hot Spot"] == "🔥 Hot").sum()),
         "hot_threshold_pct": round(hot_threshold_pct, 1),
     }
+    if odds_enabled:
+        summary["odds_coverage"] = round(float((odds_context or {}).get("coverage", 0.0) or 0.0), 4)
     return result_df, summary, card_details

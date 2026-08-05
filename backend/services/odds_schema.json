@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://noclim.app/schemas/odds_sheet.schema.json",
+  "title": "Feuille d'odds Topps",
+  "description": "Documentation du contrat des fichiers odds/{sport_key}/{checklist_id}.json. Ce schéma n'est PAS utilisé à l'exécution (la validation réelle est backend/services/odds_engine.py::validate_odds_sheet, en Python pur, sans dépendance jsonschema) — il sert de référence pour l'agent externe qui écrit ces fichiers sur R2.",
+  "type": "object",
+  "required": ["version", "sport", "checklist_id", "configs", "rows"],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Version du format. Toujours 1 pour l'instant."
+    },
+    "sport": {
+      "type": "string",
+      "description": "Clé de sport (ex. 'nba'), doit correspondre au segment {sport_key} du chemin R2."
+    },
+    "checklist_id": {
+      "type": "string",
+      "description": "Identifiant canonique de la checklist (voir backend/services/checklist_aliases.py), doit correspondre au nom de fichier."
+    },
+    "product_label": {
+      "type": "string",
+      "description": "Libellé humain du produit (ex. '2025-26 Topps Chrome Updates Basketball'). Optionnel, pour affichage."
+    },
+    "source": {
+      "type": "string",
+      "description": "Provenance (ex. 'Topps odds sheet PDF'). Optionnel."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date de mise à jour (YYYY-MM-DD). Optionnel."
+    },
+    "configs": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Les colonnes de configuration du produit (Hobby, Delight, Value Box EA...). Les clés sont libres à chaque produit.",
+      "items": {
+        "type": "object",
+        "required": ["key", "label", "channel"],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Identifiant court et unique de la config (ex. 'hobby', 'value_ea'). Référencé par rows[].odds."
+          },
+          "label": {
+            "type": "string",
+            "description": "Libellé humain (ex. 'Value Box EA')."
+          },
+          "channel": {
+            "type": "string",
+            "enum": ["hobby", "retail", "special"],
+            "description": "Canal de vente. Sert à l'UI pour regrouper (ex. badge 'retail_only')."
+          },
+          "group": {
+            "type": "string",
+            "description": "Replie les variantes régionales (EA/SE/CEE) en une seule colonne dans l'UI (ex. 'value', 'mega', 'hobby', 'delight', 'sapphire', 'fanatics', 'promo')."
+          },
+          "packs_per_box": {
+            "type": ["integer", "null"],
+            "exclusiveMinimum": 0,
+            "description": "Optionnel. Nombre de packs par boîte pour cette config. Sans lui, l'app ne calcule que des métriques relatives (%) — c'est de toute façon la métrique principale."
+          }
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Une entrée par ligne du PDF d'odds.",
+      "items": {
+        "type": "object",
+        "required": ["label", "odds"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Libellé complet de la ligne, tel qu'imprimé (ex. 'Base Refractors Gold')."
+          },
+          "set": {
+            "type": "string",
+            "description": "Optionnel. Set racine (ex. 'Base'). Si absent, dérivé automatiquement par le backend (derive_set_root) — voir docs/ODDS_FILE_FORMAT.md."
+          },
+          "parallel": {
+            "type": "string",
+            "description": "Optionnel. Description du parallèle (ex. 'Refractors Gold'). Si absent, dérivé automatiquement (label moins le préfixe 'set')."
+          },
+          "odds": {
+            "type": "object",
+            "description": "Le N de '1:N' par pack, par clé de config. Clé absente ou valeur null = carte indisponible dans cette configuration ('-' dans le PDF).",
+            "additionalProperties": {
+              "type": ["integer", "null"],
+              "exclusiveMinimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

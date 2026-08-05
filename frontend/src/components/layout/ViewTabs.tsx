@@ -34,6 +34,7 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
     short: '🛠️',
     views: [
       { name: '🧪 Détection Auto/Mem', key: 'detection', short: 'Détection' },
+      { name: '🔗 Mapping Odds', key: 'odds_mapping', short: 'Mapping Odds' },
       { name: '🦸 Attribution Marvel', key: 'marvel_attribution', short: 'Marvel' },
       { name: '⚖️ Comparateur Joueurs', key: 'comparator', short: 'Comparer' },
       { name: '📥 Import Intelligent', key: 'smart_import', short: 'Import IA' },
@@ -44,6 +45,7 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
     short: '🎲',
     views: [
       { name: '🧩 Simulation de Break', key: 'break_simulation', short: 'Simulation' },
+      { name: '🎯 Odds', key: 'odds', short: 'Odds' },
       { name: '📤 Export', key: 'export', short: 'Export' },
     ],
   },

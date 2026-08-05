@@ -27,6 +27,24 @@ class BreakSimulationRequest(BaseModel):
     custom_spots: Optional[List[str]] = None
     extracted_players: List[str] = []
     checklist_hits_guaranteed: Optional[Dict[str, int]] = None
+    config_key: Optional[str] = None
+
+
+class OddsBadgesRequest(BaseModel):
+    sport_key: str
+    checklist_ids: List[str] = []
+
+
+class OddsMappingDetectRequest(BaseModel):
+    sport_key: str
+    checklist_ids: List[str] = []
+    master_key: Optional[str] = None
+
+
+class OddsMappingSaveRequest(BaseModel):
+    sport_key: str
+    checklist_id: str
+    mapping: Dict[str, str] = {}
 
 
 class ExportRequest(BaseModel):

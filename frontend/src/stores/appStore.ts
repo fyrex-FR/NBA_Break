@@ -47,6 +47,11 @@ interface AppState {
   targetTeam: string | null
   setTargetTeam: (team: string | null) => void
 
+  // Odds — configuration ouverte ("je break du Hobby"). null = aucune pondération,
+  // les badges restent purement descriptifs.
+  selectedConfigKey: string | null
+  setSelectedConfigKey: (key: string | null) => void
+
   // Break mode (Voggt show context). When set, the app shows the break overview.
   breakContext: BreakContext | null
   setBreakContext: (ctx: BreakContext | null) => void
@@ -104,6 +109,10 @@ export const useAppStore = create<AppState>()(
       targetTeam: null,
       setTargetTeam: (team) => set({ targetTeam: team }),
 
+      // Odds
+      selectedConfigKey: null,
+      setSelectedConfigKey: (key) => set({ selectedConfigKey: key }),
+
       // Break mode
       breakContext: null,
       setBreakContext: (ctx) => set({ breakContext: ctx }),
@@ -118,6 +127,7 @@ export const useAppStore = create<AppState>()(
         selectedChecklistIds: state.selectedChecklistIds,
         activeView: state.activeView,
         masterKey: state.masterKey,
+        selectedConfigKey: state.selectedConfigKey,
       }),
     },
   ),

@@ -20,6 +20,8 @@ import { RookiesView } from './components/views/RookiesView'
 import { TrendView } from './components/views/TrendView'
 import { SmartImportView } from './components/views/SmartImportView'
 import { BreakOverviewView } from './components/views/BreakOverviewView'
+import { OddsView } from './components/views/OddsView'
+import { OddsMappingView } from './components/views/OddsMappingView'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM } from './types'
 import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
 import ChatWidget from './components/shared/ChatWidget'
@@ -142,6 +144,10 @@ function MainContent() {
         return <ComparatorView />
       case '🧩 Simulation de Break':
         return <BreakSimulationView />
+      case '🎯 Odds':
+        return <OddsView />
+      case '🔗 Mapping Odds':
+        return <OddsMappingView />
       case '📤 Export':
         return <ExportView />
       case '📥 Import Intelligent':

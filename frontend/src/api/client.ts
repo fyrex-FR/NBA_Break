@@ -14,6 +14,11 @@ import type {
   VoggtShowResponse,
   VoggtBreakDetail,
   MarvelAttributionCard,
+  OddsIndexResponse,
+  OddsSheetResponse,
+  OddsBadgesResponse,
+  OddsMappingDetectResponse,
+  OddsMappingSaveResponse,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -75,6 +80,8 @@ export function fetchBreakSimulation(params: {
   custom_spots?: string[]
   extracted_players?: string[]
   checklist_hits_guaranteed?: Record<string, number>
+  /** Configuration ouverte (clé d'une feuille d'odds). Absent → aucune pondération. */
+  config_key?: string | null
 }): Promise<BreakSimulationResponse> {
   return fetchJSON('/simulate/break', {
     method: 'POST',
@@ -339,4 +346,50 @@ export function fetchVoggtBreak(breakId: string, showId?: string | null): Promis
   const params = new URLSearchParams({ break_id: breakId })
   if (showId) params.set('show_id', showId)
   return fetchJSON(`/break/detail?${params.toString()}`)
+}
+
+// ---------------------------------------------------------------------------
+// Odds Topps
+//
+// Les feuilles d'odds sont déposées sur R2 hors de l'app. Ces endpoints sont
+// volontairement séparés de /analyze : les badges se chargent en parallèle de
+// l'analyse et leur absence ne casse jamais l'affichage.
+// ---------------------------------------------------------------------------
+
+/** Checklists disposant d'une feuille d'odds pour ce sport. */
+export function fetchOddsIndex(sportKey: string): Promise<OddsIndexResponse> {
+  return fetchJSON(`/odds/${sportKey}`)
+}
+
+/** Feuille complète + synthèses par set. Rejette avec HTTP 404 si aucune feuille. */
+export function fetchOddsSheet(sportKey: string, checklistId: string): Promise<OddsSheetResponse> {
+  return fetchJSON(`/odds/${sportKey}/${encodeURIComponent(checklistId)}`)
+}
+
+/** Map de badges indexée par `"<checklist_id>::<Box Type>"`. */
+export function fetchOddsBadges(sportKey: string, checklistIds: string[]): Promise<OddsBadgesResponse> {
+  return fetchJSON('/odds/badges', {
+    method: 'POST',
+    body: JSON.stringify({ sport_key: sportKey, checklist_ids: checklistIds }),
+  })
+}
+
+/** État du rattachement Box Type ↔ set, pour l'écran de correction manuelle. */
+export function detectOddsMapping(sportKey: string, checklistIds: string[]): Promise<OddsMappingDetectResponse> {
+  return fetchJSON('/odds/mapping/detect', {
+    method: 'POST',
+    body: JSON.stringify({ sport_key: sportKey, checklist_ids: checklistIds }),
+  })
+}
+
+/** Enregistre les corrections manuelles. Valeur `ODDS_MAPPING_NONE` = ignorer ce Box Type. */
+export function saveOddsMapping(
+  sportKey: string,
+  checklistId: string,
+  mapping: Record<string, string>,
+): Promise<OddsMappingSaveResponse> {
+  return fetchJSON('/odds/mapping/save', {
+    method: 'POST',
+    body: JSON.stringify({ sport_key: sportKey, checklist_id: checklistId, mapping }),
+  })
 }

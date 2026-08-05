@@ -1,0 +1,4691 @@
+{
+  "version": 1,
+  "sport": "nba",
+  "checklist_id": "2025-26-topps-chrome-updates-basketball-checklist",
+  "rows": [
+    {
+      "label": "Base",
+      "set": "Base",
+      "parallel": "",
+      "odds": {
+        "hobby": 1,
+        "jumbo": 1,
+        "value_box_ea": 1,
+        "value_box_se": 1,
+        "value_box_cee": 1,
+        "mega_box_ea": 1,
+        "mega_box_se": 1,
+        "mega_box_cee": 1,
+        "fanatics_box_ascc": 1,
+        "promo_pks": 1
+      }
+    },
+    {
+      "label": "Base Refractors",
+      "set": "Base",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 4,
+        "jumbo": 1,
+        "delight": 1,
+        "value_box_ea": 7,
+        "value_box_se": 7,
+        "value_box_cee": 7,
+        "mega_box_ea": 4,
+        "mega_box_se": 4,
+        "mega_box_cee": 4,
+        "fanatics_box_ascc": 4
+      }
+    },
+    {
+      "label": "Base Refractors Prism",
+      "set": "Base",
+      "parallel": "Refractors Prism",
+      "odds": {
+        "hobby": 5,
+        "jumbo": 2
+      }
+    },
+    {
+      "label": "Base Refractors Negative",
+      "set": "Base",
+      "parallel": "Refractors Negative",
+      "odds": {
+        "hobby": 45,
+        "jumbo": 9
+      }
+    },
+    {
+      "label": "Base Refractors Magenta",
+      "set": "Base",
+      "parallel": "Refractors Magenta",
+      "odds": {
+        "hobby": 76,
+        "jumbo": 31,
+        "delight": 3,
+        "value_box_ea": 218,
+        "value_box_se": 218,
+        "value_box_cee": 218,
+        "mega_box_ea": 1353,
+        "mega_box_se": 1353,
+        "mega_box_cee": 1353,
+        "fanatics_box_ascc": 106
+      }
+    },
+    {
+      "label": "Base Refractors Teal",
+      "set": "Base",
+      "parallel": "Refractors Teal",
+      "odds": {
+        "hobby": 101,
+        "jumbo": 41,
+        "delight": 4,
+        "value_box_ea": 291,
+        "value_box_se": 291,
+        "value_box_cee": 291,
+        "mega_box_ea": 1805,
+        "mega_box_se": 1805,
+        "mega_box_cee": 1805,
+        "fanatics_box_ascc": 142
+      }
+    },
+    {
+      "label": "Base Refractors Yellow",
+      "set": "Base",
+      "parallel": "Refractors Yellow",
+      "odds": {
+        "hobby": 110,
+        "jumbo": 44,
+        "delight": 4,
+        "value_box_ea": 316,
+        "value_box_se": 316,
+        "value_box_cee": 316,
+        "mega_box_ea": 1964,
+        "mega_box_se": 1964,
+        "mega_box_cee": 1964,
+        "fanatics_box_ascc": 154
+      }
+    },
+    {
+      "label": "Base Refractors Aqua",
+      "set": "Base",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 152,
+        "jumbo": 61,
+        "delight": 6,
+        "value_box_ea": 437,
+        "value_box_se": 437,
+        "value_box_cee": 437,
+        "mega_box_ea": 2714,
+        "mega_box_se": 2714,
+        "mega_box_cee": 2714,
+        "fanatics_box_ascc": 213
+      }
+    },
+    {
+      "label": "Base Refractors Blue",
+      "set": "Base",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 202,
+        "jumbo": 80,
+        "delight": 7,
+        "value_box_ea": 579,
+        "value_box_se": 579,
+        "value_box_cee": 579,
+        "mega_box_ea": 3603,
+        "mega_box_se": 3603,
+        "mega_box_cee": 3603,
+        "fanatics_box_ascc": 282
+      }
+    },
+    {
+      "label": "Base Refractors Green",
+      "set": "Base",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 306,
+        "jumbo": 122,
+        "delight": 11,
+        "value_box_ea": 877,
+        "value_box_se": 877,
+        "value_box_cee": 877,
+        "mega_box_ea": 5456,
+        "mega_box_se": 5456,
+        "mega_box_cee": 5456,
+        "fanatics_box_ascc": 428
+      }
+    },
+    {
+      "label": "Base Refractors Purple",
+      "set": "Base",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 403,
+        "jumbo": 160,
+        "delight": 14,
+        "value_box_ea": 1158,
+        "value_box_se": 1158,
+        "value_box_cee": 1158,
+        "mega_box_ea": 7215,
+        "mega_box_se": 7215,
+        "mega_box_cee": 7215,
+        "fanatics_box_ascc": 565
+      }
+    },
+    {
+      "label": "Base Refractors Gold",
+      "set": "Base",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 604,
+        "jumbo": 240,
+        "delight": 21,
+        "value_box_ea": 1737,
+        "value_box_se": 1737,
+        "value_box_cee": 1737,
+        "mega_box_ea": 10822,
+        "mega_box_se": 10822,
+        "mega_box_cee": 10822,
+        "fanatics_box_ascc": 846
+      }
+    },
+    {
+      "label": "Base Refractors Orange",
+      "set": "Base",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 1209,
+        "jumbo": 480,
+        "delight": 41,
+        "value_box_ea": 3474,
+        "value_box_se": 3474,
+        "value_box_cee": 3474,
+        "mega_box_ea": 21643,
+        "mega_box_se": 21643,
+        "mega_box_cee": 21643,
+        "fanatics_box_ascc": 1699
+      }
+    },
+    {
+      "label": "Base Refractors Black",
+      "set": "Base",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 3022,
+        "jumbo": 1203,
+        "delight": 101,
+        "value_box_ea": 8686,
+        "value_box_se": 8686,
+        "value_box_cee": 8686,
+        "mega_box_ea": 54557,
+        "mega_box_se": 54557,
+        "mega_box_cee": 54557,
+        "fanatics_box_ascc": 4298
+      }
+    },
+    {
+      "label": "Base Refractors Red",
+      "set": "Base",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 6054,
+        "jumbo": 2415,
+        "delight": 201,
+        "value_box_ea": 17397,
+        "value_box_se": 17397,
+        "value_box_cee": 17397,
+        "mega_box_ea": 109113,
+        "mega_box_se": 109113,
+        "mega_box_cee": 109113,
+        "fanatics_box_ascc": 8774
+      }
+    },
+    {
+      "label": "Base Superfractors",
+      "set": "Base",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 30361,
+        "jumbo": 12259,
+        "delight": 1035,
+        "value_box_ea": 87481,
+        "value_box_se": 87480,
+        "value_box_cee": 87480,
+        "mega_box_ea": 654675,
+        "mega_box_se": 654675,
+        "mega_box_cee": 654675,
+        "fanatics_box_ascc": 52640
+      }
+    },
+    {
+      "label": "Base Frozenfractors",
+      "set": "Base",
+      "parallel": "Frozenfractors",
+      "odds": {
+        "hobby": 6054,
+        "jumbo": 2415,
+        "delight": 201,
+        "value_box_ea": 17397,
+        "value_box_se": 17397,
+        "value_box_cee": 17397,
+        "mega_box_ea": 109113,
+        "mega_box_se": 109113,
+        "mega_box_cee": 109113,
+        "fanatics_box_ascc": 8774
+      }
+    },
+    {
+      "label": "Base Refractors Wave",
+      "set": "Base",
+      "parallel": "Refractors Wave",
+      "odds": {
+        "hobby": 13,
+        "jumbo": 19
+      }
+    },
+    {
+      "label": "Base Refractors Yellow Wave",
+      "set": "Base",
+      "parallel": "Refractors Yellow Wave",
+      "odds": {
+        "hobby": 129
+      }
+    },
+    {
+      "label": "Base Refractors Aqua Wave",
+      "set": "Base",
+      "parallel": "Refractors Aqua Wave",
+      "odds": {
+        "hobby": 79,
+        "jumbo": 35
+      }
+    },
+    {
+      "label": "Base Refractors Blue Wave",
+      "set": "Base",
+      "parallel": "Refractors Blue Wave",
+      "odds": {
+        "hobby": 104,
+        "jumbo": 31
+      }
+    },
+    {
+      "label": "Base Refractors Green Wave",
+      "set": "Base",
+      "parallel": "Refractors Green Wave",
+      "odds": {
+        "hobby": 158,
+        "jumbo": 47
+      }
+    },
+    {
+      "label": "Base Refractors Purple Wave",
+      "set": "Base",
+      "parallel": "Refractors Purple Wave",
+      "odds": {
+        "hobby": 208,
+        "jumbo": 62
+      }
+    },
+    {
+      "label": "Base Refractors Gold Wave",
+      "set": "Base",
+      "parallel": "Refractors Gold Wave",
+      "odds": {
+        "hobby": 312,
+        "jumbo": 93
+      }
+    },
+    {
+      "label": "Base Refractors Orange Wave",
+      "set": "Base",
+      "parallel": "Refractors Orange Wave",
+      "odds": {
+        "hobby": 623,
+        "jumbo": 185
+      }
+    },
+    {
+      "label": "Base Refractors Black Wave",
+      "set": "Base",
+      "parallel": "Refractors Black Wave",
+      "odds": {
+        "hobby": 1559,
+        "jumbo": 461
+      }
+    },
+    {
+      "label": "Base Refractors Red Wave",
+      "set": "Base",
+      "parallel": "Refractors Red Wave",
+      "odds": {
+        "hobby": 3119,
+        "jumbo": 922
+      }
+    },
+    {
+      "label": "Base Refractors Geometric",
+      "set": "Base",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 3
+      }
+    },
+    {
+      "label": "Base Refractors Geometric Purple",
+      "set": "Base",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 2
+      }
+    },
+    {
+      "label": "Base Refractors Geometric Gold",
+      "set": "Base",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 3
+      }
+    },
+    {
+      "label": "Base Refractors Geometric Orange",
+      "set": "Base",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 6
+      }
+    },
+    {
+      "label": "Base Refractors Geometric Black",
+      "set": "Base",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 14
+      }
+    },
+    {
+      "label": "Base Refractors Geometric Red",
+      "set": "Base",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 27
+      }
+    },
+    {
+      "label": "Base Refractors Geometric White",
+      "set": "Base",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 67
+      }
+    },
+    {
+      "label": "Base Sapphire",
+      "set": "Base",
+      "parallel": "Sapphire",
+      "odds": {
+        "sapphire": 1
+      }
+    },
+    {
+      "label": "Base Sapphire Purple",
+      "set": "Base",
+      "parallel": "Sapphire Purple",
+      "odds": {
+        "sapphire": 6
+      }
+    },
+    {
+      "label": "Base Sapphire Gold",
+      "set": "Base",
+      "parallel": "Sapphire Gold",
+      "odds": {
+        "sapphire": 9
+      }
+    },
+    {
+      "label": "Base Sapphire Orange",
+      "set": "Base",
+      "parallel": "Sapphire Orange",
+      "odds": {
+        "sapphire": 17
+      }
+    },
+    {
+      "label": "Base Sapphire Black",
+      "set": "Base",
+      "parallel": "Sapphire Black",
+      "odds": {
+        "sapphire": 42
+      }
+    },
+    {
+      "label": "Base Sapphire Red",
+      "set": "Base",
+      "parallel": "Sapphire Red",
+      "odds": {
+        "sapphire": 84
+      }
+    },
+    {
+      "label": "Base Sapphire Padpardascha",
+      "set": "Base",
+      "parallel": "Sapphire Padpardascha",
+      "odds": {
+        "sapphire": 418
+      }
+    },
+    {
+      "label": "Base Refractors Basketball",
+      "set": "Base",
+      "parallel": "Refractors Basketball",
+      "odds": {
+        "value_box_ea": 8,
+        "value_box_se": 8,
+        "value_box_cee": 8
+      }
+    },
+    {
+      "label": "Base Refractors Aqua Basketball",
+      "set": "Base",
+      "parallel": "Refractors Aqua Basketball",
+      "odds": {
+        "value_box_ea": 238,
+        "value_box_se": 238,
+        "value_box_cee": 238
+      }
+    },
+    {
+      "label": "Base Refractors Blue Basketball",
+      "set": "Base",
+      "parallel": "Refractors Blue Basketball",
+      "odds": {
+        "value_box_ea": 211,
+        "value_box_se": 211,
+        "value_box_cee": 211
+      }
+    },
+    {
+      "label": "Base Refractors Green Basketball",
+      "set": "Base",
+      "parallel": "Refractors Green Basketball",
+      "odds": {
+        "value_box_ea": 319,
+        "value_box_se": 319,
+        "value_box_cee": 319
+      }
+    },
+    {
+      "label": "Base Refractors Purple Basketball",
+      "set": "Base",
+      "parallel": "Refractors Purple Basketball",
+      "odds": {
+        "value_box_ea": 421,
+        "value_box_se": 421,
+        "value_box_cee": 421
+      }
+    },
+    {
+      "label": "Base Refractors Gold Basketball",
+      "set": "Base",
+      "parallel": "Refractors Gold Basketball",
+      "odds": {
+        "value_box_ea": 632,
+        "value_box_se": 632,
+        "value_box_cee": 632
+      }
+    },
+    {
+      "label": "Base Refractors Orange Basketball",
+      "set": "Base",
+      "parallel": "Refractors Orange Basketball",
+      "odds": {
+        "value_box_ea": 1263,
+        "value_box_se": 1263,
+        "value_box_cee": 1263
+      }
+    },
+    {
+      "label": "Base Refractors Black Basketball",
+      "set": "Base",
+      "parallel": "Refractors Black Basketball",
+      "odds": {
+        "value_box_ea": 3157,
+        "value_box_se": 3157,
+        "value_box_cee": 3157
+      }
+    },
+    {
+      "label": "Base Refractors Red Basketball",
+      "set": "Base",
+      "parallel": "Refractors Red Basketball",
+      "odds": {
+        "value_box_ea": 6313,
+        "value_box_se": 6313,
+        "value_box_cee": 6313
+      }
+    },
+    {
+      "label": "Base Refractors Red White and Blue",
+      "set": "Base",
+      "parallel": "Refractors Red White and Blue",
+      "odds": {
+        "value_box_ea": 4,
+        "value_box_se": 4,
+        "value_box_cee": 4
+      }
+    },
+    {
+      "label": "Base Refractors RayWave",
+      "set": "Base",
+      "parallel": "Refractors RayWave",
+      "odds": {
+        "value_box_ea": 9,
+        "value_box_se": 9,
+        "value_box_cee": 9,
+        "mega_box_ea": 3,
+        "mega_box_se": 3,
+        "mega_box_cee": 3,
+        "fanatics_box_ascc": 3
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Yellow",
+      "set": "Base",
+      "parallel": "Refractors RayWave Yellow",
+      "odds": {
+        "mega_box_ea": 50,
+        "mega_box_se": 50,
+        "mega_box_cee": 50
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Aqua",
+      "set": "Base",
+      "parallel": "Refractors RayWave Aqua",
+      "odds": {
+        "mega_box_ea": 68,
+        "mega_box_se": 68,
+        "mega_box_cee": 68
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Blue",
+      "set": "Base",
+      "parallel": "Refractors RayWave Blue",
+      "odds": {
+        "mega_box_ea": 90,
+        "mega_box_se": 90,
+        "mega_box_cee": 90
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Green",
+      "set": "Base",
+      "parallel": "Refractors RayWave Green",
+      "odds": {
+        "mega_box_ea": 147,
+        "mega_box_se": 147,
+        "mega_box_cee": 147,
+        "fanatics_box_ascc": 177
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Purple",
+      "set": "Base",
+      "parallel": "Refractors RayWave Purple",
+      "odds": {
+        "mega_box_ea": 221,
+        "mega_box_se": 221,
+        "mega_box_cee": 221,
+        "fanatics_box_ascc": 79
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Gold",
+      "set": "Base",
+      "parallel": "Refractors RayWave Gold",
+      "odds": {
+        "mega_box_ea": 332,
+        "mega_box_se": 332,
+        "mega_box_cee": 332,
+        "fanatics_box_ascc": 118
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Orange",
+      "set": "Base",
+      "parallel": "Refractors RayWave Orange",
+      "odds": {
+        "mega_box_ea": 663,
+        "mega_box_se": 663,
+        "mega_box_cee": 663,
+        "fanatics_box_ascc": 236
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Black",
+      "set": "Base",
+      "parallel": "Refractors RayWave Black",
+      "odds": {
+        "mega_box_ea": 1656,
+        "mega_box_se": 1656,
+        "mega_box_cee": 1656,
+        "fanatics_box_ascc": 589
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Red",
+      "set": "Base",
+      "parallel": "Refractors RayWave Red",
+      "odds": {
+        "mega_box_ea": 3311,
+        "mega_box_se": 3311,
+        "mega_box_cee": 3311,
+        "fanatics_box_ascc": 1177
+      }
+    },
+    {
+      "label": "Base X-Fractors",
+      "set": "Base",
+      "parallel": "X-Fractors",
+      "odds": {
+        "mega_box_ea": 1,
+        "mega_box_se": 1,
+        "mega_box_cee": 1
+      }
+    },
+    {
+      "label": "Base Refractors Skylight",
+      "set": "Base",
+      "parallel": "Refractors Skylight",
+      "odds": {
+        "fanatics_box_ascc": 1
+      }
+    },
+    {
+      "label": "Base Refractors RayWave Magenta",
+      "set": "Base",
+      "parallel": "Refractors RayWave Magenta",
+      "odds": {
+        "mega_box_ea": 184,
+        "mega_box_se": 184,
+        "mega_box_cee": 184
+      }
+    },
+    {
+      "label": "Base Refractors Denim Tears",
+      "set": "Base",
+      "parallel": "Refractors Denim Tears",
+      "odds": {
+        "hobby": 6054,
+        "jumbo": 2415,
+        "delight": 201,
+        "value_box_ea": 17365,
+        "value_box_se": 17433,
+        "value_box_cee": 17174,
+        "mega_box_ea": 112000,
+        "mega_box_se": 109866,
+        "mega_box_cee": 76860,
+        "fanatics_box_ascc": 8774
+      }
+    },
+    {
+      "label": "Clutch City",
+      "set": "Clutch City",
+      "parallel": "",
+      "odds": {
+        "hobby": 26,
+        "jumbo": 12,
+        "value_box_ea": 59,
+        "value_box_se": 59,
+        "value_box_cee": 59,
+        "mega_box_ea": 37,
+        "mega_box_se": 37,
+        "mega_box_cee": 37,
+        "fanatics_box_ascc": 39
+      }
+    },
+    {
+      "label": "Clutch City Refractors",
+      "set": "Clutch City",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 260,
+        "jumbo": 112,
+        "value_box_ea": 592,
+        "value_box_se": 592,
+        "value_box_cee": 592,
+        "mega_box_ea": 416,
+        "mega_box_se": 416,
+        "mega_box_cee": 416,
+        "fanatics_box_ascc": 351
+      }
+    },
+    {
+      "label": "Clutch City Refractors Aqua",
+      "set": "Clutch City",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 2508,
+        "jumbo": 1123,
+        "value_box_ea": 5415,
+        "value_box_se": 5415,
+        "value_box_cee": 5415,
+        "mega_box_ea": 3720,
+        "mega_box_se": 3720,
+        "mega_box_cee": 3720,
+        "fanatics_box_ascc": 3510
+      }
+    },
+    {
+      "label": "Clutch City Refractors Blue",
+      "set": "Clutch City",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 3328,
+        "jumbo": 1490,
+        "value_box_ea": 7188,
+        "value_box_se": 7188,
+        "value_box_cee": 7188,
+        "mega_box_ea": 4932,
+        "mega_box_se": 4932,
+        "mega_box_cee": 4932,
+        "fanatics_box_ascc": 4680
+      }
+    },
+    {
+      "label": "Clutch City Refractors Green",
+      "set": "Clutch City",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 5047,
+        "jumbo": 2261,
+        "value_box_ea": 10897,
+        "value_box_se": 10897,
+        "value_box_cee": 10897,
+        "mega_box_ea": 7482,
+        "mega_box_se": 7482,
+        "mega_box_cee": 7482,
+        "fanatics_box_ascc": 7261
+      }
+    },
+    {
+      "label": "Clutch City Refractors Purple",
+      "set": "Clutch City",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 6655,
+        "jumbo": 2979,
+        "value_box_ea": 14375,
+        "value_box_se": 14375,
+        "value_box_cee": 14375,
+        "mega_box_ea": 9882,
+        "mega_box_se": 9882,
+        "mega_box_cee": 9882,
+        "fanatics_box_ascc": 9571
+      }
+    },
+    {
+      "label": "Clutch City Refractors Gold",
+      "set": "Clutch City",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 10016,
+        "jumbo": 4490,
+        "value_box_ea": 21562,
+        "value_box_se": 21562,
+        "value_box_cee": 21562,
+        "mega_box_ea": 14795,
+        "mega_box_se": 14795,
+        "mega_box_cee": 14795,
+        "fanatics_box_ascc": 14038
+      }
+    },
+    {
+      "label": "Clutch City Refractors Orange",
+      "set": "Clutch City",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 20032,
+        "jumbo": 9107,
+        "value_box_ea": 43430,
+        "value_box_se": 43430,
+        "value_box_cee": 43430,
+        "mega_box_ea": 29758,
+        "mega_box_se": 29758,
+        "mega_box_cee": 29758,
+        "fanatics_box_ascc": 30080
+      }
+    },
+    {
+      "label": "Clutch City Refractors Black",
+      "set": "Clutch City",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 51133,
+        "jumbo": 22766,
+        "value_box_ea": 109350,
+        "value_box_se": 109350,
+        "value_box_cee": 109350,
+        "mega_box_ea": 74820,
+        "mega_box_se": 74820,
+        "mega_box_cee": 74820,
+        "fanatics_box_ascc": 70187
+      }
+    },
+    {
+      "label": "Clutch City Refractors Red",
+      "set": "Clutch City",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 60721,
+        "jumbo": 28975,
+        "value_box_ea": 437400,
+        "value_box_se": 437400,
+        "value_box_cee": 437400,
+        "mega_box_ea": 154042,
+        "mega_box_se": 154042,
+        "mega_box_cee": 154042,
+        "fanatics_box_ascc": 210560
+      }
+    },
+    {
+      "label": "Clutch City Superfractors",
+      "set": "Clutch City",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 647680,
+        "jumbo": 318720,
+        "value_box_ea": 1224721,
+        "value_box_se": 1224720,
+        "value_box_cee": 1224721,
+        "mega_box_ea": 872900,
+        "mega_box_se": 872900,
+        "mega_box_cee": 872900
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 26
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric Purple",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric Gold",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 36
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric Orange",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 72
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric Black",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 179
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric Red",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 358
+      }
+    },
+    {
+      "label": "Clutch City Refractors Geometric White",
+      "set": "Clutch City",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 894
+      }
+    },
+    {
+      "label": "Fortune 15",
+      "set": "Fortune 15",
+      "parallel": "",
+      "odds": {
+        "hobby": 26,
+        "jumbo": 12,
+        "value_box_ea": 55,
+        "value_box_se": 55,
+        "value_box_cee": 55,
+        "mega_box_ea": 37,
+        "mega_box_se": 37,
+        "mega_box_cee": 37,
+        "fanatics_box_ascc": 38
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors",
+      "set": "Fortune 15",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 260,
+        "jumbo": 112,
+        "value_box_ea": 545,
+        "value_box_se": 545,
+        "value_box_cee": 545,
+        "mega_box_ea": 416,
+        "mega_box_se": 416,
+        "mega_box_cee": 416,
+        "fanatics_box_ascc": 351
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Aqua",
+      "set": "Fortune 15",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 2508,
+        "jumbo": 1123,
+        "value_box_ea": 5415,
+        "value_box_se": 5415,
+        "value_box_cee": 5415,
+        "mega_box_ea": 3720,
+        "mega_box_se": 3720,
+        "mega_box_cee": 3720,
+        "fanatics_box_ascc": 3510
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Blue",
+      "set": "Fortune 15",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 3328,
+        "jumbo": 1490,
+        "value_box_ea": 7188,
+        "value_box_se": 7188,
+        "value_box_cee": 7188,
+        "mega_box_ea": 4932,
+        "mega_box_se": 4932,
+        "mega_box_cee": 4932,
+        "fanatics_box_ascc": 4680
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Green",
+      "set": "Fortune 15",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 5047,
+        "jumbo": 2261,
+        "value_box_ea": 10897,
+        "value_box_se": 10897,
+        "value_box_cee": 10897,
+        "mega_box_ea": 7482,
+        "mega_box_se": 7482,
+        "mega_box_cee": 7482,
+        "fanatics_box_ascc": 7261
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Purple",
+      "set": "Fortune 15",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 6655,
+        "jumbo": 2979,
+        "value_box_ea": 14375,
+        "value_box_se": 14375,
+        "value_box_cee": 14375,
+        "mega_box_ea": 9882,
+        "mega_box_se": 9882,
+        "mega_box_cee": 9882,
+        "fanatics_box_ascc": 9571
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Gold",
+      "set": "Fortune 15",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 10016,
+        "jumbo": 4490,
+        "value_box_ea": 21562,
+        "value_box_se": 21562,
+        "value_box_cee": 21562,
+        "mega_box_ea": 14795,
+        "mega_box_se": 14795,
+        "mega_box_cee": 14795,
+        "fanatics_box_ascc": 14038
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Orange",
+      "set": "Fortune 15",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 20032,
+        "jumbo": 9107,
+        "value_box_ea": 43430,
+        "value_box_se": 43430,
+        "value_box_cee": 43430,
+        "mega_box_ea": 29758,
+        "mega_box_se": 29758,
+        "mega_box_cee": 29758,
+        "fanatics_box_ascc": 30080
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Black",
+      "set": "Fortune 15",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 30361,
+        "jumbo": 13858,
+        "value_box_ea": 291601,
+        "value_box_se": 291600,
+        "value_box_cee": 291601,
+        "mega_box_ea": 74820,
+        "mega_box_se": 74820,
+        "mega_box_cee": 74820,
+        "fanatics_box_ascc": 70187
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Red",
+      "set": "Fortune 15",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 102266,
+        "jumbo": 45532,
+        "value_box_ea": 218700,
+        "value_box_se": 218700,
+        "value_box_cee": 218700,
+        "mega_box_ea": 154042,
+        "mega_box_se": 154042,
+        "mega_box_cee": 154042,
+        "fanatics_box_ascc": 210560
+      }
+    },
+    {
+      "label": "Fortune 15 Superfractors",
+      "set": "Fortune 15",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 647680,
+        "jumbo": 318720,
+        "value_box_ea": 1224721,
+        "value_box_se": 1224720,
+        "value_box_cee": 1224721,
+        "mega_box_ea": 872900,
+        "mega_box_se": 872900,
+        "mega_box_cee": 872900
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric Purple",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric Gold",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 36
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric Orange",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 72
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric Black",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 179
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric Red",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 358
+      }
+    },
+    {
+      "label": "Fortune 15 Refractors Geometric White",
+      "set": "Fortune 15",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 894
+      }
+    },
+    {
+      "label": "New Edition",
+      "set": "New Edition",
+      "parallel": "",
+      "odds": {
+        "hobby": 20,
+        "jumbo": 9,
+        "value_box_ea": 41,
+        "value_box_se": 41,
+        "value_box_cee": 41,
+        "mega_box_ea": 28,
+        "mega_box_se": 28,
+        "mega_box_cee": 28,
+        "fanatics_box_ascc": 29
+      }
+    },
+    {
+      "label": "New Edition Refractors",
+      "set": "New Edition",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 195,
+        "jumbo": 84,
+        "value_box_ea": 409,
+        "value_box_se": 409,
+        "value_box_cee": 409,
+        "mega_box_ea": 312,
+        "mega_box_se": 312,
+        "mega_box_cee": 312,
+        "fanatics_box_ascc": 264
+      }
+    },
+    {
+      "label": "New Edition Refractors Aqua",
+      "set": "New Edition",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 1881,
+        "jumbo": 841,
+        "value_box_ea": 4061,
+        "value_box_se": 4061,
+        "value_box_cee": 4061,
+        "mega_box_ea": 2789,
+        "mega_box_se": 2789,
+        "mega_box_cee": 2789,
+        "fanatics_box_ascc": 2632
+      }
+    },
+    {
+      "label": "New Edition Refractors Blue",
+      "set": "New Edition",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 2495,
+        "jumbo": 1115,
+        "value_box_ea": 5386,
+        "value_box_se": 5386,
+        "value_box_cee": 5386,
+        "mega_box_ea": 3699,
+        "mega_box_se": 3699,
+        "mega_box_cee": 3699,
+        "fanatics_box_ascc": 3510
+      }
+    },
+    {
+      "label": "New Edition Refractors Green",
+      "set": "New Edition",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 3781,
+        "jumbo": 1696,
+        "value_box_ea": 8165,
+        "value_box_se": 8165,
+        "value_box_cee": 8165,
+        "mega_box_ea": 5608,
+        "mega_box_se": 5608,
+        "mega_box_cee": 5608,
+        "fanatics_box_ascc": 5399
+      }
+    },
+    {
+      "label": "New Edition Refractors Purple",
+      "set": "New Edition",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 4995,
+        "jumbo": 2229,
+        "value_box_ea": 10781,
+        "value_box_se": 10781,
+        "value_box_cee": 10781,
+        "mega_box_ea": 7398,
+        "mega_box_se": 7398,
+        "mega_box_cee": 7398,
+        "fanatics_box_ascc": 7019
+      }
+    },
+    {
+      "label": "New Edition Refractors Gold",
+      "set": "New Edition",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 7503,
+        "jumbo": 3355,
+        "value_box_ea": 16158,
+        "value_box_se": 16158,
+        "value_box_cee": 16158,
+        "mega_box_ea": 11097,
+        "mega_box_se": 11097,
+        "mega_box_cee": 11097,
+        "fanatics_box_ascc": 10528
+      }
+    },
+    {
+      "label": "New Edition Refractors Orange",
+      "set": "New Edition",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 15063,
+        "jumbo": 6782,
+        "value_box_ea": 32400,
+        "value_box_se": 32400,
+        "value_box_cee": 32400,
+        "mega_box_ea": 22193,
+        "mega_box_se": 22193,
+        "mega_box_cee": 22193,
+        "fanatics_box_ascc": 21056
+      }
+    },
+    {
+      "label": "New Edition Refractors Black",
+      "set": "New Edition",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 102266,
+        "jumbo": 45532,
+        "value_box_ea": 218700,
+        "value_box_se": 218700,
+        "value_box_cee": 218700,
+        "mega_box_ea": 55718,
+        "mega_box_se": 55718,
+        "mega_box_cee": 55718,
+        "fanatics_box_ascc": 52640
+      }
+    },
+    {
+      "label": "New Edition Refractors Red",
+      "set": "New Edition",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 38861,
+        "jumbo": 17707,
+        "value_box_ea": 612361,
+        "value_box_se": 612360,
+        "value_box_cee": 612361,
+        "mega_box_ea": 145484,
+        "mega_box_se": 145484,
+        "mega_box_cee": 145484,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "New Edition Superfractors",
+      "set": "New Edition",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 388608,
+        "jumbo": 318720,
+        "value_box_ea": 874800,
+        "value_box_se": 874800,
+        "value_box_cee": 874800,
+        "mega_box_ea": 654675,
+        "mega_box_se": 654675,
+        "mega_box_cee": 654675
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 18
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric Purple",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 18
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric Gold",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 27
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric Orange",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 54
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric Black",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 134
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric Red",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 268
+      }
+    },
+    {
+      "label": "New Edition Refractors Geometric White",
+      "set": "New Edition",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 670
+      }
+    },
+    {
+      "label": "Power Players",
+      "set": "Power Players",
+      "parallel": "",
+      "odds": {
+        "hobby": 16,
+        "jumbo": 7,
+        "value_box_ea": 33,
+        "value_box_se": 33,
+        "value_box_cee": 33,
+        "mega_box_ea": 22,
+        "mega_box_se": 22,
+        "mega_box_cee": 22,
+        "fanatics_box_ascc": 23
+      }
+    },
+    {
+      "label": "Power Players Refractors",
+      "set": "Power Players",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 156,
+        "jumbo": 68,
+        "value_box_ea": 327,
+        "value_box_se": 327,
+        "value_box_cee": 327,
+        "mega_box_ea": 250,
+        "mega_box_se": 250,
+        "mega_box_cee": 250,
+        "fanatics_box_ascc": 211
+      }
+    },
+    {
+      "label": "Power Players Refractors Aqua",
+      "set": "Power Players",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 1504,
+        "jumbo": 673,
+        "value_box_ea": 3218,
+        "value_box_se": 3218,
+        "value_box_cee": 3218,
+        "mega_box_ea": 2231,
+        "mega_box_se": 2231,
+        "mega_box_cee": 2231,
+        "fanatics_box_ascc": 2106
+      }
+    },
+    {
+      "label": "Power Players Refractors Blue",
+      "set": "Power Players",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 1995,
+        "jumbo": 893,
+        "value_box_ea": 4310,
+        "value_box_se": 4310,
+        "value_box_cee": 4310,
+        "mega_box_ea": 2959,
+        "mega_box_se": 2959,
+        "mega_box_cee": 2959,
+        "fanatics_box_ascc": 2808
+      }
+    },
+    {
+      "label": "Power Players Refractors Green",
+      "set": "Power Players",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 3027,
+        "jumbo": 1357,
+        "value_box_ea": 6536,
+        "value_box_se": 6536,
+        "value_box_cee": 6536,
+        "mega_box_ea": 4485,
+        "mega_box_se": 4485,
+        "mega_box_cee": 4485,
+        "fanatics_box_ascc": 4298
+      }
+    },
+    {
+      "label": "Power Players Refractors Purple",
+      "set": "Power Players",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 3999,
+        "jumbo": 1791,
+        "value_box_ea": 8625,
+        "value_box_se": 8625,
+        "value_box_cee": 8625,
+        "mega_box_ea": 5925,
+        "mega_box_se": 5925,
+        "mega_box_cee": 5925,
+        "fanatics_box_ascc": 5691
+      }
+    },
+    {
+      "label": "Power Players Refractors Gold",
+      "set": "Power Players",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 5998,
+        "jumbo": 2679,
+        "value_box_ea": 12947,
+        "value_box_se": 12947,
+        "value_box_cee": 12947,
+        "mega_box_ea": 8877,
+        "mega_box_se": 8877,
+        "mega_box_cee": 8877,
+        "fanatics_box_ascc": 8423
+      }
+    },
+    {
+      "label": "Power Players Refractors Orange",
+      "set": "Power Players",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 11995,
+        "jumbo": 5403,
+        "value_box_ea": 25948,
+        "value_box_se": 25948,
+        "value_box_cee": 25948,
+        "mega_box_ea": 17815,
+        "mega_box_se": 17815,
+        "mega_box_cee": 17815,
+        "fanatics_box_ascc": 17547
+      }
+    },
+    {
+      "label": "Power Players Refractors Black",
+      "set": "Power Players",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 77722,
+        "jumbo": 35414,
+        "value_box_ea": 57230,
+        "value_box_se": 57230,
+        "value_box_cee": 57230,
+        "mega_box_ea": 45151,
+        "mega_box_se": 45150,
+        "mega_box_cee": 45150,
+        "fanatics_box_ascc": 42112
+      }
+    },
+    {
+      "label": "Power Players Refractors Red",
+      "set": "Power Players",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 51133,
+        "jumbo": 22766,
+        "value_box_ea": 127575,
+        "value_box_se": 127575,
+        "value_box_cee": 127576,
+        "mega_box_ea": 119032,
+        "mega_box_se": 119032,
+        "mega_box_cee": 119032,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Power Players Superfractors",
+      "set": "Power Players",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 323840,
+        "jumbo": 159360,
+        "value_box_ea": 680401,
+        "value_box_se": 680400,
+        "value_box_cee": 680401,
+        "mega_box_ea": 523740,
+        "mega_box_se": 523740,
+        "mega_box_cee": 523740
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric Purple",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric Gold",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 22
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric Orange",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 43
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric Black",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 108
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric Red",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 215
+      }
+    },
+    {
+      "label": "Power Players Refractors Geometric White",
+      "set": "Power Players",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 536
+      }
+    },
+    {
+      "label": "Stratospheric Stars",
+      "set": "Stratospheric Stars",
+      "parallel": "",
+      "odds": {
+        "hobby": 16,
+        "jumbo": 7,
+        "value_box_ea": 33,
+        "value_box_se": 33,
+        "value_box_cee": 33,
+        "mega_box_ea": 22,
+        "mega_box_se": 22,
+        "mega_box_cee": 22,
+        "fanatics_box_ascc": 23
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 156,
+        "jumbo": 68,
+        "value_box_ea": 327,
+        "value_box_se": 327,
+        "value_box_cee": 327,
+        "mega_box_ea": 250,
+        "mega_box_se": 250,
+        "mega_box_cee": 250,
+        "fanatics_box_ascc": 211
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Aqua",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 1504,
+        "jumbo": 673,
+        "value_box_ea": 3223,
+        "value_box_se": 3223,
+        "value_box_cee": 3223,
+        "mega_box_ea": 2231,
+        "mega_box_se": 2231,
+        "mega_box_cee": 2231,
+        "fanatics_box_ascc": 2106
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Blue",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 1995,
+        "jumbo": 893,
+        "value_box_ea": 4310,
+        "value_box_se": 4310,
+        "value_box_cee": 4310,
+        "mega_box_ea": 2959,
+        "mega_box_se": 2959,
+        "mega_box_cee": 2959,
+        "fanatics_box_ascc": 2808
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Green",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 3027,
+        "jumbo": 1357,
+        "value_box_ea": 6536,
+        "value_box_se": 6536,
+        "value_box_cee": 6536,
+        "mega_box_ea": 4485,
+        "mega_box_se": 4485,
+        "mega_box_cee": 4485,
+        "fanatics_box_ascc": 4298
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Purple",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 3999,
+        "jumbo": 1791,
+        "value_box_ea": 8625,
+        "value_box_se": 8625,
+        "value_box_cee": 8625,
+        "mega_box_ea": 5925,
+        "mega_box_se": 5925,
+        "mega_box_cee": 5925,
+        "fanatics_box_ascc": 5691
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Gold",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 5998,
+        "jumbo": 2679,
+        "value_box_ea": 12947,
+        "value_box_se": 12947,
+        "value_box_cee": 12947,
+        "mega_box_ea": 8877,
+        "mega_box_se": 8877,
+        "mega_box_cee": 8877,
+        "fanatics_box_ascc": 8423
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Orange",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 11995,
+        "jumbo": 5403,
+        "value_box_ea": 25948,
+        "value_box_se": 25948,
+        "value_box_cee": 25948,
+        "mega_box_ea": 17815,
+        "mega_box_se": 17815,
+        "mega_box_cee": 17815,
+        "fanatics_box_ascc": 17547
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Black",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 38099,
+        "jumbo": 16775,
+        "value_box_ea": 81648,
+        "value_box_se": 81648,
+        "value_box_cee": 81649,
+        "mega_box_ea": 45151,
+        "mega_box_se": 45150,
+        "mega_box_cee": 45150,
+        "fanatics_box_ascc": 42112
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Red",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 60721,
+        "jumbo": 28975,
+        "value_box_ea": 130290,
+        "value_box_se": 130290,
+        "value_box_cee": 130290,
+        "mega_box_ea": 90301,
+        "mega_box_se": 90300,
+        "mega_box_cee": 90300,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Stratospheric Stars Superfractors",
+      "set": "Stratospheric Stars",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 323840,
+        "jumbo": 159360,
+        "value_box_ea": 680401,
+        "value_box_se": 680400,
+        "value_box_cee": 680401,
+        "mega_box_ea": 523740,
+        "mega_box_se": 523740,
+        "mega_box_cee": 523740
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric Purple",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric Gold",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 22
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric Orange",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 43
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric Black",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 108
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric Red",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 215
+      }
+    },
+    {
+      "label": "Stratospheric Stars Refractors Geometric White",
+      "set": "Stratospheric Stars",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 536
+      }
+    },
+    {
+      "label": "Activators",
+      "set": "Activators",
+      "parallel": "",
+      "odds": {
+        "hobby": 20,
+        "jumbo": 9,
+        "value_box_ea": 41,
+        "value_box_se": 41,
+        "value_box_cee": 41,
+        "mega_box_ea": 28,
+        "mega_box_se": 28,
+        "mega_box_cee": 28,
+        "fanatics_box_ascc": 29
+      }
+    },
+    {
+      "label": "Activators Refractors",
+      "set": "Activators",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 195,
+        "jumbo": 84,
+        "value_box_ea": 409,
+        "value_box_se": 409,
+        "value_box_cee": 409,
+        "mega_box_ea": 312,
+        "mega_box_se": 312,
+        "mega_box_cee": 312,
+        "fanatics_box_ascc": 264
+      }
+    },
+    {
+      "label": "Activators Refractors Aqua",
+      "set": "Activators",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 1881,
+        "jumbo": 841,
+        "value_box_ea": 4061,
+        "value_box_se": 4061,
+        "value_box_cee": 4061,
+        "mega_box_ea": 2789,
+        "mega_box_se": 2789,
+        "mega_box_cee": 2789,
+        "fanatics_box_ascc": 2632
+      }
+    },
+    {
+      "label": "Activators Refractors Blue",
+      "set": "Activators",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 2495,
+        "jumbo": 1115,
+        "value_box_ea": 5386,
+        "value_box_se": 5386,
+        "value_box_cee": 5386,
+        "mega_box_ea": 3699,
+        "mega_box_se": 3699,
+        "mega_box_cee": 3699,
+        "fanatics_box_ascc": 3510
+      }
+    },
+    {
+      "label": "Activators Refractors Green",
+      "set": "Activators",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 3781,
+        "jumbo": 1696,
+        "value_box_ea": 8165,
+        "value_box_se": 8165,
+        "value_box_cee": 8165,
+        "mega_box_ea": 5608,
+        "mega_box_se": 5608,
+        "mega_box_cee": 5608,
+        "fanatics_box_ascc": 5399
+      }
+    },
+    {
+      "label": "Activators Refractors Purple",
+      "set": "Activators",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 4995,
+        "jumbo": 2229,
+        "value_box_ea": 10781,
+        "value_box_se": 10781,
+        "value_box_cee": 10781,
+        "mega_box_ea": 7398,
+        "mega_box_se": 7398,
+        "mega_box_cee": 7398,
+        "fanatics_box_ascc": 7019
+      }
+    },
+    {
+      "label": "Activators Refractors Gold",
+      "set": "Activators",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 7503,
+        "jumbo": 3355,
+        "value_box_ea": 16158,
+        "value_box_se": 16158,
+        "value_box_cee": 16158,
+        "mega_box_ea": 11097,
+        "mega_box_se": 11097,
+        "mega_box_cee": 11097,
+        "fanatics_box_ascc": 10528
+      }
+    },
+    {
+      "label": "Activators Refractors Orange",
+      "set": "Activators",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 15063,
+        "jumbo": 6782,
+        "value_box_ea": 32400,
+        "value_box_se": 32400,
+        "value_box_cee": 32400,
+        "mega_box_ea": 22193,
+        "mega_box_se": 22193,
+        "mega_box_cee": 22193,
+        "fanatics_box_ascc": 21056
+      }
+    },
+    {
+      "label": "Activators Refractors Black",
+      "set": "Activators",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 102266,
+        "jumbo": 45532,
+        "value_box_ea": 218700,
+        "value_box_se": 218700,
+        "value_box_cee": 218700,
+        "mega_box_ea": 55718,
+        "mega_box_se": 55718,
+        "mega_box_cee": 55718,
+        "fanatics_box_ascc": 52640
+      }
+    },
+    {
+      "label": "Activators Refractors Red",
+      "set": "Activators",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 32385,
+        "jumbo": 17707,
+        "value_box_ea": 765450,
+        "value_box_se": 765450,
+        "value_box_cee": 765450,
+        "mega_box_ea": 327338,
+        "mega_box_se": 327338,
+        "mega_box_cee": 327338,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Activators Superfractors",
+      "set": "Activators",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 388608,
+        "jumbo": 318720,
+        "value_box_ea": 874800,
+        "value_box_se": 874800,
+        "value_box_cee": 874800,
+        "mega_box_ea": 654675,
+        "mega_box_se": 654675,
+        "mega_box_cee": 654675
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric",
+      "set": "Activators",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 18
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric Purple",
+      "set": "Activators",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 18
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric Gold",
+      "set": "Activators",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 27
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric Orange",
+      "set": "Activators",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 54
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric Black",
+      "set": "Activators",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 134
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric Red",
+      "set": "Activators",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 268
+      }
+    },
+    {
+      "label": "Activators Refractors Geometric White",
+      "set": "Activators",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 670
+      }
+    },
+    {
+      "label": "Clutch Gene",
+      "set": "Clutch Gene",
+      "parallel": "",
+      "odds": {
+        "hobby": 13,
+        "jumbo": 6,
+        "value_box_ea": 28,
+        "value_box_se": 28,
+        "value_box_cee": 28,
+        "mega_box_ea": 19,
+        "mega_box_se": 19,
+        "mega_box_cee": 19,
+        "fanatics_box_ascc": 19
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors",
+      "set": "Clutch Gene",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 130,
+        "jumbo": 56,
+        "value_box_ea": 273,
+        "value_box_se": 273,
+        "value_box_cee": 273,
+        "mega_box_ea": 208,
+        "mega_box_se": 208,
+        "mega_box_cee": 208,
+        "fanatics_box_ascc": 176
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Aqua",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 1254,
+        "jumbo": 561,
+        "value_box_ea": 2708,
+        "value_box_se": 2708,
+        "value_box_cee": 2708,
+        "mega_box_ea": 1859,
+        "mega_box_se": 1859,
+        "mega_box_cee": 1859,
+        "fanatics_box_ascc": 1755
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Blue",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 1663,
+        "jumbo": 743,
+        "value_box_ea": 3592,
+        "value_box_se": 3592,
+        "value_box_cee": 3592,
+        "mega_box_ea": 2466,
+        "mega_box_se": 2466,
+        "mega_box_cee": 2466,
+        "fanatics_box_ascc": 2340
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Green",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 2521,
+        "jumbo": 1127,
+        "value_box_ea": 5444,
+        "value_box_se": 5444,
+        "value_box_cee": 5444,
+        "mega_box_ea": 3736,
+        "mega_box_se": 3736,
+        "mega_box_cee": 3736,
+        "fanatics_box_ascc": 3569
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Purple",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 3328,
+        "jumbo": 1490,
+        "value_box_ea": 7188,
+        "value_box_se": 7188,
+        "value_box_cee": 7188,
+        "mega_box_ea": 4932,
+        "mega_box_se": 4932,
+        "mega_box_cee": 4932,
+        "fanatics_box_ascc": 4680
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Gold",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 4995,
+        "jumbo": 2229,
+        "value_box_ea": 10781,
+        "value_box_se": 10781,
+        "value_box_cee": 10781,
+        "mega_box_ea": 7398,
+        "mega_box_se": 7398,
+        "mega_box_cee": 7398,
+        "fanatics_box_ascc": 7019
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Orange",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 10016,
+        "jumbo": 4490,
+        "value_box_ea": 21562,
+        "value_box_se": 21562,
+        "value_box_cee": 21562,
+        "mega_box_ea": 14795,
+        "mega_box_se": 14795,
+        "mega_box_cee": 14795,
+        "fanatics_box_ascc": 14038
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Black",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 77722,
+        "jumbo": 35414,
+        "value_box_ea": 165503,
+        "value_box_se": 165503,
+        "value_box_cee": 165503,
+        "mega_box_ea": 37410,
+        "mega_box_se": 37410,
+        "mega_box_cee": 37410,
+        "fanatics_box_ascc": 35094
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Red",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 77722,
+        "jumbo": 35414,
+        "value_box_ea": 153091,
+        "value_box_se": 153090,
+        "value_box_cee": 153091,
+        "mega_box_ea": 65468,
+        "mega_box_se": 65468,
+        "mega_box_cee": 65468,
+        "fanatics_box_ascc": 70187
+      }
+    },
+    {
+      "label": "Clutch Gene Superfractors",
+      "set": "Clutch Gene",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 277578,
+        "jumbo": 159360,
+        "value_box_ea": 556691,
+        "value_box_se": 556691,
+        "value_box_cee": 556691,
+        "mega_box_ea": 374100,
+        "mega_box_se": 374100,
+        "mega_box_cee": 374101
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 12
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric Purple",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 12
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric Gold",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 18
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric Orange",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 36
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric Black",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 90
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric Red",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 179
+      }
+    },
+    {
+      "label": "Clutch Gene Refractors Geometric White",
+      "set": "Clutch Gene",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 447
+      }
+    },
+    {
+      "label": "Go Time",
+      "set": "Go Time",
+      "parallel": "",
+      "odds": {
+        "hobby": 26,
+        "jumbo": 12,
+        "value_box_ea": 55,
+        "value_box_se": 55,
+        "value_box_cee": 55,
+        "mega_box_ea": 37,
+        "mega_box_se": 37,
+        "mega_box_cee": 37,
+        "fanatics_box_ascc": 38
+      }
+    },
+    {
+      "label": "Go Time Refractors",
+      "set": "Go Time",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 260,
+        "jumbo": 112,
+        "value_box_ea": 545,
+        "value_box_se": 545,
+        "value_box_cee": 545,
+        "mega_box_ea": 416,
+        "mega_box_se": 416,
+        "mega_box_cee": 416,
+        "fanatics_box_ascc": 351
+      }
+    },
+    {
+      "label": "Go Time Refractors Aqua",
+      "set": "Go Time",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 2508,
+        "jumbo": 1123,
+        "value_box_ea": 5415,
+        "value_box_se": 5415,
+        "value_box_cee": 5415,
+        "mega_box_ea": 3720,
+        "mega_box_se": 3720,
+        "mega_box_cee": 3720,
+        "fanatics_box_ascc": 3510
+      }
+    },
+    {
+      "label": "Go Time Refractors Blue",
+      "set": "Go Time",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 3328,
+        "jumbo": 1490,
+        "value_box_ea": 7188,
+        "value_box_se": 7188,
+        "value_box_cee": 7188,
+        "mega_box_ea": 4932,
+        "mega_box_se": 4932,
+        "mega_box_cee": 4932,
+        "fanatics_box_ascc": 4680
+      }
+    },
+    {
+      "label": "Go Time Refractors Green",
+      "set": "Go Time",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 5047,
+        "jumbo": 2261,
+        "value_box_ea": 10897,
+        "value_box_se": 10897,
+        "value_box_cee": 10897,
+        "mega_box_ea": 7482,
+        "mega_box_se": 7482,
+        "mega_box_cee": 7482,
+        "fanatics_box_ascc": 7261
+      }
+    },
+    {
+      "label": "Go Time Refractors Purple",
+      "set": "Go Time",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 6655,
+        "jumbo": 2979,
+        "value_box_ea": 14375,
+        "value_box_se": 14375,
+        "value_box_cee": 14375,
+        "mega_box_ea": 9882,
+        "mega_box_se": 9882,
+        "mega_box_cee": 9882,
+        "fanatics_box_ascc": 9571
+      }
+    },
+    {
+      "label": "Go Time Refractors Gold",
+      "set": "Go Time",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 10016,
+        "jumbo": 4490,
+        "value_box_ea": 21562,
+        "value_box_se": 21562,
+        "value_box_cee": 21562,
+        "mega_box_ea": 14795,
+        "mega_box_se": 14795,
+        "mega_box_cee": 14795,
+        "fanatics_box_ascc": 14038
+      }
+    },
+    {
+      "label": "Go Time Refractors Orange",
+      "set": "Go Time",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 20032,
+        "jumbo": 9107,
+        "value_box_ea": 43430,
+        "value_box_se": 43430,
+        "value_box_cee": 43430,
+        "mega_box_ea": 29758,
+        "mega_box_se": 29758,
+        "mega_box_cee": 29758,
+        "fanatics_box_ascc": 30080
+      }
+    },
+    {
+      "label": "Go Time Refractors Black",
+      "set": "Go Time",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 51133,
+        "jumbo": 22766,
+        "value_box_ea": 109350,
+        "value_box_se": 109350,
+        "value_box_cee": 109350,
+        "mega_box_ea": 74820,
+        "mega_box_se": 74820,
+        "mega_box_cee": 74820,
+        "fanatics_box_ascc": 70187
+      }
+    },
+    {
+      "label": "Go Time Refractors Red",
+      "set": "Go Time",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 129537,
+        "jumbo": 21248,
+        "value_box_ea": 204121,
+        "value_box_se": 204120,
+        "value_box_cee": 204120,
+        "mega_box_ea": 261870,
+        "mega_box_se": 261870,
+        "mega_box_cee": 261870,
+        "fanatics_box_ascc": 210560
+      }
+    },
+    {
+      "label": "Go Time Superfractors",
+      "set": "Go Time",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 647680,
+        "jumbo": 318720,
+        "value_box_ea": 1224721,
+        "value_box_se": 1224720,
+        "value_box_cee": 1224721,
+        "mega_box_ea": 872900,
+        "mega_box_se": 872900,
+        "mega_box_cee": 872900
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric Purple",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric Gold",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 36
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric Orange",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 72
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric Black",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 179
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric Red",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 358
+      }
+    },
+    {
+      "label": "Go Time Refractors Geometric White",
+      "set": "Go Time",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 894
+      }
+    },
+    {
+      "label": "Moment in Time",
+      "set": "Moment in Time",
+      "parallel": "",
+      "odds": {
+        "hobby": 16,
+        "jumbo": 7,
+        "value_box_ea": 33,
+        "value_box_se": 33,
+        "value_box_cee": 33,
+        "mega_box_ea": 22,
+        "mega_box_se": 22,
+        "mega_box_cee": 22,
+        "fanatics_box_ascc": 23
+      }
+    },
+    {
+      "label": "Moment in Time Refractors",
+      "set": "Moment in Time",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 156,
+        "jumbo": 68,
+        "value_box_ea": 327,
+        "value_box_se": 327,
+        "value_box_cee": 327,
+        "mega_box_ea": 250,
+        "mega_box_se": 250,
+        "mega_box_cee": 250,
+        "fanatics_box_ascc": 211
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Aqua",
+      "set": "Moment in Time",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 1504,
+        "jumbo": 673,
+        "value_box_ea": 3249,
+        "value_box_se": 3249,
+        "value_box_cee": 3249,
+        "mega_box_ea": 2231,
+        "mega_box_se": 2231,
+        "mega_box_cee": 2231,
+        "fanatics_box_ascc": 2106
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Blue",
+      "set": "Moment in Time",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 1995,
+        "jumbo": 893,
+        "value_box_ea": 4310,
+        "value_box_se": 4310,
+        "value_box_cee": 4310,
+        "mega_box_ea": 2959,
+        "mega_box_se": 2959,
+        "mega_box_cee": 2959,
+        "fanatics_box_ascc": 2808
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Green",
+      "set": "Moment in Time",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 3027,
+        "jumbo": 1357,
+        "value_box_ea": 6536,
+        "value_box_se": 6536,
+        "value_box_cee": 6536,
+        "mega_box_ea": 4485,
+        "mega_box_se": 4485,
+        "mega_box_cee": 4485,
+        "fanatics_box_ascc": 4298
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Purple",
+      "set": "Moment in Time",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 3999,
+        "jumbo": 1791,
+        "value_box_ea": 8625,
+        "value_box_se": 8625,
+        "value_box_cee": 8625,
+        "mega_box_ea": 5925,
+        "mega_box_se": 5925,
+        "mega_box_cee": 5925,
+        "fanatics_box_ascc": 5691
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Gold",
+      "set": "Moment in Time",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 5998,
+        "jumbo": 2679,
+        "value_box_ea": 12947,
+        "value_box_se": 12947,
+        "value_box_cee": 12947,
+        "mega_box_ea": 8877,
+        "mega_box_se": 8877,
+        "mega_box_cee": 8877,
+        "fanatics_box_ascc": 8423
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Orange",
+      "set": "Moment in Time",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 11995,
+        "jumbo": 5403,
+        "value_box_ea": 25948,
+        "value_box_se": 25948,
+        "value_box_cee": 25948,
+        "mega_box_ea": 17815,
+        "mega_box_se": 17815,
+        "mega_box_cee": 17815,
+        "fanatics_box_ascc": 17547
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Black",
+      "set": "Moment in Time",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 38099,
+        "jumbo": 16775,
+        "value_box_ea": 81648,
+        "value_box_se": 81648,
+        "value_box_cee": 81649,
+        "mega_box_ea": 45151,
+        "mega_box_se": 45150,
+        "mega_box_cee": 45150,
+        "fanatics_box_ascc": 42112
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Red",
+      "set": "Moment in Time",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 51133,
+        "jumbo": 22766,
+        "value_box_ea": 122473,
+        "value_box_se": 122472,
+        "value_box_cee": 122473,
+        "mega_box_ea": 130935,
+        "mega_box_se": 130935,
+        "mega_box_cee": 130935,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Moment in Time Superfractors",
+      "set": "Moment in Time",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 323840,
+        "jumbo": 159360,
+        "value_box_ea": 680401,
+        "value_box_se": 680400,
+        "value_box_cee": 680401,
+        "mega_box_ea": 523740,
+        "mega_box_se": 523740,
+        "mega_box_cee": 523740
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric Purple",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric Gold",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 22
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric Orange",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 43
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric Black",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 108
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric Red",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 215
+      }
+    },
+    {
+      "label": "Moment in Time Refractors Geometric White",
+      "set": "Moment in Time",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 536
+      }
+    },
+    {
+      "label": "No Limit",
+      "set": "No Limit",
+      "parallel": "",
+      "odds": {
+        "hobby": 39,
+        "jumbo": 18,
+        "value_box_ea": 82,
+        "value_box_se": 82,
+        "value_box_cee": 82,
+        "mega_box_ea": 55,
+        "mega_box_se": 55,
+        "mega_box_cee": 55,
+        "fanatics_box_ascc": 57
+      }
+    },
+    {
+      "label": "No Limit Refractors",
+      "set": "No Limit",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 389,
+        "jumbo": 168,
+        "value_box_ea": 817,
+        "value_box_se": 817,
+        "value_box_cee": 817,
+        "mega_box_ea": 624,
+        "mega_box_se": 624,
+        "mega_box_cee": 624,
+        "fanatics_box_ascc": 527
+      }
+    },
+    {
+      "label": "No Limit Refractors Aqua",
+      "set": "No Limit",
+      "parallel": "Refractors Aqua",
+      "odds": {
+        "hobby": 6632,
+        "jumbo": 2397,
+        "value_box_ea": 6628,
+        "value_box_se": 6629,
+        "value_box_cee": 6963,
+        "mega_box_ea": 4430,
+        "mega_box_se": 4428,
+        "mega_box_cee": 4522,
+        "fanatics_box_ascc": 5264
+      }
+    },
+    {
+      "label": "No Limit Refractors Blue",
+      "set": "No Limit",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 4995,
+        "jumbo": 2229,
+        "value_box_ea": 10781,
+        "value_box_se": 10781,
+        "value_box_cee": 10781,
+        "mega_box_ea": 7398,
+        "mega_box_se": 7398,
+        "mega_box_cee": 7398,
+        "fanatics_box_ascc": 7019
+      }
+    },
+    {
+      "label": "No Limit Refractors Green",
+      "set": "No Limit",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 7561,
+        "jumbo": 3391,
+        "value_box_ea": 16330,
+        "value_box_se": 16330,
+        "value_box_cee": 16330,
+        "mega_box_ea": 11240,
+        "mega_box_se": 11240,
+        "mega_box_cee": 11240,
+        "fanatics_box_ascc": 11083
+      }
+    },
+    {
+      "label": "No Limit Refractors Purple",
+      "set": "No Limit",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 10016,
+        "jumbo": 4490,
+        "value_box_ea": 21562,
+        "value_box_se": 21562,
+        "value_box_cee": 21562,
+        "mega_box_ea": 14795,
+        "mega_box_se": 14795,
+        "mega_box_cee": 14795,
+        "fanatics_box_ascc": 14038
+      }
+    },
+    {
+      "label": "No Limit Refractors Gold",
+      "set": "No Limit",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 15063,
+        "jumbo": 6782,
+        "value_box_ea": 32400,
+        "value_box_se": 32400,
+        "value_box_cee": 32400,
+        "mega_box_ea": 22193,
+        "mega_box_se": 22193,
+        "mega_box_cee": 22193,
+        "fanatics_box_ascc": 21056
+      }
+    },
+    {
+      "label": "No Limit Refractors Orange",
+      "set": "No Limit",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 30361,
+        "jumbo": 13858,
+        "value_box_ea": 65145,
+        "value_box_se": 65145,
+        "value_box_cee": 65145,
+        "mega_box_ea": 45151,
+        "mega_box_se": 45150,
+        "mega_box_cee": 45150,
+        "fanatics_box_ascc": 42112
+      }
+    },
+    {
+      "label": "No Limit Refractors Black",
+      "set": "No Limit",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 35328,
+        "jumbo": 21248,
+        "value_box_ea": 765450,
+        "value_box_se": 765450,
+        "value_box_cee": 765450,
+        "mega_box_ea": 327338,
+        "mega_box_se": 327338,
+        "mega_box_cee": 327338,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "No Limit Refractors Red",
+      "set": "No Limit",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 161920,
+        "jumbo": 79680,
+        "value_box_ea": 340201,
+        "value_box_se": 340200,
+        "value_box_cee": 340201,
+        "mega_box_ea": 238064,
+        "mega_box_se": 238064,
+        "mega_box_cee": 238064
+      }
+    },
+    {
+      "label": "No Limit Superfractors",
+      "set": "No Limit",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 971521,
+        "value_box_ea": 2041200,
+        "value_box_se": 2041200,
+        "value_box_cee": 2041201,
+        "mega_box_ea": 1309350,
+        "mega_box_se": 1309350,
+        "mega_box_cee": 1309350
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric",
+      "odds": {
+        "delight": 36
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric Purple",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 36
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric Gold",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 54
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric Orange",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 108
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric Black",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 268
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric Red",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 536
+      }
+    },
+    {
+      "label": "No Limit Refractors Geometric White",
+      "set": "No Limit",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 1340
+      }
+    },
+    {
+      "label": "Captains",
+      "set": "Captains",
+      "parallel": "",
+      "odds": {
+        "hobby": 409,
+        "jumbo": 163,
+        "delight": 20
+      }
+    },
+    {
+      "label": "Captains Superfractors",
+      "set": "Captains",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 149465,
+        "jumbo": 45532
+      }
+    },
+    {
+      "label": "Celebracion",
+      "set": "Celebracion",
+      "parallel": "",
+      "odds": {
+        "hobby": 570,
+        "jumbo": 224,
+        "delight": 26
+      }
+    },
+    {
+      "label": "Celebracion Superfractors",
+      "set": "Celebracion",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 194304,
+        "jumbo": 63745
+      }
+    },
+    {
+      "label": "Helix",
+      "set": "Helix",
+      "parallel": "",
+      "odds": {
+        "hobby": 3744,
+        "jumbo": 1678,
+        "delight": 1125,
+        "value_box_ea": 6991,
+        "value_box_se": 6991,
+        "value_box_cee": 6991,
+        "mega_box_ea": 4841,
+        "mega_box_se": 4841,
+        "mega_box_cee": 4841,
+        "fanatics_box_ascc": 4212
+      }
+    },
+    {
+      "label": "Helix Superfractors",
+      "set": "Helix",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 277578,
+        "jumbo": 159360,
+        "value_box_ea": 746667,
+        "value_box_se": 906500,
+        "mega_box_ea": 784000,
+        "mega_box_se": 585947
+      }
+    },
+    {
+      "label": "Radiating Rookies",
+      "set": "Radiating Rookies",
+      "parallel": "",
+      "odds": {
+        "hobby": 545,
+        "jumbo": 215,
+        "delight": 27
+      }
+    },
+    {
+      "label": "Radiating Rookies Superfractors",
+      "set": "Radiating Rookies",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 194304,
+        "jumbo": 63745
+      }
+    },
+    {
+      "label": "Shadow Etch",
+      "set": "Shadow Etch",
+      "parallel": "",
+      "odds": {
+        "hobby": 545,
+        "jumbo": 215,
+        "delight": 27
+      }
+    },
+    {
+      "label": "Shadow Etch Superfractors",
+      "set": "Shadow Etch",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 194304,
+        "jumbo": 63745
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs",
+      "set": "Topps Chrome Autographs",
+      "parallel": "",
+      "odds": {
+        "hobby": 141,
+        "jumbo": 34,
+        "delight": 5,
+        "value_box_ea": 30619,
+        "value_box_se": 30618,
+        "value_box_cee": 30619,
+        "mega_box_ea": 8210,
+        "mega_box_se": 8210,
+        "mega_box_cee": 8210,
+        "fanatics_box_ascc": 10027
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 716,
+        "jumbo": 188,
+        "delight": 15,
+        "value_box_ea": 61237,
+        "value_box_se": 61236,
+        "value_box_cee": 61237,
+        "mega_box_ea": 10475,
+        "mega_box_se": 10475,
+        "mega_box_cee": 10475,
+        "fanatics_box_ascc": 6381
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Blue",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 707,
+        "jumbo": 183,
+        "delight": 26,
+        "value_box_ea": 61237,
+        "value_box_se": 61236,
+        "value_box_cee": 61237,
+        "mega_box_ea": 10475,
+        "mega_box_se": 10475,
+        "mega_box_cee": 10475,
+        "fanatics_box_ascc": 6193
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Green",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 936,
+        "jumbo": 150,
+        "delight": 26,
+        "value_box_ea": 67293,
+        "value_box_se": 67293,
+        "value_box_cee": 67293,
+        "mega_box_ea": 8133,
+        "mega_box_se": 8133,
+        "mega_box_cee": 8133,
+        "fanatics_box_ascc": 9155
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Purple",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 1296,
+        "jumbo": 173,
+        "delight": 24,
+        "value_box_ea": 86248,
+        "value_box_se": 86248,
+        "value_box_cee": 86248,
+        "mega_box_ea": 7482,
+        "mega_box_se": 7482,
+        "mega_box_cee": 7482,
+        "fanatics_box_ascc": 23396
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Gold",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 1215,
+        "jumbo": 231,
+        "delight": 44,
+        "value_box_ea": 122473,
+        "value_box_se": 122472,
+        "value_box_cee": 122473,
+        "mega_box_ea": 26188,
+        "mega_box_se": 26187,
+        "mega_box_cee": 26188,
+        "fanatics_box_ascc": 30080
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Orange",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 1500,
+        "jumbo": 506,
+        "delight": 72,
+        "value_box_ea": 278346,
+        "value_box_se": 278346,
+        "value_box_cee": 278346,
+        "mega_box_ea": 26188,
+        "mega_box_se": 26187,
+        "mega_box_cee": 26188,
+        "fanatics_box_ascc": 21056
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Black",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 4970,
+        "jumbo": 1476,
+        "delight": 134,
+        "value_box_ea": 211159,
+        "value_box_se": 211159,
+        "value_box_cee": 211159,
+        "mega_box_ea": 18840,
+        "mega_box_se": 18840,
+        "mega_box_cee": 18840,
+        "fanatics_box_ascc": 26320
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Red",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 8832,
+        "jumbo": 2592,
+        "delight": 278,
+        "value_box_ea": 1530900,
+        "value_box_se": 1530900,
+        "value_box_cee": 1530900,
+        "mega_box_ea": 59516,
+        "mega_box_se": 59516,
+        "mega_box_cee": 59516,
+        "fanatics_box_ascc": 42112
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Superfractors",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 51133,
+        "jumbo": 12749,
+        "delight": 1125,
+        "value_box_ea": 3061800,
+        "value_box_se": 3061800,
+        "value_box_cee": 3061800,
+        "mega_box_ea": 327338,
+        "mega_box_se": 327338,
+        "mega_box_cee": 327338,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Geometric Purple",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Geometric Purple",
+      "odds": {
+        "delight": 6
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Geometric Gold",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Geometric Gold",
+      "odds": {
+        "delight": 7
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Geometric Orange",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Geometric Orange",
+      "odds": {
+        "delight": 11
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Geometric Black",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Geometric Black",
+      "odds": {
+        "delight": 27
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Geometric Red",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Geometric Red",
+      "odds": {
+        "delight": 53
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Refractors Geometric White",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Refractors Geometric White",
+      "odds": {
+        "delight": 134
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Sapphire Gold",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Sapphire Gold",
+      "odds": {
+        "sapphire": 24
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Sapphire Orange",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Sapphire Orange",
+      "odds": {
+        "sapphire": 37
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Sapphire Black",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Sapphire Black",
+      "odds": {
+        "sapphire": 83
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Sapphire Red",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Sapphire Red",
+      "odds": {
+        "sapphire": 166
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Sapphire Padpardascha",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Sapphire Padpardascha",
+      "odds": {
+        "sapphire": 831
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Magenta/Purple",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Magenta/Purple",
+      "odds": {
+        "hobby": 295,
+        "jumbo": 66,
+        "value_box_ea": 63788,
+        "value_box_se": 63788,
+        "value_box_cee": 63788,
+        "mega_box_ea": 8158,
+        "mega_box_se": 8158,
+        "mega_box_cee": 8158,
+        "fanatics_box_ascc": 4212
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Aqua/Blue",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Aqua/Blue",
+      "odds": {
+        "hobby": 387,
+        "jumbo": 116,
+        "value_box_ea": 61237,
+        "value_box_se": 61236,
+        "value_box_cee": 61237,
+        "mega_box_ea": 9420,
+        "mega_box_se": 9420,
+        "mega_box_cee": 9420,
+        "fanatics_box_ascc": 10528
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Blue/Green",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Blue/Green",
+      "odds": {
+        "hobby": 711,
+        "jumbo": 119,
+        "value_box_ea": 37340,
+        "value_box_se": 37340,
+        "value_box_cee": 37340,
+        "mega_box_ea": 10230,
+        "mega_box_se": 10230,
+        "mega_box_cee": 10230,
+        "fanatics_box_ascc": 10528
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Green/Yellow",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Green/Yellow",
+      "odds": {
+        "hobby": 796,
+        "jumbo": 232,
+        "value_box_ea": 51459,
+        "value_box_se": 51459,
+        "value_box_cee": 51459,
+        "mega_box_ea": 33574,
+        "mega_box_se": 33574,
+        "mega_box_cee": 33574,
+        "fanatics_box_ascc": 10528
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Gold/Orange",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Gold/Orange",
+      "odds": {
+        "hobby": 2133,
+        "jumbo": 611,
+        "value_box_ea": 95682,
+        "value_box_se": 95682,
+        "value_box_cee": 95682,
+        "mega_box_ea": 12775,
+        "mega_box_se": 12775,
+        "mega_box_cee": 12775,
+        "fanatics_box_ascc": 6793
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Orange/Black",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Orange/Black",
+      "odds": {
+        "hobby": 4870,
+        "jumbo": 1380,
+        "value_box_ea": 291601,
+        "value_box_se": 291600,
+        "value_box_cee": 291601,
+        "mega_box_ea": 30450,
+        "mega_box_se": 30450,
+        "mega_box_cee": 30450,
+        "fanatics_box_ascc": 19142
+      }
+    },
+    {
+      "label": "Rookie Autographs Lava Lamp Black/Red",
+      "set": "Rookie Autographs",
+      "parallel": "Lava Lamp Black/Red",
+      "odds": {
+        "hobby": 11498,
+        "jumbo": 2044,
+        "value_box_ea": 340201,
+        "value_box_se": 340200,
+        "value_box_cee": 340201,
+        "mega_box_ea": 58194,
+        "mega_box_se": 58194,
+        "mega_box_cee": 58194,
+        "fanatics_box_ascc": 19142
+      }
+    },
+    {
+      "label": "Havoc Marks",
+      "set": "Havoc Marks",
+      "parallel": "",
+      "odds": {
+        "hobby": 280,
+        "jumbo": 46,
+        "delight": 4
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors",
+      "set": "Havoc Marks",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 292,
+        "jumbo": 44
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Blue",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 355,
+        "jumbo": 73
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Green",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 480,
+        "jumbo": 91
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Purple",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 511,
+        "jumbo": 145
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Gold",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 733,
+        "jumbo": 174
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Orange",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 1459,
+        "jumbo": 341
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Black",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 3145,
+        "jumbo": 1085
+      }
+    },
+    {
+      "label": "Havoc Marks Refractors Red",
+      "set": "Havoc Marks",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 7333,
+        "jumbo": 1687
+      }
+    },
+    {
+      "label": "Havoc Marks Superfractors",
+      "set": "Havoc Marks",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 36662,
+        "jumbo": 8388
+      }
+    },
+    {
+      "label": "Havoc Marks Geometric Gold",
+      "set": "Havoc Marks",
+      "parallel": "Geometric Gold",
+      "odds": {
+        "delight": 6
+      }
+    },
+    {
+      "label": "Havoc Marks Geometric Orange",
+      "set": "Havoc Marks",
+      "parallel": "Geometric Orange",
+      "odds": {
+        "delight": 12
+      }
+    },
+    {
+      "label": "Havoc Marks Geometric Black",
+      "set": "Havoc Marks",
+      "parallel": "Geometric Black",
+      "odds": {
+        "delight": 29
+      }
+    },
+    {
+      "label": "Havoc Marks Geometric Red",
+      "set": "Havoc Marks",
+      "parallel": "Geometric Red",
+      "odds": {
+        "delight": 57
+      }
+    },
+    {
+      "label": "Havoc Marks Geometric White",
+      "set": "Havoc Marks",
+      "parallel": "Geometric White",
+      "odds": {
+        "delight": 143
+      }
+    },
+    {
+      "label": "Havoc Marks Sapphire Gold",
+      "set": "Havoc Marks",
+      "parallel": "Sapphire Gold",
+      "odds": {
+        "sapphire": 18
+      }
+    },
+    {
+      "label": "Havoc Marks Sapphire Orange",
+      "set": "Havoc Marks",
+      "parallel": "Sapphire Orange",
+      "odds": {
+        "sapphire": 36
+      }
+    },
+    {
+      "label": "Havoc Marks Sapphire Black",
+      "set": "Havoc Marks",
+      "parallel": "Sapphire Black",
+      "odds": {
+        "sapphire": 89
+      }
+    },
+    {
+      "label": "Havoc Marks Sapphire Red",
+      "set": "Havoc Marks",
+      "parallel": "Sapphire Red",
+      "odds": {
+        "sapphire": 176
+      }
+    },
+    {
+      "label": "Havoc Marks Sapphire Padpardascha",
+      "set": "Havoc Marks",
+      "parallel": "Sapphire Padpardascha",
+      "odds": {
+        "sapphire": 886
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "",
+      "odds": {
+        "hobby": 1455,
+        "jumbo": 301,
+        "delight": 17
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 1467,
+        "jumbo": 248
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Blue",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 1991,
+        "jumbo": 224
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Green",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 1197,
+        "jumbo": 605
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Purple",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 1967,
+        "jumbo": 492
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Gold",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 2745,
+        "jumbo": 434
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Orange",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 2936,
+        "jumbo": 624
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Black",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 7333,
+        "jumbo": 1363
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Refractors Red",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 14720,
+        "jumbo": 2725
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Superfractors",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 74733,
+        "jumbo": 13280
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Geometric Gold",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Geometric Gold",
+      "odds": {
+        "delight": 15
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Geometric Orange",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Geometric Orange",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Geometric Black",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Geometric Black",
+      "odds": {
+        "delight": 52
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Geometric Red",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Geometric Red",
+      "odds": {
+        "delight": 104
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Geometric White",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Geometric White",
+      "odds": {
+        "delight": 262
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Sapphire Gold",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Sapphire Gold",
+      "odds": {
+        "sapphire": 63
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Sapphire Orange",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Sapphire Orange",
+      "odds": {
+        "sapphire": 75
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Sapphire Black",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Sapphire Black",
+      "odds": {
+        "sapphire": 165
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Sapphire Red",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Sapphire Red",
+      "odds": {
+        "sapphire": 323
+      }
+    },
+    {
+      "label": "1980-81 Topps Basketball Autographs Sapphire Padpardascha",
+      "set": "1980-81 Topps Basketball Autographs",
+      "parallel": "Sapphire Padpardascha",
+      "odds": {
+        "sapphire": 1612
+      }
+    },
+    {
+      "label": "Future Stars Autographs",
+      "set": "Future Stars Autographs",
+      "parallel": "",
+      "odds": {
+        "hobby": 622,
+        "jumbo": 109,
+        "delight": 10
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors",
+      "odds": {
+        "hobby": 1254,
+        "jumbo": 87
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Blue",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Blue",
+      "odds": {
+        "hobby": 796,
+        "jumbo": 145
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Green",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Green",
+      "odds": {
+        "hobby": 1180,
+        "jumbo": 219
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Purple",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "hobby": 1374,
+        "jumbo": 289
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Gold",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "hobby": 1467,
+        "jumbo": 351
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Orange",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "hobby": 2936,
+        "jumbo": 571
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Black",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Black",
+      "odds": {
+        "hobby": 7333,
+        "jumbo": 1363
+      }
+    },
+    {
+      "label": "Future Stars Autographs Refractors Red",
+      "set": "Future Stars Autographs",
+      "parallel": "Refractors Red",
+      "odds": {
+        "hobby": 14720,
+        "jumbo": 2748
+      }
+    },
+    {
+      "label": "Future Stars Autographs Superfractors",
+      "set": "Future Stars Autographs",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 74733,
+        "jumbo": 13280
+      }
+    },
+    {
+      "label": "Future Stars Autographs Geometric Gold",
+      "set": "Future Stars Autographs",
+      "parallel": "Geometric Gold",
+      "odds": {
+        "delight": 13
+      }
+    },
+    {
+      "label": "Future Stars Autographs Geometric Orange",
+      "set": "Future Stars Autographs",
+      "parallel": "Geometric Orange",
+      "odds": {
+        "delight": 24
+      }
+    },
+    {
+      "label": "Future Stars Autographs Geometric Black",
+      "set": "Future Stars Autographs",
+      "parallel": "Geometric Black",
+      "odds": {
+        "delight": 53
+      }
+    },
+    {
+      "label": "Future Stars Autographs Geometric Red",
+      "set": "Future Stars Autographs",
+      "parallel": "Geometric Red",
+      "odds": {
+        "delight": 104
+      }
+    },
+    {
+      "label": "Future Stars Autographs Geometric White",
+      "set": "Future Stars Autographs",
+      "parallel": "Geometric White",
+      "odds": {
+        "delight": 262
+      }
+    },
+    {
+      "label": "Future Stars Autographs Sapphire Gold",
+      "set": "Future Stars Autographs",
+      "parallel": "Sapphire Gold",
+      "odds": {
+        "sapphire": 39
+      }
+    },
+    {
+      "label": "Future Stars Autographs Sapphire Orange",
+      "set": "Future Stars Autographs",
+      "parallel": "Sapphire Orange",
+      "odds": {
+        "sapphire": 68
+      }
+    },
+    {
+      "label": "Future Stars Autographs Sapphire Black",
+      "set": "Future Stars Autographs",
+      "parallel": "Sapphire Black",
+      "odds": {
+        "sapphire": 166
+      }
+    },
+    {
+      "label": "Future Stars Autographs Sapphire Red",
+      "set": "Future Stars Autographs",
+      "parallel": "Sapphire Red",
+      "odds": {
+        "sapphire": 324
+      }
+    },
+    {
+      "label": "Future Stars Autographs Sapphire Padpardascha",
+      "set": "Future Stars Autographs",
+      "parallel": "Sapphire Padpardascha",
+      "odds": {
+        "sapphire": 1612
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Druski Refractors Gold",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Druski Refractors Gold",
+      "odds": {
+        "hobby": 80960,
+        "jumbo": 18749,
+        "delight": 2873
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Druski Refractors Orange",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Druski Refractors Orange",
+      "odds": {
+        "hobby": 138789,
+        "jumbo": 45532,
+        "delight": 6464
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Druski Refractors Black",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Druski Refractors Black",
+      "odds": {
+        "hobby": 388608,
+        "jumbo": 106240,
+        "delight": 12927
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Druski Refractors Red",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Druski Refractors Red",
+      "odds": {
+        "hobby": 647680,
+        "jumbo": 159360
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Druski Superfractors",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Druski Superfractors",
+      "odds": {
+        "hobby": 1943041
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Spike Lee Refractors Orange",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Spike Lee Refractors Orange",
+      "odds": {
+        "hobby": 138789,
+        "jumbo": 45532,
+        "delight": 6464
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Spike Lee Refractors Black",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Spike Lee Refractors Black",
+      "odds": {
+        "hobby": 388608,
+        "jumbo": 106240,
+        "delight": 12927
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Spike Lee Refractors Red",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Spike Lee Refractors Red",
+      "odds": {
+        "hobby": 647680,
+        "jumbo": 159360
+      }
+    },
+    {
+      "label": "Topps Chrome Autographs Spike Lee Superfractors",
+      "set": "Topps Chrome Autographs",
+      "parallel": "Spike Lee Superfractors",
+      "odds": {
+        "jumbo": 318720
+      }
+    },
+    {
+      "label": "Base Card Image Variation",
+      "set": "Base",
+      "parallel": "Card Image Variation",
+      "odds": {
+        "hobby": 150,
+        "jumbo": 68,
+        "delight": 48,
+        "value_box_ea": 324,
+        "value_box_se": 324,
+        "value_box_cee": 324,
+        "mega_box_ea": 223,
+        "mega_box_se": 223,
+        "mega_box_cee": 223,
+        "fanatics_box_ascc": 213
+      }
+    },
+    {
+      "label": "Base Card Image Variation Refractors Green Speckle",
+      "set": "Base Card Image Variation",
+      "parallel": "Refractors Green Speckle",
+      "odds": {
+        "hobby": 1513,
+        "jumbo": 677,
+        "delight": 446,
+        "value_box_ea": 3263,
+        "value_box_se": 3263,
+        "value_box_cee": 3263,
+        "mega_box_ea": 2278,
+        "mega_box_se": 2278,
+        "mega_box_cee": 2278,
+        "fanatics_box_ascc": 2106
+      }
+    },
+    {
+      "label": "Base Card Image Variation Refractors Gold Speckle",
+      "set": "Base Card Image Variation",
+      "parallel": "Refractors Gold Speckle",
+      "odds": {
+        "hobby": 2994,
+        "jumbo": 1340,
+        "delight": 892,
+        "value_box_ea": 6515,
+        "value_box_se": 6515,
+        "value_box_cee": 6515,
+        "mega_box_ea": 4431,
+        "mega_box_se": 4431,
+        "mega_box_cee": 4431,
+        "fanatics_box_ascc": 4129
+      }
+    },
+    {
+      "label": "Base Card Image Variation Refractors Orange Speckle",
+      "set": "Base Card Image Variation",
+      "parallel": "Refractors Orange Speckle",
+      "odds": {
+        "hobby": 5998,
+        "jumbo": 2679,
+        "delight": 1724,
+        "value_box_ea": 13029,
+        "value_box_se": 13029,
+        "value_box_cee": 13029,
+        "mega_box_ea": 8847,
+        "mega_box_se": 8847,
+        "mega_box_cee": 8847,
+        "fanatics_box_ascc": 8099
+      }
+    },
+    {
+      "label": "Base Card Image Variation Refractors Black Speckle",
+      "set": "Base Card Image Variation",
+      "parallel": "Refractors Black Speckle",
+      "odds": {
+        "hobby": 15063,
+        "jumbo": 6782,
+        "delight": 4309,
+        "value_box_ea": 32230,
+        "value_box_se": 32230,
+        "value_box_cee": 32230,
+        "mega_box_ea": 22383,
+        "mega_box_se": 22383,
+        "mega_box_cee": 22383,
+        "fanatics_box_ascc": 19142
+      }
+    },
+    {
+      "label": "Base Card Image Variation Refractors Red Speckle",
+      "set": "Base Card Image Variation",
+      "parallel": "Refractors Red Speckle",
+      "odds": {
+        "hobby": 30361,
+        "jumbo": 13858,
+        "delight": 8618,
+        "value_box_ea": 64459,
+        "value_box_se": 64459,
+        "value_box_cee": 64459,
+        "mega_box_ea": 45151,
+        "mega_box_se": 45150,
+        "mega_box_cee": 45150,
+        "fanatics_box_ascc": 35094
+      }
+    },
+    {
+      "label": "Base Card Image Variation Superfractors",
+      "set": "Base Card Image Variation",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 161920,
+        "jumbo": 79680,
+        "delight": 25854,
+        "value_box_ea": 322295,
+        "value_box_se": 322295,
+        "value_box_cee": 322295,
+        "mega_box_ea": 218225,
+        "mega_box_se": 218225,
+        "mega_box_cee": 218225,
+        "fanatics_box_ascc": 210560
+      }
+    },
+    {
+      "label": "Infinite Sapphire",
+      "set": "Infinite Sapphire",
+      "parallel": "",
+      "odds": {
+        "sapphire": 160
+      }
+    },
+    {
+      "label": "Sapphire Selections",
+      "set": "Sapphire Selections",
+      "parallel": "",
+      "odds": {
+        "sapphire": 11
+      }
+    },
+    {
+      "label": "Sapphire Selections Gold",
+      "set": "Sapphire Selections",
+      "parallel": "Gold",
+      "odds": {
+        "sapphire": 84
+      }
+    },
+    {
+      "label": "Sapphire Selections Orange",
+      "set": "Sapphire Selections",
+      "parallel": "Orange",
+      "odds": {
+        "sapphire": 167
+      }
+    },
+    {
+      "label": "Sapphire Selections Black",
+      "set": "Sapphire Selections",
+      "parallel": "Black",
+      "odds": {
+        "sapphire": 418
+      }
+    },
+    {
+      "label": "Sapphire Selections Red",
+      "set": "Sapphire Selections",
+      "parallel": "Red",
+      "odds": {
+        "sapphire": 835
+      }
+    },
+    {
+      "label": "Sapphire Selections Sapphire Padpardascha",
+      "set": "Sapphire Selections",
+      "parallel": "Sapphire Padpardascha",
+      "odds": {
+        "sapphire": 4175
+      }
+    },
+    {
+      "label": "Paradox",
+      "set": "Paradox",
+      "parallel": "",
+      "odds": {
+        "value_box_ea": 596,
+        "value_box_se": 596,
+        "value_box_cee": 596,
+        "mega_box_ea": 293,
+        "mega_box_se": 293,
+        "mega_box_cee": 293,
+        "fanatics_box_ascc": 296
+      }
+    },
+    {
+      "label": "Paradox Superfractors",
+      "set": "Paradox",
+      "parallel": "Superfractors",
+      "odds": {
+        "value_box_ea": 437400,
+        "value_box_se": 437400,
+        "value_box_cee": 437400,
+        "mega_box_ea": 290967,
+        "mega_box_se": 290967,
+        "mega_box_cee": 290967,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Chromographs",
+      "set": "Chromographs",
+      "parallel": "",
+      "odds": {
+        "value_box_ea": 183,
+        "value_box_se": 183,
+        "value_box_cee": 183,
+        "mega_box_ea": 109,
+        "mega_box_se": 109,
+        "mega_box_cee": 109,
+        "fanatics_box_ascc": 162
+      }
+    },
+    {
+      "label": "Chromographs Refractors",
+      "set": "Chromographs",
+      "parallel": "Refractors",
+      "odds": {
+        "value_box_ea": 1150,
+        "value_box_se": 1150,
+        "value_box_cee": 1150,
+        "mega_box_ea": 412,
+        "mega_box_se": 412,
+        "mega_box_cee": 412,
+        "fanatics_box_ascc": 587
+      }
+    },
+    {
+      "label": "Chromographs Refractors Purple",
+      "set": "Chromographs",
+      "parallel": "Refractors Purple",
+      "odds": {
+        "value_box_ea": 2445,
+        "value_box_se": 2445,
+        "value_box_cee": 2445,
+        "mega_box_ea": 979,
+        "mega_box_se": 979,
+        "mega_box_cee": 979,
+        "fanatics_box_ascc": 348
+      }
+    },
+    {
+      "label": "Chromographs Refractors Gold",
+      "set": "Chromographs",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "value_box_ea": 2710,
+        "value_box_se": 2710,
+        "value_box_cee": 2710,
+        "mega_box_ea": 1468,
+        "mega_box_se": 1468,
+        "mega_box_cee": 1468,
+        "fanatics_box_ascc": 522
+      }
+    },
+    {
+      "label": "Chromographs Refractors Orange",
+      "set": "Chromographs",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "value_box_ea": 5208,
+        "value_box_se": 5208,
+        "value_box_cee": 5208,
+        "mega_box_ea": 2936,
+        "mega_box_se": 2936,
+        "mega_box_cee": 2936,
+        "fanatics_box_ascc": 1043
+      }
+    },
+    {
+      "label": "Chromographs Refractors Black",
+      "set": "Chromographs",
+      "parallel": "Refractors Black",
+      "odds": {
+        "value_box_ea": 12223,
+        "value_box_se": 12223,
+        "value_box_cee": 12223,
+        "mega_box_ea": 7336,
+        "mega_box_se": 7336,
+        "mega_box_cee": 7336,
+        "fanatics_box_ascc": 2568
+      }
+    },
+    {
+      "label": "Chromographs Refractors Red",
+      "set": "Chromographs",
+      "parallel": "Refractors Red",
+      "odds": {
+        "value_box_ea": 23828,
+        "value_box_se": 23828,
+        "value_box_cee": 23828,
+        "mega_box_ea": 15137,
+        "mega_box_se": 15137,
+        "mega_box_cee": 15137,
+        "fanatics_box_ascc": 5136
+      }
+    },
+    {
+      "label": "Chromographs Superfractors",
+      "set": "Chromographs",
+      "parallel": "Superfractors",
+      "odds": {
+        "value_box_ea": 113401,
+        "value_box_se": 113400,
+        "value_box_cee": 113401,
+        "mega_box_ea": 84475,
+        "mega_box_se": 84475,
+        "mega_box_cee": 84475,
+        "fanatics_box_ascc": 21056
+      }
+    },
+    {
+      "label": "Fanatical",
+      "set": "Fanatical",
+      "parallel": "",
+      "odds": {
+        "value_box_ea": 380,
+        "value_box_se": 380,
+        "value_box_cee": 380,
+        "mega_box_ea": 191,
+        "mega_box_se": 191,
+        "mega_box_cee": 191,
+        "fanatics_box_ascc": 75
+      }
+    },
+    {
+      "label": "Fanatical Refractors Gold",
+      "set": "Fanatical",
+      "parallel": "Refractors Gold",
+      "odds": {
+        "value_box_ea": 9195,
+        "value_box_se": 9195,
+        "value_box_cee": 9195,
+        "mega_box_ea": 5872,
+        "mega_box_se": 5872,
+        "mega_box_cee": 5872,
+        "fanatics_box_ascc": 2085
+      }
+    },
+    {
+      "label": "Fanatical Refractors Orange",
+      "set": "Fanatical",
+      "parallel": "Refractors Orange",
+      "odds": {
+        "value_box_ea": 18390,
+        "value_box_se": 18390,
+        "value_box_cee": 18390,
+        "mega_box_ea": 11744,
+        "mega_box_se": 11744,
+        "mega_box_cee": 11744,
+        "fanatics_box_ascc": 4129
+      }
+    },
+    {
+      "label": "Fanatical Refractors Black",
+      "set": "Fanatical",
+      "parallel": "Refractors Black",
+      "odds": {
+        "value_box_ea": 46043,
+        "value_box_se": 46043,
+        "value_box_cee": 46043,
+        "mega_box_ea": 29424,
+        "mega_box_se": 29424,
+        "mega_box_cee": 29424,
+        "fanatics_box_ascc": 10027
+      }
+    },
+    {
+      "label": "Fanatical Refractors Red",
+      "set": "Fanatical",
+      "parallel": "Refractors Red",
+      "odds": {
+        "value_box_ea": 91398,
+        "value_box_se": 91398,
+        "value_box_cee": 91398,
+        "mega_box_ea": 58194,
+        "mega_box_se": 58194,
+        "mega_box_cee": 58194,
+        "fanatics_box_ascc": 19142
+      }
+    },
+    {
+      "label": "Fanatical Superfractors",
+      "set": "Fanatical",
+      "parallel": "Superfractors",
+      "odds": {
+        "value_box_ea": 437400,
+        "value_box_se": 437400,
+        "value_box_cee": 437400,
+        "mega_box_ea": 290967,
+        "mega_box_se": 290967,
+        "mega_box_cee": 290967,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "Glass Canvas",
+      "set": "Glass Canvas",
+      "parallel": "",
+      "odds": {
+        "value_box_ea": 596,
+        "value_box_se": 596,
+        "value_box_cee": 596,
+        "mega_box_ea": 293,
+        "mega_box_se": 293,
+        "mega_box_cee": 293,
+        "fanatics_box_ascc": 294
+      }
+    },
+    {
+      "label": "Glass Canvas Superfractors",
+      "set": "Glass Canvas",
+      "parallel": "Superfractors",
+      "odds": {
+        "value_box_ea": 437400,
+        "value_box_se": 437400,
+        "value_box_cee": 437400,
+        "mega_box_ea": 290967,
+        "mega_box_se": 290967,
+        "mega_box_cee": 290967,
+        "fanatics_box_ascc": 105280
+      }
+    },
+    {
+      "label": "NBA Debut Patch Autographs",
+      "set": "NBA Debut Patch Autographs",
+      "parallel": "",
+      "odds": {
+        "hobby": 194304,
+        "jumbo": 35414,
+        "delight": 4309,
+        "value_box_ea": 2240000,
+        "value_box_se": 3626000,
+        "mega_box_ea": 784000,
+        "mega_box_se": 1757841,
+        "mega_box_cee": 76860,
+        "fanatics_box_ascc": 210560
+      }
+    },
+    {
+      "label": "Minionfractor",
+      "set": "Minionfractor",
+      "parallel": "",
+      "odds": {
+        "hobby": 12456,
+        "jumbo": 4830,
+        "delight": 761,
+        "value_box_ea": 35073,
+        "value_box_se": 35073,
+        "value_box_cee": 35073,
+        "mega_box_ea": 215871,
+        "mega_box_se": 219731,
+        "fanatics_box_ascc": 17547
+      }
+    },
+    {
+      "label": "Minionfractor Red",
+      "set": "Minionfractor",
+      "parallel": "Red",
+      "odds": {
+        "hobby": 253001,
+        "jumbo": 99850,
+        "delight": 8287,
+        "value_box_ea": 708750,
+        "value_box_se": 708750,
+        "mega_box_se": 2419263,
+        "fanatics_box_ascc": 210560
+      }
+    },
+    {
+      "label": "Minionfractor Superfractors",
+      "set": "Minionfractor",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 1214400,
+        "jumbo": 479279,
+        "delight": 39776,
+        "value_box_ea": 3402001,
+        "value_box_se": 3402000
+      }
+    },
+    {
+      "label": "Alter Ego Superfractors",
+      "set": "Alter Ego",
+      "parallel": "Superfractors",
+      "odds": {
+        "hobby": 647680,
+        "jumbo": 159360,
+        "value_box_ea": 3034584,
+        "value_box_se": 1676629,
+        "mega_box_ea": 784000,
+        "mega_box_se": 1757841
+      }
+    }
+  ],
+  "configs": [
+    {
+      "key": "hobby",
+      "label": "Hobby",
+      "channel": "hobby",
+      "group": "hobby"
+    },
+    {
+      "key": "jumbo",
+      "label": "Jumbo",
+      "channel": "hobby",
+      "group": "jumbo"
+    },
+    {
+      "key": "delight",
+      "label": "Delight",
+      "channel": "hobby",
+      "group": "delight"
+    },
+    {
+      "key": "sapphire",
+      "label": "Sapphire",
+      "channel": "special",
+      "group": "sapphire"
+    },
+    {
+      "key": "value_box_ea",
+      "label": "Value Box EA",
+      "channel": "retail",
+      "group": "value"
+    },
+    {
+      "key": "value_box_se",
+      "label": "Value Box SE",
+      "channel": "retail",
+      "group": "value"
+    },
+    {
+      "key": "value_box_cee",
+      "label": "Value Box CEE",
+      "channel": "retail",
+      "group": "value"
+    },
+    {
+      "key": "mega_box_ea",
+      "label": "Mega Box EA",
+      "channel": "retail",
+      "group": "mega"
+    },
+    {
+      "key": "mega_box_se",
+      "label": "Mega Box SE",
+      "channel": "retail",
+      "group": "mega"
+    },
+    {
+      "key": "mega_box_cee",
+      "label": "Mega Box CEE",
+      "channel": "retail",
+      "group": "mega"
+    },
+    {
+      "key": "fanatics_box_ascc",
+      "label": "Fanatics Box ASCC",
+      "channel": "special",
+      "group": "fanatics"
+    },
+    {
+      "key": "promo_pks",
+      "label": "Promo Pks",
+      "channel": "special",
+      "group": "promo"
+    }
+  ],
+  "product_label": "2025-26 Topps Chrome Updates Basketball",
+  "source": "Topps odds sheet PDF"
+}

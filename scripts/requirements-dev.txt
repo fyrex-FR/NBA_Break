@@ -1,0 +1,3 @@
+# Dépendances de scripts offline uniquement — PAS de backend/requirements.txt
+# (le déploiement Render n'en a pas besoin).
+pypdf>=6.0

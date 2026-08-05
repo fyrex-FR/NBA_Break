@@ -20,6 +20,9 @@ from ..services.break_engine import (
     build_spot_player_map,
     extract_surname_initial,
 )
+from ..services.checklist_aliases import canonical_checklist_id, load_checklist_aliases
+from ..services.odds_engine import build_pull_rates, load_odds_sheet, resolve_box_types
+from ..services.odds_mappings import load_odds_mappings, mappings_for_checklist
 from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json, write_r2_json, read_r2_parquet
 from .rookies import ROOKIES_KEY
 
@@ -40,6 +43,69 @@ def _load_keyword_overrides():
         with open(_OVERRIDES_PATH, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
+
+
+def _build_odds_context(pool, sport_key, config_key):
+    """Construit le contexte de pondération odds pour build_deterministic_spot_summary.
+
+    Retourne None si `config_key` est vide ou si aucune checklist du pool n'a de
+    fichier d'odds — dans ce cas le comportement du break reste strictement
+    identique à avant (non-régression).
+    """
+    if not config_key or pool is None or pool.empty or "checklist_id" not in pool.columns or "Box Type" not in pool.columns:
+        return None
+
+    aliases_root = load_checklist_aliases()
+    mappings_root = load_odds_mappings()
+
+    pull_rate_by_key = {}
+    total_mass_sum = 0.0
+    unassigned_mass_sum = 0.0
+    packs_per_box = None
+    any_sheet = False
+
+    raw_checklist_ids = sorted({
+        str(v).strip() for v in pool["checklist_id"].dropna().astype(str).unique().tolist() if str(v).strip()
+    })
+    for raw_id in raw_checklist_ids:
+        canonical = canonical_checklist_id(sport_key, raw_id, aliases_root) or raw_id
+        sheet = load_odds_sheet(sport_key, canonical)
+        if sheet is None:
+            continue
+        any_sheet = True
+
+        sub = pool[pool["checklist_id"].astype(str).str.strip() == raw_id]
+        box_type_series = sub["Box Type"].astype(str).str.strip()
+        box_type_counts = box_type_series[box_type_series != ""].value_counts().to_dict()
+
+        checklist_mapping = mappings_for_checklist(sport_key, canonical, mappings_root)
+        result = build_pull_rates(sheet, config_key, box_type_counts, checklist_mapping)
+        resolved, _unresolved = resolve_box_types(sheet, box_type_counts.keys(), checklist_mapping)
+        for box_type, set_root in resolved.items():
+            pull_rate_by_key[(raw_id, box_type)] = result["pull_rate_by_set"].get(set_root, 0.0)
+
+        total_mass_sum += result["total_mass"]
+        unassigned_mass_sum += result["unassigned_mass"]
+
+        if packs_per_box is None:
+            for cfg in sheet.get("configs", []) or []:
+                if cfg.get("key") == config_key and cfg.get("packs_per_box"):
+                    packs_per_box = cfg["packs_per_box"]
+                    break
+
+    if not any_sheet or not pull_rate_by_key:
+        return None
+
+    coverage = (
+        1.0 if total_mass_sum <= 0
+        else max(0.0, min(1.0, (total_mass_sum - unassigned_mass_sum) / total_mass_sum))
+    )
+    return {
+        "pull_rate_by_key": pull_rate_by_key,
+        "coverage": coverage,
+        "packs_per_box": packs_per_box,
+        "config_key": config_key,
+    }
 
 
 @router.post("/simulate/break", response_model=BreakSimulationResponse)
@@ -80,6 +146,8 @@ def simulate_break(req: BreakSimulationRequest):
     except Exception:
         pass
 
+    odds_context = _build_odds_context(pool, req.sport_key, req.config_key)
+
     result_df, summary, card_details = build_deterministic_spot_summary(
         pool,
         method=req.method,
@@ -89,6 +157,7 @@ def simulate_break(req: BreakSimulationRequest):
         checklist_hits_guaranteed=req.checklist_hits_guaranteed,
         extracted_players=req.extracted_players,
         rookie_year_map=rookie_year_map,
+        odds_context=odds_context,
     )
 
     player_map = build_spot_player_map(
