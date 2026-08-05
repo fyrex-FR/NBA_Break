@@ -45,14 +45,24 @@ def _load_keyword_overrides():
     return {}
 
 
-def _build_odds_context(pool, sport_key, config_key):
+def _normalize_config_keys(config_key=None, config_keys=None):
+    keys = []
+    if config_keys:
+        keys.extend(str(k).strip() for k in config_keys if str(k or "").strip())
+    elif config_key:
+        keys.append(str(config_key).strip())
+    return list(dict.fromkeys(keys))
+
+
+def _build_odds_context(pool, sport_key, config_key=None, config_keys=None):
     """Construit le contexte de pondération odds pour build_deterministic_spot_summary.
 
-    Retourne None si `config_key` est vide ou si aucune checklist du pool n'a de
+    Retourne None si aucune config n'est fournie ou si aucune checklist du pool n'a de
     fichier d'odds — dans ce cas le comportement du break reste strictement
     identique à avant (non-régression).
     """
-    if not config_key or pool is None or pool.empty or "checklist_id" not in pool.columns or "Box Type" not in pool.columns:
+    config_keys = _normalize_config_keys(config_key, config_keys)
+    if not config_keys or pool is None or pool.empty or "checklist_id" not in pool.columns or "Box Type" not in pool.columns:
         return None
 
     aliases_root = load_checklist_aliases()
@@ -61,7 +71,8 @@ def _build_odds_context(pool, sport_key, config_key):
     pull_rate_by_key = {}
     total_mass_sum = 0.0
     unassigned_mass_sum = 0.0
-    packs_per_box = None
+    packs_per_box = 0
+    packs_per_box_counted = set()
     any_sheet = False
 
     raw_checklist_ids = sorted({
@@ -79,19 +90,23 @@ def _build_odds_context(pool, sport_key, config_key):
         box_type_counts = box_type_series[box_type_series != ""].value_counts().to_dict()
 
         checklist_mapping = mappings_for_checklist(sport_key, canonical, mappings_root)
-        result = build_pull_rates(sheet, config_key, box_type_counts, checklist_mapping)
         resolved, _unresolved = resolve_box_types(sheet, box_type_counts.keys(), checklist_mapping)
-        for box_type, set_root in resolved.items():
-            pull_rate_by_key[(raw_id, box_type)] = result["pull_rate_by_set"].get(set_root, 0.0)
+        pull_rate_by_set_sum = {}
+        for key in config_keys:
+            result = build_pull_rates(sheet, key, box_type_counts, checklist_mapping)
+            for set_root, pull_rate in result["pull_rate_by_set"].items():
+                pull_rate_by_set_sum[set_root] = pull_rate_by_set_sum.get(set_root, 0.0) + pull_rate
+            total_mass_sum += result["total_mass"]
+            unassigned_mass_sum += result["unassigned_mass"]
 
-        total_mass_sum += result["total_mass"]
-        unassigned_mass_sum += result["unassigned_mass"]
-
-        if packs_per_box is None:
             for cfg in sheet.get("configs", []) or []:
-                if cfg.get("key") == config_key and cfg.get("packs_per_box"):
-                    packs_per_box = cfg["packs_per_box"]
+                if cfg.get("key") == key and cfg.get("packs_per_box") and key not in packs_per_box_counted:
+                    packs_per_box += int(cfg["packs_per_box"])
+                    packs_per_box_counted.add(key)
                     break
+
+        for box_type, set_root in resolved.items():
+            pull_rate_by_key[(raw_id, box_type)] = pull_rate_by_set_sum.get(set_root, 0.0)
 
     if not any_sheet or not pull_rate_by_key:
         return None
@@ -103,8 +118,9 @@ def _build_odds_context(pool, sport_key, config_key):
     return {
         "pull_rate_by_key": pull_rate_by_key,
         "coverage": coverage,
-        "packs_per_box": packs_per_box,
-        "config_key": config_key,
+        "packs_per_box": packs_per_box or None,
+        "config_key": config_keys[0] if len(config_keys) == 1 else None,
+        "config_keys": config_keys,
     }
 
 
@@ -146,7 +162,7 @@ def simulate_break(req: BreakSimulationRequest):
     except Exception:
         pass
 
-    odds_context = _build_odds_context(pool, req.sport_key, req.config_key)
+    odds_context = _build_odds_context(pool, req.sport_key, req.config_key, req.config_keys)
 
     result_df, summary, card_details = build_deterministic_spot_summary(
         pool,

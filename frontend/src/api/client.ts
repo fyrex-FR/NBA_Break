@@ -80,8 +80,10 @@ export function fetchBreakSimulation(params: {
   custom_spots?: string[]
   extracted_players?: string[]
   checklist_hits_guaranteed?: Record<string, number>
-  /** Configuration ouverte (clé d'une feuille d'odds). Absent → aucune pondération. */
+  /** Configuration ouverte historique (clé d'une feuille d'odds). Absent → aucune pondération. */
   config_key?: string | null
+  /** Configurations ouvertes (plusieurs boxes dans un break). Absent/vide → aucune pondération. */
+  config_keys?: string[]
 }): Promise<BreakSimulationResponse> {
   return fetchJSON('/simulate/break', {
     method: 'POST',

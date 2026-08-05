@@ -68,7 +68,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     setAnalysisData, setIsAnalyzing, isAnalyzing,
     setActiveView,
     theme, toggleTheme,
-    selectedConfigKey, setSelectedConfigKey,
+    selectedConfigKeys, toggleConfigKey, clearConfigKeys, setSelectedConfigKeys,
   } = useAppStore()
 
   const [tab, setTab] = useState<SidebarTab>('selection')
@@ -143,6 +143,13 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     }
     return Array.from(byKey.values())
   }, [oddsSheetQueries])
+
+  useEffect(() => {
+    if (oddsConfigOptions.length === 0 || selectedConfigKeys.length === 0) return
+    const validKeys = new Set(oddsConfigOptions.map((c) => c.key))
+    const next = selectedConfigKeys.filter((key) => validKeys.has(key))
+    if (next.length !== selectedConfigKeys.length) setSelectedConfigKeys(next)
+  }, [oddsConfigOptions, selectedConfigKeys, setSelectedConfigKeys])
 
   useEffect(() => {
     if (checklistsData) {
@@ -527,31 +534,63 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
               {oddsConfigOptions.length > 0 && (
                 <div className="rounded-xl p-3 space-y-2" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-                  <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
-                    <Target className="w-3.5 h-3.5 text-[var(--accent)]" /> Je break du...
-                  </label>
-                  <select
-                    value={selectedConfigKey ?? ''}
-                    onChange={(e) => setSelectedConfigKey(e.target.value || null)}
-                    className="w-full rounded-lg px-3 py-2 text-sm"
-                    style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
-                  >
-                    <option value="">Aucune</option>
+                  <div className="flex items-center justify-between gap-3">
+                    <label className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+                      <Target className="w-3.5 h-3.5 text-[var(--accent)]" /> Je break du...
+                    </label>
+                    {selectedConfigKeys.length > 0 && (
+                      <button
+                        onClick={clearConfigKeys}
+                        className="text-[11px] px-2 py-1 rounded-full"
+                        style={{ background: 'var(--bg-panel)', color: 'var(--text-quaternary)', border: '1px solid var(--border-standard)' }}
+                      >
+                        Aucune
+                      </button>
+                    )}
+                  </div>
+                  <div className="space-y-2">
                     {ODDS_CHANNEL_ORDER.map((channel) => {
                       const opts = oddsConfigOptions.filter((c) => c.channel === channel)
                       if (opts.length === 0) return null
                       return (
-                        <optgroup key={channel} label={ODDS_CHANNEL_LABELS_FR[channel] || channel}>
-                          {opts.map((c) => (
-                            <option key={c.key} value={c.key}>{c.label}</option>
-                          ))}
-                        </optgroup>
+                        <div key={channel} className="space-y-1.5">
+                          <p className="text-[10px] font-semibold uppercase tracking-wide" style={{ color: 'var(--text-quaternary)' }}>
+                            {ODDS_CHANNEL_LABELS_FR[channel] || channel}
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {opts.map((c) => {
+                              const isSelected = selectedConfigKeys.includes(c.key)
+                              return (
+                                <button
+                                  key={c.key}
+                                  type="button"
+                                  onClick={() => toggleConfigKey(c.key)}
+                                  className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-medium transition-colors"
+                                  style={{
+                                    background: isSelected ? 'var(--accent)' : 'var(--bg-panel)',
+                                    color: isSelected ? '#fff' : 'var(--text-secondary)',
+                                    border: `1px solid ${isSelected ? 'var(--accent)' : 'var(--border-standard)'}`,
+                                  }}
+                                  title={isSelected ? 'Retirer cette configuration' : 'Ajouter cette configuration'}
+                                >
+                                  <span
+                                    className="inline-flex h-3.5 w-3.5 items-center justify-center rounded"
+                                    style={{ background: isSelected ? 'rgba(255,255,255,0.18)' : 'var(--bg-surface)', border: '1px solid currentColor' }}
+                                  >
+                                    {isSelected ? <Check className="w-2.5 h-2.5" /> : null}
+                                  </span>
+                                  {c.label}
+                                </button>
+                              )
+                            })}
+                          </div>
+                        </div>
                       )
                     })}
-                  </select>
-                  {selectedConfigKey && (
+                  </div>
+                  {selectedConfigKeys.length > 0 && (
                     <p className="text-[11px] leading-snug" style={{ color: 'var(--text-quaternary)' }}>
-                      Les pastilles « Best » et la pondération du break tiennent compte de cette configuration.
+                      Les pastilles « Best » et la pondération du break tiennent compte des configurations cochées.
                     </p>
                   )}
                 </div>

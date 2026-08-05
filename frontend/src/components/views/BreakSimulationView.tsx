@@ -155,7 +155,7 @@ const METHODS = [
 ]
 
 export function BreakSimulationView() {
-  const { selectedSport, selectedChecklistIds, masterKey, availableChecklists, selectedConfigKey, setActiveView } = useAppStore()
+  const { selectedSport, selectedChecklistIds, masterKey, availableChecklists, selectedConfigKeys, setActiveView } = useAppStore()
   const [method, setMethod] = useState('team')
   const [result, setResult] = useState<BreakSimulationResponse | null>(null)
   const [loading, setLoading] = useState(false)
@@ -177,10 +177,10 @@ export function BreakSimulationView() {
   const [presetsOpen, setPresetsOpen] = useState(false)
 
   const resultsRef = useRef<HTMLDivElement>(null)
-  // Derniers paramètres envoyés à /simulate/break (hors config_key), pour pouvoir
+  // Derniers paramètres envoyés à /simulate/break (hors config odds), pour pouvoir
   // relancer la simulation quand la configuration odds change sans rejouer tout
   // le formulaire (méthode lettre-assignation incluse).
-  const lastRunParamsRef = useRef<Omit<Parameters<typeof fetchBreakSimulation>[0], 'config_key'> | null>(null)
+  const lastRunParamsRef = useRef<Omit<Parameters<typeof fetchBreakSimulation>[0], 'config_key' | 'config_keys'> | null>(null)
 
   // Load presets on mount or sport change
   useEffect(() => {
@@ -229,7 +229,7 @@ export function BreakSimulationView() {
     }
     lastRunParamsRef.current = params
     try {
-      const data = await fetchBreakSimulation({ ...params, config_key: selectedConfigKey })
+      const data = await fetchBreakSimulation({ ...params, config_keys: selectedConfigKeys })
       setResult(data)
       setPanelOpen(false)
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
@@ -241,7 +241,7 @@ export function BreakSimulationView() {
     }
   }
 
-  // Relance automatiquement la dernière simulation quand la configuration odds
+  // Relance automatiquement la dernière simulation quand les configurations odds
   // change (sélecteur global "je break du..."), pour que les colonnes Part
   // attendue / Break Score (odds) reflètent toujours la config ouverte. Ne fait
   // rien tant qu'aucune simulation n'a été lancée.
@@ -249,12 +249,12 @@ export function BreakSimulationView() {
     if (!lastRunParamsRef.current) return
     setLoading(true)
     setError(null)
-    fetchBreakSimulation({ ...lastRunParamsRef.current, config_key: selectedConfigKey })
+    fetchBreakSimulation({ ...lastRunParamsRef.current, config_keys: selectedConfigKeys })
       .then((data) => setResult(data))
       .catch((err: any) => { setError(err.message || 'Erreur lors de la simulation.'); setResult(null) })
       .finally(() => setLoading(false))
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedConfigKey])
+  }, [selectedConfigKeys])
 
   async function handleSimulate() {
     await runSimulate()

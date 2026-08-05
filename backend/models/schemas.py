@@ -28,6 +28,7 @@ class BreakSimulationRequest(BaseModel):
     extracted_players: List[str] = []
     checklist_hits_guaranteed: Optional[Dict[str, int]] = None
     config_key: Optional[str] = None
+    config_keys: Optional[List[str]] = None
 
 
 class OddsBadgesRequest(BaseModel):

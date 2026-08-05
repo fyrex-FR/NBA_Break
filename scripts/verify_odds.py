@@ -23,7 +23,7 @@ if str(_REPO_ROOT) not in sys.path:
 
 from backend.services.odds_engine import build_set_summaries, validate_odds_sheet
 
-FIXTURE_PATH = _REPO_ROOT / "backend" / "odds" / "nba" / "2025-26-topps-chrome-updates-basketball-checklist.json"
+FIXTURE_PATH = _REPO_ROOT / "backend" / "odds" / "nba" / "2025-26-topps-chrome-update-basketball-checklist.json"
 
 EXPECTED_CONFIGS = 12
 EXPECTED_ROWS = 389

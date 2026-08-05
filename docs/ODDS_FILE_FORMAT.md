@@ -16,7 +16,7 @@ odds/{sport_key}/{checklist_id}.json
   `backend/services/checklist_aliases.py`). L'app essaie aussi les identifiants legacy
   équivalents à la lecture, mais écrivez toujours sous l'id canonique.
 
-Exemple : `odds/nba/2025-26-topps-chrome-updates-basketball-checklist.json`
+Exemple : `odds/nba/2025-26-topps-chrome-update-basketball-checklist.json`
 
 Un fallback local existe pour le développement/tests : `backend/odds/{sport_key}/{checklist_id}.json`
 (c'est là que vit la fixture de référence de ce repo). En production, seul R2 compte.
@@ -36,7 +36,7 @@ qui ne publie pas ce format) — elle dégrade simplement en n'affichant aucun b
   "sport": "nba",
 
   // Identifiant canonique de la checklist — doit correspondre au nom de fichier.
-  "checklist_id": "2025-26-topps-chrome-updates-basketball-checklist",
+  "checklist_id": "2025-26-topps-chrome-update-basketball-checklist",
 
   // Libellé humain du produit (optionnel, pour affichage).
   "product_label": "2025-26 Topps Chrome Updates Basketball",
@@ -163,7 +163,7 @@ uniquement des variantes de couleur).
 
 ## Fixture de référence
 
-`backend/odds/nba/2025-26-topps-chrome-updates-basketball-checklist.json` — générée par
+`backend/odds/nba/2025-26-topps-chrome-update-basketball-checklist.json` — générée par
 `scripts/parse_topps_odds_pdf.py` à partir de
 `data/odds_sources/2025-26-topps-chrome-updates-basketball-odds.pdf`. Sert de fixture
 locale (fallback sans R2) et de référence pour retester le parser. Regénérer avec :
@@ -172,7 +172,7 @@ locale (fallback sans R2) et de référence pour retester le parser. Regénérer
 pip install -r scripts/requirements-dev.txt
 python3 scripts/parse_topps_odds_pdf.py \
   data/odds_sources/2025-26-topps-chrome-updates-basketball-odds.pdf \
-  --sport nba --checklist-id 2025-26-topps-chrome-updates-basketball-checklist \
+  --sport nba --checklist-id 2025-26-topps-chrome-update-basketball-checklist \
   --product-label "2025-26 Topps Chrome Updates Basketball" \
-  -o backend/odds/nba/2025-26-topps-chrome-updates-basketball-checklist.json
+  -o backend/odds/nba/2025-26-topps-chrome-update-basketball-checklist.json
 ```

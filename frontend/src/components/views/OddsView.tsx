@@ -80,7 +80,7 @@ function formatExclusiveFamily(family: string, groups: string[]): string {
 export function OddsView() {
   const selectedSport = useAppStore((s) => s.selectedSport)
   const selectedChecklistIds = useAppStore((s) => s.selectedChecklistIds)
-  const selectedConfigKey = useAppStore((s) => s.selectedConfigKey)
+  const selectedConfigKeys = useAppStore((s) => s.selectedConfigKeys)
   const availableChecklists = useAppStore((s) => s.availableChecklists)
 
   const [manualChecklistId, setManualChecklistId] = useState('')
@@ -123,8 +123,12 @@ export function OddsView() {
     for (const c of sheetData?.configs ?? []) map.set(c.key, c.group)
     return map
   }, [sheetData])
-  const selectedConfig = sheetData?.configs.find((c) => c.key === selectedConfigKey)
-  const highlightGroup = selectedConfig?.group
+  const selectedConfigs = useMemo(
+    () => (sheetData?.configs ?? []).filter((c) => selectedConfigKeys.includes(c.key)),
+    [sheetData, selectedConfigKeys],
+  )
+  const highlightedGroups = useMemo(() => new Set(selectedConfigs.map((c) => c.group)), [selectedConfigs])
+  const selectedConfigLabel = selectedConfigs.map((c) => c.label).join(' + ')
 
   const allSets = useMemo(
     () => Object.values(sheetData?.set_summaries ?? {}).sort((a, b) => a.set.localeCompare(b.set)),
@@ -135,11 +139,11 @@ export function OddsView() {
     if (availabilityFilter === 'hobby_only') return allSets.filter((s) => s.availability_badge === 'hobby_only')
     if (availabilityFilter === 'retail_only') return allSets.filter((s) => s.availability_badge === 'retail_only')
     if (availabilityFilter === 'selected_config') {
-      if (!highlightGroup) return []
-      return allSets.filter((s) => s.groups_present.includes(highlightGroup))
+      if (highlightedGroups.size === 0) return []
+      return allSets.filter((s) => s.groups_present.some((group) => highlightedGroups.has(group)))
     }
     return allSets
-  }, [allSets, availabilityFilter, highlightGroup])
+  }, [allSets, availabilityFilter, highlightedGroups])
 
   // ── Aucune checklist sélectionnée n'a de feuille d'odds : état vide explicite ──
   if (checklistsWithOdds.length === 0) {
@@ -206,9 +210,9 @@ export function OddsView() {
             <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{allSets.length} sets</span>
             {sheetData.sheet.source && <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Source : {sheetData.sheet.source}</span>}
             {sheetData.sheet.updated_at && <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Maj {sheetData.sheet.updated_at}</span>}
-            {selectedConfig && (
+            {selectedConfigs.length > 0 && (
               <span className="text-xs px-2 py-0.5 rounded-full ml-auto" style={{ background: 'color-mix(in srgb, var(--accent) 16%, transparent)', color: 'var(--accent)' }}>
-                Config active : {selectedConfig.label}
+                Configs actives : {selectedConfigLabel}
               </span>
             )}
           </div>
@@ -219,18 +223,18 @@ export function OddsView() {
               { key: 'all', label: 'Tous' },
               { key: 'hobby_only', label: 'Hobby only' },
               { key: 'retail_only', label: 'Retail only' },
-              { key: 'selected_config', label: selectedConfig ? `Dispo en ${selectedConfig.label}` : 'Dispo dans la config sélectionnée' },
+              { key: 'selected_config', label: selectedConfigs.length > 0 ? `Dispo dans la sélection` : 'Dispo dans la config sélectionnée' },
             ] as { key: AvailabilityFilter; label: string }[]).map((f) => (
               <button
                 key={f.key}
                 onClick={() => setAvailabilityFilter(f.key)}
-                disabled={f.key === 'selected_config' && !selectedConfig}
+                disabled={f.key === 'selected_config' && selectedConfigs.length === 0}
                 className="text-xs px-2.5 py-1.5 rounded-full transition-colors"
                 style={{
                   background: availabilityFilter === f.key ? 'var(--accent)' : 'var(--bg-surface)',
-                  color: availabilityFilter === f.key ? '#fff' : (f.key === 'selected_config' && !selectedConfig) ? 'var(--text-quaternary)' : 'var(--text-secondary)',
+                  color: availabilityFilter === f.key ? '#fff' : (f.key === 'selected_config' && selectedConfigs.length === 0) ? 'var(--text-quaternary)' : 'var(--text-secondary)',
                   border: `1px solid ${availabilityFilter === f.key ? 'var(--accent)' : 'var(--border-standard)'}`,
-                  opacity: f.key === 'selected_config' && !selectedConfig ? 0.5 : 1,
+                  opacity: f.key === 'selected_config' && selectedConfigs.length === 0 ? 0.5 : 1,
                 }}
               >
                 {f.label}
@@ -257,9 +261,9 @@ export function OddsView() {
                         key={g.group}
                         className="px-3 py-3 text-center font-medium whitespace-nowrap"
                         style={{
-                          color: g.group === highlightGroup ? 'var(--accent)' : 'var(--text-tertiary)',
-                          borderBottom: `1px solid ${g.group === highlightGroup ? 'var(--accent)' : 'var(--border-subtle)'}`,
-                          background: g.group === highlightGroup ? 'color-mix(in srgb, var(--accent) 10%, var(--bg-surface))' : undefined,
+                          color: highlightedGroups.has(g.group) ? 'var(--accent)' : 'var(--text-tertiary)',
+                          borderBottom: `1px solid ${highlightedGroups.has(g.group) ? 'var(--accent)' : 'var(--border-subtle)'}`,
+                          background: highlightedGroups.has(g.group) ? 'color-mix(in srgb, var(--accent) 10%, var(--bg-surface))' : undefined,
                         }}
                       >
                         {g.label}
@@ -317,7 +321,7 @@ export function OddsView() {
                         {isOpen && (
                           <tr key={`${set.set}-detail`} style={{ background: rowBg }}>
                             <td colSpan={groups.length + 2} className="px-4 py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                              <SetDetailPanel set={set} groups={groups} configGroupOf={configGroupOf} highlightGroup={highlightGroup} />
+                              <SetDetailPanel set={set} groups={groups} configGroupOf={configGroupOf} highlightedGroups={highlightedGroups} />
                             </td>
                           </tr>
                         )}
@@ -355,10 +359,10 @@ interface SetDetailPanelProps {
   set: OddsSetSummary
   groups: { group: string; label: string }[]
   configGroupOf: Map<string, string>
-  highlightGroup?: string
+  highlightedGroups: Set<string>
 }
 
-function SetDetailPanel({ set, groups, configGroupOf, highlightGroup }: SetDetailPanelProps) {
+function SetDetailPanel({ set, groups, configGroupOf, highlightedGroups }: SetDetailPanelProps) {
   return (
     <div className="space-y-3">
       {set.exclusive_parallel_families.length > 0 && (
@@ -384,7 +388,7 @@ function SetDetailPanel({ set, groups, configGroupOf, highlightGroup }: SetDetai
                 <th
                   key={g.group}
                   className="px-3 py-2 text-center font-medium whitespace-nowrap"
-                  style={{ color: g.group === highlightGroup ? 'var(--accent)' : 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}
+                  style={{ color: highlightedGroups.has(g.group) ? 'var(--accent)' : 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}
                 >
                   {g.label}
                 </th>
