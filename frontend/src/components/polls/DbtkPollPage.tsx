@@ -188,7 +188,14 @@ export function DbtkPollPage() {
                     return (
                       <div key={option.checklist_id} className="px-4 py-3 hover:bg-[var(--bg-hover)]" style={{ borderColor: 'var(--border-subtle)' }}>
                         <button type="button" onClick={(event) => { toggleChecklist(option.checklist_id); event.currentTarget.blur() }} className="w-full flex items-center gap-3 text-left outline-none">
-                          <span className="w-5 h-5 rounded-md border flex items-center justify-center shrink-0" style={selected ? { background: 'var(--accent)', borderColor: 'var(--accent)' } : { borderColor: 'var(--border-standard)' }}>{selected && <Check className="w-3.5 h-3.5 text-white" />}</span>
+                          <span
+                            className="w-5 h-5 rounded-md border flex items-center justify-center shrink-0"
+                            style={selected
+                              ? { background: '#16a34a', borderColor: '#22c55e' }
+                              : { background: 'var(--bg-secondary)', borderColor: 'var(--border-standard)' }}
+                          >
+                            {selected && <Check className="w-3.5 h-3.5 text-white" />}
+                          </span>
                           <span className="min-w-0"><span className="block text-sm font-medium">{optionLabel(option)}</span><span className="block text-xs" style={{ color: 'var(--text-tertiary)' }}>{option.year}</span></span>
                         </button>
                         {selected && (
