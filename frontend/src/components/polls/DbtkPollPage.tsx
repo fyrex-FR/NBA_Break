@@ -63,12 +63,14 @@ export function DbtkPollPage() {
   }, [options, query, years])
 
   function toggleYear(year: string) {
-    if (years.includes(year)) {
-      setYears(years.filter((item) => item !== year))
+    const removing = years.includes(year)
+    setYears((currentYears) => removing
+      ? currentYears.filter((item) => item !== year)
+      : [...currentYears, year],
+    )
+    if (removing) {
       const idsForYear = new Set(options.filter((option) => option.year === year).map((option) => option.checklist_id))
-      setChecklistIds(checklistIds.filter((id) => !idsForYear.has(id)))
-    } else {
-      setYears([...years, year])
+      setChecklistIds((currentIds) => currentIds.filter((id) => !idsForYear.has(id)))
     }
   }
 
@@ -127,8 +129,18 @@ export function DbtkPollPage() {
             <legend className="text-sm font-semibold mb-3">1. Quelles années ?</legend>
             <div className="flex flex-wrap gap-2">
               {availableYears.map((year) => (
-                <button key={year} type="button" onClick={() => toggleYear(year)} className="px-3.5 py-2 rounded-full text-sm font-semibold border transition-colors" style={years.includes(year) ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'var(--bg-secondary)', borderColor: 'var(--border-standard)' }}>
-                  {year}
+                <button
+                  key={year}
+                  type="button"
+                  aria-pressed={years.includes(year)}
+                  onClick={(event) => {
+                    toggleYear(year)
+                    event.currentTarget.blur()
+                  }}
+                  className="px-3.5 py-2 rounded-full text-sm font-semibold border transition-colors focus:outline-none focus-visible:ring-2"
+                  style={years.includes(year) ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'var(--bg-secondary)', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}
+                >
+                  <span className="inline-flex items-center gap-1.5">{years.includes(year) && <Check className="w-3.5 h-3.5" />}{year}</span>
                 </button>
               ))}
             </div>
