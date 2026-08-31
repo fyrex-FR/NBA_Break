@@ -107,6 +107,21 @@ body {
   min-height: 100vh;
 }
 
+/* The poll uses color as application state. Suppress persistent mobile tap/focus
+   paint so it can never be confused with a selected year or checklist. */
+.dbtk-poll button {
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.dbtk-poll button:focus,
+.dbtk-poll button:active {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;

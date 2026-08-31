@@ -86,9 +86,14 @@ export function DbtkPollPage() {
 
   function toggleChecklistPreference(id: string, preference: PollPreference) {
     setChoices((currentChoices) => {
+      return { ...currentChoices, [id]: preference }
+    })
+  }
+
+  function removeChecklist(id: string) {
+    setChoices((currentChoices) => {
       const next = { ...currentChoices }
-      if (next[id] === preference) delete next[id]
-      else next[id] = preference
+      delete next[id]
       return next
     })
   }
@@ -119,7 +124,7 @@ export function DbtkPollPage() {
   const optionById = useMemo(() => new Map(options.map((option) => [option.checklist_id, option])), [options])
 
   return (
-    <div data-sport="nba" data-theme="dark" className="min-h-dvh" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+    <div data-sport="nba" data-theme="dark" className="dbtk-poll min-h-dvh" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
       <header className="border-b" style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-panel)' }}>
         <div className="max-w-6xl mx-auto px-4 py-5 flex items-center gap-3">
           <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: 'var(--accent-subtle)', color: 'var(--accent)' }}>
@@ -156,7 +161,7 @@ export function DbtkPollPage() {
                     toggleYear(year)
                     event.currentTarget.blur()
                   }}
-                  className="px-3.5 py-2 rounded-full text-sm font-semibold border transition-colors focus:outline-none focus-visible:ring-2"
+                  className="px-3.5 py-2 rounded-full text-sm font-semibold border transition-colors outline-none"
                   style={years.includes(year) ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'var(--bg-secondary)', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}
                 >
                   <span className="inline-flex items-center gap-1.5">{years.includes(year) && <Check className="w-3.5 h-3.5" />}{year}</span>
@@ -182,24 +187,42 @@ export function DbtkPollPage() {
                     const selected = !!selectedPreference
                     return (
                       <div key={option.checklist_id} className="px-4 py-3 hover:bg-[var(--bg-hover)]" style={{ borderColor: 'var(--border-subtle)' }}>
-                        <button type="button" onClick={(event) => { toggleChecklist(option.checklist_id); event.currentTarget.blur() }} className="w-full flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2">
+                        <button type="button" onClick={(event) => { toggleChecklist(option.checklist_id); event.currentTarget.blur() }} className="w-full flex items-center gap-3 text-left outline-none">
                           <span className="w-5 h-5 rounded-md border flex items-center justify-center shrink-0" style={selected ? { background: 'var(--accent)', borderColor: 'var(--accent)' } : { borderColor: 'var(--border-standard)' }}>{selected && <Check className="w-3.5 h-3.5 text-white" />}</span>
                           <span className="min-w-0"><span className="block text-sm font-medium">{optionLabel(option)}</span><span className="block text-xs" style={{ color: 'var(--text-tertiary)' }}>{option.year}</span></span>
                         </button>
                         {selected && (
-                          <div className="grid grid-cols-3 gap-1.5 mt-3 ml-8">
-                            {(Object.keys(PREFERENCE_LABELS) as PollPreference[]).map((value) => (
+                          <div className="mt-3 ml-8 space-y-2">
+                            <div className="grid grid-cols-3 gap-1.5">
+                            {(Object.keys(PREFERENCE_LABELS) as PollPreference[]).map((value) => {
+                              const active = selectedPreference === value
+                              const activeStyle = value === 'value'
+                                ? { background: '#2563eb', borderColor: '#3b82f6', color: 'white' }
+                                : value === 'guarantee'
+                                  ? { background: '#16a34a', borderColor: '#22c55e', color: 'white' }
+                                  : { background: '#7c3aed', borderColor: '#8b5cf6', color: 'white' }
+                              return (
                               <button
                                 key={value}
                                 type="button"
-                                aria-pressed={selectedPreference === value}
+                                aria-pressed={active}
                                 onClick={(event) => { toggleChecklistPreference(option.checklist_id, value); event.currentTarget.blur() }}
-                                className="rounded-lg border px-2 py-2 text-xs font-semibold focus:outline-none focus-visible:ring-2"
-                                style={selectedPreference === value ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'transparent', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}
+                                className="rounded-lg border px-2 py-2 text-xs font-semibold outline-none"
+                                style={active ? activeStyle : { background: 'transparent', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}
                               >
                                 {PREFERENCE_LABELS[value]}
                               </button>
-                            ))}
+                              )
+                            })}
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => removeChecklist(option.checklist_id)}
+                              className="w-full rounded-lg border px-2 py-2 text-xs font-semibold outline-none"
+                              style={{ background: 'transparent', borderColor: 'var(--border-standard)', color: 'var(--text-tertiary)' }}
+                            >
+                              Retirer cette box
+                            </button>
                           </div>
                         )}
                       </div>
