@@ -45,6 +45,13 @@ export interface PollResultsResponse {
   years: Record<string, number>
   checklists: Record<string, number>
   preferences: Record<PollPreference, number>
+  votes: Array<{
+    pseudo: string
+    years: string[]
+    checklist_ids: string[]
+    preference: PollPreference
+    updated_at?: string
+  }>
 }
 
 export interface CardRecord {

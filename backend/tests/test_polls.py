@@ -35,7 +35,7 @@ class PollTests(unittest.TestCase):
             patch.object(polls, "list_r2_keys_with_prefix", side_effect=self.keys),
         )
 
-    def test_same_pseudo_replaces_vote_and_results_never_expose_it(self):
+    def test_same_pseudo_replaces_vote_and_results_show_latest_choice(self):
         contexts = self.patches()
         with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4]:
             polls.submit_vote(polls.VotePayload(
@@ -48,8 +48,8 @@ class PollTests(unittest.TestCase):
 
         self.assertEqual(results["voters"], 1)
         self.assertEqual(results["checklists"], {"2023-select": 1})
-        self.assertNotIn("pseudo", str(results).lower())
-        self.assertNotIn("xavier", str(results).lower())
+        self.assertEqual(results["votes"][0]["pseudo"], "xavier")
+        self.assertEqual(results["votes"][0]["checklist_ids"], ["2023-select"])
 
     def test_rejects_checklist_outside_selected_years(self):
         contexts = self.patches()

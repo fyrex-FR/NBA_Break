@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { BarChart3, Box, Check, Loader2, Search, ShieldCheck, Sparkles } from 'lucide-react'
+import { BarChart3, Box, Check, Loader2, Search, Sparkles, Users } from 'lucide-react'
 import { fetchPollOptions, fetchPollResults, submitPollVote } from '../../api/client'
 import type { PollOption, PollPreference, PollResultsResponse } from '../../types'
 
@@ -178,7 +178,7 @@ export function DbtkPollPage() {
           <button disabled={submitting || loading} className="w-full rounded-xl py-3.5 font-bold text-white flex items-center justify-center gap-2 disabled:opacity-60" style={{ background: 'var(--accent)' }}>
             {submitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Check className="w-5 h-5" />} Enregistrer mon vote
           </button>
-          <p className="text-xs flex items-start gap-2" style={{ color: 'var(--text-tertiary)' }}><ShieldCheck className="w-4 h-4 shrink-0" /> Ton pseudo sert uniquement à remplacer ton ancien vote. Il n’apparaît jamais dans les résultats publics.</p>
+          <p className="text-xs flex items-start gap-2" style={{ color: 'var(--text-tertiary)' }}><Users className="w-4 h-4 shrink-0" /> Les votes sont transparents : ton pseudo et tes choix apparaîtront dans les résultats publics. Revoter avec le même pseudo remplace ton ancien vote.</p>
         </form>
 
         <aside className="glass-panel rounded-2xl p-5 md:p-6 h-fit lg:sticky lg:top-6">
@@ -189,6 +189,28 @@ export function DbtkPollPage() {
           <ResultSection title="Années" rows={ranking(results?.years ?? {}).slice(0, 8)} label={(key) => key} />
           <ResultSection title="Box les plus demandées" rows={ranking(results?.checklists ?? {}).slice(0, 12)} label={(key) => optionById.has(key) ? `${optionById.get(key)!.year} · ${optionLabel(optionById.get(key)!)}` : key} />
           <ResultSection title="Orientation" rows={ranking(results?.preferences ?? {})} label={(key) => PREFERENCE_LABELS[key as PollPreference] ?? key} />
+
+          <section className="mt-7">
+            <h3 className="text-sm font-bold mb-3">Votes détaillés</h3>
+            <div className="space-y-3 max-h-96 overflow-y-auto pr-1">
+              {(results?.votes ?? []).map((vote) => (
+                <article key={`${vote.pseudo}-${vote.updated_at}`} className="rounded-xl p-3 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-subtle)' }}>
+                  <div className="flex items-start justify-between gap-2">
+                    <strong className="text-sm">{vote.pseudo}</strong>
+                    <span className="text-[11px] px-2 py-1 rounded-full" style={{ background: 'var(--accent-subtle)', color: 'var(--accent)' }}>{PREFERENCE_LABELS[vote.preference]}</span>
+                  </div>
+                  <p className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>{vote.years.join(', ')}</p>
+                  <ul className="text-xs mt-2 space-y-1">
+                    {vote.checklist_ids.map((id) => {
+                      const option = optionById.get(id)
+                      return <li key={id}>• {option ? optionLabel(option) : id}</li>
+                    })}
+                  </ul>
+                </article>
+              ))}
+              {(results?.votes ?? []).length === 0 && <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Pas encore de vote.</p>}
+            </div>
+          </section>
         </aside>
       </main>
     </div>

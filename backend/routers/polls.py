@@ -111,6 +111,7 @@ def submit_vote(payload: VotePayload):
         raise HTTPException(status_code=422, detail="Les box choisies ne correspondent pas aux années sélectionnées")
 
     vote = {
+        "pseudo": payload.pseudo,
         "years": payload.years,
         "checklist_ids": payload.checklist_ids,
         "preference": payload.preference,
@@ -127,16 +128,28 @@ def poll_results():
     years: Counter[str] = Counter()
     checklists: Counter[str] = Counter()
     preferences: Counter[str] = Counter()
+    public_votes = []
     for vote in votes:
         years.update(set(vote.get("years", [])))
         checklists.update(set(vote.get("checklist_ids", [])))
         preference = vote.get("preference")
         if preference in {"value", "guarantee", "either"}:
             preferences[preference] += 1
+        if vote.get("pseudo"):
+            public_votes.append({
+                "pseudo": vote["pseudo"],
+                "years": vote.get("years", []),
+                "checklist_ids": vote.get("checklist_ids", []),
+                "preference": preference,
+                "updated_at": vote.get("updated_at"),
+            })
+
+    public_votes.sort(key=lambda vote: (vote.get("updated_at") or ""), reverse=True)
 
     return {
         "voters": len(votes),
         "years": dict(years.most_common()),
         "checklists": dict(checklists.most_common()),
         "preferences": {key: preferences[key] for key in ("value", "guarantee", "either")},
+        "votes": public_votes,
     }
