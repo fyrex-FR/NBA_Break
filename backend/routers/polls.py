@@ -28,11 +28,15 @@ SPORT_KEY = "nba"
 VOTES_PREFIX = f"polls/{POLL_ID}/votes/"
 
 
+class ChecklistChoice(BaseModel):
+    checklist_id: str = Field(min_length=1, max_length=200)
+    preference: Literal["value", "guarantee", "mix"] = "guarantee"
+
+
 class VotePayload(BaseModel):
     pseudo: str = Field(min_length=2, max_length=40)
     years: list[str] = Field(min_length=1, max_length=20)
-    checklist_ids: list[str] = Field(min_length=1, max_length=100)
-    preference: Literal["value", "guarantee", "either"]
+    choices: list[ChecklistChoice] = Field(min_length=1, max_length=100)
 
     @field_validator("pseudo")
     @classmethod
@@ -42,13 +46,21 @@ class VotePayload(BaseModel):
             raise ValueError("Pseudo invalide")
         return cleaned
 
-    @field_validator("years", "checklist_ids")
+    @field_validator("years")
     @classmethod
     def unique_values(cls, values: list[str]) -> list[str]:
         cleaned = list(dict.fromkeys(value.strip() for value in values if value.strip()))
         if not cleaned:
             raise ValueError("Au moins un choix est requis")
         return cleaned
+
+    @field_validator("choices")
+    @classmethod
+    def unique_choices(cls, choices: list[ChecklistChoice]) -> list[ChecklistChoice]:
+        unique = {choice.checklist_id: choice for choice in choices if choice.checklist_id.strip()}
+        if not unique:
+            raise ValueError("Au moins une box est requise")
+        return list(unique.values())
 
 
 def _config():
@@ -91,6 +103,22 @@ def _load_votes(config) -> list[dict]:
     return votes
 
 
+def _choices_for_vote(vote: dict) -> list[dict]:
+    """Return current per-checklist choices, converting the deployed legacy shape."""
+    choices = vote.get("choices")
+    if isinstance(choices, list):
+        return [choice for choice in choices if isinstance(choice, dict) and choice.get("checklist_id")]
+
+    legacy_preference = vote.get("preference", "guarantee")
+    preference = "mix" if legacy_preference == "either" else legacy_preference
+    if preference not in {"value", "guarantee", "mix"}:
+        preference = "guarantee"
+    return [
+        {"checklist_id": checklist_id, "preference": preference}
+        for checklist_id in vote.get("checklist_ids", [])
+    ]
+
+
 @router.get("/options")
 def poll_options():
     options = [_public_option(row) for row in _catalog() if row.get("checklist_id") and row.get("year")]
@@ -102,19 +130,18 @@ def poll_options():
 def submit_vote(payload: VotePayload):
     config = _config()
     catalog = {row.get("checklist_id"): row for row in _catalog()}
-    unknown = [checklist_id for checklist_id in payload.checklist_ids if checklist_id not in catalog]
+    unknown = [choice.checklist_id for choice in payload.choices if choice.checklist_id not in catalog]
     if unknown:
         raise HTTPException(status_code=422, detail="Une ou plusieurs box ne sont plus disponibles")
 
     selected_years = set(payload.years)
-    if any(str(catalog[checklist_id].get("year", "")) not in selected_years for checklist_id in payload.checklist_ids):
+    if any(str(catalog[choice.checklist_id].get("year", "")) not in selected_years for choice in payload.choices):
         raise HTTPException(status_code=422, detail="Les box choisies ne correspondent pas aux années sélectionnées")
 
     vote = {
         "pseudo": payload.pseudo,
         "years": payload.years,
-        "checklist_ids": payload.checklist_ids,
-        "preference": payload.preference,
+        "choices": [choice.model_dump() for choice in payload.choices],
         "updated_at": datetime.now(timezone.utc).isoformat(),
     }
     write_r2_json(config, _voter_key(payload.pseudo), vote)
@@ -127,20 +154,23 @@ def poll_results():
     votes = _load_votes(config)
     years: Counter[str] = Counter()
     checklists: Counter[str] = Counter()
-    preferences: Counter[str] = Counter()
+    checklist_preferences: dict[str, Counter[str]] = {}
     public_votes = []
     for vote in votes:
         years.update(set(vote.get("years", [])))
-        checklists.update(set(vote.get("checklist_ids", [])))
-        preference = vote.get("preference")
-        if preference in {"value", "guarantee", "either"}:
-            preferences[preference] += 1
+        choices = _choices_for_vote(vote)
+        checklist_ids = {choice["checklist_id"] for choice in choices}
+        checklists.update(checklist_ids)
+        for choice in choices:
+            checklist_id = choice["checklist_id"]
+            if checklist_id not in checklist_preferences:
+                checklist_preferences[checklist_id] = Counter()
+            checklist_preferences[checklist_id][choice.get("preference", "guarantee")] += 1
         if vote.get("pseudo"):
             public_votes.append({
                 "pseudo": vote["pseudo"],
                 "years": vote.get("years", []),
-                "checklist_ids": vote.get("checklist_ids", []),
-                "preference": preference,
+                "choices": choices,
                 "updated_at": vote.get("updated_at"),
             })
 
@@ -150,6 +180,9 @@ def poll_results():
         "voters": len(votes),
         "years": dict(years.most_common()),
         "checklists": dict(checklists.most_common()),
-        "preferences": {key: preferences[key] for key in ("value", "guarantee", "either")},
+        "checklist_preferences": {
+            checklist_id: {key: counts[key] for key in ("value", "guarantee", "mix")}
+            for checklist_id, counts in checklist_preferences.items()
+        },
         "votes": public_votes,
     }

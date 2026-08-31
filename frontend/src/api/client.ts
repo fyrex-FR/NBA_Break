@@ -20,7 +20,7 @@ import type {
   OddsMappingDetectResponse,
   OddsMappingSaveResponse,
   PollOptionsResponse,
-  PollPreference,
+  PollChecklistChoice,
   PollResultsResponse,
 } from '../types'
 
@@ -61,8 +61,7 @@ export function fetchPollResults(): Promise<PollResultsResponse> {
 export function submitPollVote(payload: {
   pseudo: string
   years: string[]
-  checklist_ids: string[]
-  preference: PollPreference
+  choices: PollChecklistChoice[]
 }): Promise<{ status: string; replaces_previous: boolean }> {
   return fetchJSON('/polls/dbtk/votes', {
     method: 'POST',

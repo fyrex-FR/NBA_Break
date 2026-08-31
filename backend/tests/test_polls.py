@@ -39,30 +39,43 @@ class PollTests(unittest.TestCase):
         contexts = self.patches()
         with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4]:
             polls.submit_vote(polls.VotePayload(
-                pseudo="Xavier", years=["2024-25"], checklist_ids=["2024-prizm"], preference="value"
+                pseudo="Xavier", years=["2024-25"], choices=[{"checklist_id": "2024-prizm", "preference": "value"}]
             ))
             polls.submit_vote(polls.VotePayload(
-                pseudo=" xavier ", years=["2023-24"], checklist_ids=["2023-select"], preference="guarantee"
+                pseudo=" xavier ", years=["2023-24"], choices=[{"checklist_id": "2023-select", "preference": "mix"}]
             ))
             results = polls.poll_results()
 
         self.assertEqual(results["voters"], 1)
         self.assertEqual(results["checklists"], {"2023-select": 1})
         self.assertEqual(results["votes"][0]["pseudo"], "xavier")
-        self.assertEqual(results["votes"][0]["checklist_ids"], ["2023-select"])
+        self.assertEqual(results["votes"][0]["choices"], [{"checklist_id": "2023-select", "preference": "mix"}])
+        self.assertEqual(results["checklist_preferences"]["2023-select"]["mix"], 1)
 
     def test_rejects_checklist_outside_selected_years(self):
         contexts = self.patches()
         with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4]:
             with self.assertRaises(HTTPException) as raised:
                 polls.submit_vote(polls.VotePayload(
-                    pseudo="Tester", years=["2024-25"], checklist_ids=["2023-select"], preference="either"
+                    pseudo="Tester", years=["2024-25"], choices=[{"checklist_id": "2023-select"}]
                 ))
         self.assertEqual(raised.exception.status_code, 422)
 
     def test_rejects_blank_selections(self):
         with self.assertRaises(ValidationError):
-            polls.VotePayload(pseudo="Tester", years=[" "], checklist_ids=["2024-prizm"], preference="either")
+            polls.VotePayload(pseudo="Tester", years=[" "], choices=[{"checklist_id": "2024-prizm"}])
+
+    def test_converts_legacy_global_preference_per_checklist(self):
+        self.objects["polls/dbtk-next-pyp/votes/legacy.json"] = {
+            "pseudo": "Legacy",
+            "years": ["2024-25"],
+            "checklist_ids": ["2024-prizm"],
+            "preference": "either",
+        }
+        contexts = self.patches()
+        with contexts[0], contexts[1], contexts[2], contexts[3], contexts[4]:
+            results = polls.poll_results()
+        self.assertEqual(results["votes"][0]["choices"][0]["preference"], "mix")
 
 
 if __name__ == "__main__":

@@ -25,7 +25,12 @@ export interface ChecklistsResponse {
   source_mode: 'master' | 'legacy' | 'none'
 }
 
-export type PollPreference = 'value' | 'guarantee' | 'either'
+export type PollPreference = 'value' | 'guarantee' | 'mix'
+
+export interface PollChecklistChoice {
+  checklist_id: string
+  preference: PollPreference
+}
 
 export interface PollOption {
   checklist_id: string
@@ -44,12 +49,11 @@ export interface PollResultsResponse {
   voters: number
   years: Record<string, number>
   checklists: Record<string, number>
-  preferences: Record<PollPreference, number>
+  checklist_preferences: Record<string, Record<PollPreference, number>>
   votes: Array<{
     pseudo: string
     years: string[]
-    checklist_ids: string[]
-    preference: PollPreference
+    choices: PollChecklistChoice[]
     updated_at?: string
   }>
 }
