@@ -84,8 +84,13 @@ export function DbtkPollPage() {
     })
   }
 
-  function setChecklistPreference(id: string, preference: PollPreference) {
-    setChoices((currentChoices) => ({ ...currentChoices, [id]: preference }))
+  function toggleChecklistPreference(id: string, preference: PollPreference) {
+    setChoices((currentChoices) => {
+      const next = { ...currentChoices }
+      if (next[id] === preference) delete next[id]
+      else next[id] = preference
+      return next
+    })
   }
 
   async function handleSubmit(event: React.FormEvent) {
@@ -177,14 +182,21 @@ export function DbtkPollPage() {
                     const selected = !!selectedPreference
                     return (
                       <div key={option.checklist_id} className="px-4 py-3 hover:bg-[var(--bg-hover)]" style={{ borderColor: 'var(--border-subtle)' }}>
-                        <button type="button" onClick={() => toggleChecklist(option.checklist_id)} className="w-full flex items-center gap-3 text-left">
+                        <button type="button" onClick={(event) => { toggleChecklist(option.checklist_id); event.currentTarget.blur() }} className="w-full flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2">
                           <span className="w-5 h-5 rounded-md border flex items-center justify-center shrink-0" style={selected ? { background: 'var(--accent)', borderColor: 'var(--accent)' } : { borderColor: 'var(--border-standard)' }}>{selected && <Check className="w-3.5 h-3.5 text-white" />}</span>
                           <span className="min-w-0"><span className="block text-sm font-medium">{optionLabel(option)}</span><span className="block text-xs" style={{ color: 'var(--text-tertiary)' }}>{option.year}</span></span>
                         </button>
                         {selected && (
                           <div className="grid grid-cols-3 gap-1.5 mt-3 ml-8">
                             {(Object.keys(PREFERENCE_LABELS) as PollPreference[]).map((value) => (
-                              <button key={value} type="button" onClick={() => setChecklistPreference(option.checklist_id, value)} className="rounded-lg border px-2 py-2 text-xs font-semibold" style={selectedPreference === value ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'var(--bg-secondary)', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}>
+                              <button
+                                key={value}
+                                type="button"
+                                aria-pressed={selectedPreference === value}
+                                onClick={(event) => { toggleChecklistPreference(option.checklist_id, value); event.currentTarget.blur() }}
+                                className="rounded-lg border px-2 py-2 text-xs font-semibold focus:outline-none focus-visible:ring-2"
+                                style={selectedPreference === value ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'transparent', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}
+                              >
                                 {PREFERENCE_LABELS[value]}
                               </button>
                             ))}
