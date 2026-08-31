@@ -152,21 +152,26 @@ export function DbtkPollPage() {
           <fieldset>
             <legend className="text-sm font-semibold mb-3">1. Quelles années ?</legend>
             <div className="flex flex-wrap gap-2">
-              {availableYears.map((year) => (
+              {availableYears.map((year) => {
+                const selected = years.includes(year)
+                return (
                 <button
-                  key={year}
+                  key={`${year}-${selected ? 'selected' : 'idle'}`}
                   type="button"
-                  aria-pressed={years.includes(year)}
+                  aria-pressed={selected}
                   onClick={(event) => {
                     toggleYear(year)
                     event.currentTarget.blur()
                   }}
                   className="px-3.5 py-2 rounded-full text-sm font-semibold border transition-colors outline-none"
-                  style={years.includes(year) ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'white' } : { background: 'var(--bg-secondary)', borderColor: 'var(--border-standard)', color: 'var(--text-secondary)' }}
+                  style={selected
+                    ? { background: '#16a34a', borderColor: '#22c55e', color: '#ffffff' }
+                    : { background: '#111827', borderColor: '#374151', color: '#d1d5db' }}
                 >
-                  <span className="inline-flex items-center gap-1.5">{years.includes(year) && <Check className="w-3.5 h-3.5" />}{year}</span>
+                  <span className="inline-flex items-center gap-1.5">{selected && <Check className="w-3.5 h-3.5" />}{year}</span>
                 </button>
-              ))}
+                )
+              })}
             </div>
           </fieldset>
 
