@@ -19,6 +19,9 @@ import type {
   OddsBadgesResponse,
   OddsMappingDetectResponse,
   OddsMappingSaveResponse,
+  PollOptionsResponse,
+  PollPreference,
+  PollResultsResponse,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -45,6 +48,26 @@ export function fetchSports(): Promise<SportInfo[]> {
 
 export function fetchChecklists(sportKey: string): Promise<ChecklistsResponse> {
   return fetchJSON(`/sports/${sportKey}/checklists`)
+}
+
+export function fetchPollOptions(): Promise<PollOptionsResponse> {
+  return fetchJSON('/polls/dbtk/options')
+}
+
+export function fetchPollResults(): Promise<PollResultsResponse> {
+  return fetchJSON('/polls/dbtk/results')
+}
+
+export function submitPollVote(payload: {
+  pseudo: string
+  years: string[]
+  checklist_ids: string[]
+  preference: PollPreference
+}): Promise<{ status: string; replaces_previous: boolean }> {
+  return fetchJSON('/polls/dbtk/votes', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  })
 }
 
 // ---------------------------------------------------------------------------

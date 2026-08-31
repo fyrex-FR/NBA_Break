@@ -25,6 +25,28 @@ export interface ChecklistsResponse {
   source_mode: 'master' | 'legacy' | 'none'
 }
 
+export type PollPreference = 'value' | 'guarantee' | 'either'
+
+export interface PollOption {
+  checklist_id: string
+  checklist_name: string
+  display_name?: string
+  year: string
+}
+
+export interface PollOptionsResponse {
+  poll_id: string
+  sport_key: string
+  options: PollOption[]
+}
+
+export interface PollResultsResponse {
+  voters: number
+  years: Record<string, number>
+  checklists: Record<string, number>
+  preferences: Record<PollPreference, number>
+}
+
 export interface CardRecord {
   Player: string
   Team: string
