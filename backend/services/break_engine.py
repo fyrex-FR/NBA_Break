@@ -17,6 +17,7 @@ from .data_pipeline import split_slash_values
 # ---------------------------------------------------------------------------
 
 SIM_METHOD_LETTER = "letter"
+SIM_METHOD_SURNAME_LETTER = "surname_letter"
 SIM_METHOD_TEAM = "team"
 SIM_METHOD_PLAYER = "player"
 SIM_METHOD_PLAYER_LETTER = "player_letter"
@@ -24,6 +25,7 @@ SIM_METHOD_CUSTOM = "custom"
 
 SIM_METHOD_LABELS = {
     SIM_METHOD_LETTER: "Break par Lettre (A-Z)",
+    SIM_METHOD_SURNAME_LETTER: "Break par Lettre du nom (A-Z)",
     SIM_METHOD_TEAM: "Break par Équipe",
     SIM_METHOD_PLAYER: "Break par Joueur",
     SIM_METHOD_PLAYER_LETTER: "Break par Joueur et Lettre (Mixte)",
@@ -222,6 +224,28 @@ def extract_surname_initial(player_name):
     return initial if "A" <= initial <= "Z" else ""
 
 
+_NAME_SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
+
+def extract_last_name_initial(player_name):
+    """Return the initial of the last real word in a person's name.
+
+    Punctuation separates words, Unicode letters are preserved, and trailing
+    generational suffixes are ignored. This is intentionally independent from
+    the legacy letter heuristic used by existing break modes.
+    """
+    text = "" if player_name is None else str(player_name).strip()
+    words = re.findall(r"[^\W\d_]+", text, flags=re.UNICODE)
+    while words and words[-1].casefold() in _NAME_SUFFIXES:
+        words.pop()
+    if not words:
+        return ""
+
+    initial = unicodedata.normalize("NFKD", words[-1][0])
+    initial = "".join(char for char in initial if unicodedata.category(char) != "Mn").upper()
+    return initial[0] if initial and "A" <= initial[0] <= "Z" else ""
+
+
 def _iter_team_player_pairs(player_list, team_list):
     players = _ordered_unique(player_list or [])
     teams = _ordered_unique(team_list or [])
@@ -295,7 +319,7 @@ def build_break_simulation_pool(df):
 def build_default_spots(pool_df, method, extracted_players=None):
     if pool_df is None or pool_df.empty:
         return []
-    if method == SIM_METHOD_LETTER:
+    if method in (SIM_METHOD_LETTER, SIM_METHOD_SURNAME_LETTER):
         return list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     if method == SIM_METHOD_TEAM:
         teams = []
@@ -326,6 +350,15 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
                 continue
             for player in players:
                 initial = extract_surname_initial(player)
+                if initial in mapping:
+                    mapping[initial].add(player)
+        return mapping
+
+    if method == SIM_METHOD_SURNAME_LETTER:
+        mapping = {letter: set() for letter in list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+        for _, row in pool_df.iterrows():
+            for player in row.get("Player List", []):
+                initial = extract_last_name_initial(player)
                 if initial in mapping:
                     mapping[initial].add(player)
         return mapping
@@ -462,6 +495,11 @@ def build_deterministic_spot_summary(
             first_initial = initial_list[0] if initial_list else ""
             if first_initial in spot_set:
                 targets = [first_initial]
+        elif method == SIM_METHOD_SURNAME_LETTER:
+            # Multi-fighter cards are represented once in every distinct
+            # surname-letter spot found on the card.
+            targets = [extract_last_name_initial(player) for player in player_list]
+            targets = [target for target in targets if target in spot_set]
         elif method == SIM_METHOD_TEAM:
             targets = [s for s in team_list if s in spot_set]
         elif method == SIM_METHOD_PLAYER:

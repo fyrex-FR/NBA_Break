@@ -151,6 +151,7 @@ const METHODS = [
   { value: 'team', label: 'Break par Équipe' },
   { value: 'player', label: 'Break par Joueur' },
   { value: 'letter', label: 'Break par Lettre' },
+  { value: 'surname_letter', label: 'Break par Lettre du nom' },
   { value: 'letter_assignment', label: 'Break par Lettre (Assignation)' },
 ]
 

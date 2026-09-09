@@ -1,5 +1,7 @@
 /**
- * LetterAssignmentUI – Interactive editor for "break par lettre + joueurs".
+ * LetterAssignmentUI – Interactive editor for the legacy first-letter mode.
+ * The distinct surname-letter mode is computed server-side and does not alter
+ * these manual assignments or their saved presets.
  */
 
 import { useState, useEffect, useMemo } from 'react'
