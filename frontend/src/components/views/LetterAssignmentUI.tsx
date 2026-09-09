@@ -21,6 +21,7 @@ interface Props {
   initialExtractedPlayers?: string[]
   submitLabel?: string
   disabled?: boolean
+  groupingMethod?: 'letter' | 'surname_letter'
 }
 
 export function LetterAssignmentUI({
@@ -29,6 +30,7 @@ export function LetterAssignmentUI({
   initialExtractedPlayers,
   submitLabel = '🎲 Simuler',
   disabled = false,
+  groupingMethod = 'letter',
 }: Props) {
   const { selectedSport, selectedChecklistIds, masterKey } = useAppStore()
 
@@ -55,6 +57,7 @@ export function LetterAssignmentUI({
       sport_key: selectedSport,
       checklist_ids: selectedChecklistIds,
       master_key: masterKey,
+      method: groupingMethod,
     })
       .then(({ players, grouped, stats }) => {
         setAllPlayers(players)
@@ -66,7 +69,7 @@ export function LetterAssignmentUI({
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false))
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSport, selectedChecklistIds.join(','), masterKey])
+  }, [selectedSport, selectedChecklistIds.join(','), masterKey, groupingMethod])
 
   function getDefaultLetter(player: string): string {
     for (const [letter, players] of Object.entries(defaultGrouped)) {

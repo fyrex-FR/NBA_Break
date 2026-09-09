@@ -117,6 +117,7 @@ export function fetchBreakPlayers(params: {
   sport_key: string
   checklist_ids: string[]
   master_key?: string | null
+  method?: 'letter' | 'surname_letter'
 }): Promise<{ players: string[]; grouped: Record<string, string[]>; stats: Record<string, { cards: number; auto: number }> }> {
   return fetchJSON('/simulate/break/players', {
     method: 'POST',

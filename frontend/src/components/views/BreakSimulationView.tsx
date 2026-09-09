@@ -18,7 +18,7 @@ interface OddsColumnFlags {
 }
 
 function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
-  const isPlayerMethod = method === 'player' || method === 'letter_assignment'
+  const isPlayerMethod = method === 'player' || method.endsWith('letter_assignment')
 
   const rcCell = (val: number) =>
     val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
@@ -153,6 +153,7 @@ const METHODS = [
   { value: 'letter', label: 'Break par Lettre' },
   { value: 'surname_letter', label: 'Break par Lettre du nom' },
   { value: 'letter_assignment', label: 'Break par Lettre (Assignation)' },
+  { value: 'surname_letter_assignment', label: 'Lettre du nom (Assignation)' },
 ]
 
 export function BreakSimulationView() {
@@ -215,14 +216,15 @@ export function BreakSimulationView() {
       guaranteedMap[id] = isNaN(n) ? 0 : Math.max(0, n)
     }
     const effectiveMethod = overrides?.method ?? method
-    // letter_assignment → send as custom with players scope
-    const apiMethod = effectiveMethod === 'letter_assignment' ? 'custom' : effectiveMethod
+    const isAssignmentMethod = effectiveMethod.endsWith('letter_assignment')
+    // Assignment modes send their explicit reviewed player mapping as custom.
+    const apiMethod = isAssignmentMethod ? 'custom' : effectiveMethod
     const params = {
       sport_key: selectedSport,
       checklist_ids: selectedChecklistIds,
       master_key: masterKey,
       method: apiMethod,
-      custom_scope: effectiveMethod === 'letter_assignment' ? 'players' : undefined,
+      custom_scope: isAssignmentMethod ? 'players' : undefined,
       custom_map: overrides?.custom_map,
       custom_spots: overrides?.custom_spots,
       checklist_hits_guaranteed: hasAnyGuaranteed ? guaranteedMap : undefined,
@@ -269,7 +271,7 @@ export function BreakSimulationView() {
     setLetterCustomMap(params.custom_map)
     setLetterExtracted(params.extracted_players)
     runSimulate({
-      method: 'letter_assignment',
+      method,
       custom_map: params.custom_map,
       custom_spots: params.custom_spots,
       extracted: params.extracted_players,
@@ -289,9 +291,9 @@ export function BreakSimulationView() {
       name: newPresetName,
       checklist_ids: selectedChecklistIds,
       method,
-      extracted_players: method === 'letter_assignment' ? letterExtracted : extractedPlayers,
+      extracted_players: method.endsWith('letter_assignment') ? letterExtracted : extractedPlayers,
       hits_guaranteed: guaranteedMap,
-      custom_map: method === 'letter_assignment' ? letterCustomMap : undefined,
+      custom_map: method.endsWith('letter_assignment') ? letterCustomMap : undefined,
     }
 
     try {
@@ -316,7 +318,7 @@ export function BreakSimulationView() {
 
   function handleLoadPreset(p: SimulationPreset) {
     setMethod(p.method)
-    if (p.method === 'letter_assignment') {
+    if (p.method.endsWith('letter_assignment')) {
       setLetterCustomMap(p.custom_map ?? {})
       setLetterExtracted(p.extracted_players)
     } else {
@@ -592,7 +594,7 @@ export function BreakSimulationView() {
           </select>
         </div>
 
-        {method !== 'letter_assignment' && (
+        {!method.endsWith('letter_assignment') && (
           <div className="flex items-end">
             <button
               onClick={handleSimulate}
@@ -611,10 +613,10 @@ export function BreakSimulationView() {
       </div>
 
       {/* Letter Assignment UI */}
-      {method === 'letter_assignment' && (
+      {method.endsWith('letter_assignment') && (
         <div className="mb-6 rounded-xl p-4" style={{ border: '1px solid var(--border-subtle)', background: 'var(--bg-surface)' }}>
           <p className="text-xs font-medium uppercase tracking-wide mb-3" style={{ color: 'var(--text-tertiary)' }}>
-            Assignation des joueurs par lettre
+            {method === 'surname_letter_assignment' ? 'Assignation par lettre du nom' : 'Assignation des joueurs par lettre'}
           </p>
           <LetterAssignmentUI
             onSubmit={handleLetterAssignmentSubmit}
@@ -622,6 +624,7 @@ export function BreakSimulationView() {
             initialExtractedPlayers={letterExtracted.length > 0 ? letterExtracted : undefined}
             submitLabel={loading ? '⏳ Simulation...' : '🎲 Simuler'}
             disabled={loading || selectedChecklistIds.length === 0}
+            groupingMethod={method === 'surname_letter_assignment' ? 'surname_letter' : 'letter'}
           />
         </div>
       )}

@@ -18,7 +18,10 @@ from ..services.break_engine import (
     build_default_spots,
     build_deterministic_spot_summary,
     build_spot_player_map,
+    extract_last_name_initial,
     extract_surname_initial,
+    SIM_METHOD_LABELS,
+    SIM_METHOD_SURNAME_LETTER,
 )
 from ..services.checklist_aliases import canonical_checklist_id, load_checklist_aliases
 from ..services.odds_engine import build_pull_rates, load_odds_sheet, resolve_box_types
@@ -127,6 +130,8 @@ def _build_odds_context(pool, sport_key, config_key=None, config_keys=None):
 @router.post("/simulate/break", response_model=BreakSimulationResponse)
 def simulate_break(req: BreakSimulationRequest):
     """Run a break simulation."""
+    if req.method not in SIM_METHOD_LABELS:
+        raise HTTPException(status_code=400, detail=f"Méthode de simulation inconnue : '{req.method}'.")
     try:
         df = load_master_data(req.sport_key, req.checklist_ids, req.master_key)
         df = enrich_dataframe(df, req.sport_key, _load_keyword_overrides())
@@ -231,8 +236,9 @@ def get_players_for_letter_break(req: BreakSimulationRequest):
 
     # Build grouped dict: letter → sorted list of players
     grouped: dict[str, list[str]] = {ch: [] for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
+    initial_extractor = extract_last_name_initial if req.method == SIM_METHOD_SURNAME_LETTER else extract_surname_initial
     for player in player_stats:
-        initial = extract_surname_initial(player)
+        initial = initial_extractor(player)
         if initial in grouped:
             grouped[initial].append(player)
 
