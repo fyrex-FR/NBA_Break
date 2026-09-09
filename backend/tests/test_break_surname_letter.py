@@ -1,5 +1,9 @@
 import pandas as pd
 import unittest
+from unittest.mock import patch
+
+from backend.models.schemas import BreakSimulationRequest
+from backend.routers.simulation import get_players_for_letter_break
 
 from backend.services.break_engine import (
     SIM_METHOD_SURNAME_LETTER,
@@ -73,6 +77,20 @@ class SurnameLetterTests(unittest.TestCase):
     def test_legacy_letter_mode_remains_distinct(self):
         self.assertEqual(extract_surname_initial("Dricus du Plessis"), "D")
         self.assertEqual(extract_last_name_initial("Dricus du Plessis"), "P")
+
+    @patch("backend.routers.simulation.enrich_dataframe", side_effect=lambda frame, *_: frame)
+    @patch("backend.routers.simulation.load_master_data")
+    def test_assignment_endpoint_uses_requested_surname_grouping(self, load_master, _enrich):
+        load_master.return_value = pd.DataFrame(
+            [{"Player": "Dricus du Plessis / José Aldo", "Team": "", "Box Type": "Dual", "Hits": 1}]
+        )
+
+        response = get_players_for_letter_break(
+            BreakSimulationRequest(sport_key="mma", method="surname_letter")
+        )
+
+        self.assertEqual(response["grouped"]["P"], ["Dricus du Plessis"])
+        self.assertEqual(response["grouped"]["A"], ["José Aldo"])
 
 
 if __name__ == "__main__":
