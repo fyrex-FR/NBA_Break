@@ -699,6 +699,36 @@ SPORT_PROFILES = {
             "topps chrome tennis",
         ],
     },
+    "mma": {
+        "label": "UFC / MMA / PFL",
+        "page_icon": "🥊",
+        "header_logo_url": "",
+        "header_title": "Check list optimizer",
+        "header_subtitle": "Analysez vos checklists UFC, MMA et PFL par combattant et par set.",
+        "sheet_names": ["Teams_clean"],
+        "team_aliases": {},
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "logoman": [],
+            "case_hit": DEFAULT_CATEGORY_RULES["case_hit"] + ["hidden gems", "helix", "color blast", "let's go"],
+        },
+        "hype_tiers": {
+            "Tier S": ["Conor McGregor", "Jon Jones", "Alex Pereira", "Khabib Nurmagomedov", "Islam Makhachev", "Amanda Nunes"],
+            "Tier A": ["Ilia Topuria", "Tom Aspinall", "Sean O'Malley", "Valentina Shevchenko", "Zhang Weili", "Max Holloway"],
+            "Tier B": ["Alexandre Pantoja", "Dricus Du Plessis", "Merab Dvalishvili", "Kayla Harrison", "Paddy Pimblett", "Bo Nickal"],
+        },
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": False,
+            "case_hits": True,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": ["ufc", "mma", "pfl", "mixed martial arts", "topps chrome ufc", "panini prizm ufc"],
+    },
 }
 
 BASE_EXACT_CATEGORY_BY_SPORT = {
