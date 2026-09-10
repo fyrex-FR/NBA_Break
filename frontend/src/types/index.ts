@@ -417,6 +417,7 @@ export type ViewName =
   | '🧨 Rookies'
   | '🔍 Analyse Joueur'
   | '🛡️ Analyse Équipe'
+  | '📚 Checklist Beckett'
   | '📁 Par Fichier'
   | '🧪 Détection Auto/Mem'
   | '🦸 Attribution Marvel'

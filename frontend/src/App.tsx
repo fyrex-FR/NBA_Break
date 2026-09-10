@@ -10,6 +10,7 @@ import { CategoryFilteredView } from './components/views/CategoryFilteredView'
 import { MultiPlayersView } from './components/views/MultiPlayersView'
 import { PlayerDetailView } from './components/views/PlayerDetailView'
 import { TeamDetailView } from './components/views/TeamDetailView'
+import { ChecklistBrowserView } from './components/views/ChecklistBrowserView'
 import { FileAnalysisView } from './components/views/FileAnalysisView'
 import { ComparatorView } from './components/views/ComparatorView'
 import { BreakSimulationView } from './components/views/BreakSimulationView'
@@ -130,6 +131,8 @@ function MainContent() {
         return <PlayerDetailView />
       case '🛡️ Analyse Équipe':
         return <TeamDetailView />
+      case '📚 Checklist Beckett':
+        return <ChecklistBrowserView />
       case '📁 Par Fichier':
         return <FileAnalysisView />
       case '📈 Tendances':

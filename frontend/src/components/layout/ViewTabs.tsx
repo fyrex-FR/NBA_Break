@@ -26,6 +26,7 @@ const VIEW_CATEGORIES: { label: ViewCategory; short: string; views: { name: View
     views: [
       { name: '🔍 Analyse Joueur', key: 'player_detail', short: 'Joueur' },
       { name: '🛡️ Analyse Équipe', key: 'team_detail', short: 'Équipe' },
+      { name: '📚 Checklist Beckett', key: 'checklist_browser', short: 'Beckett' },
       { name: '📁 Par Fichier', key: 'file_analysis', short: 'Fichier' },
     ],
   },
