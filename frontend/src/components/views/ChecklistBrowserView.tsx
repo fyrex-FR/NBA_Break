@@ -124,31 +124,31 @@ export function ChecklistBrowserView() {
   }
 
   return (
-    <section className="overflow-hidden rounded-sm border border-[#b7b7b7] bg-[#efefef] text-[#222] shadow-[0_2px_8px_rgba(0,0,0,0.28)]">
-      <header className="border-b-4 border-[#1f1f1f] bg-[#c71920] px-4 py-3 text-white md:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-3">
+    <section className="overflow-hidden rounded border border-[#d7dce2] bg-white text-[#262b31] shadow-[0_1px_4px_rgba(20,35,50,0.12)]">
+      <header className="border-b border-[#d7dce2] bg-white px-4 py-4 md:px-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-white/75">The hobby authority, mais sans clim</div>
-            <h2 className="text-2xl font-black uppercase leading-none tracking-tight md:text-3xl">NoClim Checklist</h2>
+            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6c7580]">The hobby authority, mais sans clim</div>
+            <h2 className="mt-0.5 text-2xl font-extrabold leading-none tracking-[-0.03em] text-[#20252b] md:text-3xl">NoClim <span className="text-[#c62026]">Checklist</span></h2>
           </div>
-          <span className="border border-white/50 bg-[#991117] px-2 py-1 text-[10px] font-bold uppercase tracking-wider">Definitely not Beckett™</span>
+          <span className="rounded-sm border border-[#d7dce2] bg-[#f5f6f7] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#69727d]">Definitely not Beckett™</span>
         </div>
       </header>
 
-      <div className="border-b border-[#aaa] bg-[#242424] px-3 py-2 text-xs font-bold uppercase text-white md:px-5">
+      <div className="border-b border-[#d7dce2] bg-[#f5f6f7] px-4 py-2 text-[11px] font-semibold text-[#607080] md:px-6">
         Checklist Database &gt; {mode === 'team' ? 'Browse by Team' : 'Browse by Insert'}
       </div>
 
-      <div className="p-3 md:p-5">
-        <div className="mb-4 border border-[#aaa] bg-white p-3">
+      <div className="bg-[#f7f8fa] p-3 md:p-5">
+        <div className="mb-4 rounded border border-[#d7dce2] bg-white p-3 shadow-sm">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-            <div className="flex border border-[#888] bg-[#e5e5e5] p-0.5">
+            <div className="flex rounded-sm border border-[#cbd1d8] bg-[#f2f4f6] p-0.5">
               {(['team', 'insert'] as BrowseMode[]).map((value) => (
                 <button
                   key={value}
                   onClick={() => { setMode(value); setExpanded(new Set()) }}
                   className="px-4 py-1.5 text-xs font-bold uppercase"
-                  style={{ background: mode === value ? '#c71920' : 'transparent', color: mode === value ? '#fff' : '#333' }}
+                  style={{ background: mode === value ? '#2f6fa7' : 'transparent', color: mode === value ? '#fff' : '#39434d' }}
                 >
                   Par {value === 'team' ? 'équipe' : 'insert'}
                 </button>
@@ -161,7 +161,7 @@ export function ChecklistBrowserView() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search players, teams, inserts..."
-                className="w-full border border-[#888] bg-white py-2 pl-8 pr-3 text-sm text-[#222] outline-none focus:border-[#c71920]"
+                className="w-full rounded-sm border border-[#cbd1d8] bg-white py-2 pl-8 pr-3 text-sm text-[#222] outline-none focus:border-[#2f6fa7] focus:ring-1 focus:ring-[#2f6fa7]/20"
               />
             </label>
 
@@ -175,7 +175,7 @@ export function ChecklistBrowserView() {
                   key={value}
                   onClick={() => setQuickFilter(value)}
                   className="border px-3 py-1.5 text-xs font-bold uppercase"
-                  style={{ borderColor: quickFilter === value ? '#991117' : '#999', background: quickFilter === value ? '#c71920' : '#eee', color: quickFilter === value ? '#fff' : '#333' }}
+                  style={{ borderColor: quickFilter === value ? '#2f6fa7' : '#cbd1d8', background: quickFilter === value ? '#eaf3fb' : '#fff', color: quickFilter === value ? '#235f92' : '#4b5661' }}
                 >
                   {label}
                 </button>
@@ -188,26 +188,26 @@ export function ChecklistBrowserView() {
         {products.length === 0 ? (
           <div className="border border-[#bbb] bg-white p-8 text-center text-sm text-[#555]">No checklist entries found.</div>
         ) : products.map((product) => (
-          <article key={product.id} className="mb-5 border border-[#999] bg-white last:mb-0">
-            <div className="border-b-2 border-[#c71920] bg-[#333] px-3 py-2 text-sm font-black uppercase text-white md:px-4">
-              {product.name} <span className="ml-1 font-normal text-white/65">({product.cardCount})</span>
+          <article key={product.id} className="mb-5 overflow-hidden rounded border border-[#d2d8df] bg-white shadow-sm last:mb-0">
+            <div className="border-b border-[#d2d8df] bg-white px-3 py-3 text-sm font-extrabold text-[#242a31] md:px-4">
+              {product.name} <span className="ml-1 font-normal text-[#7a838d]">({product.cardCount})</span>
             </div>
 
             {product.groups.map((group) => {
               const key = `${product.id}::${mode}::${group.name}`
               const open = isExpanded(key)
               return (
-                <div key={key} className="border-b border-[#bbb] last:border-b-0">
+                <div key={key} className="border-b border-[#d9dee4] last:border-b-0">
                   <button
                     onClick={() => toggle(key)}
-                    className="flex w-full items-center justify-between gap-3 bg-[#dedede] px-3 py-2 text-left hover:bg-[#d3d3d3] md:px-4"
+                    className="flex w-full items-center justify-between gap-3 bg-[#f3f5f7] px-3 py-2 text-left hover:bg-[#eaf0f5] md:px-4"
                     aria-expanded={open}
                   >
                     <span className="flex min-w-0 items-center gap-2 text-sm font-bold text-[#1d4f91]">
                       {open ? <ChevronDown className="h-4 w-4 shrink-0 text-[#444]" /> : <ChevronRight className="h-4 w-4 shrink-0 text-[#444]" />}
                       <span className="truncate">{group.name}</span>
                     </span>
-                    <span className="shrink-0 border border-[#aaa] bg-white px-1.5 py-0.5 text-[10px] font-bold text-[#555]">{group.cards.length}</span>
+                    <span className="shrink-0 rounded-full border border-[#d0d6dd] bg-white px-2 py-0.5 text-[10px] font-bold text-[#65717d]">{group.cards.length}</span>
                   </button>
 
                   {open && (
