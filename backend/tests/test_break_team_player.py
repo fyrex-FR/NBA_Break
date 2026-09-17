@@ -7,6 +7,7 @@ from backend.services.break_engine import (
     build_break_simulation_pool,
     build_default_spots,
     build_deterministic_spot_summary,
+    build_player_selection_stats,
     build_spot_player_map,
 )
 
@@ -79,6 +80,27 @@ class TeamPlayerBreakTests(unittest.TestCase):
         self.assertEqual(set(spots), {"Victor Wembanyama", "Chris Paul"})
         self.assertEqual(result.loc["Victor Wembanyama", "Cartes"], 1)
         self.assertEqual(result.loc["Chris Paul", "Cartes"], 1)
+
+    def test_player_selection_stats_exposes_team_and_hit_breakdown(self):
+        rows = [
+            {**_row("Victor Wembanyama", "San Antonio Spurs"), "Hits": 2, "Category": "✍️ Auto", "Hit Type": "auto"},
+            {**_row("Victor Wembanyama", "San Antonio Spurs"), "Hits": 3, "Category": "🧵 Memo", "Hit Type": "mem"},
+            {**_row("Victor Wembanyama", "San Antonio Spurs"), "Category": "Auto/Memo", "Hit Type": "auto_mem"},
+            {**_row("Victor Wembanyama", "San Antonio Spurs"), "Category": "✨ Case Hit"},
+            {**_row("Victor Wembanyama", "San Antonio Spurs"), "Category": "🔥 Logoman"},
+        ]
+        stats = build_player_selection_stats(build_break_simulation_pool(pd.DataFrame(rows)))
+
+        self.assertEqual(stats["Victor Wembanyama"], {
+            "teams": ["San Antonio Spurs"],
+            "cards": 8,
+            "auto": 2,
+            "memo": 3,
+            "auto_memo": 1,
+            "total_hits": 6,
+            "case_hits": 1,
+            "logoman": 1,
+        })
 
 
 if __name__ == "__main__":

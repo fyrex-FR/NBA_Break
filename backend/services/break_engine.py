@@ -450,6 +450,45 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
     return mapping
 
 
+def build_player_selection_stats(pool_df):
+    """Build the per-player metrics shown before extracting team spots."""
+    if pool_df is None or pool_df.empty:
+        return {}
+
+    stats = {}
+    for _, row in pool_df.iterrows():
+        players = _ordered_unique(row.get("Player List", []))
+        hits = int(row.get("Hits", 1) or 1)
+        teams_by_player = {}
+        for team, player in _iter_team_player_pairs(players, row.get("Team List", [])):
+            teams_by_player.setdefault(player, set()).add(team)
+
+        for player in players:
+            item = stats.setdefault(player, {
+                "teams": set(),
+                "cards": 0,
+                "auto": 0,
+                "memo": 0,
+                "auto_memo": 0,
+                "total_hits": 0,
+                "case_hits": 0,
+                "logoman": 0,
+            })
+            item["teams"].update(teams_by_player.get(player, set()))
+            item["cards"] += hits
+            item["auto"] += hits if row.get("Is AutoOnly", False) else 0
+            item["memo"] += hits if row.get("Is Memo", False) else 0
+            item["auto_memo"] += hits if row.get("Is AutoMemoOnly", False) else 0
+            item["total_hits"] += hits if row.get("Is AutoMemo", False) else 0
+            item["case_hits"] += hits if row.get("Is CaseHit", False) else 0
+            item["logoman"] += hits if str(row.get("Category", "") or "").strip() == CATEGORY_LOGOMAN else 0
+
+    return {
+        player: {**item, "teams": sorted(item["teams"])}
+        for player, item in stats.items()
+    }
+
+
 # ---------------------------------------------------------------------------
 # Deterministic spot summary
 # ---------------------------------------------------------------------------

@@ -171,6 +171,17 @@ export interface BreakSimulationResponse {
   card_details: BreakCardDetail[]
 }
 
+export interface BreakPlayerStats {
+  teams: string[]
+  cards: number
+  auto: number
+  memo: number
+  auto_memo: number
+  total_hits: number
+  case_hits: number
+  logoman: number
+}
+
 export interface PresetInfo {
   name: string
   checklist_ids: string[]

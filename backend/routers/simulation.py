@@ -17,6 +17,7 @@ from ..services.break_engine import (
     build_break_simulation_pool,
     build_default_spots,
     build_deterministic_spot_summary,
+    build_player_selection_stats,
     build_spot_player_map,
     extract_last_name_initial,
     extract_surname_initial,
@@ -221,18 +222,7 @@ def get_players_for_letter_break(req: BreakSimulationRequest):
     if pool.empty:
         return {"players": [], "grouped": {}, "stats": {}}
 
-    # Compute per-player stats: cards count + hit count
-    player_stats: dict[str, dict] = {}
-    for _, row in pool.iterrows():
-        players = row.get("Player List", [])
-        hits = int(row.get("Hits", 1) or 1)
-        is_auto = bool(row.get("Is AutoMemo", False))
-        for player in players:
-            if player not in player_stats:
-                player_stats[player] = {"cards": 0, "auto": 0}
-            player_stats[player]["cards"] += hits
-            if is_auto:
-                player_stats[player]["auto"] += hits
+    player_stats = build_player_selection_stats(pool)
 
     # Build grouped dict: letter → sorted list of players
     grouped: dict[str, list[str]] = {ch: [] for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}

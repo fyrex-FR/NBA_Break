@@ -7,7 +7,7 @@ import { MetricCard } from '../shared/MetricCard'
 import { LetterAssignmentUI } from './LetterAssignmentUI'
 import { Save, Trash2, Download, Plus } from 'lucide-react'
 import { fetchBreakPlayers, fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
-import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail } from '../../types'
+import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail, BreakPlayerStats } from '../../types'
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
 
@@ -166,8 +166,11 @@ export function BreakSimulationView() {
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
   const [extractedPlayers, setExtractedPlayers] = useState<string[]>([])
   const [availablePlayers, setAvailablePlayers] = useState<string[]>([])
+  const [playerStats, setPlayerStats] = useState<Record<string, BreakPlayerStats>>({})
   const [playersLoading, setPlayersLoading] = useState(false)
   const [playerSearch, setPlayerSearch] = useState('')
+  const [playerSort, setPlayerSort] = useState<keyof BreakPlayerStats | 'player'>('total_hits')
+  const [playerSortDirection, setPlayerSortDirection] = useState<'asc' | 'desc'>('desc')
   // Letter Assignment mode state
   const [letterCustomMap, setLetterCustomMap] = useState<Record<string, string>>({})
   const [letterExtracted, setLetterExtracted] = useState<string[]>([])
@@ -201,6 +204,7 @@ export function BreakSimulationView() {
   useEffect(() => {
     if (method !== 'team_player' || !selectedSport || selectedChecklistIds.length === 0) {
       setAvailablePlayers([])
+      setPlayerStats({})
       return
     }
     setPlayersLoading(true)
@@ -210,10 +214,14 @@ export function BreakSimulationView() {
       master_key: masterKey,
       method: 'letter',
     })
-      .then(data => setAvailablePlayers(data.players))
+      .then(data => {
+        setAvailablePlayers(data.players)
+        setPlayerStats(data.stats)
+      })
       .catch(err => {
         console.error('Failed to fetch break players:', err)
         setAvailablePlayers([])
+        setPlayerStats({})
       })
       .finally(() => setPlayersLoading(false))
   }, [method, selectedSport, selectedChecklistIds, masterKey])
@@ -226,9 +234,30 @@ export function BreakSimulationView() {
   const hasAnyGuaranteed = Object.values(hitsGuaranteed).some(v => parseInt(v) > 0)
   const filteredPlayers = useMemo(() => {
     const query = playerSearch.trim().toLocaleLowerCase('fr')
-    if (!query) return availablePlayers
-    return availablePlayers.filter(player => player.toLocaleLowerCase('fr').includes(query))
-  }, [availablePlayers, playerSearch])
+    const filtered = query
+      ? availablePlayers.filter(player => {
+          const teams = playerStats[player]?.teams.join(' ') ?? ''
+          return `${player} ${teams}`.toLocaleLowerCase('fr').includes(query)
+        })
+      : availablePlayers
+    return [...filtered].sort((left, right) => {
+      const leftValue = playerSort === 'player' ? left : (playerStats[left]?.[playerSort] ?? 0)
+      const rightValue = playerSort === 'player' ? right : (playerStats[right]?.[playerSort] ?? 0)
+      const comparison = typeof leftValue === 'string' || Array.isArray(leftValue)
+        ? String(leftValue).localeCompare(String(rightValue), 'fr')
+        : Number(leftValue) - Number(rightValue)
+      return playerSortDirection === 'asc' ? comparison : -comparison
+    })
+  }, [availablePlayers, playerSearch, playerSort, playerSortDirection, playerStats])
+
+  function togglePlayerSort(column: keyof BreakPlayerStats | 'player') {
+    if (playerSort === column) {
+      setPlayerSortDirection(current => current === 'asc' ? 'desc' : 'asc')
+    } else {
+      setPlayerSort(column)
+      setPlayerSortDirection(column === 'player' ? 'asc' : 'desc')
+    }
+  }
 
   async function runSimulate(overrides?: {
     method?: string
@@ -662,25 +691,62 @@ export function BreakSimulationView() {
           {playersLoading ? (
             <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Chargement des joueurs...</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-h-64 overflow-y-auto">
-              {filteredPlayers.map(player => {
-                const checked = extractedPlayers.includes(player)
-                return (
-                  <label key={player} className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm cursor-pointer" style={{ background: 'var(--bg-primary)' }}>
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => setExtractedPlayers(current =>
-                        checked ? current.filter(item => item !== player) : [...current, player]
-                      )}
-                    />
-                    <span className="truncate">{player}</span>
-                  </label>
-                )
-              })}
-              {filteredPlayers.length === 0 && (
-                <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Aucun joueur trouvé.</p>
-              )}
+            <div className="max-h-[28rem] overflow-auto rounded-lg" style={{ border: '1px solid var(--border-subtle)' }}>
+              <table className="w-full min-w-[860px] text-xs">
+                <thead className="sticky top-0 z-10" style={{ background: 'var(--bg-surface)' }}>
+                  <tr>
+                    <th className="px-3 py-2 text-center">Sortir</th>
+                    {([
+                      ['player', 'Joueur'],
+                      ['teams', 'Équipe(s)'],
+                      ['cards', 'Cartes'],
+                      ['auto', 'Autos'],
+                      ['memo', 'Mémos'],
+                      ['auto_memo', 'A+M'],
+                      ['total_hits', 'Hits'],
+                      ['case_hits', 'Case'],
+                      ['logoman', 'Logo'],
+                    ] as Array<[keyof BreakPlayerStats | 'player', string]>).map(([key, label]) => (
+                      <th key={key} className={`px-3 py-2 ${key === 'player' || key === 'teams' ? 'text-left' : 'text-right'}`}>
+                        <button type="button" onClick={() => togglePlayerSort(key)} className="font-medium whitespace-nowrap">
+                          {label}{playerSort === key ? (playerSortDirection === 'asc' ? ' ↑' : ' ↓') : ''}
+                        </button>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredPlayers.map(player => {
+                    const checked = extractedPlayers.includes(player)
+                    const stats = playerStats[player]
+                    return (
+                      <tr key={player} className="cursor-pointer" style={{ borderTop: '1px solid var(--border-subtle)', background: checked ? 'rgba(59, 130, 246, 0.12)' : 'var(--bg-primary)' }} onClick={() => setExtractedPlayers(current => checked ? current.filter(item => item !== player) : [...current, player])}>
+                        <td className="px-3 py-2 text-center">
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onClick={(event) => event.stopPropagation()}
+                            onChange={() => setExtractedPlayers(current => checked ? current.filter(item => item !== player) : [...current, player])}
+                            aria-label={`Sortir ${player}`}
+                          />
+                        </td>
+                        <td className="px-3 py-2 font-medium whitespace-nowrap">{player}</td>
+                        <td className="px-3 py-2 max-w-[220px] truncate" title={stats?.teams.join(', ')}>{stats?.teams.join(', ') || '—'}</td>
+                        <td className="px-3 py-2 text-right">{stats?.cards ?? 0}</td>
+                        <td className="px-3 py-2 text-right">{stats?.auto ?? 0}</td>
+                        <td className="px-3 py-2 text-right">{stats?.memo ?? 0}</td>
+                        <td className="px-3 py-2 text-right">{stats?.auto_memo ?? 0}</td>
+                        <td className="px-3 py-2 text-right font-semibold" style={{ color: 'var(--accent)' }}>{stats?.total_hits ?? 0}</td>
+                        <td className="px-3 py-2 text-right">{stats?.case_hits ?? 0}</td>
+                        <td className="px-3 py-2 text-right">{stats?.logoman ?? 0}</td>
+                      </tr>
+                    )
+                  })}
+                  {filteredPlayers.length === 0 && (
+                    <tr><td colSpan={10} className="px-3 py-6 text-center" style={{ color: 'var(--text-quaternary)' }}>Aucun joueur trouvé.</td></tr>
+                  )}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

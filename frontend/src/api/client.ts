@@ -9,6 +9,7 @@ import type {
   BreakSimulationResponse,
   PresetInfo,
   SimulationPreset,
+  BreakPlayerStats,
   PlayerStatsResponse,
   TeamStatsResponse,
   VoggtShowResponse,
@@ -118,7 +119,7 @@ export function fetchBreakPlayers(params: {
   checklist_ids: string[]
   master_key?: string | null
   method?: 'letter' | 'surname_letter'
-}): Promise<{ players: string[]; grouped: Record<string, string[]>; stats: Record<string, { cards: number; auto: number }> }> {
+}): Promise<{ players: string[]; grouped: Record<string, string[]>; stats: Record<string, BreakPlayerStats> }> {
   return fetchJSON('/simulate/break/players', {
     method: 'POST',
     body: JSON.stringify(params),
