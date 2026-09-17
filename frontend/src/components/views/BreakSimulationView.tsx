@@ -6,7 +6,7 @@ import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { LetterAssignmentUI } from './LetterAssignmentUI'
 import { Save, Trash2, Download, Plus } from 'lucide-react'
-import { fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
+import { fetchBreakPlayers, fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
 import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail } from '../../types'
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
@@ -149,6 +149,7 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
 
 const METHODS = [
   { value: 'team', label: 'Break par Équipe' },
+  { value: 'team_player', label: 'Équipe + joueurs extraits' },
   { value: 'player', label: 'Break par Joueur' },
   { value: 'letter', label: 'Break par Lettre' },
   { value: 'surname_letter', label: 'Break par Lettre du nom' },
@@ -164,6 +165,9 @@ export function BreakSimulationView() {
   const [error, setError] = useState<string | null>(null)
   const [hitsGuaranteed, setHitsGuaranteed] = useState<Record<string, string>>({})
   const [extractedPlayers, setExtractedPlayers] = useState<string[]>([])
+  const [availablePlayers, setAvailablePlayers] = useState<string[]>([])
+  const [playersLoading, setPlayersLoading] = useState(false)
+  const [playerSearch, setPlayerSearch] = useState('')
   // Letter Assignment mode state
   const [letterCustomMap, setLetterCustomMap] = useState<Record<string, string>>({})
   const [letterExtracted, setLetterExtracted] = useState<string[]>([])
@@ -194,12 +198,37 @@ export function BreakSimulationView() {
       .finally(() => setPresetsLoading(false))
   }, [selectedSport])
 
+  useEffect(() => {
+    if (method !== 'team_player' || !selectedSport || selectedChecklistIds.length === 0) {
+      setAvailablePlayers([])
+      return
+    }
+    setPlayersLoading(true)
+    fetchBreakPlayers({
+      sport_key: selectedSport,
+      checklist_ids: selectedChecklistIds,
+      master_key: masterKey,
+      method: 'letter',
+    })
+      .then(data => setAvailablePlayers(data.players))
+      .catch(err => {
+        console.error('Failed to fetch break players:', err)
+        setAvailablePlayers([])
+      })
+      .finally(() => setPlayersLoading(false))
+  }, [method, selectedSport, selectedChecklistIds, masterKey])
+
   const checklistsInfo = useMemo(() =>
     selectedChecklistIds.map(id => availableChecklists.find(c => c.checklist_id === id)).filter(Boolean),
     [selectedChecklistIds, availableChecklists]
   )
 
   const hasAnyGuaranteed = Object.values(hitsGuaranteed).some(v => parseInt(v) > 0)
+  const filteredPlayers = useMemo(() => {
+    const query = playerSearch.trim().toLocaleLowerCase('fr')
+    if (!query) return availablePlayers
+    return availablePlayers.filter(player => player.toLocaleLowerCase('fr').includes(query))
+  }, [availablePlayers, playerSearch])
 
   async function runSimulate(overrides?: {
     method?: string
@@ -611,6 +640,51 @@ export function BreakSimulationView() {
           </div>
         )}
       </div>
+
+      {method === 'team_player' && (
+        <div className="mb-6 rounded-xl p-4" style={{ border: '1px solid var(--border-subtle)', background: 'var(--bg-surface)' }}>
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <p className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
+              Joueurs à sortir de leur équipe
+            </p>
+            <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>
+              {extractedPlayers.length} sélectionné{extractedPlayers.length > 1 ? 's' : ''}
+            </span>
+          </div>
+          <input
+            type="search"
+            value={playerSearch}
+            onChange={(event) => setPlayerSearch(event.target.value)}
+            placeholder="Rechercher un joueur..."
+            className="w-full rounded-lg px-3 py-2 text-sm mb-3"
+            style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+          />
+          {playersLoading ? (
+            <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Chargement des joueurs...</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-h-64 overflow-y-auto">
+              {filteredPlayers.map(player => {
+                const checked = extractedPlayers.includes(player)
+                return (
+                  <label key={player} className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm cursor-pointer" style={{ background: 'var(--bg-primary)' }}>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => setExtractedPlayers(current =>
+                        checked ? current.filter(item => item !== player) : [...current, player]
+                      )}
+                    />
+                    <span className="truncate">{player}</span>
+                  </label>
+                )
+              })}
+              {filteredPlayers.length === 0 && (
+                <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Aucun joueur trouvé.</p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Letter Assignment UI */}
       {method.endsWith('letter_assignment') && (

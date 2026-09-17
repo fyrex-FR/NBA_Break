@@ -19,6 +19,7 @@ from .data_pipeline import split_slash_values
 SIM_METHOD_LETTER = "letter"
 SIM_METHOD_SURNAME_LETTER = "surname_letter"
 SIM_METHOD_TEAM = "team"
+SIM_METHOD_TEAM_PLAYER = "team_player"
 SIM_METHOD_PLAYER = "player"
 SIM_METHOD_PLAYER_LETTER = "player_letter"
 SIM_METHOD_CUSTOM = "custom"
@@ -27,6 +28,7 @@ SIM_METHOD_LABELS = {
     SIM_METHOD_LETTER: "Break par Lettre (A-Z)",
     SIM_METHOD_SURNAME_LETTER: "Break par Lettre du nom (A-Z)",
     SIM_METHOD_TEAM: "Break par Équipe",
+    SIM_METHOD_TEAM_PLAYER: "Break par Équipe avec joueurs extraits",
     SIM_METHOD_PLAYER: "Break par Joueur",
     SIM_METHOD_PLAYER_LETTER: "Break par Joueur et Lettre (Mixte)",
     SIM_METHOD_CUSTOM: "Break Personnalisé",
@@ -326,6 +328,14 @@ def build_default_spots(pool_df, method, extracted_players=None):
         for values in pool_df["Team List"].tolist():
             teams.extend(values)
         return sorted(_ordered_unique(teams))
+    if method == SIM_METHOD_TEAM_PLAYER:
+        extracted_set = set(extracted_players or [])
+        teams = []
+        for _, row in pool_df.iterrows():
+            for team, player in _iter_team_player_pairs(row.get("Player List", []), row.get("Team List", [])):
+                if player not in extracted_set:
+                    teams.append(team)
+        return _ordered_unique(sorted(_ordered_unique(teams)) + sorted(extracted_set))
     if method == SIM_METHOD_PLAYER:
         players = []
         for values in pool_df["Player List"].tolist():
@@ -372,6 +382,16 @@ def build_spot_player_map(pool_df, method, custom_scope="teams", custom_map=None
                 if team not in mapping:
                     mapping[team] = set()
                 mapping[team].add(player)
+        return mapping
+
+    if method == SIM_METHOD_TEAM_PLAYER:
+        extracted_set = set(extracted_players or [])
+        mapping = {spot: set() for spot in (custom_spots or build_default_spots(pool_df, method, extracted_players))}
+        for _, row in pool_df.iterrows():
+            for team, player in _iter_team_player_pairs(row.get("Player List", []), row.get("Team List", [])):
+                spot = player if player in extracted_set else team
+                if spot in mapping:
+                    mapping[spot].add(player)
         return mapping
 
     if method == SIM_METHOD_PLAYER:
@@ -502,6 +522,12 @@ def build_deterministic_spot_summary(
             targets = [target for target in targets if target in spot_set]
         elif method == SIM_METHOD_TEAM:
             targets = [s for s in team_list if s in spot_set]
+        elif method == SIM_METHOD_TEAM_PLAYER:
+            targets = [
+                player if player in extracted_set else team
+                for team, player in _iter_team_player_pairs(player_list, team_list)
+            ]
+            targets = [target for target in targets if target in spot_set]
         elif method == SIM_METHOD_PLAYER:
             targets = [s for s in player_list if s in spot_set]
         elif method == SIM_METHOD_PLAYER_LETTER:
@@ -604,7 +630,14 @@ def build_deterministic_spot_summary(
                 totals[assigned_spot]["Logoman RC"] += hits if is_logoman else 0
             if checklist_name:
                 checklists_per_spot[assigned_spot].add(checklist_name)
-            for p in player_list:
+            assigned_players = player_list
+            if method == SIM_METHOD_TEAM_PLAYER:
+                assigned_players = [
+                    player
+                    for team, player in _iter_team_player_pairs(player_list, team_list)
+                    if (player if player in extracted_set else team) == assigned_spot
+                ]
+            for p in _ordered_unique(assigned_players):
                 players_per_spot[assigned_spot].add(p)
             # Tracker les co-joueurs multi pour les spots-joueurs extraits
             if method == SIM_METHOD_PLAYER_LETTER and assigned_spot in extracted_set and is_multi_player:
@@ -655,7 +688,9 @@ def build_deterministic_spot_summary(
         players_list = sorted(players_per_spot[spot])
         # Pour un break par joueur, le spot EST le joueur — on check uniquement lui.
         # Pour les autres méthodes, on check tous les joueurs du spot.
-        if method in (SIM_METHOD_PLAYER, SIM_METHOD_PLAYER_LETTER):
+        if method in (SIM_METHOD_PLAYER, SIM_METHOD_PLAYER_LETTER) or (
+            method == SIM_METHOD_TEAM_PLAYER and spot in extracted_set
+        ):
             _immacu_candidates = [spot]
         else:
             _immacu_candidates = list(players_per_spot[spot])
