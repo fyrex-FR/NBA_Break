@@ -24,6 +24,12 @@ HEADERS = {
     "x-nba-stats-origin": "stats",
     "x-nba-stats-token": "true",
     "Connection": "keep-alive",
+    # Sans ces en-têtes, l'origine NBA laisse la requête en attente (constaté).
+    "Pragma": "no-cache",
+    "Cache-Control": "no-cache",
+    "Sec-Ch-Ua": '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
+    "Sec-Ch-Ua-Mobile": "?0",
+    "Sec-Fetch-Dest": "empty",
 }
 
 
