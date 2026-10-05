@@ -242,8 +242,7 @@ function CatalogTab() {
                           tabIndex={0}
                           onClick={() => toggleChecklist(cl.checklist_id)}
                           onKeyDown={(e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleChecklist(cl.checklist_id) } }}
-                          className="group flex items-center gap-3 pl-8 pr-2 py-2 rounded-lg cursor-pointer ui-row-hover"
-                          style={{ background: isSel ? 'color-mix(in srgb, var(--accent) 7%, transparent)' : undefined }}
+                          className="ui-pick-row ui-row-hover group flex items-center gap-3 pl-8 pr-2 py-2 rounded-lg cursor-pointer"
                         >
                           <CheckboxMark checked={isSel} />
                           <div className="flex-1 min-w-0">

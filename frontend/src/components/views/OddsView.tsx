@@ -275,10 +275,7 @@ export function OddsView() {
                       <Fragment key={set.set}>
                         <tr
                           onClick={() => setExpandedSet(isOpen ? null : set.set)}
-                          className="cursor-pointer"
-                          style={{ background: rowBg }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-hover)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = rowBg)}
+                          className={`cursor-pointer hover:bg-[var(--bg-hover)] ${i % 2 === 0 ? 'bg-[var(--bg-panel)]' : 'bg-[var(--bg-surface)]'}`}
                         >
                           <td
                             className="px-3 sm:px-4 py-2.5 sticky left-0 z-10 font-medium max-w-[150px] sm:max-w-none"

@@ -169,14 +169,8 @@ function NavSections({ collapsed, onNavigate }: { collapsed: boolean; onNavigate
                         onClick={() => go(item)}
                         aria-current={active ? 'page' : undefined}
                         title={collapsed ? item.label : locked ? 'Lance une analyse pour ouvrir cette vue' : undefined}
-                        className={`group relative w-full flex items-center gap-2.5 rounded-lg text-[13px] transition-colors ${collapsed ? 'justify-center h-9' : 'h-10 md:h-8 px-2.5 text-[14px] md:text-[13px]'}`}
-                        style={{
-                          background: active ? 'var(--bg-hover)' : undefined,
-                          color: active ? 'var(--text-primary)' : locked ? 'var(--text-quaternary)' : 'var(--text-secondary)',
-                          fontWeight: active ? 600 : 500,
-                        }}
-                        onMouseEnter={(e) => { if (!active) e.currentTarget.style.background = 'var(--bg-hover)' }}
-                        onMouseLeave={(e) => { if (!active) e.currentTarget.style.background = '' }}
+                        data-locked={locked}
+                        className={`ui-nav-item group relative w-full flex items-center gap-2.5 rounded-lg text-[13px] ${collapsed ? 'justify-center h-9' : 'h-10 md:h-8 px-2.5 text-[14px] md:text-[13px]'}`}
                       >
                         {active && <span className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full" style={{ background: 'var(--accent)' }} />}
                         <Icon className="w-4 h-4 flex-shrink-0" style={{ color: active ? 'var(--accent)' : undefined }} />
