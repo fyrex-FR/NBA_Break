@@ -1,12 +1,19 @@
 import { useState, useRef, useEffect } from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+import { LayoutDashboard, User, Shield, Layers, Search } from 'lucide-react'
 import { useAppStore } from './stores/appStore'
-import { fetchAnalysis } from './api/client'
+import { fetchChecklists } from './api/client'
 import { useUrlSync } from './hooks/useUrlSync'
-import { Sidebar } from './components/layout/Sidebar'
-import { ViewTabs } from './components/layout/ViewTabs'
+import { useRunAnalysis } from './hooks/useRunAnalysis'
+import { navItemFor } from './navigation'
+import { NavRail } from './components/layout/NavRail'
+import { TopBar } from './components/layout/TopBar'
+import { SelectionPanel } from './components/layout/SelectionPanel'
+import { CommandPalette } from './components/layout/CommandPalette'
+import { PageHeader } from './components/ui/primitives'
+import { HomeView, AnalysisSkeleton } from './components/views/HomeView'
 import { GlobalView } from './components/views/GlobalView'
-import { CategoryFilteredView } from './components/views/CategoryFilteredView'
+import { HitsView } from './components/views/HitsView'
 import { MultiPlayersView } from './components/views/MultiPlayersView'
 import { PlayerDetailView } from './components/views/PlayerDetailView'
 import { TeamDetailView } from './components/views/TeamDetailView'
@@ -23,9 +30,8 @@ import { SmartImportView } from './components/views/SmartImportView'
 import { BreakOverviewView } from './components/views/BreakOverviewView'
 import { OddsView } from './components/views/OddsView'
 import { OddsMappingView } from './components/views/OddsMappingView'
-import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM } from './types'
-import { Loader2, Play, Sun, Moon, Menu } from 'lucide-react'
 import ChatWidget from './components/shared/ChatWidget'
+import type { ViewName } from './types'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,216 +39,180 @@ const queryClient = new QueryClient({
   },
 })
 
+/** Vues qui portent déjà leur propre en-tête (bandeau, branding…). */
+const OWN_HEADER = new Set<ViewName>(['📚 Checklist Beckett', '📥 Import Intelligent', '🎲 État du Break'])
+
+function renderView(view: ViewName) {
+  switch (view) {
+    case '🌍 Vue Globale': return <GlobalView />
+    case '💎 Autos & Patchs':
+    case '🔥 Logoman':
+    case '✨ Case Hits': return <HitsView />
+    case '👥 Multi-Joueurs': return <MultiPlayersView />
+    case '🔍 Analyse Joueur': return <PlayerDetailView />
+    case '🛡️ Analyse Équipe': return <TeamDetailView />
+    case '📚 Checklist Beckett': return <ChecklistBrowserView />
+    case '📁 Par Fichier': return <FileAnalysisView />
+    case '📈 Tendances': return <TrendView />
+    case '🧨 Rookies': return <RookiesView />
+    case '🧪 Détection Auto/Mem': return <DetectionView />
+    case '🦸 Attribution Marvel': return <MarvelAttributionView />
+    case '⚖️ Comparateur Joueurs': return <ComparatorView />
+    case '🧩 Simulation de Break': return <BreakSimulationView />
+    case '🎯 Odds': return <OddsView />
+    case '🔗 Mapping Odds': return <OddsMappingView />
+    case '📤 Export': return <ExportView />
+    case '📥 Import Intelligent': return <SmartImportView />
+    case '🎲 État du Break': return <BreakOverviewView />
+    default: return <GlobalView />
+  }
+}
+
 function MainContent() {
   const { analysisData, activeView, isAnalyzing, breakContext } = useAppStore()
+  const item = navItemFor(activeView)
 
-  if (isAnalyzing) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-center p-8 rounded-2xl glass-panel animate-pulse flex flex-col items-center">
-          <Loader2 className="w-12 h-12 mb-4 text-[var(--accent)] animate-spin" />
-          <p className="font-semibold text-lg" style={{ color: 'var(--text-primary)' }}>Analyse en cours...</p>
-          <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>Croisement des données en temps réel</p>
-        </div>
-      </div>
+  const standalone = activeView === '📥 Import Intelligent' || (activeView === '🎲 État du Break' && !!breakContext)
+
+  let body: React.ReactNode
+  if (isAnalyzing && !standalone) {
+    body = <AnalysisSkeleton />
+  } else if (!analysisData && !standalone) {
+    body = <HomeView />
+  } else {
+    body = (
+      <>
+        {item && !OWN_HEADER.has(activeView) && (
+          <PageHeader title={item.label} description={item.description} icon={item.icon} />
+        )}
+        {renderView(activeView)}
+      </>
     )
-  }
-
-  if (activeView === '📥 Import Intelligent') {
-    return (
-      <div className="p-4 md:p-6">
-        <SmartImportView />
-      </div>
-    )
-  }
-
-  const inBreakOverview = activeView === '🎲 État du Break' && !!breakContext
-
-  if (!analysisData && !inBreakOverview) {
-    return (
-      <div className="flex items-center justify-center h-full p-4">
-        <div className="text-center max-w-lg p-10 rounded-2xl glass-panel shadow-glass transform transition-all hover:scale-[1.01]">
-          <div className="relative inline-block mb-6 group">
-            <div className="absolute inset-0 bg-[var(--accent)] rounded-[24%] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-            <img src="/logo.png" alt="NoClim" className="relative w-32 h-32 mx-auto shadow-xl" style={{ borderRadius: '24%', border: '1px solid var(--border-subtle)' }} />
-          </div>
-          <h2 className="text-4xl font-extrabold mb-3 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-tertiary)]">
-            NoClim
-          </h2>
-          <p className="text-lg font-medium mb-4" style={{ color: 'var(--text-secondary)' }}>
-            Parce que climatiser en silence, c'est un art.
-          </p>
-          <div className="h-px w-16 bg-[var(--border-standard)] mx-auto mb-5"></div>
-          <p className="text-sm mb-6 leading-relaxed flex flex-col gap-2" style={{ color: 'var(--text-quaternary)' }}>
-            <span>Sélectionne tes checklists à gauche, analyse tes spots et évite de te retrouver avec une carte base de 2012.</span>
-          </p>
-          <div className="inline-flex items-center justify-center p-1 rounded-full bg-[var(--bg-hover)] border border-[var(--border-subtle)] text-sm font-medium px-4 py-2 mt-2 gap-2" style={{ color: 'var(--text-primary)' }}>
-            <Play className="w-4 h-4 text-[var(--accent)]" />
-            <span>Sélectionnez des données pour lancer l'analyse</span>
-          </div>
-          <div className="mt-4">
-            <button
-              onClick={() => useAppStore.getState().setActiveView('📥 Import Intelligent')}
-              className="text-sm underline"
-              style={{ color: 'var(--accent)' }}
-            >
-              📥 Importer une checklist via IA
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  const renderView = () => {
-    switch (activeView as string) {
-      case '🌍 Vue Globale':
-        return <GlobalView />
-      case '💎 Autos & Patchs':
-        return (
-          <CategoryFilteredView
-            title="Hits Auto / Memo"
-            icon="💎"
-            hitTypes={[HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM]}
-            description="Cartes autographiées, memorabilia pur et auto/memorabilia."
-          />
-        )
-      case '🔥 Logoman':
-        return (
-          <CategoryFilteredView
-            title="Logoman"
-            icon="🔥"
-            category={CATEGORY_LOGOMAN}
-            description="Cartes Logoman — les plus rares et recherchées."
-          />
-        )
-      case '✨ Case Hits':
-        return (
-          <CategoryFilteredView
-            title="Case Hits"
-            icon="✨"
-            category={CATEGORY_CASE_HIT}
-            description="Inserts spéciaux (Downtown, Kaboom, Color Blast, etc.)."
-          />
-        )
-      case '👥 Multi-Joueurs':
-        return <MultiPlayersView />
-      case '🔍 Analyse Joueur':
-        return <PlayerDetailView />
-      case '🛡️ Analyse Équipe':
-        return <TeamDetailView />
-      case '📚 Checklist Beckett':
-        return <ChecklistBrowserView />
-      case '📁 Par Fichier':
-        return <FileAnalysisView />
-      case '📈 Tendances':
-        return <TrendView />
-      case '🧨 Rookies':
-        return <RookiesView />
-      case '🧪 Détection Auto/Mem':
-        return <DetectionView />
-      case '🦸 Attribution Marvel':
-        return <MarvelAttributionView />
-      case '⚖️ Comparateur Joueurs':
-        return <ComparatorView />
-      case '🧩 Simulation de Break':
-        return <BreakSimulationView />
-      case '🎯 Odds':
-        return <OddsView />
-      case '🔗 Mapping Odds':
-        return <OddsMappingView />
-      case '📤 Export':
-        return <ExportView />
-      case '📥 Import Intelligent':
-        return <SmartImportView />
-      case '🎲 État du Break':
-        return <BreakOverviewView />
-      default:
-        return (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <div className="text-4xl mb-3">🚧</div>
-              <p style={{ color: 'var(--text-tertiary)' }}>
-                Vue <strong>{activeView}</strong> — bientôt disponible
-              </p>
-            </div>
-          </div>
-        )
-    }
   }
 
   return (
-    <div className="p-4 md:p-6">
-      {analysisData && <ViewTabs enabledViews={analysisData.enabled_views} />}
-      <div key={activeView} style={{ animation: 'fadeIn 0.15s ease-out' }}>
-        {renderView()}
+    <div className="px-4 md:px-8 py-6 md:py-8 pb-24 md:pb-10 max-w-[1440px] mx-auto w-full">
+      <div key={isAnalyzing ? 'loading' : activeView} style={{ animation: 'fadeIn 0.18s ease-out' }}>
+        {body}
       </div>
     </div>
   )
 }
 
+/** Charge le catalogue du sport courant dès l'ouverture (plus besoin d'ouvrir la sidebar). */
+function useCatalogSync() {
+  const { selectedSport, setAvailableChecklists, setMasterKey } = useAppStore()
+  const { data } = useQuery({
+    queryKey: ['checklists', selectedSport],
+    queryFn: () => fetchChecklists(selectedSport),
+    enabled: !!selectedSport,
+  })
+  useEffect(() => {
+    if (data) {
+      setAvailableChecklists(data.checklists)
+      setMasterKey(data.master_key)
+    }
+  }, [data, setAvailableChecklists, setMasterKey])
+}
 
-export default function App() {
-  const { selectedSport, analysisData, activeView, selectedChecklistIds, masterKey, setAnalysisData, setIsAnalyzing, theme, toggleTheme } = useAppStore()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+function MobileTabBar() {
+  const { activeView, setActiveView, openSelection, setPaletteOpen, analysisData, selectedChecklistIds } = useAppStore()
+  const current = navItemFor(activeView)?.view
+  const tabs = [
+    { label: 'Aperçu', icon: LayoutDashboard, view: '🌍 Vue Globale' as ViewName },
+    { label: 'Joueur', icon: User, view: '🔍 Analyse Joueur' as ViewName },
+    { label: 'Équipe', icon: Shield, view: '🛡️ Analyse Équipe' as ViewName },
+  ]
+  return (
+    <nav
+      className="md:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-5"
+      style={{
+        background: 'color-mix(in srgb, var(--bg-panel) 92%, transparent)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        borderTop: '1px solid var(--border-subtle)',
+        paddingBottom: 'env(safe-area-inset-bottom)',
+      }}
+      aria-label="Navigation rapide"
+    >
+      {tabs.map(({ label, icon: Icon, view }) => {
+        const active = !!analysisData && current === view
+        return (
+          <button
+            key={label}
+            onClick={() => (analysisData ? setActiveView(view) : openSelection('catalog'))}
+            className="flex flex-col items-center justify-center gap-0.5 h-14 text-[10.5px] font-medium"
+            style={{ color: active ? 'var(--accent)' : 'var(--text-tertiary)' }}
+          >
+            <Icon className="w-5 h-5" />
+            {label}
+          </button>
+        )
+      })}
+      <button onClick={() => setPaletteOpen(true)} className="flex flex-col items-center justify-center gap-0.5 h-14 text-[10.5px] font-medium" style={{ color: 'var(--text-tertiary)' }}>
+        <Search className="w-5 h-5" />
+        Chercher
+      </button>
+      <button onClick={() => openSelection('catalog')} className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-[10.5px] font-medium" style={{ color: 'var(--text-tertiary)' }}>
+        <Layers className="w-5 h-5" />
+        Sélection
+        {selectedChecklistIds.length > 0 && (
+          <span className="absolute top-1.5 left-1/2 ml-1.5 min-w-4 h-4 px-1 rounded-full text-[10px] font-bold num flex items-center justify-center" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
+            {selectedChecklistIds.length}
+          </span>
+        )}
+      </button>
+    </nav>
+  )
+}
+
+function Shell() {
+  const { selectedSport, analysisData, activeView, selectedChecklistIds, theme } = useAppStore()
+  const [navOpen, setNavOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
+  const runAnalysis = useRunAnalysis()
   useUrlSync()
+  useCatalogSync()
 
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 })
   }, [activeView])
 
-  // Auto-relance l'analyse au retour sur la page si une sélection existe mais pas de données
+  // Le thème s'applique aussi à <html> pour les zones hors app (overscroll, scrollbars).
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    // Barre d'état du navigateur / de l'app installée assortie au thème choisi.
+    document.querySelectorAll('meta[name="theme-color"]').forEach((m) => {
+      m.setAttribute('content', theme === 'dark' ? '#0a0a0f' : '#f6f6f8')
+      m.removeAttribute('media')
+    })
+  }, [theme])
+
+  // Relance l'analyse au retour sur la page si une sélection existe mais pas de données.
   useEffect(() => {
     if (analysisData || selectedChecklistIds.length === 0) return
-    setIsAnalyzing(true)
-    fetchAnalysis(selectedSport, selectedChecklistIds, masterKey)
-      .then(setAnalysisData)
-      .catch(() => setAnalysisData(null))
-      .finally(() => setIsAnalyzing(false))
+    runAnalysis()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
+    <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} data-theme={theme} style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+      <NavRail mobileOpen={navOpen} onMobileClose={() => setNavOpen(false)} />
+      <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto flex flex-col">
+        <TopBar onOpenNav={() => setNavOpen(true)} />
+        <MainContent />
+      </main>
+      <SelectionPanel />
+      <CommandPalette />
+      <MobileTabBar />
+      <ChatWidget />
+    </div>
+  )
+}
+
+export default function App() {
+  return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} data-theme={theme} style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto">
-          {/* Mobile topbar */}
-          <div
-            className="md:hidden flex items-center gap-3 px-4 py-3 sticky top-0 z-30"
-            style={{ background: 'var(--bg-panel)', borderBottom: '1px solid var(--border-subtle)' }}
-          >
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="p-1.5 rounded-md hover:bg-[var(--bg-hover)] transition-colors"
-              style={{ color: 'var(--text-secondary)' }}
-              aria-label="Ouvrir le menu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-            <span className="text-base font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>
-              NoClim
-            </span>
-            <div className="ml-auto flex items-center gap-3">
-              {analysisData && (
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm" style={{ background: 'rgba(34,197,94,0.1)', color: '#22c55e', border: '1px solid rgba(34,197,94,0.2)' }}>
-                  {analysisData.metadata.checklists_count} listes
-                </span>
-              )}
-              <button
-                onClick={toggleTheme}
-                className="p-1.5 flex items-center justify-center rounded-lg hover:bg-[var(--bg-hover)] transition-colors"
-                style={{ color: 'var(--text-secondary)' }}
-                title="Changer le thème"
-              >
-                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-          <MainContent />
-        </main>
-        <ChatWidget />
-      </div>
+      <Shell />
     </QueryClientProvider>
   )
 }

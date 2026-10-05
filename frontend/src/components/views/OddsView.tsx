@@ -12,7 +12,8 @@ import { useQuery } from '@tanstack/react-query'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchOddsIndex, fetchOddsSheet } from '../../api/client'
-import { OddsBadge, OddsBadgeList, groupLabel } from '../shared/OddsBadge'
+import { OddsBadge, OddsBadgeList } from '../shared/OddsBadge'
+import { groupLabel } from '../shared/oddsBadgeUtils'
 import type { OddsConfig, OddsRow, OddsSetSummary, OddsBadgeCode } from '../../types'
 
 type AvailabilityFilter = 'all' | 'hobby_only' | 'retail_only' | 'selected_config'
@@ -149,7 +150,6 @@ export function OddsView() {
   if (checklistsWithOdds.length === 0) {
     return (
       <div>
-        <h2 className="text-xl font-medium mb-4">🎯 Odds</h2>
         <div className="text-center py-16 rounded-xl" style={{ background: 'var(--bg-surface)', border: '1px dashed var(--border-solid)' }}>
           <div className="text-4xl mb-3">🎯</div>
           <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>
@@ -166,9 +166,8 @@ export function OddsView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">🎯 Odds</h2>
       <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
-        Matrice odds × configuration, par set. Cliquez une ligne pour voir ses parallèles.
+        Meilleures odds de chaque set par configuration de box. Touche un set pour voir ses parallèles.
       </p>
 
       {/* Sélection de la checklist à inspecter */}
@@ -176,8 +175,7 @@ export function OddsView() {
         <select
           value={checklistId}
           onChange={(e) => setManualChecklistId(e.target.value)}
-          className="w-full max-w-lg rounded-lg px-3 py-2 text-sm mb-4"
-          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+          className="ui-input !h-10 max-w-lg mb-4"
         >
           <option value="">Sélectionnez une checklist...</option>
           {checklistsWithOdds.map((id) => (
@@ -197,13 +195,13 @@ export function OddsView() {
       )}
 
       {checklistId && sheetError && (
-        <div className="text-center py-12" style={{ color: '#ef4444' }}>Impossible de charger la feuille d'odds de cette checklist.</div>
+        <div className="text-center py-12" style={{ color: 'var(--danger)' }}>Impossible de charger la feuille d'odds de cette checklist.</div>
       )}
 
       {checklistId && sheetData && (
         <>
           {/* En-tête produit */}
-          <div className="rounded-xl p-4 mb-4 flex flex-wrap items-center gap-x-4 gap-y-1" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+          <div className="ui-card p-4 mb-4 flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
               {sheetData.sheet.product_label || checklistLabel(checklistId)}
             </span>
@@ -218,7 +216,7 @@ export function OddsView() {
           </div>
 
           {/* Filtre disponibilité */}
-          <div className="flex items-center gap-2 flex-wrap mb-4">
+          <div className="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
             {([
               { key: 'all', label: 'Tous' },
               { key: 'hobby_only', label: 'Hobby only' },
@@ -229,13 +227,8 @@ export function OddsView() {
                 key={f.key}
                 onClick={() => setAvailabilityFilter(f.key)}
                 disabled={f.key === 'selected_config' && selectedConfigs.length === 0}
-                className="text-xs px-2.5 py-1.5 rounded-full transition-colors"
-                style={{
-                  background: availabilityFilter === f.key ? 'var(--accent)' : 'var(--bg-surface)',
-                  color: availabilityFilter === f.key ? '#fff' : (f.key === 'selected_config' && selectedConfigs.length === 0) ? 'var(--text-quaternary)' : 'var(--text-secondary)',
-                  border: `1px solid ${availabilityFilter === f.key ? 'var(--accent)' : 'var(--border-standard)'}`,
-                  opacity: f.key === 'selected_config' && selectedConfigs.length === 0 ? 0.5 : 1,
-                }}
+                className={`ui-chip flex-shrink-0 ${availabilityFilter === f.key ? 'is-active' : ''}`}
+                style={{ opacity: f.key === 'selected_config' && selectedConfigs.length === 0 ? 0.45 : 1 }}
               >
                 {f.label}
               </button>
@@ -246,8 +239,8 @@ export function OddsView() {
           {filteredSets.length === 0 ? (
             <div className="text-center py-12" style={{ color: 'var(--text-tertiary)' }}>Aucun set ne correspond à ce filtre.</div>
           ) : (
-            <div className="overflow-x-auto rounded-lg mb-6" style={{ border: '1px solid var(--border-subtle)' }}>
-              <table className="text-sm" style={{ minWidth: '100%', width: 'max-content' }}>
+            <div className="overflow-x-auto ui-card mb-6">
+              <table className="text-xs sm:text-sm" style={{ minWidth: '100%', width: 'max-content' }}>
                 <thead>
                   <tr style={{ background: 'var(--bg-surface)' }}>
                     <th
@@ -288,10 +281,10 @@ export function OddsView() {
                           onMouseLeave={(e) => (e.currentTarget.style.background = rowBg)}
                         >
                           <td
-                            className="px-4 py-2.5 sticky left-0 z-10 font-medium"
-                            style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)', background: 'inherit' }}
+                            className="px-3 sm:px-4 py-2.5 sticky left-0 z-10 font-medium max-w-[150px] sm:max-w-none"
+                            style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)', background: 'inherit', boxShadow: '1px 0 0 var(--border-subtle)' }}
                           >
-                            <span className="flex items-center gap-1.5">
+                            <span className="flex items-center gap-1.5 leading-snug">
                               {isOpen ? <ChevronDown className="w-3.5 h-3.5 flex-shrink-0" style={{ color: 'var(--accent)' }} /> : <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" style={{ color: 'var(--text-quaternary)' }} />}
                               {set.set}
                             </span>

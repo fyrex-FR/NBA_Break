@@ -5,7 +5,16 @@ import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { LetterAssignmentUI } from './LetterAssignmentUI'
-import { Save, Trash2, Download, Plus } from 'lucide-react'
+import { Save, Trash2, Download, Plus, ChevronDown, Loader2, Play, Target, Shield, UserPlus, User, CaseSensitive, CaseUpper, Grid2x2, Grid2x2Check } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import { useMediaQuery, MOBILE_QUERY } from '../../hooks/useMediaQuery'
+import { CategoryBadge } from '../shared/CategoryBadge'
+import { prettyChecklist, errorMessage } from '../../utils/checklists'
+import { CATEGORY_META } from '../../constants/categories'
+
+const CATEGORY_RANK = new Map(CATEGORY_META.map((m, i) => [m.category, i]))
+const categoryRank = (cat?: string) => CATEGORY_RANK.get(cat ?? '') ?? CATEGORY_META.length
+import { X, Check } from 'lucide-react'
 import { fetchBreakPlayers, fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
 import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail, BreakPlayerStats } from '../../types'
 
@@ -21,7 +30,7 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
   const isPlayerMethod = method === 'player' || method.endsWith('letter_assignment')
 
   const rcCell = (val: number) =>
-    val > 0 ? <span className="font-medium" style={{ color: '#34d399' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+    val > 0 ? <span className="font-medium" style={{ color: 'var(--success)' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
 
   return [
     columnHelper.accessor('Spot', {
@@ -49,7 +58,7 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
       header: '🔥',
       cell: (info) => {
         const val = info.getValue() as number
-        return val > 0 ? <span className="font-medium" style={{ color: '#f87171' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+        return val > 0 ? <span className="font-medium" style={{ color: 'var(--cat-logoman)' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
       },
     }),
     columnHelper.accessor('Logoman RC', {
@@ -60,7 +69,7 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
       header: '✨',
       cell: (info) => {
         const val = info.getValue() as number
-        return val > 0 ? <span className="font-medium" style={{ color: '#fbbf24' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
+        return val > 0 ? <span className="font-medium" style={{ color: 'var(--cat-case)' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
       },
     }),
     columnHelper.accessor('Case Hit RC', {
@@ -77,14 +86,14 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
       },
     }),
     ...(!isPlayerMethod ? [
-      columnHelper.accessor('Nb Joueurs' as any, { header: 'Joueurs #' }),
+      columnHelper.accessor('Nb Joueurs', { header: 'Joueurs #' }),
     ] : []),
     columnHelper.accessor('Immaculate Only', {
       header: 'Immacu. Only',
       cell: (info) => {
         const v = info.getValue() as number
         return v > 0
-          ? <span style={{ color: '#a78bfa', fontWeight: 600 }}>{v}</span>
+          ? <span style={{ color: 'var(--cat-automem)', fontWeight: 600 }}>{v}</span>
           : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
       },
     }),
@@ -94,9 +103,9 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
     // dans les données renvoyées par l'API (une configuration est sélectionnée et
     // une feuille d'odds existe pour la sélection). Aucun changement sinon.
     ...(oddsCols.partAttendue ? [
-      columnHelper.accessor('Part attendue' as any, {
+      columnHelper.accessor('Part attendue', {
         header: 'Part attendue',
-        cell: (info: any) => {
+        cell: (info) => {
           const v = info.getValue()
           return v === undefined || v === null
             ? <span style={{ color: 'var(--text-quaternary)' }}>—</span>
@@ -105,20 +114,20 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
       }),
     ] : []),
     ...(oddsCols.breakScoreOdds ? [
-      columnHelper.accessor('Break Score (odds)' as any, {
+      columnHelper.accessor('Break Score (odds)', {
         header: 'Score (odds)',
-        cell: (info: any) => {
+        cell: (info) => {
           const v = info.getValue()
           return v === undefined || v === null
             ? <span style={{ color: 'var(--text-quaternary)' }}>—</span>
-            : <span className="font-medium" style={{ color: '#a78bfa' }}>{Number(v).toLocaleString('fr-FR', { maximumFractionDigits: 3 })}</span>
+            : <span className="font-medium" style={{ color: 'var(--cat-automem)' }}>{Number(v).toLocaleString('fr-FR', { maximumFractionDigits: 3 })}</span>
         },
       }),
     ] : []),
     ...(oddsCols.hitsPerBox ? [
-      columnHelper.accessor('Hits / box' as any, {
+      columnHelper.accessor('Hits / box', {
         header: 'Hits/box',
-        cell: (info: any) => {
+        cell: (info) => {
           const v = info.getValue()
           return v === undefined || v === null
             ? <span style={{ color: 'var(--text-quaternary)' }}>—</span>
@@ -147,14 +156,14 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
   ]
 }
 
-const METHODS = [
-  { value: 'team', label: 'Break par Équipe' },
-  { value: 'team_player', label: 'Équipe + joueurs extraits' },
-  { value: 'player', label: 'Break par Joueur' },
-  { value: 'letter', label: 'Break par Lettre' },
-  { value: 'surname_letter', label: 'Break par Lettre du nom' },
-  { value: 'letter_assignment', label: 'Break par Lettre (Assignation)' },
-  { value: 'surname_letter_assignment', label: 'Lettre du nom (Assignation)' },
+const METHODS: { value: string; label: string; hint: string; icon: LucideIcon }[] = [
+  { value: 'team', label: 'Par équipe', hint: 'Un spot par équipe', icon: Shield },
+  { value: 'team_player', label: 'Équipe + joueurs', hint: 'Certains joueurs sortis en spot à part', icon: UserPlus },
+  { value: 'player', label: 'Par joueur', hint: 'Un spot par joueur', icon: User },
+  { value: 'letter', label: 'Par lettre', hint: 'Initiale du joueur', icon: CaseSensitive },
+  { value: 'surname_letter', label: 'Lettre du nom', hint: 'Initiale du nom de famille', icon: CaseUpper },
+  { value: 'letter_assignment', label: 'Lettres assignées', hint: 'Tu répartis les lettres par spot', icon: Grid2x2 },
+  { value: 'surname_letter_assignment', label: 'Lettres du nom assignées', hint: 'Idem, sur le nom de famille', icon: Grid2x2Check },
 ]
 
 export function BreakSimulationView() {
@@ -186,6 +195,9 @@ export function BreakSimulationView() {
   const [presetsOpen, setPresetsOpen] = useState(false)
 
   const resultsRef = useRef<HTMLDivElement>(null)
+  const isMobile = useMediaQuery(MOBILE_QUERY)
+  const currentMethod = METHODS.find((m) => m.value === method) ?? METHODS[0]
+  const isAssignment = method.endsWith('letter_assignment')
   // Derniers paramètres envoyés à /simulate/break (hors config odds), pour pouvoir
   // relancer la simulation quand la configuration odds change sans rejouer tout
   // le formulaire (méthode lettre-assignation incluse).
@@ -294,8 +306,8 @@ export function BreakSimulationView() {
       setResult(data)
       setPanelOpen(false)
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
-    } catch (err: any) {
-      setError(err.message || 'Erreur lors de la simulation.')
+    } catch (err: unknown) {
+      setError(errorMessage(err, 'Erreur lors de la simulation.'))
       setResult(null)
     } finally {
       setLoading(false)
@@ -312,9 +324,8 @@ export function BreakSimulationView() {
     setError(null)
     fetchBreakSimulation({ ...lastRunParamsRef.current, config_keys: selectedConfigKeys })
       .then((data) => setResult(data))
-      .catch((err: any) => { setError(err.message || 'Erreur lors de la simulation.'); setResult(null) })
+      .catch((err: unknown) => { setError(errorMessage(err, 'Erreur lors de la simulation.')); setResult(null) })
       .finally(() => setLoading(false))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedConfigKeys])
 
   async function handleSimulate() {
@@ -359,8 +370,8 @@ export function BreakSimulationView() {
       const data = await fetchSimulationPresets(selectedSport)
       setPresets(data.presets)
       setNewPresetName('')
-    } catch (err: any) {
-      alert(err.message)
+    } catch (err: unknown) {
+      alert(errorMessage(err))
     }
   }
 
@@ -369,8 +380,8 @@ export function BreakSimulationView() {
     try {
       await deleteSimulationPreset(selectedSport, name)
       setPresets(prev => prev.filter(p => p.name !== name))
-    } catch (err: any) {
-      alert(err.message)
+    } catch (err: unknown) {
+      alert(errorMessage(err))
     }
   }
 
@@ -501,29 +512,66 @@ export function BreakSimulationView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">🧩 Simulation de Break</h2>
-      <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
-        Renseignez les autos garanties par box pour pondérer le score.
-      </p>
 
+      {/* Méthode + lancement */}
+      <section className="ui-card p-4 mb-4">
+        <div className="flex items-center justify-between gap-3 mb-3">
+          <div className="text-[13px] font-semibold" style={{ color: 'var(--text-primary)' }}>Méthode de break</div>
+          {!isAssignment && (
+            <button
+              onClick={handleSimulate}
+              disabled={loading || selectedChecklistIds.length === 0}
+              className="ui-btn ui-btn-primary hidden sm:inline-flex"
+            >
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
+              {loading ? 'Simulation…' : 'Simuler'}
+            </button>
+          )}
+        </div>
+        <div className="flex sm:grid sm:grid-cols-4 xl:grid-cols-7 gap-2 overflow-x-auto no-scrollbar snap-x -mx-4 px-4 sm:mx-0 sm:px-0 pb-0.5" role="radiogroup" aria-label="Méthode de break">
+          {METHODS.map((m) => {
+            const Icon = m.icon
+            const on = method === m.value
+            return (
+              <button
+                key={m.value}
+                role="radio"
+                aria-checked={on}
+                onClick={() => { setMethod(m.value); setResult(null) }}
+                className="flex-shrink-0 w-[132px] sm:w-auto snap-start text-left rounded-xl px-3 py-2.5 transition-colors"
+                style={{
+                  background: on ? 'var(--accent-soft)' : 'var(--bg-surface)',
+                  boxShadow: on ? '0 0 0 1px color-mix(in srgb, var(--accent) 50%, transparent)' : '0 0 0 1px var(--border-subtle)',
+                }}
+              >
+                <Icon className="w-4 h-4 mb-1.5" style={{ color: on ? 'var(--accent)' : 'var(--text-tertiary)' }} />
+                <div className="text-[12.5px] font-semibold leading-tight" style={{ color: 'var(--text-primary)' }}>{m.label}</div>
+                <div className="hidden sm:block text-[11px] leading-snug mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{m.hint}</div>
+              </button>
+            )
+          })}
+        </div>
+        <p className="sm:hidden text-xs mt-2.5" style={{ color: 'var(--text-tertiary)' }}>{currentMethod.hint}</p>
+      </section>
+
+      <div className="grid gap-3 lg:grid-cols-2 items-start mb-6 [&>div]:!mb-0">
       {/* Presets Management */}
-      <div className="mb-4 rounded-xl" style={{ border: '1px solid var(--border-subtle)' }}>
+      <div className="mb-3 ui-card overflow-hidden">
         <button
           onClick={() => setPresetsOpen(p => !p)}
-          className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left"
-          style={{ background: 'var(--bg-surface)' }}
+          className="w-full flex items-center justify-between px-4 py-3 text-left ui-row-hover"
         >
           <div className="flex items-center gap-2">
             <Save size={14} style={{ color: 'var(--text-tertiary)' }} />
-            <span className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
-              Configurations enregistrées
+            <span className="text-[13px] font-medium" style={{ color: 'var(--text-primary)' }}>
+              Configurations enregistrées <span className="num" style={{ color: 'var(--text-quaternary)' }}>{presets.length || ''}</span>
             </span>
           </div>
-          <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{presetsOpen ? '▲' : '▼'}</span>
+          <ChevronDown className={`w-4 h-4 transition-transform ${presetsOpen ? 'rotate-180' : ''}`} style={{ color: 'var(--text-quaternary)' }} />
         </button>
 
         {presetsOpen && (
-          <div className="px-4 pb-4 pt-2" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', borderRadius: '0 0 0.75rem 0.75rem' }}>
+          <div className="px-4 pb-4 pt-2" style={{ borderTop: '1px solid var(--border-subtle)' }}>
             {/* List of presets */}
             <div className="space-y-1 mb-4">
               {presets.length === 0 && !presetsLoading && (
@@ -535,21 +583,21 @@ export function BreakSimulationView() {
                   <div className="flex flex-col">
                     <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{p.name}</span>
                     <span className="text-[10px]" style={{ color: 'var(--text-quaternary)' }}>
-                      {p.checklist_ids.length} checklists • {p.method}
+                      {p.checklist_ids.length} checklists · {METHODS.find((m) => m.value === p.method)?.label ?? p.method}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-1 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => handleLoadPreset(p)}
                       title="Charger"
-                      className="p-1.5 rounded-md hover:bg-[var(--bg-surface)] text-blue-400"
+                      className="ui-btn ui-btn-secondary ui-btn-sm"
                     >
-                      <Download size={14} />
+                      Charger
                     </button>
                     <button
                       onClick={() => handleDeletePreset(p.name)}
                       title="Supprimer"
-                      className="p-1.5 rounded-md hover:bg-[var(--bg-surface)] text-red-400"
+                      className="ui-btn ui-btn-ghost ui-btn-danger ui-btn-sm ui-btn-icon"
                     >
                       <Trash2 size={14} />
                     </button>
@@ -565,18 +613,13 @@ export function BreakSimulationView() {
                 placeholder="Nom de la configuration..."
                 value={newPresetName}
                 onChange={(e) => setNewPresetName(e.target.value)}
-                className="flex-1 rounded-lg px-3 py-1.5 text-sm"
-                style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+                className="ui-input flex-1"
               />
               <button
                 onClick={handleSavePreset}
                 disabled={!newPresetName.trim() || selectedChecklistIds.length === 0}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
-                style={{
-                  background: 'var(--accent)',
-                  color: '#fff',
-                  opacity: (!newPresetName.trim() || selectedChecklistIds.length === 0) ? 0.5 : 1
-                }}
+                className="ui-btn ui-btn-primary"
+                style={{ height: 34 }}
               >
                 <Plus size={14} />
                 Enregistrer
@@ -588,23 +631,23 @@ export function BreakSimulationView() {
 
       {/* Hits garantis par checklist */}
       {checklistsInfo.length > 0 && (
-        <div className="mb-6 rounded-xl" style={{ border: '1px solid var(--border-subtle)' }}>
+        <div className="mb-4 ui-card overflow-hidden">
           <button
             onClick={() => setPanelOpen(p => !p)}
-            className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left"
-            style={{ background: 'var(--bg-surface)' }}
+            className="w-full flex items-center justify-between px-4 py-3 text-left ui-row-hover"
           >
-            <span className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
-              Autos / Memo garanties par box
+            <span className="flex flex-col">
+              <span className="text-[13px] font-medium" style={{ color: 'var(--text-primary)' }}>Hits garantis par box</span>
+              <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Pondère le score de chaque checklist selon ses autos/memo garantis</span>
             </span>
-            <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{panelOpen ? '▲' : '▼'}</span>
+            <ChevronDown className={`w-4 h-4 transition-transform ${panelOpen ? 'rotate-180' : ''}`} style={{ color: 'var(--text-quaternary)' }} />
           </button>
-          {panelOpen && <div className="px-4 pb-4 pt-1" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', borderRadius: '0 0 0.75rem 0.75rem' }}>
+          {panelOpen && <div className="px-4 pb-4 pt-1" style={{ borderTop: '1px solid var(--border-subtle)' }}>
             <div className="space-y-2">
               {checklistsInfo.map((cl) => (
                 <div key={cl!.checklist_id} className="flex items-center gap-3">
                   <span className="flex-1 text-sm truncate" style={{ color: 'var(--text-secondary)' }}>
-                    {cl!.checklist_name}
+                    {prettyChecklist(cl!.checklist_name)}
                   </span>
                   <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{cl!.year}</span>
                   <div className="flex items-center gap-1.5">
@@ -615,12 +658,8 @@ export function BreakSimulationView() {
                       placeholder="0"
                       value={hitsGuaranteed[cl!.checklist_id] ?? ''}
                       onChange={(e) => setHitsGuaranteed(prev => ({ ...prev, [cl!.checklist_id]: e.target.value }))}
-                      className="w-16 text-center rounded-lg px-2 py-1.5 text-sm"
-                      style={{
-                        background: 'var(--bg-primary)',
-                        border: '1px solid var(--border-standard)',
-                        color: 'var(--text-primary)',
-                      }}
+                      inputMode="numeric"
+                      className="ui-input !w-16 text-center"
                     />
                     <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>hits/box</span>
                   </div>
@@ -636,42 +675,10 @@ export function BreakSimulationView() {
         </div>
       )}
 
-      {/* Controls */}
-      <div className="flex flex-wrap gap-3 mb-4">
-        <div>
-          <label className="text-xs font-medium block mb-1" style={{ color: 'var(--text-tertiary)' }}>Méthode</label>
-          <select
-            value={method}
-            onChange={(e) => { setMethod(e.target.value); setResult(null) }}
-            className="rounded-lg px-3 py-2 text-sm"
-            style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
-          >
-            {METHODS.map((m) => (
-              <option key={m.value} value={m.value}>{m.label}</option>
-            ))}
-          </select>
-        </div>
-
-        {!method.endsWith('letter_assignment') && (
-          <div className="flex items-end">
-            <button
-              onClick={handleSimulate}
-              disabled={loading || selectedChecklistIds.length === 0}
-              className="px-4 py-2 rounded-lg text-sm font-medium"
-              style={{
-                background: 'var(--accent)',
-                color: '#fff',
-                opacity: loading ? 0.6 : 1,
-              }}
-            >
-              {loading ? '⏳ Simulation...' : '🎲 Simuler'}
-            </button>
-          </div>
-        )}
       </div>
 
       {method === 'team_player' && (
-        <div className="mb-6 rounded-xl p-4" style={{ border: '1px solid var(--border-subtle)', background: 'var(--bg-surface)' }}>
+        <div className="mb-6 ui-card p-4">
           <div className="flex items-center justify-between gap-3 mb-3">
             <p className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>
               Joueurs à sortir de leur équipe
@@ -680,16 +687,71 @@ export function BreakSimulationView() {
               {extractedPlayers.length} sélectionné{extractedPlayers.length > 1 ? 's' : ''}
             </span>
           </div>
-          <input
-            type="search"
-            value={playerSearch}
-            onChange={(event) => setPlayerSearch(event.target.value)}
-            placeholder="Rechercher un joueur..."
-            className="w-full rounded-lg px-3 py-2 text-sm mb-3"
-            style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
-          />
+          {extractedPlayers.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {extractedPlayers.map((p) => (
+                <button key={p} onClick={() => setExtractedPlayers((cur) => cur.filter((x) => x !== p))} className="ui-chip is-active !h-7">
+                  {p} <X className="w-3 h-3" />
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="flex gap-2 mb-3">
+            <input
+              type="search"
+              value={playerSearch}
+              onChange={(event) => setPlayerSearch(event.target.value)}
+              placeholder="Rechercher un joueur ou une équipe…"
+              className="ui-input flex-1"
+            />
+            {isMobile && (
+              <select
+                value={playerSort}
+                onChange={(e) => togglePlayerSort(e.target.value as keyof BreakPlayerStats | 'player')}
+                className="ui-select !h-[34px]"
+                aria-label="Trier les joueurs"
+              >
+                <option value="total_hits">Hits</option>
+                <option value="cards">Cartes</option>
+                <option value="auto">Autos</option>
+                <option value="case_hits">Case</option>
+                <option value="player">Nom</option>
+              </select>
+            )}
+          </div>
           {playersLoading ? (
             <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Chargement des joueurs...</p>
+          ) : isMobile ? (
+            <ul className="max-h-[60dvh] overflow-y-auto -mx-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+              {filteredPlayers.map((player) => {
+                const checked = extractedPlayers.includes(player)
+                const stats = playerStats[player]
+                const toggle = () => setExtractedPlayers((cur) => checked ? cur.filter((x) => x !== player) : [...cur, player])
+                return (
+                  <li key={player} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <button onClick={toggle} aria-pressed={checked} className="w-full flex items-center gap-3 px-4 py-3 text-left active:bg-[var(--bg-hover)]" style={{ background: checked ? 'var(--accent-soft)' : undefined }}>
+                      <span
+                        className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
+                        style={{ background: checked ? 'var(--accent)' : 'transparent', border: `1.5px solid ${checked ? 'var(--accent)' : 'var(--border-strong)'}`, color: 'var(--accent-fg)' }}
+                      >
+                        {checked && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
+                      </span>
+                      <span className="flex-1 min-w-0">
+                        <span className="block text-[14px] font-medium truncate" style={{ color: 'var(--text-primary)' }}>{player}</span>
+                        <span className="block text-xs truncate" style={{ color: 'var(--text-tertiary)' }}>{stats?.teams.join(', ') || '—'}</span>
+                      </span>
+                      <span className="text-right text-xs num flex-shrink-0">
+                        <span className="block font-semibold" style={{ color: 'var(--accent)' }}>{stats?.total_hits ?? 0} hits</span>
+                        <span className="block" style={{ color: 'var(--text-quaternary)' }}>{stats?.cards ?? 0} cartes</span>
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+              {filteredPlayers.length === 0 && (
+                <li className="px-4 py-6 text-center text-sm" style={{ color: 'var(--text-quaternary)' }}>Aucun joueur trouvé.</li>
+              )}
+            </ul>
           ) : (
             <div className="max-h-[28rem] overflow-auto rounded-lg" style={{ border: '1px solid var(--border-subtle)' }}>
               <table className="w-full min-w-[860px] text-xs">
@@ -720,7 +782,7 @@ export function BreakSimulationView() {
                     const checked = extractedPlayers.includes(player)
                     const stats = playerStats[player]
                     return (
-                      <tr key={player} className="cursor-pointer" style={{ borderTop: '1px solid var(--border-subtle)', background: checked ? 'rgba(59, 130, 246, 0.12)' : 'var(--bg-primary)' }} onClick={() => setExtractedPlayers(current => checked ? current.filter(item => item !== player) : [...current, player])}>
+                      <tr key={player} className="cursor-pointer" style={{ borderTop: '1px solid var(--border-subtle)', background: checked ? 'var(--accent-soft)' : 'var(--bg-primary)' }} onClick={() => setExtractedPlayers(current => checked ? current.filter(item => item !== player) : [...current, player])}>
                         <td className="px-3 py-2 text-center">
                           <input
                             type="checkbox"
@@ -754,7 +816,7 @@ export function BreakSimulationView() {
 
       {/* Letter Assignment UI */}
       {method.endsWith('letter_assignment') && (
-        <div className="mb-6 rounded-xl p-4" style={{ border: '1px solid var(--border-subtle)', background: 'var(--bg-surface)' }}>
+        <div className="mb-6 ui-card p-4">
           <p className="text-xs font-medium uppercase tracking-wide mb-3" style={{ color: 'var(--text-tertiary)' }}>
             {method === 'surname_letter_assignment' ? 'Assignation par lettre du nom' : 'Assignation des joueurs par lettre'}
           </p>
@@ -770,7 +832,7 @@ export function BreakSimulationView() {
       )}
 
       {error && (
-        <div className="rounded-lg px-4 py-2 mb-4 text-sm" style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>
+        <div className="rounded-lg px-4 py-2 mb-4 text-sm" style={{ background: 'color-mix(in srgb, var(--danger) 10%, transparent)', color: 'var(--danger)' }}>
           {error}
         </div>
       )}
@@ -792,17 +854,17 @@ export function BreakSimulationView() {
             coverage < 0.8 ? (
               <div
                 className="flex flex-wrap items-center justify-between gap-3 rounded-lg px-4 py-3 mb-4 text-sm"
-                style={{ background: 'rgba(234,179,8,0.12)', border: '1px solid rgba(234,179,8,0.4)', color: 'var(--text-primary)' }}
+                style={{ background: 'color-mix(in srgb, var(--warning) 12%, transparent)', border: '1px solid color-mix(in srgb, var(--warning) 40%, transparent)', color: 'var(--text-primary)' }}
               >
                 <span>
-                  ⚠️ Couverture odds partielle : <strong style={{ color: '#eab308' }}>{(coverage * 100).toFixed(0)}%</strong> de
+                  ⚠️ Couverture odds partielle : <strong style={{ color: 'var(--cat-case)' }}>{(coverage * 100).toFixed(0)}%</strong> de
                   la masse de probabilité est rattachée à des cartes de la checklist. Complète le mapping pour
                   fiabiliser le classement pondéré.
                 </span>
                 <button
                   onClick={() => setActiveView('🔗 Mapping Odds')}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap"
-                  style={{ background: '#eab308', color: '#1c1917' }}
+                  style={{ background: 'var(--cat-case)', color: '#111' }}
                 >
                   Corriger le mapping
                 </button>
@@ -815,46 +877,39 @@ export function BreakSimulationView() {
           )}
 
           {/* Summary KPIs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <MetricCard label="Total Cartes" value={result.summary.total_cartes} icon="📊" />
-            <MetricCard label="Break Score Total" value={result.summary.total_break_score} icon="⚡" />
-            <MetricCard label="Hot Spots" value={result.summary.hot_spots} icon="🔥" />
-            <MetricCard label="Spots" value={result.spots.length} icon="🎯" />
+          <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <MetricCard label="Spots" value={result.spots.length} />
+            <MetricCard label="Cartes" value={result.summary.total_cartes} />
+            <MetricCard label="Score total" value={result.summary.total_break_score} />
+            <MetricCard label="Hot spots" value={result.summary.hot_spots} valueColor="var(--cat-logoman)" />
           </div>
 
           {/* Export + tri odds */}
-          <div className="flex flex-wrap items-center justify-end gap-2 mb-3">
+          <div className="flex flex-wrap items-center sm:justify-end gap-2 mb-3">
             {oddsCols.breakScoreOdds && (
               <button
                 onClick={() => setSortByOdds((v) => !v)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-                style={{
-                  background: sortByOdds ? 'var(--accent)' : 'var(--bg-surface)',
-                  border: `1px solid ${sortByOdds ? 'var(--accent)' : 'var(--border-standard)'}`,
-                  color: sortByOdds ? '#fff' : 'var(--text-secondary)',
-                }}
+                className={`ui-chip ${sortByOdds ? 'is-active' : ''}`}
                 title="Bascule le tri du tableau entre le Break Score historique et le Break Score pondéré par les odds"
               >
-                🎯 Trier par Score (odds)
+                <Target className="w-3.5 h-3.5" /> Trier par score odds
               </button>
             )}
             {result.card_details && result.card_details.length > 0 && (
               <>
                 <button
                   onClick={() => void exportBySpot(result.spots, result.card_details, method)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-                  style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+                  className="ui-btn ui-btn-secondary ui-btn-sm"
                 >
                   <Download size={13} />
-                  Export par spot (Excel)
+                  Excel par spot
                 </button>
                 <button
                   onClick={() => exportCardDetails(result.card_details, method)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-                  style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-tertiary)' }}
+                  className="ui-btn ui-btn-ghost ui-btn-sm"
                 >
                   <Download size={13} />
-                  Toutes les cartes
+                  CSV des cartes
                 </button>
               </>
             )}
@@ -863,87 +918,97 @@ export function BreakSimulationView() {
           {/* Full table */}
           <DataTable
             data={result.spots}
-            columns={buildSpotColumns(method, oddsCols) as any}
-            onRowClick={(row: any) => setSelectedSpot(row.Spot)}
+            columns={buildSpotColumns(method, oddsCols)}
+            onRowClick={(row) => setSelectedSpot(row.Spot)}
             pageSize={100}
             searchable
             searchPlaceholder="Rechercher un spot..."
             exportName={`break_${method}`}
             initialSorting={[{ id: sortKey, desc: true }]}
+            mobileColumns={['Break Score', 'Total Hits', 'Case Hit', 'Part du break']}
           />
 
           {/* Panel détail d'un spot */}
           {selectedSpot && (() => {
-            const spotCards = result.card_details.filter(c => c.Spot === selectedSpot)
+            // Les hits d'abord (Logoman → base), pour lire la valeur du spot d'un coup d'œil.
+            const spotCards = result.card_details
+              .filter(c => c.Spot === selectedSpot)
+              .sort((a, b) => categoryRank(a.Category) - categoryRank(b.Category) || (a.Player || '').localeCompare(b.Player || ''))
             const spotRow = result.spots.find(s => s.Spot === selectedSpot)
             return (
               <div
-                className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4"
-                style={{ background: 'rgba(0,0,0,0.6)' }}
+                className="fixed inset-0 z-[60] flex items-end md:items-center justify-center md:p-4"
+                style={{ background: 'var(--bg-overlay)' }}
                 onClick={() => setSelectedSpot(null)}
               >
                 <div
-                  className="w-full max-w-2xl rounded-2xl overflow-hidden flex flex-col"
-                  style={{ background: 'var(--bg-panel)', border: '1px solid var(--border-standard)', maxHeight: '80vh' }}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={`Spot ${selectedSpot}`}
+                  className="w-full max-w-2xl rounded-t-3xl md:rounded-2xl overflow-hidden flex flex-col"
+                  style={{ background: 'var(--bg-elevated)', boxShadow: 'var(--shadow-pop)', maxHeight: '88dvh', animation: 'popIn 0.18s ease-out', paddingBottom: 'env(safe-area-inset-bottom)' }}
                   onClick={e => e.stopPropagation()}
                 >
-                  {/* Header */}
-                  <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                    <div>
-                      <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>
-                        Spot : {selectedSpot}
+                  <div className="md:hidden flex justify-center pt-2"><span className="w-10 h-1 rounded-full" style={{ background: 'var(--border-strong)' }} /></div>
+                  <div className="flex items-start justify-between gap-3 px-5 pt-3 md:pt-4 pb-3" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <div className="min-w-0">
+                      <h3 className="text-[17px] font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
+                        {selectedSpot} {spotRow?.['Hot Spot'] ? <span className="text-sm">🔥</span> : null}
                       </h3>
                       {spotRow && (
-                        <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
-                          {spotRow.Cartes} carte{spotRow.Cartes > 1 ? 's' : ''} · {spotRow['Auto/Memo']} Auto/Memo · Score {spotRow['Break Score']} · {spotRow['Part du break']}%
-                          {spotRow['Hot Spot'] ? ' · 🔥 Hot' : ''}
-                        </p>
+                        <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-xs num" style={{ color: 'var(--text-tertiary)' }}>
+                          <span><b style={{ color: 'var(--text-primary)' }}>{spotRow.Cartes}</b> cartes</span>
+                          <span><b style={{ color: 'var(--text-primary)' }}>{spotRow['Auto/Memo']}</b> A+M</span>
+                          <span>Score <b style={{ color: 'var(--accent)' }}>{spotRow['Break Score']}</b></span>
+                          <span><b style={{ color: 'var(--text-primary)' }}>{spotRow['Part du break']}%</b> du break</span>
+                        </div>
                       )}
                     </div>
-                    <button
-                      onClick={() => setSelectedSpot(null)}
-                      className="text-xl leading-none px-2 py-1 rounded-lg"
-                      style={{ color: 'var(--text-tertiary)' }}
-                    >
-                      ✕
+                    <button onClick={() => setSelectedSpot(null)} className="ui-btn ui-btn-ghost ui-btn-icon -mr-2" aria-label="Fermer">
+                      <X className="w-4 h-4" />
                     </button>
                   </div>
 
-                  {/* Liste des cartes */}
-                  <div className="overflow-y-auto flex-1 px-2 py-2">
+                  <div className="overflow-y-auto flex-1">
                     {spotCards.length === 0 ? (
-                      <p className="text-sm px-3 py-4 text-center" style={{ color: 'var(--text-quaternary)' }}>
+                      <p className="text-sm px-5 py-8 text-center" style={{ color: 'var(--text-quaternary)' }}>
                         Aucune carte pour ce spot.
                       </p>
+                    ) : isMobile ? (
+                      <ul>
+                        {spotCards.map((c, i) => (
+                          <li key={i} className="px-5 py-3" style={{ borderBottom: '1px solid var(--border-subtle)', opacity: c.is_multi_ref ? 0.75 : 1 }}>
+                            <div className="flex items-center gap-2">
+                              <span className="flex-1 min-w-0 text-[14px] font-medium truncate" style={{ color: 'var(--text-primary)' }}>{c.Player || '—'}</span>
+                              {c.Category && <CategoryBadge category={c.Category} />}
+                            </div>
+                            <div className="text-xs mt-0.5 truncate" style={{ color: 'var(--text-tertiary)' }}>
+                              {c['Box Type'] || '—'}{c.Numbering ? ` · ${c.Numbering}` : ''}{c.is_multi_ref ? ' · multi' : ''}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
                     ) : (
                       <table className="w-full text-xs">
                         <thead>
-                          <tr style={{ background: 'var(--bg-surface)' }}>
+                          <tr>
                             {['Joueur', 'Équipe', 'Type', 'Numérotation', 'Catégorie', 'Checklist'].map(h => (
-                              <th key={h} className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{h}</th>
+                              <th key={h} className="px-3 first:pl-5 py-2 text-left font-medium" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{h}</th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
                           {spotCards.map((c, i) => (
-                            <tr
-                              key={i}
-                              style={{
-                                background: c.is_multi_ref
-                                  ? 'color-mix(in srgb, var(--accent) 6%, var(--bg-panel))'
-                                  : i % 2 === 0 ? 'var(--bg-panel)' : 'var(--bg-surface)',
-                                opacity: c.is_multi_ref ? 0.85 : 1,
-                              }}
-                            >
-                              <td className="px-3 py-2" style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)' }}>
+                            <tr key={i} className="ui-row-hover" style={{ opacity: c.is_multi_ref ? 0.75 : 1 }}>
+                              <td className="px-3 pl-5 py-2" style={{ color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)' }}>
                                 <span>{c.Player || '—'}</span>
-                                {c.is_multi_ref && <span className="ml-1.5 text-[9px] px-1 py-0.5 rounded" style={{ background: 'var(--accent)', color: '#fff', opacity: 0.8 }}>multi</span>}
+                                {c.is_multi_ref && <span className="ml-1.5 text-[9px] px-1 py-0.5 rounded" style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}>multi</span>}
                               </td>
                               <td className="px-3 py-2" style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Team || '—'}</td>
                               <td className="px-3 py-2" style={{ color: 'var(--text-secondary)', borderBottom: '1px solid var(--border-subtle)' }}>{c['Box Type'] || '—'}</td>
-                              <td className="px-3 py-2" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Numbering || '—'}</td>
-                              <td className="px-3 py-2" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Category || '—'}</td>
-                              <td className="px-3 py-2 max-w-[140px] truncate" style={{ color: 'var(--text-quaternary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Checklist || '—'}</td>
+                              <td className="px-3 py-2 num" style={{ color: 'var(--text-tertiary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Numbering || '—'}</td>
+                              <td className="px-3 py-2" style={{ borderBottom: '1px solid var(--border-subtle)' }}>{c.Category ? <CategoryBadge category={c.Category} /> : '—'}</td>
+                              <td className="px-3 py-2 max-w-[160px] truncate" style={{ color: 'var(--text-quaternary)', borderBottom: '1px solid var(--border-subtle)' }}>{c.Checklist || '—'}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -957,6 +1022,20 @@ export function BreakSimulationView() {
         </div>
         )
       })()}
+
+      {!isAssignment && (
+        <div className="sm:hidden sticky z-20 mt-4 -mx-1" style={{ bottom: 'calc(64px + env(safe-area-inset-bottom))' }}>
+          <button
+            onClick={handleSimulate}
+            disabled={loading || selectedChecklistIds.length === 0}
+            className="ui-btn ui-btn-primary ui-btn-lg w-full !h-12 !rounded-2xl"
+            style={{ boxShadow: 'var(--shadow-pop)' }}
+          >
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
+            {loading ? 'Simulation…' : result ? `Relancer · ${currentMethod.label}` : `Simuler · ${currentMethod.label}`}
+          </button>
+        </div>
+      )}
     </div>
   )
 }

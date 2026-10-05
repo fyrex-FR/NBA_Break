@@ -1,3 +1,4 @@
+import { Search } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 interface SearchSelectProps {
@@ -26,11 +27,6 @@ export function SearchSelect({ options, value, onChange, placeholder = 'Recherch
   const filtered = query
     ? options.filter((o) => o.toLowerCase().includes(query.toLowerCase())).slice(0, 50)
     : options.slice(0, 50)
-
-  // Reset highlight when filtered list changes
-  useEffect(() => {
-    setHighlightIndex(-1)
-  }, [query])
 
   // Scroll highlighted item into view
   useEffect(() => {
@@ -86,19 +82,15 @@ export function SearchSelect({ options, value, onChange, placeholder = 'Recherch
     <div ref={ref} className="relative w-full max-w-md mb-6">
       <div className="flex gap-2">
         <div className="relative flex-1">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: 'var(--text-quaternary)' }} />
           <input
             type="text"
             value={open ? query : value || query}
-            onChange={(e) => { setQuery(e.target.value); setOpen(true) }}
+            onChange={(e) => { setQuery(e.target.value); setOpen(true); setHighlightIndex(-1) }}
             onFocus={() => setOpen(true)}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
-            className="w-full rounded-lg px-3 py-2 text-sm pr-8"
-            style={{
-              background: 'var(--bg-surface)',
-              border: `1px solid ${open ? 'var(--accent)' : 'var(--border-standard)'}`,
-              color: 'var(--text-primary)',
-            }}
+            className="ui-input !h-10 !text-sm pl-9 pr-8"
           />
           {value && (
             <button
@@ -116,15 +108,15 @@ export function SearchSelect({ options, value, onChange, placeholder = 'Recherch
       {open && filtered.length > 0 && (
         <div
           ref={listRef}
-          className="absolute z-50 w-full mt-1 rounded-lg overflow-y-auto max-h-64 shadow-lg"
-          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)' }}
+          className="absolute z-50 w-full mt-1.5 rounded-xl overflow-y-auto max-h-72 p-1"
+          style={{ background: 'var(--bg-elevated)', boxShadow: 'var(--shadow-pop)' }}
         >
           {filtered.map((opt, i) => (
             <button
               key={opt}
               data-option
               onClick={() => handleSelect(opt)}
-              className="w-full text-left px-3 py-2 text-sm transition-colors"
+              className="w-full text-left px-2.5 h-9 rounded-lg text-[13px] transition-colors"
               style={{
                 color: opt === value ? 'var(--accent)' : 'var(--text-secondary)',
                 background: i === highlightIndex ? 'var(--bg-hover)' : 'transparent',
@@ -144,8 +136,8 @@ export function SearchSelect({ options, value, onChange, placeholder = 'Recherch
 
       {open && query && filtered.length === 0 && (
         <div
-          className="absolute z-50 w-full mt-1 rounded-lg px-3 py-3 text-sm"
-          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-quaternary)' }}
+          className="absolute z-50 w-full mt-1.5 rounded-xl px-3 py-3 text-sm"
+          style={{ background: 'var(--bg-elevated)', boxShadow: 'var(--shadow-pop)', color: 'var(--text-tertiary)' }}
         >
           Aucun résultat pour « {query} »
         </div>

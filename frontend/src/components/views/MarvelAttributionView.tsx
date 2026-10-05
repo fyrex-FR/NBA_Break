@@ -1,3 +1,4 @@
+import { errorMessage } from '../../utils/checklists'
 import { useEffect, useMemo, useState } from 'react'
 import { fetchMarvelAttributions, saveMarvelAttributions } from '../../api/client'
 import { useAppStore } from '../../stores/appStore'
@@ -20,7 +21,7 @@ export function MarvelAttributionView() {
     setMessage(null)
     fetchMarvelAttributions({ checklist_ids: selectedChecklistIds, master_key: masterKey, hits_only: hitsOnly })
       .then((data) => setCards(data.cards))
-      .catch((err) => setMessage(`Erreur: ${err.message}`))
+      .catch((err) => setMessage(`Erreur: ${errorMessage(err)}`))
       .finally(() => setLoading(false))
   }, [selectedSport, selectedChecklistIds, masterKey, hitsOnly])
 
@@ -78,8 +79,8 @@ export function MarvelAttributionView() {
       setMessage(`Sauvegarde OK: ${result.overrides_count} attribution(s) forcee(s). Relance l'analyse pour rafraichir les tableaux.`)
       setAnalysisData(null)
       setCards((prev) => prev.map((card) => ({ ...card, is_overridden: changedCards.some((c) => c.key === card.key) })))
-    } catch (err: any) {
-      setMessage(`Erreur: ${err.message}`)
+    } catch (err: unknown) {
+      setMessage(`Erreur: ${errorMessage(err)}`)
     } finally {
       setSaving(false)
     }
@@ -105,7 +106,6 @@ export function MarvelAttributionView() {
     <div>
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
         <div>
-          <h2 className="text-xl font-medium mb-1">Attribution Marvel</h2>
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
             Force le personnage/sujet et l'univers utilises pour le split de break.
           </p>
@@ -114,7 +114,7 @@ export function MarvelAttributionView() {
           onClick={handleSave}
           disabled={saving || changedCards.length === 0}
           className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium"
-          style={{ background: 'var(--accent)', color: '#fff', opacity: saving || changedCards.length === 0 ? 0.55 : 1 }}
+          style={{ background: 'var(--accent)', color: 'var(--accent-fg)', opacity: saving || changedCards.length === 0 ? 0.55 : 1 }}
         >
           {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
           Enregistrer
@@ -152,7 +152,7 @@ export function MarvelAttributionView() {
       </div>
 
       {message && (
-        <div className="mb-4 text-sm rounded-lg px-3 py-2" style={{ color: message.startsWith('Erreur') ? '#ef4444' : 'var(--accent)', background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+        <div className="mb-4 text-sm rounded-lg px-3 py-2" style={{ color: message.startsWith('Erreur') ? 'var(--danger)' : 'var(--accent)', background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
           {message}
         </div>
       )}

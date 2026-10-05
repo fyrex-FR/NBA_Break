@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { MessageCircle, X, Send, Loader2, ExternalLink } from 'lucide-react'
+import { MessageCircle, X, Send, Loader2, ExternalLink, Sparkles } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 
 interface Message {
@@ -9,6 +9,11 @@ interface Message {
 }
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
+const SUGGESTIONS = [
+  'Quels joueurs ont le plus d’autos ?',
+  'Quelle équipe vaut le coup en break ?',
+]
+
 const VOIR_JOUEUR_RE = /\[VOIR_JOUEUR:([^\]]+)\]/
 
 function parseMessage(content: string): { text: string; playerLink?: string } {
@@ -19,7 +24,8 @@ function parseMessage(content: string): { text: string; playerLink?: string } {
 
 export default function ChatWidget() {
   const { selectedSport, selectedChecklistIds, masterKey, setActiveView, setTargetPlayer } = useAppStore()
-  const [open, setOpen] = useState(false)
+  const open = useAppStore((s) => s.chatOpen)
+  const setOpen = useAppStore((s) => s.setChatOpen)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -89,27 +95,45 @@ export default function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-[76px] inset-x-2 md:inset-x-auto md:bottom-5 md:right-5 z-40 flex flex-col items-end gap-2 pointer-events-none [&>*]:pointer-events-auto">
       {open && (
-        <div className="w-80 h-[480px] bg-gray-900 border border-gray-700 rounded-xl shadow-2xl flex flex-col overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 bg-gray-800 border-b border-gray-700">
-            <span className="text-sm font-semibold text-white">Assistant Cartes</span>
-            <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-white">
+        <div
+          className="w-full md:w-[360px] h-[min(560px,calc(100dvh-140px))] md:h-[min(520px,calc(100dvh-9rem))] rounded-2xl flex flex-col overflow-hidden"
+          style={{ background: 'var(--bg-elevated)', boxShadow: 'var(--shadow-pop)', animation: 'popIn 0.16s ease-out' }}
+        >
+          <div className="flex items-center gap-2.5 px-4 h-12" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+            <span className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}>
+              <Sparkles className="w-3.5 h-3.5" />
+            </span>
+            <span className="text-sm font-semibold flex-1" style={{ color: 'var(--text-primary)' }}>Assistant</span>
+            <button onClick={() => setOpen(false)} className="ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon" aria-label="Fermer l'assistant">
               <X className="w-4 h-4" />
             </button>
           </div>
 
           <div className="flex-1 overflow-y-auto p-3 space-y-3 text-sm">
             {messages.length === 0 && (
-              <p className="text-gray-500 text-center mt-8">
-                Pose-moi une question sur tes checklists, les breaks, ou les joueurs.
-              </p>
+              <div className="mt-6 px-2 text-center">
+                <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
+                  Pose une question sur ta sélection, un joueur ou un break.
+                </p>
+                <div className="mt-4 flex flex-col gap-1.5">
+                  {SUGGESTIONS.map((q) => (
+                    <button key={q} onClick={() => setInput(q)} className="ui-chip justify-center !h-auto py-1.5 !whitespace-normal">
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              </div>
             )}
             {messages.map((msg, i) => (
               <div key={i} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                <div className={`max-w-[85%] rounded-lg px-3 py-2 whitespace-pre-wrap ${
-                  msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-100'
-                }`}>
+                <div
+                  className="max-w-[85%] rounded-2xl px-3 py-2 whitespace-pre-wrap text-[13px] leading-relaxed"
+                  style={msg.role === 'user'
+                    ? { background: 'var(--accent)', color: 'var(--accent-fg)', borderBottomRightRadius: 6 }
+                    : { background: 'var(--bg-surface)', color: 'var(--text-primary)', borderBottomLeftRadius: 6 }}
+                >
                   {msg.content}
                   {msg.role === 'assistant' && loading && i === messages.length - 1 && msg.content === '' && (
                     <Loader2 className="w-3 h-3 animate-spin inline" />
@@ -118,10 +142,11 @@ export default function ChatWidget() {
                 {msg.playerLink && !loading && (
                   <button
                     onClick={() => navigateToPlayer(msg.playerLink!)}
-                    className="mt-1 flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300"
+                    className="mt-1 flex items-center gap-1 text-xs hover:underline"
+                    style={{ color: 'var(--accent)' }}
                   >
                     <ExternalLink className="w-3 h-3" />
-                    Voir {msg.playerLink}
+                    Voir la fiche de {msg.playerLink}
                   </button>
                 )}
               </div>
@@ -129,20 +154,21 @@ export default function ChatWidget() {
             <div ref={bottomRef} />
           </div>
 
-          <div className="p-3 border-t border-gray-700 flex gap-2">
+          <div className="p-2.5 flex gap-2 items-end" style={{ borderTop: '1px solid var(--border-subtle)' }}>
             <textarea
               ref={inputRef}
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               rows={1}
-              placeholder="Message..."
-              className="flex-1 resize-none bg-gray-800 text-white text-sm rounded-lg px-3 py-2 outline-none border border-gray-600 focus:border-blue-500 placeholder-gray-500"
+              placeholder="Écris ta question…"
+              className="ui-input flex-1 resize-none !h-auto min-h-[36px] py-2"
             />
             <button
               onClick={send}
               disabled={!input.trim() || loading}
-              className="p-2 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed text-white"
+              className="ui-btn ui-btn-primary ui-btn-icon !h-9 !w-9"
+              aria-label="Envoyer"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
             </button>
@@ -151,10 +177,13 @@ export default function ChatWidget() {
       )}
 
       <button
-        onClick={() => setOpen(o => !o)}
-        className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-500 shadow-lg flex items-center justify-center text-white"
+        onClick={() => setOpen(!open)}
+        className="hidden md:flex w-11 h-11 rounded-full items-center justify-center transition-transform hover:scale-105"
+        style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', boxShadow: 'var(--shadow-pop)' }}
+        aria-label={open ? "Fermer l'assistant" : "Ouvrir l'assistant"}
+        title="Assistant"
       >
-        {open ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
+        {open ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" style={{ color: 'var(--accent)' }} />}
       </button>
     </div>
   )

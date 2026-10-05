@@ -4,13 +4,16 @@ import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
 import { fetchTeamStats } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
+import { prettyChecklist } from '../../utils/checklists'
 import { MetricCard } from '../shared/MetricCard'
+import { QuickPick } from '../shared/QuickPick'
 import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
 import { SearchSelect } from '../shared/SearchSelect'
 import { TeamStatsPanel } from '../shared/TeamStatsPanel'
 import { PlayerCell } from '../shared/PlayerCell'
-import { OddsBadgeList, discreetBadges } from '../shared/OddsBadge'
+import { OddsBadgeList } from '../shared/OddsBadge'
+import { discreetBadges } from '../shared/oddsBadgeUtils'
 import { useOddsBadges } from '../../hooks/useOddsBadges'
 import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 import type { CardRecord } from '../../types'
@@ -44,7 +47,7 @@ const playerSummaryColumns = [
           {multiCount > 0 && (
             <span
               className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
-              style={{ background: 'rgba(234,179,8,0.14)', color: '#eab308' }}
+              style={{ background: 'color-mix(in srgb, var(--cat-case) 14%, transparent)', color: 'var(--cat-case)' }}
               title={`${multiCount} carte(s) multi-joueurs avec plusieurs équipes : ce joueur est lié à cette équipe via une carte partagée.`}
             >
               multi-team
@@ -65,8 +68,10 @@ const playerSummaryColumns = [
   playerSummaryColumnHelper.accessor('Score', { header: 'Score', cell: (info) => Math.round(info.getValue() ?? 0) }),
 ]
 
-export function TeamDetailView() {
-  const { analysisData, targetTeam, setTargetTeam, setTargetPlayer, setActiveView, selectedSport } = useAppStore()
+function TeamDetailViewContent() {
+  const { analysisData: storeAnalysisData, targetTeam, setTargetTeam, setTargetPlayer, setActiveView, selectedSport } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const { badgesFor } = useOddsBadges()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
 
@@ -90,15 +95,13 @@ export function TeamDetailView() {
       header: 'Checklist',
       cell: (info) => {
         const fullName = info.getValue() || info.row.original.File || ''
-        const name = fullName.replace('.parquet', '')
+        const name = prettyChecklist(fullName)
         return <span title={name} className="inline-block max-w-[260px] whitespace-normal break-words align-top">{name}</span>
       },
     }),
   ], [badgesFor])
   const selectedTeam = targetTeam || ''
   const isEntertainment = selectedSport === 'disney' || selectedSport === 'marvel'
-  const teamLabel = isEntertainment ? 'univers / franchise' : 'equipe'
-  const teamTitle = isEntertainment ? '🛡️ Analyse Univers / Franchise' : '🛡️ Analyse Équipe'
   const teamPlaceholder = isEntertainment ? 'Tapez un univers ou une franchise...' : "Tapez un nom d'équipe..."
 
   const { data: teamInfo } = useQuery({
@@ -109,7 +112,6 @@ export function TeamDetailView() {
     retry: 1,
   })
 
-  if (!analysisData) return null
 
   const allTeams = useMemo(() => {
     const set = new Set<string>()
@@ -117,6 +119,14 @@ export function TeamDetailView() {
       c.Team.split('/').map((t) => t.trim()).filter(Boolean).forEach((t) => set.add(t))
     }
     return Array.from(set).sort()
+  }, [analysisData.cards])
+
+  const topTeams = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const c of analysisData.cards) {
+      for (const t of c.Team.split('/').map((x) => x.trim()).filter(Boolean)) map.set(t, (map.get(t) || 0) + c.Hits)
+    }
+    return Array.from(map.entries()).sort((a, b) => b[1] - a[1]).slice(0, 20)
   }, [analysisData.cards])
 
   const teamCards = useMemo(() => {
@@ -211,21 +221,21 @@ export function TeamDetailView() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
               <span className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{teamInfo.full_name}</span>
-              <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(148,163,184,0.15)', color: 'var(--text-tertiary)' }}>{teamInfo.abbreviation}</span>
+              <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'var(--bg-hover)', color: 'var(--text-tertiary)' }}>{teamInfo.abbreviation}</span>
             </div>
             {teamInfo.standing && (
               <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs" style={{ color: 'var(--text-tertiary)' }}>
                 <span>{teamInfo.standing.conference} · #{teamInfo.standing.rank}</span>
                 <span style={{ color: 'var(--text-secondary)' }}>{teamInfo.standing.wins}W – {teamInfo.standing.losses}L</span>
                 <span>({Math.round(teamInfo.standing.win_pct * 100)}%)</span>
-                <span>Série: <span style={{ color: teamInfo.standing.streak.startsWith('W') ? '#22c55e' : '#ef4444' }}>{teamInfo.standing.streak}</span></span>
+                <span>Série: <span style={{ color: teamInfo.standing.streak.startsWith('W') ? 'var(--success)' : 'var(--danger)' }}>{teamInfo.standing.streak}</span></span>
                 <span>10 derniers: {teamInfo.standing.last_10}</span>
               </div>
             )}
           </div>
         </div>
       ) : (
-        <h2 className="text-xl font-medium mb-4">{teamTitle}</h2>
+        null
       )}
 
       <SearchSelect
@@ -236,22 +246,18 @@ export function TeamDetailView() {
       />
 
       {!selectedTeam ? (
-        <div className="text-center py-16">
-          <div className="text-4xl mb-3">🛡️</div>
-          <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Sélectionnez un {teamLabel}</p>
-          <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Ou cliquez depuis la Vue Globale</p>
-        </div>
+        <QuickPick title={isEntertainment ? 'Univers les plus présents' : 'Équipes les plus présentes'} items={topTeams} onPick={(name) => setTargetTeam(name)} />
       ) : (
         <>
-          <div className="grid grid-cols-3 md:grid-cols-7 gap-3 mb-6">
-            <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
+          <div className="grid grid-cols-4 xl:grid-cols-8 gap-2 sm:gap-3 my-5 sm:my-6">
+            <MetricCard label="Cartes" value={totalHits} icon="📊" />
             <MetricCard label="Joueurs" value={uniquePlayers} icon="🎴" />
-            <MetricCard label="Logoman" value={logomanCount} icon="🔥" valueColor="#ef4444" />
-            <MetricCard label="Case Hit" value={caseHitCount} icon="✨" valueColor="#eab308" />
-            <MetricCard label="Auto" value={autoCount} icon="✍️" valueColor="#0ea5e9" />
-            <MetricCard label="Memo" value={memCount} icon="🧵" valueColor="#14b8a6" />
-            <MetricCard label="Auto/Memo" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
-            <MetricCard label="Base/Autre" value={baseOtherCount} icon="📄" />
+            <MetricCard label="Logoman" value={logomanCount} icon="🔥" valueColor="var(--cat-logoman)" />
+            <MetricCard label="Case Hit" value={caseHitCount} icon="✨" valueColor="var(--cat-case)" />
+            <MetricCard label="Auto" value={autoCount} icon="✍️" valueColor="var(--cat-auto)" />
+            <MetricCard label="Memo" value={memCount} icon="🧵" valueColor="var(--cat-mem)" />
+            <MetricCard label="A+M" value={autoMemCount} icon="💎" valueColor="var(--cat-automem)" />
+            <MetricCard label="Base" value={baseOtherCount} icon="📄" />
           </div>
 
           <div className="mb-6">
@@ -273,22 +279,29 @@ export function TeamDetailView() {
             <div className="mb-3">
               <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Résumé joueurs</h3>
               <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-                Vue compilée des joueurs de ce {teamLabel} : volume, auto/memo, hits premium et score. Clique un joueur pour ouvrir son détail.
+                Vue compilée des joueurs {isEntertainment ? "de cet univers" : "de cette équipe"} : volume, auto/memo, hits premium et score. Clique un joueur pour ouvrir son détail.
               </p>
             </div>
             <DataTable
               data={playerSummaryRows}
-              columns={playerSummaryColumns as any}
+              columns={playerSummaryColumns}
               pageSize={25}
               exportName={`${selectedTeam.replace(/\s+/g, '_')}_joueurs`}
               initialSorting={[{ id: 'Score', desc: true }]}
               onRowClick={handlePlayerSummaryClick}
+              mobileColumns={['Hits', 'Auto', 'CaseHit']}
             />
           </div>
 
-          <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} />
+          <DataTable data={filteredCards} columns={cardColumns} pageSize={50} exportName={selectedTeam.replace(/\s+/g, '_')} mobileColumns={['Box Type', 'Category']} />
         </>
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function TeamDetailView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <TeamDetailViewContent /> : null
 }

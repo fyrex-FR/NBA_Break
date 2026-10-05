@@ -4,6 +4,8 @@ import { useAppStore } from '../../stores/appStore'
 import { useRookies } from '../../hooks/useRookies'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { EmptyState } from '../ui/primitives'
+import { Sparkles } from 'lucide-react'
 import { RCBadge } from '../shared/RCBadge'
 
 interface RookieRow {
@@ -17,12 +19,13 @@ interface RookieRow {
 
 const columnHelper = createColumnHelper<RookieRow>()
 
-export function RookiesView() {
-  const { analysisData, setActiveView, setTargetPlayer } = useAppStore()
+function RookiesViewContent() {
+  const { analysisData: storeAnalysisData, setActiveView, setTargetPlayer } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const { rookies } = useRookies()
   const [selectedSeason, setSelectedSeason] = useState<string>('all')
 
-  if (!analysisData) return null
 
   // Saisons disponibles dans le parquet rookies
   const availableSeasons = useMemo(() => {
@@ -96,69 +99,43 @@ export function RookiesView() {
 
   return (
     <div>
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-2">
-        <RCBadge size="lg" />
-        <div>
-          <h2 className="text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>Rookie Cards</h2>
-          <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-            Joueurs en année rookie présents dans vos checklists
-          </p>
-        </div>
-      </div>
-
       {/* KPIs */}
-      <div className="grid grid-cols-3 gap-3 mb-6 mt-4">
-        <MetricCard label="Rookies présents" value={rookieRows.length} icon="🧨" valueColor="#FFD700" />
-        <MetricCard label="Total cartes RC" value={totalHits} icon="🎴" />
-        <MetricCard label="Saisons filtrées" value={selectedSeason === 'all' ? 'Toutes' : selectedSeason} icon="📅" />
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <MetricCard label="Rookies" value={rookieRows.length} valueColor="var(--rc-year-color)" />
+        <MetricCard label="Cartes RC" value={totalHits} />
+        <MetricCard label="Saison" value={selectedSeason === 'all' ? 'Toutes' : selectedSeason} />
       </div>
 
-      {/* Filtre saison */}
-      <div className="flex items-center gap-2 mb-4">
-        <label className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>Saison rookie :</label>
-        <div className="flex gap-1.5 flex-wrap">
+      {/* Filtre saison : 3 dernières saisons en accès direct, le reste dans la liste */}
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar">
+        {(['all', ...availableSeasons.slice(0, 3)] as string[]).map((season) => (
           <button
-            onClick={() => setSelectedSeason('all')}
-            className="text-xs px-2.5 py-1 rounded-full transition-colors"
-            style={{
-              background: selectedSeason === 'all' ? '#FFD700' : 'var(--bg-surface)',
-              color: selectedSeason === 'all' ? '#000' : 'var(--text-secondary)',
-              border: '1px solid var(--border-subtle)',
-              fontWeight: selectedSeason === 'all' ? 700 : 400,
-            }}
+            key={season}
+            onClick={() => setSelectedSeason(season)}
+            className={`ui-chip flex-shrink-0 ${selectedSeason === season ? 'is-active' : ''}`}
           >
-            Toutes
+            {season === 'all' ? 'Toutes les saisons' : season}
           </button>
-          {availableSeasons.map((s) => (
-            <button
-              key={s}
-              onClick={() => setSelectedSeason(s)}
-              className="text-xs px-2.5 py-1 rounded-full transition-colors"
-              style={{
-                background: selectedSeason === s ? '#FFD700' : 'var(--bg-surface)',
-                color: selectedSeason === s ? '#000' : 'var(--text-secondary)',
-                border: '1px solid var(--border-subtle)',
-                fontWeight: selectedSeason === s ? 700 : 400,
-              }}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+        ))}
+        {availableSeasons.length > 3 && (
+          <select
+            value={availableSeasons.slice(0, 3).includes(selectedSeason) || selectedSeason === 'all' ? '' : selectedSeason}
+            onChange={(e) => e.target.value && setSelectedSeason(e.target.value)}
+            className="ui-select flex-shrink-0"
+            aria-label="Autre saison rookie"
+          >
+            <option value="">Plus ancienne…</option>
+            {availableSeasons.slice(3).map((season) => <option key={season} value={season}>{season}</option>)}
+          </select>
+        )}
       </div>
 
       {rookieRows.length === 0 ? (
-        <div className="text-center py-16">
-          <div className="text-4xl mb-3">🧨</div>
-          <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-            Aucun rookie trouvé dans vos checklists pour cette sélection.
-          </p>
-        </div>
+        <EmptyState icon={Sparkles} title="Aucun rookie pour ce filtre">Change de saison ou ajoute des checklists plus récentes.</EmptyState>
       ) : (
         <DataTable
           data={rookieRows}
-          columns={columns as any}
+          columns={columns}
           onRowClick={(row) => {
             setTargetPlayer(row.player_name)
             setActiveView('🔍 Analyse Joueur')
@@ -170,4 +147,10 @@ export function RookiesView() {
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function RookiesView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <RookiesViewContent /> : null
 }

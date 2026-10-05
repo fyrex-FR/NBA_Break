@@ -1,30 +1,23 @@
-import { useAppStore } from '../../stores/appStore'
-
 interface MetricCardProps {
   label: string
   value: string | number
+  /** Emoji historique — accepté pour compatibilité, plus affiché. */
   icon?: string
   valueColor?: string
+  hint?: string
 }
 
-export function MetricCard({ label, value, icon, valueColor }: MetricCardProps) {
-  const theme = useAppStore((s) => s.theme)
-  const useTint = valueColor && theme === 'dark'
+export function MetricCard({ label, value, valueColor, hint }: MetricCardProps) {
   return (
-    <div
-      className="rounded-xl p-4 flex flex-col gap-1"
-      style={{
-        background: useTint ? `${valueColor}0d` : 'var(--bg-surface)',
-        border: `1px solid ${useTint ? `${valueColor}25` : 'var(--border-subtle)'}`,
-      }}
-    >
-      <div className="flex items-center justify-between">
-        {icon && <span className="text-xl">{icon}</span>}
-        <span className="text-xs font-medium ml-auto" style={{ color: 'var(--text-tertiary)' }}>{label}</span>
+    <div className="ui-card px-2.5 py-2 sm:px-4 sm:py-3.5 flex flex-col gap-0.5 sm:gap-1 min-w-0">
+      <div className="flex items-center gap-2 min-w-0">
+        {valueColor && <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: valueColor }} />}
+        <span className="text-[11px] sm:text-xs font-medium truncate" style={{ color: 'var(--text-tertiary)' }}>{label}</span>
       </div>
-      <div className="text-2xl font-bold mt-1" style={{ color: valueColor || 'var(--text-primary)' }}>
+      <div className="text-[17px] leading-6 sm:text-[22px] sm:leading-7 font-semibold font-mono-num truncate" style={{ color: valueColor && typeof value === 'number' && value > 0 ? `color-mix(in srgb, ${valueColor} 70%, var(--text-primary))` : 'var(--text-primary)' }}>
         {typeof value === 'number' ? value.toLocaleString('fr-FR') : value}
       </div>
+      {hint && <div className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{hint}</div>}
     </div>
   )
 }

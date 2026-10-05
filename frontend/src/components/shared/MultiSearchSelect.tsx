@@ -29,14 +29,10 @@ export function MultiSearchSelect({ options, value, onChange, placeholder = 'Sé
             .slice(0, 50)
         : options.filter((o) => !value.includes(o)).slice(0, 50)
 
-    // Reset highlight when filtered list changes
-    useEffect(() => {
-        setHighlightIndex(-1)
-    }, [query, value])
-
     function handleSelect(v: string) {
         onChange([...value, v])
         setQuery('')
+        setHighlightIndex(-1)
         setOpen(false)
         setHighlightIndex(-1)
     }
@@ -104,7 +100,7 @@ export function MultiSearchSelect({ options, value, onChange, placeholder = 'Sé
                 <input
                     type="text"
                     value={query}
-                    onChange={(e) => { setQuery(e.target.value); setOpen(true) }}
+                    onChange={(e) => { setQuery(e.target.value); setOpen(true); setHighlightIndex(-1) }}
                     onFocus={() => setOpen(true)}
                     onKeyDown={handleKeyDown}
                     placeholder={value.length === 0 ? placeholder : ''}

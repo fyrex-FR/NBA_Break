@@ -7,12 +7,12 @@
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, CATEGORY_AUTO, CATEGORY_MEM, CATEGORY_AUTO_MEM, CATEGORY_BASE_OTHER } from '../../types'
 
 const COLORS: Record<string, string> = {
-  [CATEGORY_LOGOMAN]: '#ef4444',
-  [CATEGORY_CASE_HIT]: '#eab308',
-  [CATEGORY_AUTO]: '#0ea5e9',
-  [CATEGORY_MEM]: '#14b8a6',
-  [CATEGORY_AUTO_MEM]: '#3b82f6',
-  [CATEGORY_BASE_OTHER]: '#475569',
+  [CATEGORY_LOGOMAN]: 'var(--cat-logoman)',
+  [CATEGORY_CASE_HIT]: 'var(--cat-case)',
+  [CATEGORY_AUTO]: 'var(--cat-auto)',
+  [CATEGORY_MEM]: 'var(--cat-mem)',
+  [CATEGORY_AUTO_MEM]: 'var(--cat-automem)',
+  [CATEGORY_BASE_OTHER]: 'var(--cat-base)',
 }
 
 const LABELS: Record<string, string> = {
@@ -50,7 +50,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
   }
 
   return (
-    <div className="rounded-lg p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+    <div className="ui-card p-4">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         {title && (
@@ -59,8 +59,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
         {isFilterable && hasFilter && (
           <button
             onClick={() => onFilter?.('')}
-            className="text-xs px-2 py-0.5 rounded-full"
-            style={{ color: 'var(--accent)', border: '1px solid var(--accent)' }}
+            className="ui-chip !h-6 is-active"
           >
             Toutes ✕
           </button>
@@ -71,7 +70,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
       </div>
 
       {/* Stacked bar */}
-      <div className="flex rounded-full overflow-hidden h-3 mb-3" style={{ background: 'var(--bg-hover)' }}>
+      <div className="flex rounded-full overflow-hidden h-2.5 mb-3 gap-[2px]">
         {sorted.map((d) => {
           const isActive = activeFilter === d.name
           const isDimmed = hasFilter && !isActive
@@ -81,7 +80,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
               onClick={() => handleClick(d.name)}
               style={{
                 width: `${(d.value / total) * 100}%`,
-                background: COLORS[d.name] || '#475569',
+                background: COLORS[d.name] || 'var(--cat-base)',
                 minWidth: d.value > 0 ? '4px' : 0,
                 opacity: isDimmed ? 0.25 : 1,
                 cursor: isFilterable ? 'pointer' : 'default',
@@ -121,7 +120,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
               <span style={{ color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)', fontWeight: isActive ? 600 : 400 }}>
                 {LABELS[d.name] || d.name}
               </span>
-              <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{d.value}</span>
+              <span className="font-medium num" style={{ color: 'var(--text-primary)' }}>{d.value}</span>
               <span style={{ color: 'var(--text-quaternary)' }}>({pct}%)</span>
             </div>
           )
