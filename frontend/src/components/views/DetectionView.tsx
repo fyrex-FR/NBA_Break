@@ -1,3 +1,4 @@
+import { errorMessage } from '../../utils/checklists'
 import { useState, useEffect, useMemo } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchDetection, saveOverrides, type CardTypeCandidate } from '../../api/client'
@@ -171,8 +172,8 @@ export function DetectionView() {
       )
       setMsg(`Sauvegardé : ${result.scoped_auto_count} Auto, ${result.scoped_mem_count} Memo, ${result.scoped_auto_mem_count} Auto/Memo, ${result.scoped_case_hit_count} Case Hit`)
       setTimeout(() => setMsg(null), 3000)
-    } catch (err: any) {
-      setMsg(`Erreur : ${err.message}`)
+    } catch (err: unknown) {
+      setMsg(`Erreur : ${errorMessage(err)}`)
     } finally {
       setSaving(false)
     }
@@ -197,7 +198,6 @@ export function DetectionView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">🧪 Détection Hits + Case Hit</h2>
       <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
         Coche Auto, Memo, Auto/Memo et/ou Case Hit pour chaque Card Type, puis enregistre.
       </p>
@@ -238,7 +238,7 @@ export function DetectionView() {
             <span>💎 {autoCount} Auto/Memo</span>
             <span>✨ {caseCount} Case Hit</span>
             {overlapCount > 0 && (
-              <span style={{ color: '#eab308' }}>⚠ {overlapCount} en doublon (priorité Case Hit)</span>
+              <span style={{ color: 'var(--cat-case)' }}>⚠ {overlapCount} en doublon (priorité Case Hit)</span>
             )}
             <span>{filtered.length} card types affichés</span>
           </div>
@@ -282,7 +282,7 @@ export function DetectionView() {
                             type="checkbox"
                             checked={autoOnlySet.has(scopedKey(item))}
                             onChange={() => toggleAutoOnly(item)}
-                            style={{ accentColor: '#0ea5e9' }}
+                            style={{ accentColor: 'var(--cat-auto)' }}
                           />
                         </div>
                         <div className="w-16 text-center">
@@ -290,7 +290,7 @@ export function DetectionView() {
                             type="checkbox"
                             checked={memSet.has(scopedKey(item))}
                             onChange={() => toggleMem(item)}
-                            style={{ accentColor: '#14b8a6' }}
+                            style={{ accentColor: 'var(--cat-mem)' }}
                           />
                         </div>
                         <div className="w-20 text-center">
@@ -298,7 +298,7 @@ export function DetectionView() {
                             type="checkbox"
                             checked={autoSet.has(scopedKey(item))}
                             onChange={() => toggleAuto(item)}
-                            style={{ accentColor: '#3b82f6' }}
+                            style={{ accentColor: 'var(--cat-automem)' }}
                           />
                         </div>
                         <div className="w-20 text-center">
@@ -306,7 +306,7 @@ export function DetectionView() {
                             type="checkbox"
                             checked={caseSet.has(scopedKey(item))}
                             onChange={() => toggleCase(item)}
-                            style={{ accentColor: '#eab308' }}
+                            style={{ accentColor: 'var(--cat-case)' }}
                           />
                         </div>
                       </div>
@@ -323,12 +323,12 @@ export function DetectionView() {
               onClick={handleSave}
               disabled={saving}
               className="px-4 py-2.5 rounded-lg text-sm font-medium"
-              style={{ background: 'var(--accent)', color: '#fff', opacity: saving ? 0.6 : 1 }}
+              style={{ background: 'var(--accent)', color: 'var(--accent-fg)', opacity: saving ? 0.6 : 1 }}
             >
               {saving ? '⏳ Sauvegarde...' : '💾 Enregistrer la sélection'}
             </button>
             {msg && (
-              <span className="text-sm" style={{ color: msg.startsWith('Erreur') ? '#ef4444' : 'var(--accent)' }}>
+              <span className="text-sm" style={{ color: msg.startsWith('Erreur') ? 'var(--danger)' : 'var(--accent)' }}>
                 {msg}
               </span>
             )}

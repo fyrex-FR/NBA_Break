@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../stores/appStore'
 import { fetchPlayerStats } from '../../api/client'
 import { DataTable } from '../shared/DataTable'
+import { prettyChecklist } from '../../utils/checklists'
 import { MetricCard } from '../shared/MetricCard'
 import { CategoryBadge } from '../shared/CategoryBadge'
 import { CategoryBreakdown } from '../shared/CategoryBreakdown'
@@ -12,7 +13,9 @@ import { DistributionBar } from '../shared/DistributionBar'
 import { SearchSelect } from '../shared/SearchSelect'
 import { PlayerStatsPanel } from '../shared/PlayerStatsPanel'
 import { RCBadge } from '../shared/RCBadge'
-import { OddsBadgeList, discreetBadges } from '../shared/OddsBadge'
+import { QuickPick } from '../shared/QuickPick'
+import { OddsBadgeList } from '../shared/OddsBadge'
+import { discreetBadges } from '../shared/oddsBadgeUtils'
 import { useRookies } from '../../hooks/useRookies'
 import { useOddsBadges } from '../../hooks/useOddsBadges'
 import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
@@ -21,8 +24,10 @@ import { AWARD_LABELS } from '../../constants/awards'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
-export function PlayerDetailView() {
-  const { analysisData, targetPlayer, setTargetPlayer, selectedSport } = useAppStore()
+function PlayerDetailViewContent() {
+  const { analysisData: storeAnalysisData, targetPlayer, setTargetPlayer, selectedSport } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const { getRookie } = useRookies()
   const { badgesFor } = useOddsBadges()
   const [categoryFilter, setCategoryFilter] = useState<string>('')
@@ -69,7 +74,7 @@ export function PlayerDetailView() {
       header: 'Checklist',
       cell: (info) => {
         const fullName = info.getValue() || info.row.original.File || ''
-        const name = fullName.replace('.parquet', '')
+        const name = prettyChecklist(fullName)
         const year = parseInt(info.row.original.Year, 10)
         const isRookieYear = rookie && year === rookie.year_start
         if (!isRookieYear) {
@@ -89,7 +94,6 @@ export function PlayerDetailView() {
     }),
   ], [rookie, badgesFor])
 
-  if (!analysisData) return null
 
   const allPlayers = useMemo(() => {
     const set = new Set<string>()
@@ -120,11 +124,19 @@ export function PlayerDetailView() {
   const checklistDist = useMemo(() => {
     const map = new Map<string, number>()
     for (const c of playerCards) {
-      const label = c.checklist_name?.replace('.parquet', '') || c.File
+      const label = prettyChecklist(c.checklist_name || c.File)
       map.set(label, (map.get(label) || 0) + c.Hits)
     }
     return Array.from(map.entries()).map(([name, value]) => ({ name, value }))
   }, [playerCards])
+
+  const topPlayers = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const c of analysisData.cards) {
+      for (const p of c.Player.split('/').map((x) => x.trim()).filter(Boolean)) map.set(p, (map.get(p) || 0) + c.Hits)
+    }
+    return Array.from(map.entries()).sort((a, b) => b[1] - a[1]).slice(0, 20)
+  }, [analysisData.cards])
 
   const totalHits = playerCards.reduce((s, c) => s + c.Hits, 0)
   const logomanCount = playerCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)
@@ -140,7 +152,7 @@ export function PlayerDetailView() {
     <div>
       {/* Header — hero quand joueur sélectionné, titre simple sinon */}
       {selectedPlayer && playerInfo ? (
-        <div className="rounded-xl mb-4 p-4 flex gap-4 items-center" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
+        <div className="ui-card mb-4 p-4 flex gap-4 items-center">
           {/* Photo */}
           <img
             src={playerInfo.photo_url}
@@ -156,15 +168,15 @@ export function PlayerDetailView() {
               <span className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{playerInfo.full_name}</span>
               {hasRCInSelection && <RCBadge size="sm" />}
               {playerInfo.is_active
-                ? <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>Actif</span>
-                : <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(148,163,184,0.15)', color: 'var(--text-quaternary)' }}>Retraité</span>
+                ? <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'color-mix(in srgb, var(--success) 14%, transparent)', color: 'var(--success)' }}>Actif</span>
+                : <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'var(--bg-hover)', color: 'var(--text-quaternary)' }}>Retraité</span>
               }
             </div>
             {/* Position · Équipe · Pays */}
             <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
               {playerInfo.position && <span>{playerInfo.position}</span>}
               {playerInfo.team && <><span>·</span><span>{playerInfo.team}</span></>}
-              {hasRCInSelection && rookie && <><span>·</span><span style={{ color: 'rgba(255,215,0,0.8)' }}>RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}</span></>}
+              {hasRCInSelection && rookie && <><span>·</span><span style={{ color: 'var(--rc-year-color)' }}>RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}</span></>}
               {playerInfo.country && <><span>·</span><span>{countryFlag(playerInfo.country)} {playerInfo.country}</span></>}
             </div>
             {/* Awards */}
@@ -183,9 +195,17 @@ export function PlayerDetailView() {
             )}
           </div>
         </div>
-      ) : (
-        <h2 className="text-xl font-medium mb-4">🔍 Analyse Joueur</h2>
-      )}
+      ) : selectedPlayer ? (
+        <div className="flex items-center gap-2 flex-wrap mb-4">
+          <span className="text-xl font-semibold tracking-[-0.01em]" style={{ color: 'var(--text-primary)' }}>{selectedPlayer}</span>
+          {hasRCInSelection && <RCBadge size="sm" />}
+          {hasRCInSelection && rookie && (
+            <span className="text-xs" style={{ color: 'var(--rc-year-color)' }}>
+              RC {rookie.year_start}-{String(rookie.year_end).slice(-2)}{rookie.draft_pick ? ` · Pick #${rookie.draft_pick}` : ''}
+            </span>
+          )}
+        </div>
+      ) : null}
 
       <SearchSelect
         options={allPlayers}
@@ -195,22 +215,18 @@ export function PlayerDetailView() {
       />
 
       {!selectedPlayer ? (
-        <div className="text-center py-16">
-          <div className="text-4xl mb-3">🔍</div>
-          <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Sélectionnez un joueur</p>
-          <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Ou cliquez sur un joueur depuis la Vue Globale</p>
-        </div>
+        <QuickPick title="Les plus présents dans la sélection" items={topPlayers} onPick={(name) => setTargetPlayer(name)} />
       ) : (
         <>
-          <div className="grid grid-cols-3 md:grid-cols-7 gap-3 mb-6">
-            <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
-            <MetricCard label="Checklists" value={`${uniqueChecklists}/${totalChecklists}`} icon="📁" />
-            <MetricCard label="Logoman" value={logomanCount} icon="🔥" valueColor="#ef4444" />
-            <MetricCard label="Case Hit" value={caseHitCount} icon="✨" valueColor="#eab308" />
-            <MetricCard label="Auto" value={autoCount} icon="✍️" valueColor="#0ea5e9" />
-            <MetricCard label="Memo" value={memCount} icon="🧵" valueColor="#14b8a6" />
-            <MetricCard label="Auto/Memo" value={autoMemCount} icon="💎" valueColor="#3b82f6" />
-            <MetricCard label="Base/Autre" value={baseOtherCount} icon="📄" />
+          <div className="grid grid-cols-4 xl:grid-cols-8 gap-2 sm:gap-3 my-5 sm:my-6">
+            <MetricCard label="Cartes" value={totalHits} />
+            <MetricCard label="Checklists" value={`${uniqueChecklists}/${totalChecklists}`} />
+            <MetricCard label="Logoman" value={logomanCount} valueColor="var(--cat-logoman)" />
+            <MetricCard label="Case hit" value={caseHitCount} valueColor="var(--cat-case)" />
+            <MetricCard label="Auto" value={autoCount} valueColor="var(--cat-auto)" />
+            <MetricCard label="Memo" value={memCount} valueColor="var(--cat-mem)" />
+            <MetricCard label="A+M" value={autoMemCount} valueColor="var(--cat-automem)" />
+            <MetricCard label="Base" value={baseOtherCount} valueColor="var(--cat-base)" />
           </div>
 
           {/* Distribution bars */}
@@ -230,9 +246,15 @@ export function PlayerDetailView() {
             </div>
           )}
 
-          <DataTable data={filteredCards} columns={cardColumns as any} pageSize={50} exportName={selectedPlayer.replace(/\s+/g, '_')} />
+          <DataTable data={filteredCards} columns={cardColumns} pageSize={50} exportName={selectedPlayer.replace(/\s+/g, '_')} mobileColumns={['Box Type', 'checklist_name']} />
         </>
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function PlayerDetailView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <PlayerDetailViewContent /> : null
 }

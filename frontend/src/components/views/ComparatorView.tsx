@@ -17,17 +17,18 @@ interface PlayerStat {
 
 const METRICS: { key: keyof Omit<PlayerStat, 'name'>; label: string; icon: string; color: string }[] = [
   { key: 'total',      label: 'Total cartes', icon: '📊', color: '#94a3b8' },
-  { key: 'logoman',    label: 'Logoman',      icon: '🔥', color: '#ef4444' },
+  { key: 'logoman',    label: 'Logoman',      icon: '🔥', color: 'var(--danger)' },
   { key: 'caseHit',    label: 'Case Hit',     icon: '✨', color: '#eab308' },
   { key: 'autoMem',    label: 'Hits',         icon: '💎', color: '#3b82f6' },
-  { key: 'checklists', label: 'Checklists',   icon: '📁', color: '#22c55e' },
+  { key: 'checklists', label: 'Checklists',   icon: '📁', color: 'var(--success)' },
 ]
 
-export function ComparatorView() {
-  const { analysisData } = useAppStore()
+function ComparatorViewContent() {
+  const { analysisData: storeAnalysisData } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const [slots, setSlots] = useState<string[]>(['', ''])
 
-  if (!analysisData) return null
 
   const allPlayers = useMemo(() => {
     const names = new Set<string>()
@@ -59,7 +60,6 @@ export function ComparatorView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">⚖️ Comparateur Joueurs</h2>
       <p className="text-sm mb-5" style={{ color: 'var(--text-tertiary)' }}>
         Sélectionnez jusqu'à {MAX_PLAYERS} joueurs à comparer.
       </p>
@@ -140,4 +140,10 @@ export function ComparatorView() {
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function ComparatorView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <ComparatorViewContent /> : null
 }

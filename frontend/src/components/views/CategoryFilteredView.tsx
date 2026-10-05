@@ -26,16 +26,17 @@ function rarestBadge(a: OddsBadgeCode | undefined, b: OddsBadgeCode): OddsBadgeC
 
 interface CategoryFilteredViewProps {
   title: string
-  icon: string
+  icon?: string
   category?: string
   hitTypes?: string[]
   description: string
 }
 
-export function CategoryFilteredView({ title, icon, category, hitTypes, description }: CategoryFilteredViewProps) {
-  const { analysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
+function CategoryFilteredViewContent({ title, category, hitTypes, description }: CategoryFilteredViewProps) {
+  const { analysisData: storeAnalysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const { badgesFor } = useOddsBadges()
-  if (!analysisData) return null
 
   const filtered = useMemo(
     () => analysisData.cards.filter((c) => {
@@ -112,7 +113,7 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
       columnHelper.display({
         id: 'oddsRarity',
         header: 'Rareté odds',
-        cell: (info: any) => {
+        cell: (info) => {
           const code = playerRarity.get(info.row.original.Player || '')
           return code ? <OddsBadge code={code} /> : null
         },
@@ -127,7 +128,7 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
       columnHelper.display({
         id: 'oddsRarity',
         header: 'Rareté odds',
-        cell: (info: any) => {
+        cell: (info) => {
           const code = teamRarity.get(info.row.original.Team || '')
           return code ? <OddsBadge code={code} /> : null
         },
@@ -137,13 +138,10 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
 
   return (
     <div>
-      <div className="flex items-center gap-2 mb-2">
-        <h2 className="text-xl font-medium">{icon} {title}</h2>
-      </div>
       <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>{description}</p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-        <MetricCard label="Total cartes" value={filtered.reduce((s, c) => s + c.Hits, 0)} icon={icon} />
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <MetricCard label="Cartes" value={filtered.reduce((s, c) => s + c.Hits, 0)} />
         <MetricCard label="Joueurs" value={playerRankings.length} icon="🎴" />
         <MetricCard label="Équipes" value={teamRankings.length} icon="🛡️" />
       </div>
@@ -158,7 +156,7 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
           <div>
             <DataTable
               data={playerRankings}
-              columns={playerCols as any}
+              columns={playerCols}
               onRowClick={(row) => { setTargetPlayer(row.Player!); setActiveView('🔍 Analyse Joueur') }}
               searchable
               searchPlaceholder="Rechercher un joueur..."
@@ -170,7 +168,7 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
           <div>
             <DataTable
               data={teamRankings}
-              columns={teamCols as any}
+              columns={teamCols}
               onRowClick={(row) => { setTargetTeam(row.Team!); setActiveView('🛡️ Analyse Équipe') }}
               searchable
               searchPlaceholder="Rechercher une équipe..."
@@ -181,4 +179,10 @@ export function CategoryFilteredView({ title, icon, category, hitTypes, descript
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function CategoryFilteredView(props: CategoryFilteredViewProps) {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <CategoryFilteredViewContent {...props} /> : null
 }

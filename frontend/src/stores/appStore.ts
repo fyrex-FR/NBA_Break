@@ -58,7 +58,25 @@ interface AppState {
   breakContext: BreakContext | null
   setBreakContext: (ctx: BreakContext | null) => void
   clearBreakContext: () => void
+
+  // Checklists effectivement analysées (pour détecter une sélection modifiée)
+  analyzedChecklistIds: string[]
+  setAnalyzedChecklistIds: (ids: string[]) => void
+
+  // Shell UI
+  selectionOpen: boolean
+  selectionTab: SelectionTab
+  openSelection: (tab?: SelectionTab) => void
+  closeSelection: () => void
+  paletteOpen: boolean
+  setPaletteOpen: (open: boolean) => void
+  navCollapsed: boolean
+  toggleNavCollapsed: () => void
+  chatOpen: boolean
+  setChatOpen: (open: boolean) => void
 }
+
+export type SelectionTab = 'catalog' | 'presets' | 'voggt' | 'upload'
 
 export const useAppStore = create<AppState>()(
   persist(
@@ -69,7 +87,9 @@ export const useAppStore = create<AppState>()(
 
       // Sport
       selectedSport: 'nba',
-      setSport: (sport) => set({ selectedSport: sport, analysisData: null, selectedChecklistIds: [] }),
+      setSport: (sport) => set((s) => (
+        s.selectedSport === sport ? {} : { selectedSport: sport, analysisData: null, selectedChecklistIds: [], analyzedChecklistIds: [] }
+      )),
 
       // Checklists
       availableChecklists: [],
@@ -128,6 +148,20 @@ export const useAppStore = create<AppState>()(
       breakContext: null,
       setBreakContext: (ctx) => set({ breakContext: ctx }),
       clearBreakContext: () => set({ breakContext: null }),
+
+      analyzedChecklistIds: [],
+      setAnalyzedChecklistIds: (ids) => set({ analyzedChecklistIds: ids }),
+
+      selectionOpen: false,
+      selectionTab: 'catalog',
+      openSelection: (tab) => set((s) => ({ selectionOpen: true, selectionTab: tab ?? s.selectionTab })),
+      closeSelection: () => set({ selectionOpen: false }),
+      paletteOpen: false,
+      setPaletteOpen: (open) => set({ paletteOpen: open }),
+      navCollapsed: false,
+      toggleNavCollapsed: () => set((s) => ({ navCollapsed: !s.navCollapsed })),
+      chatOpen: false,
+      setChatOpen: (open) => set({ chatOpen: open }),
     }),
     {
       name: 'checklist-optimizer',
@@ -139,7 +173,13 @@ export const useAppStore = create<AppState>()(
         activeView: state.activeView,
         masterKey: state.masterKey,
         selectedConfigKeys: state.selectedConfigKeys,
+        navCollapsed: state.navCollapsed,
       }),
     },
   ),
 )
+
+// Accès console en dev uniquement (debug, maquettes) — absent du build de prod.
+if (import.meta.env.DEV) {
+  ;(window as unknown as { __noclim: typeof useAppStore }).__noclim = useAppStore
+}

@@ -1,3 +1,4 @@
+import { errorMessage } from '../../utils/checklists'
 /**
  * Vue Mapping Odds — correction manuelle du rattachement Box Type ↔ set d'odds.
  *
@@ -16,9 +17,9 @@ import { SearchSelect } from '../shared/SearchSelect'
 function coverageColor(mapped: number, total: number): string {
   if (total === 0) return 'var(--text-quaternary)'
   const rate = mapped / total
-  if (rate >= 0.8) return '#34d399'
-  if (rate >= 0.5) return '#eab308'
-  return '#ef4444'
+  if (rate >= 0.8) return 'var(--success)'
+  if (rate >= 0.5) return 'var(--cat-case)'
+  return 'var(--danger)'
 }
 
 function CoverageBadge({
@@ -82,7 +83,7 @@ export function OddsMappingView() {
         setPending({})
         setMsg({})
       })
-      .catch((err) => setError(err.message || 'Erreur lors du chargement du mapping.'))
+      .catch((err) => setError(errorMessage(err, 'Erreur lors du chargement du mapping.')))
       .finally(() => setLoading(false))
   }, [selectedSport, selectedChecklistIds])
 
@@ -143,8 +144,8 @@ export function OddsMappingView() {
         [cl.checklist_id]: `Enregistré : ${result.entries_count} rattachement(s) au total pour cette checklist.`,
       }))
       setTimeout(() => setMsg((prev) => ({ ...prev, [cl.checklist_id]: null })), 4000)
-    } catch (err: any) {
-      setMsg((prev) => ({ ...prev, [cl.checklist_id]: `Erreur : ${err.message}` }))
+    } catch (err: unknown) {
+      setMsg((prev) => ({ ...prev, [cl.checklist_id]: `Erreur : ${errorMessage(err)}` }))
     } finally {
       setSaving((prev) => ({ ...prev, [cl.checklist_id]: false }))
     }
@@ -163,14 +164,13 @@ export function OddsMappingView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">🔗 Mapping Odds</h2>
       <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
         Corrige le rattachement automatique entre les Box Types de la checklist et les sets de la feuille
         d'odds. Un Box Type peut être laissé de côté volontairement (« ignorer »).
       </p>
 
       {error && (
-        <div className="rounded-lg px-4 py-2 mb-4 text-sm" style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>
+        <div className="rounded-lg px-4 py-2 mb-4 text-sm" style={{ background: 'color-mix(in srgb, var(--danger) 10%, transparent)', color: 'var(--danger)' }}>
           {error}
         </div>
       )}
@@ -270,7 +270,7 @@ function ChecklistMappingCard({
             <>
               {unresolvedGroup.length > 0 && (
                 <div className="mb-4">
-                  <p className="text-xs font-medium uppercase tracking-wide mb-2" style={{ color: '#eab308' }}>
+                  <p className="text-xs font-medium uppercase tracking-wide mb-2" style={{ color: 'var(--cat-case)' }}>
                     À rattacher ({unresolvedGroup.length})
                   </p>
                   <div className="space-y-2">
@@ -349,12 +349,12 @@ function ChecklistMappingCard({
                   onClick={onSave}
                   disabled={saving || !hasPending}
                   className="px-4 py-2 rounded-lg text-sm font-medium"
-                  style={{ background: 'var(--accent)', color: '#fff', opacity: saving || !hasPending ? 0.5 : 1 }}
+                  style={{ background: 'var(--accent)', color: 'var(--accent-fg)', opacity: saving || !hasPending ? 0.5 : 1 }}
                 >
                   {saving ? '⏳ Sauvegarde...' : '💾 Enregistrer les corrections'}
                 </button>
                 {msg && (
-                  <span className="text-sm" style={{ color: msg.startsWith('Erreur') ? '#ef4444' : '#34d399' }}>
+                  <span className="text-sm" style={{ color: msg.startsWith('Erreur') ? 'var(--danger)' : 'var(--success)' }}>
                     {msg}
                   </span>
                 )}

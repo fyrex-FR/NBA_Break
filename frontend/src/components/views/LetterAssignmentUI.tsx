@@ -170,14 +170,14 @@ export function LetterAssignmentUI({
           onClick={handleSubmit}
           disabled={disabled || loading || allPlayers.length === 0}
           className="px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap"
-          style={{ background: 'var(--accent)', color: '#fff', opacity: (disabled || loading || allPlayers.length === 0) ? 0.5 : 1 }}
+          style={{ background: 'var(--accent)', color: 'var(--accent-fg)', opacity: (disabled || loading || allPlayers.length === 0) ? 0.5 : 1 }}
         >
           {submitLabel}
         </button>
       </div>
 
       {error && (
-        <div className="rounded-lg px-4 py-2 text-sm" style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>{error}</div>
+        <div className="rounded-lg px-4 py-2 text-sm" style={{ background: 'color-mix(in srgb, var(--danger) 10%, transparent)', color: 'var(--danger)' }}>{error}</div>
       )}
 
       {loading && <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Chargement des joueurs...</p>}
@@ -192,7 +192,7 @@ export function LetterAssignmentUI({
             {extractedSorted.map(player => {
               const st = playerStats[player]
               return (
-                <span key={player} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'var(--accent)', color: '#fff' }}>
+                <span key={player} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
                   <span>{player}</span>
                   {st && <span className="opacity-70 text-[10px]">{st.cards}c{st.auto > 0 ? ` · ${st.auto}A` : ''}</span>}
                   <button onClick={() => handleUnextract(player)} className="opacity-60 hover:opacity-100 ml-0.5" title="Remettre dans le pool">✕</button>

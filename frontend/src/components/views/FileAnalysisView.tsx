@@ -3,16 +3,21 @@ import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { QuickPick } from '../shared/QuickPick'
+import { prettyChecklist } from '../../utils/checklists'
 import { CategoryBadge } from '../shared/CategoryBadge'
-import { OddsBadgeList, discreetBadges } from '../shared/OddsBadge'
+import { OddsBadgeList } from '../shared/OddsBadge'
+import { discreetBadges } from '../shared/oddsBadgeUtils'
 import { useOddsBadges } from '../../hooks/useOddsBadges'
 import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT } from '../../types'
 import type { CardRecord } from '../../types'
 
 const columnHelper = createColumnHelper<CardRecord>()
 
-export function FileAnalysisView() {
-  const { analysisData } = useAppStore()
+function FileAnalysisViewContent() {
+  const { analysisData: storeAnalysisData } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const [selectedFile, setSelectedFile] = useState('')
   const { badgesFor } = useOddsBadges()
 
@@ -35,21 +40,18 @@ export function FileAnalysisView() {
     columnHelper.accessor('Category', { header: 'Catégorie', cell: (info) => <CategoryBadge category={info.getValue()} /> }),
   ], [badgesFor])
 
-  if (!analysisData) return null
 
-  const allFiles = useMemo(() => {
-    const set = new Set<string>()
-    for (const c of analysisData.cards) {
-      const name = c.checklist_name || c.File
-      if (name) set.add(name)
-    }
-    return Array.from(set).sort()
-  }, [analysisData.cards])
+  const countsMap = new Map<string, number>()
+  for (const c of analysisData.cards) {
+    const name = c.checklist_name || c.File
+    if (name) countsMap.set(name, (countsMap.get(name) ?? 0) + c.Hits)
+  }
+  const fileCounts = Array.from(countsMap.entries()).sort((a, b) => b[1] - a[1])
+  const allFiles = fileCounts.map(([name]) => name)
+  // Une seule checklist : pas de choix à faire.
+  const activeFile = selectedFile || (allFiles.length === 1 ? allFiles[0] : '')
 
-  const fileCards = useMemo(() => {
-    if (!selectedFile) return []
-    return analysisData.cards.filter((c) => (c.checklist_name || c.File) === selectedFile)
-  }, [analysisData.cards, selectedFile])
+  const fileCards = activeFile ? analysisData.cards.filter((c) => (c.checklist_name || c.File) === activeFile) : []
 
   const totalHits = fileCards.reduce((s, c) => s + c.Hits, 0)
   const uniquePlayers = new Set(fileCards.flatMap((c) => c.Player.split('/').map((p) => p.trim()).filter(Boolean))).size
@@ -57,37 +59,33 @@ export function FileAnalysisView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-4">📁 Analyse par Fichier</h2>
 
-      <select
-        value={selectedFile}
-        onChange={(e) => setSelectedFile(e.target.value)}
-        className="w-full max-w-lg rounded-lg px-3 py-2 text-sm mb-6"
-        style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
-      >
-        <option value="">Sélectionnez une checklist...</option>
-        {allFiles.map((f) => (
-          <option key={f} value={f}>{f.replace('.parquet', '')}</option>
-        ))}
-      </select>
-
-      {!selectedFile ? (
-        <div className="text-center py-12" style={{ color: 'var(--text-tertiary)' }}>
-          Sélectionnez une checklist pour voir son contenu.
-        </div>
+      {!activeFile ? (
+        <QuickPick title="Checklists de la sélection" items={fileCounts} onPick={setSelectedFile} format={prettyChecklist} />
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
-            <MetricCard label="Total Cartes" value={totalHits} icon="📊" />
-            <MetricCard label="Joueurs" value={uniquePlayers} icon="🎴" />
-            <MetricCard label="Équipes" value={uniqueTeams} icon="🛡️" />
-            <MetricCard label="Logoman" value={fileCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)} icon="🔥" />
-            <MetricCard label="Case Hit" value={fileCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)} icon="✨" />
+          {allFiles.length > 1 && (
+            <select value={activeFile} onChange={(e) => setSelectedFile(e.target.value)} className="ui-input !h-10 max-w-lg mb-4">
+              {allFiles.map((f) => <option key={f} value={f}>{prettyChecklist(f)}</option>)}
+            </select>
+          )}
+          <div className="grid grid-cols-5 gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <MetricCard label="Cartes" value={totalHits} />
+            <MetricCard label="Joueurs" value={uniquePlayers} />
+            <MetricCard label="Équipes" value={uniqueTeams} />
+            <MetricCard label="Logoman" value={fileCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)} valueColor="var(--cat-logoman)" />
+            <MetricCard label="Case hit" value={fileCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)} valueColor="var(--cat-case)" />
           </div>
 
-          <DataTable data={fileCards} columns={cardColumns as any} searchable searchPlaceholder="Rechercher dans cette checklist..." pageSize={100} exportName={selectedFile.replace('.parquet', '').replace(/\s+/g, '_')} />
+          <DataTable data={fileCards} columns={cardColumns} searchable searchPlaceholder="Rechercher dans cette checklist..." pageSize={100} exportName={activeFile.replace('.parquet', '').replace(/\s+/g, '_')} mobileColumns={['Box Type', 'Team', 'Category']} />
         </>
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function FileAnalysisView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <FileAnalysisViewContent /> : null
 }

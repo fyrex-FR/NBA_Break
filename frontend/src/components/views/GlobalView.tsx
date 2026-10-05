@@ -2,9 +2,10 @@ import { useMemo, useState } from 'react'
 import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
-import { MetricCard } from '../shared/MetricCard'
+import { Segmented } from '../ui/primitives'
+import { CATEGORY_META } from '../../constants/categories'
 import { PlayerCell } from '../shared/PlayerCell'
-import type { RankingRecord, CardRecord } from '../../types'
+import type { RankingRecord, CardRecord, AnalyzeResponse } from '../../types'
 import { CATEGORY_CASE_HIT, CATEGORY_LOGOMAN, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 type RankingMode = 'volume' | 'premium' | 'auto' | 'case'
@@ -22,19 +23,24 @@ interface TopRow extends RankingRecord {
 
 const columnHelper = createColumnHelper<TopRow>()
 
+// Séparateurs de la grille KPI : 2 colonnes en mobile, 4 en desktop.
+const KPI_BORDERS = ['', 'border-l', 'border-t lg:border-t-0 lg:border-l', 'border-l border-t lg:border-t-0']
+
 export function GlobalView() {
-  const { analysisData, setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
-  const [rankingMode, setRankingMode] = useState<RankingMode>('volume')
+  const analysisData = useAppStore((s) => s.analysisData)
   if (!analysisData) return null
+  return <GlobalViewContent analysisData={analysisData} />
+}
+
+function GlobalViewContent({ analysisData }: { analysisData: AnalyzeResponse }) {
+  const { setActiveView, setTargetPlayer, setTargetTeam } = useAppStore()
+  const [rankingMode, setRankingMode] = useState<RankingMode>('volume')
+  const [entity, setEntity] = useState<'players' | 'teams'>('players')
 
   const { category_summary, metadata } = analysisData
   const isEntertainment = metadata.sport_key === 'disney' || metadata.sport_key === 'marvel'
-  const teamLabel = isEntertainment ? 'Univers/Franchises' : 'Equipes'
-  const teamSearchPlaceholder = isEntertainment ? 'Rechercher un univers ou une franchise...' : 'Rechercher une equipe...'
-  const teamHeading = isEntertainment ? 'Top univers / franchises' : 'Top equipes'
-  const teamDescription = isEntertainment
-    ? 'Lecture rapide des franchises, univers et familles de personnages les plus presents.'
-    : 'Lecture rapide des volumes avant d entrer dans le detail equipe.'
+  const teamLabel = isEntertainment ? 'Univers / franchises' : 'Équipes'
+  const teamSearchPlaceholder = isEntertainment ? 'Rechercher un univers ou une franchise...' : 'Rechercher une équipe...'
 
   const playerColumns = useMemo(() => [
     columnHelper.accessor('Player', {
@@ -146,100 +152,136 @@ export function GlobalView() {
   }
 
   const rankingLabel = rankingMode === 'premium'
-      ? 'tries par premium'
+      ? 'trié par cartes premium'
     : rankingMode === 'auto'
-      ? 'tries par hits auto/memo'
+      ? 'trié par hits auto/memo'
       : rankingMode === 'case'
-        ? 'tries par case hit'
-        : 'tries par volume'
+        ? 'trié par case hits'
+        : 'trié par volume'
+
+  const total = metadata.total_rows || 1
+  const premiumTotal = category_summary.hit_total + category_summary.case_hit + category_summary.logoman
+  const kpis = [
+    { label: 'Cartes', value: metadata.total_rows, hint: `${metadata.checklists_count} checklist${metadata.checklists_count > 1 ? 's' : ''}` },
+    { label: 'Joueurs', value: metadata.unique_players },
+    { label: teamLabel, value: metadata.unique_teams },
+    { label: 'Hits premium', value: premiumTotal, hint: `${Math.round((premiumTotal / total) * 100)} % des cartes`, accent: true },
+  ]
+  const segments = CATEGORY_META.map((m) => ({ ...m, value: category_summary[m.key] ?? 0 }))
 
   return (
-    <div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
-        <MetricCard label="Lignes" value={metadata.total_rows} icon="📊" />
-        <MetricCard label={teamLabel} value={metadata.unique_teams} icon="👥" />
-        <MetricCard label="Joueurs" value={metadata.unique_players} icon="🎴" />
-        <MetricCard label="Checklists" value={metadata.checklists_count} icon="📁" />
-        <div className="col-span-2 sm:col-span-1">
-          <MetricCard label={metadata.sport_label} value={metadata.sport_key.toUpperCase()} icon="🏷️" />
+    <div className="space-y-6">
+      <section className="ui-card grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
+        {kpis.map((k, i) => (
+          <div
+            key={k.label}
+            className={`px-5 py-4 border-[var(--border-subtle)] ${KPI_BORDERS[i]}`}
+          >
+            <div className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>{k.label}</div>
+            <div className="mt-1 text-[26px] sm:text-[28px] leading-8 font-semibold font-mono-num" style={{ color: k.accent ? 'var(--accent)' : 'var(--text-primary)' }}>
+              {k.value.toLocaleString('fr-FR')}
+            </div>
+            {k.hint && <div className="text-xs mt-0.5" style={{ color: 'var(--text-quaternary)' }}>{k.hint}</div>}
+          </div>
+        ))}
+      </section>
+
+      <section className="ui-card p-4 sm:p-5">
+        <div className="flex items-baseline justify-between mb-3">
+          <h2 className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>Répartition des cartes</h2>
+          <span className="hidden sm:inline text-xs" style={{ color: 'var(--text-quaternary)' }}>Clique une catégorie pour l’explorer</span>
         </div>
-      </div>
+        <div className="flex h-3 rounded-full overflow-hidden gap-[2px]" role="img" aria-label="Répartition des cartes par catégorie">
+          {segments.filter((s) => s.value > 0).map((s) => (
+            <div key={s.key} title={`${s.label} : ${s.value.toLocaleString('fr-FR')}`} style={{ width: `${(s.value / total) * 100}%`, background: s.color, minWidth: 3 }} />
+          ))}
+        </div>
+        <div className="mt-3 sm:mt-4 grid grid-cols-3 lg:grid-cols-6 gap-0.5 sm:gap-1 -mx-1.5 sm:mx-0">
+          {segments.map((s) => {
+            const clickable = !!s.view && s.value > 0
+            return (
+              <button
+                key={s.key}
+                disabled={!clickable}
+                onClick={() => s.view && setActiveView(s.view)}
+                className={`text-left rounded-lg px-1.5 sm:px-2.5 py-1.5 sm:py-2 transition-colors min-w-0 ${clickable ? 'ui-row-hover' : 'cursor-default'}`}
+              >
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs truncate" style={{ color: 'var(--text-tertiary)' }}>
+                  <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: s.color, opacity: s.value > 0 ? 1 : 0.35 }} />
+                  {s.label}
+                </div>
+                <div className="flex items-baseline gap-1 sm:gap-1.5 mt-0.5 flex-wrap">
+                  <span className="text-[15px] sm:text-[17px] font-semibold num" style={{ color: s.value > 0 ? 'var(--text-primary)' : 'var(--text-quaternary)' }}>
+                    {s.value.toLocaleString('fr-FR')}
+                  </span>
+                  <span className="text-xs num" style={{ color: 'var(--text-quaternary)' }}>
+                    {s.value > 0 ? `${((s.value / total) * 100).toFixed(s.value / total < 0.01 ? 1 : 0)} %` : '—'}
+                  </span>
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      </section>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-        <MetricCard label="Logoman" value={category_summary.logoman} icon="🔥" valueColor="#ef4444" />
-        <MetricCard label="Case Hit" value={category_summary.case_hit} icon="✨" valueColor="#eab308" />
-        <MetricCard label="Auto" value={category_summary.auto} icon="✍️" valueColor="#0ea5e9" />
-        <MetricCard label="Memo" value={category_summary.mem} icon="🧵" valueColor="#14b8a6" />
-        <MetricCard label="Auto/Memo" value={category_summary.auto_mem} icon="💎" valueColor="#3b82f6" />
-        <MetricCard label="Hits total" value={category_summary.hit_total} icon="🎯" valueColor="#6366f1" />
-        <MetricCard label="Base/Autre" value={category_summary.base_other} icon="📄" />
-      </div>
-
-      <div className="flex items-center gap-2 flex-wrap mb-4">
-        <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'var(--text-tertiary)' }}>Classement</span>
-        {([
-          ['volume', 'Volume'],
-          ['premium', 'Premium'],
-          ['auto', 'Hits'],
-          ['case', 'Case Hit'],
-        ] as const).map(([mode, label]) => {
-          const active = rankingMode === mode
-          return (
-            <button
-              key={mode}
-              onClick={() => setRankingMode(mode)}
-              className="px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
-              style={{
-                background: active ? 'var(--accent)' : 'var(--bg-surface)',
-                color: active ? '#fff' : 'var(--text-secondary)',
-                border: `1px solid ${active ? 'var(--accent)' : 'var(--border-subtle)'}`,
-              }}
-            >
-              {label}
-            </button>
-          )
-        })}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div>
-          <div className="mb-3">
-            <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Top joueurs</h3>
-            <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              Clique une ligne pour basculer directement sur l analyse detaillee, {rankingLabel}.
+      <section>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-3">
+          <div>
+            <h2 className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>Classement</h2>
+            <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+              {entity === 'players' ? 'Clique un joueur pour ouvrir sa fiche' : `Clique ${isEntertainment ? 'une franchise' : 'une équipe'} pour ouvrir sa fiche`}, {rankingLabel}.
             </p>
           </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Segmented<'players' | 'teams'>
+              value={entity}
+              onChange={setEntity}
+              ariaLabel="Entité"
+              options={[
+                { value: 'players', label: 'Joueurs', count: playerRows.length },
+                { value: 'teams', label: isEntertainment ? 'Franchises' : 'Équipes', count: teamRows.length },
+              ]}
+            />
+            <Segmented<RankingMode>
+              value={rankingMode}
+              onChange={setRankingMode}
+              ariaLabel="Critère de classement"
+              options={[
+                { value: 'volume', label: 'Volume' },
+                { value: 'premium', label: 'Premium' },
+                { value: 'auto', label: 'Hits' },
+                { value: 'case', label: 'Case hit' },
+              ]}
+            />
+          </div>
+        </div>
 
+        {entity === 'players' ? (
           <DataTable
+            key="players"
             data={playerRows}
-            columns={playerColumns as any}
+            columns={playerColumns}
             onRowClick={handlePlayerClick}
             searchable
             searchPlaceholder="Rechercher un joueur..."
             exportName="joueurs_global"
             initialSorting={rankingSorting}
+            rankColumn
           />
-        </div>
-
-        <div>
-          <div className="mb-3">
-            <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>{teamHeading}</h3>
-            <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              {teamDescription} Les colonnes premium et couverture aident a arbitrer plus vite.
-            </p>
-          </div>
-
+        ) : (
           <DataTable
+            key="teams"
             data={teamRows}
-            columns={teamColumns as any}
+            columns={teamColumns}
             onRowClick={handleTeamClick}
             searchable
             searchPlaceholder={teamSearchPlaceholder}
             exportName="equipes_global"
             initialSorting={rankingSorting}
+            rankColumn
           />
-        </div>
-      </div>
+        )}
+      </section>
     </div>
   )
 }

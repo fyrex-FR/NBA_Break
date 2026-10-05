@@ -1,3 +1,5 @@
+import { Segmented } from '../ui/primitives'
+import { Loader2, Download, FileSpreadsheet } from 'lucide-react'
 import { useState } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { exportXlsx, downloadTemplate } from '../../api/client'
@@ -5,27 +7,24 @@ import { HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 
 function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
   return (
-    <label className="flex items-center justify-between gap-3 py-1.5 cursor-pointer">
-      <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>{label}</span>
-      <div
-        onClick={() => onChange(!checked)}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="w-full flex items-center justify-between gap-3 py-2.5 text-left"
+    >
+      <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
+      <span
         className="relative flex-shrink-0 rounded-full transition-colors"
-        style={{
-          width: 36, height: 20,
-          background: checked ? 'var(--accent)' : 'var(--bg-hover)',
-          border: `1px solid ${checked ? 'var(--accent)' : 'var(--border-standard)'}`,
-        }}
+        style={{ width: 38, height: 22, background: checked ? 'var(--accent)' : 'var(--bg-hover)', boxShadow: checked ? 'none' : 'inset 0 0 0 1px var(--border-standard)' }}
       >
-        <div
-          className="absolute top-0.5 rounded-full transition-transform"
-          style={{
-            width: 16, height: 16,
-            background: '#fff',
-            transform: checked ? 'translateX(17px)' : 'translateX(1px)',
-          }}
+        <span
+          className="absolute top-[3px] left-[3px] rounded-full transition-transform"
+          style={{ width: 16, height: 16, background: '#fff', transform: checked ? 'translateX(16px)' : 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.25)' }}
         />
-      </div>
-    </label>
+      </span>
+    </button>
   )
 }
 
@@ -83,73 +82,50 @@ export function ExportView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-1">📤 Export Personnalisé</h2>
-      <p className="text-sm mb-6" style={{ color: 'var(--text-tertiary)' }}>
+      <p className="text-sm mb-4 sm:mb-6 num" style={{ color: 'var(--text-tertiary)' }}>
         {analysisData.metadata.checklists_count} checklists · {analysisData.metadata.total_rows.toLocaleString('fr-FR')} lignes sources
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        {/* Colonnes */}
-        <div className="rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-          <h3 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-tertiary)' }}>📋 COLONNES</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <section className="ui-card p-4">
+          <h3 className="ui-eyebrow mb-2">Colonnes</h3>
           <Toggle checked={includeTeam}   onChange={setIncludeTeam}   label="Équipe" />
           <Toggle checked={includePlayer} onChange={setIncludePlayer} label="Joueur" />
           <Toggle checked={includeCards}  onChange={setIncludeCards}  label="Nombre de cartes" />
-        </div>
+        </section>
 
-        {/* Catégories */}
-        <div className="rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-          <h3 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-tertiary)' }}>🏷️ CATÉGORIES</h3>
-          <Toggle checked={includeAuto}    onChange={setIncludeAuto}    label="💎 Hits Auto/Memo" />
-          <Toggle checked={includeCase}    onChange={setIncludeCase}    label="✨ Case Hits" />
-          <Toggle checked={includeLogoman} onChange={setIncludeLogoman} label="🔥 Logoman" />
-          <Toggle checked={includeBase}    onChange={setIncludeBase}    label="📄 Base/Autre" />
-        </div>
+        <section className="ui-card p-4">
+          <h3 className="ui-eyebrow mb-2">Catégories</h3>
+          <Toggle checked={includeAuto}    onChange={setIncludeAuto}    label="Hits auto / memo" />
+          <Toggle checked={includeCase}    onChange={setIncludeCase}    label="Case hits" />
+          <Toggle checked={includeLogoman} onChange={setIncludeLogoman} label="Logoman" />
+          <Toggle checked={includeBase}    onChange={setIncludeBase}    label="Base / autre" />
+        </section>
       </div>
 
-      {/* Tri */}
       {includeTeam && includePlayer && (
         <div className="mb-6">
-          <p className="text-xs font-semibold mb-2" style={{ color: 'var(--text-tertiary)' }}>TRIER PAR</p>
-          <div className="flex gap-2">
-            {['Équipe (A-Z)', 'Joueur (A-Z)'].map((mode) => (
-              <button
-                key={mode}
-                onClick={() => setSortMode(mode)}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
-                style={{
-                  background: sortMode === mode ? 'var(--accent)' : 'var(--bg-surface)',
-                  color: sortMode === mode ? '#fff' : 'var(--text-secondary)',
-                  border: `1px solid ${sortMode === mode ? 'var(--accent)' : 'var(--border-subtle)'}`,
-                }}
-              >
-                {mode}
-              </button>
-            ))}
-          </div>
+          <p className="ui-eyebrow mb-2">Trier par</p>
+          <Segmented<string>
+            value={sortMode}
+            onChange={setSortMode}
+            ariaLabel="Tri de l'export"
+            options={[{ value: 'Équipe (A-Z)', label: 'Équipe A → Z' }, { value: 'Joueur (A-Z)', label: 'Joueur A → Z' }]}
+          />
         </div>
       )}
 
-      {/* Aperçu + actions */}
-      <div className="flex items-center gap-4 flex-wrap">
-        <button
-          onClick={handleExport}
-          disabled={loading}
-          className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-opacity"
-          style={{ background: 'var(--accent)', color: '#fff', opacity: loading ? 0.6 : 1 }}
-        >
-          {loading ? '⏳ Génération...' : '📊 Télécharger Excel'}
+      <div className="flex items-center gap-3 flex-wrap">
+        <button onClick={handleExport} disabled={loading} className="ui-btn ui-btn-primary ui-btn-lg flex-1 sm:flex-none">
+          {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+          {loading ? 'Génération…' : 'Télécharger l’Excel'}
         </button>
-        <a
-          href={downloadTemplate()}
-          className="px-4 py-2.5 rounded-lg text-sm font-medium inline-flex items-center"
-          style={{ background: 'var(--bg-surface)', color: 'var(--text-secondary)', border: '1px solid var(--border-standard)' }}
-        >
-          📥 Template
+        <a href={downloadTemplate()} className="ui-btn ui-btn-secondary ui-btn-lg">
+          <FileSpreadsheet className="w-4 h-4" /> Template
         </a>
         {estimatedRows > 0 && (
-          <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-            ~{estimatedRows.toLocaleString('fr-FR')} cartes dans l'export
+          <span className="w-full sm:w-auto text-xs num" style={{ color: 'var(--text-tertiary)' }}>
+            ≈ {estimatedRows.toLocaleString('fr-FR')} cartes dans l’export
           </span>
         )}
       </div>

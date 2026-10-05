@@ -269,7 +269,7 @@ export function SmartImportView() {
           <button
             onClick={handleReset}
             className="px-6 py-2 rounded-xl text-sm font-semibold"
-            style={{ background: 'var(--accent)', color: '#fff' }}
+            style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}
           >
             Nouvel import
           </button>

@@ -4,8 +4,29 @@
     {
       "name": "cardvaults-home",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3333", "cardvaults-home"],
+      "runtimeArgs": [
+        "serve",
+        "-p",
+        "3333",
+        "cardvaults-home"
+      ],
       "port": 3333
+    },
+    {
+      "name": "noclim-frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "frontend",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5173",
+        "--mode",
+        "production"
+      ],
+      "port": 5173
     }
   ]
 }

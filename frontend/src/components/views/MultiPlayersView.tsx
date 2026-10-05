@@ -3,6 +3,8 @@ import { createColumnHelper } from '@tanstack/react-table'
 import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
+import { EmptyState } from '../ui/primitives'
+import { Users } from 'lucide-react'
 import { PlayerCell } from '../shared/PlayerCell'
 
 interface MultiCard {
@@ -31,11 +33,12 @@ const columns = [
   }),
 ]
 
-export function MultiPlayersView() {
-  const { analysisData } = useAppStore()
+function MultiPlayersViewContent() {
+  const { analysisData: storeAnalysisData } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
   const [filterPlayer, setFilterPlayer] = useState('')
 
-  if (!analysisData) return null
 
   const multiCards = useMemo(
     () => analysisData.cards.filter((c) => c.Player.includes('/')),
@@ -60,15 +63,11 @@ export function MultiPlayersView() {
 
   return (
     <div>
-      <h2 className="text-xl font-medium mb-2">👥 Multi-Joueurs</h2>
-      <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
-        Cartes comportant plusieurs joueurs (ex: Dual Swatch, Combo cards).
-      </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-        <MetricCard label="Cartes multi-joueurs" value={multiCards.length} icon="👥" />
-        <MetricCard label="Joueurs impliqués" value={allPlayers.length} icon="🎴" />
-        <MetricCard label="Total hits" value={multiCards.reduce((s, c) => s + c.Hits, 0)} icon="📊" />
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <MetricCard label="Cartes multi" value={multiCards.length} />
+        <MetricCard label="Joueurs" value={allPlayers.length} />
+        <MetricCard label="Exemplaires" value={multiCards.reduce((s, c) => s + c.Hits, 0)} />
       </div>
 
       {/* Filter by player */}
@@ -76,8 +75,7 @@ export function MultiPlayersView() {
         <select
           value={filterPlayer}
           onChange={(e) => setFilterPlayer(e.target.value)}
-          className="flex-1 rounded-lg px-3 py-2 text-sm"
-          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-primary)' }}
+          className="ui-input flex-1 !h-10"
         >
           <option value="">Tous les joueurs</option>
           {allPlayers.map((p) => (
@@ -85,23 +83,23 @@ export function MultiPlayersView() {
           ))}
         </select>
         {filterPlayer && (
-          <button
-            onClick={() => setFilterPlayer('')}
-            className="px-3 py-2 rounded-lg text-sm"
-            style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
-          >
+          <button onClick={() => setFilterPlayer('')} className="ui-btn ui-btn-secondary !h-10">
             Effacer
           </button>
         )}
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-12" style={{ color: 'var(--text-tertiary)' }}>
-          Aucune carte multi-joueurs trouvée.
-        </div>
+        <EmptyState icon={Users} title="Aucune carte multi-joueurs">Pas de dual, triple ou combo dans cette sélection.</EmptyState>
       ) : (
-        <DataTable data={filtered as MultiCard[]} columns={columns as any} pageSize={50} exportName={filterPlayer ? `multi_${filterPlayer.replace(/\s+/g, '_')}` : 'multi_joueurs'} />
+        <DataTable data={filtered as MultiCard[]} columns={columns} pageSize={50} exportName={filterPlayer ? `multi_${filterPlayer.replace(/\s+/g, '_')}` : 'multi_joueurs'} />
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function MultiPlayersView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <MultiPlayersViewContent /> : null
 }

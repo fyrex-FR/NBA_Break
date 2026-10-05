@@ -1,3 +1,6 @@
+import { Segmented, EmptyState } from '../ui/primitives'
+import { TrendingUp, Layers } from 'lucide-react'
+import { useMediaQuery, MOBILE_QUERY } from '../../hooks/useMediaQuery'
 import { useMemo, useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 import { useAppStore } from '../../stores/appStore'
@@ -7,12 +10,14 @@ const COLORS = [
   '#eab308', '#06b6d4', '#ec4899', '#84cc16', '#f59e0b',
 ]
 
-export function TrendView() {
-  const { analysisData } = useAppStore()
+function TrendViewContent() {
+  const { analysisData: storeAnalysisData, openSelection } = useAppStore()
+  // Garanti non nul par le composant enveloppe ci-dessous.
+  const analysisData = storeAnalysisData!
+  const isMobile = useMediaQuery(MOBILE_QUERY)
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>([])
   const [mode, setMode] = useState<'players' | 'teams'>('players')
 
-  if (!analysisData) return null
 
   // Hits par année par joueur/équipe
   const { years, rankings, trendData } = useMemo(() => {
@@ -70,33 +75,27 @@ export function TrendView() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-medium">📈 Tendances</h2>
-        <div className="flex rounded-lg overflow-hidden" style={{ border: '1px solid var(--border-standard)' }}>
-          {(['players', 'teams'] as const).map((m) => (
-            <button
-              key={m}
-              onClick={() => { setMode(m); setSelectedPlayers([]) }}
-              className="text-xs px-3 py-1.5"
-              style={{
-                background: mode === m ? 'var(--accent)' : 'transparent',
-                color: mode === m ? '#fff' : 'var(--text-secondary)',
-              }}
-            >
-              {m === 'players' ? '🎴 Joueurs' : '🛡️ Équipes'}
-            </button>
-          ))}
-        </div>
+      <div className="mb-4">
+        <Segmented<'players' | 'teams'>
+          value={mode}
+          onChange={(m) => { setMode(m); setSelectedPlayers([]) }}
+          ariaLabel="Entité"
+          options={[{ value: 'players', label: 'Joueurs' }, { value: 'teams', label: 'Équipes' }]}
+        />
       </div>
 
       {years.length < 2 ? (
-        <div className="text-center py-16" style={{ color: 'var(--text-tertiary)' }}>
-          Sélectionne plusieurs saisons pour voir les tendances.
-        </div>
+        <EmptyState
+          icon={TrendingUp}
+          title="Il faut au moins deux saisons"
+          action={<button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-primary"><Layers className="w-4 h-4" /> Ajouter des saisons</button>}
+        >
+          Ajoute des checklists d’années différentes pour comparer les volumes.
+        </EmptyState>
       ) : (
         <>
           {/* Sélecteur joueurs/équipes */}
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex sm:flex-wrap gap-2 mb-4 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
             {rankings.slice(0, 20).map(({ name }) => {
               const colorIdx = active.indexOf(name)
               const isActive = colorIdx !== -1
@@ -104,7 +103,7 @@ export function TrendView() {
                 <button
                   key={name}
                   onClick={() => toggleEntity(name)}
-                  className="text-xs px-2.5 py-1 rounded-full transition-all"
+                  className="flex-shrink-0 text-xs px-2.5 py-1 rounded-full transition-all"
                   style={{
                     background: isActive ? `${COLORS[colorIdx % COLORS.length]}22` : 'transparent',
                     border: `1px solid ${isActive ? COLORS[colorIdx % COLORS.length] : 'var(--border-standard)'}`,
@@ -127,13 +126,13 @@ export function TrendView() {
           </div>
 
           {/* Graphique */}
-          <div className="rounded-lg p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-            <ResponsiveContainer width="100%" height={320}>
+          <div className="ui-card p-3 sm:p-4">
+            <ResponsiveContainer width="100%" height={isMobile ? 260 : 340}>
               <LineChart data={trendData}>
                 <XAxis dataKey="year" tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
-                <YAxis tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
+                <YAxis width={isMobile ? 28 : 40} tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }} />
                 <Tooltip
-                  contentStyle={{ background: 'var(--bg-hover)', border: '1px solid var(--border-standard)', borderRadius: 8 }}
+                  contentStyle={{ background: 'var(--bg-elevated)', border: 'none', borderRadius: 10, boxShadow: 'var(--shadow-pop)' }}
                   labelStyle={{ color: 'var(--text-primary)', fontWeight: 600, marginBottom: 4 }}
                 />
                 <Legend wrapperStyle={{ fontSize: 11, color: 'var(--text-secondary)' }} />
@@ -155,4 +154,10 @@ export function TrendView() {
       )}
     </div>
   )
+}
+
+/** Attend qu'une analyse soit chargée : les hooks du contenu s'exécutent toujours dans le même ordre. */
+export function TrendView() {
+  const ready = useAppStore((s) => !!s.analysisData)
+  return ready ? <TrendViewContent /> : null
 }
