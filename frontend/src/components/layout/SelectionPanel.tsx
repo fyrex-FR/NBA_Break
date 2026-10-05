@@ -547,7 +547,6 @@ function SelectionFooter() {
           {count > 0 ? <span className="num">{formatCount(rows)} cartes</span> : <span>Coche au moins une checklist</span>}
           {count > 0 && (
             <>
-              <button onClick={deselectAllChecklists} className="hover:underline" style={{ color: 'var(--text-tertiary)' }}>Vider</button>
               <button
                 onClick={() => { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 1800) }}
                 className="inline-flex items-center gap-1 hover:underline"
@@ -559,6 +558,11 @@ function SelectionFooter() {
           )}
         </div>
       </div>
+      {count > 0 && (
+        <button onClick={deselectAllChecklists} className="ui-btn ui-btn-ghost ui-btn-danger ui-btn-lg !px-3" title="Décocher toutes les checklists">
+          <Trash2 className="w-4 h-4" /> Vider
+        </button>
+      )}
       {upToDate ? (
         <button onClick={closeSelection} className="ui-btn ui-btn-secondary ui-btn-lg">
           <Check className="w-4 h-4" style={{ color: 'var(--success)' }} /> À jour

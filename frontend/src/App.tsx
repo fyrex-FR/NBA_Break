@@ -174,9 +174,10 @@ function Shell() {
   useUrlSync()
   useCatalogSync()
 
+  const hasAnalysis = !!analysisData
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 })
-  }, [activeView])
+  }, [activeView, hasAnalysis])
 
   // Le thème s'applique aussi à <html> pour les zones hors app (overscroll, scrollbars).
   useEffect(() => {
