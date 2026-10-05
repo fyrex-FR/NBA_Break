@@ -184,7 +184,7 @@ export function CheckboxMark({ checked, indeterminate = false }: { checked: bool
   return (
     <span
       aria-hidden
-      className="inline-flex items-center justify-center w-4 h-4 rounded-[5px] flex-shrink-0 transition-colors"
+      className="inline-flex items-center justify-center w-4 h-4 rounded-[5px] flex-shrink-0"
       style={{
         background: on ? 'var(--accent)' : 'transparent',
         border: `1.5px solid ${on ? 'var(--accent)' : 'var(--border-strong)'}`,
