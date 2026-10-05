@@ -12,6 +12,7 @@ def test_relay_configured(monkeypatch):
     assert configure_nba_relay() is True  # idempotent
     assert NBAStatsHTTP.base_url == URL
     assert NBAStatsHTTP.headers["Authorization"] == "Bearer tok"
+    assert NBAStatsHTTP.headers["Accept-Encoding"] == "gzip, deflate"
     assert "Host" not in NBAStatsHTTP.headers
     assert "User-Agent" in NBAStatsHTTP.headers
     assert NBAStatsHTTP().base_url.format(endpoint="commonplayerinfo").endswith("/stats/commonplayerinfo")

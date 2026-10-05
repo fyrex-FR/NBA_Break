@@ -17,6 +17,8 @@ def configure_nba_relay() -> bool:
         return False
     # Host doit rester celui du relais (tunnel Cloudflare), pas stats.nba.com.
     headers = {k: v for k, v in _ORIGINAL_HEADERS.items() if k.lower() != "host"}
+    # Cloudflare répond en brotli si on l'accepte ; requests ne sait pas le décoder sans paquet dédié.
+    headers["Accept-Encoding"] = "gzip, deflate"
     headers["Authorization"] = f"Bearer {token}"
     NBAStatsHTTP.base_url = url
     NBAStatsHTTP.headers = headers
