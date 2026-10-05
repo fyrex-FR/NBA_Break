@@ -78,6 +78,15 @@ interface AppState {
 
 export type SelectionTab = 'catalog' | 'presets' | 'voggt' | 'upload'
 
+/**
+ * Nouvelle sélection. Vide = on repart de zéro : l'analyse affichée ne
+ * correspond plus à rien, on l'efface pour revenir à l'accueil.
+ */
+function withSelection(ids: string[]): Partial<AppState> {
+  if (ids.length > 0) return { selectedChecklistIds: ids }
+  return { selectedChecklistIds: [], analysisData: null, analyzedChecklistIds: [] }
+}
+
 export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
@@ -95,19 +104,15 @@ export const useAppStore = create<AppState>()(
       availableChecklists: [],
       setAvailableChecklists: (checklists) => set({ availableChecklists: checklists }),
       selectedChecklistIds: [],
-      setSelectedChecklistIds: (ids) => set({ selectedChecklistIds: ids }),
+      setSelectedChecklistIds: (ids) => set(withSelection(ids)),
       toggleChecklist: (id) => {
         const current = get().selectedChecklistIds
-        if (current.includes(id)) {
-          set({ selectedChecklistIds: current.filter((i) => i !== id) })
-        } else {
-          set({ selectedChecklistIds: [...current, id] })
-        }
+        set(withSelection(current.includes(id) ? current.filter((i) => i !== id) : [...current, id]))
       },
       selectAllChecklists: () => {
         set({ selectedChecklistIds: get().availableChecklists.map((c) => c.checklist_id) })
       },
-      deselectAllChecklists: () => set({ selectedChecklistIds: [] }),
+      deselectAllChecklists: () => set(withSelection([])),
       masterKey: null,
       setMasterKey: (key) => set({ masterKey: key }),
 
