@@ -13,6 +13,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .routers import sports, analysis, simulation, presets, export, upload, overrides, players, rookies, smart_upload, chat, jarvis, break_scout, audit, marvel_attributions, odds, polls
 
+from .services.nba_relay import configure_nba_relay
+
+configure_nba_relay()
+
 app = FastAPI(
     title="Checklist Optimizer API",
     version="0.1.0",
