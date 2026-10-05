@@ -481,6 +481,10 @@ export interface PlayerStatsResponse {
   draft: string | null
   awards: PlayerAwards
   seasons: PlayerSeason[]
+  /** Repli backend : stats.nba.com injoignable, seules identité + photo sont fournies. */
+  partial?: boolean
+  /** Repli backend : cache expiré servi faute de mieux. */
+  stale?: boolean
 }
 
 export interface TeamStanding {

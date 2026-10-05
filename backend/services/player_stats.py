@@ -39,17 +39,17 @@ def _cache_key(player_id: int) -> str:
     return f"{CACHE_PREFIX}/{player_id}.json"
 
 
-def _load_cache(config, player_id: int) -> Optional[dict]:
+def _load_cache(config, player_id: int, allow_stale: bool = False) -> Optional[dict]:
     if not is_r2_configured(config):
         return None
     try:
         client = make_r2_client(config)
         resp = client.get_object(Bucket=config["bucket"], Key=_cache_key(player_id))
         data = json.loads(resp["Body"].read().decode("utf-8"))
-        # Vérifier TTL
+        # Vérifier TTL (sauf en secours : mieux vaut des stats anciennes que rien)
         cached_at = data.get("_cached_at", 0)
         age_days = (time.time() - cached_at) / 86400
-        if age_days > CACHE_TTL_DAYS:
+        if age_days > CACHE_TTL_DAYS and not allow_stale:
             return None
         return data
     except Exception:
@@ -162,7 +162,7 @@ def _count_lost_finals(player_id: int, won_seasons: set) -> int:
     try:
         from nba_api.stats.endpoints import playercareerstats
         time.sleep(0.6)
-        ep = playercareerstats.PlayerCareerStats(player_id=player_id, timeout=10)
+        ep = playercareerstats.PlayerCareerStats(player_id=player_id, timeout=6)
         playoff_data = ep.get_normalized_dict().get("SeasonTotalsPostSeason", [])
         lost = 0
         for row in playoff_data:
@@ -184,13 +184,13 @@ def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
     from nba_api.stats.endpoints import playercareerstats, commonplayerinfo
 
     # Bio
-    info_ep = commonplayerinfo.CommonPlayerInfo(player_id=player_id, timeout=10)
+    info_ep = commonplayerinfo.CommonPlayerInfo(player_id=player_id, timeout=6)
     info_data = info_ep.get_normalized_dict()
     bio = info_data.get("CommonPlayerInfo", [{}])[0]
 
     # Stats carrière
     time.sleep(0.6)  # politesse NBA.com
-    career_ep = playercareerstats.PlayerCareerStats(player_id=player_id, timeout=10)
+    career_ep = playercareerstats.PlayerCareerStats(player_id=player_id, timeout=6)
     career_data = career_ep.get_normalized_dict()
     seasons_raw = career_data.get("SeasonTotalsRegularSeason", [])
 
@@ -245,8 +245,38 @@ def _fetch_from_nba(player_id: int, player_info: dict) -> dict:
     }
 
 
+# Coupe-circuit : stats.nba.com bloque/limite régulièrement les accès automatisés.
+# Après un échec, on ne le réinterroge pas pendant NBA_COOLDOWN_S secondes pour
+# que les fiches suivantes répondent tout de suite (cache ou repli minimal).
+NBA_COOLDOWN_S = 600
+_nba_down_until = 0.0
+
+
+def _minimal_payload(player_id: int, player_info: dict) -> dict:
+    """Ce qu'on sait sans appeler stats.nba.com : identité + photo (CDN public)."""
+    full_name = player_info.get("full_name", "")
+    awards = {"hof": 1} if normalize_name(full_name) in _HOF_NAMES else {}
+    return {
+        "player_id": player_id,
+        "full_name": full_name,
+        "is_active": player_info.get("is_active", False),
+        "photo_url": f"https://cdn.nba.com/headshots/nba/latest/1040x760/{player_id}.png",
+        "position": "",
+        "height": "",
+        "weight": "",
+        "country": "",
+        "team": "",
+        "jersey": "",
+        "draft": None,
+        "awards": awards,
+        "seasons": [],
+        "partial": True,
+    }
+
+
 def get_player_stats(name: str) -> dict:
-    """Point d'entrée principal : cache → nba_api → cache."""
+    """Point d'entrée principal : cache → nba_api → cache, avec replis si NBA.com ne répond pas."""
+    global _nba_down_until
     player_info = _find_player(name)
     if not player_info:
         raise ValueError(f"Joueur '{name}' introuvable dans la base NBA")
@@ -259,10 +289,18 @@ def get_player_stats(name: str) -> dict:
     if cached:
         return cached
 
-    # Appel NBA.com
-    data = _fetch_from_nba(player_id, player_info)
+    if time.time() >= _nba_down_until:
+        try:
+            data = _fetch_from_nba(player_id, player_info)
+            _save_cache(config, player_id, data)
+            return data
+        except Exception as e:
+            _nba_down_until = time.time() + NBA_COOLDOWN_S
+            logger.warning(f"stats.nba.com indisponible ({e}) — repli pendant {NBA_COOLDOWN_S}s")
 
-    # Sauvegarder en cache
-    _save_cache(config, player_id, data)
-
-    return data
+    # Repli : cache expiré s'il existe, sinon identité + photo
+    stale = _load_cache(config, player_id, allow_stale=True)
+    if stale:
+        stale["stale"] = True
+        return stale
+    return _minimal_payload(player_id, player_info)

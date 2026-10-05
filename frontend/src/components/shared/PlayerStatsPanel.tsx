@@ -74,7 +74,7 @@ export function PlayerStatsPanel({ playerName }: Props) {
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 <span className="font-medium text-sm" style={{ color: 'var(--text-primary)' }}>{data.full_name}</span>
                 {data.is_active && (
-                  <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>Actif</span>
+                  <span className="text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'color-mix(in srgb, var(--success) 14%, transparent)', color: 'var(--success)' }}>Actif</span>
                 )}
               </div>
               <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs" style={{ color: 'var(--text-tertiary)' }}>
@@ -86,6 +86,14 @@ export function PlayerStatsPanel({ playerName }: Props) {
               </div>
             </div>
           </div>
+
+          {(data.partial || data.stale) && (
+            <p className="mx-4 mb-3 px-3 py-2 rounded-lg text-xs" style={{ background: 'color-mix(in srgb, var(--warning) 10%, transparent)', color: 'var(--text-secondary)' }}>
+              {data.partial
+                ? 'Le service de stats NBA ne répond pas pour le moment : seules la photo et l’identité sont disponibles.'
+                : 'Stats NBA du dernier relevé (le service officiel ne répond pas pour le moment).'}
+            </p>
+          )}
 
           {/* Tableau stats */}
           {data.seasons.length > 0 && (
