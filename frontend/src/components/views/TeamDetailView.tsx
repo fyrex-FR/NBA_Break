@@ -185,8 +185,8 @@ function TeamDetailViewContent() {
         row.checklistSet.add(card.checklist_name || card.File || card.checklist_id || 'unknown')
 
         const isHit = [HIT_TYPE_AUTO, HIT_TYPE_MEM, HIT_TYPE_AUTO_MEM].includes(card['Hit Type'] || '')
-        if (card['Hit Type'] === HIT_TYPE_AUTO) row.Auto += hits
-        if (card['Hit Type'] === HIT_TYPE_MEM) row.Memo += hits
+        if (card['Hit Type'] === HIT_TYPE_AUTO || card['Hit Type'] === HIT_TYPE_AUTO_MEM) row.Auto += hits
+        if (card['Hit Type'] === HIT_TYPE_MEM || card['Hit Type'] === HIT_TYPE_AUTO_MEM) row.Memo += hits
         if (card['Hit Type'] === HIT_TYPE_AUTO_MEM) row.AutoMemo += hits
         if (isCrossTeamMultiPlayerCard) row.MultiTeamCards += hits
         if (card.Category === CATEGORY_LOGOMAN) row.Logoman += hits
@@ -199,7 +199,7 @@ function TeamDetailViewContent() {
 
     return Array.from(map.values())
       .map(({ checklistSet, ...row }) => ({ ...row, Checklists: checklistSet.size }))
-      .sort((a, b) => b.Score - a.Score || (b.Auto + b.Memo + b.AutoMemo) - (a.Auto + a.Memo + a.AutoMemo) || b.Hits - a.Hits || a.Player.localeCompare(b.Player))
+      .sort((a, b) => b.Score - a.Score || (b.Auto + b.Memo) - (a.Auto + a.Memo) || b.Hits - a.Hits || a.Player.localeCompare(b.Player))
   }, [teamCards, selectedTeam])
 
   function handlePlayerSummaryClick(row: PlayerSummaryRow) {
