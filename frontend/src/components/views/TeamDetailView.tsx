@@ -150,8 +150,8 @@ function TeamDetailViewContent() {
   const totalHits = teamCards.reduce((s, c) => s + c.Hits, 0)
   const logomanCount = teamCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)
   const caseHitCount = teamCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)
-  const autoCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO).reduce((s, c) => s + c.Hits, 0)
-  const memCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM).reduce((s, c) => s + c.Hits, 0)
+  const autoCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO || c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
+  const memCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM || c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const autoMemCount = teamCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const baseOtherCount = teamCards.filter((c) => c.Category === CATEGORY_BASE_OTHER).reduce((s, c) => s + c.Hits, 0)
   const uniquePlayers = new Set(teamCards.flatMap((c) => c.Player.split('/').map((p) => p.trim()).filter(Boolean))).size

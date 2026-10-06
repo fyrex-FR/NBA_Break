@@ -141,8 +141,8 @@ function PlayerDetailViewContent() {
   const totalHits = playerCards.reduce((s, c) => s + c.Hits, 0)
   const logomanCount = playerCards.filter((c) => c.Category === CATEGORY_LOGOMAN).reduce((s, c) => s + c.Hits, 0)
   const caseHitCount = playerCards.filter((c) => c.Category === CATEGORY_CASE_HIT).reduce((s, c) => s + c.Hits, 0)
-  const autoCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO).reduce((s, c) => s + c.Hits, 0)
-  const memCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM).reduce((s, c) => s + c.Hits, 0)
+  const autoCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO || c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
+  const memCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM || c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const autoMemCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const baseOtherCount = playerCards.filter((c) => c.Category === CATEGORY_BASE_OTHER).reduce((s, c) => s + c.Hits, 0)
   const uniqueChecklists = new Set(playerCards.map((c) => c.checklist_name)).size
