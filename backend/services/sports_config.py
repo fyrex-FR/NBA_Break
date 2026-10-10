@@ -137,6 +137,8 @@ DEFAULT_CATEGORY_RULES = {
     ],
 }
 
+ALL_SPORT_KEY = "all"
+ALL_SPORT_LABEL = "Tous les sports"
 AUTO_SPORT_KEY = "auto"
 AUTO_SPORT_LABEL = "Auto (détection par fichier)"
 
@@ -827,6 +829,11 @@ def get_effective_exact_category_by_sport(keyword_overrides_root):
 
 
 def get_sport_profile(sport_key):
+    if sport_key == ALL_SPORT_KEY:
+        profile = deepcopy(SPORT_PROFILES[DEFAULT_SPORT_KEY])
+        profile.update({"label": ALL_SPORT_LABEL, "page_icon": "🌐", "team_aliases": {}, "hype_tiers": {}, "top_rookies_by_year": {}})
+        profile["enabled_views"] = {**profile.get("enabled_views", {}), "rookies": False}
+        return profile
     if sport_key == AUTO_SPORT_KEY:
         return deepcopy(AUTO_SPORT_PROFILE)
     key = sport_key if sport_key in SPORT_PROFILES else DEFAULT_SPORT_KEY

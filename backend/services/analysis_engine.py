@@ -28,7 +28,7 @@ from .card_logic import (
     get_hype_multiplier,
     rarity_multiplier,
 )
-from .sports_config import get_sport_profile, get_effective_exact_category_by_sport
+from .sports_config import ALL_SPORT_KEY, SPORT_PROFILES, get_sport_profile, get_effective_exact_category_by_sport
 from .data_pipeline import (
     split_slash_values,
     normalize_team_value,
@@ -36,6 +36,7 @@ from .data_pipeline import (
     get_checklist_labels,
     dedupe_multiplayer_projection_rows,
     ensure_master_dataframe_schema,
+    master_parquet_key_for_sport,
 )
 from .r2_storage import read_r2_parquet, get_r2_config, is_r2_configured
 from .checklist_aliases import load_checklist_aliases, equivalent_checklist_ids
@@ -110,14 +111,7 @@ def normalize_player_name(name):
 # Data loading (master mode)
 # ---------------------------------------------------------------------------
 
-def load_master_data(sport_key, checklist_ids, master_key):
-    """Load and filter data from a master parquet on R2."""
-    config = get_r2_config()
-    if not is_r2_configured(config):
-        raise RuntimeError("R2 non configuré.")
-    if not master_key:
-        raise ValueError("Master parquet introuvable.")
-
+def _load_sport_master(sport_key, checklist_ids, master_key, config):
     master_df = read_r2_parquet(config, master_key)
     sport_profile = get_sport_profile(sport_key)
     master_df = ensure_master_dataframe_schema(master_df, sport_key)
@@ -133,6 +127,30 @@ def load_master_data(sport_key, checklist_ids, master_key):
             selected_ids.update(equivalent_checklist_ids(sport_key, value, aliases_root))
         if selected_ids:
             master_df = master_df[master_df["checklist_id"].astype(str).isin(selected_ids)].copy()
+    return master_df
+
+
+def load_master_data(sport_key, checklist_ids, master_key):
+    """Load and filter data from a master parquet on R2 (all sports if sport_key == "all")."""
+    config = get_r2_config()
+    if not is_r2_configured(config):
+        raise RuntimeError("R2 non configuré.")
+
+    if sport_key == ALL_SPORT_KEY:
+        frames = []
+        for sk in SPORT_PROFILES:
+            try:
+                df = _load_sport_master(sk, checklist_ids, master_parquet_key_for_sport(sk), config)
+            except Exception:
+                continue
+            if checklist_ids and df.empty:
+                continue
+            frames.append(df)
+        master_df = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    else:
+        if not master_key:
+            raise ValueError("Master parquet introuvable.")
+        master_df = _load_sport_master(sport_key, checklist_ids, master_key, config)
 
     if master_df.empty:
         raise ValueError("Aucune ligne trouvée pour la sélection.")

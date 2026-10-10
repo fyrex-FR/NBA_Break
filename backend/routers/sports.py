@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, HTTPException
 
-from ..services.sports_config import SPORT_PROFILES, get_sport_profile
+from ..services.sports_config import ALL_SPORT_KEY, ALL_SPORT_LABEL, SPORT_PROFILES, get_sport_profile
 from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_parquet
 from ..services.data_pipeline import (
     ensure_master_dataframe_schema,
@@ -17,7 +17,7 @@ router = APIRouter(prefix="/api/sports", tags=["sports"])
 @router.get("")
 def list_sports():
     """List all available sports."""
-    return [
+    return [{"key": ALL_SPORT_KEY, "label": ALL_SPORT_LABEL, "page_icon": "🌐"}] + [
         {
             "key": key,
             "label": profile.get("label", key),
@@ -49,6 +49,17 @@ def list_checklists(sport_key: str):
     config = get_r2_config()
     if not is_r2_configured(config):
         return {"checklists": [], "master_key": None, "source_mode": "none"}
+
+    if sport_key == ALL_SPORT_KEY:
+        checklists = []
+        for sk in SPORT_PROFILES:
+            try:
+                data = list_checklists(sk)
+            except Exception:
+                continue
+            checklists.extend(data["checklists"])
+        checklists.sort(key=lambda c: str(c.get("year", "")), reverse=True)
+        return {"checklists": checklists, "master_key": ALL_SPORT_KEY, "source_mode": "master" if checklists else "none"}
 
     # Check for master parquet
     master_key = master_parquet_key_for_sport(sport_key)
