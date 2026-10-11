@@ -733,6 +733,29 @@ SPORT_PROFILES = {
     },
 }
 
+# These catalogs are intentionally generic: the all-sports view needs separate
+# masters, while product-specific player tiers can be added when they are useful.
+for _key, _label, _icon, _hints in (
+    ("euroleague", "EuroLeague (Basket)", "🏀", ["euroleague", "euro league"]),
+    ("baseball", "Baseball", "⚾", ["baseball", "mlb", "allen ginter", "stadium club"]),
+    ("multisport", "Multi-sport", "🌐", ["multi sport", "multisport", "wild card", "matte metal"]),
+    ("olympic", "Olympique", "🏅", ["olympic", "olympia", "us olympic"]),
+):
+    SPORT_PROFILES[_key] = {
+        "label": _label,
+        "page_icon": _icon,
+        "header_logo_url": "",
+        "header_title": "Check list optimizer",
+        "header_subtitle": "Analysez vos checklists par joueur et par set.",
+        "sheet_names": ["Teams_clean"],
+        "team_aliases": {},
+        "category_rules": DEFAULT_CATEGORY_RULES,
+        "hype_tiers": {},
+        "top_rookies_by_year": {},
+        "enabled_views": {"autos_patchs": True, "logoman": False, "case_hits": True, "value_picks": True, "cost_by_pick": True, "rookies": False, "live_mode": True},
+        "filename_hints": _hints,
+    }
+
 BASE_EXACT_CATEGORY_BY_SPORT = {
     "nba": {
         "auto_mem": [
