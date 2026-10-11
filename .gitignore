@@ -46,6 +46,13 @@ checklists_parquet/
 *.parquet
 *.csv
 *.xlsx
+# Exception : checklists prêtes à importer, versionnées volontairement pour que
+# les agents externes les récupèrent par git pull. Voir data/checklists/README.md.
+# Le dossier doit être ré-inclus avant ses fichiers : git ne descend pas dans un
+# dossier exclu, donc une négation seule sur les fichiers n'aurait aucun effet.
+!data/checklists/
+!data/checklists/**/*.xlsx
+!data/checklists/README.md
 # Old versions / archives
 breaker_version/
 ToClean/
