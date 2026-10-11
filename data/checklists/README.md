@@ -11,6 +11,7 @@ cette information existe, les fichiers ne la contiennent pas.
 data/checklists/
 ├── nba/         -> sport_key=nba
 ├── nfl/         -> sport_key=nfl
+├── olympic/     -> sport_key=olympic
 └── multisport/  -> sport_key=multisport
 ```
 
@@ -26,7 +27,7 @@ Un Excel déposé à la main sur R2 n'apparaîtra jamais dans l'app.
 ```bash
 API=https://checklist-api.cardvaults.app
 
-for sport in nba nfl multisport; do
+for sport in nba nfl olympic multisport; do
   for f in data/checklists/$sport/*.xlsx; do
     echo "== $f ($sport)"
     curl -fsS -X POST "$API/api/upload" \
