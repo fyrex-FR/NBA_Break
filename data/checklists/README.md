@@ -62,12 +62,21 @@ pages de checklist officielles de `wildcardinc.com`.
   Collect-A-Books, Announcers, Prototypes, redemptions. Sur les sets d'avant
   1993 c'est surtout de l'oddball sans intérêt pour un break ; à partir de
   1993-94 ce sont de vrais inserts.
-- **Séries marquées dans `Card Type`** quand TCDB les documente, sous la forme
-  `Series 1 - Base` / `Series 2 - DPK RC`. Bornes reprises des notes TCDB :
-  1990-91 Hoops `#1-336` / `#337-440`, 1991-92 Hoops `#1-330` / `#331-590`,
-  1993-94 Topps `#1-198` / `#199-396`. 1994 SkyBox USA est en une seule série.
-  SkyBox 91-92, SkyBox Premium 93-94 et SP Authentic 99 n'ont aucune note de
-  série sur TCDB : aucune n'a été inventée.
+- **Séries livrées en checklists séparées** pour les trois produits que TCDB
+  documente en deux séries : à côté du fichier complet, un
+  `...-Series-1.xlsx` et un `...-Series-2.xlsx`, directement importables quand
+  on ouvre des boîtes d'une seule série. Le fichier complet garde aussi la série
+  préfixée dans `Card Type` (`Series 1 - Base`), pour filtrer sans changer de
+  fichier. Bornes reprises des notes TCDB : 1990-91 Hoops `#1-336` / `#337-440`,
+  1991-92 Hoops `#1-330` / `#331-590`, 1993-94 Topps `#1-198` / `#199-396`.
+  1994 SkyBox USA est en une seule série ; SkyBox 91-92, SkyBox Premium 93-94 et
+  SP Authentic 99 n'ont aucune note de série sur TCDB, aucune n'a été inventée.
+- **Répartition en séries des sets liés.** Un parallèle du set de base reprend sa
+  numérotation (Topps Gold, 396 cartes) : il se répartit donc en séries comme
+  lui, et apparaît dans les deux fichiers de série. Un insert à numérotation
+  propre (`BG1`, Announcers, Collect-A-Books) n'est rattachable à aucune série :
+  il n'existe que dans le fichier complet. Les Prototypes, qui réutilisent les
+  numéros du set de base, se répartissent normalement.
 - **Codes de sous-set laissés verbatim** (RS, SC, DPK, SM, INTL, ROO, BG, UPD…)
   quand leur sens n'était pas certain. Un code brut vaut mieux qu'un libellé faux.
 - **Deux mots renommés** dans les fichiers Wild Card, parce que le détecteur
