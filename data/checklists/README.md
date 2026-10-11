@@ -53,6 +53,15 @@ pages de checklist officielles de `wildcardinc.com`.
 
 - **Cartes checklist exclues.** Ce ne sont pas des cartes de joueur et elles
   créeraient de faux joueurs (« Checklist: 337-381 ») dans l'analyse de break.
+- **Inserts, autographes et parallèles inclus.** Sur TCDB ce sont des sets
+  distincts du set de base, pas des lignes de son checklist : il faut les scraper
+  séparément. Le nom du set porte le type dans `Card Type` (`Player's Ink Green`,
+  `Thunder and Lightning`, `Trademark Move Autographs`…), ce qui les rend
+  filtrables. Attention, TCDB range sous « Inserts and Related Sets » à la fois
+  les vrais inserts de paquet et des produits séparés : panneaux de programme,
+  Collect-A-Books, Announcers, Prototypes, redemptions. Sur les sets d'avant
+  1993 c'est surtout de l'oddball sans intérêt pour un break ; à partir de
+  1993-94 ce sont de vrais inserts.
 - **Séries marquées dans `Card Type`** quand TCDB les documente, sous la forme
   `Series 1 - Base` / `Series 2 - DPK RC`. Bornes reprises des notes TCDB :
   1990-91 Hoops `#1-336` / `#337-440`, 1991-92 Hoops `#1-330` / `#331-590`,
@@ -67,6 +76,21 @@ pages de checklist officielles de `wildcardinc.com`.
   et la couleur `Pink` contient `ink`, mot-clé d'autographe. Écrits `Pumpkin` et
   `Rose`. Les 64 composants de libellé ont été balayés contre les listes de
   `sports_config` : ce sont les deux seules collisions.
+
+### Faux positif connu : `Center Stage`
+
+Les 10 cartes de l'insert `Center Stage` (SkyBox Premium 93-94) sortent en
+memorabilia. `Stage` contient la sous-chaîne `tag`, mot-clé memorabilia, et le
+détecteur teste en sous-chaîne sans frontière de mot. Le nom du set n'a pas été
+modifié : contrairement à `Patch` et `Pink`, aucune écriture fidèle de
+« Center Stage » n'évite la collision.
+
+C'est le même défaut qui frappait `Patch`, `Pink` et qui frappera tout parallèle
+nommé `Pink`, tout insert contenant `Stage`, `Prime`, `Sole` ou `Mem`. Le
+correctif n'est pas dans les données mais dans `classify_hit_type` : il faut
+comparer sur frontières de mot plutôt qu'en sous-chaîne. Les overrides de l'app
+ne peuvent pas compenser, ils forcent un type **dans** une catégorie, jamais
+hors.
 - **`Team` vide sur les deux Wild Card.** Les pages officielles de ces produits
   multi-sport ne portent aucune équipe. L'analyse par joueur fonctionne,
   l'analyse par équipe non.
