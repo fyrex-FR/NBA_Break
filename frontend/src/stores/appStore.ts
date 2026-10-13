@@ -79,6 +79,19 @@ interface AppState {
 export type SelectionTab = 'catalog' | 'presets' | 'voggt' | 'upload'
 
 /**
+ * Coupe toutes les transitions le temps d'un changement de thème : sinon des
+ * dizaines de fondus de couleur partent ensemble et le navigateur laisse
+ * certains éléments peints avec l'ancien thème jusqu'au prochain repaint.
+ */
+function suspendTransitions() {
+  if (typeof document === 'undefined') return
+  const root = document.documentElement
+  root.classList.add('theme-switching')
+  // Deux frames : le nouveau thème est calculé et peint sans transition, puis on les rétablit.
+  requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching')))
+}
+
+/**
  * Nouvelle sélection. Vide = on repart de zéro : l'analyse affichée ne
  * correspond plus à rien, on l'efface pour revenir à l'accueil.
  */
@@ -92,7 +105,10 @@ export const useAppStore = create<AppState>()(
     (set, get) => ({
       // Theme
       theme: 'dark',
-      toggleTheme: () => set((s) => ({ theme: s.theme === 'dark' ? 'light' : 'dark' })),
+      toggleTheme: () => {
+        suspendTransitions()
+        set((s) => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }))
+      },
 
       // Sport
       selectedSport: 'nba',

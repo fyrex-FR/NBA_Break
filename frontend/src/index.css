@@ -581,6 +581,14 @@ select option {
   background-clip: padding-box;
 }
 
+/* Changement de thème : bascule instantanée, voir suspendTransitions() dans appStore */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
