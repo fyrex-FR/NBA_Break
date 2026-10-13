@@ -50,7 +50,7 @@ def categorize_card(box_type, category_rules):
     return CATEGORY_BASE_OTHER
 
 
-NOT_A_HIT_PHRASES = ("game script", "center stage", "facsimile")
+NOT_A_HIT_PHRASES = ("center stage", "facsimile")
 
 
 def classify_hit_type(box_type, category_rules):
