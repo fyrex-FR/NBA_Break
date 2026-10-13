@@ -50,9 +50,14 @@ def categorize_card(box_type, category_rules):
     return CATEGORY_BASE_OTHER
 
 
+NOT_A_HIT_PHRASES = ("game script", "center stage", "facsimile")
+
+
 def classify_hit_type(box_type, category_rules):
     """Classify autograph/memorabilia signal independently from premium category."""
     text = str(box_type or "").lower()
+    for phrase in NOT_A_HIT_PHRASES:
+        text = text.replace(phrase, " ")
 
     auto_keywords = category_rules.get("auto", [])
     if not auto_keywords:
