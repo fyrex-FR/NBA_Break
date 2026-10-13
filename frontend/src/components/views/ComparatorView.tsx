@@ -1,3 +1,4 @@
+import { Trophy, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useAppStore } from '../../stores/appStore'
 import { SearchSelect } from '../shared/SearchSelect'
@@ -16,10 +17,10 @@ interface PlayerStat {
 }
 
 const METRICS: { key: keyof Omit<PlayerStat, 'name'>; label: string; icon: string; color: string }[] = [
-  { key: 'total',      label: 'Total cartes', icon: '📊', color: '#94a3b8' },
+  { key: 'total',      label: 'Total cartes', icon: '📊', color: 'var(--text-tertiary)' },
   { key: 'logoman',    label: 'Logoman',      icon: '🔥', color: 'var(--danger)' },
-  { key: 'caseHit',    label: 'Case Hit',     icon: '✨', color: '#eab308' },
-  { key: 'autoMem',    label: 'Hits',         icon: '💎', color: '#3b82f6' },
+  { key: 'caseHit',    label: 'Case Hit',     icon: '✨', color: 'var(--cat-case)' },
+  { key: 'autoMem',    label: 'Hits',         icon: '💎', color: 'var(--cat-automem)' },
   { key: 'checklists', label: 'Checklists',   icon: '📁', color: 'var(--success)' },
 ]
 
@@ -81,7 +82,7 @@ function ComparatorViewContent() {
               />
             </div>
             {slots.length > 2 && (
-              <button onClick={() => removeSlot(i)} className="mt-2 px-1.5 py-1 rounded text-xs" style={{ color: 'var(--text-quaternary)' }}>✕</button>
+              <button onClick={() => removeSlot(i)} className="mt-1 ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon" aria-label="Retirer ce joueur"><X className="w-3.5 h-3.5" /></button>
             )}
           </div>
         ))}
@@ -99,13 +100,12 @@ function ComparatorViewContent() {
       {/* Comparaison */}
       {stats.length > 0 && (
         <div className="space-y-4">
-          {METRICS.map(({ key, label, icon }) => {
+          {METRICS.map(({ key, label }) => {
             const max = maxOf(key)
             const winner = stats.reduce((a, b) => a[key] >= b[key] ? a : b)
             return (
               <div key={key} className="rounded-xl p-4" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
                 <div className="flex items-center gap-1.5 mb-3">
-                  <span>{icon}</span>
                   <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>{label}</span>
                 </div>
                 <div className="space-y-2.5">
@@ -117,7 +117,7 @@ function ComparatorViewContent() {
                       <div key={s.name}>
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium" style={{ color: isWinner ? playerColor : 'var(--text-tertiary)' }}>
-                            {s.name}{isWinner && stats.length > 1 && ' 🥇'}
+                            {s.name}{isWinner && stats.length > 1 && <Trophy className="inline w-3 h-3 ml-1 -mt-0.5" />}
                           </span>
                           <span className="text-sm font-bold" style={{ color: isWinner ? playerColor : 'var(--text-primary)' }}>
                             {s[key].toLocaleString('fr-FR')}

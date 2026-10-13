@@ -178,7 +178,7 @@ function GlobalViewContent({ analysisData }: { analysisData: AnalyzeResponse }) 
             className={`px-5 py-4 border-[var(--border-subtle)] ${KPI_BORDERS[i]}`}
           >
             <div className="text-xs font-medium" style={{ color: 'var(--text-tertiary)' }}>{k.label}</div>
-            <div className="mt-1 text-[26px] sm:text-[28px] leading-8 font-semibold font-mono-num" style={{ color: k.accent ? 'var(--accent)' : 'var(--text-primary)' }}>
+            <div className="mt-1 text-[26px] sm:text-[28px] leading-8 font-semibold font-stat" style={{ color: k.accent ? 'var(--accent)' : 'var(--text-primary)' }}>
               {k.value.toLocaleString('fr-FR')}
             </div>
             {k.hint && <div className="text-xs mt-0.5" style={{ color: 'var(--text-quaternary)' }}>{k.hint}</div>}

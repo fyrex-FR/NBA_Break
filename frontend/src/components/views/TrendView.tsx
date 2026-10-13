@@ -1,5 +1,5 @@
 import { Segmented, EmptyState } from '../ui/primitives'
-import { TrendingUp, Layers } from 'lucide-react'
+import { TrendingUp, Layers, X } from 'lucide-react'
 import { useMediaQuery, MOBILE_QUERY } from '../../hooks/useMediaQuery'
 import { useMemo, useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts'
@@ -117,10 +117,9 @@ function TrendViewContent() {
             {selectedPlayers.length > 0 && (
               <button
                 onClick={() => setSelectedPlayers([])}
-                className="text-xs px-2 py-1 rounded-full"
-                style={{ color: 'var(--text-quaternary)', border: '1px solid var(--border-subtle)' }}
+                className="ui-chip flex-shrink-0"
               >
-                ✕ Reset
+                <X className="w-3 h-3" /> Réinitialiser
               </button>
             )}
           </div>

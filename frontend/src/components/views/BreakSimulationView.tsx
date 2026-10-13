@@ -5,7 +5,7 @@ import { useAppStore } from '../../stores/appStore'
 import { DataTable } from '../shared/DataTable'
 import { MetricCard } from '../shared/MetricCard'
 import { LetterAssignmentUI } from './LetterAssignmentUI'
-import { Save, Trash2, Download, Plus, ChevronDown, Loader2, Play, Target, Shield, UserPlus, User, CaseSensitive, CaseUpper, Grid2x2, Grid2x2Check } from 'lucide-react'
+import { Save, Trash2, Download, Plus, ChevronDown, Loader2, Play, Target, Flame, Shield, UserPlus, User, CaseSensitive, CaseUpper, Grid2x2, Grid2x2Check } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useMediaQuery, MOBILE_QUERY } from '../../hooks/useMediaQuery'
 import { CategoryBadge } from '../shared/CategoryBadge'
@@ -36,7 +36,7 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
     columnHelper.accessor('Spot', {
       header: 'Spot',
       cell: (info) => (
-        <span className="font-medium" style={{ color: 'var(--accent)' }}>
+        <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>
           {info.getValue()}
         </span>
       ),
@@ -55,25 +55,25 @@ function buildSpotColumns(method: string, oddsCols: OddsColumnFlags) {
       cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Logoman', {
-      header: '🔥',
+      header: 'Logo',
       cell: (info) => {
         const val = info.getValue() as number
         return val > 0 ? <span className="font-medium" style={{ color: 'var(--cat-logoman)' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
       },
     }),
     columnHelper.accessor('Logoman RC', {
-      header: '🔥RC',
+      header: 'Logo RC',
       cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Case Hit', {
-      header: '✨',
+      header: 'Case',
       cell: (info) => {
         const val = info.getValue() as number
         return val > 0 ? <span className="font-medium" style={{ color: 'var(--cat-case)' }}>{val}</span> : <span style={{ color: 'var(--text-quaternary)' }}>—</span>
       },
     }),
     columnHelper.accessor('Case Hit RC', {
-      header: '✨RC',
+      header: 'Case RC',
       cell: (info) => rcCell((info.getValue() as number) ?? 0),
     }),
     columnHelper.accessor('Auto garanties', {
@@ -953,7 +953,7 @@ export function BreakSimulationView() {
                   <div className="flex items-start justify-between gap-3 px-5 pt-3 md:pt-4 pb-3" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                     <div className="min-w-0">
                       <h3 className="text-[17px] font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
-                        {selectedSpot} {spotRow?.['Hot Spot'] ? <span className="text-sm">🔥</span> : null}
+                        {selectedSpot} {spotRow?.['Hot Spot'] ? <Flame className="inline w-4 h-4 -mt-1" style={{ color: 'var(--cat-logoman)' }} aria-label="Hot spot" /> : null}
                       </h3>
                       {spotRow && (
                         <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-xs num" style={{ color: 'var(--text-tertiary)' }}>

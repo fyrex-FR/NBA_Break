@@ -1,4 +1,4 @@
-import { Search } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 interface SearchSelectProps {
@@ -95,10 +95,10 @@ export function SearchSelect({ options, value, onChange, placeholder = 'Recherch
           {value && (
             <button
               onClick={handleClear}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-xs"
-              style={{ color: 'var(--text-quaternary)' }}
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon"
+              aria-label="Effacer"
             >
-              ✕
+              <X className="w-3.5 h-3.5" />
             </button>
           )}
         </div>

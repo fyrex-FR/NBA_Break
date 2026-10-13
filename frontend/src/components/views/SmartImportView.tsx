@@ -152,7 +152,7 @@ export function SmartImportView() {
             />
           </div>
 
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && <p className="text-sm" style={{ color: 'var(--danger)' }}>{error}</p>}
 
           <button
             onClick={handlePreview}
@@ -160,7 +160,7 @@ export function SmartImportView() {
             className="w-full py-3 rounded-xl font-semibold text-sm transition-colors flex items-center justify-center gap-2"
             style={{
               background: (!text.trim() && !file) ? 'var(--bg-hover)' : 'var(--accent)',
-              color: (!text.trim() && !file) ? 'var(--text-quaternary)' : '#fff',
+              color: (!text.trim() && !file) ? 'var(--text-quaternary)' : 'var(--accent-fg)',
             }}
           >
             <Sparkles className="w-4 h-4" />
@@ -231,7 +231,7 @@ export function SmartImportView() {
             </div>
           </div>
 
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && <p className="text-sm" style={{ color: 'var(--danger)' }}>{error}</p>}
 
           <div className="flex gap-3">
             <button
@@ -247,7 +247,7 @@ export function SmartImportView() {
               className="flex-1 py-2 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
               style={{
                 background: rows.length > 0 && checklistName.trim() ? 'var(--accent)' : 'var(--bg-hover)',
-                color: rows.length > 0 && checklistName.trim() ? '#fff' : 'var(--text-quaternary)',
+                color: rows.length > 0 && checklistName.trim() ? 'var(--accent-fg)' : 'var(--text-quaternary)',
               }}
             >
               <Check className="w-4 h-4" />
@@ -260,7 +260,7 @@ export function SmartImportView() {
       {step === 'done' && (
         <div className="text-center py-16">
           <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'var(--accent)' }}>
-            <Check className="w-7 h-7 text-white" />
+            <Check className="w-7 h-7" style={{ color: 'var(--accent-fg)' }} />
           </div>
           <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Import réussi</h3>
           <p className="text-sm mb-6" style={{ color: 'var(--text-tertiary)' }}>

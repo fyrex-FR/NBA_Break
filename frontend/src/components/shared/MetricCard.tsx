@@ -14,7 +14,7 @@ export function MetricCard({ label, value, valueColor, hint }: MetricCardProps) 
         {valueColor && <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: valueColor }} />}
         <span className="text-[11px] sm:text-xs font-medium truncate" style={{ color: 'var(--text-tertiary)' }}>{label}</span>
       </div>
-      <div className="text-[17px] leading-6 sm:text-[22px] sm:leading-7 font-semibold font-mono-num truncate" style={{ color: valueColor && typeof value === 'number' && value > 0 ? `color-mix(in srgb, ${valueColor} 70%, var(--text-primary))` : 'var(--text-primary)' }}>
+      <div className="text-[17px] leading-6 sm:text-[22px] sm:leading-7 font-semibold font-stat truncate" style={{ color: valueColor && typeof value === 'number' && value > 0 ? `color-mix(in srgb, ${valueColor} 70%, var(--text-primary))` : 'var(--text-primary)' }}>
         {typeof value === 'number' ? value.toLocaleString('fr-FR') : value}
       </div>
       {hint && <div className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{hint}</div>}

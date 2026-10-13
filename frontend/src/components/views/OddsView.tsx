@@ -9,7 +9,7 @@
  */
 import { Fragment, useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { ChevronDown, ChevronRight, Target } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchOddsIndex, fetchOddsSheet } from '../../api/client'
 import { OddsBadge, OddsBadgeList } from '../shared/OddsBadge'
@@ -151,7 +151,7 @@ export function OddsView() {
     return (
       <div>
         <div className="text-center py-16 rounded-xl" style={{ background: 'var(--bg-surface)', border: '1px dashed var(--border-solid)' }}>
-          <div className="text-4xl mb-3">🎯</div>
+          <Target className="w-8 h-8 mx-auto mb-3" style={{ color: 'var(--text-quaternary)' }} />
           <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>
             Aucune feuille d'odds pour les checklists sélectionnées.
           </p>

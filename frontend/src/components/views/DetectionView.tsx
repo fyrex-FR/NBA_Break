@@ -1,3 +1,4 @@
+import { Loader2, Save } from 'lucide-react'
 import { errorMessage } from '../../utils/checklists'
 import { useState, useEffect, useMemo } from 'react'
 import { useAppStore } from '../../stores/appStore'
@@ -189,7 +190,7 @@ export function DetectionView() {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <div className="text-3xl mb-3 animate-pulse">🧪</div>
+          <Loader2 className="w-6 h-6 mx-auto mb-3 animate-spin" style={{ color: 'var(--accent)' }} />
           <p style={{ color: 'var(--text-tertiary)' }}>Chargement des card types...</p>
         </div>
       </div>
@@ -233,12 +234,12 @@ export function DetectionView() {
 
           {/* Stats bar */}
           <div className="flex items-center gap-4 mb-4 text-xs" style={{ color: 'var(--text-tertiary)' }}>
-            <span>✍️ {autoOnlyCount} Auto</span>
-            <span>🧵 {memCount} Memo</span>
-            <span>💎 {autoCount} Auto/Memo</span>
-            <span>✨ {caseCount} Case Hit</span>
+            <span><b className="font-stat" style={{ color: 'var(--text-primary)' }}>{autoOnlyCount}</b> Auto</span>
+            <span><b className="font-stat" style={{ color: 'var(--text-primary)' }}>{memCount}</b> Memo</span>
+            <span><b className="font-stat" style={{ color: 'var(--text-primary)' }}>{autoCount}</b> Auto/Memo</span>
+            <span><b className="font-stat" style={{ color: 'var(--text-primary)' }}>{caseCount}</b> Case Hit</span>
             {overlapCount > 0 && (
-              <span style={{ color: 'var(--cat-case)' }}>⚠ {overlapCount} en doublon (priorité Case Hit)</span>
+              <span style={{ color: 'var(--cat-case)' }}>{overlapCount} en doublon (priorité Case Hit)</span>
             )}
             <span>{filtered.length} card types affichés</span>
           </div>
@@ -325,7 +326,7 @@ export function DetectionView() {
               className="px-4 py-2.5 rounded-lg text-sm font-medium"
               style={{ background: 'var(--accent)', color: 'var(--accent-fg)', opacity: saving ? 0.6 : 1 }}
             >
-              {saving ? '⏳ Sauvegarde...' : '💾 Enregistrer la sélection'}
+              {saving ? <><Loader2 className="w-4 h-4 animate-spin" /> Sauvegarde…</> : <><Save className="w-4 h-4" /> Enregistrer la sélection</>}
             </button>
             {msg && (
               <span className="text-sm" style={{ color: msg.startsWith('Erreur') ? 'var(--danger)' : 'var(--accent)' }}>

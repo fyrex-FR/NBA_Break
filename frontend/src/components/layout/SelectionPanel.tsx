@@ -170,7 +170,7 @@ function CatalogTab() {
             <option value="rows_desc">Plus de cartes</option>
             <option value="rows_asc">Moins de cartes</option>
           </select>
-          <button onClick={() => setSelectedOnly((v) => !v)} className={`ui-chip !h-7 ${selectedOnly ? 'is-active' : ''}`}>
+          <button onClick={() => setSelectedOnly((v) => !v)} className={`ui-chip sm:!h-7 ${selectedOnly ? 'is-active' : ''}`}>
             {selectedOnly && <Check className="w-3 h-3" />}
             Sélectionnées <span className="num" style={{ color: 'var(--text-quaternary)' }}>{selectedChecklistIds.length}</span>
           </button>
@@ -590,7 +590,7 @@ function Checkbox({ checked, indeterminate, onChange, label }: { checked: boolea
       aria-checked={indeterminate ? 'mixed' : checked}
       aria-label={label}
       onClick={(e) => { e.stopPropagation(); onChange() }}
-      className="p-1 -m-1 rounded"
+      className="p-3 -m-3 sm:p-1 sm:-m-1 rounded"
     >
       <CheckboxMark checked={checked} indeterminate={indeterminate} />
     </button>

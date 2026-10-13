@@ -137,7 +137,7 @@ export function DataTable<T>({
               value={globalFilter}
               onChange={(e) => setGlobalFilter(e.target.value)}
               placeholder={searchPlaceholder}
-              className="ui-input !h-8 pl-8 pr-8"
+              className="ui-input !h-10 sm:!h-8 pl-8 pr-8"
             />
             {globalFilter && (
               <button onClick={() => setGlobalFilter('')} className="absolute right-1 top-1/2 -translate-y-1/2 ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon" aria-label="Effacer">

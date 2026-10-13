@@ -73,7 +73,7 @@ function SelectionChip() {
     <div className="flex items-center">
       <button
         onClick={() => openSelection('catalog')}
-        className={`ui-btn ui-btn-secondary !h-8 !px-2.5 ${dirty ? '!rounded-r-none' : ''}`}
+        className={`ui-btn ui-btn-secondary !h-10 sm:!h-8 !px-2.5 ${dirty ? '!rounded-r-none' : ''}`}
         title="Choisir les checklists"
       >
         <Layers className="w-4 h-4" style={{ color: 'var(--accent)' }} />
@@ -90,7 +90,7 @@ function SelectionChip() {
         <button
           onClick={() => runAnalysis({ goTo: analysisData ? null : '🌍 Vue Globale' })}
           disabled={isAnalyzing}
-          className="ui-btn ui-btn-primary !h-8 !px-2.5 !rounded-l-none"
+          className="ui-btn ui-btn-primary !h-10 sm:!h-8 !px-3 sm:!px-2.5 !rounded-l-none"
           title="La sélection a changé depuis la dernière analyse"
         >
           {isAnalyzing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}

@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 interface MultiSearchSelectProps {
@@ -91,9 +92,10 @@ export function MultiSearchSelect({ options, value, onChange, placeholder = 'Sé
                         {item}
                         <button
                             onClick={(e) => { e.stopPropagation(); handleRemove(item) }}
-                            className="hover:text-red-400 transition-colors"
+                            className="hover:text-[var(--danger)] transition-colors"
+                            aria-label={`Retirer ${item}`}
                         >
-                            ✕
+                            <X className="w-3 h-3" />
                         </button>
                     </span>
                 ))}
