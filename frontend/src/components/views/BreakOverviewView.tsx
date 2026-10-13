@@ -209,7 +209,6 @@ export function BreakOverviewView() {
             <Radio className="w-4 h-4" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="ui-eyebrow" style={{ color: 'var(--danger)' }}>Break Voggt</div>
             <h1 className="text-[17px] sm:text-xl font-semibold leading-snug" style={{ color: 'var(--text-primary)' }}>{detail.title || 'Break Voggt'}</h1>
           </div>
           <button onClick={clearBreakContext} className="ui-btn ui-btn-ghost ui-btn-sm -mr-1" title="Quitter le mode break">

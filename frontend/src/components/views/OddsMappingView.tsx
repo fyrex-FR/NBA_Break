@@ -1,3 +1,4 @@
+import { Loader2, Save } from 'lucide-react'
 import { errorMessage } from '../../utils/checklists'
 /**
  * Vue Mapping Odds — correction manuelle du rattachement Box Type ↔ set d'odds.
@@ -155,7 +156,7 @@ export function OddsMappingView() {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <div className="text-3xl mb-3 animate-pulse">🔗</div>
+          <Loader2 className="w-6 h-6 mx-auto mb-3 animate-spin" style={{ color: 'var(--accent)' }} />
           <p style={{ color: 'var(--text-tertiary)' }}>Chargement du mapping odds...</p>
         </div>
       </div>
@@ -351,7 +352,7 @@ function ChecklistMappingCard({
                   className="px-4 py-2 rounded-lg text-sm font-medium"
                   style={{ background: 'var(--accent)', color: 'var(--accent-fg)', opacity: saving || !hasPending ? 0.5 : 1 }}
                 >
-                  {saving ? '⏳ Sauvegarde...' : '💾 Enregistrer les corrections'}
+                  {saving ? <><Loader2 className="w-4 h-4 animate-spin" /> Sauvegarde…</> : <><Save className="w-4 h-4" /> Enregistrer les corrections</>}
                 </button>
                 {msg && (
                   <span className="text-sm" style={{ color: msg.startsWith('Erreur') ? 'var(--danger)' : 'var(--success)' }}>

@@ -141,7 +141,7 @@ function MobileTabBar() {
           <button
             key={label}
             onClick={() => (analysisData ? setActiveView(view) : openSelection('catalog'))}
-            className="flex flex-col items-center justify-center gap-0.5 h-14 text-[10.5px] font-medium"
+            className="flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold"
             style={{ color: active ? 'var(--accent)' : 'var(--text-tertiary)' }}
           >
             <Icon className="w-5 h-5" />
@@ -149,11 +149,11 @@ function MobileTabBar() {
           </button>
         )
       })}
-      <button onClick={() => setPaletteOpen(true)} className="flex flex-col items-center justify-center gap-0.5 h-14 text-[10.5px] font-medium" style={{ color: 'var(--text-tertiary)' }}>
+      <button onClick={() => setPaletteOpen(true)} className="flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold" style={{ color: 'var(--text-tertiary)' }}>
         <Search className="w-5 h-5" />
         Chercher
       </button>
-      <button onClick={() => openSelection('catalog')} className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-[10.5px] font-medium" style={{ color: 'var(--text-tertiary)' }}>
+      <button onClick={() => openSelection('catalog')} className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold" style={{ color: 'var(--text-tertiary)' }}>
         <Layers className="w-5 h-5" />
         Sélection
         {selectedChecklistIds.length > 0 && (

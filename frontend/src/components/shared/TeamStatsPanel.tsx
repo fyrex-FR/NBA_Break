@@ -1,3 +1,4 @@
+import { Activity, X } from 'lucide-react'
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { fetchTeamStats } from '../../api/client'
@@ -22,10 +23,9 @@ export function TeamStatsPanel({ teamName }: Props) {
     return (
       <button
         onClick={() => setExpanded(true)}
-        className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors"
-        style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-standard)', color: 'var(--text-secondary)' }}
+        className="ui-btn ui-btn-secondary ui-btn-sm"
       >
-        🏀 Voir stats équipe
+        <Activity className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} /> Voir stats équipe
       </button>
     )
   }
@@ -33,8 +33,8 @@ export function TeamStatsPanel({ teamName }: Props) {
   return (
     <div className="rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
       <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-        <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>🏀 Stats équipe</span>
-        <button onClick={() => setExpanded(false)} className="text-xs" style={{ color: 'var(--text-quaternary)' }}>✕</button>
+        <span className="text-sm font-medium inline-flex items-center gap-1.5" style={{ color: 'var(--text-primary)' }}><Activity className="w-4 h-4" style={{ color: 'var(--accent)' }} /> Stats équipe</span>
+        <button onClick={() => setExpanded(false)} className="ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon" aria-label="Fermer"><X className="w-3.5 h-3.5" /></button>
       </div>
 
       {isLoading && (

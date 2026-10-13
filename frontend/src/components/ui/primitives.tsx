@@ -133,7 +133,7 @@ export function PageHeader({ title, description, icon: Icon, eyebrow, actions }:
         )}
         <div className="min-w-0">
           {eyebrow && <div className="ui-eyebrow mb-0.5">{eyebrow}</div>}
-          <h1 className="text-[22px] leading-7 font-display" style={{ color: 'var(--text-primary)' }}>{title}</h1>
+          <h1 className="text-[26px] leading-8 font-bold" style={{ color: 'var(--text-primary)' }}>{title}</h1>
           {description && (
             <p className="hidden sm:block text-sm mt-1 max-w-2xl" style={{ color: 'var(--text-tertiary)' }}>{description}</p>
           )}

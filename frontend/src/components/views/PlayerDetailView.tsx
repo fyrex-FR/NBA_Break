@@ -18,7 +18,7 @@ import { OddsBadgeList } from '../shared/OddsBadge'
 import { discreetBadges } from '../shared/oddsBadgeUtils'
 import { useRookies } from '../../hooks/useRookies'
 import { useOddsBadges } from '../../hooks/useOddsBadges'
-import { CATEGORY_BASE_OTHER, CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
+import { CATEGORY_LOGOMAN, CATEGORY_CASE_HIT, HIT_TYPE_AUTO, HIT_TYPE_AUTO_MEM, HIT_TYPE_MEM } from '../../types'
 import type { CardRecord } from '../../types'
 import { AWARD_LABELS } from '../../constants/awards'
 
@@ -144,7 +144,6 @@ function PlayerDetailViewContent() {
   const autoCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO || c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const memCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_MEM || c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
   const autoMemCount = playerCards.filter((c) => c['Hit Type'] === HIT_TYPE_AUTO_MEM).reduce((s, c) => s + c.Hits, 0)
-  const baseOtherCount = playerCards.filter((c) => c.Category === CATEGORY_BASE_OTHER).reduce((s, c) => s + c.Hits, 0)
   const uniqueChecklists = new Set(playerCards.map((c) => c.checklist_name)).size
   const totalChecklists = analysisData.metadata.checklists_count
 
@@ -218,15 +217,11 @@ function PlayerDetailViewContent() {
         <QuickPick title="Les plus présents dans la sélection" items={topPlayers} onPick={(name) => setTargetPlayer(name)} />
       ) : (
         <>
-          <div className="grid grid-cols-4 xl:grid-cols-8 gap-2 sm:gap-3 my-5 sm:my-6">
+          {/* Synthèse : le détail par catégorie est dans « Répartition par catégorie » juste en dessous */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 my-5 sm:my-6 max-w-2xl">
             <MetricCard label="Cartes" value={totalHits} />
             <MetricCard label="Checklists" value={`${uniqueChecklists}/${totalChecklists}`} />
-            <MetricCard label="Logoman" value={logomanCount} valueColor="var(--cat-logoman)" />
-            <MetricCard label="Case hit" value={caseHitCount} valueColor="var(--cat-case)" />
-            <MetricCard label="Auto" value={autoCount} valueColor="var(--cat-auto)" />
-            <MetricCard label="Memo" value={memCount} valueColor="var(--cat-mem)" />
-            <MetricCard label="A+M" value={autoMemCount} valueColor="var(--cat-automem)" />
-            <MetricCard label="Base" value={baseOtherCount} valueColor="var(--cat-base)" />
+            <MetricCard label="Hits premium" value={logomanCount + caseHitCount + autoCount + memCount + autoMemCount} hint={totalHits ? `${Math.round(((logomanCount + caseHitCount + autoCount + memCount + autoMemCount) / totalHits) * 100)} % des cartes` : undefined} />
           </div>
 
           {/* Distribution bars */}

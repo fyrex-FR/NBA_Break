@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 /**
  * Horizontal stacked bar replacing ugly pie charts.
  * Shows category distribution as a compact inline bar + legend.
@@ -61,7 +62,7 @@ export function CategoryBreakdown({ data, title, activeFilter, onFilter }: Categ
             onClick={() => onFilter?.('')}
             className="ui-chip !h-6 is-active"
           >
-            Toutes ✕
+            Toutes <X className="w-3 h-3" />
           </button>
         )}
         {isFilterable && !hasFilter && title && (

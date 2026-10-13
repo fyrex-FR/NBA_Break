@@ -52,31 +52,14 @@ export function HomeView() {
   return (
     <div className="max-w-[1080px] mx-auto">
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl px-5 pt-8 pb-10 sm:px-8 md:px-10 md:py-12 mb-6" style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}>
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.55]"
-          style={{
-            backgroundImage: 'radial-gradient(color-mix(in srgb, var(--text-primary) 9%, transparent) 1px, transparent 1px)',
-            backgroundSize: '18px 18px',
-            maskImage: 'radial-gradient(ellipse at 75% 40%, #000 0%, transparent 65%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at 75% 40%, #000 0%, transparent 65%)',
-          }}
-        />
+      <section className="relative overflow-hidden rounded-3xl px-5 pt-9 pb-10 sm:px-8 md:px-12 md:py-14 mb-8" style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}>
         <div className="relative grid gap-10 lg:gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_380px] items-center">
           <div>
-            <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full text-xs font-medium mb-5" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>
-              <span className="relative flex w-1.5 h-1.5">
-                <span className="absolute inset-0 rounded-full animate-ping opacity-60" style={{ background: 'var(--accent)' }} />
-                <span className="relative w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
-              </span>
-              <span className="num">{formatCount(availableChecklists.length)}</span> checklists disponibles
-            </div>
-            <h1 className="text-[32px] leading-[1.08] sm:text-[40px] md:text-[46px] font-display" style={{ color: 'var(--text-primary)' }}>
-              Ne te fais plus{' '}
-              <span className="text-heat">climatiser.</span>
+            <h1 className="text-[46px] sm:text-[64px] lg:text-[72px] font-display uppercase" style={{ color: 'var(--text-primary)' }}>
+              Ne te fais plus <span style={{ color: 'var(--accent)' }}>climatiser.</span>
             </h1>
-            <p className="mt-4 text-[15px] leading-relaxed max-w-lg" style={{ color: 'var(--text-tertiary)' }}>
+            <div aria-hidden className="mt-5 h-1 w-24 rounded-full" style={{ background: 'var(--heat-gradient)' }} />
+            <p className="mt-5 text-[16px] leading-relaxed max-w-md" style={{ color: 'var(--text-secondary)' }}>
               Avant d'acheter un spot, NoClim prend sa température : qui a les autos, les patchs, les case hits… et qui va te laisser avec une base de 2012.
             </p>
             <div className="mt-7 flex flex-wrap gap-2.5">
@@ -100,6 +83,9 @@ export function HomeView() {
                 </button>
               )}
             </div>
+            <p className="mt-5 text-xs" style={{ color: 'var(--text-tertiary)' }}>
+              <span className="font-stat text-[13px]" style={{ color: 'var(--text-primary)' }}>{formatCount(availableChecklists.length)}</span> checklists prêtes à croiser pour ce sport.
+            </p>
           </div>
           <div className="relative">
             <HeroDemo sport={selectedSport} checklists={demoChecklists} />

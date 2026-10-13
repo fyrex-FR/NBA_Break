@@ -7,7 +7,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { fetchBreakPlayers } from '../../api/client'
 import { useAppStore } from '../../stores/appStore'
-import { RefreshCw } from 'lucide-react'
+import { RefreshCw, X } from 'lucide-react'
 
 const ALPHABET = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
@@ -195,7 +195,7 @@ export function LetterAssignmentUI({
                 <span key={player} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
                   <span>{player}</span>
                   {st && <span className="opacity-70 text-[10px]">{st.cards}c{st.auto > 0 ? ` · ${st.auto}A` : ''}</span>}
-                  <button onClick={() => handleUnextract(player)} className="opacity-60 hover:opacity-100 ml-0.5" title="Remettre dans le pool">✕</button>
+                  <button onClick={() => handleUnextract(player)} className="opacity-60 hover:opacity-100 ml-0.5" title="Remettre dans le pool" aria-label={`Remettre ${player} dans le pool`}><X className="w-3 h-3" /></button>
                 </span>
               )
             })}

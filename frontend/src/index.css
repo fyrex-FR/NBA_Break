@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap');
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -24,8 +24,8 @@
   /* Texte */
   --text-primary: #f4f4f6;
   --text-secondary: #c7c7d1;
-  --text-tertiary: #8c8c9a;
-  --text-quaternary: #6b6b7a;
+  --text-tertiary: #a1a1af;
+  --text-quaternary: #868696;
 
   /* Bordures */
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -41,7 +41,7 @@
   /* Marque « Thermo » : infrarouge = chaud, cyan = froid */
   --accent: #ff4d2e;
   --accent-hover: #ff6a4d;
-  --accent-fg: #ffffff;
+  --accent-fg: #0a0a0f;
   --cold: #3fc8f2;
   --hot: #ff2e63;
   --heat-gradient: linear-gradient(90deg, #3fc8f2 0%, #ff2e63 55%, #ff5a1f 100%);
@@ -74,8 +74,8 @@
 
   --text-primary: #0e1116;
   --text-secondary: #39414d;
-  --text-tertiary: #5f6877;
-  --text-quaternary: #858d99;
+  --text-tertiary: #4f5765;
+  --text-quaternary: #646b7a;
 
   --border-subtle: rgba(15, 23, 42, 0.07);
   --border-standard: rgba(15, 23, 42, 0.12);
@@ -86,8 +86,9 @@
   --shadow-pop: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 16px 48px rgba(15, 23, 42, 0.16);
   --shadow-card: 0 0 0 1px var(--border-subtle), 0 1px 2px rgba(15, 23, 42, 0.04);
 
-  --accent: #e8401f;
-  --accent-hover: #f25535;
+  --accent: #c8341a;
+  --accent-hover: #d9401f;
+  --accent-fg: #ffffff;
   --cold: #0b9fd1;
   --hot: #e11d55;
 
@@ -108,8 +109,7 @@
 [data-theme] {
   --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
   --accent-ring: color-mix(in srgb, var(--accent) 45%, transparent);
-  --font-sans: "Geist", "Inter", -apple-system, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+  --font-sans: "Archivo", -apple-system, system-ui, sans-serif;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -181,8 +181,8 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-feature-settings: "ss01";
-  letter-spacing: -0.005em;
+  font-stretch: 100%;
+  caret-color: var(--accent);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -192,8 +192,13 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3 {
-  letter-spacing: -0.02em;
+/* Titres en largeur réduite : l'accent « fiche de stats » de la marque */
+h1, h2 {
+  font-stretch: 84%;
+  letter-spacing: -0.012em;
+}
+h3 {
+  letter-spacing: -0.006em;
 }
 
 ::selection {
@@ -229,29 +234,28 @@ textarea {
     box-shadow: var(--shadow-card);
   }
 
-  .text-heat {
-    background: var(--heat-gradient-warm);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
   .font-display {
-    letter-spacing: -0.035em;
-    font-weight: 650;
+    font-stretch: 72%;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
   }
 
-  .font-mono-num {
-    font-family: var(--font-mono);
+  /* Chiffres clés : condensés et tabulaires, comme une ligne de stats au dos d'une carte */
+  .font-stat {
+    font-stretch: 78%;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
-    letter-spacing: -0.02em;
+    font-feature-settings: "tnum";
+    letter-spacing: -0.01em;
   }
 
   .ui-eyebrow {
     font-size: 11px;
     line-height: 16px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-weight: 700;
+    font-stretch: 88%;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-tertiary);
   }
@@ -460,6 +464,17 @@ textarea {
   }
 
   /* Retour tactile : visible pendant l'appui uniquement */
+  @media (pointer: coarse) {
+    .ui-btn { min-height: 40px; }
+    .ui-btn-icon { width: 40px; height: 40px; }
+    .ui-btn-sm { min-height: 34px; }
+    .ui-btn-sm.ui-btn-icon { width: 34px; height: 34px; }
+    .ui-segment > button { height: 32px; }
+    .ui-chip { height: 34px; }
+    .ui-select { height: 36px; }
+    .ui-input { height: 40px; }
+  }
+
   .ui-row-hover:active {
     background: var(--bg-hover);
   }
