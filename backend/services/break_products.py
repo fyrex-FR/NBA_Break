@@ -199,7 +199,7 @@ def guess_sport(title: str, description: str, detection: dict | None = None) -> 
     low = hay.lower()
     emoji_map = [
         ("🏀", "nba"), ("🏈", "nfl"), ("⚾", "mlb"),
-        ("⚽", "soccer"), ("🎾", "tennis"),
+        ("⚽", "soccer"), ("🎾", "tennis"), ("🏎️", "f1"),
     ]
     for emoji, sport in emoji_map:
         if emoji in hay:
@@ -209,7 +209,7 @@ def guess_sport(title: str, description: str, detection: dict | None = None) -> 
         ("nfl", "nfl"), ("football americain", "nfl"),
         ("mlb", "mlb"), ("baseball", "mlb"),
         ("soccer", "soccer"), ("uefa", "soccer"), ("foot", "soccer"),
-        ("wwe", "wwe"), ("tennis", "tennis"),
+        ("wwe", "wwe"), ("tennis", "tennis"), ("formule 1", "f1"), ("formula 1", "f1"),
     ]
     for kw, sport in keyword_map:
         if kw in low:

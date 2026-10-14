@@ -701,6 +701,35 @@ SPORT_PROFILES = {
             "topps chrome tennis",
         ],
     },
+    "f1": {
+        "label": "Formule 1",
+        "page_icon": "🏎️",
+        "header_logo_url": "",
+        "header_title": "Check list optimizer",
+        "header_subtitle": "Analysez vos checklists Formule 1 pour optimiser vos picks pilotes et écuries.",
+        "sheet_names": ["Teams_clean"],
+        "team_aliases": {},
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "logoman": ["logo patch", "team logo"],
+        },
+        "hype_tiers": {
+            "Tier S": ["Max Verstappen", "Lewis Hamilton", "Charles Leclerc", "Lando Norris"],
+            "Tier A": ["Oscar Piastri", "George Russell", "Carlos Sainz", "Fernando Alonso", "Kimi Antonelli"],
+            "Tier B": ["Pierre Gasly", "Isack Hadjar", "Oliver Bearman", "Alexander Albon", "Nico Hulkenberg"],
+        },
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": True,
+            "case_hits": True,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": ["formula 1", "formula one", "f1", "topps chrome formula", "grand prix"],
+    },
     "mma": {
         "label": "UFC / MMA / PFL",
         "page_icon": "🥊",
@@ -893,6 +922,7 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
     nba_strong = ["nba", "basket", "basketball", "hoops"]
     disney_strong = ["disney", "disneyland", "topps disney", "pixar"]
     marvel_strong = ["marvel", "deadpool", "avengers", "spider-man", "x-men", "comic book heroes"]
+    f1_strong = ["formula 1", "formula one", "formula-1", "f1 "]
     wwe_strong = ["wwe", "wrestling", "smackdown", "raw wwe", "nxt wwe"]
 
     if any(h in normalized for h in marvel_strong):
@@ -901,6 +931,8 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
         return "disney"
     if any(h in normalized for h in wwe_strong):
         return "wwe"
+    if any(h in normalized for h in f1_strong):
+        return "f1"
     if any(h in normalized for h in tennis_strong):
         return "tennis"
     if any(h in normalized for h in soccer_strong):

@@ -10,7 +10,7 @@ import { useRunAnalysis } from '../../hooks/useRunAnalysis'
 import type { VoggtBreakSummary } from '../../types'
 
 const SPORT_EMOJI: Record<string, string> = {
-  nba: '🏀', nfl: '🏈', mlb: '⚾', soccer: '⚽', tennis: '🎾', wwe: '🤼', disney: '🏰', marvel: '🦸', mma: '🥊',
+  nba: '🏀', nfl: '🏈', mlb: '⚾', soccer: '⚽', tennis: '🎾', wwe: '🤼', disney: '🏰', marvel: '🦸', mma: '🥊', f1: '🏎️',
 }
 
 interface BreakModePanelProps {
