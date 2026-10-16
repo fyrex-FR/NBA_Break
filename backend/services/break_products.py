@@ -209,7 +209,7 @@ def guess_sport(title: str, description: str, detection: dict | None = None) -> 
         ("nfl", "nfl"), ("football americain", "nfl"),
         ("mlb", "mlb"), ("baseball", "mlb"),
         ("soccer", "soccer"), ("uefa", "soccer"), ("foot", "soccer"),
-        ("wwe", "wwe"), ("tennis", "tennis"), ("formule 1", "f1"), ("formula 1", "f1"),
+        ("wwe", "wwe"), ("tennis", "tennis"), ("formule 1", "f1"), ("formula 1", "f1"), ("star wars", "starwars"),
     ]
     for kw, sport in keyword_map:
         if kw in low:

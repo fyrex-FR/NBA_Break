@@ -730,6 +730,35 @@ SPORT_PROFILES = {
         },
         "filename_hints": ["formula 1", "formula one", "f1", "topps chrome formula", "grand prix"],
     },
+    "starwars": {
+        "label": "Star Wars",
+        "page_icon": "⭐",
+        "header_logo_url": "",
+        "header_title": "Check list optimizer",
+        "header_subtitle": "Analysez vos checklists Star Wars pour optimiser vos picks personnages et inserts.",
+        "sheet_names": ["Teams_clean"],
+        "team_aliases": {},
+        "category_rules": {
+            **DEFAULT_CATEGORY_RULES,
+            "logoman": [],
+        },
+        "hype_tiers": {
+            "Tier S": ["Darth Vader", "Luke Skywalker", "Han Solo", "Grogu", "The Mandalorian", "Boba Fett"],
+            "Tier A": ["Obi-Wan Kenobi", "Ahsoka Tano", "Yoda", "Darth Maul", "Princess Leia", "Chewbacca"],
+            "Tier B": ["Anakin Skywalker", "Kylo Ren", "Rey", "Cassian Andor", "Emperor Palpatine", "Mace Windu"],
+        },
+        "top_rookies_by_year": {},
+        "enabled_views": {
+            "autos_patchs": True,
+            "logoman": False,
+            "case_hits": True,
+            "value_picks": True,
+            "cost_by_pick": True,
+            "rookies": False,
+            "live_mode": True,
+        },
+        "filename_hints": ["star wars", "starwars", "galaxy chrome"],
+    },
     "mma": {
         "label": "UFC / MMA / PFL",
         "page_icon": "🥊",
@@ -922,6 +951,7 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
     nba_strong = ["nba", "basket", "basketball", "hoops"]
     disney_strong = ["disney", "disneyland", "topps disney", "pixar"]
     marvel_strong = ["marvel", "deadpool", "avengers", "spider-man", "x-men", "comic book heroes"]
+    starwars_strong = ["star wars", "star-wars", "starwars"]
     f1_strong = ["formula 1", "formula one", "formula-1", "f1 "]
     wwe_strong = ["wwe", "wrestling", "smackdown", "raw wwe", "nxt wwe"]
 
@@ -931,6 +961,8 @@ def detect_sport_from_filename(filename, fallback=DEFAULT_SPORT_KEY):
         return "disney"
     if any(h in normalized for h in wwe_strong):
         return "wwe"
+    if any(h in normalized for h in starwars_strong):
+        return "starwars"
     if any(h in normalized for h in f1_strong):
         return "f1"
     if any(h in normalized for h in tennis_strong):
