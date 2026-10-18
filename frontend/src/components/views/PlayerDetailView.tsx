@@ -241,7 +241,7 @@ function PlayerDetailViewContent() {
             </div>
           )}
 
-          <DataTable data={filteredCards} columns={cardColumns} pageSize={50} exportName={selectedPlayer.replace(/\s+/g, '_')} mobileColumns={['Box Type', 'checklist_name']} />
+          <DataTable data={filteredCards} columns={cardColumns} pageSize={50} exportName={selectedPlayer.replace(/\s+/g, '_')} mobileColumns={['Box Type', 'Team', 'checklist_name']} />
         </>
       )}
     </div>
