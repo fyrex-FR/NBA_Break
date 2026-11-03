@@ -10,7 +10,7 @@ import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse, Response
 
-ALLOWED = {"commonplayerinfo", "playercareerstats", "playerawards", "teamgamelog", "leaguestandingsv3"}
+ALLOWED = {"commonplayerinfo", "playerindex", "playercareerstats", "playerawards", "teamgamelog", "leaguestandingsv3"}
 UPSTREAM = os.getenv("NBA_UPSTREAM", "https://stats.nba.com/stats")
 TOKEN = os.getenv("RELAY_TOKEN", "")
 TTL = 6 * 3600

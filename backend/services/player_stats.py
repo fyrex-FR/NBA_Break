@@ -98,6 +98,29 @@ def _find_player(name: str):
         if results:
             return results[0]
 
+    return _find_in_live_index(name)
+
+
+_index_cache: dict = {"at": 0.0, "rows": []}
+_INDEX_TTL_S = 86400
+
+
+def _find_in_live_index(name: str):
+    """Repli : la liste statique de nba_api est figée à sa version (rookies de la dernière
+    draft absents). On interroge alors playerindex (via le relais), mis en cache 24 h."""
+    try:
+        if time.time() - _index_cache["at"] > _INDEX_TTL_S or not _index_cache["rows"]:
+            from nba_api.stats.endpoints import playerindex
+            ep = playerindex.PlayerIndex(timeout=10)
+            rows = ep.get_normalized_dict().get("PlayerIndex", [])
+            _index_cache.update(at=time.time(), rows=rows)
+        norm = normalize_name(name)
+        for r in _index_cache["rows"]:
+            full = f"{r.get('PLAYER_FIRST_NAME', '')} {r.get('PLAYER_LAST_NAME', '')}"
+            if normalize_name(full) == norm:
+                return {"id": r["PERSON_ID"], "full_name": full.strip(), "is_active": True}
+    except Exception as e:
+        logger.warning(f"Live player index lookup failed for {name!r}: {e}")
     return None
 
 
