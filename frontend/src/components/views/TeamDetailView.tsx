@@ -284,7 +284,7 @@ function TeamDetailViewContent() {
               exportName={`${selectedTeam.replace(/\s+/g, '_')}_joueurs`}
               initialSorting={[{ id: 'Score', desc: true }]}
               onRowClick={handlePlayerSummaryClick}
-              mobileColumns={['Hits', 'Auto', 'CaseHit']}
+              mobileColumns={['Hits', 'Auto', 'Memo']}
             />
           </div>
 
