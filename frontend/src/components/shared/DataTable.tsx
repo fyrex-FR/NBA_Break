@@ -363,7 +363,7 @@ function MobileList<T>({ table, rankColumn, mobileColumns, numericCols, onRowCli
     : rest.slice(0, 3)
   if (sortedId && sortedId !== titleCol?.id && !picked.some((c) => c.id === sortedId)) {
     const sortedCol = rest.find((c) => c.id === sortedId)
-    if (sortedCol) picked = [sortedCol, ...picked].slice(0, Math.max(3, picked.length))
+    if (sortedCol) picked = [sortedCol, ...picked].slice(0, mobileColumns ? Math.min(4, picked.length + 1) : Math.max(3, picked.length))   // colonnes choisies: la colonne triée s'ajoute, elle ne remplace pas la dernière
   }
   const textCols = picked.filter((c) => !numericCols.has(c.id))
   const numCols = picked.filter((c) => numericCols.has(c.id))
