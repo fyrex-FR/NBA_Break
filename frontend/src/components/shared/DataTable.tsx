@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   useReactTable,
   getCoreRowModel,
@@ -75,9 +75,17 @@ export function DataTable<T>({
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
+  // Le tri initial n'est ré-appliqué que s'il CHANGE vraiment de contenu. Les pages le passent souvent sous forme de
+  // tableau littéral recréé à chaque rendu: comparer la référence remettait tri et page à zéro dès qu'on ouvrait le
+  // détail d'un joueur (retour de Jérémy, simulation).
+  const initialSortingKey = JSON.stringify(initialSorting ?? [])
+  const appliedSortingKey = useRef(initialSortingKey)
   useEffect(() => {
+    if (appliedSortingKey.current === initialSortingKey) return
+    appliedSortingKey.current = initialSortingKey
     setSorting(initialSorting ?? [])
-  }, [initialSorting])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialSortingKey])
 
   useEffect(() => { setMobileLimit(MOBILE_BATCH) }, [sorting, globalFilter, data])
 
