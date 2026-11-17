@@ -38,6 +38,7 @@ from .odds_config import (
     SINGLETON_BADGE_GROUPS,
     group_display_label,
     is_parallel_token,
+    rarity_badge_for_box,
     rarity_badge_for_odds,
 )
 from .r2_storage import get_r2_config, is_r2_configured, list_r2_keys_with_prefix, read_r2_json
@@ -395,6 +396,35 @@ def _config_lookup(sheet):
     return lookup
 
 
+_RARITY_GROUP_ORDER = ("hobby", "jumbo", "delight")
+
+
+def _set_rarity(set_rows, configs_by_key, best_overall):
+    """Rareté d'une série : sa cote la plus courante (la version de base) dans le
+    format Hobby si elle y existe, sinon dans son format principal, rapportée aux
+    paquets par box et aux boxes par case de ce format."""
+    best_by_cfg = {}
+    for row in set_rows:
+        for cfg_key, value in (row["odds"] or {}).items():
+            if value is None:
+                continue
+            if cfg_key not in best_by_cfg or value < best_by_cfg[cfg_key]:
+                best_by_cfg[cfg_key] = value
+    if not best_by_cfg:
+        return None
+
+    def rank(cfg_key):
+        group = (configs_by_key.get(cfg_key) or {}).get("group") or cfg_key
+        return _RARITY_GROUP_ORDER.index(group) if group in _RARITY_GROUP_ORDER else len(_RARITY_GROUP_ORDER)
+
+    with_packs = [k for k in best_by_cfg if (configs_by_key.get(k) or {}).get("packs_per_box")]
+    if with_packs:
+        key = min(with_packs, key=lambda k: (rank(k), best_by_cfg[k]))
+        cfg = configs_by_key[key]
+        return rarity_badge_for_box(best_by_cfg[key], cfg.get("packs_per_box"), cfg.get("boxes_per_case"))
+    return rarity_badge_for_odds(best_overall["odds"] if best_overall else None)
+
+
 def build_set_summaries(sheet):
     """Construit, par set d'odds racine : parallèles, disponibilité par group,
     meilleures odds par group, badges, familles de parallèles exclusives.
@@ -407,6 +437,7 @@ def build_set_summaries(sheet):
     rows = sheet.get("rows") or []
     configs_by_key = _config_lookup(sheet)
     all_labels = [r.get("label", "") for r in rows if isinstance(r, dict)]
+    declared_rarity = isinstance(sheet.get("rarity"), dict) and bool(sheet.get("rarity"))
 
     # Résout (set, parallel) pour chaque ligne, en respectant les valeurs
     # explicites du fichier quand elles sont fournies.
@@ -459,7 +490,8 @@ def build_set_summaries(sheet):
                             family_groups.setdefault(tok, set()).add(group)
 
         availability_badge = classify_availability_badge(groups_present)
-        rarity_badge = rarity_badge_for_odds(best_overall["odds"] if best_overall else None)
+        # Rareté déclarée par l'éditeur (champ `rarity`) : seules ses étiquettes comptent.
+        rarity_badge = None if declared_rarity else _set_rarity(set_rows, configs_by_key, best_overall)
 
         exclusive_families = []
         for family, fam_groups in sorted(family_groups.items()):
@@ -489,7 +521,30 @@ def build_set_summaries(sheet):
         }
 
     _apply_exclusives(summaries, sheet.get("exclusives"))
+    _apply_rarity(summaries, sheet.get("rarity"))
     return {"sets": summaries, "configs_by_key": configs_by_key}
+
+
+_RARITY_CODES = {"sp", "ssp", "case_hit"}
+
+
+def _apply_rarity(summaries, rarity):
+    """Rareté déclarée par série (champ optionnel `rarity`, {set: sp|ssp|case_hit}).
+    Quand la feuille en déclare, la rareté calculée n'est pas utilisée : l'éditeur
+    étiquette une sélection (ses « case hits »), pas toutes les séries rares."""
+    if not isinstance(rarity, dict):
+        return
+    for set_root, code in rarity.items():
+        entry = summaries.get(set_root)
+        if entry is None or code not in _RARITY_CODES:
+            continue
+        old = entry.get("rarity_badge")
+        entry["rarity_badge"] = code
+        badges = [b for b in entry.get("badges", []) if b != old]
+        # Ordre : disponibilité, rareté, puis best:<group>.
+        at = 1 if badges and not str(badges[0]).startswith("best:") and badges[0] not in _RARITY_CODES else 0
+        badges.insert(at, code)
+        entry["badges"] = badges
 
 
 def normalize_exclusive_label(label):

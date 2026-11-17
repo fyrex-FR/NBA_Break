@@ -238,9 +238,9 @@ BADGE_RARITY_SSP = "ssp"
 BADGE_RARITY_CASE_HIT = "case_hit"
 
 RARITY_BADGE_LABELS_FR = {
-    BADGE_RARITY_SP: "SP (1:200+)",
-    BADGE_RARITY_SSP: "SSP (1:1000+)",
-    BADGE_RARITY_CASE_HIT: "Case Hit (1:20000+)",
+    BADGE_RARITY_SP: "SP (moins d'1 toutes les 4 boxes)",
+    BADGE_RARITY_SSP: "SSP (moins d'1 par case)",
+    BADGE_RARITY_CASE_HIT: "Case Hit (moins d'1 toutes les 3 cases)",
 }
 
 
@@ -257,5 +257,33 @@ def rarity_badge_for_odds(best_odds):
     if n >= RARITY_SSP_THRESHOLD:
         return BADGE_RARITY_SSP
     if n >= RARITY_SP_THRESHOLD:
+        return BADGE_RARITY_SP
+    return None
+
+
+# Rareté rapportée à la boîte : la même cote 1:N n'a pas le même sens avec 4 ou 20 paquets par box.
+# Seuils prudents (repli quand l'éditeur n'étiquette pas lui-même ses séries).
+RARITY_SP_BOXES = 4        # SP : moins d'une carte toutes les 4 boxes
+RARITY_SSP_CASES = 1       # SSP : moins d'une par case
+RARITY_CASE_HIT_CASES = 3  # Case hit : moins d'une toutes les 3 cases
+
+
+def rarity_badge_for_box(odds, packs_per_box, boxes_per_case=None):
+    """Rareté d'une série d'après sa cote 1:N (par paquet) dans un format donné.
+    Sans paquets par box, retombe sur les seuils fixes par paquet."""
+    try:
+        n = float(odds)
+        ppb = float(packs_per_box) if packs_per_box else 0.0
+    except (TypeError, ValueError):
+        return None
+    if ppb <= 0:
+        return rarity_badge_for_odds(n)
+    if boxes_per_case:
+        packs_per_case = ppb * float(boxes_per_case)
+        if n >= packs_per_case * RARITY_CASE_HIT_CASES:
+            return BADGE_RARITY_CASE_HIT
+        if n >= packs_per_case * RARITY_SSP_CASES:
+            return BADGE_RARITY_SSP
+    if n >= ppb * RARITY_SP_BOXES:
         return BADGE_RARITY_SP
     return None

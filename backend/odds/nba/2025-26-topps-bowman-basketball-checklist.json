@@ -11,21 +11,24 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 20
+   "packs_per_box": 20,
+   "boxes_per_case": 12
   },
   {
    "key": "jumbo",
    "label": "Jumbo",
    "channel": "hobby",
    "group": "jumbo",
-   "packs_per_box": 12
+   "packs_per_box": 12,
+   "boxes_per_case": 8
   },
   {
    "key": "breaker",
    "label": "Breaker",
    "channel": "hobby",
    "group": "delight",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 6
   },
   {
    "key": "value",
@@ -38,7 +41,8 @@
    "label": "Mega",
    "channel": "retail",
    "group": "mega",
-   "packs_per_box": 6
+   "packs_per_box": 6,
+   "boxes_per_case": 20
   },
   {
    "key": "bulk",
@@ -4329,5 +4333,17 @@
   "Timeless Touch Signatures": "Hobby SKUs",
   "Mega Prospects": "Mega",
   "Mega Rookies": "Mega"
+ },
+ "rarity": {
+  "Base - Chrome Prospects - Etched In Glass Variations": "case_hit",
+  "Anime - NBA": "case_hit",
+  "Anime - NIL": "case_hit",
+  "Bowman GPK - NBA": "case_hit",
+  "Bowman GPK - NIL": "case_hit",
+  "Bowman Spotlights - NBA": "case_hit",
+  "Bowman Spotlights - NIL": "case_hit",
+  "Crystallized - NBA": "case_hit",
+  "Crystallized - NIL": "case_hit",
+  "RetroFractor": "case_hit"
  }
 }

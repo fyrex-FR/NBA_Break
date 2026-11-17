@@ -11,28 +11,32 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 12
+   "packs_per_box": 12,
+   "boxes_per_case": 12
   },
   {
    "key": "hobby_jumbo",
    "label": "Hobby Jumbo",
    "channel": "hobby",
    "group": "hobby_jumbo",
-   "packs_per_box": 10
+   "packs_per_box": 10,
+   "boxes_per_case": 8
   },
   {
    "key": "mega",
    "label": "Mega",
    "channel": "retail",
    "group": "mega",
-   "packs_per_box": 16
+   "packs_per_box": 16,
+   "boxes_per_case": 20
   },
   {
    "key": "value_blaster",
    "label": "Value Blaster",
    "channel": "retail",
    "group": "value",
-   "packs_per_box": 12
+   "packs_per_box": 12,
+   "boxes_per_case": 40
   },
   {
    "key": "fanatics_value_blaster",
