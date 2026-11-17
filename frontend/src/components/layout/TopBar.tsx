@@ -7,7 +7,7 @@ import { plural, shortCollectionLabel } from '../../utils/checklists'
 import { Popover } from '../ui/primitives'
 
 export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
-  const { activeView, setPaletteOpen, analysisData, isAnalyzing, selectedSport } = useAppStore()
+  const { activeView, setPaletteOpen, analysisData, isAnalyzing, selectedSport, selectedChecklistIds } = useAppStore()
   const item = navItemFor(activeView)
   const destination = destinationFor(activeView)
   const multiTab = !!destination && itemsOf(destination.id, analysisData?.enabled_views, selectedSport).length > 1
@@ -30,7 +30,8 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
         <Menu className="w-5 h-5" />
       </button>
 
-      <div className="min-w-0 flex items-center gap-1.5 text-[13px]">
+      {/* Sur mobile, la barre du bas dit déjà où on est : on laisse la place à la collection ouverte. */}
+      <div className={`min-w-0 items-center gap-1.5 text-[13px] ${destination && selectedChecklistIds.length > 0 ? 'hidden sm:flex' : 'flex'}`}>
         {showsHome ? (
           <span className="font-semibold truncate" style={{ color: 'var(--text-primary)' }}>Accueil</span>
         ) : (
