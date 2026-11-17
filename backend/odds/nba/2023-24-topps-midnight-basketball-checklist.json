@@ -1,0 +1,635 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2023-24-topps-midnight-basketball-checklist",
+ "product_label": "2023-24 Topps Midnight Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Zodiac",
+   "set": "Base Cards Zodiac",
+   "parallel": "",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards Morning",
+   "set": "Base Cards Morning",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Twilight",
+   "set": "Base Cards Twilight",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Dusk",
+   "set": "Base Cards Dusk",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Moon Beam",
+   "set": "Base Cards Moon Beam",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Base Cards Moonrise",
+   "set": "Base Cards Moonrise",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Base Cards Midnight",
+   "set": "Base Cards Midnight",
+   "parallel": "",
+   "odds": {
+    "hobby": 36
+   }
+  },
+  {
+   "label": "Base Cards Daybreak",
+   "set": "Base Cards Daybreak",
+   "parallel": "",
+   "odds": {
+    "hobby": 87
+   }
+  },
+  {
+   "label": "Base Cards Black Light",
+   "set": "Base Cards Black Light",
+   "parallel": "",
+   "odds": {
+    "hobby": 431
+   }
+  },
+  {
+   "label": "Nightball",
+   "set": "Nightball",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Nightball Twilight",
+   "set": "Nightball",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Nightball Moon Beam",
+   "set": "Nightball",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Nightball Moonrise",
+   "set": "Nightball",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Nightball Midnight",
+   "set": "Nightball",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 120
+   }
+  },
+  {
+   "label": "Nightball Daybreak",
+   "set": "Nightball",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 288
+   }
+  },
+  {
+   "label": "Nightball Black Light",
+   "set": "Nightball",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1408
+   }
+  },
+  {
+   "label": "Lunar Tide",
+   "set": "Lunar Tide",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Lunar Tide Twilight",
+   "set": "Lunar Tide",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Lunar Tide Moon Beam",
+   "set": "Lunar Tide",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Lunar Tide Moonrise",
+   "set": "Lunar Tide",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 115
+   }
+  },
+  {
+   "label": "Lunar Tide Midnight",
+   "set": "Lunar Tide",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 239
+   }
+  },
+  {
+   "label": "Lunar Tide Daybreak",
+   "set": "Lunar Tide",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 571
+   }
+  },
+  {
+   "label": "Lunar Tide Black Light",
+   "set": "Lunar Tide",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2815
+   }
+  },
+  {
+   "label": "Constellations",
+   "set": "Constellations",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Constellations Twilight",
+   "set": "Constellations",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Constellations Moon Beam",
+   "set": "Constellations",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 35
+   }
+  },
+  {
+   "label": "Constellations Moonrise",
+   "set": "Constellations",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 69
+   }
+  },
+  {
+   "label": "Constellations Midnight",
+   "set": "Constellations",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 144
+   }
+  },
+  {
+   "label": "Constellations Daybreak",
+   "set": "Constellations",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 344
+   }
+  },
+  {
+   "label": "Constellations Black Light",
+   "set": "Constellations",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1689
+   }
+  },
+  {
+   "label": "Star Studded",
+   "set": "Star Studded",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Star Studded Twilight",
+   "set": "Star Studded",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Star Studded Moon Beam",
+   "set": "Star Studded",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 29
+   }
+  },
+  {
+   "label": "Star Studded Moonrise",
+   "set": "Star Studded",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Star Studded Midnight",
+   "set": "Star Studded",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 120
+   }
+  },
+  {
+   "label": "Star Studded Daybreak",
+   "set": "Star Studded",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 288
+   }
+  },
+  {
+   "label": "Star Studded Black Light",
+   "set": "Star Studded",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1408
+   }
+  },
+  {
+   "label": "Dream Chasers",
+   "set": "Dream Chasers",
+   "parallel": "",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Dream Chasers Black Light",
+   "set": "Dream Chasers",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1689
+   }
+  },
+  {
+   "label": "After Hours",
+   "set": "After Hours",
+   "parallel": "",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "After Hours Black Light",
+   "set": "After Hours",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1689
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Twilight",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Moon Beam",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Moonrise",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Midnight",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 49
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Daybreak",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 115
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Black Light",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 571
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Rookie Horizon Signaturs Twilight",
+   "set": "Rookie Horizon Signaturs Twilight",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Moon Beam",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Moonrise",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 43
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Midnight",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 88
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Daybreak",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 212
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Black Light",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1056
+   }
+  },
+  {
+   "label": "Horizon Signatures",
+   "set": "Horizon Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Horizon Signatures Twilight",
+   "set": "Horizon Signatures",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Horizon Signatures Moon Beam",
+   "set": "Horizon Signatures",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Horizon Signatures Moonrise",
+   "set": "Horizon Signatures",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 29
+   }
+  },
+  {
+   "label": "Horizon Signatures Midnight",
+   "set": "Horizon Signatures",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 60
+   }
+  },
+  {
+   "label": "Horizon Signatures Daybreak",
+   "set": "Horizon Signatures",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 144
+   }
+  },
+  {
+   "label": "Horizon Signatures Black Light",
+   "set": "Horizon Signatures",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 716
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Twilight",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Moon Beam",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Moonrise",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 67
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Midnight",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 138
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Daybreak",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 330
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Black Light",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1624
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Dusk",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Stroke Of Midnight Autographs Dusk",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Autographs Dusk",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Autographs Dusk",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Horizon Signatures Autographs Dusk",
+   "set": "Horizon Signatures",
+   "parallel": "Autographs Dusk",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Nightball Dusk",
+   "set": "Nightball",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Lunar Tide Dusk",
+   "set": "Lunar Tide",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Constellations Dusk",
+   "set": "Constellations",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Star Studded Dusk",
+   "set": "Star Studded",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 20
+   }
+  }
+ ]
+}

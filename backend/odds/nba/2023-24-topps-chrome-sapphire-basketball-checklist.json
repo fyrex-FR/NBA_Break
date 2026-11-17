@@ -1,0 +1,1307 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2023-24-topps-chrome-sapphire-basketball-checklist",
+ "product_label": "2023-24 Topps Chrome Basketball Sapphire Edition",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 8
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Base Cards Prism",
+   "set": "Base",
+   "parallel": "Prism",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "Base Cards Aqua",
+   "set": "Base",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Base Cards Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 43
+   }
+  },
+  {
+   "label": "Base Cards Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 65
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 128
+   }
+  },
+  {
+   "label": "Base Cards Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 321
+   }
+  },
+  {
+   "label": "Base Cards Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 639
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 22283
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Cards Pink",
+   "set": "Base",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Cards Pink",
+   "set": "Base",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 77
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 410
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 810
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 1615
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 7962
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 38748
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 46
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 246
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 486
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 972
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 4804
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 307
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 608
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 1214
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 5992
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 29061
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 205
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 406
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 810
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 4009
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 19374
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 115
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 614
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 1214
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 2422
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 11862
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 58121
+   }
+  },
+  {
+   "label": "Superfly",
+   "set": "Superfly",
+   "parallel": "",
+   "odds": {
+    "hobby": 372
+   }
+  },
+  {
+   "label": "Superfly",
+   "set": "Superfly",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Rock Stars",
+   "set": "Rock Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 369
+   }
+  },
+  {
+   "label": "Rock Stars",
+   "set": "Rock Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 41
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 89
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 125
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 621
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 1240
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 6118
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 69
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 306
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 1518
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 3028
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 14903
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 51
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 125
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 202
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 1008
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 2005
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 10021
+   }
+  },
+  {
+   "label": "Sudden Impact",
+   "set": "Sudden Impact",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Sudden Impact",
+   "set": "Sudden Impact",
+   "parallel": "",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Sudden Impact",
+   "set": "Sudden Impact",
+   "parallel": "",
+   "odds": {
+    "hobby": 86
+   }
+  },
+  {
+   "label": "Sudden Impact",
+   "set": "Sudden Impact",
+   "parallel": "",
+   "odds": {
+    "hobby": 331
+   }
+  },
+  {
+   "label": "Sudden Impact",
+   "set": "Sudden Impact",
+   "parallel": "",
+   "odds": {
+    "hobby": 206
+   }
+  },
+  {
+   "label": "Sudden Impact",
+   "set": "Sudden Impact",
+   "parallel": "",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Film Study",
+   "set": "Film Study",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Film Study Topps",
+   "set": "Film Study",
+   "parallel": "Topps",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Film Study Pink",
+   "set": "Film Study",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 86
+   }
+  },
+  {
+   "label": "Film Study Pink",
+   "set": "Film Study",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 331
+   }
+  },
+  {
+   "label": "Film Study",
+   "set": "Film Study",
+   "parallel": "",
+   "odds": {
+    "hobby": 206
+   }
+  },
+  {
+   "label": "Film Study Blue",
+   "set": "Film Study",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Power Boosters",
+   "set": "Power Boosters",
+   "parallel": "",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Power Boosters",
+   "set": "Power Boosters",
+   "parallel": "",
+   "odds": {
+    "hobby": 92
+   }
+  },
+  {
+   "label": "Power Boosters",
+   "set": "Power Boosters",
+   "parallel": "",
+   "odds": {
+    "hobby": 142
+   }
+  },
+  {
+   "label": "Power Boosters",
+   "set": "Power Boosters",
+   "parallel": "",
+   "odds": {
+    "hobby": 550
+   }
+  },
+  {
+   "label": "Power Boosters",
+   "set": "Power Boosters",
+   "parallel": "",
+   "odds": {
+    "hobby": 343
+   }
+  },
+  {
+   "label": "Power Boosters",
+   "set": "Power Boosters",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Roundball",
+   "set": "Roundball",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Roundball",
+   "set": "Roundball",
+   "parallel": "",
+   "odds": {
+    "hobby": 46
+   }
+  },
+  {
+   "label": "Roundball",
+   "set": "Roundball",
+   "parallel": "",
+   "odds": {
+    "hobby": 71
+   }
+  },
+  {
+   "label": "Roundball",
+   "set": "Roundball",
+   "parallel": "",
+   "odds": {
+    "hobby": 277
+   }
+  },
+  {
+   "label": "Roundball",
+   "set": "Roundball",
+   "parallel": "",
+   "odds": {
+    "hobby": 172
+   }
+  },
+  {
+   "label": "Roundball",
+   "set": "Roundball",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Dna",
+   "set": "Dna",
+   "parallel": "",
+   "odds": {
+    "hobby": 68
+   }
+  },
+  {
+   "label": "Dna Topps Green",
+   "set": "Dna",
+   "parallel": "Topps Green",
+   "odds": {
+    "hobby": 275
+   }
+  },
+  {
+   "label": "Dna Pink",
+   "set": "Dna",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 424
+   }
+  },
+  {
+   "label": "Dna Pink",
+   "set": "Dna",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 1629
+   }
+  },
+  {
+   "label": "Dna Orange",
+   "set": "Dna",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1027
+   }
+  },
+  {
+   "label": "Dna Blue",
+   "set": "Dna",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 34
+   }
+  },
+  {
+   "label": "Certified",
+   "set": "Certified",
+   "parallel": "",
+   "odds": {
+    "hobby": 224
+   }
+  },
+  {
+   "label": "Certified",
+   "set": "Certified",
+   "parallel": "",
+   "odds": {
+    "hobby": 580
+   }
+  },
+  {
+   "label": "Certified",
+   "set": "Certified",
+   "parallel": "",
+   "odds": {
+    "hobby": 551
+   }
+  },
+  {
+   "label": "Certified",
+   "set": "Certified",
+   "parallel": "",
+   "odds": {
+    "hobby": 1085
+   }
+  },
+  {
+   "label": "Future Stars",
+   "set": "Future Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 137
+   }
+  },
+  {
+   "label": "Future Stars",
+   "set": "Future Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 1246
+   }
+  },
+  {
+   "label": "Future Stars",
+   "set": "Future Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 1200
+   }
+  },
+  {
+   "label": "Future Stars",
+   "set": "Future Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 2382
+   }
+  },
+  {
+   "label": "Let'S Go!",
+   "set": "Let'S Go!",
+   "parallel": "",
+   "odds": {
+    "hobby": 486
+   }
+  },
+  {
+   "label": "Let'S Go!",
+   "set": "Let'S Go!",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Expose",
+   "set": "Expose",
+   "parallel": "",
+   "odds": {
+    "hobby": 486
+   }
+  },
+  {
+   "label": "Expose",
+   "set": "Expose",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Base Cards Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 639
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Finesse",
+   "set": "Finesse",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Coast To Coast",
+   "set": "Coast To Coast",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Season'S Best",
+   "set": "Season'S Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 26
+   }
+  },
+  {
+   "label": "Topps Chrome",
+   "set": "Topps Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 64
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 63
+   }
+  },
+  {
+   "label": "Certified Rookie",
+   "set": "Certified",
+   "parallel": "Rookie",
+   "odds": {
+    "hobby": 157
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 42
+   }
+  },
+  {
+   "label": "1972 Topps",
+   "set": "1972 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 104
+   }
+  },
+  {
+   "label": "Infinity",
+   "set": "Infinity",
+   "parallel": "",
+   "odds": {
+    "hobby": 160
+   }
+  },
+  {
+   "label": "Radiating Rookies",
+   "set": "Radiating Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 486
+   }
+  },
+  {
+   "label": "Radiating Rookies",
+   "set": "Radiating Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Radiating Rookies",
+   "set": "Radiating Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 51
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 486
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "Helix Geometric",
+   "set": "Helix",
+   "parallel": "Geometric",
+   "odds": {
+    "hobby": 51
+   }
+  },
+  {
+   "label": "2003-04 Lebron",
+   "set": "2003-04 Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 11862
+   }
+  },
+  {
+   "label": "2003-04 Lebron",
+   "set": "2003-04 Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 23249
+   }
+  },
+  {
+   "label": "2003-04 Lebron",
+   "set": "2003-04 Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 116242
+   }
+  },
+  {
+   "label": "2003-04 Lebron",
+   "set": "2003-04 Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 116242
+   }
+  },
+  {
+   "label": "2003-04 Lebron",
+   "set": "2003-04 Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 581208
+   }
+  },
+  {
+   "label": "2003-04 Lebron",
+   "set": "2003-04 Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 581208
+   }
+  },
+  {
+   "label": "Base Lebron",
+   "set": "Base Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 382896
+   }
+  },
+  {
+   "label": "Base Lebron",
+   "set": "Base Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 58121
+   }
+  },
+  {
+   "label": "Base Lebron",
+   "set": "Base Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 116242
+   }
+  },
+  {
+   "label": "Base Lebron",
+   "set": "Base Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 2405
+   }
+  },
+  {
+   "label": "Base Lebron",
+   "set": "Base Lebron",
+   "parallel": "",
+   "odds": {
+    "hobby": 581208
+   }
+  }
+ ]
+}

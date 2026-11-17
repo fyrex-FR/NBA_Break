@@ -1,0 +1,715 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2023-24-topps-royalty-basketball-checklist",
+ "product_label": "2023-24 Topps Royalty Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Cards Pink",
+   "set": "Base",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Base Cards Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Base Cards Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Base Cards Platinum",
+   "set": "Base Cards Platinum",
+   "parallel": "",
+   "odds": {
+    "hobby": 99
+   }
+  },
+  {
+   "label": "Rookie Patch Autographs",
+   "set": "Base - Rookie Patch Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Rookie Patch Autographs Blue",
+   "set": "Base - Rookie Patch Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Rookie Patch Autographs Gold",
+   "set": "Base - Rookie Patch Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Rookie Patch Autographs Green",
+   "set": "Base - Rookie Patch Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Rookie Patch Autographs Jersey Tags",
+   "set": "Base - Rookie Patch Autographs",
+   "parallel": "Jersey Tags",
+   "odds": {
+    "hobby": 246
+   }
+  },
+  {
+   "label": "Regalia Relic Signatures",
+   "set": "Regalia Relic Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Regalia Relic Signatures Blue",
+   "set": "Regalia Relic Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Regalia Relic Signatures Gold",
+   "set": "Regalia Relic Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Regalia Relic Signatures Green",
+   "set": "Regalia Relic Signatures",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Regalia Relic Signatures Platinum",
+   "set": "Regalia Relic Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 164
+   }
+  },
+  {
+   "label": "Superior Jersey Signatures",
+   "set": "Superior Jersey Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Superior Jersey Signatures Blue",
+   "set": "Superior Jersey Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Superior Jersey Signatures Gold",
+   "set": "Superior Jersey Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Superior Jersey Signatures Green",
+   "set": "Superior Jersey Signatures",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Superior Jersey Signatures Platinum",
+   "set": "Superior Jersey Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 241
+   }
+  },
+  {
+   "label": "Relic Signatures",
+   "set": "Relic Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Relic Signatures Blue",
+   "set": "Relic Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Relic Signatures Gold",
+   "set": "Relic Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Relic Signatures Green",
+   "set": "Relic Signatures",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Relic Signatures Platinum",
+   "set": "Relic Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 164
+   }
+  },
+  {
+   "label": "Jumbo Super Signatures",
+   "set": "Jumbo Super Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 164
+   }
+  },
+  {
+   "label": "Jersey Tag Autographs",
+   "set": "Jersey Tag Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 246
+   }
+  },
+  {
+   "label": "Rookie Autographs",
+   "set": "Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Rookie Autographs Blue",
+   "set": "Rookie Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 43
+   }
+  },
+  {
+   "label": "Rookie Autographs Gold",
+   "set": "Rookie Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Rookie Autographs Green",
+   "set": "Rookie Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 66
+   }
+  },
+  {
+   "label": "Rookie Autographs Platinum",
+   "set": "Rookie Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 322
+   }
+  },
+  {
+   "label": "Pillars Of Greatness Signatures",
+   "set": "Pillars of Greatness Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Pillars Of Greatness Signatures Blue",
+   "set": "Pillars of Greatness Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Pillars Of Greatness Signatures Gold",
+   "set": "Pillars of Greatness Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Pillars Of Greatness Signatures Green",
+   "set": "Pillars of Greatness Signatures",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 66
+   }
+  },
+  {
+   "label": "Pillars Of Greatness Signatures Platinum",
+   "set": "Pillars of Greatness Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 328
+   }
+  },
+  {
+   "label": "Pursuit Of Greatness Signatures",
+   "set": "Pursuit of Greatness Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Pursuit Of Greatness Signatures Blue",
+   "set": "Pursuit of Greatness Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Pursuit Of Greatness Signatures Gold",
+   "set": "Pursuit of Greatness Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Pursuit Of Greatness Signatures Green",
+   "set": "Pursuit of Greatness Signatures",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 163
+   }
+  },
+  {
+   "label": "Pursuit Of Greatness Signatures Platinum",
+   "set": "Pursuit of Greatness Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 321
+   }
+  },
+  {
+   "label": "Superior Signatures",
+   "set": "Superior Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Superior Signatures Blue",
+   "set": "Superior Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Superior Signatures Gold",
+   "set": "Superior Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Superior Signatures Green",
+   "set": "Superior Signatures",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Superior Signatures Platinum",
+   "set": "Superior Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 241
+   }
+  },
+  {
+   "label": "Influential Ink",
+   "set": "Influential Ink",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Influential Ink Blue",
+   "set": "Influential Ink",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Influential Ink Gold",
+   "set": "Influential Ink",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Influential Ink Green",
+   "set": "Influential Ink",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 66
+   }
+  },
+  {
+   "label": "Influential Ink Platinum",
+   "set": "Influential Ink",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 804
+   }
+  },
+  {
+   "label": "Court Circular Autographs",
+   "set": "Court Circular Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Court Circular Autographs Blue",
+   "set": "Court Circular Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Court Circular Autographs Gold",
+   "set": "Court Circular Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Court Circular Autographs Green",
+   "set": "Court Circular Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Court Circular Autographs Platinum",
+   "set": "Court Circular Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 232
+   }
+  },
+  {
+   "label": "Dual Autographs",
+   "set": "Dual Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Dual Autographs Platinum",
+   "set": "Dual Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 394
+   }
+  },
+  {
+   "label": "Triple Autographs",
+   "set": "Triple Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 65
+   }
+  },
+  {
+   "label": "Triple Autographs Platinum",
+   "set": "Triple Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 984
+   }
+  },
+  {
+   "label": "The Coronation",
+   "set": "The Coronation",
+   "parallel": "",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Royal Precedence",
+   "set": "Royal Precedence",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "The Time Is Now",
+   "set": "The Time Is Now",
+   "parallel": "",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relics",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relics Blue",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relics Gold",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relics Green",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relics Platinum",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 246
+   }
+  },
+  {
+   "label": "Regalia Relics",
+   "set": "Regalia Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Regalia Relics Blue",
+   "set": "Regalia Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Regalia Relics Gold",
+   "set": "Regalia Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Regalia Relics Green",
+   "set": "Regalia Relics",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Regalia Relics Platinum",
+   "set": "Regalia Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 164
+   }
+  },
+  {
+   "label": "Star Relics",
+   "set": "Star Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Star Relics Blue",
+   "set": "Star Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Star Relics Gold",
+   "set": "Star Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Star Relics Green",
+   "set": "Star Relics",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Star Relics Platinum",
+   "set": "Star Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 197
+   }
+  },
+  {
+   "label": "Round Ball Relics",
+   "set": "Round Ball Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Round Ball Relics Blue",
+   "set": "Round Ball Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Round Ball Relics Gold",
+   "set": "Round Ball Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Round Ball Relics Green",
+   "set": "Round Ball Relics",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Round Ball Relics Platinum",
+   "set": "Round Ball Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 196
+   }
+  },
+  {
+   "label": "Jersey Tags",
+   "set": "Jersey Tags",
+   "parallel": "",
+   "odds": {
+    "hobby": 129
+   }
+  },
+  {
+   "label": "Cut Signatures",
+   "set": "Cut Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 492
+   }
+  }
+ ]
+}

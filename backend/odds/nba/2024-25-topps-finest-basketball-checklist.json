@@ -1,0 +1,1913 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2024-25-topps-finest-basketball-checklist",
+ "product_label": "2024-25 Topps Finest Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 6
+  },
+  {
+   "key": "breaker_delight",
+   "label": "Breaker Delight",
+   "channel": "hobby",
+   "group": "delight",
+   "packs_per_box": 1
+  },
+  {
+   "key": "player_samples",
+   "label": "Player Samples",
+   "channel": "special",
+   "group": "player_samples"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Common",
+   "set": "Base - Common",
+   "parallel": "",
+   "odds": {
+    "hobby": 1,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Base Common Refractors",
+   "set": "Base - Common",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Common Refractors XFractor",
+   "set": "Base - Common",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Base Common Refractors Sky Blue",
+   "set": "Base - Common",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Common Refractors Purple",
+   "set": "Base - Common",
+   "parallel": "Refractors Purple",
+   "odds": {
+    "hobby": 16,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Common Refractors Blue",
+   "set": "Base - Common",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 19,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Common Refractors Purple Xfractor",
+   "set": "Base Common Refractors Purple",
+   "parallel": "Xfractor",
+   "odds": {
+    "hobby": 22,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Common Refractors Blue XFractor",
+   "set": "Base Common Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 33,
+    "player_samples": 5
+   }
+  },
+  {
+   "label": "Base Common Refractors Die Cut",
+   "set": "Base - Common",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 44,
+    "player_samples": 7
+   }
+  },
+  {
+   "label": "Base Common Refractors Gold",
+   "set": "Base - Common",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 64,
+    "player_samples": 9
+   }
+  },
+  {
+   "label": "Base Common Refractors Black",
+   "set": "Base - Common",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 128,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Base Common Refractros Red/Black Vapor",
+   "set": "Base - Common",
+   "parallel": "Refractros Red/Black Vapor",
+   "odds": {
+    "hobby": 320,
+    "player_samples": 45
+   }
+  },
+  {
+   "label": "Base Common Refractors Red",
+   "set": "Base - Common",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 639,
+    "player_samples": 89
+   }
+  },
+  {
+   "label": "Base Common SuperFractors",
+   "set": "Base - Common",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 3194,
+    "player_samples": 445
+   }
+  },
+  {
+   "label": "Base Common Geometric",
+   "set": "Base - Common",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 1
+   }
+  },
+  {
+   "label": "Base Common Purple Geometric",
+   "set": "Base - Common",
+   "parallel": "Purple Geometric",
+   "odds": {
+    "breaker_delight": 3,
+    "player_samples": 5
+   }
+  },
+  {
+   "label": "Base Common Blue Geometric",
+   "set": "Base - Common",
+   "parallel": "Blue Geometric",
+   "odds": {
+    "breaker_delight": 4,
+    "player_samples": 6
+   }
+  },
+  {
+   "label": "Base Common Gold Geometric",
+   "set": "Base - Common",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker_delight": 5,
+    "player_samples": 9
+   }
+  },
+  {
+   "label": "Base Common Red Black Geometric",
+   "set": "Base - Common",
+   "parallel": "Red Black Geometric",
+   "odds": {
+    "breaker_delight": 10,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Base Common Red Geometric",
+   "set": "Base - Common",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker_delight": 25,
+    "player_samples": 45
+   }
+  },
+  {
+   "label": "Base Common Black Geometric",
+   "set": "Base - Common",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker_delight": 245,
+    "player_samples": 445
+   }
+  },
+  {
+   "label": "Base Common Orange Xfractor",
+   "set": "Base - Common",
+   "parallel": "Orange Xfractor",
+   "odds": {
+    "hobby": 13,
+    "player_samples": 2
+   }
+  },
+  {
+   "label": "Base Common Green Geometric",
+   "set": "Base - Common",
+   "parallel": "Green Geometric",
+   "odds": {
+    "breaker_delight": 2,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Uncommon",
+   "set": "Base - Uncommon",
+   "parallel": "",
+   "odds": {
+    "hobby": 1,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors",
+   "set": "Base - Uncommon",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors XFractor",
+   "set": "Base - Uncommon",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Sky Blue",
+   "set": "Base - Uncommon",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Purple",
+   "set": "Base - Uncommon",
+   "parallel": "Refractors Purple",
+   "odds": {
+    "hobby": 22,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Blue",
+   "set": "Base - Uncommon",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 26,
+    "player_samples": 4
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Purple Xfractor",
+   "set": "Base Uncommon Refractors Purple",
+   "parallel": "Xfractor",
+   "odds": {
+    "hobby": 33,
+    "player_samples": 5
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Blue XFractor",
+   "set": "Base Uncommon Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 43,
+    "player_samples": 6
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Die Cut",
+   "set": "Base - Uncommon",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 92,
+    "player_samples": 13
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Gold",
+   "set": "Base - Uncommon",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 128,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Black",
+   "set": "Base - Uncommon",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 160,
+    "player_samples": 23
+   }
+  },
+  {
+   "label": "Base Uncommon Refractros Red/Black Vapor",
+   "set": "Base - Uncommon",
+   "parallel": "Refractros Red/Black Vapor",
+   "odds": {
+    "hobby": 320,
+    "player_samples": 45
+   }
+  },
+  {
+   "label": "Base Uncommon Refractors Red",
+   "set": "Base - Uncommon",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 639,
+    "player_samples": 89
+   }
+  },
+  {
+   "label": "Base Uncommon SuperFractors",
+   "set": "Base - Uncommon",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 3194,
+    "player_samples": 445
+   }
+  },
+  {
+   "label": "Base Uncommon Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 2
+   }
+  },
+  {
+   "label": "Base Uncommon Purple Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Purple Geometric",
+   "odds": {
+    "breaker_delight": 4
+   }
+  },
+  {
+   "label": "Base Uncommon Blue Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Blue Geometric",
+   "odds": {
+    "breaker_delight": 5
+   }
+  },
+  {
+   "label": "Base Uncommon Gold Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker_delight": 10
+   }
+  },
+  {
+   "label": "Base Uncommon Red Black Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Red Black Geometric",
+   "odds": {
+    "breaker_delight": 25
+   }
+  },
+  {
+   "label": "Base Uncommon Red Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker_delight": 49
+   }
+  },
+  {
+   "label": "Base Uncommon Black Geometric",
+   "set": "Base - Uncommon",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker_delight": 242
+   }
+  },
+  {
+   "label": "Base Uncommon Orange Xfractor",
+   "set": "Base - Uncommon",
+   "parallel": "Orange Xfractor",
+   "odds": {
+    "hobby": 16,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Rare",
+   "set": "Base - Rare",
+   "parallel": "",
+   "odds": {
+    "hobby": 3,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Base Rare Refractors",
+   "set": "Base - Rare",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "Base Rare Refractors XFractor",
+   "set": "Base - Rare",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 96
+   }
+  },
+  {
+   "label": "Base Rare Refractors Sky Blue",
+   "set": "Base - Rare",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Base Rare Refractors Blue",
+   "set": "Base - Rare",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 33,
+    "player_samples": 5
+   }
+  },
+  {
+   "label": "Base Rare Refractors Purple Xfractor",
+   "set": "Base - Rare",
+   "parallel": "Purple Xfractor",
+   "odds": {
+    "hobby": 43,
+    "player_samples": 6
+   }
+  },
+  {
+   "label": "Base Rare Refractors Blue XFractor",
+   "set": "Base Rare Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 66,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Base Rare Refractors Die Cut",
+   "set": "Base - Rare",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 128,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Base Rare Refractors Gold",
+   "set": "Base - Rare",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 213,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Base Rare Refractors Black",
+   "set": "Base - Rare",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 320,
+    "player_samples": 45
+   }
+  },
+  {
+   "label": "Base Rare Refractros Red/Black Vapor",
+   "set": "Base - Rare",
+   "parallel": "Refractros Red/Black Vapor",
+   "odds": {
+    "hobby": 400,
+    "player_samples": 56
+   }
+  },
+  {
+   "label": "Base Rare Refractors Red",
+   "set": "Base - Rare",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 639,
+    "player_samples": 89
+   }
+  },
+  {
+   "label": "Base Rare SuperFractors",
+   "set": "Base - Rare",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 3194,
+    "player_samples": 445
+   }
+  },
+  {
+   "label": "Base Rare Geometric",
+   "set": "Base - Rare",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 5
+   }
+  },
+  {
+   "label": "Base Rare Purple Geometric",
+   "set": "Base - Rare",
+   "parallel": "Purple Geometric",
+   "odds": {
+    "breaker_delight": 5
+   }
+  },
+  {
+   "label": "Base Rare Blue Geometric",
+   "set": "Base - Rare",
+   "parallel": "Blue Geometric",
+   "odds": {
+    "breaker_delight": 10
+   }
+  },
+  {
+   "label": "Base Rare Gold Geometric",
+   "set": "Base - Rare",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker_delight": 25
+   }
+  },
+  {
+   "label": "Base Rare Red Black Geometric",
+   "set": "Base - Rare",
+   "parallel": "Red Black Geometric",
+   "odds": {
+    "breaker_delight": 49
+   }
+  },
+  {
+   "label": "Base Rare Red Geometric",
+   "set": "Base - Rare",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker_delight": 81
+   }
+  },
+  {
+   "label": "Base Rare Black Geometric",
+   "set": "Base - Rare",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker_delight": 242
+   }
+  },
+  {
+   "label": "Base Rare Orange Xfractor",
+   "set": "Base - Rare",
+   "parallel": "Orange Xfractor",
+   "odds": {
+    "hobby": 22,
+    "player_samples": 3
+   }
+  },
+  {
+   "label": "Base Rare Purple",
+   "set": "Base - Rare",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 26,
+    "player_samples": 4
+   }
+  },
+  {
+   "label": "Arrivals",
+   "set": "Arrivals",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Showstoppers",
+   "set": "Showstoppers",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Debut",
+   "set": "Debut",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Finishers",
+   "set": "Finishers",
+   "parallel": "",
+   "odds": {
+    "hobby": 11,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Arrivals Refractors",
+   "set": "Arrivals",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Showstoppers Refractors",
+   "set": "Showstoppers",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Debut Refractors",
+   "set": "Debut",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Finishers Refractors",
+   "set": "Finishers",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Arrivals Refractors XFractor",
+   "set": "Arrivals Refractors",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Showstoppers Refractors XFractor",
+   "set": "Showstoppers Refractors",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Debut Refractors XFractor",
+   "set": "Debut Refractors",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Finishers Refractors XFractor",
+   "set": "Finishers Refractors",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 60
+   }
+  },
+  {
+   "label": "Arrivals Refractors Blue",
+   "set": "Arrivals",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 71,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Blue",
+   "set": "Showstoppers",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 71,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Debut Refractors Blue",
+   "set": "Debut",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 71,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Finishers Refractors Blue",
+   "set": "Finishers",
+   "parallel": "Refractors Blue",
+   "odds": {
+    "hobby": 213,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Arrivals Refractors Purple XFractor",
+   "set": "Arrivals Refractors",
+   "parallel": "Purple XFractor",
+   "odds": {
+    "hobby": 86,
+    "player_samples": 12
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Purple XFractor",
+   "set": "Showstoppers Refractors",
+   "parallel": "Purple XFractor",
+   "odds": {
+    "hobby": 86,
+    "player_samples": 12
+   }
+  },
+  {
+   "label": "Debut Refractors Purple XFractor",
+   "set": "Debut Refractors",
+   "parallel": "Purple XFractor",
+   "odds": {
+    "hobby": 86,
+    "player_samples": 12
+   }
+  },
+  {
+   "label": "Finishers Refractors Purple XFractor",
+   "set": "Finishers Refractors",
+   "parallel": "Purple XFractor",
+   "odds": {
+    "hobby": 256,
+    "player_samples": 36
+   }
+  },
+  {
+   "label": "Arrivals Refractors Blue XFractor",
+   "set": "Arrivals Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 108,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Blue XFractor",
+   "set": "Showstoppers Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 108,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Debut Refractors Blue XFractor",
+   "set": "Debut Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 108,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Finishers Refractors Blue XFractor",
+   "set": "Finishers Refractors Blue",
+   "parallel": "XFractor",
+   "odds": {
+    "hobby": 323,
+    "player_samples": 45
+   }
+  },
+  {
+   "label": "Arrivals Refractors Die Cut",
+   "set": "Arrivals Refractors",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 144,
+    "player_samples": 21
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Die Cut",
+   "set": "Showstoppers Refractors",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 144,
+    "player_samples": 21
+   }
+  },
+  {
+   "label": "Debut Refractors Die Cut",
+   "set": "Debut Refractors",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 144,
+    "player_samples": 21
+   }
+  },
+  {
+   "label": "Finishers Refractors Die Cut",
+   "set": "Finishers Refractors",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 432,
+    "player_samples": 61
+   }
+  },
+  {
+   "label": "Arrivals Refractors Gold",
+   "set": "Arrivals",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 213,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Gold",
+   "set": "Showstoppers",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 213,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Debut Refractors Gold",
+   "set": "Debut",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 213,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Finishers Refractors Gold",
+   "set": "Finishers",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 639,
+    "player_samples": 89
+   }
+  },
+  {
+   "label": "Arrivals Refractors Black",
+   "set": "Arrivals",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 426,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Black",
+   "set": "Showstoppers",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 426,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Debut Refractors Black",
+   "set": "Debut",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 426,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Finishers Refractors Black",
+   "set": "Finishers",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 1278,
+    "player_samples": 178
+   }
+  },
+  {
+   "label": "Arrivals Refractors Red",
+   "set": "Arrivals",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 2129,
+    "player_samples": 297
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Red",
+   "set": "Showstoppers",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 2129,
+    "player_samples": 297
+   }
+  },
+  {
+   "label": "Debut Refractors Red",
+   "set": "Debut",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 2129,
+    "player_samples": 297
+   }
+  },
+  {
+   "label": "Finishers Refractors Red",
+   "set": "Finishers",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 6387,
+    "player_samples": 889
+   }
+  },
+  {
+   "label": "Arrivals SuperFractors",
+   "set": "Arrivals",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 10645,
+    "player_samples": 1482
+   }
+  },
+  {
+   "label": "Showstoppers SuperFractors",
+   "set": "Showstoppers",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 10645,
+    "player_samples": 1482
+   }
+  },
+  {
+   "label": "Debut SuperFractors",
+   "set": "Debut",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 10645,
+    "player_samples": 1482
+   }
+  },
+  {
+   "label": "Finishers SuperFractors",
+   "set": "Finishers",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 31934,
+    "player_samples": 4444
+   }
+  },
+  {
+   "label": "Arrivals Refractors Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Geometric",
+   "odds": {
+    "breaker_delight": 4
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Geometric",
+   "odds": {
+    "breaker_delight": 4
+   }
+  },
+  {
+   "label": "Debut Refractors Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Geometric",
+   "odds": {
+    "breaker_delight": 4
+   }
+  },
+  {
+   "label": "Finishers Refractors Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Geometric",
+   "odds": {
+    "breaker_delight": 12
+   }
+  },
+  {
+   "label": "Arrivals Refractors Purple Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Purple Geometric",
+   "odds": {
+    "breaker_delight": 9,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Purple Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Purple Geometric",
+   "odds": {
+    "breaker_delight": 9,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Debut Refractors Purple Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Purple Geometric",
+   "odds": {
+    "breaker_delight": 9,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Finishers Refractors Purple Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Purple Geometric",
+   "odds": {
+    "breaker_delight": 25,
+    "player_samples": 45
+   }
+  },
+  {
+   "label": "Arrivals Refractors Blue Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 11,
+    "player_samples": 20
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Blue Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 11,
+    "player_samples": 20
+   }
+  },
+  {
+   "label": "Debut Refractors Blue Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 11,
+    "player_samples": 20
+   }
+  },
+  {
+   "label": "Finishers Refractors Blue Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 33,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Arrivals Refractors Gold Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 17,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Gold Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 17,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Debut Refractors Gold Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 17,
+    "player_samples": 30
+   }
+  },
+  {
+   "label": "Finishers Refractors Gold Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 49,
+    "player_samples": 89
+   }
+  },
+  {
+   "label": "Arrivals Refractors Red Black Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Red Black Geometric",
+   "odds": {
+    "breaker_delight": 33,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Red Black Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Red Black Geometric",
+   "odds": {
+    "breaker_delight": 33,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Debut Refractors Red Black Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Red Black Geometric",
+   "odds": {
+    "breaker_delight": 33,
+    "player_samples": 60
+   }
+  },
+  {
+   "label": "Finishers Refractors Red Black Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Red Black Geometric",
+   "odds": {
+    "breaker_delight": 98,
+    "player_samples": 178
+   }
+  },
+  {
+   "label": "Arrivals Refractors Red Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 82,
+    "player_samples": 149
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Red Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 82,
+    "player_samples": 149
+   }
+  },
+  {
+   "label": "Debut Refractors Red Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 82,
+    "player_samples": 149
+   }
+  },
+  {
+   "label": "Finishers Refractors Red Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 245,
+    "player_samples": 445
+   }
+  },
+  {
+   "label": "Arrivals Refractors Black Geometric",
+   "set": "Arrivals",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 817,
+    "player_samples": 1482
+   }
+  },
+  {
+   "label": "Showstoppers Refractors Black Geometric",
+   "set": "Showstoppers",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 817,
+    "player_samples": 1482
+   }
+  },
+  {
+   "label": "Debut Refractors Black Geometric",
+   "set": "Debut",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 817,
+    "player_samples": 1482
+   }
+  },
+  {
+   "label": "Finishers Refractors Black Geometric",
+   "set": "Finishers",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 2450,
+    "player_samples": 4444
+   }
+  },
+  {
+   "label": "Centurions",
+   "set": "Centurions",
+   "parallel": "",
+   "odds": {
+    "hobby": 54,
+    "breaker_delight": 18,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "The Man",
+   "set": "The Man",
+   "parallel": "",
+   "odds": {
+    "hobby": 480,
+    "breaker_delight": 160,
+    "player_samples": 1
+   }
+  },
+  {
+   "label": "Autographs",
+   "set": "Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "player_samples": 2
+   }
+  },
+  {
+   "label": "Rookie Autographs",
+   "set": "Finest Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 12,
+    "player_samples": 2
+   }
+  },
+  {
+   "label": "Autographs Refractors",
+   "set": "Autographs",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 35,
+    "player_samples": 5
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 131,
+    "player_samples": 19
+   }
+  },
+  {
+   "label": "Autographs Refractors Blue XFractor",
+   "set": "Autographs Refractors",
+   "parallel": "Blue XFractor",
+   "odds": {
+    "hobby": 66,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Blue XFractor",
+   "set": "Rookie Autographs Refractors",
+   "parallel": "Blue XFractor",
+   "odds": {
+    "hobby": 66,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Autographs Refractors Gold",
+   "set": "Autographs",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 123,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Gold",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 131,
+    "player_samples": 19
+   }
+  },
+  {
+   "label": "Autographs Refractors Black",
+   "set": "Autographs",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 241,
+    "player_samples": 34
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Black",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 261,
+    "player_samples": 37
+   }
+  },
+  {
+   "label": "Autographs Refractors Red/Black Vapor",
+   "set": "Autographs Refractors",
+   "parallel": "Red/Black Vapor",
+   "odds": {
+    "hobby": 602,
+    "player_samples": 84
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Red/Black Vapor",
+   "set": "Rookie Autographs Refractors",
+   "parallel": "Red/Black Vapor",
+   "odds": {
+    "hobby": 652,
+    "player_samples": 91
+   }
+  },
+  {
+   "label": "Autographs Refractors Red",
+   "set": "Autographs",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 1204,
+    "player_samples": 168
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Red",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 1304,
+    "player_samples": 182
+   }
+  },
+  {
+   "label": "Autographs SuperFractors",
+   "set": "Autographs",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 8329,
+    "breaker_delight": 2150
+   }
+  },
+  {
+   "label": "Rookie Autographs SuperFractors",
+   "set": "Finest Rookie Autographs",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 9064,
+    "breaker_delight": 2364
+   }
+  },
+  {
+   "label": "Autographs Refractors Blue Geometric",
+   "set": "Autographs",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 5,
+    "player_samples": 9
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Blue Geometric",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 6,
+    "player_samples": 11
+   }
+  },
+  {
+   "label": "Autographs Refractors Gold Geometric",
+   "set": "Autographs",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 10,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Gold Geometric",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 10,
+    "player_samples": 19
+   }
+  },
+  {
+   "label": "Autographs Refractors Black Geometric",
+   "set": "Autographs",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 19,
+    "player_samples": 34
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Black Geometric",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 20,
+    "player_samples": 37
+   }
+  },
+  {
+   "label": "Autographs Refractors Red/Black Vapor Geometric",
+   "set": "Autographs Refractors Red/Black Vapor",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 47,
+    "player_samples": 84
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Red/Black Vapor Geometric",
+   "set": "Rookie Autographs Refractors Red/Black Vapor",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 50,
+    "player_samples": 91
+   }
+  },
+  {
+   "label": "Autographs Refractors Red Geometric",
+   "set": "Autographs",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 93,
+    "player_samples": 168
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Red Geometric",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 100,
+    "player_samples": 182
+   }
+  },
+  {
+   "label": "Autographs Refractors Green Geometric",
+   "set": "Autographs",
+   "parallel": "Refractors Green Geometric",
+   "odds": {
+    "breaker_delight": 7,
+    "player_samples": 12
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractors Green Geometric",
+   "set": "Finest Rookie Autographs",
+   "parallel": "Refractors Green Geometric",
+   "odds": {
+    "breaker_delight": 7,
+    "player_samples": 13
+   }
+  },
+  {
+   "label": "Flashback Autographs",
+   "set": "Flashback Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 47,
+    "player_samples": 7
+   }
+  },
+  {
+   "label": "Masters Autographs",
+   "set": "Masters Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 70,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 105,
+    "player_samples": 15
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors",
+   "set": "Masters Autographs",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 206,
+    "player_samples": 29
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Blue XFractor",
+   "set": "Flashback Autographs",
+   "parallel": "Blue XFractor",
+   "odds": {
+    "hobby": 71,
+    "player_samples": 10
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Blue XFractor",
+   "set": "Masters Autographs",
+   "parallel": "Blue XFractor",
+   "odds": {
+    "hobby": 88,
+    "player_samples": 13
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Gold",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 126,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Gold",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Gold",
+   "odds": {
+    "hobby": 143,
+    "player_samples": 20
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Black",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 251,
+    "player_samples": 35
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Black",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Black",
+   "odds": {
+    "hobby": 256,
+    "player_samples": 36
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Red/Black Vapor",
+   "set": "Flashback Autographs",
+   "parallel": "Red/Black Vapor",
+   "odds": {
+    "hobby": 626,
+    "player_samples": 88
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Red/Black Vapor",
+   "set": "Masters Autographs",
+   "parallel": "Red/Black Vapor",
+   "odds": {
+    "hobby": 626,
+    "player_samples": 88
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Red",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 1252,
+    "player_samples": 175
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Red",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Red",
+   "odds": {
+    "hobby": 1252,
+    "player_samples": 175
+   }
+  },
+  {
+   "label": "Flashback Autographs SuperFractors",
+   "set": "Flashback Autographs",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 8805,
+    "breaker_delight": 2364
+   }
+  },
+  {
+   "label": "Masters Autographs SuperFractors",
+   "set": "Masters Autographs",
+   "parallel": "SuperFractors",
+   "odds": {
+    "hobby": 8805,
+    "breaker_delight": 2364
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Blue Geometric",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 8,
+    "player_samples": 14
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Blue Geometric",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 9,
+    "player_samples": 17
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Gold Geometric",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 15,
+    "player_samples": 27
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Gold Geometric",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 18,
+    "player_samples": 33
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Black Geometric",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 20,
+    "player_samples": 35
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Black Geometric",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 20,
+    "player_samples": 36
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Red/Black Vapor Geometric",
+   "set": "Flashback Autographs Refractors Red/Black Vapor",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 48,
+    "player_samples": 88
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Red/Black Vapor Geometric",
+   "set": "Masters Autographs Refractors Red/Black Vapor",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 48,
+    "player_samples": 88
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Red Geometric",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 96,
+    "player_samples": 175
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Red Geometric",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 96,
+    "player_samples": 175
+   }
+  },
+  {
+   "label": "Flashback Autographs Refractors Green Geometric",
+   "set": "Flashback Autographs",
+   "parallel": "Refractors Green Geometric",
+   "odds": {
+    "breaker_delight": 10,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Masters Autographs Refractors Green Geometric",
+   "set": "Masters Autographs",
+   "parallel": "Refractors Green Geometric",
+   "odds": {
+    "breaker_delight": 12,
+    "player_samples": 22
+   }
+  },
+  {
+   "label": "Electrifying Signatures Geometric",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 3
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Geometric",
+   "set": "Colossal Shot Signatures",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 5
+   }
+  },
+  {
+   "label": "Electrifying Signatures Refractors Blue Geometric",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 9,
+    "player_samples": 17
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Refractors Blue Geometric",
+   "set": "Colossal Shot Signatures",
+   "parallel": "Refractors Blue Geometric",
+   "odds": {
+    "breaker_delight": 7,
+    "player_samples": 12
+   }
+  },
+  {
+   "label": "Electrifying Signatures Refractors Gold Geometric",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 15,
+    "player_samples": 27
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Refractors Gold Geometric",
+   "set": "Colossal Shot Signatures",
+   "parallel": "Refractors Gold Geometric",
+   "odds": {
+    "breaker_delight": 13,
+    "player_samples": 23
+   }
+  },
+  {
+   "label": "Electrifying Signatures Refractors Black Geometric",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 20,
+    "player_samples": 35
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Refractors Black Geometric",
+   "set": "Colossal Shot Signatures",
+   "parallel": "Refractors Black Geometric",
+   "odds": {
+    "breaker_delight": 20,
+    "player_samples": 35
+   }
+  },
+  {
+   "label": "Electrifying Signatures Refractors Red/Black Vapor Geometric",
+   "set": "Electrifying Signatures Refractors Red/Black Vapor",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 48,
+    "player_samples": 88
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Refractors Red/Black Vapor Geometric",
+   "set": "Colossal Shot Signatures Refractors Red/Black Vapor",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker_delight": 48,
+    "player_samples": 88
+   }
+  },
+  {
+   "label": "Electrifying Signatures Refractors Red Geometric",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 96,
+    "player_samples": 175
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Refractors Red Geometric",
+   "set": "Colossal Shot Signatures",
+   "parallel": "Refractors Red Geometric",
+   "odds": {
+    "breaker_delight": 96,
+    "player_samples": 175
+   }
+  },
+  {
+   "label": "Electrifying Signatures SuperFractors",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "SuperFractors",
+   "odds": {
+    "breaker_delight": 480,
+    "player_samples": 871
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures SuperFractors",
+   "set": "Colossal Shot Signatures",
+   "parallel": "SuperFractors",
+   "odds": {
+    "breaker_delight": 480,
+    "player_samples": 871
+   }
+  },
+  {
+   "label": "Electrifying Signatures Refractors Green Geometric",
+   "set": "Electrifying Signatures Geometric",
+   "parallel": "Refractors Green Geometric",
+   "odds": {
+    "breaker_delight": 10,
+    "player_samples": 18
+   }
+  },
+  {
+   "label": "Colossal Shot Signatures Refractors Green Geometric",
+   "set": "Colossal Shot Signatures",
+   "parallel": "Refractors Green Geometric",
+   "odds": {
+    "breaker_delight": 9,
+    "player_samples": 16
+   }
+  }
+ ]
+}

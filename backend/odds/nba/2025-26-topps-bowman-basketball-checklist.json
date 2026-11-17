@@ -2,8 +2,8 @@
  "version": 1,
  "sport": "nba",
  "checklist_id": "2025-26-topps-bowman-basketball-checklist",
- "product_label": "2025-26 Topps Bowman Basketball",
- "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "product_label": "2025-26 Bowman Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
  "updated_at": "2026-11-17",
  "configs": [
   {
@@ -14,31 +14,30 @@
    "packs_per_box": 20
   },
   {
-   "key": "jumbo_hobby",
-   "label": "Jumbo Hobby",
+   "key": "jumbo",
+   "label": "Jumbo",
    "channel": "hobby",
-   "group": "jumbo_hobby",
+   "group": "jumbo",
    "packs_per_box": 12
   },
   {
-   "key": "breaker_delight",
-   "label": "Breaker Delight",
+   "key": "breaker",
+   "label": "Breaker",
    "channel": "hobby",
    "group": "delight",
    "packs_per_box": 1
+  },
+  {
+   "key": "value",
+   "label": "Value",
+   "channel": "retail",
+   "group": "value"
   },
   {
    "key": "mega",
    "label": "Mega",
    "channel": "retail",
    "group": "mega",
-   "packs_per_box": 6
-  },
-  {
-   "key": "value_blaster",
-   "label": "Value Blaster",
-   "channel": "retail",
-   "group": "value",
    "packs_per_box": 6
   },
   {
@@ -50,80 +49,80 @@
  ],
  "rows": [
   {
-   "label": "Base Purple Pattern Border /199",
+   "label": "Base Purple Border",
    "set": "Base",
-   "parallel": "Purple Pattern Border",
+   "parallel": "Purple Border",
    "odds": {
     "hobby": 188,
-    "jumbo_hobby": 64,
-    "value_blaster": 689,
+    "jumbo": 64,
+    "value": 689,
     "bulk": 123
    }
   },
   {
-   "label": "Base Pink Border /175",
+   "label": "Base Pink Border",
    "set": "Base",
    "parallel": "Pink Border",
    "odds": {
     "hobby": 214,
-    "jumbo_hobby": 73,
-    "value_blaster": 783,
+    "jumbo": 73,
+    "value": 783,
     "bulk": 140
    }
   },
   {
-   "label": "Base Blue Border /150",
+   "label": "Base Blue Border",
    "set": "Base",
    "parallel": "Blue Border",
    "odds": {
     "hobby": 250,
-    "jumbo_hobby": 85,
-    "value_blaster": 914,
+    "jumbo": 85,
+    "value": 914,
     "bulk": 163
    }
   },
   {
-   "label": "Base Green Border /99",
+   "label": "Base Green Border",
    "set": "Base",
    "parallel": "Green Border",
    "odds": {
-    "value_blaster": 533,
+    "value": 533,
     "bulk": 72
    }
   },
   {
-   "label": "Base Green Pattern Border /99",
+   "label": "Base Green Pattern Border",
    "set": "Base",
    "parallel": "Green Pattern Border",
    "odds": {
-    "value_blaster": 533,
+    "value": 533,
     "bulk": 72
    }
   },
   {
-   "label": "Base Yellow Border /75",
+   "label": "Base Yellow Border",
    "set": "Base",
    "parallel": "Yellow Border",
    "odds": {
     "hobby": 499,
-    "jumbo_hobby": 138,
-    "value_blaster": 1827,
+    "jumbo": 138,
+    "value": 1827,
     "bulk": 327
    }
   },
   {
-   "label": "Base Gold Border /50",
+   "label": "Base Gold Border",
    "set": "Base",
    "parallel": "Gold Border",
    "odds": {
     "hobby": 748,
-    "jumbo_hobby": 190,
-    "value_blaster": 2741,
+    "jumbo": 190,
+    "value": 2741,
     "bulk": 491
    }
   },
   {
-   "label": "Base Orange Border /25",
+   "label": "Base Orange Border",
    "set": "Base",
    "parallel": "Orange Border",
    "odds": {
@@ -131,7 +130,7 @@
    }
   },
   {
-   "label": "Base Black Border /10",
+   "label": "Base Black Border",
    "set": "Base",
    "parallel": "Black Border",
    "odds": {
@@ -139,7 +138,7 @@
    }
   },
   {
-   "label": "Base Black Pattern Border /10",
+   "label": "Base Black Pattern Border",
    "set": "Base",
    "parallel": "Black Pattern Border",
    "odds": {
@@ -147,288 +146,36 @@
    }
   },
   {
-   "label": "Base Red Border /5",
+   "label": "Base Red Border",
    "set": "Base",
    "parallel": "Red Border",
    "odds": {
     "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
+    "jumbo": 2529,
+    "value": 27497,
     "bulk": 5000
    }
   },
   {
-   "label": "Base Platinum Border /1",
+   "label": "Base Platinum Border",
    "set": "Base",
    "parallel": "Platinum Border",
    "odds": {
     "hobby": 38005,
-    "jumbo_hobby": 12772,
-    "value_blaster": 140100,
+    "jumbo": 12772,
+    "value": 140100,
     "bulk": 25000
    }
   },
   {
    "label": "Base Chrome",
-   "set": "Base - Chrome",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Chrome",
    "odds": {
     "hobby": 1,
-    "jumbo_hobby": 1,
-    "value_blaster": 2
-   }
-  },
-  {
-   "label": "Base Chrome Reptilian Refractor",
-   "set": "Base - Chrome",
-   "parallel": "Reptilian Refractor",
-   "odds": {
-    "hobby": 10,
-    "jumbo_hobby": 3,
-    "value_blaster": 8,
-    "bulk": 214
-   }
-  },
-  {
-   "label": "Base Chrome Refractor /499",
-   "set": "Base - Chrome",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 75,
-    "jumbo_hobby": 26,
-    "value_blaster": 275,
-    "bulk": 878
-   }
-  },
-  {
-   "label": "Base Chrome Speckle Refractor /299",
-   "set": "Base - Chrome",
-   "parallel": "Speckle Refractor",
-   "odds": {
-    "hobby": 126,
-    "jumbo_hobby": 37,
-    "value_blaster": 459,
-    "bulk": 135
-   }
-  },
-  {
-   "label": "Base Chrome Purple Refractor /250",
-   "set": "Base - Chrome",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 150,
-    "jumbo_hobby": 51,
-    "value_blaster": 548,
-    "bulk": 186
-   }
-  },
-  {
-   "label": "Base Chrome Fuchsia Refractor /199",
-   "set": "Base - Chrome",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 188,
-    "jumbo_hobby": 64,
-    "value_blaster": 689,
-    "bulk": 123
-   }
-  },
-  {
-   "label": "Base Chrome Reptilian Fuchsia Refractor /199",
-   "set": "Base - Chrome",
-   "parallel": "Reptilian Fuchsia Refractor",
-   "odds": {
-    "hobby": 188,
-    "jumbo_hobby": 64,
-    "value_blaster": 689,
-    "bulk": 123
-   }
-  },
-  {
-   "label": "Base Chrome Reptilian Blue Refractor /150",
-   "set": "Base - Chrome",
-   "parallel": "Reptilian Blue Refractor",
-   "odds": {
-    "hobby": 250,
-    "jumbo_hobby": 85,
-    "value_blaster": 914,
-    "bulk": 163
-   }
-  },
-  {
-   "label": "Base Chrome Blue Refractor /150",
-   "set": "Base - Chrome",
-   "parallel": "Blue Refractor",
-   "odds": {
-    "hobby": 250,
-    "jumbo_hobby": 85,
-    "value_blaster": 914,
-    "bulk": 163
-   }
-  },
-  {
-   "label": "Base Chrome Blue Shimmer /150",
-   "set": "Base - Chrome",
-   "parallel": "Blue Shimmer",
-   "odds": {
-    "hobby": 250,
-    "jumbo_hobby": 85,
-    "value_blaster": 914,
-    "bulk": 163
-   }
-  },
-  {
-   "label": "Base Chrome Steel Metal Refractor /100",
-   "set": "Base - Chrome",
-   "parallel": "Steel Metal Refractor",
-   "odds": {
-    "hobby": 374,
-    "jumbo_hobby": 127,
-    "value_blaster": 1371,
-    "bulk": 246
-   }
-  },
-  {
-   "label": "Base Chrome Yellow Refractor /75",
-   "set": "Base - Chrome",
-   "parallel": "Yellow Refractor",
-   "odds": {
-    "hobby": 499,
-    "jumbo_hobby": 169,
-    "value_blaster": 1827,
-    "bulk": 327
-   }
-  },
-  {
-   "label": "Base Chrome Gold Refractor /50",
-   "set": "Base - Chrome",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 748,
-    "jumbo_hobby": 253,
-    "value_blaster": 2741,
-    "bulk": 491
-   }
-  },
-  {
-   "label": "Base Chrome Gold Shimmer Refractor /50",
-   "set": "Base - Chrome",
-   "parallel": "Gold Shimmer Refractor",
-   "odds": {
-    "hobby": 748,
-    "jumbo_hobby": 253,
-    "value_blaster": 2741,
-    "bulk": 491
-   }
-  },
-  {
-   "label": "Base Chrome Reptilian Gold Refractor /50",
-   "set": "Base - Chrome",
-   "parallel": "Reptilian Gold Refractor",
-   "odds": {
-    "hobby": 748,
-    "jumbo_hobby": 253,
-    "value_blaster": 2741,
-    "bulk": 491
-   }
-  },
-  {
-   "label": "Base Chrome Rose Gold Refractor /15",
-   "set": "Base - Chrome",
-   "parallel": "Rose Gold Refractor",
-   "odds": {
-    "hobby": 2167,
-    "jumbo_hobby": 665,
-    "value_blaster": 9137,
-    "bulk": 1667
-   }
-  },
-  {
-   "label": "Base Chrome Rose Gold Mini-Diamond Refractor /15",
-   "set": "Base - Chrome",
-   "parallel": "Rose Gold Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 2167,
-    "jumbo_hobby": 665,
-    "value_blaster": 9137,
-    "bulk": 1667
-   }
-  },
-  {
-   "label": "Base Chrome Rose Gold X-Fractor /15",
-   "set": "Base - Chrome",
-   "parallel": "Rose Gold X-Fractor",
-   "odds": {
-    "hobby": 2167,
-    "jumbo_hobby": 728,
-    "value_blaster": 7265,
-    "bulk": 1667
-   }
-  },
-  {
-   "label": "Base Chrome Black Refractor /10",
-   "set": "Base - Chrome",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 3742,
-    "jumbo_hobby": 1263,
-    "value_blaster": 13717,
-    "bulk": 2500
-   }
-  },
-  {
-   "label": "Base Chrome Black X-Fractor /10",
-   "set": "Base - Chrome",
-   "parallel": "Black X-Fractor",
-   "odds": {
-    "hobby": 3742,
-    "jumbo_hobby": 1263,
-    "value_blaster": 13717,
-    "bulk": 2500
-   }
-  },
-  {
-   "label": "Base Chrome Red Refractor /5",
-   "set": "Base - Chrome",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
-    "bulk": 5000
-   }
-  },
-  {
-   "label": "Base Chrome Red Lava Refractor /5",
-   "set": "Base - Chrome",
-   "parallel": "Red Lava Refractor",
-   "odds": {
-    "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
-    "bulk": 5000
-   }
-  },
-  {
-   "label": "Base Chrome Reptilian Red Refractor /5",
-   "set": "Base - Chrome",
-   "parallel": "Reptilian Red Refractor",
-   "odds": {
-    "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
-    "bulk": 5000
-   }
-  },
-  {
-   "label": "Base Chrome FireFractor /3",
-   "set": "Base - Chrome",
-   "parallel": "FireFractor",
-   "odds": {
-    "hobby": 12522,
-    "jumbo_hobby": 4211,
-    "value_blaster": 45971,
-    "bulk": 2381
+    "jumbo": 1,
+    "value": 2,
+    "bulk": 1
    }
   },
   {
@@ -440,33 +187,223 @@
    }
   },
   {
-   "label": "Base Chrome Floorboard Refractor /125",
+   "label": "Base Chrome Reptilian Refractor",
    "set": "Base - Chrome",
-   "parallel": "Floorboard Refractor",
+   "parallel": "Reptilian Refractor",
    "odds": {
-    "jumbo_hobby": 32
+    "hobby": 10,
+    "jumbo": 3,
+    "value": 8,
+    "bulk": 214
    }
   },
   {
-   "label": "Base Chrome Yellow X-Fractor /75",
+   "label": "Base Chrome Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 75,
+    "jumbo": 26,
+    "value": 275,
+    "bulk": 878
+   }
+  },
+  {
+   "label": "Base Chrome Lava Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Lava Refractor",
+   "odds": {
+    "value": 133,
+    "bulk": 57
+   }
+  },
+  {
+   "label": "Base Chrome Speckle Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Speckle Refractor",
+   "odds": {
+    "hobby": 126,
+    "jumbo": 37,
+    "value": 459,
+    "bulk": 135
+   }
+  },
+  {
+   "label": "Base Chrome Purple Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 150,
+    "jumbo": 51,
+    "value": 548,
+    "bulk": 186
+   }
+  },
+  {
+   "label": "Base Chrome Fuchsia Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Fuchsia Refractor",
+   "odds": {
+    "hobby": 188,
+    "jumbo": 64,
+    "value": 689,
+    "bulk": 123
+   }
+  },
+  {
+   "label": "Base Chrome Reptilian Fuchsia Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Reptilian Fuchsia Refractor",
+   "odds": {
+    "hobby": 188,
+    "jumbo": 64,
+    "value": 689,
+    "bulk": 123
+   }
+  },
+  {
+   "label": "Base Chrome Reptilian Blue Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Reptilian Blue Refractor",
+   "odds": {
+    "hobby": 250,
+    "jumbo": 85,
+    "value": 914,
+    "bulk": 163
+   }
+  },
+  {
+   "label": "Base Chrome Blue Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 250,
+    "jumbo": 85,
+    "value": 914,
+    "bulk": 163
+   }
+  },
+  {
+   "label": "Base Chrome Blue Shimmer Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Blue Shimmer Refractor",
+   "odds": {
+    "hobby": 250,
+    "jumbo": 85,
+    "value": 914,
+    "bulk": 163
+   }
+  },
+  {
+   "label": "Base Chrome Floorboard Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Floorboard Refractor",
+   "odds": {
+    "jumbo": 32
+   }
+  },
+  {
+   "label": "Base Chrome Steel Metal Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Steel Metal Refractor",
+   "odds": {
+    "hobby": 374,
+    "jumbo": 127,
+    "value": 1371,
+    "bulk": 246
+   }
+  },
+  {
+   "label": "Base Chrome Retptilian Green Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retptilian Green Refractor",
+   "odds": {
+    "value": 533,
+    "bulk": 72
+   }
+  },
+  {
+   "label": "Base Chrome Green Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 533,
+    "bulk": 72
+   }
+  },
+  {
+   "label": "Base Chrome Green Shimmer Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Green Shimmer Refractor",
+   "odds": {
+    "value": 533,
+    "bulk": 72
+   }
+  },
+  {
+   "label": "Base Chrome Yellow Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "hobby": 499,
+    "jumbo": 169,
+    "value": 1827,
+    "bulk": 327
+   }
+  },
+  {
+   "label": "Base Chrome Yellow X-Fractor",
    "set": "Base - Chrome",
    "parallel": "Yellow X-Fractor",
    "odds": {
     "hobby": 307,
-    "jumbo_hobby": 104
+    "jumbo": 104
    }
   },
   {
-   "label": "Base Chrome Yellow Wave Refractor /75",
+   "label": "Base Chrome Yellow Wave Refractor",
    "set": "Base - Chrome",
    "parallel": "Yellow Wave Refractor",
    "odds": {
     "hobby": 307,
-    "jumbo_hobby": 104
+    "jumbo": 104
    }
   },
   {
-   "label": "Base Chrome Orange Refractor /25",
+   "label": "Base Chrome Gold Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 748,
+    "jumbo": 253,
+    "value": 2741,
+    "bulk": 491
+   }
+  },
+  {
+   "label": "Base Chrome Gold Shimmer Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Gold Shimmer Refractor",
+   "odds": {
+    "hobby": 748,
+    "jumbo": 253,
+    "value": 2741,
+    "bulk": 491
+   }
+  },
+  {
+   "label": "Base Chrome Reptilian Gold Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Reptilian Gold Refractor",
+   "odds": {
+    "hobby": 748,
+    "jumbo": 253,
+    "value": 2741,
+    "bulk": 491
+   }
+  },
+  {
+   "label": "Base Chrome Orange Refractor",
    "set": "Base - Chrome",
    "parallel": "Orange Refractor",
    "odds": {
@@ -474,7 +411,7 @@
    }
   },
   {
-   "label": "Base Chrome Orange Shimmer Refractor /25",
+   "label": "Base Chrome Orange Shimmer Refractor",
    "set": "Base - Chrome",
    "parallel": "Orange Shimmer Refractor",
    "odds": {
@@ -482,7 +419,7 @@
    }
   },
   {
-   "label": "Base Chrome Reptilian Orange Refractor /25",
+   "label": "Base Chrome Reptilian Orange Refractor",
    "set": "Base - Chrome",
    "parallel": "Reptilian Orange Refractor",
    "odds": {
@@ -490,20 +427,119 @@
    }
   },
   {
-   "label": "Base Chrome Red X-Fractor /5",
+   "label": "Base Chrome Rose Gold Refractor",
    "set": "Base - Chrome",
-   "parallel": "Red X-Fractor",
+   "parallel": "Rose Gold Refractor",
    "odds": {
-    "jumbo_hobby": 795
+    "hobby": 2167,
+    "jumbo": 665,
+    "value": 9137,
+    "bulk": 1667
    }
   },
   {
-   "label": "Base Chrome SuperFractor /1",
+   "label": "Base Chrome Rose Gold Mini-Diamond Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Rose Gold Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 2167,
+    "jumbo": 665,
+    "value": 9137,
+    "bulk": 1667
+   }
+  },
+  {
+   "label": "Base Chrome Rose Gold X-Fractor",
+   "set": "Base - Chrome",
+   "parallel": "Rose Gold X-Fractor",
+   "odds": {
+    "hobby": 2167,
+    "jumbo": 728,
+    "value": 7265,
+    "bulk": 1667
+   }
+  },
+  {
+   "label": "Base Chrome Black Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3742,
+    "jumbo": 1263,
+    "value": 13717,
+    "bulk": 2500
+   }
+  },
+  {
+   "label": "Base Chrome Black X-Fractor",
+   "set": "Base - Chrome",
+   "parallel": "Black X-Fractor",
+   "odds": {
+    "hobby": 3742,
+    "jumbo": 1263,
+    "value": 13717,
+    "bulk": 2500
+   }
+  },
+  {
+   "label": "Base Chrome Red Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7496,
+    "jumbo": 2529,
+    "value": 27497,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Base Chrome Red Lava Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 7496,
+    "jumbo": 2529,
+    "value": 27497,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Base Chrome Reptilian Red Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Reptilian Red Refractor",
+   "odds": {
+    "hobby": 7496,
+    "jumbo": 2529,
+    "value": 27497,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Base Chrome Red X-Fractor",
+   "set": "Base - Chrome",
+   "parallel": "Red X-Fractor",
+   "odds": {
+    "jumbo": 795
+   }
+  },
+  {
+   "label": "Base Chrome FireFractor",
+   "set": "Base - Chrome",
+   "parallel": "FireFractor",
+   "odds": {
+    "hobby": 12522,
+    "jumbo": 4211,
+    "value": 45971,
+    "bulk": 2381
+   }
+  },
+  {
+   "label": "Base Chrome SuperFractor",
    "set": "Base - Chrome",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 23046,
-    "jumbo_hobby": 7820
+    "jumbo": 7820
    }
   },
   {
@@ -511,135 +547,59 @@
    "set": "Base - Chrome",
    "parallel": "Geometric",
    "odds": {
-    "breaker_delight": 3
+    "breaker": 3
    }
   },
   {
-   "label": "Base Chrome Green Geometric /99",
+   "label": "Base Chrome Green Geometric",
    "set": "Base - Chrome",
    "parallel": "Green Geometric",
    "odds": {
-    "breaker_delight": 2
+    "breaker": 2
    }
   },
   {
-   "label": "Base Chrome Gold Geometric /50",
+   "label": "Base Chrome Gold Geometric",
    "set": "Base - Chrome",
    "parallel": "Gold Geometric",
    "odds": {
-    "breaker_delight": 3
+    "breaker": 3
    }
   },
   {
-   "label": "Base Chrome Orange Geometric /25",
+   "label": "Base Chrome Orange Geometric",
    "set": "Base - Chrome",
    "parallel": "Orange Geometric",
    "odds": {
-    "breaker_delight": 5
+    "breaker": 5
    }
   },
   {
-   "label": "Base Chrome Black Geometric /10",
+   "label": "Base Chrome Black Geometric",
    "set": "Base - Chrome",
    "parallel": "Black Geometric",
    "odds": {
-    "breaker_delight": 13
+    "breaker": 13
    }
   },
   {
-   "label": "Base Chrome Red Geometric /5",
+   "label": "Base Chrome Red Geometric",
    "set": "Base - Chrome",
    "parallel": "Red Geometric",
    "odds": {
-    "breaker_delight": 25
+    "breaker": 25
    }
   },
   {
-   "label": "Base Chrome Lava Refractor /399",
+   "label": "Base Chrome Mojo",
    "set": "Base - Chrome",
-   "parallel": "Lava Refractor",
-   "odds": {
-    "value_blaster": 133,
-    "bulk": 57
-   }
-  },
-  {
-   "label": "Base Chrome Reptilian Green Refractor /99",
-   "set": "Base - Chrome",
-   "parallel": "Reptilian Green Refractor",
-   "odds": {
-    "value_blaster": 533,
-    "bulk": 72
-   }
-  },
-  {
-   "label": "Base Chrome Green Refractor /99",
-   "set": "Base - Chrome",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 533,
-    "bulk": 72
-   }
-  },
-  {
-   "label": "Base Chrome Green Shimmer Refractor /99",
-   "set": "Base - Chrome",
-   "parallel": "Green Shimmer Refractor",
-   "odds": {
-    "value_blaster": 533,
-    "bulk": 72
-   }
-  },
-  {
-   "label": "Base Chrome Base Mojo",
-   "set": "Base - Chrome",
-   "parallel": "Base Mojo",
+   "parallel": "Mojo",
    "odds": {
     "mega": 2
    }
   },
   {
-   "label": "Base Chrome Fuchsia Mojo /299",
-   "set": "Base - Chrome",
-   "parallel": "Fuchsia Mojo",
-   "odds": {
-    "mega": 39
-   }
-  },
-  {
-   "label": "Base Chrome Burgundy Mojo /275",
-   "set": "Base - Chrome",
-   "parallel": "Burgundy Mojo",
-   "odds": {
-    "mega": 43
-   }
-  },
-  {
-   "label": "Base Chrome Purple Mojo /250",
-   "set": "Base - Chrome",
-   "parallel": "Purple Mojo",
-   "odds": {
-    "mega": 47
-   }
-  },
-  {
-   "label": "Base Chrome Pink Mojo /199",
-   "set": "Base - Chrome",
-   "parallel": "Pink Mojo",
-   "odds": {
-    "mega": 59
-   }
-  },
-  {
-   "label": "Base Chrome Navy Mojo /175",
-   "set": "Base - Chrome",
-   "parallel": "Navy Mojo",
-   "odds": {
-    "mega": 67
-   }
-  },
-  {
-   "label": "Base Chrome Blue Mojo /150",
+   "label": "Base Chrome Blue Mojo",
    "set": "Base - Chrome",
    "parallel": "Blue Mojo",
    "odds": {
@@ -647,15 +607,7 @@
    }
   },
   {
-   "label": "Base Chrome Aqua Mojo /125",
-   "set": "Base - Chrome",
-   "parallel": "Aqua Mojo",
-   "odds": {
-    "mega": 94
-   }
-  },
-  {
-   "label": "Base Chrome Green Mojo /99",
+   "label": "Base Chrome Green Mojo",
    "set": "Base - Chrome",
    "parallel": "Green Mojo",
    "odds": {
@@ -663,7 +615,7 @@
    }
   },
   {
-   "label": "Base Chrome Yellow Mojo /75",
+   "label": "Base Chrome Yellow Mojo",
    "set": "Base - Chrome",
    "parallel": "Yellow Mojo",
    "odds": {
@@ -671,7 +623,7 @@
    }
   },
   {
-   "label": "Base Chrome Gold Mojo /50",
+   "label": "Base Chrome Gold Mojo",
    "set": "Base - Chrome",
    "parallel": "Gold Mojo",
    "odds": {
@@ -679,7 +631,7 @@
    }
   },
   {
-   "label": "Base Chrome Orange Mojo /25",
+   "label": "Base Chrome Orange Mojo",
    "set": "Base - Chrome",
    "parallel": "Orange Mojo",
    "odds": {
@@ -687,7 +639,15 @@
    }
   },
   {
-   "label": "Base Chrome Black Mojo /10",
+   "label": "Base Chrome Red Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Red Mojo",
+   "odds": {
+    "mega": 2330
+   }
+  },
+  {
+   "label": "Base Chrome Black Mojo",
    "set": "Base - Chrome",
    "parallel": "Black Mojo",
    "odds": {
@@ -695,2131 +655,577 @@
    }
   },
   {
-   "label": "Base Chrome Red Mojo /5",
+   "label": "Base Chrome Rookie Red RC Variation",
    "set": "Base - Chrome",
-   "parallel": "Red Mojo",
-   "odds": {
-    "mega": 2330
-   }
-  },
-  {
-   "label": "Base Chrome Rose Gold Mojo /1",
-   "set": "Base - Chrome",
-   "parallel": "Rose Gold Mojo",
-   "odds": {
-    "mega": 11650
-   }
-  },
-  {
-   "label": "Base Chrome Etched In Glass Variation",
-   "set": "Base - Chrome Prospects - Etched In Glass Variations",
-   "parallel": "",
-   "odds": {
-    "hobby": 1733,
-    "jumbo_hobby": 548,
-    "breaker_delight": 27
-   }
-  },
-  {
-   "label": "Base Chrome Rookie Red RC Logo",
-   "set": "Base Chrome Rookie Red RC Logo",
-   "parallel": "",
+   "parallel": "Rookie Red RC Variation",
    "odds": {
     "hobby": 20,
-    "jumbo_hobby": 6,
-    "breaker_delight": 1,
+    "jumbo": 6,
+    "breaker": 1,
+    "value": 61,
     "mega": 60,
-    "value_blaster": 61
+    "bulk": 10
    }
   },
   {
-   "label": "Paper Prospects",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect",
+   "set": "Paper Prospect",
    "parallel": "",
    "odds": {
     "hobby": 1,
-    "jumbo_hobby": 1,
+    "jumbo": 1,
+    "value": 1,
     "mega": 1,
-    "value_blaster": 1
+    "bulk": 1
    }
   },
   {
-   "label": "Paper Prospects Purple Pattern Border /199",
-   "set": "Paper Prospects",
-   "parallel": "Purple Pattern Border",
+   "label": "Paper Prospect Purple Border",
+   "set": "Paper Prospect",
+   "parallel": "Purple Border",
    "odds": {
     "hobby": 376,
-    "jumbo_hobby": 127,
-    "value_blaster": 1377,
+    "jumbo": 127,
+    "value": 1377,
     "bulk": 247
    }
   },
   {
-   "label": "Paper Prospects Pink Border /175",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Pink Border",
+   "set": "Paper Prospect",
    "parallel": "Pink Border",
    "odds": {
     "hobby": 428,
-    "jumbo_hobby": 145,
-    "value_blaster": 1566,
+    "jumbo": 145,
+    "value": 1566,
     "bulk": 280
    }
   },
   {
-   "label": "Paper Prospects Blue Border /150",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Blue Border",
+   "set": "Paper Prospect",
    "parallel": "Blue Border",
    "odds": {
     "hobby": 499,
-    "jumbo_hobby": 169,
-    "value_blaster": 1827,
+    "jumbo": 169,
+    "value": 1827,
     "bulk": 327
    }
   },
   {
-   "label": "Paper Prospects Green Border /99",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Green Border",
+   "set": "Paper Prospect",
    "parallel": "Green Border",
    "odds": {
-    "value_blaster": 1066,
+    "value": 1066,
     "bulk": 144
    }
   },
   {
-   "label": "Paper Prospects Green Pattern Border /99",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Green Pattern Border",
+   "set": "Paper Prospect",
    "parallel": "Green Pattern Border",
    "odds": {
-    "value_blaster": 1066,
+    "value": 1066,
     "bulk": 144
    }
   },
   {
-   "label": "Paper Prospects Yellow Border /75",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Yellow Border",
+   "set": "Paper Prospect",
    "parallel": "Yellow Border",
    "odds": {
     "hobby": 998,
-    "jumbo_hobby": 337,
-    "value_blaster": 3655,
+    "jumbo": 337,
+    "value": 3655,
     "bulk": 658
    }
   },
   {
-   "label": "Paper Prospects Gold Border /50",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Gold Border",
+   "set": "Paper Prospect",
    "parallel": "Gold Border",
    "odds": {
     "hobby": 1497,
-    "jumbo_hobby": 505,
-    "value_blaster": 5484,
+    "jumbo": 505,
+    "value": 5484,
     "bulk": 981
    }
   },
   {
-   "label": "Paper Prospects Orange Border /25",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Orange Border",
+   "set": "Paper Prospect",
    "parallel": "Orange Border",
    "odds": {
     "hobby": 899
    }
   },
   {
-   "label": "Paper Prospects Black Border /10",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Black Border",
+   "set": "Paper Prospect",
    "parallel": "Black Border",
    "odds": {
     "hobby": 2245
    }
   },
   {
-   "label": "Paper Prospects Black Pattern Border /10",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Black Pattern Border",
+   "set": "Paper Prospect",
    "parallel": "Black Pattern Border",
    "odds": {
     "hobby": 2245
    }
   },
   {
-   "label": "Paper Prospects Red Border /5",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Red Border",
+   "set": "Paper Prospect",
    "parallel": "Red Border",
    "odds": {
     "hobby": 15044,
-    "jumbo_hobby": 5075,
-    "value_blaster": 54993,
+    "jumbo": 5075,
+    "value": 54993,
     "bulk": 10000
    }
   },
   {
-   "label": "Paper Prospects Platinum Border /1",
-   "set": "Paper Prospects",
+   "label": "Paper Prospect Platinum Border",
+   "set": "Paper Prospect",
    "parallel": "Platinum Border",
    "odds": {
     "hobby": 77366,
-    "jumbo_hobby": 25543,
-    "value_blaster": 280200,
+    "jumbo": 25543,
+    "value": 280200,
     "bulk": 50000
    }
   },
   {
-   "label": "Chrome Prospects",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect",
+   "set": "Chrome Prospect Autographs",
    "parallel": "",
    "odds": {
     "hobby": 1,
-    "jumbo_hobby": 1,
-    "breaker_delight": 1,
-    "value_blaster": 2
+    "jumbo": 1,
+    "breaker": 1,
+    "value": 2,
+    "bulk": 1
    }
   },
   {
-   "label": "Chrome Prospects Reptilian Refractor",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Reptilian Refractor",
-   "odds": {
-    "hobby": 20,
-    "jumbo_hobby": 6,
-    "value_blaster": 7,
-    "bulk": 14
-   }
-  },
-  {
-   "label": "Chrome Prospects Refractor /499",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 150,
-    "jumbo_hobby": 51,
-    "value_blaster": 550,
-    "bulk": 98
-   }
-  },
-  {
-   "label": "Chrome Prospects Lava Refractor /399",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Lava Refractor",
-   "odds": {
-    "hobby": 188,
-    "jumbo_hobby": 64,
-    "value_blaster": 687,
-    "bulk": 123
-   }
-  },
-  {
-   "label": "Chrome Prospects Speckle Refractor /299",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Speckle Refractor",
-   "odds": {
-    "hobby": 251,
-    "jumbo_hobby": 85,
-    "value_blaster": 917,
-    "bulk": 164
-   }
-  },
-  {
-   "label": "Chrome Prospects Purple Refractor /250",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 300,
-    "jumbo_hobby": 101,
-    "value_blaster": 1096,
-    "bulk": 196
-   }
-  },
-  {
-   "label": "Chrome Prospects Fuchsia Refractor /199",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 376,
-    "jumbo_hobby": 127,
-    "value_blaster": 1377,
-    "bulk": 247
-   }
-  },
-  {
-   "label": "Chrome Prospects Reptilian Blue Refractor /150",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Reptilian Blue Refractor",
-   "odds": {
-    "hobby": 499,
-    "jumbo_hobby": 169,
-    "value_blaster": 1827,
-    "bulk": 327
-   }
-  },
-  {
-   "label": "Chrome Prospects Blue Refractor /150",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Blue Refractor",
-   "odds": {
-    "hobby": 499,
-    "jumbo_hobby": 169,
-    "value_blaster": 1827,
-    "bulk": 327
-   }
-  },
-  {
-   "label": "Chrome Prospects Steel Metal Refractor /100",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Steel Metal Refractor",
-   "odds": {
-    "hobby": 748,
-    "jumbo_hobby": 253,
-    "value_blaster": 2741,
-    "bulk": 491
-   }
-  },
-  {
-   "label": "Chrome Prospects Yellow Refractor /75",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Yellow Refractor",
-   "odds": {
-    "hobby": 998,
-    "jumbo_hobby": 337,
-    "value_blaster": 3655,
-    "bulk": 658
-   }
-  },
-  {
-   "label": "Chrome Prospects Gold Refractor /50",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 1497,
-    "jumbo_hobby": 505,
-    "value_blaster": 5484,
-    "bulk": 981
-   }
-  },
-  {
-   "label": "Chrome Prospects Reptilian Gold Refractor /50",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Reptilian Gold Refractor",
-   "odds": {
-    "hobby": 1497,
-    "jumbo_hobby": 505,
-    "value_blaster": 5484,
-    "bulk": 981
-   }
-  },
-  {
-   "label": "Chrome Prospects Rose Gold Refractor /15",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Rose Gold Refractor",
-   "odds": {
-    "hobby": 4992,
-    "jumbo_hobby": 1685,
-    "value_blaster": 18274,
-    "bulk": 3334
-   }
-  },
-  {
-   "label": "Chrome Prospects Rose Gold Mini-Diamond Refractor /15",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Rose Gold Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 4992,
-    "jumbo_hobby": 1685,
-    "value_blaster": 18274,
-    "bulk": 3334
-   }
-  },
-  {
-   "label": "Chrome Prospects Black Refractor /10",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
-    "bulk": 5000
-   }
-  },
-  {
-   "label": "Chrome Prospects Black X-Fractor /10",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Black X-Fractor",
-   "odds": {
-    "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
-    "bulk": 5000
-   }
-  },
-  {
-   "label": "Chrome Prospects Red Refractor /5",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 15044,
-    "jumbo_hobby": 5075,
-    "value_blaster": 54993,
-    "bulk": 10000
-   }
-  },
-  {
-   "label": "Chrome Prospects Reptilian Red Refractor /5",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Reptilian Red Refractor",
-   "odds": {
-    "hobby": 15044,
-    "jumbo_hobby": 5075,
-    "value_blaster": 54993,
-    "bulk": 10000
-   }
-  },
-  {
-   "label": "Chrome Prospects FireFractor /3",
-   "set": "Base - Chrome Prospects",
-   "parallel": "FireFractor",
-   "odds": {
-    "hobby": 25189,
-    "jumbo_hobby": 8421,
-    "value_blaster": 91941,
-    "bulk": 5000
-   }
-  },
-  {
-   "label": "Chrome Prospects Mini-Diamond Refractor",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Mini-Diamond Refractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Mini-Diamond Refractor",
    "odds": {
     "hobby": 60
    }
   },
   {
-   "label": "Chrome Prospects Aqua X-Fractor /125",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Reptilian Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Reptilian Refractor",
+   "odds": {
+    "hobby": 20,
+    "jumbo": 6,
+    "value": 7,
+    "bulk": 14
+   }
+  },
+  {
+   "label": "Chrome Prospect Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 150,
+    "jumbo": 51,
+    "value": 550,
+    "bulk": 98
+   }
+  },
+  {
+   "label": "Chrome Prospect Lava Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Lava Refractor",
+   "odds": {
+    "hobby": 188,
+    "jumbo": 64,
+    "value": 687,
+    "bulk": 123
+   }
+  },
+  {
+   "label": "Chrome Prospect Speckle Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Speckle Refractor",
+   "odds": {
+    "hobby": 251,
+    "jumbo": 85,
+    "value": 917,
+    "bulk": 164
+   }
+  },
+  {
+   "label": "Chrome Prospect Purple Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 300,
+    "jumbo": 101,
+    "value": 1096,
+    "bulk": 196
+   }
+  },
+  {
+   "label": "Chrome Prospect Fuchsia Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Fuchsia Refractor",
+   "odds": {
+    "hobby": 376,
+    "jumbo": 127,
+    "value": 1377,
+    "bulk": 247
+   }
+  },
+  {
+   "label": "Chrome Prospect Reptilian Blue Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Reptilian Blue Refractor",
+   "odds": {
+    "hobby": 499,
+    "jumbo": 169,
+    "value": 1827,
+    "bulk": 327
+   }
+  },
+  {
+   "label": "Chrome Prospect Blue Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 499,
+    "jumbo": 169,
+    "value": 1827,
+    "bulk": 327
+   }
+  },
+  {
+   "label": "Chrome Prospect Aqua X-Fractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Aqua X-Fractor",
    "odds": {
     "hobby": 368,
-    "jumbo_hobby": 125
+    "jumbo": 125
    }
   },
   {
-   "label": "Chrome Prospects Floorboard Refractor /125",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Floorboard Refractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Floorboard Refractor",
    "odds": {
-    "jumbo_hobby": 64
+    "jumbo": 64
    }
   },
   {
-   "label": "Chrome Prospects Yellow X-Fractor /75",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Steel Metal Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Steel Metal Refractor",
+   "odds": {
+    "hobby": 748,
+    "jumbo": 253,
+    "value": 2741,
+    "bulk": 491
+   }
+  },
+  {
+   "label": "Chrome Prospect Retptilian Green Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Retptilian Green Refractor",
+   "odds": {
+    "value": 1066,
+    "bulk": 144
+   }
+  },
+  {
+   "label": "Chrome Prospect Green Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 1066,
+    "bulk": 144
+   }
+  },
+  {
+   "label": "Chrome Prospect Green Shimmer Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Green Shimmer Refractor",
+   "odds": {
+    "value": 1066,
+    "bulk": 144
+   }
+  },
+  {
+   "label": "Chrome Prospect Yellow Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "hobby": 998,
+    "jumbo": 337,
+    "value": 3655,
+    "bulk": 658
+   }
+  },
+  {
+   "label": "Chrome Prospect Yellow X-Fractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Yellow X-Fractor",
    "odds": {
     "hobby": 614,
-    "jumbo_hobby": 207
+    "jumbo": 207
    }
   },
   {
-   "label": "Chrome Prospects Orange Refractor /25",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Gold Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1497,
+    "jumbo": 505,
+    "value": 5484,
+    "bulk": 981
+   }
+  },
+  {
+   "label": "Chrome Prospect Reptilian Gold Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Reptilian Gold Refractor",
+   "odds": {
+    "hobby": 1497,
+    "jumbo": 505,
+    "value": 5484,
+    "bulk": 981
+   }
+  },
+  {
+   "label": "Chrome Prospect Orange Refractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Orange Refractor",
    "odds": {
     "hobby": 899
    }
   },
   {
-   "label": "Chrome Prospects Reptilian Orange Refractor /25",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Reptilian Orange Refractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Reptilian Orange Refractor",
    "odds": {
     "hobby": 899
    }
   },
   {
-   "label": "Chrome Prospects SuperFractor /1",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Rose Gold Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Rose Gold Refractor",
+   "odds": {
+    "hobby": 4992,
+    "jumbo": 1685,
+    "value": 18274,
+    "bulk": 3334
+   }
+  },
+  {
+   "label": "Chrome Prospect Rose Gold Mini-Diamond Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Rose Gold Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 4992,
+    "jumbo": 1685,
+    "value": 18274,
+    "bulk": 3334
+   }
+  },
+  {
+   "label": "Chrome Prospect Black Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 7496,
+    "jumbo": 2529,
+    "value": 27497,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Chrome Prospect Black X-Fractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Black X-Fractor",
+   "odds": {
+    "hobby": 7496,
+    "jumbo": 2529,
+    "value": 27497,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Chrome Prospect Red Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 15044,
+    "jumbo": 5075,
+    "value": 54993,
+    "bulk": 10000
+   }
+  },
+  {
+   "label": "Chrome Prospect Reptilian Red Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Reptilian Red Refractor",
+   "odds": {
+    "hobby": 15044,
+    "jumbo": 5075,
+    "value": 54993,
+    "bulk": 10000
+   }
+  },
+  {
+   "label": "Chrome Prospect FireFractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "FireFractor",
+   "odds": {
+    "hobby": 25189,
+    "jumbo": 8421,
+    "value": 91941,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Chrome Prospect SuperFractor",
+   "set": "Chrome Prospect Autographs",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 46091,
-    "jumbo_hobby": 15639
+    "jumbo": 15639
    }
   },
   {
-   "label": "Chrome Prospects Geometric",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Geometric",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Geometric",
    "odds": {
-    "breaker_delight": 5
+    "breaker": 5
    }
   },
   {
-   "label": "Chrome Prospects Green Geometric /99",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Green Geometric",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Green Geometric",
    "odds": {
-    "breaker_delight": 3
+    "breaker": 3
    }
   },
   {
-   "label": "Chrome Prospects Gold Geometric /50",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Gold Geometric",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Gold Geometric",
    "odds": {
-    "breaker_delight": 5
+    "breaker": 5
    }
   },
   {
-   "label": "Chrome Prospects Orange Geometric /25",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Orange Geometric",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Orange Geometric",
    "odds": {
-    "breaker_delight": 10
+    "breaker": 10
    }
   },
   {
-   "label": "Chrome Prospects Black Geometric /10",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Black Geometric",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Black Geometric",
    "odds": {
-    "breaker_delight": 25
+    "breaker": 25
    }
   },
   {
-   "label": "Chrome Prospects Red Geometric /5",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Red Geometric",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Red Geometric",
    "odds": {
-    "breaker_delight": 50
+    "breaker": 50
    }
   },
   {
-   "label": "Chrome Prospects Reptilian Green Refractor /99",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Reptilian Green Refractor",
-   "odds": {
-    "value_blaster": 1066,
-    "bulk": 144
-   }
-  },
-  {
-   "label": "Chrome Prospects Green Refractor /99",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 1066,
-    "bulk": 144
-   }
-  },
-  {
-   "label": "Chrome Prospects Green Shimmer Refractor /99",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Green Shimmer Refractor",
-   "odds": {
-    "value_blaster": 1066,
-    "bulk": 144
-   }
-  },
-  {
-   "label": "Chrome Prospects Mojo",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Mojo",
    "odds": {
     "mega": 2
    }
   },
   {
-   "label": "Chrome Prospects Fuchsia Mojo /299",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Fuchsia Mojo",
-   "odds": {
-    "mega": 78
-   }
-  },
-  {
-   "label": "Chrome Prospects Burgundy Mojo /275",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Burgundy Mojo",
-   "odds": {
-    "mega": 85
-   }
-  },
-  {
-   "label": "Chrome Prospects Purple Mojo /250",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Purple Mojo",
-   "odds": {
-    "mega": 94
-   }
-  },
-  {
-   "label": "Chrome Prospects Pink Mojo /199",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Pink Mojo",
-   "odds": {
-    "mega": 118
-   }
-  },
-  {
-   "label": "Chrome Prospects Navy Mojo /175",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Navy Mojo",
-   "odds": {
-    "mega": 134
-   }
-  },
-  {
-   "label": "Chrome Prospects Blue Mojo /150",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Blue Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Blue Mojo",
    "odds": {
     "mega": 156
    }
   },
   {
-   "label": "Chrome Prospects Aqua Mojo /125",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Aqua Mojo",
-   "odds": {
-    "mega": 187
-   }
-  },
-  {
-   "label": "Chrome Prospects Green Mojo /99",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Green Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Green Mojo",
    "odds": {
     "mega": 236
    }
   },
   {
-   "label": "Chrome Prospects Yellow Mojo /75",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Yellow Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Yellow Mojo",
    "odds": {
     "mega": 311
    }
   },
   {
-   "label": "Chrome Prospects Gold Mojo /50",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Gold Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Gold Mojo",
    "odds": {
     "mega": 466
    }
   },
   {
-   "label": "Chrome Prospects Orange Mojo /25",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Orange Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Orange Mojo",
    "odds": {
     "mega": 932
    }
   },
   {
-   "label": "Chrome Prospects Black Mojo /10",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Black Mojo",
-   "odds": {
-    "mega": 2330
-   }
-  },
-  {
-   "label": "Chrome Prospects Red Mojo /5",
-   "set": "Base - Chrome Prospects",
+   "label": "Chrome Prospect Red Mojo",
+   "set": "Chrome Prospect Autographs",
    "parallel": "Red Mojo",
    "odds": {
     "mega": 4660
    }
   },
   {
-   "label": "Chrome Prospects Rose Gold Mojo /1",
-   "set": "Base - Chrome Prospects",
-   "parallel": "Rose Gold Mojo",
-   "odds": {
-    "mega": 23300
-   }
-  },
-  {
-   "label": "Chrome Prospects Etched In Glass Variation",
-   "set": "Base - Chrome Prospects - Etched In Glass Variations",
-   "parallel": "",
-   "odds": {
-    "hobby": 3466,
-    "jumbo_hobby": 1095,
-    "breaker_delight": 53
-   }
-  },
-  {
-   "label": "Base Chrome Autographs",
-   "set": "Base Chrome Autographs",
-   "parallel": "",
-   "odds": {
-    "hobby": 68,
-    "jumbo_hobby": 20,
-    "value_blaster": 313
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Refractor /499",
-   "set": "Base Chrome Autographs",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 192,
-    "jumbo_hobby": 65,
-    "breaker_delight": 7
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Speckle Refractor /299",
-   "set": "Base Chrome Autographs",
-   "parallel": "Speckle Refractor",
-   "odds": {
-    "hobby": 342,
-    "jumbo_hobby": 115,
-    "breaker_delight": 13
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Purple Refractor /250",
-   "set": "Base Chrome Autographs",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 325,
-    "jumbo_hobby": 109,
-    "breaker_delight": 12
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Blue Refractor /150",
-   "set": "Base Chrome Autographs",
-   "parallel": "Blue Refractor",
-   "odds": {
-    "hobby": 416,
-    "jumbo_hobby": 140,
-    "breaker_delight": 15
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Blue X-Fractor /150",
-   "set": "Base Chrome Autographs",
-   "parallel": "Blue X-Fractor",
-   "odds": {
-    "hobby": 621,
-    "jumbo_hobby": 209,
-    "breaker_delight": 23
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Mini-Dimaond Refractor /100",
-   "set": "Base Chrome Autographs",
-   "parallel": "Mini-Dimaond Refractor",
-   "odds": {
-    "hobby": 742,
-    "jumbo_hobby": 250,
-    "breaker_delight": 27
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Yellow Refractor /75",
-   "set": "Base Chrome Autographs",
-   "parallel": "Yellow Refractor",
-   "odds": {
-    "hobby": 853,
-    "jumbo_hobby": 287,
-    "breaker_delight": 31
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Gold Refractor /50",
-   "set": "Base Chrome Autographs",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 1161,
-    "jumbo_hobby": 391,
-    "breaker_delight": 42
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Gold Shimmer Refractor /50",
-   "set": "Base Chrome Autographs",
-   "parallel": "Gold Shimmer Refractor",
-   "odds": {
-    "hobby": 1346,
-    "jumbo_hobby": 453,
-    "breaker_delight": 49
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Reptilian Orange Refractor /25",
-   "set": "Base Chrome Autographs",
-   "parallel": "Reptilian Orange Refractor",
-   "odds": {
-    "hobby": 1097
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Orange Refractor /25",
-   "set": "Base Chrome Autographs",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 913
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Orange Shimmer Refractor /25",
-   "set": "Base Chrome Autographs",
-   "parallel": "Orange Shimmer Refractor",
-   "odds": {
-    "hobby": 1032
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Black Refractor /10",
-   "set": "Base Chrome Autographs",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 5246,
-    "jumbo_hobby": 1770,
-    "breaker_delight": 191
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Black X-Fractor /10",
-   "set": "Base Chrome Autographs",
-   "parallel": "Black X-Fractor",
-   "odds": {
-    "hobby": 5443,
-    "jumbo_hobby": 1838,
-    "breaker_delight": 197
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Red Refractor /5",
-   "set": "Base Chrome Autographs",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 10465,
-    "jumbo_hobby": 3548,
-    "breaker_delight": 381
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Red Lava Refractor /5",
-   "set": "Base Chrome Autographs",
-   "parallel": "Red Lava Refractor",
-   "odds": {
-    "hobby": 10568,
-    "jumbo_hobby": 3598,
-    "breaker_delight": 388
-   }
-  },
-  {
-   "label": "Base Chrome Autographs SuperFractor /1",
-   "set": "Base Chrome Autographs",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 50378,
-    "jumbo_hobby": 17821,
-    "breaker_delight": 2148
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Geometric",
-   "set": "Base Chrome Autographs",
-   "parallel": "Geometric",
-   "odds": {
-    "breaker_delight": 4
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Blue Geometric /150",
-   "set": "Base Chrome Autographs",
-   "parallel": "Blue Geometric",
-   "odds": {
-    "breaker_delight": 3
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Green Geometric /99",
-   "set": "Base Chrome Autographs",
-   "parallel": "Green Geometric",
-   "odds": {
-    "breaker_delight": 4
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Gold Geometric /50",
-   "set": "Base Chrome Autographs",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 6
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Orange Geometric /25",
-   "set": "Base Chrome Autographs",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 11
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Black Geometric /10",
-   "set": "Base Chrome Autographs",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 26
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Red Geometric /5",
-   "set": "Base Chrome Autographs",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 50
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Green Refractor /99",
-   "set": "Base Chrome Autographs",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 695,
-    "bulk": 156
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Green Shimmer Refractor /99",
-   "set": "Base Chrome Autographs",
-   "parallel": "Green Shimmer Refractor",
-   "odds": {
-    "value_blaster": 951,
-    "bulk": 214
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Reptilian Green Refractor /99",
-   "set": "Base Chrome Autographs",
-   "parallel": "Reptilian Green Refractor",
-   "odds": {
-    "value_blaster": 872,
-    "bulk": 196
-   }
-  },
-  {
-   "label": "Base Chrome Autographs FireFractor /3",
-   "set": "Base Chrome Autographs",
-   "parallel": "FireFractor",
-   "odds": {
-    "value_blaster": 21015,
-    "bulk": 4546
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Base Mojo",
-   "set": "Base Chrome Autographs",
-   "parallel": "Base Mojo",
-   "odds": {
-    "mega": 190
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Blue Mojo /150",
-   "set": "Base Chrome Autographs",
-   "parallel": "Blue Mojo",
-   "odds": {
-    "mega": 293
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Green Mojo /99",
-   "set": "Base Chrome Autographs",
-   "parallel": "Green Mojo",
-   "odds": {
-    "mega": 321
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Yellow Mojo /75",
-   "set": "Base Chrome Autographs",
-   "parallel": "Yellow Mojo",
-   "odds": {
-    "mega": 402
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Gold Mojo /50",
-   "set": "Base Chrome Autographs",
-   "parallel": "Gold Mojo",
-   "odds": {
-    "mega": 558
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Orange Mojo /25",
-   "set": "Base Chrome Autographs",
-   "parallel": "Orange Mojo",
-   "odds": {
-    "mega": 1027
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Black Mojo /10",
-   "set": "Base Chrome Autographs",
-   "parallel": "Black Mojo",
-   "odds": {
-    "mega": 2523
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Red Mojo /5",
-   "set": "Base Chrome Autographs",
-   "parallel": "Red Mojo",
-   "odds": {
-    "mega": 5017
-   }
-  },
-  {
-   "label": "Base Chrome Autographs Rose Gold Mojo /1",
-   "set": "Base Chrome Autographs",
-   "parallel": "Rose Gold Mojo",
-   "odds": {
-    "mega": 25085
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "",
-   "odds": {
-    "hobby": 76,
-    "jumbo_hobby": 16,
-    "value_blaster": 13813
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Refractor /499",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 100,
-    "jumbo_hobby": 34,
-    "breaker_delight": 12
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Speckle Refractor /299",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Speckle Refractor",
-   "odds": {
-    "hobby": 168,
-    "jumbo_hobby": 57,
-    "breaker_delight": 15
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Purple Refractor /250",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 203,
-    "jumbo_hobby": 69,
-    "breaker_delight": 12
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Blue Refractor /150",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Blue Refractor",
-   "odds": {
-    "hobby": 325,
-    "jumbo_hobby": 110,
-    "breaker_delight": 27
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Blue X-Fractor /150",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Blue X-Fractor",
-   "odds": {
-    "hobby": 332,
-    "jumbo_hobby": 112,
-    "breaker_delight": 29
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Mini-Diamond Refractor /100",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 476,
-    "jumbo_hobby": 161,
-    "breaker_delight": 101
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Yellow Refractor /75",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Yellow Refractor",
-   "odds": {
-    "hobby": 701,
-    "jumbo_hobby": 236,
-    "breaker_delight": 26
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Gold Refractor /50",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 1048,
-    "jumbo_hobby": 353,
-    "breaker_delight": 38
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Gold Shimmer Refractor /50",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Gold Shimmer Refractor",
-   "odds": {
-    "hobby": 1046,
-    "jumbo_hobby": 352,
-    "breaker_delight": 38
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Orange Refractor /25",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 876
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Orange Shimmer Refractor /25",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Orange Shimmer Refractor",
-   "odds": {
-    "hobby": 876
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Reptilian Orange Refractor /25",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Reptilian Orange Refractor",
-   "odds": {
-    "hobby": 877
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Black Refractor /10",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 5171,
-    "jumbo_hobby": 1746,
-    "breaker_delight": 188
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Black X-Fractor /10",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Black X-Fractor",
-   "odds": {
-    "hobby": 5246,
-    "jumbo_hobby": 1770,
-    "breaker_delight": 189
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Red Refractor /5",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 10267,
-    "jumbo_hobby": 3484,
-    "breaker_delight": 375
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Red Lava Refractor /5",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Red Lava Refractor",
-   "odds": {
-    "hobby": 10267,
-    "jumbo_hobby": 3484,
-    "breaker_delight": 375
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs SuperFractor /1",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 50378,
-    "jumbo_hobby": 17821,
-    "breaker_delight": 1969
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Green Geometric /99",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Green Geometric",
-   "odds": {
-    "breaker_delight": 4
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Gold Geometric /50",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 5
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Orange Geometric /25",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 10
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Black Geometric /10",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 25
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Red Geometric /5",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 49
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Green Refractor /99",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 631,
-    "bulk": 142
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Green Shimmer Refractor /99",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Green Shimmer Refractor",
-   "odds": {
-    "value_blaster": 633,
-    "bulk": 143
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Reptilian Green Refractor /99",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Reptilian Green Refractor",
-   "odds": {
-    "value_blaster": 637,
-    "bulk": 143
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs FireFractor /3",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "FireFractor",
-   "odds": {
-    "value_blaster": 20719,
-    "bulk": 4546
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Base Mojo",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Base Mojo",
-   "odds": {
-    "mega": 263
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Blue Mojo /150",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Blue Mojo",
-   "odds": {
-    "mega": 293
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Green Mojo /99",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Green Mojo",
-   "odds": {
-    "mega": 293
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Yellow Mojo /75",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Yellow Mojo",
-   "odds": {
-    "mega": 324
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Gold Mojo /50",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Gold Mojo",
-   "odds": {
-    "mega": 462
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Orange Mojo /25",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Orange Mojo",
-   "odds": {
-    "mega": 923
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Black Mojo /10",
+   "label": "Chrome Prospect Black Mojo",
    "set": "Chrome Prospect Autographs",
    "parallel": "Black Mojo",
    "odds": {
-    "mega": 2306
+    "mega": 2330
    }
   },
   {
-   "label": "Chrome Prospect Autographs Red Mojo /5",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Red Mojo",
-   "odds": {
-    "mega": 4612
-   }
-  },
-  {
-   "label": "Chrome Prospect Autographs Rose Gold Mojo /1",
-   "set": "Chrome Prospect Autographs",
-   "parallel": "Rose Gold Mojo",
-   "odds": {
-    "mega": 23058
-   }
-  },
-  {
-   "label": "Buzz Factor Autographs",
-   "set": "Buzz Factor Autographs",
-   "parallel": "",
-   "odds": {
-    "hobby": 1417,
-    "jumbo_hobby": 477,
-    "breaker_delight": 51
-   }
-  },
-  {
-   "label": "Buzz Factor Autographs Gold Refractor /50",
-   "set": "Buzz Factor Autographs",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 4080,
-    "jumbo_hobby": 1374,
-    "breaker_delight": 147
-   }
-  },
-  {
-   "label": "Buzz Factor Autographs Orange Refractor /25",
-   "set": "Buzz Factor Autographs",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 8144,
-    "jumbo_hobby": 2747,
-    "breaker_delight": 296
-   }
-  },
-  {
-   "label": "Buzz Factor Autographs Black Refractor /10",
-   "set": "Buzz Factor Autographs",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 20246,
-    "jumbo_hobby": 6904,
-    "breaker_delight": 739
-   }
-  },
-  {
-   "label": "Buzz Factor Autographs Red Refractor /5",
-   "set": "Buzz Factor Autographs",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 40116,
-    "jumbo_hobby": 13933,
-    "breaker_delight": 1477
-   }
-  },
-  {
-   "label": "Buzz Factor Autographs SuperFractor /1",
-   "set": "Buzz Factor Autographs",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 196931,
-    "jumbo_hobby": 69662,
-    "breaker_delight": 7874
-   }
-  },
-  {
-   "label": "Future Script",
-   "set": "Future Script",
-   "parallel": "",
-   "odds": {
-    "hobby": 1889,
-    "jumbo_hobby": 636,
-    "breaker_delight": 68
-   }
-  },
-  {
-   "label": "Future Script Gold Refractor /50",
-   "set": "Future Script",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 4430,
-    "jumbo_hobby": 1494,
-    "breaker_delight": 160
-   }
-  },
-  {
-   "label": "Future Script Orange Refractor /25",
-   "set": "Future Script",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 8842,
-    "jumbo_hobby": 2994,
-    "breaker_delight": 320
-   }
-  },
-  {
-   "label": "Future Script Black Refractor /10",
-   "set": "Future Script",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 20246,
-    "jumbo_hobby": 6904,
-    "breaker_delight": 739
-   }
-  },
-  {
-   "label": "Future Script Red Refractor /5",
-   "set": "Future Script",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 40116,
-    "jumbo_hobby": 13933,
-    "breaker_delight": 1477
-   }
-  },
-  {
-   "label": "Future Script SuperFractor /1",
-   "set": "Future Script",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 196931,
-    "jumbo_hobby": 69662,
-    "breaker_delight": 7874
-   }
-  },
-  {
-   "label": "Opening Statement Signatures",
-   "set": "Opening Statement Signatures",
-   "parallel": "",
-   "odds": {
-    "hobby": 1731,
-    "jumbo_hobby": 582,
-    "breaker_delight": 62
-   }
-  },
-  {
-   "label": "Opening Statement Signatures Gold Refractor /50",
-   "set": "Opening Statement Signatures",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 4240,
-    "jumbo_hobby": 1433,
-    "breaker_delight": 154
-   }
-  },
-  {
-   "label": "Opening Statement Signatures Orange Refractor /25",
-   "set": "Opening Statement Signatures",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 8144,
-    "jumbo_hobby": 2747,
-    "breaker_delight": 296
-   }
-  },
-  {
-   "label": "Opening Statement Signatures Black Refractor /10",
-   "set": "Opening Statement Signatures",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 20246,
-    "jumbo_hobby": 6904,
-    "breaker_delight": 739
-   }
-  },
-  {
-   "label": "Opening Statement Signatures Red Refractor /5",
-   "set": "Opening Statement Signatures",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 40116,
-    "jumbo_hobby": 13933,
-    "breaker_delight": 1477
-   }
-  },
-  {
-   "label": "Opening Statement Signatures SuperFractor /1",
-   "set": "Opening Statement Signatures",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 196931,
-    "jumbo_hobby": 69662,
-    "breaker_delight": 7874
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "",
-   "odds": {
-    "value_blaster": 778
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs Blue Border /150",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "Blue Border",
-   "odds": {
-    "value_blaster": 905,
-    "bulk": 204
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs Green Border /99",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "Green Border",
-   "odds": {
-    "value_blaster": 624,
-    "bulk": 140
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs Gold Border /50",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "Gold Border",
-   "odds": {
-    "value_blaster": 1222,
-    "bulk": 275
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs Orange Border /25",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "Orange Border",
-   "odds": {
-    "value_blaster": 2443,
-    "bulk": 550
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs Red Border /5",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "Red Border",
-   "odds": {
-    "value_blaster": 12208,
-    "bulk": 2778
-   }
-  },
-  {
-   "label": "Paper Prospects Retail Autographs Platinum Border /1",
-   "set": "Paper Prospect Retail Autographs",
-   "parallel": "Platinum Border",
-   "odds": {
-    "value_blaster": 60661,
-    "bulk": 16667
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "",
-   "odds": {
-    "value_blaster": 3816
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs Blue Border /150",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "Blue Border",
-   "odds": {
-    "value_blaster": 1771,
-    "bulk": 397
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs Green Border /99",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "Green Border",
-   "odds": {
-    "value_blaster": 1505,
-    "bulk": 338
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs Gold Border /50",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "Gold Border",
-   "odds": {
-    "value_blaster": 2544,
-    "bulk": 575
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs Orange Border /25",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "Orange Border",
-   "odds": {
-    "value_blaster": 2493,
-    "bulk": 562
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs Red Border /5",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "Red Border",
-   "odds": {
-    "value_blaster": 12440,
-    "bulk": 2942
-   }
-  },
-  {
-   "label": "Paper Rookies & Veterans Retail Autographs Platinum Border /1",
-   "set": "Paper Rookie And Veterans Retail Autographs",
-   "parallel": "Platinum Border",
-   "odds": {
-    "value_blaster": 61293,
-    "bulk": 16667
-   }
-  },
-  {
-   "label": "RetroFractor Autographs Gold Refractor /50",
-   "set": "Retrofractor Autographs",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 120347,
-    "jumbo_hobby": 42571,
-    "value_blaster": 452631,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "RetroFractor Autographs Orange Refractor /25",
-   "set": "Retrofractor Autographs",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 240694,
-    "jumbo_hobby": 85142,
-    "value_blaster": 980700,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "RetroFractor Autographs Red Refractor /5",
-   "set": "Retrofractor Autographs",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 722080,
-    "jumbo_hobby": 766272,
-    "value_blaster": 5884197
-   }
-  },
-  {
-   "label": "RetroFractor Autographs SuperFractor /1",
-   "set": "Retrofractor Autographs",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 2166240
-   }
-  },
-  {
-   "label": "Timeless Touch Signatures",
-   "set": "Timeless Touch Signatures",
-   "parallel": "",
-   "odds": {
-    "hobby": 72,
-    "jumbo_hobby": 17,
-    "breaker_delight": 4
-   }
-  },
-  {
-   "label": "Timeless Touch Signatures Gold Refractor /50",
-   "set": "Timeless Touch Signatures",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 4629,
-    "jumbo_hobby": 1561,
-    "breaker_delight": 168
-   }
-  },
-  {
-   "label": "Timeless Touch Signatures Orange Refractor /25",
-   "set": "Timeless Touch Signatures",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 8144,
-    "jumbo_hobby": 2747,
-    "breaker_delight": 296
-   }
-  },
-  {
-   "label": "Timeless Touch Signatures Black Refractor /10",
-   "set": "Timeless Touch Signatures",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 20246,
-    "jumbo_hobby": 6904,
-    "breaker_delight": 739
-   }
-  },
-  {
-   "label": "Timeless Touch Signatures Red Refractor /5",
-   "set": "Timeless Touch Signatures",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 40116,
-    "jumbo_hobby": 13933,
-    "breaker_delight": 1477
-   }
-  },
-  {
-   "label": "Timeless Touch Signatures SuperFractor /1",
-   "set": "Timeless Touch Signatures",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 196931,
-    "jumbo_hobby": 69662,
-    "breaker_delight": 7874
-   }
-  },
-  {
-   "label": "Anime NBA",
-   "set": "Anime - NBA",
-   "parallel": "",
-   "odds": {
-    "hobby": 1663,
-    "jumbo_hobby": 559,
-    "value_blaster": 8050
-   }
-  },
-  {
-   "label": "Anime NBA Black Refractor /10",
-   "set": "Anime - NBA",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 26100,
-    "jumbo_hobby": 8808,
-    "value_blaster": 87823,
-    "bulk": 25000
-   }
-  },
-  {
-   "label": "Anime NBA Red Refractor /5",
-   "set": "Anime - NBA",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 52836,
-    "jumbo_hobby": 17821,
-    "value_blaster": 178306,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "Anime NBA SuperFractor /1",
-   "set": "Anime - NBA",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 196931,
-    "jumbo_hobby": 95784,
-    "value_blaster": 980680
-   }
-  },
-  {
-   "label": "Anime NIL",
-   "set": "Anime - NIL",
-   "parallel": "",
-   "odds": {
-    "hobby": 6506,
-    "jumbo_hobby": 2184,
-    "value_blaster": 21793
-   }
-  },
-  {
-   "label": "Anime NIL Black Refractor /10",
-   "set": "Anime - NIL",
-   "parallel": "Black Refractor",
-   "odds": {
-    "hobby": 135390,
-    "value_blaster": 452622
-   }
-  },
-  {
-   "label": "Anime NIL Red Refractor /5",
-   "set": "Anime - NIL",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 270780,
-    "jumbo_hobby": 95784,
-    "value_blaster": 980680
-   }
-  },
-  {
-   "label": "Anime NIL SuperFractor /1",
-   "set": "Anime - NIL",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 722080,
-    "jumbo_hobby": 766272,
-    "value_blaster": 5884080
-   }
-  },
-  {
-   "label": "Bowman GPK NBA",
-   "set": "Bowman GPK - NBA",
-   "parallel": "",
-   "odds": {
-    "hobby": 13050,
-    "jumbo_hobby": 4379,
-    "value_blaster": 43586
-   }
-  },
-  {
-   "label": "Bowman GPK NBA Red Refractor /5",
-   "set": "Bowman GPK - NBA",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 196931,
-    "jumbo_hobby": 95784,
-    "value_blaster": 980680
-   }
-  },
-  {
-   "label": "Bowman GPK NBA SuperFractor /1",
-   "set": "Bowman GPK - NBA",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 722080,
-    "jumbo_hobby": 766272,
-    "value_blaster": 5884080
-   }
-  },
-  {
-   "label": "Bowman GPK NIL",
-   "set": "Bowman GPK - NIL",
-   "parallel": "",
-   "odds": {
-    "hobby": 16288,
-    "jumbo_hobby": 5474,
-    "value_blaster": 54483
-   }
-  },
-  {
-   "label": "Bowman Spotlights NBA",
-   "set": "Bowman Spotlights - NBA",
-   "parallel": "",
-   "odds": {
-    "hobby": 1733,
-    "jumbo_hobby": 548,
-    "breaker_delight": 27
-   }
-  },
-  {
-   "label": "Bowman Spotlights NBA Red Refractor /5",
-   "set": "Bowman Spotlights - NBA",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 86650,
-    "jumbo_hobby": 30651
-   }
-  },
-  {
-   "label": "Bowman Spotlights NBA SuperFractor /1",
-   "set": "Bowman Spotlights - NBA",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 361040,
-    "jumbo_hobby": 191568
-   }
-  },
-  {
-   "label": "Bowman Spotlights NIL",
-   "set": "Bowman Spotlights - NIL",
-   "parallel": "",
-   "odds": {
-    "hobby": 3466,
-    "jumbo_hobby": 1095,
-    "breaker_delight": 53
-   }
-  },
-  {
-   "label": "Bowman Spotlights NIL Red Refractor /5",
-   "set": "Bowman Spotlights - NIL",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 144416,
-    "jumbo_hobby": 76628
-   }
-  },
-  {
-   "label": "Bowman Spotlights NIL SuperFractor /1",
-   "set": "Bowman Spotlights - NIL",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 722080,
-    "jumbo_hobby": 383136
-   }
-  },
-  {
-   "label": "Bowman Verified",
-   "set": "Bowman Verified",
+   "label": "Talent Tracker",
+   "set": "Talent Tracker",
    "parallel": "",
    "odds": {
     "hobby": 58,
-    "jumbo_hobby": 8,
-    "value_blaster": 14
-   }
-  },
-  {
-   "label": "Bowman Verified Purple Refractor /250",
-   "set": "Bowman Verified",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 1197,
-    "jumbo_hobby": 404,
-    "value_blaster": 4385,
-    "bulk": 782
-   }
-  },
-  {
-   "label": "Bowman Verified Fuchsia Refractor /199",
-   "set": "Bowman Verified",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 1504,
-    "jumbo_hobby": 508,
-    "value_blaster": 5510,
-    "bulk": 1000
-   }
-  },
-  {
-   "label": "Bowman Verified Mini-Diamond Refractor /150",
-   "set": "Bowman Verified",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
-    "bulk": 1316
-   }
-  },
-  {
-   "label": "Bowman Verified Aqua Refractor /125",
-   "set": "Bowman Verified",
-   "parallel": "Aqua Refractor",
-   "odds": {
-    "hobby": 2394,
-    "jumbo_hobby": 808,
-    "value_blaster": 8770,
-    "bulk": 1563
-   }
-  },
-  {
-   "label": "Bowman Verified Green Refractor",
-   "set": "Bowman Verified",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 4261,
-    "bulk": 575
-   }
-  },
-  {
-   "label": "Bowman Verified Gold Refractor /50",
-   "set": "Bowman Verified",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 5985,
-    "jumbo_hobby": 2022,
-    "value_blaster": 21956,
-    "bulk": 4167
-   }
-  },
-  {
-   "label": "Bowman Verified Orange Refractor /25",
-   "set": "Bowman Verified",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 3593
-   }
-  },
-  {
-   "label": "Bowman Verified Red Refractor /5",
-   "set": "Bowman Verified",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 60174,
-    "jumbo_hobby": 20711,
-    "value_blaster": 226316,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "Bowman Verified SuperFractor /1",
-   "set": "Bowman Verified",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 309463,
-    "jumbo_hobby": 109468,
-    "value_blaster": 1176840
-   }
-  },
-  {
-   "label": "Bowman Verified Geometric",
-   "set": "Bowman Verified",
-   "parallel": "Geometric",
-   "odds": {
-    "breaker_delight": 73
-   }
-  },
-  {
-   "label": "Bowman Verified Gold Geometric /50",
-   "set": "Bowman Verified",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 20
-   }
-  },
-  {
-   "label": "Bowman Verified Orange Geometric /25",
-   "set": "Bowman Verified",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 40
-   }
-  },
-  {
-   "label": "Bowman Verified Black Geometric /10",
-   "set": "Bowman Verified",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 99
-   }
-  },
-  {
-   "label": "Bowman Verified Red Geometric /5",
-   "set": "Bowman Verified",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 197
-   }
-  },
-  {
-   "label": "Crystallized NBA",
-   "set": "Crystallized - NBA",
-   "parallel": "",
-   "odds": {
-    "hobby": 1346,
-    "jumbo_hobby": 1474,
-    "breaker_delight": 28
-   }
-  },
-  {
-   "label": "Crystallized NBA Gold Crystal Refractor /50",
-   "set": "Crystallized - NBA",
-   "parallel": "Gold Crystal Refractor",
-   "odds": {
-    "hobby": 13050,
-    "jumbo_hobby": 4379
-   }
-  },
-  {
-   "label": "Crystallized NBA Orange Crystal Refractor /25",
-   "set": "Crystallized - NBA",
-   "parallel": "Orange Crystal Refractor",
-   "odds": {
-    "hobby": 26100,
-    "jumbo_hobby": 8808
-   }
-  },
-  {
-   "label": "Crystallized NBA Red Crystal Refractor /5",
-   "set": "Crystallized - NBA",
-   "parallel": "Red Crystal Refractor",
-   "odds": {
-    "hobby": 135390,
-    "jumbo_hobby": 58944
-   }
-  },
-  {
-   "label": "Crystallized NBA SuperFractor /1",
-   "set": "Crystallized - NBA",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 722080,
-    "jumbo_hobby": 255424
-   }
-  },
-  {
-   "label": "Crystallized NIL",
-   "set": "Crystallized - NIL",
-   "parallel": "",
-   "odds": {
-    "hobby": 2691,
-    "jumbo_hobby": 2948,
-    "breaker_delight": 55
-   }
-  },
-  {
-   "label": "Crystallized NIL Gold Crystal Refractor /50",
-   "set": "Crystallized - NIL",
-   "parallel": "Gold Crystal Refractor",
-   "odds": {
-    "hobby": 26100,
-    "jumbo_hobby": 8808
-   }
-  },
-  {
-   "label": "Crystallized NIL Orange Crystal Refractor /25",
-   "set": "Crystallized - NIL",
-   "parallel": "Orange Crystal Refractor",
-   "odds": {
-    "hobby": 52836,
-    "jumbo_hobby": 17821
-   }
-  },
-  {
-   "label": "Crystallized NIL Red Crystal Refractor /5",
-   "set": "Crystallized - NIL",
-   "parallel": "Red Crystal Refractor",
-   "odds": {
-    "hobby": 270780,
-    "jumbo_hobby": 95784
-   }
-  },
-  {
-   "label": "Crystallized NIL SuperFractor /1",
-   "set": "Crystallized - NIL",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 2166240,
-    "jumbo_hobby": 766272
+    "jumbo": 8,
+    "value": 14,
+    "bulk": 6
    }
   },
   {
@@ -2828,8 +1234,42 @@
    "parallel": "",
    "odds": {
     "hobby": 58,
-    "jumbo_hobby": 8,
-    "value_blaster": 14
+    "jumbo": 8,
+    "value": 14,
+    "bulk": 6
+   }
+  },
+  {
+   "label": "Very Important Prospects",
+   "set": "Very Important Prospects",
+   "parallel": "",
+   "odds": {
+    "hobby": 58,
+    "jumbo": 8,
+    "value": 14,
+    "bulk": 6
+   }
+  },
+  {
+   "label": "Bowman Verified",
+   "set": "Bowman Verified",
+   "parallel": "",
+   "odds": {
+    "hobby": 58,
+    "jumbo": 8,
+    "value": 14,
+    "bulk": 6
+   }
+  },
+  {
+   "label": "Talent Tracker Refractor",
+   "set": "Talent Tracker",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 60,
+    "jumbo": 21,
+    "value": 220,
+    "bulk": 40
    }
   },
   {
@@ -2838,77 +1278,299 @@
    "parallel": "Refractor",
    "odds": {
     "hobby": 60,
-    "jumbo_hobby": 21,
-    "value_blaster": 220,
+    "jumbo": 21,
+    "value": 220,
     "bulk": 40
    }
   },
   {
-   "label": "Gen Next Purple Refractor /250",
-   "set": "Gen Next",
+   "label": "Very Important Prospects Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 60,
+    "jumbo": 21,
+    "value": 220,
+    "bulk": 40
+   }
+  },
+  {
+   "label": "Bowman Verified Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 60,
+    "jumbo": 21,
+    "value": 220,
+    "bulk": 40
+   }
+  },
+  {
+   "label": "Talent Tracker Purple Refractor",
+   "set": "Talent Tracker",
    "parallel": "Purple Refractor",
    "odds": {
     "hobby": 1197,
-    "jumbo_hobby": 404,
-    "value_blaster": 4385,
+    "jumbo": 404,
+    "value": 4385,
     "bulk": 782
    }
   },
   {
-   "label": "Gen Next Fuchsia Refractor /199",
+   "label": "Gen Next Purple Refractor",
    "set": "Gen Next",
-   "parallel": "Fuchsia Refractor",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1197,
+    "jumbo": 404,
+    "value": 4385,
+    "bulk": 782
+   }
+  },
+  {
+   "label": "Very Important Prospects Purple Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1197,
+    "jumbo": 404,
+    "value": 4385,
+    "bulk": 782
+   }
+  },
+  {
+   "label": "Bowman Verified Purple Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1197,
+    "jumbo": 404,
+    "value": 4385,
+    "bulk": 782
+   }
+  },
+  {
+   "label": "Talent Tracker Fuchsia Refrator",
+   "set": "Talent Tracker",
+   "parallel": "Fuchsia Refrator",
    "odds": {
     "hobby": 1504,
-    "jumbo_hobby": 508,
-    "value_blaster": 5510,
+    "jumbo": 508,
+    "value": 5510,
     "bulk": 1000
    }
   },
   {
-   "label": "Gen Next Mini-Diamond Refractor /150",
+   "label": "Gen Next Fuchsia Refrator",
    "set": "Gen Next",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 1504,
+    "jumbo": 508,
+    "value": 5510,
+    "bulk": 1000
+   }
+  },
+  {
+   "label": "Very Important Prospects Fuchsia Refrator",
+   "set": "Very Important Prospects",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 1504,
+    "jumbo": 508,
+    "value": 5510,
+    "bulk": 1000
+   }
+  },
+  {
+   "label": "Bowman Verified Fuchsia Refrator",
+   "set": "Bowman Verified",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 1504,
+    "jumbo": 508,
+    "value": 5510,
+    "bulk": 1000
+   }
+  },
+  {
+   "label": "Talent Tracker Mini-Diamond Refractor",
+   "set": "Talent Tracker",
    "parallel": "Mini-Diamond Refractor",
    "odds": {
     "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
+    "jumbo": 673,
+    "value": 7310,
     "bulk": 1316
    }
   },
   {
-   "label": "Gen Next Aqua Refractor /125",
+   "label": "Gen Next Mini-Diamond Refractor",
    "set": "Gen Next",
-   "parallel": "Aqua Refractor",
+   "parallel": "Mini-Diamond Refractor",
    "odds": {
-    "hobby": 2394,
-    "jumbo_hobby": 808,
-    "value_blaster": 8770,
-    "bulk": 1563
+    "hobby": 1995,
+    "jumbo": 673,
+    "value": 7310,
+    "bulk": 1316
    }
   },
   {
-   "label": "Gen Next Green Refractor /99",
-   "set": "Gen Next",
+   "label": "Very Important Prospects Mini-Diamond Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 1995,
+    "jumbo": 673,
+    "value": 7310,
+    "bulk": 1316
+   }
+  },
+  {
+   "label": "Bowman Verified Mini-Diamond Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 1995,
+    "jumbo": 673,
+    "value": 7310,
+    "bulk": 1316
+   }
+  },
+  {
+   "label": "Talent Tracker Green Refractor",
+   "set": "Talent Tracker",
    "parallel": "Green Refractor",
    "odds": {
-    "value_blaster": 4261,
+    "value": 4261,
     "bulk": 575
    }
   },
   {
-   "label": "Gen Next Gold Refractor /50",
+   "label": "Gen Next Green Refractor",
    "set": "Gen Next",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 4261,
+    "bulk": 575
+   }
+  },
+  {
+   "label": "Very Important Prospects Green Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 4261,
+    "bulk": 575
+   }
+  },
+  {
+   "label": "Bowman Verified Green Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 4261,
+    "bulk": 575
+   }
+  },
+  {
+   "label": "Talent Tracker Aqua Refractor",
+   "set": "Talent Tracker",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2394,
+    "jumbo": 808,
+    "value": 8770,
+    "bulk": 1563
+   }
+  },
+  {
+   "label": "Gen Next Aqua Refractor",
+   "set": "Gen Next",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2394,
+    "jumbo": 808,
+    "value": 8770,
+    "bulk": 1563
+   }
+  },
+  {
+   "label": "Very Important Prospects Aqua Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2394,
+    "jumbo": 808,
+    "value": 8770,
+    "bulk": 1563
+   }
+  },
+  {
+   "label": "Bowman Verified Aqua Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2394,
+    "jumbo": 808,
+    "value": 8770,
+    "bulk": 1563
+   }
+  },
+  {
+   "label": "Talent Tracker Gold Refractor",
+   "set": "Talent Tracker",
    "parallel": "Gold Refractor",
    "odds": {
     "hobby": 5985,
-    "jumbo_hobby": 2022,
-    "value_blaster": 21956,
+    "jumbo": 2022,
+    "value": 21956,
     "bulk": 4167
    }
   },
   {
-   "label": "Gen Next Orange Refractor /25",
+   "label": "Gen Next Gold Refractor",
+   "set": "Gen Next",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5985,
+    "jumbo": 2022,
+    "value": 21956,
+    "bulk": 4167
+   }
+  },
+  {
+   "label": "Very Important Prospects Gold Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5985,
+    "jumbo": 2022,
+    "value": 21956,
+    "bulk": 4167
+   }
+  },
+  {
+   "label": "Bowman Verified Gold Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5985,
+    "jumbo": 2022,
+    "value": 21956,
+    "bulk": 4167
+   }
+  },
+  {
+   "label": "Talent Tracker Orange Refractor",
+   "set": "Talent Tracker",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3593
+   }
+  },
+  {
+   "label": "Gen Next Orange Refractor",
    "set": "Gen Next",
    "parallel": "Orange Refractor",
    "odds": {
@@ -2916,24 +1578,111 @@
    }
   },
   {
-   "label": "Gen Next Red Refractor /5",
-   "set": "Gen Next",
+   "label": "Very Important Prospects Orange Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3593
+   }
+  },
+  {
+   "label": "Bowman Verified Orange Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3593
+   }
+  },
+  {
+   "label": "Talent Tracker Red Refractor",
+   "set": "Talent Tracker",
    "parallel": "Red Refractor",
    "odds": {
     "hobby": 60174,
-    "jumbo_hobby": 20711,
-    "value_blaster": 226316,
+    "jumbo": 20711,
+    "value": 226316,
     "bulk": 50000
    }
   },
   {
-   "label": "Gen Next SuperFractor /1",
+   "label": "Gen Next Red Refractor",
+   "set": "Gen Next",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 60174,
+    "jumbo": 20711,
+    "value": 226316,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Very Important Prospects Red Refractor",
+   "set": "Very Important Prospects",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 60174,
+    "jumbo": 20711,
+    "value": 226316,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Bowman Verified Red Refractor",
+   "set": "Bowman Verified",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 60174,
+    "jumbo": 20711,
+    "value": 226316,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Talent Tracker SuperFractor",
+   "set": "Talent Tracker",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 309463,
+    "jumbo": 109468,
+    "value": 1176840
+   }
+  },
+  {
+   "label": "Gen Next SuperFractor",
    "set": "Gen Next",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 309463,
-    "jumbo_hobby": 109468,
-    "value_blaster": 1176840
+    "jumbo": 109468,
+    "value": 1176840
+   }
+  },
+  {
+   "label": "Very Important Prospects SuperFractor",
+   "set": "Very Important Prospects",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 309463,
+    "jumbo": 109468,
+    "value": 1176840
+   }
+  },
+  {
+   "label": "Bowman Verified SuperFractor",
+   "set": "Bowman Verified",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 309463,
+    "jumbo": 109468,
+    "value": 1176840
+   }
+  },
+  {
+   "label": "Talent Tracker Geometric",
+   "set": "Talent Tracker",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 73
    }
   },
   {
@@ -2941,193 +1690,162 @@
    "set": "Gen Next",
    "parallel": "Geometric",
    "odds": {
-    "breaker_delight": 73
+    "breaker": 73
    }
   },
   {
-   "label": "Gen Next Gold Geometric /50",
-   "set": "Gen Next",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 20
-   }
-  },
-  {
-   "label": "Gen Next Orange Geometric /25",
-   "set": "Gen Next",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 40
-   }
-  },
-  {
-   "label": "Gen Next Black Geometric /10",
-   "set": "Gen Next",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 99
-   }
-  },
-  {
-   "label": "Gen Next Red Geometric /5",
-   "set": "Gen Next",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 197
-   }
-  },
-  {
-   "label": "Greatness Loading",
-   "set": "Greatness Loading",
-   "parallel": "",
-   "odds": {
-    "hobby": 15,
-    "jumbo_hobby": 8,
-    "value_blaster": 14
-   }
-  },
-  {
-   "label": "Greatness Loading Refractor",
-   "set": "Greatness Loading",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 60,
-    "jumbo_hobby": 21,
-    "value_blaster": 220,
-    "bulk": 40
-   }
-  },
-  {
-   "label": "Greatness Loading Purple Refractor /250",
-   "set": "Greatness Loading",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 1197,
-    "jumbo_hobby": 404,
-    "value_blaster": 4385,
-    "bulk": 782
-   }
-  },
-  {
-   "label": "Greatness Loading Fuchsia Refractor /199",
-   "set": "Greatness Loading",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 1504,
-    "jumbo_hobby": 508,
-    "value_blaster": 5510,
-    "bulk": 1000
-   }
-  },
-  {
-   "label": "Greatness Loading Mini-Diamond Refractor /150",
-   "set": "Greatness Loading",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
-    "bulk": 1316
-   }
-  },
-  {
-   "label": "Greatness Loading Aqua Refractor /125",
-   "set": "Greatness Loading",
-   "parallel": "Aqua Refractor",
-   "odds": {
-    "hobby": 2394,
-    "jumbo_hobby": 808,
-    "value_blaster": 8770,
-    "bulk": 1563
-   }
-  },
-  {
-   "label": "Greatness Loading Green Refractor /99",
-   "set": "Greatness Loading",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 4261,
-    "bulk": 575
-   }
-  },
-  {
-   "label": "Greatness Loading Gold Refractor /50",
-   "set": "Greatness Loading",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 5985,
-    "jumbo_hobby": 2022,
-    "value_blaster": 21956,
-    "bulk": 4167
-   }
-  },
-  {
-   "label": "Greatness Loading Orange Refractor /25",
-   "set": "Greatness Loading",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 3593
-   }
-  },
-  {
-   "label": "Greatness Loading Red Refractor /5",
-   "set": "Greatness Loading",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 60174,
-    "jumbo_hobby": 20711,
-    "value_blaster": 226316,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "Greatness Loading SuperFractor /1",
-   "set": "Greatness Loading",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 309463,
-    "jumbo_hobby": 109468,
-    "value_blaster": 1176840
-   }
-  },
-  {
-   "label": "Greatness Loading Geometric",
-   "set": "Greatness Loading",
+   "label": "Very Important Prospects Geometric",
+   "set": "Very Important Prospects",
    "parallel": "Geometric",
    "odds": {
-    "breaker_delight": 73
+    "breaker": 73
    }
   },
   {
-   "label": "Greatness Loading Gold Geometric /50",
-   "set": "Greatness Loading",
+   "label": "Bowman Verified Geometric",
+   "set": "Bowman Verified",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 73
+   }
+  },
+  {
+   "label": "Talent Tracker Gold Geometric",
+   "set": "Talent Tracker",
    "parallel": "Gold Geometric",
    "odds": {
-    "breaker_delight": 20
+    "breaker": 20
    }
   },
   {
-   "label": "Greatness Loading Orange Geometric /25",
-   "set": "Greatness Loading",
+   "label": "Gen Next Gold Geometric",
+   "set": "Gen Next",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 20
+   }
+  },
+  {
+   "label": "Very Important Prospects Gold Geometric",
+   "set": "Very Important Prospects",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 20
+   }
+  },
+  {
+   "label": "Bowman Verified Gold Geometric",
+   "set": "Bowman Verified",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 20
+   }
+  },
+  {
+   "label": "Talent Tracker Orange Geometric",
+   "set": "Talent Tracker",
    "parallel": "Orange Geometric",
    "odds": {
-    "breaker_delight": 40
+    "breaker": 40
    }
   },
   {
-   "label": "Greatness Loading Black Geometric /10",
-   "set": "Greatness Loading",
+   "label": "Gen Next Orange Geometric",
+   "set": "Gen Next",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 40
+   }
+  },
+  {
+   "label": "Very Important Prospects Orange Geometric",
+   "set": "Very Important Prospects",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 40
+   }
+  },
+  {
+   "label": "Bowman Verified Orange Geometric",
+   "set": "Bowman Verified",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 40
+   }
+  },
+  {
+   "label": "Talent Tracker Black Geometric",
+   "set": "Talent Tracker",
    "parallel": "Black Geometric",
    "odds": {
-    "breaker_delight": 99
+    "breaker": 99
    }
   },
   {
-   "label": "Greatness Loading Red Geometric /5",
-   "set": "Greatness Loading",
+   "label": "Gen Next Black Geometric",
+   "set": "Gen Next",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 99
+   }
+  },
+  {
+   "label": "Very Important Prospects Black Geometric",
+   "set": "Very Important Prospects",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 99
+   }
+  },
+  {
+   "label": "Bowman Verified Black Geometric",
+   "set": "Bowman Verified",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 99
+   }
+  },
+  {
+   "label": "Talent Tracker Red Geometric",
+   "set": "Talent Tracker",
    "parallel": "Red Geometric",
    "odds": {
-    "breaker_delight": 197
+    "breaker": 197
+   }
+  },
+  {
+   "label": "Gen Next Red Geometric",
+   "set": "Gen Next",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 197
+   }
+  },
+  {
+   "label": "Very Important Prospects Red Geometric",
+   "set": "Very Important Prospects",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 197
+   }
+  },
+  {
+   "label": "Bowman Verified Red Geometric",
+   "set": "Bowman Verified",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 197
+   }
+  },
+  {
+   "label": "ROY Favorites",
+   "set": "ROY Favorites",
+   "parallel": "",
+   "odds": {
+    "hobby": 25,
+    "jumbo": 13,
+    "value": 23,
+    "bulk": 12
    }
   },
   {
@@ -3136,8 +1854,53 @@
    "parallel": "",
    "odds": {
     "hobby": 25,
-    "jumbo_hobby": 13,
-    "value_blaster": 23
+    "jumbo": 13,
+    "value": 23,
+    "bulk": 12
+   }
+  },
+  {
+   "label": "Young Kings",
+   "set": "Young Kings",
+   "parallel": "",
+   "odds": {
+    "hobby": 15,
+    "jumbo": 8,
+    "value": 14,
+    "bulk": 7
+   }
+  },
+  {
+   "label": "Rockstar Rookies",
+   "set": "Rockstar Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 19,
+    "jumbo": 10,
+    "value": 17,
+    "bulk": 9
+   }
+  },
+  {
+   "label": "Greatness Loading",
+   "set": "Greatness Loading",
+   "parallel": "",
+   "odds": {
+    "hobby": 15,
+    "jumbo": 8,
+    "value": 14,
+    "bulk": 7
+   }
+  },
+  {
+   "label": "ROY Favorites Refractor",
+   "set": "ROY Favorites",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 100,
+    "jumbo": 34,
+    "value": 366,
+    "bulk": 66
    }
   },
   {
@@ -3146,53 +1909,216 @@
    "parallel": "Refractor",
    "odds": {
     "hobby": 100,
-    "jumbo_hobby": 34,
-    "value_blaster": 366,
+    "jumbo": 34,
+    "value": 366,
     "bulk": 66
    }
   },
   {
-   "label": "Hobby Stars Purple Refractor /250",
-   "set": "Hobby Stars",
+   "label": "Young Kings Refractor",
+   "set": "Young Kings",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 60,
+    "jumbo": 21,
+    "value": 220,
+    "bulk": 40
+   }
+  },
+  {
+   "label": "Rockstar Rookies Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 75,
+    "jumbo": 26,
+    "value": 274,
+    "bulk": 49
+   }
+  },
+  {
+   "label": "Greatness Loading Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 60,
+    "jumbo": 21,
+    "value": 220,
+    "bulk": 40
+   }
+  },
+  {
+   "label": "ROY Favorites Purple Refractor",
+   "set": "ROY Favorites",
    "parallel": "Purple Refractor",
    "odds": {
     "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
+    "jumbo": 673,
+    "value": 7310,
     "bulk": 1316
    }
   },
   {
-   "label": "Hobby Stars Fuchsia Refractor /199",
+   "label": "Hobby Stars Purple Refractor",
    "set": "Hobby Stars",
-   "parallel": "Fuchsia Refractor",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1995,
+    "jumbo": 673,
+    "value": 7310,
+    "bulk": 1316
+   }
+  },
+  {
+   "label": "Young Kings Purple Refractor",
+   "set": "Young Kings",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1197,
+    "jumbo": 404,
+    "value": 4385,
+    "bulk": 782
+   }
+  },
+  {
+   "label": "Rockstar Rookies Purple Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1497,
+    "jumbo": 505,
+    "value": 5484,
+    "bulk": 981
+   }
+  },
+  {
+   "label": "Greatness Loading Purple Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 1197,
+    "jumbo": 404,
+    "value": 4385,
+    "bulk": 782
+   }
+  },
+  {
+   "label": "ROY Favorites Fuchsia Refrator",
+   "set": "ROY Favorites",
+   "parallel": "Fuchsia Refrator",
    "odds": {
     "hobby": 2508,
-    "jumbo_hobby": 846,
-    "value_blaster": 9180,
+    "jumbo": 846,
+    "value": 9180,
     "bulk": 1667
    }
   },
   {
-   "label": "Hobby Stars Mini-Diamond Refractor /150",
+   "label": "Hobby Stars Fuchsia Refrator",
    "set": "Hobby Stars",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 2508,
+    "jumbo": 846,
+    "value": 9180,
+    "bulk": 1667
+   }
+  },
+  {
+   "label": "Young Kings Fuchsia Refrator",
+   "set": "Young Kings",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 1504,
+    "jumbo": 508,
+    "value": 5510,
+    "bulk": 1000
+   }
+  },
+  {
+   "label": "Rockstar Rookies Fuchsia Refrator",
+   "set": "Rockstar Rookies",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 1879,
+    "jumbo": 634,
+    "value": 6891,
+    "bulk": 1250
+   }
+  },
+  {
+   "label": "Greatness Loading Fuchsia Refrator",
+   "set": "Greatness Loading",
+   "parallel": "Fuchsia Refrator",
+   "odds": {
+    "hobby": 1504,
+    "jumbo": 508,
+    "value": 5510,
+    "bulk": 1000
+   }
+  },
+  {
+   "label": "ROY Favorites Mini-Diamond Refractor",
+   "set": "ROY Favorites",
    "parallel": "Mini-Diamond Refractor",
    "odds": {
     "hobby": 3328,
-    "jumbo_hobby": 1122,
-    "value_blaster": 12183,
+    "jumbo": 1122,
+    "value": 12183,
     "bulk": 2174
    }
   },
   {
-   "label": "Hobby Stars Aqua Refractor /125",
+   "label": "Hobby Stars Mini-Diamond Refractor",
    "set": "Hobby Stars",
-   "parallel": "Aqua Refractor",
+   "parallel": "Mini-Diamond Refractor",
    "odds": {
-    "hobby": 3990,
-    "jumbo_hobby": 1347,
-    "value_blaster": 14638,
-    "bulk": 2632
+    "hobby": 3328,
+    "jumbo": 1122,
+    "value": 12183,
+    "bulk": 2174
+   }
+  },
+  {
+   "label": "Young Kings Mini-Diamond Refractor",
+   "set": "Young Kings",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 1995,
+    "jumbo": 673,
+    "value": 7310,
+    "bulk": 1316
+   }
+  },
+  {
+   "label": "Rockstar Rookies Mini-Diamond Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 2493,
+    "jumbo": 842,
+    "value": 9137,
+    "bulk": 1667
+   }
+  },
+  {
+   "label": "Greatness Loading Mini-Diamond Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 1995,
+    "jumbo": 673,
+    "value": 7310,
+    "bulk": 1316
+   }
+  },
+  {
+   "label": "ROY Favorites Green Refractor",
+   "set": "ROY Favorites",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 7107,
+    "bulk": 962
    }
   },
   {
@@ -3200,23 +2126,157 @@
    "set": "Hobby Stars",
    "parallel": "Green Refractor",
    "odds": {
-    "value_blaster": 7107,
+    "value": 7107,
     "bulk": 962
    }
   },
   {
-   "label": "Hobby Stars Gold Refractor /50",
+   "label": "Young Kings Green Refractor",
+   "set": "Young Kings",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 4261,
+    "bulk": 575
+   }
+  },
+  {
+   "label": "Rockstar Rookies Green Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 5330,
+    "bulk": 725
+   }
+  },
+  {
+   "label": "Greatness Loading Green Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 4261,
+    "bulk": 575
+   }
+  },
+  {
+   "label": "ROY Favorites Aqua Refractor",
+   "set": "ROY Favorites",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 3990,
+    "jumbo": 1347,
+    "value": 14638,
+    "bulk": 2632
+   }
+  },
+  {
+   "label": "Hobby Stars Aqua Refractor",
    "set": "Hobby Stars",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 3990,
+    "jumbo": 1347,
+    "value": 14638,
+    "bulk": 2632
+   }
+  },
+  {
+   "label": "Young Kings Aqua Refractor",
+   "set": "Young Kings",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2394,
+    "jumbo": 808,
+    "value": 8770,
+    "bulk": 1563
+   }
+  },
+  {
+   "label": "Rockstar Rookies Aqua Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2993,
+    "jumbo": 1010,
+    "value": 10978,
+    "bulk": 2000
+   }
+  },
+  {
+   "label": "Greatness Loading Aqua Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 2394,
+    "jumbo": 808,
+    "value": 8770,
+    "bulk": 1563
+   }
+  },
+  {
+   "label": "ROY Favorites Gold Refractor",
+   "set": "ROY Favorites",
    "parallel": "Gold Refractor",
    "odds": {
     "hobby": 9983,
-    "jumbo_hobby": 3376,
-    "value_blaster": 36548,
+    "jumbo": 3376,
+    "value": 36548,
     "bulk": 7143
    }
   },
   {
-   "label": "Hobby Stars Orange Refractor /25",
+   "label": "Hobby Stars Gold Refractor",
+   "set": "Hobby Stars",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 9983,
+    "jumbo": 3376,
+    "value": 36548,
+    "bulk": 7143
+   }
+  },
+  {
+   "label": "Young Kings Gold Refractor",
+   "set": "Young Kings",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5985,
+    "jumbo": 2022,
+    "value": 21956,
+    "bulk": 4167
+   }
+  },
+  {
+   "label": "Rockstar Rookies Gold Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 7496,
+    "jumbo": 2529,
+    "value": 27497,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Greatness Loading Gold Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5985,
+    "jumbo": 2022,
+    "value": 21956,
+    "bulk": 4167
+   }
+  },
+  {
+   "label": "ROY Favorites Orange Refractor",
+   "set": "ROY Favorites",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 6001
+   }
+  },
+  {
+   "label": "Hobby Stars Orange Refractor",
    "set": "Hobby Stars",
    "parallel": "Orange Refractor",
    "odds": {
@@ -3224,23 +2284,138 @@
    }
   },
   {
-   "label": "Hobby Stars Red Refractor /5",
+   "label": "Young Kings Orange Refractor",
+   "set": "Young Kings",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3593
+   }
+  },
+  {
+   "label": "Rockstar Rookies Orange Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4495
+   }
+  },
+  {
+   "label": "Greatness Loading Orange Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3593
+   }
+  },
+  {
+   "label": "ROY Favorites Red Refractor",
+   "set": "ROY Favorites",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 103155,
+    "jumbo": 34831,
+    "value": 367763
+   }
+  },
+  {
+   "label": "Hobby Stars Red Refractor",
    "set": "Hobby Stars",
    "parallel": "Red Refractor",
    "odds": {
     "hobby": 103155,
-    "jumbo_hobby": 34831,
-    "value_blaster": 367763
+    "jumbo": 34831,
+    "value": 367763
    }
   },
   {
-   "label": "Hobby Stars SuperFractor /1",
+   "label": "Young Kings Red Refractor",
+   "set": "Young Kings",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 60174,
+    "jumbo": 20711,
+    "value": 226316,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Rockstar Rookies Red Refractor",
+   "set": "Rockstar Rookies",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 77366,
+    "jumbo": 25543,
+    "value": 280200,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Greatness Loading Red Refractor",
+   "set": "Greatness Loading",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 60174,
+    "jumbo": 20711,
+    "value": 226316,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "ROY Favorites SuperFractor",
+   "set": "ROY Favorites",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 541560,
+    "jumbo": 191568,
+    "value": 1961399
+   }
+  },
+  {
+   "label": "Hobby Stars SuperFractor",
    "set": "Hobby Stars",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 541560,
-    "jumbo_hobby": 191568,
-    "value_blaster": 1961399
+    "jumbo": 191568,
+    "value": 1961399
+   }
+  },
+  {
+   "label": "Young Kings SuperFractor",
+   "set": "Young Kings",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 309463,
+    "jumbo": 109468,
+    "value": 1176840
+   }
+  },
+  {
+   "label": "Rockstar Rookies SuperFractor",
+   "set": "Rockstar Rookies",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 433248,
+    "jumbo": 127712,
+    "value": 1471050
+   }
+  },
+  {
+   "label": "Greatness Loading SuperFractor",
+   "set": "Greatness Loading",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 309463,
+    "jumbo": 109468,
+    "value": 1176840
+   }
+  },
+  {
+   "label": "ROY Favorites Geometric",
+   "set": "ROY Favorites",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 122
    }
   },
   {
@@ -3248,111 +2423,1612 @@
    "set": "Hobby Stars",
    "parallel": "Geometric",
    "odds": {
-    "breaker_delight": 122
+    "breaker": 122
    }
   },
   {
-   "label": "Hobby Stars Gold Geometric /50",
+   "label": "Young Kings Geometric",
+   "set": "Young Kings",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 73
+   }
+  },
+  {
+   "label": "Rockstar Rookies Geometric",
+   "set": "Rockstar Rookies",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 91
+   }
+  },
+  {
+   "label": "Greatness Loading Geometric",
+   "set": "Greatness Loading",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 73
+   }
+  },
+  {
+   "label": "ROY Favorites Gold Geometric",
+   "set": "ROY Favorites",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 33
+   }
+  },
+  {
+   "label": "Hobby Stars Gold Geometric",
    "set": "Hobby Stars",
    "parallel": "Gold Geometric",
    "odds": {
-    "breaker_delight": 33
+    "breaker": 33
    }
   },
   {
-   "label": "Hobby Stars Orange Geometric /25",
+   "label": "Young Kings Gold Geometric",
+   "set": "Young Kings",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 20
+   }
+  },
+  {
+   "label": "Rockstar Rookies Gold Geometric",
+   "set": "Rockstar Rookies",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "Greatness Loading Gold Geometric",
+   "set": "Greatness Loading",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 20
+   }
+  },
+  {
+   "label": "ROY Favorites Orange Geometric",
+   "set": "ROY Favorites",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 66
+   }
+  },
+  {
+   "label": "Hobby Stars Orange Geometric",
    "set": "Hobby Stars",
    "parallel": "Orange Geometric",
    "odds": {
-    "breaker_delight": 66
+    "breaker": 66
    }
   },
   {
-   "label": "Hobby Stars Black Geometric /10",
+   "label": "Young Kings Orange Geometric",
+   "set": "Young Kings",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 40
+   }
+  },
+  {
+   "label": "Rockstar Rookies Orange Geometric",
+   "set": "Rockstar Rookies",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 50
+   }
+  },
+  {
+   "label": "Greatness Loading Orange Geometric",
+   "set": "Greatness Loading",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 40
+   }
+  },
+  {
+   "label": "ROY Favorites Black Geometric",
+   "set": "ROY Favorites",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 165
+   }
+  },
+  {
+   "label": "Hobby Stars Black Geometric",
    "set": "Hobby Stars",
    "parallel": "Black Geometric",
    "odds": {
-    "breaker_delight": 165
+    "breaker": 165
    }
   },
   {
-   "label": "Hobby Stars Red Geometric /5",
+   "label": "Young Kings Black Geometric",
+   "set": "Young Kings",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 99
+   }
+  },
+  {
+   "label": "Rockstar Rookies Black Geometric",
+   "set": "Rockstar Rookies",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 123
+   }
+  },
+  {
+   "label": "Greatness Loading Black Geometric",
+   "set": "Greatness Loading",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 99
+   }
+  },
+  {
+   "label": "ROY Favorites Red Geometric",
+   "set": "ROY Favorites",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 329
+   }
+  },
+  {
+   "label": "Hobby Stars Red Geometric",
    "set": "Hobby Stars",
    "parallel": "Red Geometric",
    "odds": {
-    "breaker_delight": 329
+    "breaker": 329
    }
   },
   {
-   "label": "Mega Prospects",
-   "set": "Mega Prospects",
+   "label": "Young Kings Red Geometric",
+   "set": "Young Kings",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 197
+   }
+  },
+  {
+   "label": "Rockstar Rookies Red Geometric",
+   "set": "Rockstar Rookies",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 247
+   }
+  },
+  {
+   "label": "Greatness Loading Red Geometric",
+   "set": "Greatness Loading",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 197
+   }
+  },
+  {
+   "label": "Base Chrome Etched-In Glass Variation Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Etched-In Glass Variation Refractor",
+   "odds": {
+    "hobby": 1733,
+    "jumbo": 548,
+    "breaker": 27
+   }
+  },
+  {
+   "label": "Chrome Prospect Etched-In Glass Variation Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Etched-In Glass Variation Refractor",
+   "odds": {
+    "hobby": 3466,
+    "jumbo": 1095,
+    "breaker": 53
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Refractor",
+   "odds": {
+    "hobby": 13050,
+    "jumbo": 4379,
+    "value": 43586,
+    "bulk": 10000
+   }
+  },
+  {
+   "label": "Bowman Spotlights NBA Refractor",
+   "set": "Bowman Spotlights - NBA",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 1733,
+    "jumbo": 548,
+    "breaker": 27
+   }
+  },
+  {
+   "label": "Bowman Spotlights NIL Refractor",
+   "set": "Bowman Spotlights - NIL",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 3466,
+    "jumbo": 1095,
+    "breaker": 53
+   }
+  },
+  {
+   "label": "Anime NBA Refractor",
+   "set": "Anime - NBA",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 1663,
+    "jumbo": 559,
+    "value": 8050,
+    "bulk": 532
+   }
+  },
+  {
+   "label": "Anime NIL Refractor",
+   "set": "Anime - NIL",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 6506,
+    "jumbo": 2184,
+    "value": 21793,
+    "bulk": 5000
+   }
+  },
+  {
+   "label": "Bowman GPK NBA Refractor",
+   "set": "Bowman GPK - NBA",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 13050,
+    "jumbo": 4379,
+    "value": 43586,
+    "bulk": 10000
+   }
+  },
+  {
+   "label": "Bowman GPK NIL Refractor",
+   "set": "Bowman GPK - NIL",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 16288,
+    "jumbo": 5474,
+    "value": 54483,
+    "bulk": 12500
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Gold Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Gold Refractor",
+   "odds": {
+    "hobby": 65644,
+    "jumbo": 21894,
+    "value": 217929,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Orange Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Orange Refractor",
+   "odds": {
+    "hobby": 135390,
+    "jumbo": 45075,
+    "value": 452622
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Red Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Red Refractor",
+   "odds": {
+    "hobby": 433248,
+    "jumbo": 255424,
+    "value": 2942040
+   }
+  },
+  {
+   "label": "Bowman Spotlights NBA Red Refractor",
+   "set": "Bowman Spotlights - NBA",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 86650,
+    "jumbo": 30651
+   }
+  },
+  {
+   "label": "Bowman Spotlights NIL Red Refractor",
+   "set": "Bowman Spotlights - NIL",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 144416,
+    "jumbo": 76628
+   }
+  },
+  {
+   "label": "Anime NBA Red Refractor",
+   "set": "Anime - NBA",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 52836,
+    "jumbo": 17821,
+    "value": 178306,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Anime NIL Red Refractor",
+   "set": "Anime - NIL",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 270780,
+    "jumbo": 95784,
+    "value": 980680
+   }
+  },
+  {
+   "label": "Bowman GPK NBA Red Refractor",
+   "set": "Bowman GPK - NBA",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 196931,
+    "jumbo": 95784,
+    "value": 980680
+   }
+  },
+  {
+   "label": "Bowman GPK NIL Red Refractor",
+   "set": "Bowman GPK - NIL",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 270780,
+    "jumbo": 109468,
+    "value": 1176816
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor SuperFractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor SuperFractor",
+   "odds": {
+    "hobby": 2166240,
+    "jumbo": 766272
+   }
+  },
+  {
+   "label": "Bowman Spotlights NBA SuperFractor",
+   "set": "Bowman Spotlights - NBA",
    "parallel": "",
    "odds": {
-    "mega": 13
+    "hobby": 361040,
+    "jumbo": 191568
    }
   },
   {
-   "label": "Mega Prospects Blue Mojo /150",
-   "set": "Mega Prospects",
-   "parallel": "Blue Mojo",
+   "label": "Bowman Spotlights NIL SuperFractor",
+   "set": "Bowman Spotlights - NIL",
+   "parallel": "",
    "odds": {
-    "mega": 622
+    "hobby": 722080,
+    "jumbo": 383136
    }
   },
   {
-   "label": "Mega Prospects Green Mojo /99",
-   "set": "Mega Prospects",
-   "parallel": "Green Mojo",
+   "label": "Anime NBA SuperFractor",
+   "set": "Anime - NBA",
+   "parallel": "",
    "odds": {
-    "mega": 942
+    "hobby": 196931,
+    "jumbo": 95784,
+    "value": 980680
    }
   },
   {
-   "label": "Mega Prospects Yellow Mojo /75",
-   "set": "Mega Prospects",
-   "parallel": "Yellow Mojo",
+   "label": "Anime NIL SuperFractor",
+   "set": "Anime - NIL",
+   "parallel": "",
    "odds": {
-    "mega": 1243
+    "hobby": 722080,
+    "jumbo": 766272,
+    "value": 5884080
    }
   },
   {
-   "label": "Mega Prospects Gold Mojo /50",
-   "set": "Mega Prospects",
-   "parallel": "Gold Mojo",
+   "label": "Bowman GPK NBA SuperFractor",
+   "set": "Bowman GPK - NBA",
+   "parallel": "",
    "odds": {
-    "mega": 1864
+    "hobby": 722080,
+    "jumbo": 766272,
+    "value": 5884080
    }
   },
   {
-   "label": "Mega Prospects Orange Mojo /25",
-   "set": "Mega Prospects",
-   "parallel": "Orange Mojo",
+   "label": "Bowman GPK NIL SuperFractor",
+   "set": "Bowman GPK - NIL",
+   "parallel": "",
    "odds": {
-    "mega": 3728
+    "hobby": 1083120,
+    "jumbo": 766272,
+    "value": 5884080
    }
   },
   {
-   "label": "Mega Prospects Black Mojo /10",
-   "set": "Mega Prospects",
-   "parallel": "Black Mojo",
+   "label": "Anime NBA Black Refractor",
+   "set": "Anime - NBA",
+   "parallel": "Black Refractor",
    "odds": {
-    "mega": 9320
+    "hobby": 26100,
+    "jumbo": 8808,
+    "value": 87823,
+    "bulk": 25000
    }
   },
   {
-   "label": "Mega Prospects Red Mojo /5",
-   "set": "Mega Prospects",
-   "parallel": "Red Mojo",
+   "label": "Anime NIL Black Refractor",
+   "set": "Anime - NIL",
+   "parallel": "Black Refractor",
    "odds": {
-    "mega": 18640
+    "hobby": 135390,
+    "jumbo": 45075,
+    "value": 452622
    }
   },
   {
-   "label": "Mega Prospects Rose Gold Mojo /1",
-   "set": "Mega Prospects",
+   "label": "Crystalized NBA",
+   "set": "Crystalized NBA",
+   "parallel": "",
+   "odds": {
+    "hobby": 1346,
+    "jumbo": 1474,
+    "breaker": 28
+   }
+  },
+  {
+   "label": "Crystalized NIL",
+   "set": "Crystalized NIL",
+   "parallel": "",
+   "odds": {
+    "hobby": 2691,
+    "jumbo": 2948,
+    "breaker": 55
+   }
+  },
+  {
+   "label": "Crystalized NBA Gold Crystal Refractor",
+   "set": "Crystalized NBA",
+   "parallel": "Gold Crystal Refractor",
+   "odds": {
+    "hobby": 13050,
+    "jumbo": 4379
+   }
+  },
+  {
+   "label": "Crystalized NIL Gold Crystal Refractor",
+   "set": "Crystalized NIL",
+   "parallel": "Gold Crystal Refractor",
+   "odds": {
+    "hobby": 26100,
+    "jumbo": 8808
+   }
+  },
+  {
+   "label": "Crystalized NBA Orange Crystal Refractor",
+   "set": "Crystalized NBA",
+   "parallel": "Orange Crystal Refractor",
+   "odds": {
+    "hobby": 26100,
+    "jumbo": 8808
+   }
+  },
+  {
+   "label": "Crystalized NIL Orange Crystal Refractor",
+   "set": "Crystalized NIL",
+   "parallel": "Orange Crystal Refractor",
+   "odds": {
+    "hobby": 52836,
+    "jumbo": 17821
+   }
+  },
+  {
+   "label": "Crystalized NBA Red Crystal Refractor",
+   "set": "Crystalized NBA",
+   "parallel": "Red Crystal Refractor",
+   "odds": {
+    "hobby": 135390,
+    "jumbo": 58944
+   }
+  },
+  {
+   "label": "Crystalized NIL Red Crystal Refractor",
+   "set": "Crystalized NIL",
+   "parallel": "Red Crystal Refractor",
+   "odds": {
+    "hobby": 270780,
+    "jumbo": 95784
+   }
+  },
+  {
+   "label": "Crystalized NBA SuperFractor",
+   "set": "Crystalized NBA",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 722080,
+    "jumbo": 255424
+   }
+  },
+  {
+   "label": "Crystalized NIL SuperFractor",
+   "set": "Crystalized NIL",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 2166240,
+    "jumbo": 766272
+   }
+  },
+  {
+   "label": "Future Script",
+   "set": "Future Script",
+   "parallel": "",
+   "odds": {
+    "hobby": 1889,
+    "jumbo": 636,
+    "breaker": 68
+   }
+  },
+  {
+   "label": "Buzz Factor Autographs",
+   "set": "Buzz Factor Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 1417,
+    "jumbo": 477,
+    "breaker": 51
+   }
+  },
+  {
+   "label": "Opening Statement Signatures",
+   "set": "Opening Statement Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 1731,
+    "jumbo": 582,
+    "breaker": 62
+   }
+  },
+  {
+   "label": "Timeless Touch Signatures",
+   "set": "Timeless Touch Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 72,
+    "jumbo": 17,
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Future Script Gold Refractor",
+   "set": "Future Script",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 4430,
+    "jumbo": 1494,
+    "breaker": 160
+   }
+  },
+  {
+   "label": "Buzz Factor Autographs Gold Refractor",
+   "set": "Buzz Factor Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 4080,
+    "jumbo": 1374,
+    "breaker": 147
+   }
+  },
+  {
+   "label": "Opening Statement Signatures Gold Refractor",
+   "set": "Opening Statement Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 4240,
+    "jumbo": 1433,
+    "breaker": 154
+   }
+  },
+  {
+   "label": "Timeless Touch Signatures Gold Refractor",
+   "set": "Timeless Touch Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 4629,
+    "jumbo": 1561,
+    "breaker": 168
+   }
+  },
+  {
+   "label": "Future Script Orange Refractor",
+   "set": "Future Script",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 8842,
+    "jumbo": 2994,
+    "breaker": 320
+   }
+  },
+  {
+   "label": "Buzz Factor Autographs Orange Refractor",
+   "set": "Buzz Factor Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 8144,
+    "jumbo": 2747,
+    "breaker": 296
+   }
+  },
+  {
+   "label": "Opening Statement Signatures Orange Refractor",
+   "set": "Opening Statement Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 8144,
+    "jumbo": 2747,
+    "breaker": 296
+   }
+  },
+  {
+   "label": "Timeless Touch Signatures Orange Refractor",
+   "set": "Timeless Touch Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 8144,
+    "jumbo": 2747,
+    "breaker": 296
+   }
+  },
+  {
+   "label": "Future Script Black Refractor",
+   "set": "Future Script",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 20246,
+    "jumbo": 6904,
+    "breaker": 739
+   }
+  },
+  {
+   "label": "Buzz Factor Autographs Black Refractor",
+   "set": "Buzz Factor Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 20246,
+    "jumbo": 6904,
+    "breaker": 739
+   }
+  },
+  {
+   "label": "Opening Statement Signatures Black Refractor",
+   "set": "Opening Statement Signatures",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 20246,
+    "jumbo": 6904,
+    "breaker": 739
+   }
+  },
+  {
+   "label": "Timeless Touch Signatures Black Refractor",
+   "set": "Timeless Touch Signatures",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 20246,
+    "jumbo": 6904,
+    "breaker": 739
+   }
+  },
+  {
+   "label": "Future Script Red Refractor",
+   "set": "Future Script",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 40116,
+    "jumbo": 13933,
+    "breaker": 1477
+   }
+  },
+  {
+   "label": "Buzz Factor Autographs Red Refractor",
+   "set": "Buzz Factor Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 40116,
+    "jumbo": 13933,
+    "breaker": 1477
+   }
+  },
+  {
+   "label": "Opening Statement Signatures Red Refractor",
+   "set": "Opening Statement Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 40116,
+    "jumbo": 13933,
+    "breaker": 1477
+   }
+  },
+  {
+   "label": "Timeless Touch Signatures Red Refractor",
+   "set": "Timeless Touch Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 40116,
+    "jumbo": 13933,
+    "breaker": 1477
+   }
+  },
+  {
+   "label": "Future Script SuperFractor",
+   "set": "Future Script",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 196931,
+    "jumbo": 69662,
+    "breaker": 7874
+   }
+  },
+  {
+   "label": "Buzz Factor Autographs SuperFractor",
+   "set": "Buzz Factor Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 196931,
+    "jumbo": 69662,
+    "breaker": 7874
+   }
+  },
+  {
+   "label": "Opening Statement Signatures SuperFractor",
+   "set": "Opening Statement Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 196931,
+    "jumbo": 69662,
+    "breaker": 7874
+   }
+  },
+  {
+   "label": "Timeless Touch Signatures SuperFractor",
+   "set": "Timeless Touch Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 196931,
+    "jumbo": 69662,
+    "breaker": 7874
+   }
+  },
+  {
+   "label": "Bowman Dual Autographs",
+   "set": "Bowman Dual Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 49233,
+    "jumbo": 17416,
+    "breaker": 1969
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Autograph Gold Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Autograph Gold Refractor",
+   "odds": {
+    "hobby": 120347,
+    "jumbo": 42571,
+    "value": 452631,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Autograph Orange Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Autograph Orange Refractor",
+   "odds": {
+    "hobby": 240694,
+    "jumbo": 85142,
+    "value": 980700,
+    "bulk": 50000
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Autograph Red Refractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Autograph Red Refractor",
+   "odds": {
+    "hobby": 722080,
+    "jumbo": 766272,
+    "value": 5884197
+   }
+  },
+  {
+   "label": "Bowman Dual Autographs SuperFractor",
+   "set": "Bowman Dual Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 433248,
+    "jumbo": 191568,
+    "breaker": 23622
+   }
+  },
+  {
+   "label": "Base Chrome Retrofractor Autograph SuperFractor",
+   "set": "Base - Chrome",
+   "parallel": "Retrofractor Autograph SuperFractor",
+   "odds": {
+    "hobby": 2166240
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs",
+   "set": "Base",
+   "parallel": "Paper Retail Autographs",
+   "odds": {
+    "value": 3816,
+    "bulk": 863
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs Blue Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Blue Border",
+   "odds": {
+    "value": 1771,
+    "bulk": 397
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs Green Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Green Border",
+   "odds": {
+    "value": 1505,
+    "bulk": 338
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs Gold Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Gold Border",
+   "odds": {
+    "value": 2544,
+    "bulk": 575
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs Orange Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Orange Border",
+   "odds": {
+    "value": 2493,
+    "bulk": 562
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs Red Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Red Border",
+   "odds": {
+    "value": 12440,
+    "bulk": 2942
+   }
+  },
+  {
+   "label": "Base Paper Retail Autographs Platinum Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Platinum Border",
+   "odds": {
+    "value": 61293,
+    "bulk": 16667
+   }
+  },
+  {
+   "label": "Base Chrome Autograph",
+   "set": "Base - Chrome",
+   "parallel": "Autograph",
+   "odds": {
+    "hobby": 68,
+    "jumbo": 20,
+    "value": 313,
+    "bulk": 110
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 192,
+    "jumbo": 65,
+    "breaker": 7
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Speckle Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Speckle Refractor",
+   "odds": {
+    "hobby": 342,
+    "jumbo": 115,
+    "breaker": 13
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Purple Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 325,
+    "jumbo": 109,
+    "breaker": 12
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Blue Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 416,
+    "jumbo": 140,
+    "breaker": 15
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Blue X-Fractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Blue X-Fractor",
+   "odds": {
+    "hobby": 621,
+    "jumbo": 209,
+    "breaker": 23
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Mini-Diamond Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 742,
+    "jumbo": 250,
+    "breaker": 27
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Green Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 695,
+    "bulk": 156
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Green Shimmer Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Green Shimmer Refractor",
+   "odds": {
+    "value": 951,
+    "bulk": 214
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Reptilian Green Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Reptilian Green Refractor",
+   "odds": {
+    "value": 872,
+    "bulk": 196
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Yellow Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "hobby": 853,
+    "jumbo": 287,
+    "breaker": 31
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Gold Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1161,
+    "jumbo": 391,
+    "breaker": 42
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Gold Shimmer Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Gold Shimmer Refractor",
+   "odds": {
+    "hobby": 1346,
+    "jumbo": 453,
+    "breaker": 49
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Reptilian Orange Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Reptilian Orange Refractor",
+   "odds": {
+    "hobby": 1097
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Orange Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 913
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Orange Shimmer Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Orange Shimmer Refractor",
+   "odds": {
+    "hobby": 1032
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Black Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 5246,
+    "jumbo": 1770,
+    "breaker": 191
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Black X-Fractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Black X-Fractor",
+   "odds": {
+    "hobby": 5443,
+    "jumbo": 1838,
+    "breaker": 197
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Red Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10465,
+    "jumbo": 3548,
+    "breaker": 381
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Red Lava Refractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 10568,
+    "jumbo": 3598,
+    "breaker": 388
+   }
+  },
+  {
+   "label": "Base Chrome Autograph FireFractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "FireFractor",
+   "odds": {
+    "value": 21015,
+    "bulk": 4546
+   }
+  },
+  {
+   "label": "Base Chrome Autograph SuperFractor",
+   "set": "Base Chrome Autograph",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 50378,
+    "jumbo": 17821,
+    "breaker": 2148
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Blue Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Blue Geometric",
+   "odds": {
+    "breaker": 3
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Green Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Green Geometric",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Gold Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 6
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Orange Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 11
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Black Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 26
+   }
+  },
+  {
+   "label": "Base Chrome Autograph Red Geometric",
+   "set": "Base Chrome Autograph",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 50
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph",
+   "set": "Paper Prospect",
+   "parallel": "Retail Autograph",
+   "odds": {
+    "value": 778,
+    "bulk": 175
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph Blue Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Blue Border",
+   "odds": {
+    "value": 905,
+    "bulk": 204
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph Green Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Green Border",
+   "odds": {
+    "value": 624,
+    "bulk": 140
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph Gold Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Gold Border",
+   "odds": {
+    "value": 1222,
+    "bulk": 275
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph Orange Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Orange Border",
+   "odds": {
+    "value": 2443,
+    "bulk": 550
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph Red Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Red Border",
+   "odds": {
+    "value": 12208,
+    "bulk": 2778
+   }
+  },
+  {
+   "label": "Paper Prospect Retail Autograph Platinum Border",
+   "set": "Paper Prospect Retail Autographs",
+   "parallel": "Platinum Border",
+   "odds": {
+    "value": 60661,
+    "bulk": 16667
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Autograph",
+   "odds": {
+    "hobby": 76,
+    "jumbo": 16,
+    "value": 13813,
+    "bulk": 1000
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 100,
+    "jumbo": 34,
+    "breaker": 12
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Speckle Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Speckle Refractor",
+   "odds": {
+    "hobby": 168,
+    "jumbo": 57,
+    "breaker": 15
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Purple Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 203,
+    "jumbo": 69,
+    "breaker": 12
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Blue Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 325,
+    "jumbo": 110,
+    "breaker": 27
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Blue X-Fractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Blue X-Fractor",
+   "odds": {
+    "hobby": 332,
+    "jumbo": 112,
+    "breaker": 29
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Mini-Diamond Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Mini-Diamond Refractor",
+   "odds": {
+    "hobby": 476,
+    "jumbo": 161,
+    "breaker": 101
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Green Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 631,
+    "bulk": 142
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Green Shimmer Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Green Shimmer Refractor",
+   "odds": {
+    "value": 633,
+    "bulk": 143
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Reptilian Green Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Reptilian Green Refractor",
+   "odds": {
+    "value": 637,
+    "bulk": 143
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Yellow Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "hobby": 701,
+    "jumbo": 236,
+    "breaker": 26
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Gold Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1048,
+    "jumbo": 353,
+    "breaker": 38
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Gold Shimmer Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Gold Shimmer Refractor",
+   "odds": {
+    "hobby": 1046,
+    "jumbo": 352,
+    "breaker": 38
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Reptilian Orange Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Reptilian Orange Refractor",
+   "odds": {
+    "hobby": 877
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Orange Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 876
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Orange Shimmer Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Orange Shimmer Refractor",
+   "odds": {
+    "hobby": 876
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Black Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 5171,
+    "jumbo": 1746,
+    "breaker": 188
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Black X-Fractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Black X-Fractor",
+   "odds": {
+    "hobby": 5246,
+    "jumbo": 1770,
+    "breaker": 189
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Red Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10267,
+    "jumbo": 3484,
+    "breaker": 375
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Red Lava Refractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 10267,
+    "jumbo": 3484,
+    "breaker": 375
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph FireFractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "FireFractor",
+   "odds": {
+    "value": 20719,
+    "bulk": 4546
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph SuperFractor",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 50378,
+    "jumbo": 17821,
+    "breaker": 1969
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Green Geometric",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Green Geometric",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Gold Geometric",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "breaker": 5
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Orange Geometric",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Orange Geometric",
+   "odds": {
+    "breaker": 10
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Black Geometric",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Black Geometric",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "Chrome Prospect Autograph Red Geometric",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Red Geometric",
+   "odds": {
+    "breaker": 49
+   }
+  },
+  {
+   "label": "Base Chrome Rose Gold Mojo",
+   "set": "Base - Chrome",
    "parallel": "Rose Gold Mojo",
    "odds": {
-    "mega": 93200
+    "mega": 11650
+   }
+  },
+  {
+   "label": "Base Chrome Fuchsia Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Fuchsia Mojo",
+   "odds": {
+    "mega": 39
+   }
+  },
+  {
+   "label": "Base Chrome Burgundy Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Burgundy Mojo",
+   "odds": {
+    "mega": 43
+   }
+  },
+  {
+   "label": "Base Chrome Purple Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Purple Mojo",
+   "odds": {
+    "mega": 47
+   }
+  },
+  {
+   "label": "Base Chrome Pink Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Pink Mojo",
+   "odds": {
+    "mega": 59
+   }
+  },
+  {
+   "label": "Base Chrome Navy Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Navy Mojo",
+   "odds": {
+    "mega": 67
+   }
+  },
+  {
+   "label": "Base Chrome Aqua Mojo",
+   "set": "Base - Chrome",
+   "parallel": "Aqua Mojo",
+   "odds": {
+    "mega": 94
+   }
+  },
+  {
+   "label": "Chrome Prospect Rose Gold Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Rose Gold Mojo",
+   "odds": {
+    "mega": 23300
+   }
+  },
+  {
+   "label": "Chrome Prospect Fuchsia Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Fuchsia Mojo",
+   "odds": {
+    "mega": 78
+   }
+  },
+  {
+   "label": "Chrome Prospect Burgundy Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Burgundy Mojo",
+   "odds": {
+    "mega": 85
+   }
+  },
+  {
+   "label": "Chrome Prospect Purple Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Purple Mojo",
+   "odds": {
+    "mega": 94
+   }
+  },
+  {
+   "label": "Chrome Prospect Pink Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Pink Mojo",
+   "odds": {
+    "mega": 118
+   }
+  },
+  {
+   "label": "Chrome Prospect Navy Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Navy Mojo",
+   "odds": {
+    "mega": 134
+   }
+  },
+  {
+   "label": "Chrome Prospect Aqua Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Aqua Mojo",
+   "odds": {
+    "mega": 187
    }
   },
   {
@@ -3364,7 +4040,15 @@
    }
   },
   {
-   "label": "Mega Rookies Blue Mojo /150",
+   "label": "Mega Prospects",
+   "set": "Mega Prospects",
+   "parallel": "",
+   "odds": {
+    "mega": 13
+   }
+  },
+  {
+   "label": "Mega Rookies Blue Mojo",
    "set": "Mega Rookies",
    "parallel": "Blue Mojo",
    "odds": {
@@ -3372,7 +4056,15 @@
    }
   },
   {
-   "label": "Mega Rookies Green Mojo /99",
+   "label": "Mega Prospects Blue Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Blue Mojo",
+   "odds": {
+    "mega": 622
+   }
+  },
+  {
+   "label": "Mega Rookies Green Mojo",
    "set": "Mega Rookies",
    "parallel": "Green Mojo",
    "odds": {
@@ -3380,7 +4072,15 @@
    }
   },
   {
-   "label": "Mega Rookies Yellow Mojo /75",
+   "label": "Mega Prospects Green Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Green Mojo",
+   "odds": {
+    "mega": 942
+   }
+  },
+  {
+   "label": "Mega Rookies Yellow Mojo",
    "set": "Mega Rookies",
    "parallel": "Yellow Mojo",
    "odds": {
@@ -3388,7 +4088,15 @@
    }
   },
   {
-   "label": "Mega Rookies Gold Mojo /50",
+   "label": "Mega Prospects Yellow Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Yellow Mojo",
+   "odds": {
+    "mega": 1243
+   }
+  },
+  {
+   "label": "Mega Rookies Gold Mojo",
    "set": "Mega Rookies",
    "parallel": "Gold Mojo",
    "odds": {
@@ -3396,7 +4104,15 @@
    }
   },
   {
-   "label": "Mega Rookies Orange Mojo /25",
+   "label": "Mega Prospects Gold Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Gold Mojo",
+   "odds": {
+    "mega": 1864
+   }
+  },
+  {
+   "label": "Mega Rookies Orange Mojo",
    "set": "Mega Rookies",
    "parallel": "Orange Mojo",
    "odds": {
@@ -3404,15 +4120,15 @@
    }
   },
   {
-   "label": "Mega Rookies Black Mojo /10",
-   "set": "Mega Rookies",
-   "parallel": "Black Mojo",
+   "label": "Mega Prospects Orange Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Orange Mojo",
    "odds": {
-    "mega": 9320
+    "mega": 3728
    }
   },
   {
-   "label": "Mega Rookies Red Mojo /5",
+   "label": "Mega Rookies Red Mojo",
    "set": "Mega Rookies",
    "parallel": "Red Mojo",
    "odds": {
@@ -3420,7 +4136,31 @@
    }
   },
   {
-   "label": "Mega Rookies Rose Gold Mojo /1",
+   "label": "Mega Prospects Red Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Red Mojo",
+   "odds": {
+    "mega": 18640
+   }
+  },
+  {
+   "label": "Mega Rookies Black Mojo",
+   "set": "Mega Rookies",
+   "parallel": "Black Mojo",
+   "odds": {
+    "mega": 9320
+   }
+  },
+  {
+   "label": "Mega Prospects Black Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Black Mojo",
+   "odds": {
+    "mega": 9320
+   }
+  },
+  {
+   "label": "Mega Rookies Rose Gold Mojo",
    "set": "Mega Rookies",
    "parallel": "Rose Gold Mojo",
    "odds": {
@@ -3428,822 +4168,155 @@
    }
   },
   {
-   "label": "RetroFractor",
-   "set": "RetroFractor",
-   "parallel": "",
+   "label": "Mega Prospects Rose Gold Mojo",
+   "set": "Mega Prospects",
+   "parallel": "Rose Gold Mojo",
    "odds": {
-    "hobby": 13050,
-    "jumbo_hobby": 4379,
-    "value_blaster": 43586
+    "mega": 93200
    }
   },
   {
-   "label": "RetroFractor Gold Refractor /50",
-   "set": "RetroFractor",
-   "parallel": "Gold Refractor",
+   "label": "Base Chrome Autograph Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Mojo",
    "odds": {
-    "hobby": 65644,
-    "jumbo_hobby": 21894,
-    "value_blaster": 217929,
-    "bulk": 50000
+    "mega": 190
    }
   },
   {
-   "label": "RetroFractor Orange Refractor /25",
-   "set": "RetroFractor",
-   "parallel": "Orange Refractor",
+   "label": "Base Chrome Autograph Blue Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Blue Mojo",
    "odds": {
-    "hobby": 135390,
-    "jumbo_hobby": 45075,
-    "value_blaster": 452622
+    "mega": 293
    }
   },
   {
-   "label": "RetroFractor Red Refractor /5",
-   "set": "RetroFractor",
-   "parallel": "Red Refractor",
+   "label": "Base Chrome Autograph Green Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Green Mojo",
    "odds": {
-    "hobby": 433248,
-    "jumbo_hobby": 255424,
-    "value_blaster": 2942040
+    "mega": 321
    }
   },
   {
-   "label": "RetroFractor SuperFractor /1",
-   "set": "RetroFractor",
-   "parallel": "SuperFractor",
+   "label": "Base Chrome Autograph Yellow Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Yellow Mojo",
    "odds": {
-    "hobby": 2166240,
-    "jumbo_hobby": 766272
+    "mega": 402
    }
   },
   {
-   "label": "Rockstar Rookies",
-   "set": "Rockstar Rookies",
-   "parallel": "",
+   "label": "Base Chrome Autograph Gold Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Gold Mojo",
    "odds": {
-    "hobby": 19,
-    "jumbo_hobby": 10,
-    "value_blaster": 17
+    "mega": 558
    }
   },
   {
-   "label": "Rockstar Rookies Refractor",
-   "set": "Rockstar Rookies",
-   "parallel": "Refractor",
+   "label": "Base Chrome Autograph Orange Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Orange Mojo",
    "odds": {
-    "hobby": 75,
-    "jumbo_hobby": 26,
-    "value_blaster": 274,
-    "bulk": 49
+    "mega": 1027
    }
   },
   {
-   "label": "Rockstar Rookies Purple Refractor /250",
-   "set": "Rockstar Rookies",
-   "parallel": "Purple Refractor",
+   "label": "Base Chrome Autograph Red Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Red Mojo",
    "odds": {
-    "hobby": 1497,
-    "jumbo_hobby": 505,
-    "value_blaster": 5484,
-    "bulk": 981
+    "mega": 2523
    }
   },
   {
-   "label": "Rockstar Rookies Fuchsia Refractor /199",
-   "set": "Rockstar Rookies",
-   "parallel": "Fuchsia Refractor",
+   "label": "Base Chrome Autograph Black Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Black Mojo",
    "odds": {
-    "hobby": 1879,
-    "jumbo_hobby": 634,
-    "value_blaster": 6891,
-    "bulk": 1250
+    "mega": 5017
    }
   },
   {
-   "label": "Rockstar Rookies Mini-Diamond Refractor /150",
-   "set": "Rockstar Rookies",
-   "parallel": "Mini-Diamond Refractor",
+   "label": "Base Chrome Autograph Rose Gold Mojo",
+   "set": "Base Chrome Autograph",
+   "parallel": "Rose Gold Mojo",
    "odds": {
-    "hobby": 2493,
-    "jumbo_hobby": 842,
-    "value_blaster": 9137,
-    "bulk": 1667
+    "mega": 25085
    }
   },
   {
-   "label": "Rockstar Rookies Aqua Refractor /125",
-   "set": "Rockstar Rookies",
-   "parallel": "Aqua Refractor",
+   "label": "Chrome Prospect Autograph Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Mojo",
    "odds": {
-    "hobby": 2993,
-    "jumbo_hobby": 1010,
-    "value_blaster": 10978,
-    "bulk": 2000
+    "mega": 263
    }
   },
   {
-   "label": "Rockstar Rookies Green Refractor",
-   "set": "Rockstar Rookies",
-   "parallel": "Green Refractor",
+   "label": "Chrome Prospect Autograph Blue Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Blue Mojo",
    "odds": {
-    "value_blaster": 5330,
-    "bulk": 725
+    "mega": 293
    }
   },
   {
-   "label": "Rockstar Rookies Gold Refractor /50",
-   "set": "Rockstar Rookies",
-   "parallel": "Gold Refractor",
+   "label": "Chrome Prospect Autograph Green Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Green Mojo",
    "odds": {
-    "hobby": 7496,
-    "jumbo_hobby": 2529,
-    "value_blaster": 27497,
-    "bulk": 5000
+    "mega": 293
    }
   },
   {
-   "label": "Rockstar Rookies Orange Refractor /25",
-   "set": "Rockstar Rookies",
-   "parallel": "Orange Refractor",
+   "label": "Chrome Prospect Autograph Yellow Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Yellow Mojo",
    "odds": {
-    "hobby": 4495
+    "mega": 324
    }
   },
   {
-   "label": "Rockstar Rookies Red Refractor /5",
-   "set": "Rockstar Rookies",
-   "parallel": "Red Refractor",
+   "label": "Chrome Prospect Autograph Gold Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Gold Mojo",
    "odds": {
-    "hobby": 77366,
-    "jumbo_hobby": 25543,
-    "value_blaster": 280200,
-    "bulk": 50000
+    "mega": 462
    }
   },
   {
-   "label": "Rockstar Rookies SuperFractor /1",
-   "set": "Rockstar Rookies",
-   "parallel": "SuperFractor",
+   "label": "Chrome Prospect Autograph Orange Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Orange Mojo",
    "odds": {
-    "hobby": 433248,
-    "jumbo_hobby": 127712,
-    "value_blaster": 1471050
+    "mega": 923
    }
   },
   {
-   "label": "Rockstar Rookies Geometric",
-   "set": "Rockstar Rookies",
-   "parallel": "Geometric",
+   "label": "Chrome Prospect Autograph Red Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Red Mojo",
    "odds": {
-    "breaker_delight": 91
+    "mega": 2306
    }
   },
   {
-   "label": "Rockstar Rookies Gold Geometric /50",
-   "set": "Rockstar Rookies",
-   "parallel": "Gold Geometric",
+   "label": "Chrome Prospect Autograph Black Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Black Mojo",
    "odds": {
-    "breaker_delight": 25
+    "mega": 4612
    }
   },
   {
-   "label": "Rockstar Rookies Orange Geometric /25",
-   "set": "Rockstar Rookies",
-   "parallel": "Orange Geometric",
+   "label": "Chrome Prospect Autograph Rose Gold Mojo",
+   "set": "Chrome Prospect Autographs",
+   "parallel": "Rose Gold Mojo",
    "odds": {
-    "breaker_delight": 50
-   }
-  },
-  {
-   "label": "Rockstar Rookies Black Geometric /10",
-   "set": "Rockstar Rookies",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 123
-   }
-  },
-  {
-   "label": "Rockstar Rookies Red Geometric /5",
-   "set": "Rockstar Rookies",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 247
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "",
-   "odds": {
-    "hobby": 25,
-    "jumbo_hobby": 13,
-    "value_blaster": 23
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Refractor",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 100,
-    "jumbo_hobby": 34,
-    "value_blaster": 366,
-    "bulk": 66
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Purple Refractor /250",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
-    "bulk": 1316
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Fuchsia Refractor /199",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 2508,
-    "jumbo_hobby": 846,
-    "value_blaster": 9180,
-    "bulk": 1667
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Mini-Diamond Refractor /150",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 3328,
-    "jumbo_hobby": 1122,
-    "value_blaster": 12183,
-    "bulk": 2174
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Aqua Refractor /125",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Aqua Refractor",
-   "odds": {
-    "hobby": 3990,
-    "jumbo_hobby": 1347,
-    "value_blaster": 14638,
-    "bulk": 2632
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Green Refractor",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 7107,
-    "bulk": 962
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Gold Refractor /50",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 9983,
-    "jumbo_hobby": 3376,
-    "value_blaster": 36548,
-    "bulk": 7143
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Orange Refractor /25",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 6001
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Red Refractor /5",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 103155,
-    "jumbo_hobby": 34831,
-    "value_blaster": 367763
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites SuperFractor /1",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 541560,
-    "jumbo_hobby": 191568,
-    "value_blaster": 1961399
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Geometric",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Geometric",
-   "odds": {
-    "breaker_delight": 122
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Gold Geometric /50",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 33
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Orange Geometric /25",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 66
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Black Geometric /10",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 165
-   }
-  },
-  {
-   "label": "Rookie of the Year Favorites Red Geometric /5",
-   "set": "Rookie of the Year Favorites",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 329
-   }
-  },
-  {
-   "label": "Talent Tracker",
-   "set": "Talent Tracker",
-   "parallel": "",
-   "odds": {
-    "hobby": 58,
-    "jumbo_hobby": 8,
-    "value_blaster": 14
-   }
-  },
-  {
-   "label": "Talent Tracker Refractor",
-   "set": "Talent Tracker",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 60,
-    "jumbo_hobby": 21,
-    "value_blaster": 220,
-    "bulk": 40
-   }
-  },
-  {
-   "label": "Talent Tracker Purple Refractor /250",
-   "set": "Talent Tracker",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 1197,
-    "jumbo_hobby": 404,
-    "value_blaster": 4385,
-    "bulk": 782
-   }
-  },
-  {
-   "label": "Talent Tracker Fuchsia Refractor /199",
-   "set": "Talent Tracker",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 1504,
-    "jumbo_hobby": 508,
-    "value_blaster": 5510,
-    "bulk": 1000
-   }
-  },
-  {
-   "label": "Talent Tracker Mini-Diamond Refractor /150",
-   "set": "Talent Tracker",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
-    "bulk": 1316
-   }
-  },
-  {
-   "label": "Talent Tracker Aqua Refractor /125",
-   "set": "Talent Tracker",
-   "parallel": "Aqua Refractor",
-   "odds": {
-    "hobby": 2394,
-    "jumbo_hobby": 808,
-    "value_blaster": 8770,
-    "bulk": 1563
-   }
-  },
-  {
-   "label": "Talent Tracker Green Refractor /99",
-   "set": "Talent Tracker",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 4261,
-    "bulk": 575
-   }
-  },
-  {
-   "label": "Talent Tracker Gold Refractor /50",
-   "set": "Talent Tracker",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 5985,
-    "jumbo_hobby": 2022,
-    "value_blaster": 21956,
-    "bulk": 4167
-   }
-  },
-  {
-   "label": "Talent Tracker Orange Refractor /25",
-   "set": "Talent Tracker",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 3593
-   }
-  },
-  {
-   "label": "Talent Tracker Red Refractor /5",
-   "set": "Talent Tracker",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 60174,
-    "jumbo_hobby": 20711,
-    "value_blaster": 226316,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "Talent Tracker SuperFractor /1",
-   "set": "Talent Tracker",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 309463,
-    "jumbo_hobby": 109468,
-    "value_blaster": 1176840
-   }
-  },
-  {
-   "label": "Talent Tracker Geometric",
-   "set": "Talent Tracker",
-   "parallel": "Geometric",
-   "odds": {
-    "breaker_delight": 73
-   }
-  },
-  {
-   "label": "Talent Tracker Gold Geometric /50",
-   "set": "Talent Tracker",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 20
-   }
-  },
-  {
-   "label": "Talent Tracker Orange Geometric /25",
-   "set": "Talent Tracker",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 40
-   }
-  },
-  {
-   "label": "Talent Tracker Black Geometric /10",
-   "set": "Talent Tracker",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 99
-   }
-  },
-  {
-   "label": "Talent Tracker Red Geometric /5",
-   "set": "Talent Tracker",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 197
-   }
-  },
-  {
-   "label": "Very Important Prospects",
-   "set": "Very Important Prospects",
-   "parallel": "",
-   "odds": {
-    "hobby": 58,
-    "jumbo_hobby": 8,
-    "value_blaster": 14
-   }
-  },
-  {
-   "label": "Very Important Prospects Refractor",
-   "set": "Very Important Prospects",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 60,
-    "jumbo_hobby": 21,
-    "value_blaster": 220,
-    "bulk": 40
-   }
-  },
-  {
-   "label": "Very Important Prospects Purple Refractor /250",
-   "set": "Very Important Prospects",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 1197,
-    "jumbo_hobby": 404,
-    "value_blaster": 4385,
-    "bulk": 782
-   }
-  },
-  {
-   "label": "Very Important Prospects Fuchsia Refractor /199",
-   "set": "Very Important Prospects",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 1504,
-    "jumbo_hobby": 508,
-    "value_blaster": 5510,
-    "bulk": 1000
-   }
-  },
-  {
-   "label": "Very Important Prospects Mini-Diamond Refractor /150",
-   "set": "Very Important Prospects",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
-    "bulk": 1316
-   }
-  },
-  {
-   "label": "Very Important Prospects Aqua Refractor /125",
-   "set": "Very Important Prospects",
-   "parallel": "Aqua Refractor",
-   "odds": {
-    "hobby": 2394,
-    "jumbo_hobby": 808,
-    "value_blaster": 8770,
-    "bulk": 1563
-   }
-  },
-  {
-   "label": "Very Important Prospects Green Refractor /99",
-   "set": "Very Important Prospects",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 4261,
-    "bulk": 575
-   }
-  },
-  {
-   "label": "Very Important Prospects Gold Refractor /50",
-   "set": "Very Important Prospects",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 5985,
-    "jumbo_hobby": 2022,
-    "value_blaster": 21956,
-    "bulk": 4167
-   }
-  },
-  {
-   "label": "Very Important Prospects Orange Refractor /25",
-   "set": "Very Important Prospects",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 3593
-   }
-  },
-  {
-   "label": "Very Important Prospects Red Refractor /5",
-   "set": "Very Important Prospects",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 60174,
-    "jumbo_hobby": 20711,
-    "value_blaster": 226316,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "Very Important Prospects SuperFractor /1",
-   "set": "Very Important Prospects",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 309463,
-    "jumbo_hobby": 109468,
-    "value_blaster": 1176840
-   }
-  },
-  {
-   "label": "Very Important Prospects Geometric",
-   "set": "Very Important Prospects",
-   "parallel": "Geometric",
-   "odds": {
-    "breaker_delight": 73
-   }
-  },
-  {
-   "label": "Very Important Prospects Gold Geometric /50",
-   "set": "Very Important Prospects",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 20
-   }
-  },
-  {
-   "label": "Very Important Prospects Orange Geometric /25",
-   "set": "Very Important Prospects",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 40
-   }
-  },
-  {
-   "label": "Very Important Prospects Black Geometric /10",
-   "set": "Very Important Prospects",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 99
-   }
-  },
-  {
-   "label": "Very Important Prospects Red Geometric /5",
-   "set": "Very Important Prospects",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 197
-   }
-  },
-  {
-   "label": "Young Kings",
-   "set": "Young Kings",
-   "parallel": "",
-   "odds": {
-    "hobby": 15,
-    "jumbo_hobby": 8,
-    "value_blaster": 14
-   }
-  },
-  {
-   "label": "Young Kings Refractor",
-   "set": "Young Kings",
-   "parallel": "Refractor",
-   "odds": {
-    "hobby": 60,
-    "jumbo_hobby": 21,
-    "value_blaster": 220,
-    "bulk": 40
-   }
-  },
-  {
-   "label": "Young Kings Purple Refractor /250",
-   "set": "Young Kings",
-   "parallel": "Purple Refractor",
-   "odds": {
-    "hobby": 1197,
-    "jumbo_hobby": 404,
-    "value_blaster": 4385,
-    "bulk": 782
-   }
-  },
-  {
-   "label": "Young Kings Fuchsia Refractor /199",
-   "set": "Young Kings",
-   "parallel": "Fuchsia Refractor",
-   "odds": {
-    "hobby": 1504,
-    "jumbo_hobby": 508,
-    "value_blaster": 5510,
-    "bulk": 1000
-   }
-  },
-  {
-   "label": "Young Kings Mini-Diamond Refractor /150",
-   "set": "Young Kings",
-   "parallel": "Mini-Diamond Refractor",
-   "odds": {
-    "hobby": 1995,
-    "jumbo_hobby": 673,
-    "value_blaster": 7310,
-    "bulk": 1316
-   }
-  },
-  {
-   "label": "Young Kings Aqua Refractor /125",
-   "set": "Young Kings",
-   "parallel": "Aqua Refractor",
-   "odds": {
-    "hobby": 2394,
-    "jumbo_hobby": 808,
-    "value_blaster": 8770,
-    "bulk": 1563
-   }
-  },
-  {
-   "label": "Young Kings Green Refractor /99",
-   "set": "Young Kings",
-   "parallel": "Green Refractor",
-   "odds": {
-    "value_blaster": 4261,
-    "bulk": 575
-   }
-  },
-  {
-   "label": "Young Kings Gold Refractor /50",
-   "set": "Young Kings",
-   "parallel": "Gold Refractor",
-   "odds": {
-    "hobby": 5985,
-    "jumbo_hobby": 2022,
-    "value_blaster": 21956,
-    "bulk": 4167
-   }
-  },
-  {
-   "label": "Young Kings Orange Refractor /25",
-   "set": "Young Kings",
-   "parallel": "Orange Refractor",
-   "odds": {
-    "hobby": 3593
-   }
-  },
-  {
-   "label": "Young Kings Red Refractor /5",
-   "set": "Young Kings",
-   "parallel": "Red Refractor",
-   "odds": {
-    "hobby": 60174,
-    "jumbo_hobby": 20711,
-    "value_blaster": 226316,
-    "bulk": 50000
-   }
-  },
-  {
-   "label": "Young Kings SuperFractor /1",
-   "set": "Young Kings",
-   "parallel": "SuperFractor",
-   "odds": {
-    "hobby": 309463,
-    "jumbo_hobby": 109468,
-    "value_blaster": 1176840
-   }
-  },
-  {
-   "label": "Young Kings Geometric",
-   "set": "Young Kings",
-   "parallel": "Geometric",
-   "odds": {
-    "breaker_delight": 73
-   }
-  },
-  {
-   "label": "Young Kings Gold Geometric /50",
-   "set": "Young Kings",
-   "parallel": "Gold Geometric",
-   "odds": {
-    "breaker_delight": 20
-   }
-  },
-  {
-   "label": "Young Kings Orange Geometric /25",
-   "set": "Young Kings",
-   "parallel": "Orange Geometric",
-   "odds": {
-    "breaker_delight": 40
-   }
-  },
-  {
-   "label": "Young Kings Black Geometric /10",
-   "set": "Young Kings",
-   "parallel": "Black Geometric",
-   "odds": {
-    "breaker_delight": 99
-   }
-  },
-  {
-   "label": "Young Kings Red Geometric /5",
-   "set": "Young Kings",
-   "parallel": "Red Geometric",
-   "odds": {
-    "breaker_delight": 197
+    "mega": 23058
    }
   }
  ]
