@@ -1,6 +1,6 @@
 {
  "_source": "thehobbychecklist.com — importé avec l'accord de l'éditeur",
- "_imported_at": "2026-11-17T12:20:19+00:00",
+ "_imported_at": "2026-11-17T14:34:40+00:00",
  "_script": "scripts/import_hobbychecklist_boxes.py",
  "nba": {
   "2022-23-panini-flawless-basketball-checklist": {
@@ -3942,7 +3942,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-donruss-optic-donruss-optic-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -4210,7 +4210,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-immaculate-collection-immaculate-collection-hobby-tin.webp"
     },
     {
      "name": "FOTL",
@@ -4350,7 +4350,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-mosaic-mosaic-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -4564,7 +4564,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-national-treasures-national-treasures-hobby-new.webp"
     },
     {
      "name": "FOTL",
@@ -4792,7 +4792,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-noir-noir-hobby-new.webp"
     },
     {
      "name": "FOTL",
@@ -4931,7 +4931,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-obsidian-obsidian-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -5075,7 +5075,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-one-and-one-one-and-one-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -5209,7 +5209,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-origins-origins-fotl.webp"
     },
     {
      "name": "Hobby H2",
@@ -5312,7 +5312,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-photogenic-photogenic-fotl-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -5746,7 +5746,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-prizm-black-black-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -5948,7 +5948,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-prizm-monopoly-monopoly-blaster-booster.webp"
     },
     {
      "name": "Board Game",
@@ -6195,7 +6195,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-select-select-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -6461,7 +6461,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-silhouette-silhouette-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -6581,7 +6581,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-totally-certified-totally-certified-premium-hobby.webp"
     },
     {
      "name": "Mega",
@@ -6855,7 +6855,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-topps-finest-finest-hobby.webp"
     },
     {
      "name": "Breaker Delight",
@@ -7086,7 +7086,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-panini-donruss-donruss-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -7207,7 +7207,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-panini-noir-noir-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -7569,7 +7569,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-panini-select-select-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -8035,7 +8035,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-bowman-bowman-hobby.webp"
     },
     {
      "name": "Jumbo Hobby",
@@ -8336,7 +8336,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-chrome-1st-day-issue-fdi-jumbo-hobby.webp"
     },
     {
      "name": "Breaker Delight",
@@ -8550,7 +8550,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-chrome-black-black-hobby.webp"
     },
     {
      "name": "Topps Instant Packs",
@@ -8697,7 +8697,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-chrome-update-series-update-series-hobby.webp"
     },
     {
      "name": "Jumbo",
@@ -8933,7 +8933,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-cosmic-chrome-cosmic-first-day-issue-fdi-hobby.webp"
     },
     {
      "name": "FDI",
@@ -9063,7 +9063,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-definitive-collection-definitive-collection-fdi-1st-day-issue-hobby.webp"
     },
     {
      "name": "FDI",
@@ -9164,7 +9164,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-finest-finest-hobby.webp"
     },
     {
      "name": "Breaker Delight",
@@ -9378,7 +9378,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-inception-inception-fdi-hobby.webp"
     },
     {
      "name": "FDI",
@@ -9527,7 +9527,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-motif-motif-hobby-fdi.webp"
     },
     {
      "name": "FDI",
@@ -9609,7 +9609,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-nba-hoops-nba-hoops-hobby.webp"
     },
     {
      "name": "Jumbo",
@@ -9778,7 +9778,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-pristine-pristine-fdi-hobby.webp"
     },
     {
      "name": "Instant Packs",
@@ -9871,7 +9871,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-signature-class-signature-class-hobby.webp"
     },
     {
      "name": "Hobby Jumbo",
@@ -10008,7 +10008,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-stadium-club-stadium-club-hobby.webp"
     },
     {
      "name": "Members Only",
@@ -10167,7 +10167,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-3-3-hobby.webp"
     },
     {
      "name": "1st Day Issue",
@@ -10260,7 +10260,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2026-27-topps-flagship-flagship-hobby.webp"
     },
     {
      "name": "Jumbo",
@@ -10521,7 +10521,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2026-27-topps-nba-hoops-nba-hoops-hobby.webp"
     },
     {
      "name": "Mega",
@@ -11281,7 +11281,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-flawless-flawless-hobby-briefcase.webp"
     },
     {
      "name": "FOTL",
@@ -11533,7 +11533,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-panini-prizm-euroleague-euroleague-hobby-new.webp"
     },
     {
      "name": "FOTL",
@@ -11647,7 +11647,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-topps-bowman-university-best-bowman-university-best-hobby.webp"
     },
     {
      "name": "Breaker Delight",
@@ -11958,7 +11958,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2024-25-topps-chrome-nbl-nbl-hobby-new.webp"
     },
     {
      "name": "Mega",
@@ -12184,7 +12184,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-panini-contenders-euroleague-contenders-euroleague-hobby-debut-edition.webp"
     },
     {
      "name": "Mega",
@@ -12287,7 +12287,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-panini-origins-euroleague-origins-euroleague-hobby.webp"
     },
     {
      "name": "H2",
@@ -12543,7 +12543,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2025-26-topps-bowman-mega-box-bowman-mega.webp"
     }
    ],
    "presentation": [
