@@ -281,10 +281,33 @@ def parse_article(article: list) -> dict:
     }
 
 
-def format_image(text: str, slug: str, fmt: str | None) -> str | None:
-    key = re.sub(r"[^a-z0-9]+", "-", (fmt or "").lower()).strip("-")
-    m = re.search(rf"/boxes/({re.escape(slug)}-{re.escape(key)}\.webp)", text)
-    return f"{BASE}/boxes/{m.group(1)}" if m else None
+def _key(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+
+
+def format_images(text: str, slug: str, formats: list[dict]) -> dict[str, str]:
+    """Photo de chaque format. Les fichiers du site s'appellent
+    `<collection>[-<produit>]-<format>[-new|-<édition>].webp` (« …-noir-hobby-new »,
+    « …-contenders-euroleague-hobby-debut-edition ») : on rattache chaque photo au
+    format dont tous les mots (nom ou alias) figurent dans le nom de fichier."""
+    names = set(re.findall(rf"/boxes/({re.escape(slug)}-[a-z0-9-]+)\.webp", text))
+    out: dict[str, str] = {}
+    for stem in sorted(names):
+        rest = stem[len(slug) + 1:]
+        if rest == "cover":
+            continue
+        words = set(rest.split("-"))
+        # Format dont tous les mots figurent dans le nom de fichier ; le plus précis gagne
+        # (« …-1st-day-issue-fdi-jumbo-hobby » = Jumbo 1st Day Issue, pas Hobby).
+        best, best_len = None, 0
+        for f in formats:
+            for alias in [f.get("name"), *(f.get("aliases") or [])]:
+                toks = [t for t in _key(alias).split("-") if t]
+                if toks and set(toks) <= words and len(toks) > best_len:
+                    best, best_len = f.get("name"), len(toks)
+        if best and best not in out:
+            out[best] = f"{BASE}/boxes/{stem}.webp"
+    return out
 
 
 def server_text(page: str) -> str:
@@ -344,6 +367,7 @@ def parse_collection(page: str, slug: str) -> dict | None:
             if isinstance(art[2], str) and art[2] not in articles:
                 articles[art[2]] = parse_article(art)
 
+    photos = format_images(page + flight, slug, raw_formats)
     formats = []
     for f in raw_formats:
         name = f.get("name")
@@ -363,7 +387,7 @@ def parse_collection(page: str, slug: str) -> dict | None:
             "autos_per_case": art.get("autos_per_case"),
             "case_from_shops": bool(f.get("caseFromShops")),
             "contents": art.get("contents") or [{"fr": c, "vo": c, "auto": bool(re.search(r"auto|signature", c, re.I))} for c in f.get("contents") or []],
-            "image": art.get("image") or format_image(page + flight, slug, name),
+            "image": art.get("image") or photos.get(name),
         })
 
     return {"source_slug": slug, **page_meta(page, slug), "formats": formats, "presentation": presentation(page)}
