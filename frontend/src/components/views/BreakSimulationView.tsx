@@ -256,7 +256,8 @@ export function BreakSimulationView() {
   const guideAutos = useMemo(() => {
     const m = new Map<string, number>()
     for (const g of boxGuides?.guides ?? []) {
-      if (g.checklist_id && g.hobby_autos_per_box) m.set(g.checklist_id, g.hobby_autos_per_box)
+      // Une info « à confirmer » (confiance basse) ne pré-remplit pas la pondération.
+      if (g.checklist_id && g.hobby_autos_per_box && g.confidence !== 'low') m.set(g.checklist_id, g.hobby_autos_per_box)
     }
     return m
   }, [boxGuides])
