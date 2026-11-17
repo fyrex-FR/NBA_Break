@@ -1,0 +1,1106 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-motif-basketball-checklist",
+ "product_label": "2025-26 Topps Motif Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  },
+  {
+   "key": "fdi",
+   "label": "FDI",
+   "channel": "hobby",
+   "group": "fdi",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Pastel Pink /79",
+   "set": "Base",
+   "parallel": "Pastel Pink",
+   "odds": {
+    "hobby": 2,
+    "fdi": 2
+   }
+  },
+  {
+   "label": "Base Quin Gold /49",
+   "set": "Base",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Base Ultramarine Blue /39",
+   "set": "Base",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 5,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Base Cadmium Orange /25",
+   "set": "Base",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Base Majesty Purple /15",
+   "set": "Base",
+   "parallel": "Majesty Purple",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Base Winsor Green /10",
+   "set": "Base",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Base Pyrrol Scarlet /5",
+   "set": "Base",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 32,
+    "fdi": 32
+   }
+  },
+  {
+   "label": "Base Platinum /1",
+   "set": "Base",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 157,
+    "fdi": 157
+   }
+  },
+  {
+   "label": "Base Printing Plates /1",
+   "set": "Base",
+   "parallel": "Printing Plates",
+   "odds": {
+    "hobby": 40,
+    "fdi": 38
+   }
+  },
+  {
+   "label": "Abstract Ink Signatures",
+   "set": "Abstract Ink",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Abstract Ink Signatures Ultramarine Blue /39",
+   "set": "Abstract Ink",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Abstract Ink Signatures Cadmium Orange /25",
+   "set": "Abstract Ink",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 17,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Abstract Ink Signatures Winsor Green /10",
+   "set": "Abstract Ink",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 41,
+    "fdi": 28
+   }
+  },
+  {
+   "label": "Abstract Ink Signatures Pyrrol Scarlet /5",
+   "set": "Abstract Ink",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 83,
+    "fdi": 55
+   }
+  },
+  {
+   "label": "Abstract Ink Signatures Platinum /1",
+   "set": "Abstract Ink",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 436,
+    "fdi": 291
+   }
+  },
+  {
+   "label": "Acrylic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Acrylic Drip Autographs Ultramarine Blue /39",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Acrylic Drip Autographs Cadmium Orange /25",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 17,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Acrylic Drip Autographs Winsor Green /10",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 41,
+    "fdi": 28
+   }
+  },
+  {
+   "label": "Acrylic Drip Autographs Pyrrol Scarlet /5",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 83,
+    "fdi": 55
+   }
+  },
+  {
+   "label": "Acrylic Drip Autographs Platinum /1",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 436,
+    "fdi": 291
+   }
+  },
+  {
+   "label": "Apprentice Numerical Autographs",
+   "set": "Apprentice Numerical Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 25,
+    "fdi": 25
+   }
+  },
+  {
+   "label": "Aquarelle Autographs",
+   "set": "Aquarelle Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Aquarelle Autographs Ultramarine Blue /39",
+   "set": "Aquarelle Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Aquarelle Autographs Cadmium Orange /25",
+   "set": "Aquarelle Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 13,
+    "fdi": 13
+   }
+  },
+  {
+   "label": "Aquarelle Autographs Winsor Green /10",
+   "set": "Aquarelle Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 33,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Aquarelle Autographs Pyrrol Scarlet /5",
+   "set": "Aquarelle Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 66,
+    "fdi": 44
+   }
+  },
+  {
+   "label": "Aquarelle Autographs Platinum /1",
+   "set": "Aquarelle Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 343,
+    "fdi": 229
+   }
+  },
+  {
+   "label": "Canvas Champions Autographs",
+   "set": "Canvas Champions Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 22,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Canvas Champions Autographs Cadmium Orange /39",
+   "set": "Canvas Champions Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 28,
+    "fdi": 28
+   }
+  },
+  {
+   "label": "Canvas Champions Autographs Ultramarine Blue /25",
+   "set": "Canvas Champions Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 29,
+    "fdi": 29
+   }
+  },
+  {
+   "label": "Canvas Champions Autographs Winsor Green /10",
+   "set": "Canvas Champions Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 66,
+    "fdi": 44
+   }
+  },
+  {
+   "label": "Canvas Champions Autographs Pyrrol Scarlet /5",
+   "set": "Canvas Champions Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 134,
+    "fdi": 89
+   }
+  },
+  {
+   "label": "Canvas Champions Autographs Platinum /1",
+   "set": "Canvas Champions Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 733,
+    "fdi": 489
+   }
+  },
+  {
+   "label": "Charcoal Signatures",
+   "set": "Charcoal Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Charcoal Signatures Ultramarine Blue /39",
+   "set": "Charcoal Signatures",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 17,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Charcoal Signatures Cadmium Orange /25",
+   "set": "Charcoal Signatures",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 22,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Charcoal Signatures Winsor Green /10",
+   "set": "Charcoal Signatures",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 55,
+    "fdi": 37
+   }
+  },
+  {
+   "label": "Charcoal Signatures Pyrrol Scarlet /5",
+   "set": "Charcoal Signatures",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 111,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Charcoal Signatures Platinum /1",
+   "set": "Charcoal Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 597,
+    "fdi": 398
+   }
+  },
+  {
+   "label": "Deco Rated Autographs",
+   "set": "Deco Rated Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Deco Rated Autographs Ultramarine Blue /39",
+   "set": "Deco Rated Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Deco Rated Autographs Cadmium Orange /25",
+   "set": "Deco Rated Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 14,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Deco Rated Autographs Winsor Green /10",
+   "set": "Deco Rated Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 33,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Deco Rated Autographs Pyrrol Scarlet /5",
+   "set": "Deco Rated Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 66,
+    "fdi": 44
+   }
+  },
+  {
+   "label": "Deco Rated Autographs Platinum /1",
+   "set": "Deco Rated Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 343,
+    "fdi": 229
+   }
+  },
+  {
+   "label": "Legends of the Court Signatures",
+   "set": "Legends Of The Court Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Legends of the Court Signatures Ultramarine Blue /39",
+   "set": "Legends Of The Court Signatures",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Legends of the Court Signatures Cadmium Orange /25",
+   "set": "Legends Of The Court Signatures",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 15,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Legends of the Court Signatures Winsor Green /10",
+   "set": "Legends Of The Court Signatures",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 37,
+    "fdi": 25
+   }
+  },
+  {
+   "label": "Legends of the Court Signatures Pyrrol Scarlet /5",
+   "set": "Legends Of The Court Signatures",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 74,
+    "fdi": 49
+   }
+  },
+  {
+   "label": "Legends of the Court Signatures Platinum /1",
+   "set": "Legends Of The Court Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 384,
+    "fdi": 256
+   }
+  },
+  {
+   "label": "Pick & Pop Art Signatures",
+   "set": "Pick And Pop Art Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Pick & Pop Art Signatures Ultramarine Blue /39",
+   "set": "Pick And Pop Art Signatures",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 14,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Pick & Pop Art Signatures Cadmium Orange /25",
+   "set": "Pick And Pop Art Signatures",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 22,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Pick & Pop Art Signatures Winsor Green /10",
+   "set": "Pick And Pop Art Signatures",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 55,
+    "fdi": 37
+   }
+  },
+  {
+   "label": "Pick & Pop Art Signatures Pyrrol Scarlet /5",
+   "set": "Pick And Pop Art Signatures",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 111,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Pick & Pop Art Signatures Platinum /1",
+   "set": "Pick And Pop Art Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 597,
+    "fdi": 398
+   }
+  },
+  {
+   "label": "Splatter Signatures",
+   "set": "Splatter Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 17,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Spray Paint Signatures",
+   "set": "Spray Paint Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Spray Paint Signatures Ultramarine Blue /39",
+   "set": "Spray Paint Signatures",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Spray Paint Signatures Cadmium Orange /25",
+   "set": "Spray Paint Signatures",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 17,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Spray Paint Signatures Winsor Green /10",
+   "set": "Spray Paint Signatures",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 41,
+    "fdi": 28
+   }
+  },
+  {
+   "label": "Spray Paint Signatures Pyrrol Scarlet /5",
+   "set": "Spray Paint Signatures",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 83,
+    "fdi": 55
+   }
+  },
+  {
+   "label": "Spray Paint Signatures Platinum /1",
+   "set": "Spray Paint Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 436,
+    "fdi": 291
+   }
+  },
+  {
+   "label": "Statistical Showpiece Signatures",
+   "set": "Statistical Showpiece Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 53,
+    "fdi": 53
+   }
+  },
+  {
+   "label": "Still Life Signatures",
+   "set": "Still Life Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 15,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Still Life Signatures Ultramarine Blue /39",
+   "set": "Still Life Signatures",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 23,
+    "fdi": 23
+   }
+  },
+  {
+   "label": "Still Life Signatures Cadmium Orange /25",
+   "set": "Still Life Signatures",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 33,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Still Life Signatures Winsor Green /10",
+   "set": "Still Life Signatures",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 83,
+    "fdi": 55
+   }
+  },
+  {
+   "label": "Still Life Signatures Pyrrol Scarlet /5",
+   "set": "Still Life Signatures",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 167,
+    "fdi": 111
+   }
+  },
+  {
+   "label": "Still Life Signatures Platinum /1",
+   "set": "Still Life Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 949,
+    "fdi": 633
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs Quin Gold /49",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 12,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs Ultramarine Blue /39",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 14,
+    "fdi": 10
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs Cadmium Orange /25",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 22,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs Winsor Green /10",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 55,
+    "fdi": 37
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs Pyrrol Scarlet /5",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 111,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Motif Rookie Relic Autographs Platinum /1",
+   "set": "Motif Rookie Relic Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 283,
+    "fdi": 189
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs Quin Gold /49",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 12,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs Ultramarine Blue /39",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 14,
+    "fdi": 10
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs Cadmium Orange /25",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 22,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs Winsor Green /10",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 55,
+    "fdi": 37
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs Pyrrol Scarlet /5",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 111,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relic Autographs Platinum /1",
+   "set": "Motif Rookie Dual Relic Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 597,
+    "fdi": 398
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs Quin Gold /49",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 12,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs Ultramarine Blue /39",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 14,
+    "fdi": 10
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs Cadmium Orange /25",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 22,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs Winsor Green /10",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 55,
+    "fdi": 37
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs Pyrrol Scarlet /5",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 111,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Motif Rookie Triple Relic Autographs Platinum /1",
+   "set": "Rookie Triple Relic Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 597,
+    "fdi": 398
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 22,
+    "fdi": 15
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs Quin Gold /49",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 34,
+    "fdi": 23
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs Ultramarine Blue /39",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 42,
+    "fdi": 28
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs Cadmium Orange /25",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 66,
+    "fdi": 44
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs Winsor Green /10",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 167,
+    "fdi": 111
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs Pyrrol Scarlet /5",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 343,
+    "fdi": 229
+   }
+  },
+  {
+   "label": "Motif Rookie Quad Relic Autographs Platinum /1",
+   "set": "Rookie Quad Relic Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 2303,
+    "fdi": 1536
+   }
+  },
+  {
+   "label": "Legends of the Court Relics",
+   "set": "Legends Of The Court Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 17,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Legends of the Court Relics Ultramarine Blue /39",
+   "set": "Legends Of The Court Relics",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Legends of the Court Relics Cadmium Orange /25",
+   "set": "Legends Of The Court Relics",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 32,
+    "fdi": 32
+   }
+  },
+  {
+   "label": "Legends of the Court Relics Winsor Green /10",
+   "set": "Legends Of The Court Relics",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 79,
+    "fdi": 79
+   }
+  },
+  {
+   "label": "Legends of the Court Relics Pyrrol Scarlet /5",
+   "set": "Legends Of The Court Relics",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 166,
+    "fdi": 111
+   }
+  },
+  {
+   "label": "Legends of the Court Relics Platinum /1",
+   "set": "Legends Of The Court Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 934,
+    "fdi": 623
+   }
+  },
+  {
+   "label": "Motif Rookie Relics",
+   "set": "Motif Rookie Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Motif Rookie Relics Quin Gold /49",
+   "set": "Motif Rookie Relics",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Motif Rookie Relics Ultramarine Blue /39",
+   "set": "Motif Rookie Relics",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Motif Rookie Relics Cadmium Orange /25",
+   "set": "Motif Rookie Relics",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 17,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Motif Rookie Relics Winsor Green /10",
+   "set": "Motif Rookie Relics",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Motif Rookie Relics Pyrrol Scarlet /5",
+   "set": "Motif Rookie Relics",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 83,
+    "fdi": 83
+   }
+  },
+  {
+   "label": "Motif Rookie Relics Platinum /1",
+   "set": "Motif Rookie Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 411,
+    "fdi": 411
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics Quin Gold /49",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "Quin Gold",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics Ultramarine Blue /39",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "Ultramarine Blue",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics Cadmium Orange /25",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "Cadmium Orange",
+   "odds": {
+    "hobby": 17,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics Winsor Green /10",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "Winsor Green",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics Pyrrol Scarlet /5",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "Pyrrol Scarlet",
+   "odds": {
+    "hobby": 83,
+    "fdi": 83
+   }
+  },
+  {
+   "label": "Motif Rookie Dual Relics Platinum /1",
+   "set": "Motif Rookie Dual Relics",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 411,
+    "fdi": 411
+   }
+  }
+ ]
+}

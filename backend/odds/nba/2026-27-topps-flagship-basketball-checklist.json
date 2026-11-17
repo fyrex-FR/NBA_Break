@@ -1,0 +1,3806 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2026-27-topps-flagship-basketball-checklist",
+ "product_label": "2026-27 Topps Flagship Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 20
+  },
+  {
+   "key": "jumbo",
+   "label": "Jumbo",
+   "channel": "hobby",
+   "group": "jumbo",
+   "packs_per_box": 10
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega",
+   "packs_per_box": 12
+  },
+  {
+   "key": "value_blaster",
+   "label": "Value Blaster",
+   "channel": "retail",
+   "group": "value",
+   "packs_per_box": 10
+  },
+  {
+   "key": "hanger",
+   "label": "Hanger",
+   "channel": "retail",
+   "group": "hanger",
+   "packs_per_box": 1
+  },
+  {
+   "key": "fat_pack",
+   "label": "Fat Pack",
+   "channel": "retail",
+   "group": "fat_pack"
+  },
+  {
+   "key": "fanatics_blaster",
+   "label": "Fanatics Blaster",
+   "channel": "special",
+   "group": "fanatics"
+  },
+  {
+   "key": "china",
+   "label": "China",
+   "channel": "special",
+   "group": "china"
+  },
+  {
+   "key": "silver_pack",
+   "label": "Silver Pack",
+   "channel": "special",
+   "group": "silver_pack"
+  },
+  {
+   "key": "asg_mega",
+   "label": "ASG Mega",
+   "channel": "retail",
+   "group": "mega"
+  },
+  {
+   "key": "bf_blaster",
+   "label": "BF Blaster",
+   "channel": "retail",
+   "group": "blaster"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Rainbow Foilboard",
+   "set": "Base",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 10,
+    "jumbo": 2,
+    "mega": 12,
+    "value_blaster": 24,
+    "hanger": 4,
+    "fat_pack": 8
+   }
+  },
+  {
+   "label": "Base Aqua Rainbow",
+   "set": "Base",
+   "parallel": "Aqua Rainbow",
+   "odds": {
+    "hobby": 500,
+    "jumbo": 75
+   }
+  },
+  {
+   "label": "Base Gold /2026",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 31,
+    "jumbo": 10,
+    "mega": 51,
+    "value_blaster": 63,
+    "hanger": 36,
+    "fat_pack": 30
+   }
+  },
+  {
+   "label": "Base Yellow Rainbow /399",
+   "set": "Base",
+   "parallel": "Yellow Rainbow",
+   "odds": {
+    "hobby": 61,
+    "jumbo": 15
+   }
+  },
+  {
+   "label": "Base Purple Rainbow /250",
+   "set": "Base",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 98,
+    "jumbo": 24
+   }
+  },
+  {
+   "label": "Base Blue Rainbow /150",
+   "set": "Base",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 159,
+    "jumbo": 41
+   }
+  },
+  {
+   "label": "Base Green Rainbow /99",
+   "set": "Base",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 240,
+    "jumbo": 62
+   }
+  },
+  {
+   "label": "Base Black /75",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1093,
+    "jumbo": 279,
+    "mega": 1794,
+    "value_blaster": 1882,
+    "hanger": 540,
+    "fat_pack": 1140
+   }
+  },
+  {
+   "label": "Base Gold Rainbow /50",
+   "set": "Base",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 488,
+    "jumbo": 119
+   }
+  },
+  {
+   "label": "Base Orange Rainbow /25",
+   "set": "Base",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 952,
+    "jumbo": 244
+   }
+  },
+  {
+   "label": "Base Wood /25",
+   "set": "Base",
+   "parallel": "Wood",
+   "odds": {
+    "hobby": 3278,
+    "jumbo": 837,
+    "mega": 5383,
+    "value_blaster": 5646,
+    "hanger": 1621,
+    "fat_pack": 3421
+   }
+  },
+  {
+   "label": "Base Black Rainbow /10",
+   "set": "Base",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 2380,
+    "jumbo": 610
+   }
+  },
+  {
+   "label": "Base Red Rainbow /5",
+   "set": "Base",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 4769,
+    "jumbo": 1222
+   }
+  },
+  {
+   "label": "Base FoilFractor /1",
+   "set": "Base",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 23527,
+    "jumbo": 5747
+   }
+  },
+  {
+   "label": "Base Victory",
+   "set": "Base",
+   "parallel": "Victory",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Base Sandglitter",
+   "set": "Base",
+   "parallel": "Sandglitter",
+   "odds": {
+    "jumbo": 2
+   }
+  },
+  {
+   "label": "Base Blue Sandglitter /500",
+   "set": "Base",
+   "parallel": "Blue Sandglitter",
+   "odds": {
+    "jumbo": 6
+   }
+  },
+  {
+   "label": "Base Gold Sandglitter /50",
+   "set": "Base",
+   "parallel": "Gold Sandglitter",
+   "odds": {
+    "jumbo": 60
+   }
+  },
+  {
+   "label": "Base Orange Sandglitter /25",
+   "set": "Base",
+   "parallel": "Orange Sandglitter",
+   "odds": {
+    "jumbo": 121
+   }
+  },
+  {
+   "label": "Base Black Sandglitter /10",
+   "set": "Base",
+   "parallel": "Black Sandglitter",
+   "odds": {
+    "jumbo": 301
+   }
+  },
+  {
+   "label": "Base Red Sandglitter /5",
+   "set": "Base",
+   "parallel": "Red Sandglitter",
+   "odds": {
+    "jumbo": 604
+   }
+  },
+  {
+   "label": "Base Storm",
+   "set": "Base",
+   "parallel": "Storm",
+   "odds": {
+    "mega": 3,
+    "value_blaster": 2,
+    "hanger": 2,
+    "fat_pack": 4
+   }
+  },
+  {
+   "label": "Base Holo Foil",
+   "set": "Base",
+   "parallel": "Holo Foil",
+   "odds": {
+    "mega": 10,
+    "value_blaster": 24,
+    "hanger": 10,
+    "fat_pack": 10
+   }
+  },
+  {
+   "label": "Base Pink Holo Foil",
+   "set": "Base",
+   "parallel": "Pink Holo Foil",
+   "odds": {
+    "mega": 107,
+    "value_blaster": 83,
+    "hanger": 62,
+    "fat_pack": 124
+   }
+  },
+  {
+   "label": "Base Aqua Holo Foil",
+   "set": "Base",
+   "parallel": "Aqua Holo Foil",
+   "odds": {
+    "mega": 500,
+    "value_blaster": 500,
+    "hanger": 500,
+    "fat_pack": 500
+   }
+  },
+  {
+   "label": "Base Yellow Holo Foil /399",
+   "set": "Base",
+   "parallel": "Yellow Holo Foil",
+   "odds": {
+    "mega": 178,
+    "value_blaster": 251,
+    "hanger": 157,
+    "fat_pack": 152
+   }
+  },
+  {
+   "label": "Base Purple Holo Foil /250",
+   "set": "Base",
+   "parallel": "Purple Holo Foil",
+   "odds": {
+    "mega": 300,
+    "value_blaster": 401,
+    "hanger": 203,
+    "fat_pack": 243
+   }
+  },
+  {
+   "label": "Base Blue Holo Foil /150",
+   "set": "Base",
+   "parallel": "Blue Holo Foil",
+   "odds": {
+    "mega": 519,
+    "value_blaster": 668,
+    "hanger": 296,
+    "fat_pack": 405
+   }
+  },
+  {
+   "label": "Base Green Holo Foil /99",
+   "set": "Base",
+   "parallel": "Green Holo Foil",
+   "odds": {
+    "mega": 767,
+    "value_blaster": 1013,
+    "hanger": 491,
+    "fat_pack": 614
+   }
+  },
+  {
+   "label": "Base Gold Holo Foil /50",
+   "set": "Base",
+   "parallel": "Gold Holo Foil",
+   "odds": {
+    "mega": 1525,
+    "value_blaster": 2005,
+    "hanger": 959,
+    "fat_pack": 1215
+   }
+  },
+  {
+   "label": "Base Orange Holo Foil /25",
+   "set": "Base",
+   "parallel": "Orange Holo Foil",
+   "odds": {
+    "mega": 3370,
+    "value_blaster": 4012,
+    "hanger": 1459,
+    "fat_pack": 2431
+   }
+  },
+  {
+   "label": "Base Black Holo Foil /10",
+   "set": "Base",
+   "parallel": "Black Holo Foil",
+   "odds": {
+    "mega": 9542,
+    "value_blaster": 10027,
+    "hanger": 2848,
+    "fat_pack": 6074
+   }
+  },
+  {
+   "label": "Base Red Holo Foil /5",
+   "set": "Base",
+   "parallel": "Red Holo Foil",
+   "odds": {
+    "mega": 19118,
+    "value_blaster": 20090,
+    "hanger": 5705,
+    "fat_pack": 12170
+   }
+  },
+  {
+   "label": "Base Rose Gold Holo Foil /1",
+   "set": "Base",
+   "parallel": "Rose Gold Holo Foil",
+   "odds": {
+    "mega": 96254,
+    "value_blaster": 101148,
+    "hanger": 28726,
+    "fat_pack": 61274
+   }
+  },
+  {
+   "label": "Base Diamante",
+   "set": "Base",
+   "parallel": "Diamante",
+   "odds": {
+    "hanger": 1
+   }
+  },
+  {
+   "label": "Base Pink Diamante",
+   "set": "Base",
+   "parallel": "Pink Diamante",
+   "odds": {
+    "hanger": 10
+   }
+  },
+  {
+   "label": "Base Green Diamante /99",
+   "set": "Base",
+   "parallel": "Green Diamante",
+   "odds": {
+    "hanger": 37
+   }
+  },
+  {
+   "label": "Base Gold Diamante /50",
+   "set": "Base",
+   "parallel": "Gold Diamante",
+   "odds": {
+    "hanger": 73
+   }
+  },
+  {
+   "label": "Base Orange Diamante /25",
+   "set": "Base",
+   "parallel": "Orange Diamante",
+   "odds": {
+    "hanger": 146
+   }
+  },
+  {
+   "label": "Base Black Diamante /10",
+   "set": "Base",
+   "parallel": "Black Diamante",
+   "odds": {
+    "hanger": 365
+   }
+  },
+  {
+   "label": "Base Red Diamante /5",
+   "set": "Base",
+   "parallel": "Red Diamante",
+   "odds": {
+    "hanger": 730
+   }
+  },
+  {
+   "label": "Base Season Tip Off",
+   "set": "Base",
+   "parallel": "Season Tip Off",
+   "odds": {
+    "value_blaster": 3
+   }
+  },
+  {
+   "label": "Base Season Tip Off Pink Foil",
+   "set": "Base",
+   "parallel": "Season Tip Off Pink Foil",
+   "odds": {
+    "value_blaster": 24
+   }
+  },
+  {
+   "label": "Base Season Tip Off Green Foil /99",
+   "set": "Base",
+   "parallel": "Season Tip Off Green Foil",
+   "odds": {
+    "value_blaster": 277
+   }
+  },
+  {
+   "label": "Base Season Tip Off Gold Foil /50",
+   "set": "Base",
+   "parallel": "Season Tip Off Gold Foil",
+   "odds": {
+    "value_blaster": 547
+   }
+  },
+  {
+   "label": "Base Season Tip Off Orange Foil /25",
+   "set": "Base",
+   "parallel": "Season Tip Off Orange Foil",
+   "odds": {
+    "value_blaster": 1095
+   }
+  },
+  {
+   "label": "Base Season Tip Off Black Foil /10",
+   "set": "Base",
+   "parallel": "Season Tip Off Black Foil",
+   "odds": {
+    "value_blaster": 2737
+   }
+  },
+  {
+   "label": "Base Season Tip Off Red Foil /5",
+   "set": "Base",
+   "parallel": "Season Tip Off Red Foil",
+   "odds": {
+    "value_blaster": 5484
+   }
+  },
+  {
+   "label": "Base Season Tip Off Rose Gold Foil /1",
+   "set": "Base",
+   "parallel": "Season Tip Off Rose Gold Foil",
+   "odds": {
+    "value_blaster": 27613
+   }
+  },
+  {
+   "label": "Base Topps Foil Pattern",
+   "set": "Base",
+   "parallel": "Topps Foil Pattern",
+   "odds": {
+    "fanatics_blaster": 1
+   }
+  },
+  {
+   "label": "Base Clear Variation",
+   "set": "Base Clear Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 24579,
+    "jumbo": 6278,
+    "mega": 40356,
+    "value_blaster": 42332,
+    "hanger": 12151
+   }
+  },
+  {
+   "label": "Base Player Number Variation",
+   "set": "Base Player Number Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 1807
+   }
+  },
+  {
+   "label": "Base Team Color Border Variation",
+   "set": "Base Team Color Border Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 240,
+    "jumbo": 40,
+    "mega": 480,
+    "value_blaster": 480,
+    "hanger": 128
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs Green /99",
+   "set": "Base Facsimile Autographs",
+   "parallel": "Green",
+   "odds": {
+    "china": 297
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs Yellow /75",
+   "set": "Base Facsimile Autographs",
+   "parallel": "Yellow",
+   "odds": {
+    "china": 392
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs Gold /50",
+   "set": "Base Facsimile Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "china": 588
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs Orange /25",
+   "set": "Base Facsimile Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "china": 1178
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs Black /10",
+   "set": "Base Facsimile Autographs",
+   "parallel": "Black",
+   "odds": {
+    "china": 2941
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs Red /5",
+   "set": "Base Facsimile Autographs",
+   "parallel": "Red",
+   "odds": {
+    "china": 5912
+   }
+  },
+  {
+   "label": "Base Facsimile Autographs FoilFractor /1",
+   "set": "Base Facsimile Autographs",
+   "parallel": "FoilFractor",
+   "odds": {
+    "china": 30191
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autograph",
+   "set": "Flagship Real One Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 2666,
+    "jumbo": 644,
+    "mega": 7998,
+    "value_blaster": 7998,
+    "hanger": 6667
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autograph Gold Rainbow /50",
+   "set": "Flagship Real One Autograph",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 7971,
+    "jumbo": 1926,
+    "mega": 23912,
+    "value_blaster": 23912,
+    "hanger": 19932,
+    "fat_pack": 9963
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autograph Orange Rainbow /25",
+   "set": "Flagship Real One Autograph",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 16263,
+    "jumbo": 3931,
+    "mega": 48790,
+    "value_blaster": 48790,
+    "hanger": 40669,
+    "fat_pack": 20329
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autograph Black Rainbow /10",
+   "set": "Flagship Real One Autograph",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 40379,
+    "jumbo": 9759,
+    "mega": 121137,
+    "value_blaster": 121137,
+    "hanger": 100975,
+    "fat_pack": 50474
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autograph Red Rainbow /5",
+   "set": "Flagship Real One Autograph",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 83172,
+    "jumbo": 20102,
+    "mega": 249517,
+    "value_blaster": 249517,
+    "hanger": 207986,
+    "fat_pack": 103965
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autograph FoilFractor /1",
+   "set": "Flagship Real One Autograph",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 382592,
+    "jumbo": 92469,
+    "mega": 1147776,
+    "value_blaster": 1147776,
+    "hanger": 956736,
+    "fat_pack": 478240
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autographs Dylan Wang Gold Rainbow /50",
+   "set": "Flagship Real One Autographs Dylan Wang",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "china": 56760
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autographs Dylan Wang Black Rainbow /10",
+   "set": "Flagship Real One Autographs Dylan Wang",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "china": 283800
+   }
+  },
+  {
+   "label": "Base Flagship Real One Autographs Dylan Wang Red Rainbow /5",
+   "set": "Flagship Real One Autographs Dylan Wang",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "china": 567600
+   }
+  },
+  {
+   "label": "Flagship Real One Relics",
+   "set": "Flagship Real One Relic",
+   "parallel": "",
+   "odds": {
+    "hobby": 1414,
+    "jumbo": 354,
+    "mega": 3394,
+    "value_blaster": 5303,
+    "hanger": 1768
+   }
+  },
+  {
+   "label": "Flagship Real One Relics Gold Rainbow /50",
+   "set": "Flagship Real One Relic",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 9819,
+    "jumbo": 2455,
+    "mega": 23565,
+    "value_blaster": 36821,
+    "hanger": 12274,
+    "fat_pack": 12274
+   }
+  },
+  {
+   "label": "Flagship Real One Relics Orange Rainbow /25",
+   "set": "Flagship Real One Relic",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 19694,
+    "jumbo": 4924,
+    "mega": 47266,
+    "value_blaster": 73854,
+    "hanger": 24618,
+    "fat_pack": 24618
+   }
+  },
+  {
+   "label": "Flagship Real One Relics Black Rainbow /10",
+   "set": "Flagship Real One Relic",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 49293,
+    "jumbo": 12323,
+    "mega": 118303,
+    "value_blaster": 184848,
+    "hanger": 61616,
+    "fat_pack": 61616
+   }
+  },
+  {
+   "label": "Flagship Real One Relics Red Rainbow /5",
+   "set": "Flagship Real One Relic",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 98586,
+    "jumbo": 24646,
+    "mega": 236605,
+    "value_blaster": 369696,
+    "hanger": 123232,
+    "fat_pack": 123232
+   }
+  },
+  {
+   "label": "Flagship Real One Relics FoilFractor /1",
+   "set": "Flagship Real One Relic",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 473758,
+    "jumbo": 118440,
+    "mega": 1137020,
+    "value_blaster": 1776593,
+    "hanger": 592198,
+    "fat_pack": 592198
+   }
+  },
+  {
+   "label": "1981-82 Topps Autographs",
+   "set": "1981 82 Topps Basketball Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 1793,
+    "jumbo": 433,
+    "mega": 5380,
+    "value_blaster": 5380,
+    "hanger": 4484
+   }
+  },
+  {
+   "label": "1981-82 Topps Autographs Gold Rainbow /50",
+   "set": "1981 82 Topps Basketball Autographs",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 7301,
+    "jumbo": 1765,
+    "mega": 21904,
+    "value_blaster": 21904,
+    "hanger": 18258,
+    "fat_pack": 9127
+   }
+  },
+  {
+   "label": "1981-82 Topps Autographs Orange Rainbow /25",
+   "set": "1981 82 Topps Basketball Autographs",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 13591,
+    "jumbo": 3285,
+    "mega": 40774,
+    "value_blaster": 40774,
+    "hanger": 33987,
+    "fat_pack": 16989
+   }
+  },
+  {
+   "label": "1981-82 Topps Autographs Black Rainbow /10",
+   "set": "1981 82 Topps Basketball Autographs",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 33414,
+    "jumbo": 8076,
+    "mega": 100242,
+    "value_blaster": 100242,
+    "hanger": 83558,
+    "fat_pack": 41768
+   }
+  },
+  {
+   "label": "1981-82 Topps Autographs Red Rainbow /5",
+   "set": "1981 82 Topps Basketball Autographs",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 68016,
+    "jumbo": 16439,
+    "mega": 204049,
+    "value_blaster": 204049,
+    "hanger": 170086,
+    "fat_pack": 85020
+   }
+  },
+  {
+   "label": "1981-82 Topps Autographs FoilFractor /1",
+   "set": "1981 82 Topps Basketball Autographs",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 325610,
+    "jumbo": 78697,
+    "mega": 976831,
+    "value_blaster": 976831,
+    "hanger": 814243,
+    "fat_pack": 407013
+   }
+  },
+  {
+   "label": "1981-82 Topps Rookie Autographs",
+   "set": "1981 82 Topps Basketball Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 424,
+    "jumbo": 103,
+    "mega": 1273,
+    "value_blaster": 1273,
+    "hanger": 1061
+   }
+  },
+  {
+   "label": "1981-82 Topps Rookie Autographs Gold Rainbow /50",
+   "set": "1981 82 Topps Basketball Rookie Autographs",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 8710,
+    "jumbo": 2105,
+    "mega": 26130,
+    "value_blaster": 26130,
+    "hanger": 21781,
+    "fat_pack": 10888
+   }
+  },
+  {
+   "label": "1981-82 Topps Rookie Autographs Orange Rainbow /25",
+   "set": "1981 82 Topps Basketball Rookie Autographs",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 17042,
+    "jumbo": 4119,
+    "mega": 51126,
+    "value_blaster": 51126,
+    "hanger": 42616,
+    "fat_pack": 21302
+   }
+  },
+  {
+   "label": "1981-82 Topps Rookie Autographs Black Rainbow /10",
+   "set": "1981 82 Topps Basketball Rookie Autographs",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 43353,
+    "jumbo": 10478,
+    "mega": 130060,
+    "value_blaster": 130060,
+    "hanger": 108412,
+    "fat_pack": 54192
+   }
+  },
+  {
+   "label": "1981-82 Topps Rookie Autographs Red Rainbow /5",
+   "set": "1981 82 Topps Basketball Rookie Autographs",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 87450,
+    "jumbo": 21136,
+    "mega": 262349,
+    "value_blaster": 262349,
+    "hanger": 218682,
+    "fat_pack": 109312
+   }
+  },
+  {
+   "label": "1981-82 Topps Rookie Autographs FoilFractor /1",
+   "set": "1981 82 Topps Basketball Rookie Autographs",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 413613,
+    "jumbo": 99967,
+    "mega": 1240839,
+    "value_blaster": 1240839,
+    "hanger": 1034309,
+    "fat_pack": 517016
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Autographs Mojo Gold Mojo Refractor /50",
+   "set": "1981-82 Topps Chrome Autographs Mojo",
+   "parallel": "Gold Mojo Refractor",
+   "odds": {
+    "silver_pack": 187
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Autographs Mojo Orange Mojo Refractor /25",
+   "set": "1981-82 Topps Chrome Autographs Mojo",
+   "parallel": "Orange Mojo Refractor",
+   "odds": {
+    "silver_pack": 347
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Autographs Mojo Black Mojo Refractor /10",
+   "set": "1981-82 Topps Chrome Autographs Mojo",
+   "parallel": "Black Mojo Refractor",
+   "odds": {
+    "silver_pack": 760
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Autographs Mojo Red Mojo Refractor /5",
+   "set": "1981-82 Topps Chrome Autographs Mojo",
+   "parallel": "Red Mojo Refractor",
+   "odds": {
+    "silver_pack": 1550
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Autographs Mojo SuperFractor /1",
+   "set": "1981-82 Topps Chrome Autographs Mojo",
+   "parallel": "SuperFractor",
+   "odds": {
+    "silver_pack": 7422
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Rookie Autographs Mojo Gold Mojo Refractor /50",
+   "set": "1981 82 Topps Chrome Basketball Rookie Autographs",
+   "parallel": "Gold Mojo Refractor",
+   "odds": {
+    "silver_pack": 186
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Rookie Autographs Mojo Orange Mojo Refractor /25",
+   "set": "1981 82 Topps Chrome Basketball Rookie Autographs",
+   "parallel": "Orange Mojo Refractor",
+   "odds": {
+    "silver_pack": 371
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Rookie Autographs Mojo Black Mojo Refractor /10",
+   "set": "1981 82 Topps Chrome Basketball Rookie Autographs",
+   "parallel": "Black Mojo Refractor",
+   "odds": {
+    "silver_pack": 928
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Rookie Autographs Mojo Red Mojo Refractor /5",
+   "set": "1981 82 Topps Chrome Basketball Rookie Autographs",
+   "parallel": "Red Mojo Refractor",
+   "odds": {
+    "silver_pack": 1855
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Rookie Autographs Mojo SuperFractor /1",
+   "set": "1981 82 Topps Chrome Basketball Rookie Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "silver_pack": 9179
+   }
+  },
+  {
+   "label": "Contemporary Marks",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 304,
+    "jumbo": 74,
+    "mega": 913,
+    "value_blaster": 913,
+    "hanger": 761
+   }
+  },
+  {
+   "label": "Contemporary Marks Rainbow Foilboard",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 1268,
+    "jumbo": 306,
+    "mega": 3804,
+    "value_blaster": 3804,
+    "hanger": 3171,
+    "fat_pack": 1585
+   }
+  },
+  {
+   "label": "Contemporary Marks Green Rainbow /99",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 3489,
+    "jumbo": 843,
+    "mega": 10468,
+    "value_blaster": 10468,
+    "hanger": 8725,
+    "fat_pack": 4362
+   }
+  },
+  {
+   "label": "Contemporary Marks Gold Rainbow /50",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 6909,
+    "jumbo": 1670,
+    "mega": 20727,
+    "value_blaster": 20727,
+    "hanger": 17277,
+    "fat_pack": 8636
+   }
+  },
+  {
+   "label": "Contemporary Marks Orange Rainbow /25",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 69562,
+    "jumbo": 16813,
+    "mega": 208687,
+    "value_blaster": 208687,
+    "hanger": 173952,
+    "fat_pack": 86953
+   }
+  },
+  {
+   "label": "Contemporary Marks Black Rainbow /10",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 13824,
+    "jumbo": 3341,
+    "mega": 41473,
+    "value_blaster": 41473,
+    "hanger": 34570,
+    "fat_pack": 17281
+   }
+  },
+  {
+   "label": "Contemporary Marks Red Rainbow /5",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 34702,
+    "jumbo": 8387,
+    "mega": 104107,
+    "value_blaster": 104107,
+    "hanger": 86779,
+    "fat_pack": 43378
+   }
+  },
+  {
+   "label": "Contemporary Marks FoilFractor /1",
+   "set": "Contemporary Marks Autographs",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 340082,
+    "jumbo": 82195,
+    "mega": 1020245,
+    "value_blaster": 1020245,
+    "hanger": 850432,
+    "fat_pack": 425102
+   }
+  },
+  {
+   "label": "Game Script",
+   "set": "Game Script",
+   "parallel": "",
+   "odds": {
+    "hobby": 493,
+    "jumbo": 119,
+    "mega": 1480,
+    "value_blaster": 1480,
+    "hanger": 1234
+   }
+  },
+  {
+   "label": "Game Script Rainbow Foilboard",
+   "set": "Game Script",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 2467,
+    "jumbo": 596,
+    "mega": 7400,
+    "value_blaster": 7400,
+    "hanger": 6169,
+    "fat_pack": 3083
+   }
+  },
+  {
+   "label": "Game Script Green Rainbow /99",
+   "set": "Game Script",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 3567,
+    "jumbo": 862,
+    "mega": 10702,
+    "value_blaster": 10702,
+    "hanger": 8921,
+    "fat_pack": 4459
+   }
+  },
+  {
+   "label": "Game Script Gold Rainbow /50",
+   "set": "Game Script",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 6808,
+    "jumbo": 1645,
+    "mega": 20423,
+    "value_blaster": 20423,
+    "hanger": 17024,
+    "fat_pack": 8510
+   }
+  },
+  {
+   "label": "Game Script Orange Rainbow /25",
+   "set": "Game Script",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 68016,
+    "jumbo": 16439,
+    "mega": 204049,
+    "value_blaster": 204049,
+    "hanger": 170086,
+    "fat_pack": 85020
+   }
+  },
+  {
+   "label": "Game Script Black Rainbow /10",
+   "set": "Game Script",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 13519,
+    "jumbo": 3267,
+    "mega": 40557,
+    "value_blaster": 40557,
+    "hanger": 33807,
+    "fat_pack": 16899
+   }
+  },
+  {
+   "label": "Game Script Red Rainbow /5",
+   "set": "Game Script",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 33933,
+    "jumbo": 8201,
+    "mega": 101798,
+    "value_blaster": 101798,
+    "hanger": 84855,
+    "fat_pack": 42416
+   }
+  },
+  {
+   "label": "Game Script FoilFractor /1",
+   "set": "Game Script",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 332689,
+    "jumbo": 80408,
+    "mega": 998066,
+    "value_blaster": 998066,
+    "hanger": 831944,
+    "fat_pack": 415861
+   }
+  },
+  {
+   "label": "Level Up Signatures",
+   "set": "Level Up Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 338,
+    "jumbo": 82,
+    "mega": 1014,
+    "value_blaster": 1014,
+    "hanger": 845
+   }
+  },
+  {
+   "label": "Level Up Signatures Rainbow Foilboard",
+   "set": "Level Up Signatures",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 797,
+    "jumbo": 193,
+    "mega": 2390,
+    "value_blaster": 2390,
+    "hanger": 1993,
+    "fat_pack": 996
+   }
+  },
+  {
+   "label": "Level Up Signatures Green Rainbow /99",
+   "set": "Level Up Signatures",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 4025,
+    "jumbo": 973,
+    "mega": 12075,
+    "value_blaster": 12075,
+    "hanger": 10066,
+    "fat_pack": 5031
+   }
+  },
+  {
+   "label": "Level Up Signatures Gold Rainbow /50",
+   "set": "Level Up Signatures",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 7971,
+    "jumbo": 1926,
+    "mega": 23912,
+    "value_blaster": 23912,
+    "hanger": 19932,
+    "fat_pack": 9963
+   }
+  },
+  {
+   "label": "Level Up Signatures Orange Rainbow /25",
+   "set": "Level Up Signatures",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 80124,
+    "jumbo": 19365,
+    "mega": 240372,
+    "value_blaster": 240372,
+    "hanger": 200363,
+    "fat_pack": 100155
+   }
+  },
+  {
+   "label": "Level Up Signatures Black Rainbow /10",
+   "set": "Level Up Signatures",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 15958,
+    "jumbo": 3857,
+    "mega": 47874,
+    "value_blaster": 47874,
+    "hanger": 39906,
+    "fat_pack": 19947
+   }
+  },
+  {
+   "label": "Level Up Signatures Red Rainbow /5",
+   "set": "Level Up Signatures",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 39853,
+    "jumbo": 9632,
+    "mega": 119560,
+    "value_blaster": 119560,
+    "hanger": 99660,
+    "fat_pack": 49817
+   }
+  },
+  {
+   "label": "Level Up Signatures FoilFractor /1",
+   "set": "Level Up Signatures",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 392402,
+    "jumbo": 94840,
+    "mega": 1177206,
+    "value_blaster": 1177206,
+    "hanger": 981267,
+    "fat_pack": 490503
+   }
+  },
+  {
+   "label": "New Applicants Autographs",
+   "set": "New Applicants Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 353,
+    "jumbo": 85,
+    "mega": 1058,
+    "value_blaster": 1058,
+    "hanger": 882
+   }
+  },
+  {
+   "label": "New Applicants Autographs Rainbow Foilboard",
+   "set": "New Applicants Autographs",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 804,
+    "jumbo": 194,
+    "mega": 2411,
+    "value_blaster": 2411,
+    "hanger": 2009,
+    "fat_pack": 1004
+   }
+  },
+  {
+   "label": "New Applicants Autographs Green Rainbow /99",
+   "set": "New Applicants Autographs",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 4028,
+    "jumbo": 974,
+    "mega": 12085,
+    "value_blaster": 12085,
+    "hanger": 10074,
+    "fat_pack": 5035
+   }
+  },
+  {
+   "label": "New Applicants Autographs Gold Rainbow /50",
+   "set": "New Applicants Autographs",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 7983,
+    "jumbo": 1929,
+    "mega": 23949,
+    "value_blaster": 23949,
+    "hanger": 19963,
+    "fat_pack": 9979
+   }
+  },
+  {
+   "label": "New Applicants Autographs Orange Rainbow /25",
+   "set": "New Applicants Autographs",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 80124,
+    "jumbo": 19365,
+    "mega": 240372,
+    "value_blaster": 240372,
+    "hanger": 200363,
+    "fat_pack": 100155
+   }
+  },
+  {
+   "label": "New Applicants Autographs Black Rainbow /10",
+   "set": "New Applicants Autographs",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 15958,
+    "jumbo": 3857,
+    "mega": 47874,
+    "value_blaster": 47874,
+    "hanger": 39906,
+    "fat_pack": 19947
+   }
+  },
+  {
+   "label": "New Applicants Autographs Red Rainbow /5",
+   "set": "New Applicants Autographs",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 39853,
+    "jumbo": 9632,
+    "mega": 119560,
+    "value_blaster": 119560,
+    "hanger": 99660,
+    "fat_pack": 49817
+   }
+  },
+  {
+   "label": "New Applicants Autographs FoilFractor /1",
+   "set": "New Applicants Autographs",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 392402,
+    "jumbo": 94840,
+    "mega": 1177206,
+    "value_blaster": 1177206,
+    "hanger": 981267,
+    "fat_pack": 490503
+   }
+  },
+  {
+   "label": "Rookie Pathway Signatures",
+   "set": "Rookie Pathway Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 1575,
+    "jumbo": 381,
+    "mega": 4725,
+    "value_blaster": 4725,
+    "hanger": 3939
+   }
+  },
+  {
+   "label": "Rookie Pathway Signatures Gold Rainbow /50",
+   "set": "Rookie Pathway Signatures",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 15975,
+    "jumbo": 3861,
+    "mega": 47924,
+    "value_blaster": 47924,
+    "hanger": 39947,
+    "fat_pack": 19968
+   }
+  },
+  {
+   "label": "Rookie Pathway Signatures Orange Rainbow /25",
+   "set": "Rookie Pathway Signatures",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 31360,
+    "jumbo": 7579,
+    "mega": 94080,
+    "value_blaster": 94080,
+    "hanger": 78421,
+    "fat_pack": 39200
+   }
+  },
+  {
+   "label": "Rookie Pathway Signatures Black Rainbow /10",
+   "set": "Rookie Pathway Signatures",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 78480,
+    "jumbo": 18968,
+    "mega": 235441,
+    "value_blaster": 235441,
+    "hanger": 196253,
+    "fat_pack": 98101
+   }
+  },
+  {
+   "label": "Rookie Pathway Signatures Red Rainbow /5",
+   "set": "Rookie Pathway Signatures",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 159413,
+    "jumbo": 38529,
+    "mega": 478240,
+    "value_blaster": 478240,
+    "hanger": 398640,
+    "fat_pack": 199267
+   }
+  },
+  {
+   "label": "Rookie Pathway Signatures FoilFractor /1",
+   "set": "Rookie Pathway Signatures",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 765184,
+    "jumbo": 184938,
+    "mega": 2295552,
+    "value_blaster": 2295552,
+    "hanger": 1913471,
+    "fat_pack": 956480
+   }
+  },
+  {
+   "label": "Rookie Photo Shoot Autographs",
+   "set": "Rookie Photo Shoot Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2691,
+    "jumbo": 651,
+    "mega": 8074,
+    "value_blaster": 8074,
+    "hanger": 6730
+   }
+  },
+  {
+   "label": "Rookie Photo Shoot Autographs Red /5",
+   "set": "Rookie Photo Shoot Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 82723,
+    "jumbo": 19993,
+    "mega": 248168,
+    "value_blaster": 248168,
+    "hanger": 206862,
+    "fat_pack": 103403
+   }
+  },
+  {
+   "label": "Rookie Photo Shoot Autographs Platinum /1",
+   "set": "Rookie Photo Shoot Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 392402,
+    "jumbo": 94840,
+    "mega": 1177206,
+    "value_blaster": 1177206,
+    "hanger": 981267,
+    "fat_pack": 490503
+   }
+  },
+  {
+   "label": "#Signed",
+   "set": "Signed",
+   "parallel": "",
+   "odds": {
+    "hobby": 765,
+    "jumbo": 185,
+    "mega": 2294,
+    "value_blaster": 2294,
+    "hanger": 1913
+   }
+  },
+  {
+   "label": "#Signed Rainbow Foilboard",
+   "set": "Signed",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 1726,
+    "jumbo": 417,
+    "mega": 5179,
+    "value_blaster": 5179,
+    "hanger": 4317,
+    "fat_pack": 2158
+   }
+  },
+  {
+   "label": "#Signed Green Rainbow /99",
+   "set": "Signed",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 8268,
+    "jumbo": 1998,
+    "mega": 24803,
+    "value_blaster": 24803,
+    "hanger": 20675,
+    "fat_pack": 10335
+   }
+  },
+  {
+   "label": "#Signed Gold Rainbow /50",
+   "set": "Signed",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 16385,
+    "jumbo": 3960,
+    "mega": 49155,
+    "value_blaster": 49155,
+    "hanger": 40974,
+    "fat_pack": 20481
+   }
+  },
+  {
+   "label": "#Signed Orange Rainbow /25",
+   "set": "Signed",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 32911,
+    "jumbo": 7954,
+    "mega": 98733,
+    "value_blaster": 98733,
+    "hanger": 82300,
+    "fat_pack": 41139
+   }
+  },
+  {
+   "label": "#Signed Black Rainbow /10",
+   "set": "Signed",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 82278,
+    "jumbo": 19886,
+    "mega": 246834,
+    "value_blaster": 246834,
+    "hanger": 205750,
+    "fat_pack": 102847
+   }
+  },
+  {
+   "label": "#Signed Red Rainbow /5",
+   "set": "Signed",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 168172,
+    "jumbo": 40646,
+    "mega": 504517,
+    "value_blaster": 504517,
+    "hanger": 420543,
+    "fat_pack": 210215
+   }
+  },
+  {
+   "label": "#Signed FoilFractor /1",
+   "set": "Signed",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 805457,
+    "jumbo": 194672,
+    "mega": 2416371,
+    "value_blaster": 2416371,
+    "hanger": 2014180,
+    "fat_pack": 1006821
+   }
+  },
+  {
+   "label": "Franchise Fabrics",
+   "set": "Franchise Fabrics",
+   "parallel": "",
+   "odds": {
+    "hobby": 505,
+    "jumbo": 126,
+    "mega": 1211,
+    "value_blaster": 1892,
+    "hanger": 631
+   }
+  },
+  {
+   "label": "Franchise Fabrics Rainbow Foilboard",
+   "set": "Franchise Fabrics",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 1178,
+    "jumbo": 295,
+    "mega": 2828,
+    "value_blaster": 4418,
+    "hanger": 1473,
+    "fat_pack": 1473
+   }
+  },
+  {
+   "label": "Franchise Fabrics Green Rainbow /99",
+   "set": "Franchise Fabrics",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 8929,
+    "jumbo": 2232,
+    "mega": 21431,
+    "value_blaster": 33486,
+    "hanger": 11162,
+    "fat_pack": 11162
+   }
+  },
+  {
+   "label": "Franchise Fabrics Gold Rainbow /50",
+   "set": "Franchise Fabrics",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 17674,
+    "jumbo": 4418,
+    "mega": 42417,
+    "value_blaster": 66277,
+    "hanger": 22092,
+    "fat_pack": 22092
+   }
+  },
+  {
+   "label": "Franchise Fabrics Orange Rainbow /25",
+   "set": "Franchise Fabrics",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 35532,
+    "jumbo": 8883,
+    "mega": 85276,
+    "value_blaster": 133244,
+    "hanger": 44415,
+    "fat_pack": 44415
+   }
+  },
+  {
+   "label": "Franchise Fabrics Black Rainbow /10",
+   "set": "Franchise Fabrics",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 88369,
+    "jumbo": 22092,
+    "mega": 212087,
+    "value_blaster": 331385,
+    "hanger": 110462,
+    "fat_pack": 110462
+   }
+  },
+  {
+   "label": "Franchise Fabrics Red Rainbow /5",
+   "set": "Franchise Fabrics",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 181439,
+    "jumbo": 45360,
+    "mega": 435454,
+    "value_blaster": 680397,
+    "hanger": 226799,
+    "fat_pack": 226799
+   }
+  },
+  {
+   "label": "Franchise Fabrics FoilFractor /1",
+   "set": "Franchise Fabrics",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 852765,
+    "jumbo": 213191,
+    "mega": 2046636,
+    "value_blaster": 3197868,
+    "hanger": 1065956,
+    "fat_pack": 1065956
+   }
+  },
+  {
+   "label": "Impact Relics",
+   "set": "Impact Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 297,
+    "jumbo": 74,
+    "mega": 712,
+    "value_blaster": 1113,
+    "hanger": 371
+   }
+  },
+  {
+   "label": "Impact Relics Rainbow Foilboard",
+   "set": "Impact Relics",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 589,
+    "jumbo": 147,
+    "mega": 1414,
+    "value_blaster": 2209,
+    "hanger": 736,
+    "fat_pack": 736
+   }
+  },
+  {
+   "label": "Impact Relics Green Rainbow /99",
+   "set": "Impact Relics",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 4465,
+    "jumbo": 1116,
+    "mega": 10715,
+    "value_blaster": 16743,
+    "hanger": 5581,
+    "fat_pack": 5581
+   }
+  },
+  {
+   "label": "Impact Relics Gold Rainbow /50",
+   "set": "Impact Relics",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 8837,
+    "jumbo": 2209,
+    "mega": 21209,
+    "value_blaster": 33139,
+    "hanger": 11046,
+    "fat_pack": 11046
+   }
+  },
+  {
+   "label": "Impact Relics Orange Rainbow /25",
+   "set": "Impact Relics",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 17674,
+    "jumbo": 4418,
+    "mega": 42417,
+    "value_blaster": 66277,
+    "hanger": 22092,
+    "fat_pack": 22092
+   }
+  },
+  {
+   "label": "Impact Relics Black Rainbow /10",
+   "set": "Impact Relics",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 44185,
+    "jumbo": 11046,
+    "mega": 106043,
+    "value_blaster": 165693,
+    "hanger": 55231,
+    "fat_pack": 55231
+   }
+  },
+  {
+   "label": "Impact Relics Red Rainbow /5",
+   "set": "Impact Relics",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 88369,
+    "jumbo": 22092,
+    "mega": 212087,
+    "value_blaster": 331385,
+    "hanger": 110462,
+    "fat_pack": 110462
+   }
+  },
+  {
+   "label": "Impact Relics FoilFractor /1",
+   "set": "Impact Relics",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 426382,
+    "jumbo": 106596,
+    "mega": 1023318,
+    "value_blaster": 1598934,
+    "hanger": 532978,
+    "fat_pack": 532978
+   }
+  },
+  {
+   "label": "Own the Game",
+   "set": "Own The Game Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 374,
+    "jumbo": 94,
+    "mega": 898,
+    "value_blaster": 1403,
+    "hanger": 468
+   }
+  },
+  {
+   "label": "Own the Game Rainbow Foilboard",
+   "set": "Own The Game Relics",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 714,
+    "jumbo": 179,
+    "mega": 1714,
+    "value_blaster": 2678,
+    "hanger": 893,
+    "fat_pack": 893
+   }
+  },
+  {
+   "label": "Own the Game Green Rainbow /99",
+   "set": "Own The Game Relics",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 4961,
+    "jumbo": 1240,
+    "mega": 11906,
+    "value_blaster": 18603,
+    "hanger": 6201,
+    "fat_pack": 6201
+   }
+  },
+  {
+   "label": "Own the Game Gold Rainbow /50",
+   "set": "Own The Game Relics",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 9819,
+    "jumbo": 2455,
+    "mega": 23565,
+    "value_blaster": 36821,
+    "hanger": 12274,
+    "fat_pack": 12274
+   }
+  },
+  {
+   "label": "Own the Game Orange Rainbow /25",
+   "set": "Own The Game Relics",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 26239,
+    "jumbo": 6560,
+    "mega": 62973,
+    "value_blaster": 98396,
+    "hanger": 32799,
+    "fat_pack": 32799
+   }
+  },
+  {
+   "label": "Own the Game Black Rainbow /10",
+   "set": "Own The Game Relics",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 68495,
+    "jumbo": 17124,
+    "mega": 164388,
+    "value_blaster": 256857,
+    "hanger": 85619,
+    "fat_pack": 85619
+   }
+  },
+  {
+   "label": "Own the Game Red Rainbow /5",
+   "set": "Own The Game Relics",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 143322,
+    "jumbo": 35830,
+    "mega": 343972,
+    "value_blaster": 537457,
+    "hanger": 179152,
+    "fat_pack": 179152
+   }
+  },
+  {
+   "label": "Own the Game FoilFractor /1",
+   "set": "Own The Game Relics",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 682212,
+    "jumbo": 170553,
+    "mega": 1637308,
+    "value_blaster": 2558294,
+    "hanger": 852765,
+    "fat_pack": 852765
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 251,
+    "jumbo": 63,
+    "mega": 602,
+    "value_blaster": 941,
+    "hanger": 314
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics Rainbow Foilboard",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 589,
+    "jumbo": 147,
+    "mega": 1414,
+    "value_blaster": 2209,
+    "hanger": 736,
+    "fat_pack": 736
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics Green Rainbow /99",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 4465,
+    "jumbo": 1116,
+    "mega": 10715,
+    "value_blaster": 16743,
+    "hanger": 5581,
+    "fat_pack": 5581
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics Gold Rainbow /50",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 8837,
+    "jumbo": 2209,
+    "mega": 21209,
+    "value_blaster": 33139,
+    "hanger": 11046,
+    "fat_pack": 11046
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics Orange Rainbow /25",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 17674,
+    "jumbo": 4418,
+    "mega": 42417,
+    "value_blaster": 66277,
+    "hanger": 22092,
+    "fat_pack": 22092
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics Black Rainbow /10",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 44185,
+    "jumbo": 11046,
+    "mega": 106043,
+    "value_blaster": 165693,
+    "hanger": 55231,
+    "fat_pack": 55231
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics Red Rainbow /5",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 88369,
+    "jumbo": 22092,
+    "mega": 212087,
+    "value_blaster": 331385,
+    "hanger": 110462,
+    "fat_pack": 110462
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics FoilFractor /1",
+   "set": "Rise To The Occasion Relics",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 426382,
+    "jumbo": 106596,
+    "mega": 1023318,
+    "value_blaster": 1598934,
+    "hanger": 532978,
+    "fat_pack": 532978
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 251,
+    "jumbo": 63,
+    "mega": 602,
+    "value_blaster": 941,
+    "hanger": 314
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants Rainbow Foilboard",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 589,
+    "jumbo": 147,
+    "mega": 1414,
+    "value_blaster": 2209,
+    "hanger": 736,
+    "fat_pack": 736
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants Green Rainbow /99",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 4465,
+    "jumbo": 1116,
+    "mega": 10715,
+    "value_blaster": 16743,
+    "hanger": 5581,
+    "fat_pack": 5581
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants Gold Rainbow /50",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 8837,
+    "jumbo": 2209,
+    "mega": 21209,
+    "value_blaster": 33139,
+    "hanger": 11046,
+    "fat_pack": 11046
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants Orange Rainbow /25",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 17674,
+    "jumbo": 4418,
+    "mega": 42417,
+    "value_blaster": 66277,
+    "hanger": 22092,
+    "fat_pack": 22092
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants Black Rainbow /10",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 44185,
+    "jumbo": 11046,
+    "mega": 106043,
+    "value_blaster": 165693,
+    "hanger": 55231,
+    "fat_pack": 55231
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants Red Rainbow /5",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 88369,
+    "jumbo": 22092,
+    "mega": 212087,
+    "value_blaster": 331385,
+    "hanger": 110462,
+    "fat_pack": 110462
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants FoilFractor /1",
+   "set": "Rookie Roundball Remnants Relics",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 426382,
+    "jumbo": 106596,
+    "mega": 1023318,
+    "value_blaster": 1598934,
+    "hanger": 532978,
+    "fat_pack": 532978
+   }
+  },
+  {
+   "label": "Woven Relics",
+   "set": "Woven Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 504,
+    "jumbo": 126,
+    "mega": 1210,
+    "value_blaster": 1891,
+    "hanger": 630
+   }
+  },
+  {
+   "label": "Woven Relics Rainbow Foilboard",
+   "set": "Woven Relics",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 1178,
+    "jumbo": 295,
+    "mega": 2828,
+    "value_blaster": 4418,
+    "hanger": 1473,
+    "fat_pack": 1473
+   }
+  },
+  {
+   "label": "Woven Relics Green Rainbow /99",
+   "set": "Woven Relics",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 8929,
+    "jumbo": 2232,
+    "mega": 21431,
+    "value_blaster": 33486,
+    "hanger": 11162,
+    "fat_pack": 11162
+   }
+  },
+  {
+   "label": "Woven Relics Gold Rainbow /50",
+   "set": "Woven Relics",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 17674,
+    "jumbo": 4418,
+    "mega": 42417,
+    "value_blaster": 66277,
+    "hanger": 22092,
+    "fat_pack": 22092
+   }
+  },
+  {
+   "label": "Woven Relics Orange Rainbow /25",
+   "set": "Woven Relics",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 35532,
+    "jumbo": 8883,
+    "mega": 85276,
+    "value_blaster": 133244,
+    "hanger": 44415,
+    "fat_pack": 44415
+   }
+  },
+  {
+   "label": "Woven Relics Black Rainbow /10",
+   "set": "Woven Relics",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 88369,
+    "jumbo": 22092,
+    "mega": 212087,
+    "value_blaster": 331385,
+    "hanger": 110462,
+    "fat_pack": 110462
+   }
+  },
+  {
+   "label": "Woven Relics Red Rainbow /5",
+   "set": "Woven Relics",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 181439,
+    "jumbo": 45360,
+    "mega": 435454,
+    "value_blaster": 680397,
+    "hanger": 226799,
+    "fat_pack": 226799
+   }
+  },
+  {
+   "label": "Woven Relics FoilFractor /1",
+   "set": "Woven Relics",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 852765,
+    "jumbo": 213191,
+    "mega": 2046636,
+    "value_blaster": 3197868,
+    "hanger": 1065956,
+    "fat_pack": 1065956
+   }
+  },
+  {
+   "label": "Fanatics Authentic Redemption",
+   "set": "Fanatics Authentic Redemption",
+   "parallel": "",
+   "odds": {
+    "fanatics_blaster": 421
+   }
+  },
+  {
+   "label": "1981-82 Topps",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "jumbo": 1,
+    "mega": 3,
+    "value_blaster": 6,
+    "hanger": 1
+   }
+  },
+  {
+   "label": "1981-82 Topps Pink",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 397,
+    "jumbo": 99,
+    "mega": 238,
+    "value_blaster": 477,
+    "hanger": 79,
+    "fat_pack": 159
+   }
+  },
+  {
+   "label": "1981-82 Topps Green /99",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 4052,
+    "jumbo": 1013,
+    "mega": 2431,
+    "value_blaster": 4863,
+    "hanger": 810,
+    "fat_pack": 1621,
+    "asg_mega": 136
+   }
+  },
+  {
+   "label": "1981-82 Topps Gold /50",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 8022,
+    "jumbo": 2005,
+    "mega": 4813,
+    "value_blaster": 9626,
+    "hanger": 1604,
+    "fat_pack": 3209,
+    "asg_mega": 269
+   }
+  },
+  {
+   "label": "1981-82 Topps Orange /25",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 16060,
+    "jumbo": 4015,
+    "mega": 9636,
+    "value_blaster": 19272,
+    "hanger": 3212,
+    "fat_pack": 6424
+   }
+  },
+  {
+   "label": "1981-82 Topps Black /10",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 40108,
+    "jumbo": 10027,
+    "mega": 24065,
+    "value_blaster": 48130,
+    "hanger": 8022,
+    "fat_pack": 16043,
+    "asg_mega": 1343
+   }
+  },
+  {
+   "label": "1981-82 Topps Red /5",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 80635,
+    "jumbo": 20159,
+    "mega": 48381,
+    "value_blaster": 96761,
+    "hanger": 16127,
+    "fat_pack": 32254,
+    "asg_mega": 2700
+   }
+  },
+  {
+   "label": "1981-82 Topps FoilFractor /1",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 387046,
+    "jumbo": 96761,
+    "mega": 232227,
+    "value_blaster": 464455,
+    "hanger": 77409,
+    "fat_pack": 154818
+   }
+  },
+  {
+   "label": "1981-82 Topps Base ASG",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Base ASG",
+   "odds": {
+    "asg_mega": 4
+   }
+  },
+  {
+   "label": "1981-82 Topps Orange 25",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Orange 25",
+   "odds": {
+    "asg_mega": 538
+   }
+  },
+  {
+   "label": "1981-82 Topps Platinum /1",
+   "set": "1981 82 Topps Basketball",
+   "parallel": "Platinum",
+   "odds": {
+    "asg_mega": 13787
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Aqua Mojo Refractor /199",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Aqua Mojo Refractor",
+   "odds": {
+    "silver_pack": 18
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Blue Mojo Refractor /150",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Blue Mojo Refractor",
+   "odds": {
+    "silver_pack": 24
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Green Mojo Refractor /99",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Green Mojo Refractor",
+   "odds": {
+    "silver_pack": 37
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Gold Mojo Refractor /50",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Gold Mojo Refractor",
+   "odds": {
+    "silver_pack": 72
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Orange Mojo Refractor /25",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Orange Mojo Refractor",
+   "odds": {
+    "silver_pack": 145
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Black Mojo Refractor /10",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Black Mojo Refractor",
+   "odds": {
+    "silver_pack": 361
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo Red Mojo Refractor /5",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "Red Mojo Refractor",
+   "odds": {
+    "silver_pack": 727
+   }
+  },
+  {
+   "label": "1981-82 Topps Chrome Mojo SuperFractor /1",
+   "set": "1981 82 Topps Chrome Basketball",
+   "parallel": "SuperFractor",
+   "odds": {
+    "silver_pack": 3488
+   }
+  },
+  {
+   "label": "All Kings",
+   "set": "All Kings",
+   "parallel": "",
+   "odds": {
+    "hobby": 1306,
+    "jumbo": 434,
+    "mega": 29350,
+    "value_blaster": 29755,
+    "hanger": 60753
+   }
+  },
+  {
+   "label": "All Kings Gold /1",
+   "set": "All Kings",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1106895,
+    "jumbo": 276952,
+    "mega": 1780267,
+    "value_blaster": 3773829,
+    "hanger": 502514,
+    "fat_pack": 1272857
+   }
+  },
+  {
+   "label": "Bounce",
+   "set": "Bounce",
+   "parallel": "",
+   "odds": {
+    "hobby": 3138,
+    "jumbo": 1043,
+    "mega": 70512,
+    "value_blaster": 71487,
+    "hanger": 145959
+   }
+  },
+  {
+   "label": "Certified Cold",
+   "set": "Certified Cold",
+   "parallel": "",
+   "odds": {
+    "mega": 4800,
+    "value_blaster": 4800,
+    "hanger": 768
+   }
+  },
+  {
+   "label": "Class of 26",
+   "set": "Class Of 26",
+   "parallel": "",
+   "odds": {
+    "hobby": 1568,
+    "jumbo": 521,
+    "mega": 35220,
+    "value_blaster": 35706,
+    "hanger": 72904
+   }
+  },
+  {
+   "label": "Class of 26 Red /5",
+   "set": "Class Of 26",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 252332,
+    "jumbo": 64450,
+    "mega": 414291,
+    "value_blaster": 434582,
+    "hanger": 124738,
+    "fat_pack": 263298
+   }
+  },
+  {
+   "label": "Class of 26 FoilFractor /1",
+   "set": "Class Of 26",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 1185959,
+    "jumbo": 302917,
+    "mega": 1947167,
+    "value_blaster": 2042536,
+    "hanger": 586267,
+    "fat_pack": 1237500
+   }
+  },
+  {
+   "label": "Comic Court",
+   "set": "Comic Court",
+   "parallel": "",
+   "odds": {
+    "hobby": 2475,
+    "jumbo": 296
+   }
+  },
+  {
+   "label": "Drivers",
+   "set": "Drivers",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 5,
+    "mega": 2,
+    "value_blaster": 4,
+    "hanger": 1
+   }
+  },
+  {
+   "label": "Drivers Rainbow Foilboard",
+   "set": "Drivers",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 3333,
+    "jumbo": 1060,
+    "mega": 560,
+    "value_blaster": 875,
+    "hanger": 233,
+    "fat_pack": 583
+   }
+  },
+  {
+   "label": "Drivers Purple Rainbow /250",
+   "set": "Drivers",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 13366,
+    "jumbo": 4253,
+    "mega": 2245,
+    "value_blaster": 3509,
+    "hanger": 936,
+    "fat_pack": 2339
+   }
+  },
+  {
+   "label": "Drivers Blue Rainbow /150",
+   "set": "Drivers",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 22276,
+    "jumbo": 7088,
+    "mega": 3742,
+    "value_blaster": 5848,
+    "hanger": 1559,
+    "fat_pack": 3898
+   }
+  },
+  {
+   "label": "Drivers Green Rainbow /99",
+   "set": "Drivers",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 33764,
+    "jumbo": 10743,
+    "mega": 5672,
+    "value_blaster": 8863,
+    "hanger": 2363,
+    "fat_pack": 5909
+   }
+  },
+  {
+   "label": "Drivers Gold Rainbow /50",
+   "set": "Drivers",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 66829,
+    "jumbo": 21264,
+    "mega": 11227,
+    "value_blaster": 17543,
+    "hanger": 4678,
+    "fat_pack": 11695
+   }
+  },
+  {
+   "label": "Drivers Orange Rainbow /25",
+   "set": "Drivers",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 133657,
+    "jumbo": 42527,
+    "mega": 22454,
+    "value_blaster": 35085,
+    "hanger": 9356,
+    "fat_pack": 23390
+   }
+  },
+  {
+   "label": "Drivers Black Rainbow /10",
+   "set": "Drivers",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 334144,
+    "jumbo": 106318,
+    "mega": 56136,
+    "value_blaster": 87713,
+    "hanger": 23390,
+    "fat_pack": 58475
+   }
+  },
+  {
+   "label": "Drivers Red Rainbow /5",
+   "set": "Drivers",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 668287,
+    "jumbo": 212637,
+    "mega": 112272,
+    "value_blaster": 175425,
+    "hanger": 46780,
+    "fat_pack": 116950
+   }
+  },
+  {
+   "label": "Drivers FoilFractor /1",
+   "set": "Drivers",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 3224485,
+    "jumbo": 1025973,
+    "mega": 541714,
+    "value_blaster": 846427,
+    "hanger": 225714,
+    "fat_pack": 564285
+   }
+  },
+  {
+   "label": "From the Vault",
+   "set": "From The Vault",
+   "parallel": "",
+   "odds": {
+    "hobby": 36,
+    "jumbo": 9
+   }
+  },
+  {
+   "label": "From the Vault Green Rainbow /99",
+   "set": "From The Vault",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 1826,
+    "jumbo": 457
+   }
+  },
+  {
+   "label": "From the Vault Gold Rainbow /50",
+   "set": "From The Vault",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 3615,
+    "jumbo": 904
+   }
+  },
+  {
+   "label": "From the Vault Orange Rainbow /25",
+   "set": "From The Vault",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 7229,
+    "jumbo": 1807
+   }
+  },
+  {
+   "label": "From the Vault Black Rainbow /10",
+   "set": "From The Vault",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 18073,
+    "jumbo": 4518
+   }
+  },
+  {
+   "label": "From the Vault Red Rainbow /5",
+   "set": "From The Vault",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 36147,
+    "jumbo": 9037
+   }
+  },
+  {
+   "label": "From the Vault FoilFractor /1",
+   "set": "From The Vault",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 174408,
+    "jumbo": 43602
+   }
+  },
+  {
+   "label": "Generation Now",
+   "set": "Generation Now",
+   "parallel": "",
+   "odds": {
+    "hobby": 29,
+    "jumbo": 9,
+    "mega": 5,
+    "value_blaster": 8,
+    "hanger": 2
+   }
+  },
+  {
+   "label": "Generation Now Rainbow Foilboard",
+   "set": "Generation Now",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 6683,
+    "jumbo": 2126,
+    "mega": 1123,
+    "value_blaster": 1754,
+    "hanger": 468,
+    "fat_pack": 1170
+   }
+  },
+  {
+   "label": "Generation Now Purple Rainbow /250",
+   "set": "Generation Now",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 26731,
+    "jumbo": 8505,
+    "mega": 4491,
+    "value_blaster": 7017,
+    "hanger": 1871,
+    "fat_pack": 4678
+   }
+  },
+  {
+   "label": "Generation Now Blue Rainbow /150",
+   "set": "Generation Now",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 44552,
+    "jumbo": 14176,
+    "mega": 7485,
+    "value_blaster": 11695,
+    "hanger": 3119,
+    "fat_pack": 7797
+   }
+  },
+  {
+   "label": "Generation Now Green Rainbow /99",
+   "set": "Generation Now",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 67528,
+    "jumbo": 21486,
+    "mega": 11345,
+    "value_blaster": 17726,
+    "hanger": 4727,
+    "fat_pack": 11817
+   }
+  },
+  {
+   "label": "Generation Now Gold Rainbow /50",
+   "set": "Generation Now",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 133657,
+    "jumbo": 42527,
+    "mega": 22454,
+    "value_blaster": 35085,
+    "hanger": 9356,
+    "fat_pack": 23390
+   }
+  },
+  {
+   "label": "Generation Now Orange Rainbow /25",
+   "set": "Generation Now",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 268707,
+    "jumbo": 85498,
+    "mega": 45143,
+    "value_blaster": 70536,
+    "hanger": 18809,
+    "fat_pack": 47024
+   }
+  },
+  {
+   "label": "Generation Now Black Rainbow /10",
+   "set": "Generation Now",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 668287,
+    "jumbo": 212637,
+    "mega": 112272,
+    "value_blaster": 175425,
+    "hanger": 46780,
+    "fat_pack": 116950
+   }
+  },
+  {
+   "label": "Generation Now Red Rainbow /5",
+   "set": "Generation Now",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 1372121,
+    "jumbo": 436584,
+    "mega": 230516,
+    "value_blaster": 360182,
+    "hanger": 96048,
+    "fat_pack": 240121
+   }
+  },
+  {
+   "label": "Generation Now FoilFractor /1",
+   "set": "Generation Now",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 6448970,
+    "jumbo": 2051945,
+    "mega": 1083427,
+    "value_blaster": 1692855,
+    "hanger": 451428,
+    "fat_pack": 1128570
+   }
+  },
+  {
+   "label": "Hardwood Stars",
+   "set": "Hardwood Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 627,
+    "jumbo": 208,
+    "mega": 14091,
+    "value_blaster": 14286,
+    "hanger": 29167
+   }
+  },
+  {
+   "label": "Levitation",
+   "set": "Levitation",
+   "parallel": "",
+   "odds": {
+    "hobby": 145,
+    "jumbo": 36
+   }
+  },
+  {
+   "label": "Levitation Green Rainbow /99",
+   "set": "Levitation",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 7305,
+    "jumbo": 1826
+   }
+  },
+  {
+   "label": "Levitation Gold Rainbow /50",
+   "set": "Levitation",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 14534,
+    "jumbo": 3634
+   }
+  },
+  {
+   "label": "Levitation Orange Rainbow /25",
+   "set": "Levitation",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 29190,
+    "jumbo": 7297
+   }
+  },
+  {
+   "label": "Levitation Black Rainbow /10",
+   "set": "Levitation",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 74216,
+    "jumbo": 18554
+   }
+  },
+  {
+   "label": "Levitation Red Rainbow /5",
+   "set": "Levitation",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 151659,
+    "jumbo": 37915
+   }
+  },
+  {
+   "label": "Levitation FoilFractor /1",
+   "set": "Levitation",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 697632,
+    "jumbo": 174408
+   }
+  },
+  {
+   "label": "Limited Stock",
+   "set": "Limited Stock",
+   "parallel": "",
+   "odds": {
+    "bf_blaster": 7
+   }
+  },
+  {
+   "label": "Limited Stock Surge",
+   "set": "Limited Stock",
+   "parallel": "Surge",
+   "odds": {
+    "bf_blaster": 724
+   }
+  },
+  {
+   "label": "Limited Stock Flash Drop",
+   "set": "Limited Stock",
+   "parallel": "Flash Drop",
+   "odds": {
+    "bf_blaster": 1435
+   }
+  },
+  {
+   "label": "Limited Stock Cart Load",
+   "set": "Limited Stock",
+   "parallel": "Cart Load",
+   "odds": {
+    "bf_blaster": 2872
+   }
+  },
+  {
+   "label": "Limited Stock Cyber Circuit",
+   "set": "Limited Stock",
+   "parallel": "Cyber Circuit",
+   "odds": {
+    "bf_blaster": 14467
+   }
+  },
+  {
+   "label": "Limited Stock Doorbuster",
+   "set": "Limited Stock",
+   "parallel": "Doorbuster",
+   "odds": {
+    "bf_blaster": 75165
+   }
+  },
+  {
+   "label": "New School",
+   "set": "New School",
+   "parallel": "",
+   "odds": {
+    "hobby": 36,
+    "jumbo": 9
+   }
+  },
+  {
+   "label": "New School Green Rainbow /99",
+   "set": "New School",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 1826,
+    "jumbo": 457
+   }
+  },
+  {
+   "label": "New School Gold Rainbow /50",
+   "set": "New School",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 3615,
+    "jumbo": 904
+   }
+  },
+  {
+   "label": "New School Orange Rainbow /25",
+   "set": "New School",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 7229,
+    "jumbo": 1807
+   }
+  },
+  {
+   "label": "New School Black Rainbow /10",
+   "set": "New School",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 18073,
+    "jumbo": 4518
+   }
+  },
+  {
+   "label": "New School Red Rainbow /5",
+   "set": "New School",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 36147,
+    "jumbo": 9037
+   }
+  },
+  {
+   "label": "New School FoilFractor /1",
+   "set": "New School",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 174408,
+    "jumbo": 43602
+   }
+  },
+  {
+   "label": "No Limit",
+   "set": "No Limit",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 5,
+    "mega": 2,
+    "value_blaster": 4,
+    "hanger": 1
+   }
+  },
+  {
+   "label": "No Limit Rainbow Foilboard",
+   "set": "No Limit",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 3333,
+    "jumbo": 1060,
+    "mega": 560,
+    "value_blaster": 875,
+    "hanger": 233,
+    "fat_pack": 583
+   }
+  },
+  {
+   "label": "No Limit Purple Rainbow /250",
+   "set": "No Limit",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 13366,
+    "jumbo": 4253,
+    "mega": 2245,
+    "value_blaster": 3509,
+    "hanger": 936,
+    "fat_pack": 2339
+   }
+  },
+  {
+   "label": "No Limit Blue Rainbow /150",
+   "set": "No Limit",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 22276,
+    "jumbo": 7088,
+    "mega": 3742,
+    "value_blaster": 5848,
+    "hanger": 1559,
+    "fat_pack": 3898
+   }
+  },
+  {
+   "label": "No Limit Green Rainbow /99",
+   "set": "No Limit",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 33764,
+    "jumbo": 10743,
+    "mega": 5672,
+    "value_blaster": 8863,
+    "hanger": 2363,
+    "fat_pack": 5909
+   }
+  },
+  {
+   "label": "No Limit Gold Rainbow /50",
+   "set": "No Limit",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 66829,
+    "jumbo": 21264,
+    "mega": 11227,
+    "value_blaster": 17543,
+    "hanger": 4678,
+    "fat_pack": 11695
+   }
+  },
+  {
+   "label": "No Limit Orange Rainbow /25",
+   "set": "No Limit",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 133657,
+    "jumbo": 42527,
+    "mega": 22454,
+    "value_blaster": 35085,
+    "hanger": 9356,
+    "fat_pack": 23390
+   }
+  },
+  {
+   "label": "No Limit Black Rainbow /10",
+   "set": "No Limit",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 334144,
+    "jumbo": 106318,
+    "mega": 56136,
+    "value_blaster": 87713,
+    "hanger": 23390,
+    "fat_pack": 58475
+   }
+  },
+  {
+   "label": "No Limit Red Rainbow /5",
+   "set": "No Limit",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 668287,
+    "jumbo": 212637,
+    "mega": 112272,
+    "value_blaster": 175425,
+    "hanger": 46780,
+    "fat_pack": 116950
+   }
+  },
+  {
+   "label": "No Limit FoilFractor /1",
+   "set": "No Limit",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 3224485,
+    "jumbo": 1025973,
+    "mega": 541714,
+    "value_blaster": 846427,
+    "hanger": 225714,
+    "fat_pack": 564285
+   }
+  },
+  {
+   "label": "Poster Factory",
+   "set": "Poster Factory",
+   "parallel": "",
+   "odds": {
+    "hobby": 29,
+    "jumbo": 9,
+    "mega": 5,
+    "value_blaster": 8,
+    "hanger": 2
+   }
+  },
+  {
+   "label": "Poster Factory Rainbow Foilboard",
+   "set": "Poster Factory",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 6683,
+    "jumbo": 2126,
+    "mega": 1123,
+    "value_blaster": 1754,
+    "hanger": 468,
+    "fat_pack": 1170
+   }
+  },
+  {
+   "label": "Poster Factory Purple Rainbow /250",
+   "set": "Poster Factory",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 26731,
+    "jumbo": 8505,
+    "mega": 4491,
+    "value_blaster": 7017,
+    "hanger": 1871,
+    "fat_pack": 4678
+   }
+  },
+  {
+   "label": "Poster Factory Blue Rainbow /150",
+   "set": "Poster Factory",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 44552,
+    "jumbo": 14176,
+    "mega": 7485,
+    "value_blaster": 11695,
+    "hanger": 3119,
+    "fat_pack": 7797
+   }
+  },
+  {
+   "label": "Poster Factory Green Rainbow /99",
+   "set": "Poster Factory",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 67528,
+    "jumbo": 21486,
+    "mega": 11345,
+    "value_blaster": 17726,
+    "hanger": 4727,
+    "fat_pack": 11817
+   }
+  },
+  {
+   "label": "Poster Factory Gold Rainbow /50",
+   "set": "Poster Factory",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 133657,
+    "jumbo": 42527,
+    "mega": 22454,
+    "value_blaster": 35085,
+    "hanger": 9356,
+    "fat_pack": 23390
+   }
+  },
+  {
+   "label": "Poster Factory Orange Rainbow /25",
+   "set": "Poster Factory",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 268707,
+    "jumbo": 85498,
+    "mega": 45143,
+    "value_blaster": 70536,
+    "hanger": 18809,
+    "fat_pack": 47024
+   }
+  },
+  {
+   "label": "Poster Factory Black Rainbow /10",
+   "set": "Poster Factory",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 668287,
+    "jumbo": 212637,
+    "mega": 112272,
+    "value_blaster": 175425,
+    "hanger": 46780,
+    "fat_pack": 116950
+   }
+  },
+  {
+   "label": "Poster Factory Red Rainbow /5",
+   "set": "Poster Factory",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 1372121,
+    "jumbo": 436584,
+    "mega": 230516,
+    "value_blaster": 360182,
+    "hanger": 96048,
+    "fat_pack": 240121
+   }
+  },
+  {
+   "label": "Poster Factory FoilFractor /1",
+   "set": "Poster Factory",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 6448970,
+    "jumbo": 2051945,
+    "mega": 1083427,
+    "value_blaster": 1692855,
+    "hanger": 451428,
+    "fat_pack": 1128570
+   }
+  },
+  {
+   "label": "Quest for the Crown",
+   "set": "Quest For The Crown",
+   "parallel": "",
+   "odds": {
+    "hobby": 2475,
+    "jumbo": 296
+   }
+  },
+  {
+   "label": "Rookie Code",
+   "set": "Rookie Code",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 5,
+    "mega": 2,
+    "value_blaster": 4,
+    "hanger": 1
+   }
+  },
+  {
+   "label": "Rookie Code Rainbow Foilboard",
+   "set": "Rookie Code",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 3333,
+    "jumbo": 1060,
+    "mega": 560,
+    "value_blaster": 875,
+    "hanger": 233,
+    "fat_pack": 583
+   }
+  },
+  {
+   "label": "Rookie Code Purple Rainbow /250",
+   "set": "Rookie Code",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 13366,
+    "jumbo": 4253,
+    "mega": 2245,
+    "value_blaster": 3509,
+    "hanger": 936,
+    "fat_pack": 2339
+   }
+  },
+  {
+   "label": "Rookie Code Blue Rainbow /150",
+   "set": "Rookie Code",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 22276,
+    "jumbo": 7088,
+    "mega": 3742,
+    "value_blaster": 5848,
+    "hanger": 1559,
+    "fat_pack": 3898
+   }
+  },
+  {
+   "label": "Rookie Code Green Rainbow /99",
+   "set": "Rookie Code",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 33764,
+    "jumbo": 10743,
+    "mega": 5672,
+    "value_blaster": 8863,
+    "hanger": 2363,
+    "fat_pack": 5909
+   }
+  },
+  {
+   "label": "Rookie Code Gold Rainbow /50",
+   "set": "Rookie Code",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 66829,
+    "jumbo": 21264,
+    "mega": 11227,
+    "value_blaster": 17543,
+    "hanger": 4678,
+    "fat_pack": 11695
+   }
+  },
+  {
+   "label": "Rookie Code Orange Rainbow /25",
+   "set": "Rookie Code",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 133657,
+    "jumbo": 42527,
+    "mega": 22454,
+    "value_blaster": 35085,
+    "hanger": 9356,
+    "fat_pack": 23390
+   }
+  },
+  {
+   "label": "Rookie Code Black Rainbow /10",
+   "set": "Rookie Code",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 334144,
+    "jumbo": 106318,
+    "mega": 56136,
+    "value_blaster": 87713,
+    "hanger": 23390,
+    "fat_pack": 58475
+   }
+  },
+  {
+   "label": "Rookie Code Red Rainbow /5",
+   "set": "Rookie Code",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 668287,
+    "jumbo": 212637,
+    "mega": 112272,
+    "value_blaster": 175425,
+    "hanger": 46780,
+    "fat_pack": 116950
+   }
+  },
+  {
+   "label": "Rookie Code FoilFractor /1",
+   "set": "Rookie Code",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 3224485,
+    "jumbo": 1025973,
+    "mega": 541714,
+    "value_blaster": 846427,
+    "hanger": 225714,
+    "fat_pack": 564285
+   }
+  },
+  {
+   "label": "Scan and Slam",
+   "set": "Scan And Slam",
+   "parallel": "",
+   "odds": {
+    "bf_blaster": 7
+   }
+  },
+  {
+   "label": "Scan and Slam Surge",
+   "set": "Scan And Slam",
+   "parallel": "Surge",
+   "odds": {
+    "bf_blaster": 724
+   }
+  },
+  {
+   "label": "Scan and Slam Flash Drop",
+   "set": "Scan And Slam",
+   "parallel": "Flash Drop",
+   "odds": {
+    "bf_blaster": 1435
+   }
+  },
+  {
+   "label": "Scan and Slam Cart Load",
+   "set": "Scan And Slam",
+   "parallel": "Cart Load",
+   "odds": {
+    "bf_blaster": 2872
+   }
+  },
+  {
+   "label": "Scan and Slam Cyber Circuit",
+   "set": "Scan And Slam",
+   "parallel": "Cyber Circuit",
+   "odds": {
+    "bf_blaster": 14467
+   }
+  },
+  {
+   "label": "Scan and Slam Doorbuster",
+   "set": "Scan And Slam",
+   "parallel": "Doorbuster",
+   "odds": {
+    "bf_blaster": 75165
+   }
+  },
+  {
+   "label": "Soundcheck",
+   "set": "Soundcheck",
+   "parallel": "",
+   "odds": {
+    "mega": 3840,
+    "value_blaster": 3840,
+    "hanger": 480
+   }
+  },
+  {
+   "label": "Stars of Destiny Green /99",
+   "set": "Stars Of Destiny",
+   "parallel": "Green",
+   "odds": {
+    "china": 1665
+   }
+  },
+  {
+   "label": "Stars of Destiny Yellow /75",
+   "set": "Stars Of Destiny",
+   "parallel": "Yellow",
+   "odds": {
+    "china": 2199
+   }
+  },
+  {
+   "label": "Stars of Destiny Gold /50",
+   "set": "Stars Of Destiny",
+   "parallel": "Gold",
+   "odds": {
+    "china": 3302
+   }
+  },
+  {
+   "label": "Stars of Destiny Orange 25",
+   "set": "Stars Of Destiny",
+   "parallel": "Orange 25",
+   "odds": {
+    "china": 6614
+   }
+  },
+  {
+   "label": "Stars of Destiny Black /10",
+   "set": "Stars Of Destiny",
+   "parallel": "Black",
+   "odds": {
+    "china": 16632
+   }
+  },
+  {
+   "label": "Stars of Destiny Red /5",
+   "set": "Stars Of Destiny",
+   "parallel": "Red",
+   "odds": {
+    "china": 33404
+   }
+  },
+  {
+   "label": "Stars of Destiny FoilFractor /1",
+   "set": "Stars Of Destiny",
+   "parallel": "FoilFractor",
+   "odds": {
+    "china": 180686
+   }
+  },
+  {
+   "label": "Stars of NBA",
+   "set": "Stars Of NBA",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 5,
+    "mega": 2,
+    "value_blaster": 4,
+    "hanger": 1
+   }
+  },
+  {
+   "label": "Stars of NBA Rainbow Foilboard",
+   "set": "Stars Of NBA",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 3333,
+    "jumbo": 1060,
+    "mega": 560,
+    "value_blaster": 875,
+    "hanger": 233,
+    "fat_pack": 583
+   }
+  },
+  {
+   "label": "Stars of NBA Purple Rainbow /250",
+   "set": "Stars Of NBA",
+   "parallel": "Purple Rainbow",
+   "odds": {
+    "hobby": 13366,
+    "jumbo": 4253,
+    "mega": 2245,
+    "value_blaster": 3509,
+    "hanger": 936,
+    "fat_pack": 2339
+   }
+  },
+  {
+   "label": "Stars of NBA Blue Rainbow /150",
+   "set": "Stars Of NBA",
+   "parallel": "Blue Rainbow",
+   "odds": {
+    "hobby": 22276,
+    "jumbo": 7088,
+    "mega": 3742,
+    "value_blaster": 5848,
+    "hanger": 1559,
+    "fat_pack": 3898
+   }
+  },
+  {
+   "label": "Stars of NBA Green Rainbow /99",
+   "set": "Stars Of NBA",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 33764,
+    "jumbo": 10743,
+    "mega": 5672,
+    "value_blaster": 8863,
+    "hanger": 2363,
+    "fat_pack": 5909
+   }
+  },
+  {
+   "label": "Stars of NBA Gold Rainbow /50",
+   "set": "Stars Of NBA",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 66829,
+    "jumbo": 21264,
+    "mega": 11227,
+    "value_blaster": 17543,
+    "hanger": 4678,
+    "fat_pack": 11695
+   }
+  },
+  {
+   "label": "Stars of NBA Orange Rainbow /25",
+   "set": "Stars Of NBA",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 133657,
+    "jumbo": 42527,
+    "mega": 22454,
+    "value_blaster": 35085,
+    "hanger": 9356,
+    "fat_pack": 23390
+   }
+  },
+  {
+   "label": "Stars of NBA Black Rainbow /10",
+   "set": "Stars Of NBA",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 334144,
+    "jumbo": 106318,
+    "mega": 56136,
+    "value_blaster": 87713,
+    "hanger": 23390,
+    "fat_pack": 58475
+   }
+  },
+  {
+   "label": "Stars of NBA Red Rainbow /5",
+   "set": "Stars Of NBA",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 668287,
+    "jumbo": 212637,
+    "mega": 112272,
+    "value_blaster": 175425,
+    "hanger": 46780,
+    "fat_pack": 116950
+   }
+  },
+  {
+   "label": "Stars of NBA FoilFractor /1",
+   "set": "Stars Of NBA",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 3224485,
+    "jumbo": 1025973,
+    "mega": 541714,
+    "value_blaster": 846427,
+    "hanger": 225714,
+    "fat_pack": 564285
+   }
+  },
+  {
+   "label": "The Daily Dribble",
+   "set": "The Daily Dribble",
+   "parallel": "",
+   "odds": {
+    "hobby": 73,
+    "jumbo": 18
+   }
+  },
+  {
+   "label": "The Daily Dribble Green Rainbow /99",
+   "set": "The Daily Dribble",
+   "parallel": "Green Rainbow",
+   "odds": {
+    "hobby": 3653,
+    "jumbo": 913
+   }
+  },
+  {
+   "label": "The Daily Dribble Gold Rainbow /50",
+   "set": "The Daily Dribble",
+   "parallel": "Gold Rainbow",
+   "odds": {
+    "hobby": 7229,
+    "jumbo": 1807
+   }
+  },
+  {
+   "label": "The Daily Dribble Orange Rainbow /25",
+   "set": "The Daily Dribble",
+   "parallel": "Orange Rainbow",
+   "odds": {
+    "hobby": 14534,
+    "jumbo": 3634
+   }
+  },
+  {
+   "label": "The Daily Dribble Black Rainbow /10",
+   "set": "The Daily Dribble",
+   "parallel": "Black Rainbow",
+   "odds": {
+    "hobby": 36147,
+    "jumbo": 9037
+   }
+  },
+  {
+   "label": "The Daily Dribble Red Rainbow /5",
+   "set": "The Daily Dribble",
+   "parallel": "Red Rainbow",
+   "odds": {
+    "hobby": 74216,
+    "jumbo": 18554
+   }
+  },
+  {
+   "label": "The Daily Dribble FoilFractor 1/",
+   "set": "The Daily Dribble",
+   "parallel": "FoilFractor 1/",
+   "odds": {
+    "hobby": 348816,
+    "jumbo": 87204
+   }
+  }
+ ]
+}

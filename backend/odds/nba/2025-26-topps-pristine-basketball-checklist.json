@@ -1,0 +1,1008 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-pristine-basketball-checklist",
+ "product_label": "2025-26 Topps Pristine Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "instant_packs",
+   "label": "Instant Packs",
+   "channel": "special",
+   "group": "instant_packs"
+  },
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "fdi",
+   "label": "FDI",
+   "channel": "hobby",
+   "group": "fdi"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 1,
+    "fdi": 1,
+    "instant_packs": 1
+   }
+  },
+  {
+   "label": "Base Paint the Arc Refractor",
+   "set": "Base",
+   "parallel": "Paint the Arc Refractor",
+   "odds": {
+    "hobby": 2,
+    "fdi": 2,
+    "instant_packs": 12
+   }
+  },
+  {
+   "label": "Base Aqua Refractor /199",
+   "set": "Base",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 7,
+    "fdi": 8,
+    "instant_packs": 11
+   }
+  },
+  {
+   "label": "Base Green Refractor /150",
+   "set": "Base",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 10,
+    "fdi": 10,
+    "instant_packs": 15
+   }
+  },
+  {
+   "label": "Base Lavender Refractor /125",
+   "set": "Base",
+   "parallel": "Lavender Refractor",
+   "odds": {
+    "hobby": 12,
+    "fdi": 12,
+    "instant_packs": 18
+   }
+  },
+  {
+   "label": "Base Purple Refractor /99",
+   "set": "Base",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 15,
+    "fdi": 15,
+    "instant_packs": 23
+   }
+  },
+  {
+   "label": "Base Blue Refractor /75",
+   "set": "Base",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 19,
+    "fdi": 20,
+    "instant_packs": 30
+   }
+  },
+  {
+   "label": "Base Gold Refractor /50",
+   "set": "Base",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 29,
+    "fdi": 30,
+    "instant_packs": 45
+   }
+  },
+  {
+   "label": "Base Orange Refractor /25",
+   "set": "Base",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 58,
+    "fdi": 60,
+    "instant_packs": 90
+   }
+  },
+  {
+   "label": "Base Pink Refractor /15",
+   "set": "Base",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "hobby": 97,
+    "fdi": 99,
+    "instant_packs": 150
+   }
+  },
+  {
+   "label": "Base Primaries Refractor /10",
+   "set": "Base",
+   "parallel": "Primaries Refractor",
+   "odds": {
+    "hobby": 146,
+    "fdi": 151,
+    "instant_packs": 225
+   }
+  },
+  {
+   "label": "Base Red Refractor /5",
+   "set": "Base",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 293,
+    "fdi": 284,
+    "instant_packs": 450
+   }
+  },
+  {
+   "label": "Base SuperFractor /1",
+   "set": "Base",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 1473,
+    "fdi": 1135,
+    "instant_packs": 2308
+   }
+  },
+  {
+   "label": "Base 4th Quarter Aqua Refractor /12",
+   "set": "Base",
+   "parallel": "4th Quarter Aqua Refractor",
+   "odds": {
+    "fdi": 3
+   }
+  },
+  {
+   "label": "Base In the Paint Light Pink Refractor /6",
+   "set": "Base",
+   "parallel": "In the Paint Light Pink Refractor",
+   "odds": {
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Base Teal Glitter /57",
+   "set": "Base",
+   "parallel": "Teal Glitter",
+   "odds": {
+    "instant_packs": 4
+   }
+  },
+  {
+   "label": "Base Black Glitter /11",
+   "set": "Base",
+   "parallel": "Black Glitter",
+   "odds": {
+    "instant_packs": 23
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Aqua /199",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Aqua",
+   "odds": {
+    "hobby": 17,
+    "fdi": 17,
+    "instant_packs": 46
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Green /150",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Green",
+   "odds": {
+    "hobby": 21,
+    "fdi": 22,
+    "instant_packs": 58
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Purple /99",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Purple",
+   "odds": {
+    "hobby": 22,
+    "fdi": 22,
+    "instant_packs": 59
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Blue /75",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Blue",
+   "odds": {
+    "hobby": 26,
+    "fdi": 27,
+    "instant_packs": 71
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Gold /50",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Gold",
+   "odds": {
+    "hobby": 39,
+    "fdi": 40,
+    "instant_packs": 106
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Orange /25",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Orange",
+   "odds": {
+    "hobby": 77,
+    "fdi": 79,
+    "instant_packs": 212
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Pink /15",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Pink",
+   "odds": {
+    "hobby": 128,
+    "fdi": 132,
+    "instant_packs": 351
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Primaries /10",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Primaries",
+   "odds": {
+    "hobby": 188,
+    "fdi": 193,
+    "instant_packs": 516
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Red /5",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Red",
+   "odds": {
+    "hobby": 379,
+    "fdi": 389,
+    "instant_packs": 1039
+   }
+  },
+  {
+   "label": "Pristine Autographs Pristine Black /1",
+   "set": "Pristine Autographs",
+   "parallel": "Pristine Black",
+   "odds": {
+    "hobby": 1945,
+    "fdi": 1997,
+    "instant_packs": 5325
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Aqua /199",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Aqua",
+   "odds": {
+    "hobby": 16,
+    "fdi": 17,
+    "instant_packs": 44
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Green /150",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Green",
+   "odds": {
+    "hobby": 21,
+    "fdi": 22,
+    "instant_packs": 59
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Purple /99",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Purple",
+   "odds": {
+    "hobby": 29,
+    "fdi": 29,
+    "instant_packs": 79
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Blue /75",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Blue",
+   "odds": {
+    "hobby": 37,
+    "fdi": 37,
+    "instant_packs": 100
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Gold /50",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Gold",
+   "odds": {
+    "hobby": 55,
+    "fdi": 57,
+    "instant_packs": 151
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Orange /25",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Orange",
+   "odds": {
+    "hobby": 109,
+    "fdi": 112,
+    "instant_packs": 299
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Pink /15",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Pink",
+   "odds": {
+    "hobby": 182,
+    "fdi": 187,
+    "instant_packs": 499
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Primaries /10",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Primaries",
+   "odds": {
+    "hobby": 272,
+    "fdi": 279,
+    "instant_packs": 743
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Red /5",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Red",
+   "odds": {
+    "hobby": 552,
+    "fdi": 566,
+    "instant_packs": 1510
+   }
+  },
+  {
+   "label": "Pristine Rookie Autographs Pristine Black /1",
+   "set": "Pristine Rookie Autographs",
+   "parallel": "Pristine Black",
+   "odds": {
+    "hobby": 2743,
+    "fdi": 2816,
+    "instant_packs": 7510
+   }
+  },
+  {
+   "label": "Italics Autographs SuperFractor /1",
+   "set": "Italics Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 2140,
+    "fdi": 2197,
+    "instant_packs": 5858
+   }
+  },
+  {
+   "label": "Mark of the Moment Autographs SuperFractor /1",
+   "set": "Mark Of The Moment",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 2184,
+    "fdi": 2241,
+    "instant_packs": 5977
+   }
+  },
+  {
+   "label": "Personal Endorsements Autographs Pristine Red /5",
+   "set": "Personal Endorsements Autographs",
+   "parallel": "Pristine Red",
+   "odds": {
+    "hobby": 569,
+    "fdi": 584,
+    "instant_packs": 1558
+   }
+  },
+  {
+   "label": "Personal Endorsements Autographs Pristine Black /1",
+   "set": "Personal Endorsements Autographs",
+   "parallel": "Pristine Black",
+   "odds": {
+    "hobby": 2743,
+    "fdi": 2816,
+    "instant_packs": 7510
+   }
+  },
+  {
+   "label": "Popular Demand Autograph Relics Pristine Blue /75",
+   "set": "Popular Demand Autograph Relics",
+   "parallel": "Pristine Blue",
+   "odds": {
+    "hobby": 37,
+    "instant_packs": 147
+   }
+  },
+  {
+   "label": "Popular Demand Autograph Relics Pristine Gold /50",
+   "set": "Popular Demand Autograph Relics",
+   "parallel": "Pristine Gold",
+   "odds": {
+    "hobby": 55,
+    "instant_packs": 221
+   }
+  },
+  {
+   "label": "Popular Demand Autograph Relics Pristine Orange /25",
+   "set": "Popular Demand Autograph Relics",
+   "parallel": "Pristine Orange",
+   "odds": {
+    "hobby": 109,
+    "instant_packs": 437
+   }
+  },
+  {
+   "label": "Popular Demand Autograph Relics Pristine Pink /15",
+   "set": "Popular Demand Autograph Relics",
+   "parallel": "Pristine Pink",
+   "odds": {
+    "hobby": 177,
+    "instant_packs": 709
+   }
+  },
+  {
+   "label": "Popular Demand Autograph Relics Pristine Red /5",
+   "set": "Popular Demand Autograph Relics",
+   "parallel": "Pristine Red",
+   "odds": {
+    "hobby": 530,
+    "instant_packs": 2128
+   }
+  },
+  {
+   "label": "Popular Demand Autograph Relics Pristine Black /1",
+   "set": "Popular Demand Autograph Relics",
+   "parallel": "Pristine Black",
+   "odds": {
+    "hobby": 2650,
+    "instant_packs": 10639
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Purple /99",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Purple",
+   "odds": {
+    "hobby": 42,
+    "instant_packs": 169
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Blue /75",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Blue",
+   "odds": {
+    "hobby": 36,
+    "instant_packs": 143
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Gold /50",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Gold",
+   "odds": {
+    "hobby": 49,
+    "instant_packs": 198
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Orange /25",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Orange",
+   "odds": {
+    "hobby": 78,
+    "instant_packs": 312
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Pink /15",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Pink",
+   "odds": {
+    "hobby": 125,
+    "instant_packs": 500
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Red /5",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Red",
+   "odds": {
+    "hobby": 386,
+    "instant_packs": 1549
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Pristine Black /1",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Pristine Black",
+   "odds": {
+    "hobby": 1865,
+    "instant_packs": 7487
+   }
+  },
+  {
+   "label": "Pristine Pieces Autograph Relics Molten Mercury /11",
+   "set": "Pristine Pieces Autograph Relics",
+   "parallel": "Molten Mercury",
+   "odds": {
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Purple /99",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Purple",
+   "odds": {
+    "hobby": 31,
+    "instant_packs": 126
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Blue /75",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Blue",
+   "odds": {
+    "hobby": 42,
+    "instant_packs": 167
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Gold /50",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Gold",
+   "odds": {
+    "hobby": 59,
+    "instant_packs": 236
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Orange /25",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Orange",
+   "odds": {
+    "hobby": 118,
+    "instant_packs": 474
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Pink /15",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Pink",
+   "odds": {
+    "hobby": 193,
+    "instant_packs": 773
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Red /5",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Red",
+   "odds": {
+    "hobby": 575,
+    "instant_packs": 2310
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Pristine Black /1",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Pristine Black",
+   "odds": {
+    "hobby": 2877,
+    "instant_packs": 11551
+   }
+  },
+  {
+   "label": "Pristine Pieces Rookie Autograph Relics Molten Mercury /11",
+   "set": "Pristine Pieces Rookie Autograph Relics",
+   "parallel": "Molten Mercury",
+   "odds": {
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Forever Green Refractor /150",
+   "set": "Forever",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 142,
+    "fdi": 142,
+    "instant_packs": 302
+   }
+  },
+  {
+   "label": "Forever Purple Refractor /99",
+   "set": "Forever",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 214,
+    "fdi": 214,
+    "instant_packs": 457
+   }
+  },
+  {
+   "label": "Forever Blue Refractor /75",
+   "set": "Forever",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 284,
+    "fdi": 284,
+    "instant_packs": 605
+   }
+  },
+  {
+   "label": "Forever Gold Refractor /50",
+   "set": "Forever",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 426,
+    "fdi": 426,
+    "instant_packs": 910
+   }
+  },
+  {
+   "label": "Forever Orange Refractor /25",
+   "set": "Forever",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 857,
+    "fdi": 857,
+    "instant_packs": 1827
+   }
+  },
+  {
+   "label": "Forever Red Refractor /5",
+   "set": "Forever",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 4450,
+    "fdi": 4450,
+    "instant_packs": 9494
+   }
+  },
+  {
+   "label": "Forever SuperFractor /1",
+   "set": "Forever",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29245,
+    "fdi": 29245,
+    "instant_packs": 62390
+   }
+  },
+  {
+   "label": "Fresh Out of the Box Green Refractor /150",
+   "set": "Fresh Out Of The Box",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 94,
+    "fdi": 94,
+    "instant_packs": 201
+   }
+  },
+  {
+   "label": "Fresh Out of the Box Purple Refractor /99",
+   "set": "Fresh Out Of The Box",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 143,
+    "fdi": 143,
+    "instant_packs": 305
+   }
+  },
+  {
+   "label": "Fresh Out of the Box Blue Refractor /75",
+   "set": "Fresh Out Of The Box",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 189,
+    "fdi": 189,
+    "instant_packs": 403
+   }
+  },
+  {
+   "label": "Fresh Out of the Box Gold Refractor /50",
+   "set": "Fresh Out Of The Box",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 284,
+    "fdi": 284,
+    "instant_packs": 605
+   }
+  },
+  {
+   "label": "Fresh Out of the Box Orange Refractor /25",
+   "set": "Fresh Out Of The Box",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 567,
+    "fdi": 567,
+    "instant_packs": 1210
+   }
+  },
+  {
+   "label": "Fresh Out of the Box Red Refractor /5",
+   "set": "Fresh Out Of The Box",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2883,
+    "fdi": 2883,
+    "instant_packs": 6151
+   }
+  },
+  {
+   "label": "Fresh Out of the Box SuperFractor /1",
+   "set": "Fresh Out Of The Box",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 17060,
+    "fdi": 17060,
+    "instant_packs": 36394
+   }
+  },
+  {
+   "label": "Grandmaster SuperFractor /1",
+   "set": "Grandmaster",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 19019,
+    "fdi": 19019,
+    "instant_packs": 16906
+   }
+  },
+  {
+   "label": "Impact Frame Green Refractor /150",
+   "set": "Impact Frame",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 57,
+    "fdi": 57,
+    "instant_packs": 121
+   }
+  },
+  {
+   "label": "Impact Frame Purple Refractor /99",
+   "set": "Impact Frame",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 86,
+    "fdi": 86,
+    "instant_packs": 183
+   }
+  },
+  {
+   "label": "Impact Frame Blue Refractor /75",
+   "set": "Impact Frame",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 113,
+    "fdi": 113,
+    "instant_packs": 242
+   }
+  },
+  {
+   "label": "Impact Frame Gold Refractor /50",
+   "set": "Impact Frame",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 170,
+    "fdi": 170,
+    "instant_packs": 363
+   }
+  },
+  {
+   "label": "Impact Frame Orange Refractor /25",
+   "set": "Impact Frame",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 341,
+    "fdi": 341,
+    "instant_packs": 727
+   }
+  },
+  {
+   "label": "Impact Frame Red Refractor /5",
+   "set": "Impact Frame",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1720,
+    "fdi": 1720,
+    "instant_packs": 3670
+   }
+  },
+  {
+   "label": "Impact Frame SuperFractor /1",
+   "set": "Impact Frame",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 9305,
+    "fdi": 9305,
+    "instant_packs": 19851
+   }
+  },
+  {
+   "label": "Mixtape SuperFractor /1",
+   "set": "Mixtape",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 7362,
+    "fdi": 7362,
+    "instant_packs": 6544
+   }
+  },
+  {
+   "label": "Monogram SuperFractor /1",
+   "set": "Monogram",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 10374,
+    "fdi": 10374,
+    "instant_packs": 9221
+   }
+  },
+  {
+   "label": "Precisionaries Green Refractor /150",
+   "set": "Precisionaries",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 47,
+    "fdi": 47,
+    "instant_packs": 101
+   }
+  },
+  {
+   "label": "Precisionaries Purple Refractor /99",
+   "set": "Precisionaries",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 71,
+    "fdi": 71,
+    "instant_packs": 152
+   }
+  },
+  {
+   "label": "Precisionaries Blue Refractor /75",
+   "set": "Precisionaries",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 94,
+    "fdi": 94,
+    "instant_packs": 201
+   }
+  },
+  {
+   "label": "Precisionaries Gold Refractor /50",
+   "set": "Precisionaries",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 142,
+    "fdi": 142,
+    "instant_packs": 302
+   }
+  },
+  {
+   "label": "Precisionaries Orange Refractor /25",
+   "set": "Precisionaries",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 284,
+    "fdi": 284,
+    "instant_packs": 605
+   }
+  },
+  {
+   "label": "Precisionaries Red Refractor /5",
+   "set": "Precisionaries",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1432,
+    "fdi": 1432,
+    "instant_packs": 3054
+   }
+  },
+  {
+   "label": "Precisionaries SuperFractor /1",
+   "set": "Precisionaries",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 7874,
+    "fdi": 7874,
+    "instant_packs": 16797
+   }
+  },
+  {
+   "label": "Stacked Green Refractor /150",
+   "set": "Stacked",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 71,
+    "fdi": 71,
+    "instant_packs": 151
+   }
+  },
+  {
+   "label": "Stacked Purple Refractor /99",
+   "set": "Stacked",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 107,
+    "fdi": 107,
+    "instant_packs": 229
+   }
+  },
+  {
+   "label": "Stacked Blue Refractor /75",
+   "set": "Stacked",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 142,
+    "fdi": 142,
+    "instant_packs": 302
+   }
+  },
+  {
+   "label": "Stacked Gold Refractor /50",
+   "set": "Stacked",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 212,
+    "fdi": 212,
+    "instant_packs": 453
+   }
+  },
+  {
+   "label": "Stacked Orange Refractor /25",
+   "set": "Stacked",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 426,
+    "fdi": 426,
+    "instant_packs": 910
+   }
+  },
+  {
+   "label": "Stacked Red Refractor /5",
+   "set": "Stacked",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2178,
+    "fdi": 2178,
+    "instant_packs": 4646
+   }
+  },
+  {
+   "label": "Stacked SuperFractor /1",
+   "set": "Stacked",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 12042,
+    "fdi": 12042,
+    "instant_packs": 25690
+   }
+  }
+ ]
+}

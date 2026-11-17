@@ -25,6 +25,22 @@ Un fallback local existe pour le développement/tests : `backend/odds/{sport_key
 d'odds n'existe pour une checklist (c'est le cas de la quasi-totalité du catalogue Panini,
 qui ne publie pas ce format) — elle dégrade simplement en n'affichant aucun badge/pondération.
 
+## Feuilles générées depuis The Hobby Checklist
+
+`scripts/import_hobbychecklist_odds.py` génère des feuilles dans `backend/odds/nba/`
+(versionnées dans le repo, servies en prod par le repli local) à partir des cotes Topps
+publiées sur thehobbychecklist.com, avec l'accord de son éditeur :
+
+- une ligne « version de base » par série et une ligne par parallèle (1:N par paquet) ;
+- les séries prennent le nom exact des `Box Type` de notre checklist quand on les retrouve ;
+- une feuille de moins de 20 lignes n'est pas écrite (elle fausserait la simulation) ;
+- une feuille déjà présente sur R2 (faite à la main depuis le PDF Topps) n'est jamais remplacée,
+  et R2 reste prioritaire à la lecture.
+
+```bash
+python3 scripts/import_hobbychecklist_odds.py --force
+```
+
 ## Format JSON
 
 ```jsonc

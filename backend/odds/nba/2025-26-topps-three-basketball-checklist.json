@@ -1,0 +1,1353 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-three-basketball-checklist",
+ "product_label": "2025-26 Topps 3 Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  },
+  {
+   "key": "1st_day_issue",
+   "label": "1st Day Issue",
+   "channel": "hobby",
+   "group": "fdi"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Bronze /25",
+   "set": "Base",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 10,
+    "1st_day_issue": 10
+   }
+  },
+  {
+   "label": "Base Blue /15",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 16,
+    "1st_day_issue": 16
+   }
+  },
+  {
+   "label": "Base Gold /10",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Base Red /5",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 46,
+    "1st_day_issue": 46
+   }
+  },
+  {
+   "label": "Base Platinum /1",
+   "set": "Base",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 229,
+    "1st_day_issue": 229
+   }
+  },
+  {
+   "label": "City Drip Signatures",
+   "set": "City Drip Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 80
+   }
+  },
+  {
+   "label": "City Drip Signatures Holo Gold /3",
+   "set": "City Drip Signatures",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 264,
+    "1st_day_issue": 264
+   }
+  },
+  {
+   "label": "City Drip Signatures Platinum /1",
+   "set": "City Drip Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 791,
+    "1st_day_issue": 791
+   }
+  },
+  {
+   "label": "Full Court Signs",
+   "set": "Full Court Signs",
+   "parallel": "",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Full Court Signs Bronze /25",
+   "set": "Full Court Signs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Full Court Signs Blue /15",
+   "set": "Full Court Signs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 37,
+    "1st_day_issue": 37
+   }
+  },
+  {
+   "label": "Full Court Signs Gold /10",
+   "set": "Full Court Signs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 56,
+    "1st_day_issue": 56
+   }
+  },
+  {
+   "label": "Full Court Signs Red /5",
+   "set": "Full Court Signs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 115,
+    "1st_day_issue": 115
+   }
+  },
+  {
+   "label": "Full Court Signs Platinum /1",
+   "set": "Full Court Signs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Game Time Graphs",
+   "set": "Game Time Graphs",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Game Time Graphs Bronze /25",
+   "set": "Game Time Graphs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 19,
+    "1st_day_issue": 19
+   }
+  },
+  {
+   "label": "Game Time Graphs Blue /15",
+   "set": "Game Time Graphs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 31,
+    "1st_day_issue": 31
+   }
+  },
+  {
+   "label": "Game Time Graphs Gold /10",
+   "set": "Game Time Graphs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 46,
+    "1st_day_issue": 46
+   }
+  },
+  {
+   "label": "Game Time Graphs Red /5",
+   "set": "Game Time Graphs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 91,
+    "1st_day_issue": 91
+   }
+  },
+  {
+   "label": "Game Time Graphs Platinum /1",
+   "set": "Game Time Graphs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 452,
+    "1st_day_issue": 452
+   }
+  },
+  {
+   "label": "Hit the Mark",
+   "set": "Hit The Mark",
+   "parallel": "",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Hit the Mark Bronze /25",
+   "set": "Hit The Mark",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 24,
+    "1st_day_issue": 24
+   }
+  },
+  {
+   "label": "Hit the Mark Blue /15",
+   "set": "Hit The Mark",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 37,
+    "1st_day_issue": 37
+   }
+  },
+  {
+   "label": "Hit the Mark Gold /10",
+   "set": "Hit The Mark",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 54,
+    "1st_day_issue": 54
+   }
+  },
+  {
+   "label": "Hit the Mark Red /5",
+   "set": "Hit The Mark",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 108,
+    "1st_day_issue": 108
+   }
+  },
+  {
+   "label": "Hit the Mark Platinum /1",
+   "set": "Hit The Mark",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Next Feature Signatures",
+   "set": "Next Feature Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Next Feature Signatures Bronze /25",
+   "set": "Next Feature Signatures",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 29,
+    "1st_day_issue": 29
+   }
+  },
+  {
+   "label": "Next Feature Signatures Blue /15",
+   "set": "Next Feature Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 48,
+    "1st_day_issue": 48
+   }
+  },
+  {
+   "label": "Next Feature Signatures Gold /10",
+   "set": "Next Feature Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 72,
+    "1st_day_issue": 72
+   }
+  },
+  {
+   "label": "Next Feature Signatures Red /5",
+   "set": "Next Feature Signatures",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 143,
+    "1st_day_issue": 143
+   }
+  },
+  {
+   "label": "Next Feature Signatures Platinum /1",
+   "set": "Next Feature Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 714,
+    "1st_day_issue": 714
+   }
+  },
+  {
+   "label": "Quest for Glory Signatures",
+   "set": "Quest For Glory Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 74
+   }
+  },
+  {
+   "label": "Quest for Glory Signatures Holo Gold /3",
+   "set": "Quest For Glory Autographs",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 246,
+    "1st_day_issue": 246
+   }
+  },
+  {
+   "label": "Quest for Glory Signatures Platinum /1",
+   "set": "Quest For Glory Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 764,
+    "1st_day_issue": 764
+   }
+  },
+  {
+   "label": "Raindrops Signatures",
+   "set": "Raindrops Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Raindrops Signatures Bronze /25",
+   "set": "Raindrops Signatures",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Raindrops Signatures Blue /15",
+   "set": "Raindrops Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 31,
+    "1st_day_issue": 31
+   }
+  },
+  {
+   "label": "Raindrops Signatures Gold /10",
+   "set": "Raindrops Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 47,
+    "1st_day_issue": 47
+   }
+  },
+  {
+   "label": "Raindrops Signatures Red /5",
+   "set": "Raindrops Signatures",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 93,
+    "1st_day_issue": 93
+   }
+  },
+  {
+   "label": "Raindrops Signatures Platinum /1",
+   "set": "Raindrops Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 471,
+    "1st_day_issue": 471
+   }
+  },
+  {
+   "label": "Re-Markable",
+   "set": "Re-Markable",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Re-Markable Bronze /25",
+   "set": "Re-Markable",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 22,
+    "1st_day_issue": 22
+   }
+  },
+  {
+   "label": "Re-Markable Blue /15",
+   "set": "Re-Markable",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 37,
+    "1st_day_issue": 37
+   }
+  },
+  {
+   "label": "Re-Markable Gold /10",
+   "set": "Re-Markable",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 54,
+    "1st_day_issue": 54
+   }
+  },
+  {
+   "label": "Re-Markable Red /5",
+   "set": "Re-Markable",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 111,
+    "1st_day_issue": 111
+   }
+  },
+  {
+   "label": "Re-Markable Platinum /1",
+   "set": "Re-Markable",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Rim Reapers Signatures",
+   "set": "Rim Reapers Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 60
+   }
+  },
+  {
+   "label": "Rim Reapers Signatures Holo Gold /3",
+   "set": "Rim Reapers Signatures",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 202,
+    "1st_day_issue": 202
+   }
+  },
+  {
+   "label": "Rim Reapers Signatures Platinum /1",
+   "set": "Rim Reapers Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 615,
+    "1st_day_issue": 615
+   }
+  },
+  {
+   "label": "Rookie Autographs",
+   "set": "Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Rookie Autographs Bronze /25",
+   "set": "Rookie Autographs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Rookie Autographs Blue /15",
+   "set": "Rookie Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 38,
+    "1st_day_issue": 38
+   }
+  },
+  {
+   "label": "Rookie Autographs Gold /10",
+   "set": "Rookie Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 56,
+    "1st_day_issue": 56
+   }
+  },
+  {
+   "label": "Rookie Autographs Red /5",
+   "set": "Rookie Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 112,
+    "1st_day_issue": 112
+   }
+  },
+  {
+   "label": "Rookie Autographs Platinum /1",
+   "set": "Rookie Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "RookieVerse Autographs",
+   "set": "RookieVerse Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "RookieVerse Autographs Bronze /25",
+   "set": "RookieVerse Autographs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "RookieVerse Autographs Blue /15",
+   "set": "RookieVerse Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 37,
+    "1st_day_issue": 37
+   }
+  },
+  {
+   "label": "RookieVerse Autographs Gold /10",
+   "set": "RookieVerse Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 56,
+    "1st_day_issue": 56
+   }
+  },
+  {
+   "label": "RookieVerse Autographs Red /5",
+   "set": "RookieVerse Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 112,
+    "1st_day_issue": 112
+   }
+  },
+  {
+   "label": "RookieVerse Autographs Platinum /1",
+   "set": "RookieVerse Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 568,
+    "1st_day_issue": 568
+   }
+  },
+  {
+   "label": "Serendipitous Sigs",
+   "set": "Serendipitous Sigs",
+   "parallel": "",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Serendipitous Sigs Bronze /25",
+   "set": "Serendipitous Sigs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 22,
+    "1st_day_issue": 22
+   }
+  },
+  {
+   "label": "Serendipitous Sigs Blue /15",
+   "set": "Serendipitous Sigs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 34,
+    "1st_day_issue": 34
+   }
+  },
+  {
+   "label": "Serendipitous Sigs Gold /10",
+   "set": "Serendipitous Sigs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 51,
+    "1st_day_issue": 51
+   }
+  },
+  {
+   "label": "Serendipitous Sigs Red /5",
+   "set": "Serendipitous Sigs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 101,
+    "1st_day_issue": 101
+   }
+  },
+  {
+   "label": "Serendipitous Sigs Platinum /1",
+   "set": "Serendipitous Sigs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 503,
+    "1st_day_issue": 503
+   }
+  },
+  {
+   "label": "Thunderdunk Signatures",
+   "set": "Thunderdunk Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Thunderdunk Signatures Bronze /25",
+   "set": "Thunderdunk Signatures",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 22,
+    "1st_day_issue": 22
+   }
+  },
+  {
+   "label": "Thunderdunk Signatures Blue /15",
+   "set": "Thunderdunk Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 28,
+    "1st_day_issue": 28
+   }
+  },
+  {
+   "label": "Thunderdunk Signatures Gold /10",
+   "set": "Thunderdunk Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 42,
+    "1st_day_issue": 42
+   }
+  },
+  {
+   "label": "Thunderdunk Signatures Red /5",
+   "set": "Thunderdunk Signatures",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 82,
+    "1st_day_issue": 82
+   }
+  },
+  {
+   "label": "Thunderdunk Signatures Platinum /1",
+   "set": "Thunderdunk Signatures",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 418,
+    "1st_day_issue": 418
+   }
+  },
+  {
+   "label": "Triple Power Autos",
+   "set": "Triple Power Autos",
+   "parallel": "",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Triple Power Autos Bronze /25",
+   "set": "Triple Power Autos",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Triple Power Autos Blue /15",
+   "set": "Triple Power Autos",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 48,
+    "1st_day_issue": 48
+   }
+  },
+  {
+   "label": "Triple Power Autos Gold /10",
+   "set": "Triple Power Autos",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 68,
+    "1st_day_issue": 68
+   }
+  },
+  {
+   "label": "Triple Power Autos Red /5",
+   "set": "Triple Power Autos",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 123,
+    "1st_day_issue": 123
+   }
+  },
+  {
+   "label": "Triple Power Autos Platinum /1",
+   "set": "Triple Power Autos",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 492,
+    "1st_day_issue": 492
+   }
+  },
+  {
+   "label": "Fresh Force Relic Autos",
+   "set": "Fresh Force Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Fresh Force Relic Autos Bronze /25",
+   "set": "Fresh Force Relic Autographs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Fresh Force Relic Autos Blue /15",
+   "set": "Fresh Force Relic Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 39,
+    "1st_day_issue": 39
+   }
+  },
+  {
+   "label": "Fresh Force Relic Autos Gold /10",
+   "set": "Fresh Force Relic Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 60,
+    "1st_day_issue": 60
+   }
+  },
+  {
+   "label": "Fresh Force Relic Autos Red /5",
+   "set": "Fresh Force Relic Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 119,
+    "1st_day_issue": 119
+   }
+  },
+  {
+   "label": "Fresh Force Relic Autos Platinum /1",
+   "set": "Fresh Force Relic Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Relics Autographs Prime",
+   "set": "Relics Autographs Prime",
+   "parallel": "",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Relics Autographs Prime Bronze /25",
+   "set": "Relics Autographs Prime",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 45,
+    "1st_day_issue": 45
+   }
+  },
+  {
+   "label": "Relics Autographs Prime Blue /15",
+   "set": "Relics Autographs Prime",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 74,
+    "1st_day_issue": 74
+   }
+  },
+  {
+   "label": "Relics Autographs Prime Gold /10",
+   "set": "Relics Autographs Prime",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 111,
+    "1st_day_issue": 111
+   }
+  },
+  {
+   "label": "Relics Autographs Prime Red /5",
+   "set": "Relics Autographs Prime",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 222,
+    "1st_day_issue": 222
+   }
+  },
+  {
+   "label": "Relics Autographs Prime Platinum /1",
+   "set": "Relics Autographs Prime",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 1107,
+    "1st_day_issue": 1107
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Emerald",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Emerald",
+   "odds": {
+    "1st_day_issue": 2
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Holo Gold",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Holo Gold",
+   "odds": {
+    "1st_day_issue": 5
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Bronze /25",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Blue /15",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 37,
+    "1st_day_issue": 37
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Gold /10",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 56,
+    "1st_day_issue": 56
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Red /5",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 111,
+    "1st_day_issue": 111
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Horizontal Platinum /1",
+   "set": "Rookie 3 Patch Autographs - Horizontal",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Emerald",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Emerald",
+   "odds": {
+    "1st_day_issue": 2
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Holo Gold",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Holo Gold",
+   "odds": {
+    "1st_day_issue": 5
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Bronze /25",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Blue /15",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 37,
+    "1st_day_issue": 37
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Gold /10",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 56,
+    "1st_day_issue": 56
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Red /5",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 112,
+    "1st_day_issue": 112
+   }
+  },
+  {
+   "label": "Rookie 3 Patch Autographs Vertical Platinum /1",
+   "set": "Rookie 3 Patch Autographs - Vertical",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Rookie Relics Autographs",
+   "set": "Rookie Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Rookie Relics Autographs Bronze /25",
+   "set": "Rookie Relic Autographs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 24,
+    "1st_day_issue": 24
+   }
+  },
+  {
+   "label": "Rookie Relics Autographs Blue /15",
+   "set": "Rookie Relic Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 41,
+    "1st_day_issue": 41
+   }
+  },
+  {
+   "label": "Rookie Relics Autographs Gold /10",
+   "set": "Rookie Relic Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 62,
+    "1st_day_issue": 62
+   }
+  },
+  {
+   "label": "Rookie Relics Autographs Red /5",
+   "set": "Rookie Relic Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 128,
+    "1st_day_issue": 128
+   }
+  },
+  {
+   "label": "Rookie Relics Autographs Platinum /1",
+   "set": "Rookie Relic Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 554,
+    "1st_day_issue": 554
+   }
+  },
+  {
+   "label": "Veteran 3 Patch Autographs",
+   "set": "Veteran 3 Patch Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Veteran 3 Patch Autographs Bronze /25",
+   "set": "Veteran 3 Patch Autographs",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 19,
+    "1st_day_issue": 19
+   }
+  },
+  {
+   "label": "Veteran 3 Patch Autographs Blue /15",
+   "set": "Veteran 3 Patch Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 22,
+    "1st_day_issue": 22
+   }
+  },
+  {
+   "label": "Veteran 3 Patch Autographs Gold /10",
+   "set": "Veteran 3 Patch Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 32,
+    "1st_day_issue": 32
+   }
+  },
+  {
+   "label": "Veteran 3 Patch Autographs Red /5",
+   "set": "Veteran 3 Patch Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 63,
+    "1st_day_issue": 63
+   }
+  },
+  {
+   "label": "Veteran 3 Patch Autographs Platinum /1",
+   "set": "Veteran 3 Patch Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 321,
+    "1st_day_issue": 321
+   }
+  },
+  {
+   "label": "3&D",
+   "set": "3&D",
+   "parallel": "",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "3&D Red /5",
+   "set": "3&D",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 39,
+    "1st_day_issue": 39
+   }
+  },
+  {
+   "label": "3&D Holo Gold /3",
+   "set": "3&D",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 191,
+    "1st_day_issue": 191
+   }
+  },
+  {
+   "label": "3&D Platinum /1",
+   "set": "3&D",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 568,
+    "1st_day_issue": 568
+   }
+  },
+  {
+   "label": "Architects",
+   "set": "Architects",
+   "parallel": "",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Architects Bronze /25",
+   "set": "Architects",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 31,
+    "1st_day_issue": 31
+   }
+  },
+  {
+   "label": "Architects Blue /15",
+   "set": "Architects",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 51,
+    "1st_day_issue": 51
+   }
+  },
+  {
+   "label": "Architects Gold /10",
+   "set": "Architects",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 77,
+    "1st_day_issue": 77
+   }
+  },
+  {
+   "label": "Architects Red /5",
+   "set": "Architects",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 153,
+    "1st_day_issue": 153
+   }
+  },
+  {
+   "label": "Architects Platinum /1",
+   "set": "Architects",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 764,
+    "1st_day_issue": 764
+   }
+  },
+  {
+   "label": "Flight Path",
+   "set": "Flight Path",
+   "parallel": "",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Flight Path Bronze /25",
+   "set": "Flight Path",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 31,
+    "1st_day_issue": 31
+   }
+  },
+  {
+   "label": "Flight Path Blue /15",
+   "set": "Flight Path",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 51,
+    "1st_day_issue": 51
+   }
+  },
+  {
+   "label": "Flight Path Gold /10",
+   "set": "Flight Path",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 77,
+    "1st_day_issue": 77
+   }
+  },
+  {
+   "label": "Flight Path Red /5",
+   "set": "Flight Path",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 153,
+    "1st_day_issue": 153
+   }
+  },
+  {
+   "label": "Flight Path Platinum /1",
+   "set": "Flight Path",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 764,
+    "1st_day_issue": 764
+   }
+  },
+  {
+   "label": "Ice Water",
+   "set": "Ice Water",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Ice Water Bronze /25",
+   "set": "Ice Water",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 23,
+    "1st_day_issue": 23
+   }
+  },
+  {
+   "label": "Ice Water Blue /15",
+   "set": "Ice Water",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 39,
+    "1st_day_issue": 39
+   }
+  },
+  {
+   "label": "Ice Water Gold /10",
+   "set": "Ice Water",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 58,
+    "1st_day_issue": 58
+   }
+  },
+  {
+   "label": "Ice Water Red /5",
+   "set": "Ice Water",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 115,
+    "1st_day_issue": 115
+   }
+  },
+  {
+   "label": "Ice Water Platinum /1",
+   "set": "Ice Water",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 568,
+    "1st_day_issue": 568
+   }
+  },
+  {
+   "label": "Monsters of the Deep",
+   "set": "Monsters Of The Deep",
+   "parallel": "",
+   "odds": {
+    "hobby": 51
+   }
+  },
+  {
+   "label": "Monsters of the Deep Red /5",
+   "set": "Monsters Of The Deep",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 153,
+    "1st_day_issue": 153
+   }
+  },
+  {
+   "label": "Monsters of the Deep Holo Gold /3",
+   "set": "Monsters Of The Deep",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 255,
+    "1st_day_issue": 255
+   }
+  },
+  {
+   "label": "Monsters of the Deep Platinum /1",
+   "set": "Monsters Of The Deep",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 764,
+    "1st_day_issue": 764
+   }
+  },
+  {
+   "label": "The Paint",
+   "set": "The Paint",
+   "parallel": "",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "The Paint Red /5",
+   "set": "The Paint",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 153,
+    "1st_day_issue": 153
+   }
+  },
+  {
+   "label": "The Paint Holo Gold /3",
+   "set": "The Paint",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 255,
+    "1st_day_issue": 255
+   }
+  },
+  {
+   "label": "The Paint Platinum /1",
+   "set": "The Paint",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 764,
+    "1st_day_issue": 764
+   }
+  }
+ ]
+}

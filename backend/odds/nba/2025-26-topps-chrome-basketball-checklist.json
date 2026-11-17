@@ -1,0 +1,1060 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-chrome-basketball-checklist",
+ "product_label": "2025-26 Topps Chrome Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 20
+  },
+  {
+   "key": "jumbo",
+   "label": "Jumbo",
+   "channel": "hobby",
+   "group": "jumbo",
+   "packs_per_box": 12
+  },
+  {
+   "key": "breaker_delight",
+   "label": "Breaker Delight",
+   "channel": "hobby",
+   "group": "delight",
+   "packs_per_box": 1
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega",
+   "packs_per_box": 7
+  },
+  {
+   "key": "value_blaster",
+   "label": "Value Blaster",
+   "channel": "retail",
+   "group": "value",
+   "packs_per_box": 7
+  },
+  {
+   "key": "hanger",
+   "label": "Hanger",
+   "channel": "retail",
+   "group": "hanger",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Base Refractor",
+   "set": "Base Set",
+   "parallel": "Base Refractor",
+   "odds": {
+    "hobby": 3,
+    "jumbo": 1,
+    "breaker_delight": 1,
+    "value_blaster": 7,
+    "hanger": 2,
+    "mega": 4
+   }
+  },
+  {
+   "label": "Base RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "RayWave Refractor",
+   "odds": {
+    "mega": 3
+   }
+  },
+  {
+   "label": "Base Red/White/Blue Refractor",
+   "set": "Base Set",
+   "parallel": "Red/White/Blue Refractor",
+   "odds": {
+    "value_blaster": 3
+   }
+  },
+  {
+   "label": "Base Basketball Refractor",
+   "set": "Base Set",
+   "parallel": "Basketball Refractor",
+   "odds": {
+    "value_blaster": 7
+   }
+  },
+  {
+   "label": "Base Prism Refractor",
+   "set": "Base Set",
+   "parallel": "Prism Refractor",
+   "odds": {
+    "hobby": 5,
+    "jumbo": 2
+   }
+  },
+  {
+   "label": "Base Negative Refractor",
+   "set": "Base Set",
+   "parallel": "Negative Refractor",
+   "odds": {
+    "hobby": 31,
+    "jumbo": 9
+   }
+  },
+  {
+   "label": "Base Wave Refractor",
+   "set": "Base Set",
+   "parallel": "Wave Refractor",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 24
+   }
+  },
+  {
+   "label": "Base Lightboard Logos Refractor",
+   "set": "Base Set",
+   "parallel": "Lightboard Logos Refractor",
+   "odds": {
+    "value_blaster": 282,
+    "hanger": 64,
+    "mega": 140
+   }
+  },
+  {
+   "label": "Base 1st Day Issue Refractor",
+   "set": "Base Set",
+   "parallel": "1st Day Issue Refractor",
+   "odds": {
+    "jumbo": 87
+   }
+  },
+  {
+   "label": "Base Magenta Refractor /399",
+   "set": "Base Set",
+   "parallel": "Magenta Refractor",
+   "odds": {
+    "hobby": 47,
+    "jumbo": 60,
+    "breaker_delight": 58,
+    "value_blaster": 368,
+    "hanger": 62,
+    "mega": 265
+   }
+  },
+  {
+   "label": "Base Teal Refractor /299",
+   "set": "Base Set",
+   "parallel": "Teal Refractor",
+   "odds": {
+    "hobby": 72,
+    "jumbo": 48,
+    "breaker_delight": 4,
+    "value_blaster": 470,
+    "hanger": 83,
+    "mega": 237
+   }
+  },
+  {
+   "label": "Base Yellow Refractor /275",
+   "set": "Base Set",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "hobby": 79,
+    "jumbo": 31,
+    "breaker_delight": 4,
+    "value_blaster": 783,
+    "hanger": 90,
+    "mega": 384
+   }
+  },
+  {
+   "label": "Base Yellow Basketball Refractor /275",
+   "set": "Base Set",
+   "parallel": "Yellow Basketball Refractor",
+   "odds": {
+    "value_blaster": 197
+   }
+  },
+  {
+   "label": "Base RayWave Yellow Refractor /275",
+   "set": "Base Set",
+   "parallel": "RayWave Yellow Refractor",
+   "odds": {
+    "mega": 57
+   }
+  },
+  {
+   "label": "Base Aqua Refractor /199",
+   "set": "Base Set",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 109,
+    "jumbo": 33,
+    "breaker_delight": 6,
+    "value_blaster": 1082,
+    "hanger": 124,
+    "mega": 530
+   }
+  },
+  {
+   "label": "Base Aqua Basketball Refractor /199",
+   "set": "Base Set",
+   "parallel": "Aqua Basketball Refractor",
+   "odds": {
+    "value_blaster": 142
+   }
+  },
+  {
+   "label": "Base RayWave Aqua Refractor /199",
+   "set": "Base Set",
+   "parallel": "RayWave Aqua Refractor",
+   "odds": {
+    "mega": 78
+   }
+  },
+  {
+   "label": "Base Blue Refractor /150",
+   "set": "Base Set",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 145,
+    "jumbo": 44,
+    "breaker_delight": 8,
+    "value_blaster": 1436,
+    "hanger": 165,
+    "mega": 703
+   }
+  },
+  {
+   "label": "Base Blue Basketball Refractor /150",
+   "set": "Base Set",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "value_blaster": 188
+   }
+  },
+  {
+   "label": "Base Blue Wave Refractor /150",
+   "set": "Base Set",
+   "parallel": "Blue Wave Refractor",
+   "odds": {
+    "hobby": 113,
+    "jumbo": 33,
+    "breaker_delight": 4
+   }
+  },
+  {
+   "label": "Base RayWave Blue Refractor /150",
+   "set": "Base Set",
+   "parallel": "RayWave Blue Refractor",
+   "odds": {
+    "mega": 104
+   }
+  },
+  {
+   "label": "Base Green Refractor /99",
+   "set": "Base Set",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 219,
+    "jumbo": 66,
+    "breaker_delight": 11,
+    "value_blaster": 2176,
+    "hanger": 250,
+    "mega": 1065
+   }
+  },
+  {
+   "label": "Base Green Basketball Refractor /99",
+   "set": "Base Set",
+   "parallel": "Green Basketball Refractor",
+   "odds": {
+    "value_blaster": 285
+   }
+  },
+  {
+   "label": "Base Green Wave Refractor /99",
+   "set": "Base Set",
+   "parallel": "Green Wave Refractor",
+   "odds": {
+    "hobby": 172,
+    "jumbo": 50,
+    "breaker_delight": 4
+   }
+  },
+  {
+   "label": "Base RayWave Green Refractor /99",
+   "set": "Base Set",
+   "parallel": "RayWave Green Refractor",
+   "odds": {
+    "mega": 157
+   }
+  },
+  {
+   "label": "Base Purple Refractor /75",
+   "set": "Base Set",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 290,
+    "jumbo": 87,
+    "breaker_delight": 15,
+    "value_blaster": 2872,
+    "hanger": 331,
+    "mega": 1405
+   }
+  },
+  {
+   "label": "Base Purple Basketball Refractor /75",
+   "set": "Base Set",
+   "parallel": "Purple Basketball Refractor",
+   "odds": {
+    "value_blaster": 377
+   }
+  },
+  {
+   "label": "Base Purple Wave Refractor /75",
+   "set": "Base Set",
+   "parallel": "Purple Wave Refractor",
+   "odds": {
+    "hobby": 227,
+    "jumbo": 66,
+    "breaker_delight": 5
+   }
+  },
+  {
+   "label": "Base Pulsar Purple Refractor /75",
+   "set": "Base Set",
+   "parallel": "Pulsar Purple Refractor",
+   "odds": {
+    "hanger": 109
+   }
+  },
+  {
+   "label": "Base RayWave Purple Refractor /75",
+   "set": "Base Set",
+   "parallel": "RayWave Purple Refractor",
+   "odds": {
+    "mega": 207
+   }
+  },
+  {
+   "label": "Base Gold Refractor /50",
+   "set": "Base Set",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 435,
+    "jumbo": 130,
+    "breaker_delight": 22,
+    "value_blaster": 4309,
+    "hanger": 496,
+    "mega": 2107
+   }
+  },
+  {
+   "label": "Base Gold Basketball Refractor /50",
+   "set": "Base Set",
+   "parallel": "Gold Basketball Refractor",
+   "odds": {
+    "value_blaster": 565
+   }
+  },
+  {
+   "label": "Base Gold Wave Refractor /50",
+   "set": "Base Set",
+   "parallel": "Gold Wave Refractor",
+   "odds": {
+    "hobby": 341,
+    "jumbo": 99,
+    "breaker_delight": 8
+   }
+  },
+  {
+   "label": "Base Geometric Gold Refractor /50",
+   "set": "Base Set",
+   "parallel": "Geometric Gold Refractor",
+   "odds": {
+    "breaker_delight": 3
+   }
+  },
+  {
+   "label": "Base Pulsar Gold Refractor /50",
+   "set": "Base Set",
+   "parallel": "Pulsar Gold Refractor",
+   "odds": {
+    "hanger": 34
+   }
+  },
+  {
+   "label": "Base RayWave Gold Refractor /50",
+   "set": "Base Set",
+   "parallel": "RayWave Gold Refractor",
+   "odds": {
+    "mega": 310
+   }
+  },
+  {
+   "label": "Base Orange Refractor /25",
+   "set": "Base Set",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 870,
+    "jumbo": 260,
+    "breaker_delight": 44,
+    "value_blaster": 8623,
+    "hanger": 993,
+    "mega": 4216
+   }
+  },
+  {
+   "label": "Base Orange Basketball Refractor /25",
+   "set": "Base Set",
+   "parallel": "Orange Basketball Refractor",
+   "odds": {
+    "value_blaster": 1131
+   }
+  },
+  {
+   "label": "Base Orange Wave Refractor /25",
+   "set": "Base Set",
+   "parallel": "Orange Wave Refractor",
+   "odds": {
+    "hobby": 684,
+    "jumbo": 198,
+    "breaker_delight": 15
+   }
+  },
+  {
+   "label": "Base Geometric Orange Refractor /25",
+   "set": "Base Set",
+   "parallel": "Geometric Orange Refractor",
+   "odds": {
+    "breaker_delight": 5
+   }
+  },
+  {
+   "label": "Base Pulsar Orange Refractor /25",
+   "set": "Base Set",
+   "parallel": "Pulsar Orange Refractor",
+   "odds": {
+    "hanger": 69
+   }
+  },
+  {
+   "label": "Base RayWave Orange Refractor /25",
+   "set": "Base Set",
+   "parallel": "RayWave Orange Refractor",
+   "odds": {
+    "mega": 619
+   }
+  },
+  {
+   "label": "Base Black Refractor /10",
+   "set": "Base Set",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2176,
+    "jumbo": 650,
+    "breaker_delight": 108,
+    "value_blaster": 21559,
+    "hanger": 2492,
+    "mega": 10545
+   }
+  },
+  {
+   "label": "Base Black Basketball Refractor /10",
+   "set": "Base Set",
+   "parallel": "Black Basketball Refractor",
+   "odds": {
+    "value_blaster": 2829
+   }
+  },
+  {
+   "label": "Base Black Wave Refractor /10",
+   "set": "Base Set",
+   "parallel": "Black Wave Refractor",
+   "odds": {
+    "hobby": 1710,
+    "jumbo": 494,
+    "breaker_delight": 38
+   }
+  },
+  {
+   "label": "Base Geometric Black Refractor /10",
+   "set": "Base Set",
+   "parallel": "Geometric Black Refractor",
+   "odds": {
+    "breaker_delight": 11
+   }
+  },
+  {
+   "label": "Base Pulsar Black Refractor /10",
+   "set": "Base Set",
+   "parallel": "Pulsar Black Refractor",
+   "odds": {
+    "hanger": 173
+   }
+  },
+  {
+   "label": "Base RayWave Black Refractor /10",
+   "set": "Base Set",
+   "parallel": "RayWave Black Refractor",
+   "odds": {
+    "mega": 1548
+   }
+  },
+  {
+   "label": "Base Red Refractor /5",
+   "set": "Base Set",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 4353,
+    "jumbo": 1299,
+    "breaker_delight": 217,
+    "value_blaster": 43118,
+    "hanger": 5009,
+    "mega": 21142
+   }
+  },
+  {
+   "label": "Base Red Basketball Refractor /5",
+   "set": "Base Set",
+   "parallel": "Red Basketball Refractor",
+   "odds": {
+    "value_blaster": 5659
+   }
+  },
+  {
+   "label": "Base Red Wave Refractor /5",
+   "set": "Base Set",
+   "parallel": "Red Wave Refractor",
+   "odds": {
+    "hobby": 3420,
+    "jumbo": 988,
+    "breaker_delight": 75
+   }
+  },
+  {
+   "label": "Base Pulsar Red Refractor /5",
+   "set": "Base Set",
+   "parallel": "Pulsar Red Refractor",
+   "odds": {
+    "hanger": 347
+   }
+  },
+  {
+   "label": "Base RayWave Red Refractor /5",
+   "set": "Base Set",
+   "parallel": "RayWave Red Refractor",
+   "odds": {
+    "mega": 3097
+   }
+  },
+  {
+   "label": "Base Geometric Red Refractor /5",
+   "set": "Base Set",
+   "parallel": "Geometric Red Refractor",
+   "odds": {
+    "breaker_delight": 22
+   }
+  },
+  {
+   "label": "Base FrozenFractor /5",
+   "set": "Base Set",
+   "parallel": "FrozenFractor",
+   "odds": {
+    "hobby": 4353,
+    "jumbo": 1299,
+    "breaker_delight": 217,
+    "value_blaster": 43118,
+    "hanger": 5009,
+    "mega": 21142
+   }
+  },
+  {
+   "label": "Base Geometric White Refractor /2",
+   "set": "Base Set",
+   "parallel": "Geometric White Refractor",
+   "odds": {
+    "breaker_delight": 54
+   }
+  },
+  {
+   "label": "Base SuperFractor /1",
+   "set": "Base Set",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 21767,
+    "jumbo": 6495,
+    "breaker_delight": 1083,
+    "value_blaster": 220254,
+    "hanger": 25296,
+    "mega": 107293
+   }
+  },
+  {
+   "label": "Base Variations",
+   "set": "Base Set - Image Variations",
+   "parallel": "",
+   "odds": {
+    "hobby": 130,
+    "jumbo": 39,
+    "breaker_delight": 7,
+    "mega": 633,
+    "value_blaster": 1292,
+    "hanger": 149
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs",
+   "set": "Chrome Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2361,
+    "jumbo": 693,
+    "breaker_delight": 67,
+    "mega": 53647,
+    "value_blaster": 101867,
+    "hanger": 12648
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Rookies",
+   "set": "Chrome Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 65,
+    "jumbo": 12,
+    "breaker_delight": 2,
+    "mega": 1547,
+    "value_blaster": 3543,
+    "hanger": 316
+   }
+  },
+  {
+   "label": "Chromographs",
+   "set": "Chromographs",
+   "parallel": "",
+   "odds": {
+    "mega": 1431,
+    "value_blaster": 3326,
+    "hanger": 843
+   }
+  },
+  {
+   "label": "Chromographs Rookies",
+   "set": "Chromographs Rookies",
+   "parallel": "",
+   "odds": {
+    "mega": 1073,
+    "value_blaster": 2716,
+    "hanger": 722
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autographs",
+   "parallel": "",
+   "odds": {
+    "mega": 810,
+    "value_blaster": 2716,
+    "hanger": 562
+   }
+  },
+  {
+   "label": "Next Stop Signatures",
+   "set": "Next Stop Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 522,
+    "jumbo": 72,
+    "breaker_delight": 16
+   }
+  },
+  {
+   "label": "Signature Style",
+   "set": "Signature Style",
+   "parallel": "",
+   "odds": {
+    "hobby": 522,
+    "jumbo": 135,
+    "breaker_delight": 15
+   }
+  },
+  {
+   "label": "SkyWrite Signatures",
+   "set": "Sky Write Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 417,
+    "jumbo": 110,
+    "breaker_delight": 13
+   }
+  },
+  {
+   "label": "Stratospheric Signatures",
+   "set": "Stratospheric Signatures",
+   "parallel": "",
+   "odds": {
+    "mega": 1073,
+    "value_blaster": 2144,
+    "hanger": 674
+   }
+  },
+  {
+   "label": "Stratospheric Signatures Rookies",
+   "set": "Stratospheric Signatures - Rookies",
+   "parallel": "",
+   "odds": {
+    "mega": 1227,
+    "value_blaster": 4074,
+    "hanger": 722
+   }
+  },
+  {
+   "label": "Topps Certified Autograph Issue",
+   "set": "Topps Certified Autograph Issue",
+   "parallel": "",
+   "odds": {
+    "mega": 622,
+    "value_blaster": 1381,
+    "hanger": 505
+   }
+  },
+  {
+   "label": "Topps Certified Autograph Issue Rookies",
+   "set": "Autograph Issue - Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 417,
+    "jumbo": 56,
+    "breaker_delight": 14,
+    "mega": 781,
+    "value_blaster": 2037,
+    "hanger": 505
+   }
+  },
+  {
+   "label": "Topps Certified Autograph Issue Rookies 2",
+   "set": "Autograph Issue - Rookies",
+   "parallel": "",
+   "odds": {
+    "mega": 781,
+    "value_blaster": 2037,
+    "hanger": 505
+   }
+  },
+  {
+   "label": "Gold Logoman Auto Relics",
+   "set": "Autographed Gold Logoman Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 1044840,
+    "mega": 4291700
+   }
+  },
+  {
+   "label": "Gold Logoman Relics",
+   "set": "Gold Logoman Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 696560,
+    "jumbo": 138560,
+    "breaker_delight": 15690,
+    "mega": 4291700,
+    "value_blaster": 4074700,
+    "hanger": 505920
+   }
+  },
+  {
+   "label": "Activators",
+   "set": "Activators",
+   "parallel": "",
+   "odds": {
+    "mega": 27,
+    "value_blaster": 28,
+    "hanger": 5
+   }
+  },
+  {
+   "label": "Advisory",
+   "set": "Advisory",
+   "parallel": "",
+   "odds": {
+    "mega": 709,
+    "value_blaster": 1410,
+    "hanger": 321
+   }
+  },
+  {
+   "label": "Ball of Duty",
+   "set": "Ball Of Duty",
+   "parallel": "",
+   "odds": {
+    "mega": 16,
+    "value_blaster": 16,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "Clutch Gene",
+   "set": "Clutch Gene",
+   "parallel": "",
+   "odds": {
+    "hobby": 11,
+    "jumbo": 7
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 17,
+    "jumbo": 8
+   }
+  },
+  {
+   "label": "Fanatical",
+   "set": "Fanatical",
+   "parallel": "",
+   "odds": {
+    "mega": 144,
+    "value_blaster": 290,
+    "hanger": 66
+   }
+  },
+  {
+   "label": "Finals",
+   "set": "Finals",
+   "parallel": "",
+   "odds": {
+    "hobby": 12899,
+    "jumbo": 3849,
+    "breaker_delight": 641,
+    "mega": 63114,
+    "value_blaster": 127334,
+    "hanger": 14880
+   }
+  },
+  {
+   "label": "Generation Rising",
+   "set": "Generation Rising",
+   "parallel": "",
+   "odds": {
+    "hobby": 17,
+    "jumbo": 10
+   }
+  },
+  {
+   "label": "Glass Canvas",
+   "set": "Glass Canvas",
+   "parallel": "",
+   "odds": {
+    "mega": 699,
+    "value_blaster": 1400,
+    "hanger": 320
+   }
+  },
+  {
+   "label": "Go Time",
+   "set": "Go Time",
+   "parallel": "",
+   "odds": {
+    "mega": 16,
+    "value_blaster": 16,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 3205,
+    "jumbo": 956,
+    "breaker_delight": 160,
+    "mega": 15550,
+    "value_blaster": 31709,
+    "hanger": 3666
+   }
+  },
+  {
+   "label": "Hidden Gems",
+   "set": "Hidden Gems",
+   "parallel": "",
+   "odds": {
+    "hobby": 26121,
+    "jumbo": 7698,
+    "breaker_delight": 1256,
+    "mega": 126227,
+    "value_blaster": 254668,
+    "hanger": 29760
+   }
+  },
+  {
+   "label": "Inspirational",
+   "set": "Inspirational",
+   "parallel": "",
+   "odds": {
+    "mega": 20,
+    "value_blaster": 21,
+    "hanger": 4
+   }
+  },
+  {
+   "label": "Instinct",
+   "set": "Instinct",
+   "parallel": "",
+   "odds": {
+    "hobby": 22,
+    "jumbo": 10,
+    "mega": 54,
+    "value_blaster": 1629,
+    "hanger": 10
+   }
+  },
+  {
+   "label": "Let's Go",
+   "set": "Let's Go",
+   "parallel": "",
+   "odds": {
+    "hobby": 8392,
+    "jumbo": 2505,
+    "breaker_delight": 419,
+    "mega": 40874,
+    "value_blaster": 83157,
+    "hanger": 9729
+   }
+  },
+  {
+   "label": "Loading...",
+   "set": "Loading …",
+   "parallel": "",
+   "odds": {
+    "hobby": 23,
+    "jumbo": 13
+   }
+  },
+  {
+   "label": "Paradox",
+   "set": "Paradox",
+   "parallel": "",
+   "odds": {
+    "mega": 466,
+    "value_blaster": 933,
+    "hanger": 213
+   }
+  },
+  {
+   "label": "Patented",
+   "set": "Patented",
+   "parallel": "",
+   "odds": {
+    "mega": 466,
+    "value_blaster": 933,
+    "hanger": 213
+   }
+  },
+  {
+   "label": "Radiating Rookies",
+   "set": "Radiating Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 2179,
+    "jumbo": 434,
+    "breaker_delight": 160
+   }
+  },
+  {
+   "label": "Rock Stars",
+   "set": "Rock Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 295,
+    "jumbo": 147,
+    "breaker_delight": 14
+   }
+  },
+  {
+   "label": "Serenity",
+   "set": "Serenity",
+   "parallel": "",
+   "odds": {
+    "mega": 27,
+    "value_blaster": 28,
+    "hanger": 5
+   }
+  },
+  {
+   "label": "Sleek Finishers",
+   "set": "Sleek Finishers",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 7,
+    "mega": 36,
+    "value_blaster": 1629,
+    "hanger": 6
+   }
+  },
+  {
+   "label": "Tall Tales",
+   "set": "Tall Tales",
+   "parallel": "",
+   "odds": {
+    "hobby": 14,
+    "jumbo": 8
+   }
+  },
+  {
+   "label": "Ultraviolet",
+   "set": "Ultra Violet",
+   "parallel": "",
+   "odds": {
+    "hobby": 1452,
+    "jumbo": 289,
+    "breaker_delight": 213,
+    "mega": 42917,
+    "value_blaster": 81494,
+    "hanger": 10118
+   }
+  },
+  {
+   "label": "Voices",
+   "set": "Voices",
+   "parallel": "",
+   "odds": {
+    "hobby": 44,
+    "jumbo": 19,
+    "mega": 108,
+    "value_blaster": 1629,
+    "hanger": 20
+   }
+  },
+  {
+   "label": "X's & Whoa's",
+   "set": "Xs And Whoas",
+   "parallel": "",
+   "odds": {
+    "hobby": 35,
+    "jumbo": 19
+   }
+  },
+  {
+   "label": "YouthQuake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 29,
+    "jumbo": 13,
+    "mega": 72,
+    "value_blaster": 1629,
+    "hanger": 13
+   }
+  }
+ ]
+}

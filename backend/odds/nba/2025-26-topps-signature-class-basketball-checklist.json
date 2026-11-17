@@ -1,0 +1,2088 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-signature-class-basketball-checklist",
+ "product_label": "2025-26 Topps Signature Class Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 8
+  },
+  {
+   "key": "hobby_jumbo",
+   "label": "Hobby Jumbo",
+   "channel": "hobby",
+   "group": "hobby_jumbo",
+   "packs_per_box": 4
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega",
+   "packs_per_box": 10
+  },
+  {
+   "key": "value_blaster",
+   "label": "Value Blaster",
+   "channel": "retail",
+   "group": "value",
+   "packs_per_box": 6
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Veteran Class Blue & Orange",
+   "set": "Base - Veteran Class",
+   "parallel": "Blue & Orange",
+   "odds": {
+    "value_blaster": 5,
+    "mega": 4
+   }
+  },
+  {
+   "label": "Base Veteran Class Bronze",
+   "set": "Base - Veteran Class",
+   "parallel": "Bronze",
+   "odds": {
+    "value_blaster": 9,
+    "mega": 8
+   }
+  },
+  {
+   "label": "Base Veteran Class Yellow /399",
+   "set": "Base - Veteran Class",
+   "parallel": "Yellow",
+   "odds": {
+    "value_blaster": 314,
+    "mega": 89
+   }
+  },
+  {
+   "label": "Base Veteran Class Coral /299",
+   "set": "Base - Veteran Class",
+   "parallel": "Coral",
+   "odds": {
+    "value_blaster": 407,
+    "mega": 120
+   }
+  },
+  {
+   "label": "Base Veteran Class Magenta /250",
+   "set": "Base - Veteran Class",
+   "parallel": "Magenta",
+   "odds": {
+    "hobby": 81,
+    "hobby_jumbo": 73,
+    "value_blaster": 327,
+    "mega": 331
+   }
+  },
+  {
+   "label": "Base Veteran Class Teal /225",
+   "set": "Base - Veteran Class",
+   "parallel": "Teal",
+   "odds": {
+    "hobby": 64,
+    "hobby_jumbo": 41,
+    "value_blaster": 426,
+    "mega": 466
+   }
+  },
+  {
+   "label": "Base Veteran Class Indigo /175",
+   "set": "Base - Veteran Class",
+   "parallel": "Indigo",
+   "odds": {
+    "hobby": 82,
+    "hobby_jumbo": 33,
+    "value_blaster": 581,
+    "mega": 663
+   }
+  },
+  {
+   "label": "Base Veteran Class Green /150",
+   "set": "Base - Veteran Class",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 96,
+    "hobby_jumbo": 29,
+    "value_blaster": 723,
+    "mega": 853
+   }
+  },
+  {
+   "label": "Base Veteran Class Purple /100",
+   "set": "Base - Veteran Class",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 143,
+    "hobby_jumbo": 31,
+    "value_blaster": 1217,
+    "mega": 1712
+   }
+  },
+  {
+   "label": "Base Veteran Class Pink /75",
+   "set": "Base - Veteran Class",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 191,
+    "hobby_jumbo": 41,
+    "value_blaster": 1623,
+    "mega": 2283
+   }
+  },
+  {
+   "label": "Base Veteran Class Orange /50",
+   "set": "Base - Veteran Class",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 286,
+    "hobby_jumbo": 61,
+    "value_blaster": 2434,
+    "mega": 3424
+   }
+  },
+  {
+   "label": "Base Veteran Class Red /25",
+   "set": "Base - Veteran Class",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 571,
+    "hobby_jumbo": 121,
+    "value_blaster": 4868,
+    "mega": 6848
+   }
+  },
+  {
+   "label": "Base Veteran Class Red Lava /25",
+   "set": "Base - Veteran Class",
+   "parallel": "Red Lava",
+   "odds": {
+    "hobby": 571,
+    "hobby_jumbo": 121,
+    "value_blaster": 4868,
+    "mega": 6848
+   }
+  },
+  {
+   "label": "Base Veteran Class Black /10",
+   "set": "Base - Veteran Class",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1426,
+    "hobby_jumbo": 301,
+    "value_blaster": 12170,
+    "mega": 17119
+   }
+  },
+  {
+   "label": "Base Veteran Class Black Gold /10",
+   "set": "Base - Veteran Class",
+   "parallel": "Black Gold",
+   "odds": {
+    "hobby": 1426,
+    "hobby_jumbo": 301,
+    "value_blaster": 12170,
+    "mega": 17119
+   }
+  },
+  {
+   "label": "Base Veteran Class Blue /5",
+   "set": "Base - Veteran Class",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Base Veteran Class FoilFractor /1",
+   "set": "Base - Veteran Class",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 14661,
+    "hobby_jumbo": 3005,
+    "value_blaster": 120861,
+    "mega": 164334
+   }
+  },
+  {
+   "label": "Base Rookie Class",
+   "set": "Base - Rookie Class",
+   "parallel": "",
+   "odds": {
+    "hobby": 2,
+    "mega": 5,
+    "value_blaster": 8
+   }
+  },
+  {
+   "label": "Base Rookie Class Blue & Orange",
+   "set": "Base - Rookie Class",
+   "parallel": "Blue & Orange",
+   "odds": {
+    "value_blaster": 36,
+    "mega": 14
+   }
+  },
+  {
+   "label": "Base Rookie Class Bronze",
+   "set": "Base - Rookie Class",
+   "parallel": "Bronze",
+   "odds": {
+    "value_blaster": 101,
+    "mega": 42
+   }
+  },
+  {
+   "label": "Base Rookie Class Yellow /399",
+   "set": "Base - Rookie Class",
+   "parallel": "Yellow",
+   "odds": {
+    "hobby": 72,
+    "hobby_jumbo": 26,
+    "value_blaster": 520,
+    "mega": 675
+   }
+  },
+  {
+   "label": "Base Rookie Class Coral /299",
+   "set": "Base - Rookie Class",
+   "parallel": "Coral",
+   "odds": {
+    "hobby": 96,
+    "hobby_jumbo": 28,
+    "value_blaster": 730,
+    "mega": 1049
+   }
+  },
+  {
+   "label": "Base Rookie Class Magenta /250",
+   "set": "Base - Rookie Class",
+   "parallel": "Magenta",
+   "odds": {
+    "hobby": 115,
+    "hobby_jumbo": 29,
+    "value_blaster": 961,
+    "mega": 997
+   }
+  },
+  {
+   "label": "Base Rookie Class Teal /225",
+   "set": "Base - Rookie Class",
+   "parallel": "Teal",
+   "odds": {
+    "hobby": 127,
+    "hobby_jumbo": 27,
+    "value_blaster": 1050,
+    "mega": 1434
+   }
+  },
+  {
+   "label": "Base Rookie Class Indigo /175",
+   "set": "Base - Rookie Class",
+   "parallel": "Indigo",
+   "odds": {
+    "hobby": 163,
+    "hobby_jumbo": 35,
+    "value_blaster": 1338,
+    "mega": 1957
+   }
+  },
+  {
+   "label": "Base Rookie Class Green /150",
+   "set": "Base - Rookie Class",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 191,
+    "hobby_jumbo": 41,
+    "value_blaster": 1623,
+    "mega": 2283
+   }
+  },
+  {
+   "label": "Base Rookie Class Purple /100",
+   "set": "Base - Rookie Class",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 286,
+    "hobby_jumbo": 61,
+    "value_blaster": 2434,
+    "mega": 3424
+   }
+  },
+  {
+   "label": "Base Rookie Class Pink /75",
+   "set": "Base - Rookie Class",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 381,
+    "hobby_jumbo": 81,
+    "value_blaster": 3246,
+    "mega": 4565
+   }
+  },
+  {
+   "label": "Base Rookie Class Orange /50",
+   "set": "Base - Rookie Class",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 571,
+    "hobby_jumbo": 121,
+    "value_blaster": 4868,
+    "mega": 6848
+   }
+  },
+  {
+   "label": "Base Rookie Class Red /25",
+   "set": "Base - Rookie Class",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9736,
+    "mega": 13695
+   }
+  },
+  {
+   "label": "Base Rookie Class Red Lava /25",
+   "set": "Base - Rookie Class",
+   "parallel": "Red Lava",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9736,
+    "mega": 13695
+   }
+  },
+  {
+   "label": "Base Rookie Class Black /10",
+   "set": "Base - Rookie Class",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Base Rookie Class Black Gold /10",
+   "set": "Base - Rookie Class",
+   "parallel": "Black Gold",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Base Rookie Class Blue /5",
+   "set": "Base - Rookie Class",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 48680,
+    "mega": 68473
+   }
+  },
+  {
+   "label": "Base Rookie Class FoilFractor /1",
+   "set": "Base - Rookie Class",
+   "parallel": "FoilFractor",
+   "odds": {
+    "hobby": 29322,
+    "hobby_jumbo": 6010,
+    "value_blaster": 233664,
+    "mega": 308125
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "",
+   "odds": {
+    "hobby": 2,
+    "hobby_jumbo": 1,
+    "mega": 3,
+    "value_blaster": 3
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Refractor",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 6,
+    "hobby_jumbo": 2,
+    "value_blaster": 10,
+    "mega": 10
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Pandora Refractor",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Pandora Refractor",
+   "odds": {
+    "value_blaster": 13,
+    "mega": 13
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Pandora Yellow Refractor",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Pandora Yellow Refractor",
+   "odds": {
+    "value_blaster": 36,
+    "mega": 37
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Yellow Refractor /275",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "value_blaster": 407,
+    "mega": 285
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Magenta Refractor /250",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Magenta Refractor",
+   "odds": {
+    "hobby": 58,
+    "hobby_jumbo": 13,
+    "value_blaster": 487,
+    "mega": 685
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Teal Refractor /225",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Teal Refractor",
+   "odds": {
+    "hobby": 64,
+    "hobby_jumbo": 14,
+    "value_blaster": 541,
+    "mega": 761
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Indigo Refractor /175",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Indigo Refractor",
+   "odds": {
+    "hobby": 82,
+    "hobby_jumbo": 18,
+    "value_blaster": 696,
+    "mega": 979
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Green Refractor /150",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 96,
+    "hobby_jumbo": 21,
+    "value_blaster": 812,
+    "mega": 1142
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Purple Refractor /199",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 143,
+    "hobby_jumbo": 31,
+    "value_blaster": 1217,
+    "mega": 1712
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Pink Refractor /75",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "hobby": 191,
+    "hobby_jumbo": 41,
+    "value_blaster": 1623,
+    "mega": 2283
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Orange Refractor /50",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 286,
+    "hobby_jumbo": 61,
+    "value_blaster": 2434,
+    "mega": 3424
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Red Refractor /25",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 571,
+    "hobby_jumbo": 121,
+    "value_blaster": 4868,
+    "mega": 6848
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Red Lava Refractor /25",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 571,
+    "hobby_jumbo": 121,
+    "value_blaster": 4868,
+    "mega": 6848
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Gold Refractor /10",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1426,
+    "hobby_jumbo": 301,
+    "value_blaster": 12170,
+    "mega": 17119
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class Blue Refractor /5",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Base Chrome Veteran Class SuperFractor /1",
+   "set": "Base Chrome Veteran Class",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 14661,
+    "hobby_jumbo": 3005,
+    "value_blaster": 120861,
+    "mega": 164334
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "hobby_jumbo": 1,
+    "mega": 10,
+    "value_blaster": 12
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Refractor",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 12,
+    "hobby_jumbo": 3,
+    "value_blaster": 19,
+    "mega": 20
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Pandora Refractor",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Pandora Refractor",
+   "odds": {
+    "value_blaster": 25,
+    "mega": 15
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Pandora Yellow Refractor",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Pandora Yellow Refractor",
+   "odds": {
+    "value_blaster": 71,
+    "mega": 44
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Yellow Refractor /275",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "value_blaster": 814,
+    "mega": 594
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Magenta Refractor /250",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Magenta Refractor",
+   "odds": {
+    "hobby": 115,
+    "hobby_jumbo": 25,
+    "value_blaster": 974,
+    "mega": 1370
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Teal Refractor /225",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Teal Refractor",
+   "odds": {
+    "hobby": 127,
+    "hobby_jumbo": 27,
+    "value_blaster": 1082,
+    "mega": 1522
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Indigo Refractor /175",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Indigo Refractor",
+   "odds": {
+    "hobby": 163,
+    "hobby_jumbo": 35,
+    "value_blaster": 1391,
+    "mega": 1957
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Green Refractor /150",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 191,
+    "hobby_jumbo": 41,
+    "value_blaster": 1623,
+    "mega": 2283
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Purple Refractor /100",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 286,
+    "hobby_jumbo": 61,
+    "value_blaster": 2434,
+    "mega": 3424
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Pink Refractor /75",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "hobby": 381,
+    "hobby_jumbo": 81,
+    "value_blaster": 3246,
+    "mega": 4565
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Orange Refractor /50",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 571,
+    "hobby_jumbo": 121,
+    "value_blaster": 4868,
+    "mega": 6848
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Red Refractor /25",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9736,
+    "mega": 13695
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Red Lava Refractor /25",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9736,
+    "mega": 13695
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Gold Refractor /10",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class Blue Refractor /5",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 48680,
+    "mega": 68473
+   }
+  },
+  {
+   "label": "Base Chrome Rookie Class SuperFractor /1",
+   "set": "Base Chrome Rookie Class",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29322,
+    "hobby_jumbo": 6010,
+    "value_blaster": 233664,
+    "mega": 308125
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 28,
+    "hobby_jumbo": 6,
+    "mega": 425,
+    "value_blaster": 1402
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Purple /100",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 184,
+    "hobby_jumbo": 92,
+    "value_blaster": 5311,
+    "mega": 3231
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Orange /50",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 367,
+    "hobby_jumbo": 182,
+    "value_blaster": 10785,
+    "mega": 6437
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Red /25",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 734,
+    "hobby_jumbo": 365,
+    "value_blaster": 23367,
+    "mega": 12906
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Red Lava /25",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Red Lava",
+   "odds": {
+    "hobby": 804,
+    "hobby_jumbo": 399,
+    "value_blaster": 25036,
+    "mega": 14086
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs White Gold /10",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "White Gold",
+   "odds": {
+    "hobby": 1825,
+    "hobby_jumbo": 902,
+    "value_blaster": 70100,
+    "mega": 32013
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Gold /10",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1833,
+    "hobby_jumbo": 902,
+    "value_blaster": 70100,
+    "mega": 32013
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Blue /5",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 3633,
+    "hobby_jumbo": 1803,
+    "value_blaster": 233664,
+    "mega": 63206
+   }
+  },
+  {
+   "label": "Base Rookie Class Autographs Black /1",
+   "set": "Base Rookie Class Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 17848,
+    "hobby_jumbo": 9015,
+    "value_blaster": 1080000,
+    "mega": 308125
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 25,
+    "hobby_jumbo": 10,
+    "mega": 406,
+    "value_blaster": 631
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs Orange Refractor /50",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 367,
+    "hobby_jumbo": 182,
+    "value_blaster": 11307,
+    "mega": 6453
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs Red Lava Refractor /25",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 717,
+    "hobby_jumbo": 356,
+    "value_blaster": 21906,
+    "mega": 12577
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs Red Refractor /25",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 734,
+    "hobby_jumbo": 365,
+    "value_blaster": 23367,
+    "mega": 12906
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs Gold Refractor /10",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1833,
+    "hobby_jumbo": 902,
+    "value_blaster": 58416,
+    "mega": 32013
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs Blue Refractor /5",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 3666,
+    "hobby_jumbo": 1803,
+    "value_blaster": 140199,
+    "mega": 63206
+   }
+  },
+  {
+   "label": "Base Rookie Class Chrome Autographs SuperFractor /1",
+   "set": "Rookie Class Chrome Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 17848,
+    "hobby_jumbo": 9015,
+    "value_blaster": 1080000,
+    "mega": 308125
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 57,
+    "hobby_jumbo": 10,
+    "mega": 769,
+    "value_blaster": 5008
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Purple /100",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 193,
+    "hobby_jumbo": 96,
+    "value_blaster": 5608,
+    "mega": 3391
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Orange /50",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 384,
+    "hobby_jumbo": 191,
+    "value_blaster": 11492,
+    "mega": 6754
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Red /25",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 735,
+    "hobby_jumbo": 365,
+    "value_blaster": 23367,
+    "mega": 12906
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Red Lava /25",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Red Lava",
+   "odds": {
+    "hobby": 823,
+    "hobby_jumbo": 408,
+    "value_blaster": 26962,
+    "mega": 14416
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Gold /10",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1825,
+    "hobby_jumbo": 902,
+    "value_blaster": 70100,
+    "mega": 32013
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs White Gold /10",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "White Gold",
+   "odds": {
+    "hobby": 1833,
+    "hobby_jumbo": 902,
+    "value_blaster": 70100,
+    "mega": 32013
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Blue /5",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 3666,
+    "hobby_jumbo": 1803,
+    "value_blaster": 233664,
+    "mega": 64869
+   }
+  },
+  {
+   "label": "Base Veteran Class Autographs Black /1",
+   "set": "Base Veteran Class Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 17848,
+    "hobby_jumbo": 9015,
+    "value_blaster": 700992,
+    "mega": 308125
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 333,
+    "hobby_jumbo": 34,
+    "mega": 2233,
+    "value_blaster": 3471
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs Orange Refractor /50",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 460,
+    "hobby_jumbo": 228,
+    "value_blaster": 14604,
+    "mega": 8082
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs Red Lava Refractor /25",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "Red Lava Refractor",
+   "odds": {
+    "hobby": 751,
+    "hobby_jumbo": 372,
+    "value_blaster": 23367,
+    "mega": 13182
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs Red Refractor /25",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 807,
+    "hobby_jumbo": 401,
+    "value_blaster": 25036,
+    "mega": 14167
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs Gold Refractor /10",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1793,
+    "hobby_jumbo": 891,
+    "value_blaster": 58416,
+    "mega": 31203
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs Blue Refractor /5",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 3570,
+    "hobby_jumbo": 1760,
+    "value_blaster": 140199,
+    "mega": 61625
+   }
+  },
+  {
+   "label": "Base Veteran Class Chrome Autographs SuperFractor /1",
+   "set": "Veteran Class Chrome Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 17848,
+    "hobby_jumbo": 8014,
+    "value_blaster": 1080000,
+    "mega": 308125
+   }
+  },
+  {
+   "label": "Rookie Class Crystal Clear Autographs",
+   "set": "Rookie Class Crystal Clear Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 179,
+    "hobby_jumbo": 89
+   }
+  },
+  {
+   "label": "Rookie Class Crystal Clear Autographs Monarch",
+   "set": "Rookie Class Crystal Clear Autographs",
+   "parallel": "Monarch",
+   "odds": {
+    "hobby": 2504,
+    "hobby_jumbo": 1223
+   }
+  },
+  {
+   "label": "Rookie Class Crystal Clear Autographs Milkweed /1",
+   "set": "Rookie Class Crystal Clear Autographs",
+   "parallel": "Milkweed",
+   "odds": {
+    "hobby": 13684,
+    "hobby_jumbo": 6010
+   }
+  },
+  {
+   "label": "Veteran Class Crystal Clear Autographs",
+   "set": "Veteran Class Crystal Clear Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 529,
+    "hobby_jumbo": 262
+   }
+  },
+  {
+   "label": "Veteran Class Crystal Clear Autographs Monarch",
+   "set": "Veteran Class Crystal Clear Autographs",
+   "parallel": "Monarch",
+   "odds": {
+    "hobby": 3158,
+    "hobby_jumbo": 1535
+   }
+  },
+  {
+   "label": "Veteran Class Crystal Clear Autographs Milkweed /1",
+   "set": "Veteran Class Crystal Clear Autographs",
+   "parallel": "Milkweed",
+   "odds": {
+    "hobby": 17104,
+    "hobby_jumbo": 7212
+   }
+  },
+  {
+   "label": "Eternal Marks",
+   "set": "Eternal Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 471,
+    "hobby_jumbo": 44,
+    "mega": 3852,
+    "value_blaster": 5992
+   }
+  },
+  {
+   "label": "Eternal Marks Orange Refractor /50",
+   "set": "Eternal Marks",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 921,
+    "hobby_jumbo": 457,
+    "value_blaster": 28040,
+    "mega": 16218
+   }
+  },
+  {
+   "label": "Eternal Marks Red Refractor /25",
+   "set": "Eternal Marks",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1850,
+    "hobby_jumbo": 913,
+    "value_blaster": 58416,
+    "mega": 32435
+   }
+  },
+  {
+   "label": "Eternal Marks Gold Refractor /10",
+   "set": "Eternal Marks",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 4613,
+    "hobby_jumbo": 2254,
+    "value_blaster": 175248,
+    "mega": 79517
+   }
+  },
+  {
+   "label": "Eternal Marks Blue Refractor /5",
+   "set": "Eternal Marks",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 8734,
+    "hobby_jumbo": 4243,
+    "value_blaster": 292080,
+    "mega": 154063
+   }
+  },
+  {
+   "label": "Eternal Marks SuperFractor /1",
+   "set": "Eternal Marks",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 45611,
+    "hobby_jumbo": 18030,
+    "value_blaster": 2016960,
+    "mega": 616250
+   }
+  },
+  {
+   "label": "Legends of Their Class Crystal Clear Autographs",
+   "set": "Legends Of Their Class Crystal Clear Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 1086,
+    "hobby_jumbo": 539
+   }
+  },
+  {
+   "label": "Legends of Their Class Crystal Clear Autographs Monarch",
+   "set": "Legends Of Their Class Crystal Clear Autographs",
+   "parallel": "Monarch",
+   "odds": {
+    "hobby": 12074,
+    "hobby_jumbo": 5548
+   }
+  },
+  {
+   "label": "Legends of Their Class Crystal Clear Autographs Milkweed /1",
+   "set": "Legends Of Their Class Crystal Clear Autographs",
+   "parallel": "Milkweed",
+   "odds": {
+    "hobby": 68416,
+    "hobby_jumbo": 24040
+   }
+  },
+  {
+   "label": "Manuscripts",
+   "set": "Manuscripts",
+   "parallel": "",
+   "odds": {
+    "hobby": 24,
+    "hobby_jumbo": 4,
+    "mega": 261,
+    "value_blaster": 557
+   }
+  },
+  {
+   "label": "Manuscripts Purple Refractor /100",
+   "set": "Manuscripts",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 125,
+    "hobby_jumbo": 63,
+    "value_blaster": 3651,
+    "mega": 2199
+   }
+  },
+  {
+   "label": "Manuscripts Orange Refractor /50",
+   "set": "Manuscripts",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 246,
+    "hobby_jumbo": 122,
+    "value_blaster": 6900,
+    "mega": 4317
+   }
+  },
+  {
+   "label": "Manuscripts Red Refractor /25",
+   "set": "Manuscripts",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 471,
+    "hobby_jumbo": 234,
+    "value_blaster": 18448,
+    "mega": 8272
+   }
+  },
+  {
+   "label": "Manuscripts Gold Refractor /10",
+   "set": "Manuscripts",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1177,
+    "hobby_jumbo": 582,
+    "value_blaster": 38944,
+    "mega": 20542
+   }
+  },
+  {
+   "label": "Manuscripts Blue Refractor /5",
+   "set": "Manuscripts",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 2346,
+    "hobby_jumbo": 1164,
+    "value_blaster": 70100,
+    "mega": 41084
+   }
+  },
+  {
+   "label": "Manuscripts SuperFractor /1",
+   "set": "Manuscripts",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 11729,
+    "hobby_jumbo": 5548,
+    "value_blaster": 389440,
+    "mega": 205417
+   }
+  },
+  {
+   "label": "Penstroke Signatures",
+   "set": "Penstroke Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 60,
+    "hobby_jumbo": 19,
+    "mega": 910,
+    "value_blaster": 1415
+   }
+  },
+  {
+   "label": "Penstroke Signatures Orange Refractor /50",
+   "set": "Penstroke Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 589,
+    "hobby_jumbo": 292,
+    "value_blaster": 17525,
+    "mega": 10358
+   }
+  },
+  {
+   "label": "Penstroke Signatures Red Refractor /25",
+   "set": "Penstroke Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1177,
+    "hobby_jumbo": 582,
+    "value_blaster": 35050,
+    "mega": 20542
+   }
+  },
+  {
+   "label": "Penstroke Signatures Gold Refractor /10",
+   "set": "Penstroke Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 2933,
+    "hobby_jumbo": 1443,
+    "value_blaster": 87624,
+    "mega": 51355
+   }
+  },
+  {
+   "label": "Penstroke Signatures Blue Refractor /5",
+   "set": "Penstroke Signatures",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 5865,
+    "hobby_jumbo": 2885,
+    "value_blaster": 233664,
+    "mega": 102709
+   }
+  },
+  {
+   "label": "Penstroke Signatures SuperFractor /1",
+   "set": "Penstroke Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29322,
+    "hobby_jumbo": 14424,
+    "value_blaster": 1168320,
+    "mega": 800000
+   }
+  },
+  {
+   "label": "Shadow Scripts",
+   "set": "Shadow Scripts",
+   "parallel": "",
+   "odds": {
+    "hobby": 90,
+    "hobby_jumbo": 25,
+    "mega": 1294,
+    "value_blaster": 2014
+   }
+  },
+  {
+   "label": "Shadow Scripts Orange Refractor /50",
+   "set": "Shadow Scripts",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 689,
+    "hobby_jumbo": 342,
+    "value_blaster": 21906,
+    "mega": 12084
+   }
+  },
+  {
+   "label": "Shadow Scripts Red Refractor /25",
+   "set": "Shadow Scripts",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1320,
+    "hobby_jumbo": 656,
+    "value_blaster": 41235,
+    "mega": 24167
+   }
+  },
+  {
+   "label": "Shadow Scripts Gold Refractor /10",
+   "set": "Shadow Scripts",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 3311,
+    "hobby_jumbo": 1640,
+    "value_blaster": 109530,
+    "mega": 58691
+   }
+  },
+  {
+   "label": "Shadow Scripts Blue Refractor /5",
+   "set": "Shadow Scripts",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 6516,
+    "hobby_jumbo": 3136,
+    "value_blaster": 233664,
+    "mega": 112046
+   }
+  },
+  {
+   "label": "Shadow Scripts SuperFractor /1",
+   "set": "Shadow Scripts",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 31577,
+    "hobby_jumbo": 14424,
+    "value_blaster": 2016960,
+    "mega": 493000
+   }
+  },
+  {
+   "label": "Signature Blend",
+   "set": "Signature Blend",
+   "parallel": "",
+   "odds": {
+    "hobby": 135,
+    "hobby_jumbo": 30,
+    "mega": 1778,
+    "value_blaster": 2765
+   }
+  },
+  {
+   "label": "Signature Blend Red Refractor /25",
+   "set": "Signature Blend",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1373,
+    "hobby_jumbo": 681,
+    "value_blaster": 41235,
+    "mega": 24167
+   }
+  },
+  {
+   "label": "Signature Blend Gold Refractor /10",
+   "set": "Signature Blend",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 3421,
+    "hobby_jumbo": 1678,
+    "value_blaster": 116832,
+    "mega": 60122
+   }
+  },
+  {
+   "label": "Signature Blend Blue Refractor /5",
+   "set": "Signature Blend",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 6842,
+    "hobby_jumbo": 3279,
+    "value_blaster": 250355,
+    "mega": 117381
+   }
+  },
+  {
+   "label": "Signature Blend SuperFractor /1",
+   "set": "Signature Blend",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 34208,
+    "hobby_jumbo": 14424,
+    "value_blaster": 2016960,
+    "mega": 493000
+   }
+  },
+  {
+   "label": "After Image",
+   "set": "After Image",
+   "parallel": "",
+   "odds": {
+    "hobby": 12,
+    "hobby_jumbo": 7,
+    "mega": 14,
+    "value_blaster": 17
+   }
+  },
+  {
+   "label": "After Image Orange Refractor /50",
+   "set": "After Image",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9791,
+    "mega": 13771
+   }
+  },
+  {
+   "label": "After Image Red Refractor /25",
+   "set": "After Image",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2281,
+    "hobby_jumbo": 481,
+    "value_blaster": 19581,
+    "mega": 27389
+   }
+  },
+  {
+   "label": "After Image Gold Refractor /10",
+   "set": "After Image",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 48680,
+    "mega": 68473
+   }
+  },
+  {
+   "label": "After Image Blue Refractor /5",
+   "set": "After Image",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 11403,
+    "hobby_jumbo": 2404,
+    "value_blaster": 97360,
+    "mega": 136945
+   }
+  },
+  {
+   "label": "After Image SuperFractor /1",
+   "set": "After Image",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 51312,
+    "hobby_jumbo": 12020,
+    "value_blaster": 500709,
+    "mega": 616250
+   }
+  },
+  {
+   "label": "Algorithm",
+   "set": "Algorithm",
+   "parallel": "",
+   "odds": {
+    "hobby": 110,
+    "hobby_jumbo": 37,
+    "mega": 1233,
+    "value_blaster": 1113
+   }
+  },
+  {
+   "label": "Algorithm Orange /50",
+   "set": "Algorithm",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9791,
+    "mega": 13771
+   }
+  },
+  {
+   "label": "Algorithm Red /25",
+   "set": "Algorithm",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 2281,
+    "hobby_jumbo": 481,
+    "value_blaster": 19581,
+    "mega": 27389
+   }
+  },
+  {
+   "label": "Algorithm Gold /10",
+   "set": "Algorithm",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 48680,
+    "mega": 68473
+   }
+  },
+  {
+   "label": "Algorithm Blue /5",
+   "set": "Algorithm",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 11403,
+    "hobby_jumbo": 2404,
+    "value_blaster": 97360,
+    "mega": 136945
+   }
+  },
+  {
+   "label": "Algorithm Black /1",
+   "set": "Algorithm",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 51312,
+    "hobby_jumbo": 12020,
+    "value_blaster": 500709,
+    "mega": 616250
+   }
+  },
+  {
+   "label": "Aristocrats",
+   "set": "Aristocrats",
+   "parallel": "",
+   "odds": {
+    "mega": 250,
+    "value_blaster": 301
+   }
+  },
+  {
+   "label": "Fluidity",
+   "set": "Fluidity",
+   "parallel": "",
+   "odds": {
+    "hobby": 329,
+    "hobby_jumbo": 116,
+    "mega": 1233,
+    "value_blaster": 1113
+   }
+  },
+  {
+   "label": "Fluidity Red /25",
+   "set": "Fluidity",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Fluidity Gold /10",
+   "set": "Fluidity",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 7078,
+    "hobby_jumbo": 1503,
+    "value_blaster": 60431,
+    "mega": 85000
+   }
+  },
+  {
+   "label": "Fluidity Blue /5",
+   "set": "Fluidity",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 14156,
+    "hobby_jumbo": 3005,
+    "value_blaster": 120861,
+    "mega": 164334
+   }
+  },
+  {
+   "label": "Fluidity Black /1",
+   "set": "Fluidity",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 68416,
+    "hobby_jumbo": 14424,
+    "value_blaster": 1080000,
+    "mega": 800000
+   }
+  },
+  {
+   "label": "High Fidelity",
+   "set": "High Fidelity",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "hobby_jumbo": 6,
+    "mega": 12,
+    "value_blaster": 15
+   }
+  },
+  {
+   "label": "High Fidelity Orange Refractor /50",
+   "set": "High Fidelity",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 951,
+    "hobby_jumbo": 201,
+    "value_blaster": 8152,
+    "mega": 11466
+   }
+  },
+  {
+   "label": "High Fidelity Red Refractor /25",
+   "set": "High Fidelity",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1901,
+    "hobby_jumbo": 401,
+    "value_blaster": 16303,
+    "mega": 22825
+   }
+  },
+  {
+   "label": "High Fidelity Gold Refractor /10",
+   "set": "High Fidelity",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 4719,
+    "hobby_jumbo": 1002,
+    "value_blaster": 40756,
+    "mega": 57326
+   }
+  },
+  {
+   "label": "High Fidelity Blue Refractor /5",
+   "set": "High Fidelity",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 9330,
+    "hobby_jumbo": 2004,
+    "value_blaster": 81511,
+    "mega": 112046
+   }
+  },
+  {
+   "label": "High Fidelity SuperFractor /1",
+   "set": "High Fidelity",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 45611,
+    "hobby_jumbo": 10303,
+    "value_blaster": 389440,
+    "mega": 493000
+   }
+  },
+  {
+   "label": "Leviathans",
+   "set": "Leviathans",
+   "parallel": "",
+   "odds": {
+    "hobby": 242,
+    "hobby_jumbo": 61
+   }
+  },
+  {
+   "label": "Monarchs of the Game",
+   "set": "Monarchs Of The Game",
+   "parallel": "",
+   "odds": {
+    "hobby": 160,
+    "hobby_jumbo": 40
+   }
+  },
+  {
+   "label": "Odyssey",
+   "set": "Odyssey",
+   "parallel": "",
+   "odds": {
+    "mega": 250,
+    "value_blaster": 300
+   }
+  },
+  {
+   "label": "Pressure Points",
+   "set": "Pressure Points",
+   "parallel": "",
+   "odds": {
+    "mega": 500,
+    "value_blaster": 600
+   }
+  },
+  {
+   "label": "Pure",
+   "set": "Pure",
+   "parallel": "",
+   "odds": {
+    "hobby": 12,
+    "hobby_jumbo": 7,
+    "mega": 14,
+    "value_blaster": 17
+   }
+  },
+  {
+   "label": "Pure Orange Refractor /50",
+   "set": "Pure",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9791,
+    "mega": 13771
+   }
+  },
+  {
+   "label": "Pure Red Refractor /25",
+   "set": "Pure",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2281,
+    "hobby_jumbo": 481,
+    "value_blaster": 19581,
+    "mega": 27389
+   }
+  },
+  {
+   "label": "Pure Gold Refractor /10",
+   "set": "Pure",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 48680,
+    "mega": 68473
+   }
+  },
+  {
+   "label": "Pure Blue Refractor /5",
+   "set": "Pure",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 11403,
+    "hobby_jumbo": 2404,
+    "value_blaster": 97360,
+    "mega": 136945
+   }
+  },
+  {
+   "label": "Pure SuperFractor /1",
+   "set": "Pure",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 51312,
+    "hobby_jumbo": 12020,
+    "value_blaster": 500709,
+    "mega": 616250
+   }
+  },
+  {
+   "label": "Roses",
+   "set": "Roses",
+   "parallel": "",
+   "odds": {
+    "hobby": 329,
+    "hobby_jumbo": 116,
+    "mega": 1233,
+    "value_blaster": 1113
+   }
+  },
+  {
+   "label": "Roses Red /25",
+   "set": "Roses",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 2281,
+    "hobby_jumbo": 481,
+    "value_blaster": 18644,
+    "mega": 26224
+   }
+  },
+  {
+   "label": "Roses Gold /10",
+   "set": "Roses",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 46733,
+    "mega": 64869
+   }
+  },
+  {
+   "label": "Roses Blue /5",
+   "set": "Roses",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 11403,
+    "hobby_jumbo": 2404,
+    "value_blaster": 97360,
+    "mega": 136945
+   }
+  },
+  {
+   "label": "Roses Black /1",
+   "set": "Roses",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 51312,
+    "hobby_jumbo": 12020,
+    "value_blaster": 500709,
+    "mega": 616250
+   }
+  },
+  {
+   "label": "Star Cast",
+   "set": "Star Cast",
+   "parallel": "",
+   "odds": {
+    "hobby": 110,
+    "hobby_jumbo": 37,
+    "mega": 1233,
+    "value_blaster": 1113
+   }
+  },
+  {
+   "label": "Star Cast Orange /50",
+   "set": "Star Cast",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1141,
+    "hobby_jumbo": 241,
+    "value_blaster": 9791,
+    "mega": 13771
+   }
+  },
+  {
+   "label": "Star Cast Red /25",
+   "set": "Star Cast",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 2281,
+    "hobby_jumbo": 481,
+    "value_blaster": 19581,
+    "mega": 27389
+   }
+  },
+  {
+   "label": "Star Cast Gold /10",
+   "set": "Star Cast",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 5702,
+    "hobby_jumbo": 1202,
+    "value_blaster": 48680,
+    "mega": 68473
+   }
+  },
+  {
+   "label": "Star Cast Blue /5",
+   "set": "Star Cast",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 11403,
+    "hobby_jumbo": 2404,
+    "value_blaster": 97360,
+    "mega": 136945
+   }
+  },
+  {
+   "label": "Star Cast Black /1",
+   "set": "Star Cast",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 51312,
+    "hobby_jumbo": 12020,
+    "value_blaster": 500709,
+    "mega": 616250
+   }
+  },
+  {
+   "label": "Unfazed",
+   "set": "Unfazed",
+   "parallel": "",
+   "odds": {
+    "hobby": 15,
+    "hobby_jumbo": 8,
+    "mega": 18,
+    "value_blaster": 22
+   }
+  },
+  {
+   "label": "Unfazed Orange Refractor /50",
+   "set": "Unfazed",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1426,
+    "hobby_jumbo": 301,
+    "value_blaster": 12213,
+    "mega": 17119
+   }
+  },
+  {
+   "label": "Unfazed Red Refractor /25",
+   "set": "Unfazed",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2851,
+    "hobby_jumbo": 601,
+    "value_blaster": 24340,
+    "mega": 34237
+   }
+  },
+  {
+   "label": "Unfazed Gold Refractor /10",
+   "set": "Unfazed",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 7078,
+    "hobby_jumbo": 1503,
+    "value_blaster": 60431,
+    "mega": 85000
+   }
+  },
+  {
+   "label": "Unfazed Blue Refractor /5",
+   "set": "Unfazed",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 14156,
+    "hobby_jumbo": 3005,
+    "value_blaster": 120861,
+    "mega": 164334
+   }
+  },
+  {
+   "label": "Unfazed SuperFractor /1",
+   "set": "Unfazed",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 68416,
+    "hobby_jumbo": 14424,
+    "value_blaster": 584160,
+    "mega": 821667
+   }
+  }
+ ]
+}
