@@ -114,6 +114,19 @@ python scripts/import_topps_odds_pdfs.py            # --dry-run pour un rapport
 }
 ```
 
+## Exclusivités déclarées (optionnel)
+
+```jsonc
+"exclusives": { "Base Facsimile Prints": "China", "The Flagship Collection Base Cards": "Costco/Sams Club" }
+```
+
+`{set: libellé du format}` — une série réservée à un format. Elle prime sur la disponibilité
+déduite des cotes et donne un badge même aux séries sans aucune cote publiée :
+`Hobby`, `Jumbo`, `Hobby/Jumbo` → `hobby_only` ; `Retail` (ou un group retail) → `retail_only` ;
+tout autre libellé → `only:<libellé>` (affiché « China only », « Costco/Sams Club only »…).
+Une exclusivité à un seul format spécial déduite des cotes (ex. group `china`) donne aussi
+`only:<group>` au lieu de `retail_only`.
+
 ## Sémantique de `channel` / `group` / `packs_per_box`
 
 - **`channel`** ∈ `hobby | retail | special`. Sert de classification large pour l'UI

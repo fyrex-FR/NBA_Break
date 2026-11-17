@@ -143,11 +143,23 @@ def base_odds_of(section: dict, table: dict[str, dict[str, int]]) -> dict[str, i
     return found or table.get(section.get("id"), {})
 
 
+def exclusive_of(section: dict) -> str | None:
+    """Format auquel la série est réservée (pastille « Exclusif Costco/Sams Club »)."""
+    m = re.search(r'\["Exclusif",\s*" ",\s*"([^"]+)"\]', json.dumps(section.get("summary"), ensure_ascii=False))
+    if not m:
+        return None
+    # « China Wave 1 » = format « China Wave 1 » ; on retire seulement un compteur isolé type « 100 ».
+    return re.sub(r"\s+\d+$", "", m.group(1)).strip() if not re.search(r"Wave \d+$", m.group(1)) else m.group(1).strip()
+
+
 # ── Correspondance des noms de séries avec nos « Box Type » ─────────────────
 
 _SYN = {"autographs": "auto", "autograph": "auto", "autographed": "auto", "rookies": "rookie",
         "veterans": "veteran", "relics": "relic", "signatures": "signature", "&": "and"}
 _NOISE = {"topps", "set", "the", "card", "cards"}
+# Mots trop courants pour identifier une série à eux seuls.
+_GENERIC = {"base", "auto", "relic", "rookie", "signature", "variation", "variations", "parallel", "parallels",
+            "insert", "inserts", "refractor", "refractors", "chrome", "series", "basketball", "and", "of", "veteran"}
 
 
 def _tokens(name: str) -> list[str]:
@@ -173,6 +185,12 @@ def match_set(name: str, box_types: list[str]) -> str | None:
         scored.append((len(a & b) / len(a | b), bt))
     scored.sort(reverse=True)
     if not scored or scored[0][0] < 0.6:
+        # Repli : un mot distinctif (« Facsimile ») qui ne désigne qu'une seule de nos séries.
+        distinct = set(toks) - _GENERIC
+        if distinct:
+            cands = [bt for bt in box_types if distinct <= set(_tokens(bt))]
+            if len(cands) == 1:
+                return cands[0]
         return None
     # Ex æquo : on ne devine pas (le mapping manuel de l'app prendra le relais).
     if len(scored) > 1 and scored[1][0] == scored[0][0]:
@@ -214,11 +232,15 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         return key
 
     rows, skipped, matched = [], 0, 0
+    exclusives: dict[str, str] = {}
     for s in secs:
         name = s["sectionName"].strip()
         # La série prend le nom exact de notre checklist quand on le retrouve.
         set_name = match_set(name, box_types or []) or name
         matched += set_name != name or name in (box_types or [])
+        excl = exclusive_of(s)
+        if excl:
+            exclusives[set_name] = excl
         base = base_odds_of(s, table)
         if base:
             rows.append({"label": name, "set": set_name, "parallel": "",
@@ -250,6 +272,7 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         "updated_at": date.today().isoformat(),
         "configs": [c for k, c in configs.items() if k in used],
         "rows": rows,
+        **({"exclusives": exclusives} if exclusives else {}),
         "_skipped_non_ratio": skipped,
         "_sets_matched": f"{matched}/{len(secs)}",
     }
@@ -329,6 +352,9 @@ def main() -> int:
             skipped.append(f"{cid} (feuille faite à la main)")
             continue
         out = OUT_DIR / f"{cid}.json"
+        if out.exists() and str(json.loads(out.read_text(encoding="utf-8")).get("source", "")).startswith("Topps — feuille"):
+            skipped.append(f"{cid} (feuille du PDF officiel Topps, prioritaire)")
+            continue
         if out.exists() and not args.force:
             skipped.append(f"{cid} (fichier local existant)")
             continue

@@ -12,10 +12,13 @@ const GROUP_LABELS_FR: Record<string, string> = {
   blaster: 'Blaster',
   hanger: 'Hanger',
   retail: 'Retail',
+  china: 'China',
 }
 
 export function groupLabel(group: string): string {
-  return GROUP_LABELS_FR[group] || (group ? group.charAt(0).toUpperCase() + group.slice(1) : group)
+  if (GROUP_LABELS_FR[group]) return GROUP_LABELS_FR[group]
+  // silver_pack → Silver Pack ; fdi → FDI (sigles courts en capitales).
+  return group.split('_').map((w) => (w.length <= 3 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1))).join(' ')
 }
 
 /** Vrai pour les codes `best:<group>` — pas de pastille de disponibilité ni de rareté. */

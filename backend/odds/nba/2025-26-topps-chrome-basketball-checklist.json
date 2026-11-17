@@ -1056,5 +1056,25 @@
     "hanger": 13
    }
   }
- ]
+ ],
+ "exclusives": {
+  "Chromographs": "Retail",
+  "Chromographs Rookies": "Retail",
+  "Future Stars Autographs": "Retail",
+  "Stratospheric Signatures": "Retail",
+  "Stratospheric Signatures - Rookies": "Retail",
+  "Topps Certified Autograph Issue": "Retail",
+  "Autograph Issue - Rookies": "Retail",
+  "Activators": "Retail",
+  "Advisory": "Retail",
+  "Ball Of Duty": "Retail",
+  "Fanatical": "Retail",
+  "Glass Canvas": "Retail",
+  "Go Time": "Retail",
+  "Inspirational": "Retail",
+  "Paradox": "Retail",
+  "Patented": "Retail",
+  "Serenity": "Retail",
+  "Ultra Violet": "Hobby"
+ }
 }

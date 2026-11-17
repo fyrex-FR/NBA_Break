@@ -33,6 +33,7 @@ from .odds_config import (
     BADGE_SAPPHIRE_ONLY,
     DELIGHT_GROUP,
     HOBBY_NON_DELIGHT_GROUPS,
+    RETAIL_GROUPS,
     PARALLEL_FAMILY_TOKENS,
     SINGLETON_BADGE_GROUPS,
     group_display_label,
@@ -368,6 +369,9 @@ def classify_availability_badge(groups_present):
             return BADGE_FANATICS_ONLY
         if only_group == "promo":
             return BADGE_PROMO_ONLY
+        # Format spécial seul (China, Silver Pack…) : ni Hobby ni Retail, on le nomme.
+        if only_group not in HOBBY_NON_DELIGHT_GROUPS and only_group not in RETAIL_GROUPS:
+            return f"only:{only_group}"
 
     if groups_present <= HOBBY_NON_DELIGHT_GROUPS:
         return BADGE_HOBBY_ONLY
@@ -484,7 +488,45 @@ def build_set_summaries(sheet):
             "exclusive_parallel_families": exclusive_families,
         }
 
+    _apply_exclusives(summaries, sheet.get("exclusives"))
     return {"sets": summaries, "configs_by_key": configs_by_key}
+
+
+def exclusive_badge(label):
+    """Badge de disponibilité pour une exclusivité déclarée (« Hobby/Jumbo »,
+    « Retail », « China », « Costco/Sams Club »…)."""
+    parts = {p.strip().lower() for p in str(label or "").split("/") if p.strip()}
+    if not parts:
+        return None
+    if parts <= {"hobby", "jumbo"}:
+        return BADGE_HOBBY_ONLY
+    if parts <= {"retail"} | RETAIL_GROUPS:
+        return BADGE_RETAIL_ONLY
+    return f"only:{str(label).strip()}"
+
+
+def _apply_exclusives(summaries, exclusives):
+    """Exclusivités déclarées par série (champ optionnel `exclusives` de la feuille,
+    {set: libellé du format}). Elles priment sur la disponibilité déduite des cotes,
+    et donnent un badge aux séries sans aucune cote publiée."""
+    if not isinstance(exclusives, dict):
+        return
+    for set_root, label in exclusives.items():
+        badge = exclusive_badge(label)
+        if not set_root or not badge:
+            continue
+        entry = summaries.get(set_root)
+        if entry is None:
+            summaries[set_root] = {
+                "set": set_root, "rows": [], "groups_present": [], "best_by_group": {}, "best_overall": None,
+                "availability_badge": badge, "rarity_badge": None, "badges": [badge],
+                "exclusive_parallel_families": [], "exclusive_label": label,
+            }
+            continue
+        old = entry.get("availability_badge")
+        entry["availability_badge"] = badge
+        entry["exclusive_label"] = label
+        entry["badges"] = [badge] + [b for b in entry.get("badges", []) if b != old]
 
 
 # ---------------------------------------------------------------------------

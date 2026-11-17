@@ -669,7 +669,7 @@
   },
   {
    "label": "Paper Prospect",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "",
    "odds": {
     "hobby": 1,
@@ -681,7 +681,7 @@
   },
   {
    "label": "Paper Prospect Purple Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Purple Border",
    "odds": {
     "hobby": 376,
@@ -692,7 +692,7 @@
   },
   {
    "label": "Paper Prospect Pink Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Pink Border",
    "odds": {
     "hobby": 428,
@@ -703,7 +703,7 @@
   },
   {
    "label": "Paper Prospect Blue Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Blue Border",
    "odds": {
     "hobby": 499,
@@ -714,7 +714,7 @@
   },
   {
    "label": "Paper Prospect Green Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Green Border",
    "odds": {
     "value": 1066,
@@ -723,7 +723,7 @@
   },
   {
    "label": "Paper Prospect Green Pattern Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Green Pattern Border",
    "odds": {
     "value": 1066,
@@ -732,7 +732,7 @@
   },
   {
    "label": "Paper Prospect Yellow Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Yellow Border",
    "odds": {
     "hobby": 998,
@@ -743,7 +743,7 @@
   },
   {
    "label": "Paper Prospect Gold Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Gold Border",
    "odds": {
     "hobby": 1497,
@@ -754,7 +754,7 @@
   },
   {
    "label": "Paper Prospect Orange Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Orange Border",
    "odds": {
     "hobby": 899
@@ -762,7 +762,7 @@
   },
   {
    "label": "Paper Prospect Black Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Black Border",
    "odds": {
     "hobby": 2245
@@ -770,7 +770,7 @@
   },
   {
    "label": "Paper Prospect Black Pattern Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Black Pattern Border",
    "odds": {
     "hobby": 2245
@@ -778,7 +778,7 @@
   },
   {
    "label": "Paper Prospect Red Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Red Border",
    "odds": {
     "hobby": 15044,
@@ -789,7 +789,7 @@
   },
   {
    "label": "Paper Prospect Platinum Border",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Platinum Border",
    "odds": {
     "hobby": 77366,
@@ -3607,7 +3607,7 @@
   },
   {
    "label": "Paper Prospect Retail Autograph",
-   "set": "Paper Prospect",
+   "set": "Paper Prospect Retail Autographs",
    "parallel": "Retail Autograph",
    "odds": {
     "value": 778,

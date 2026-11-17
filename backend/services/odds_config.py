@@ -137,6 +137,8 @@ _CHANNEL_SPECIAL = "special"
 # Groups dont le channel est "hobby" mais qui ne sont PAS Delight — sert au
 # calcul des badges de disponibilité (hobby_only vs hobby_delight).
 HOBBY_NON_DELIGHT_GROUPS = {"hobby", "jumbo"}
+# Groups « retail » : une série présente seulement là reste « Retail uniquement ».
+RETAIL_GROUPS = {"value", "mega", "blaster", "hanger", "fat_pack", "retail", "cello", "fast_break"}
 DELIGHT_GROUP = "delight"
 
 # Groups "singleton" qui, quand ils sont seuls, donnent un badge dédié

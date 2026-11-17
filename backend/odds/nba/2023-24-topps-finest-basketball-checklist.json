@@ -369,7 +369,7 @@
   },
   {
    "label": "Arrivals Refractor Checkerboard",
-   "set": "Arrivals Refractor",
+   "set": "Arrivals",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 10
@@ -457,7 +457,7 @@
   },
   {
    "label": "Showstoppers Refractor Checkerboard",
-   "set": "Showstoppers Refractor",
+   "set": "Showstoppers",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 10
@@ -545,7 +545,7 @@
   },
   {
    "label": "Debut Refractor Checkerboard",
-   "set": "Debut Refractor",
+   "set": "Debut",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 10
@@ -633,7 +633,7 @@
   },
   {
    "label": "Finishers Refractor Checkerboard",
-   "set": "Finishers Refractor",
+   "set": "Finishers",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 30

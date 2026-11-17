@@ -582,7 +582,7 @@
   },
   {
    "label": "Base Facsimile Autographs Green /99",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "Green",
    "odds": {
     "china": 297
@@ -590,7 +590,7 @@
   },
   {
    "label": "Base Facsimile Autographs Yellow /75",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "Yellow",
    "odds": {
     "china": 392
@@ -598,7 +598,7 @@
   },
   {
    "label": "Base Facsimile Autographs Gold /50",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "Gold",
    "odds": {
     "china": 588
@@ -606,7 +606,7 @@
   },
   {
    "label": "Base Facsimile Autographs Orange /25",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "Orange",
    "odds": {
     "china": 1178
@@ -614,7 +614,7 @@
   },
   {
    "label": "Base Facsimile Autographs Black /10",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "Black",
    "odds": {
     "china": 2941
@@ -622,7 +622,7 @@
   },
   {
    "label": "Base Facsimile Autographs Red /5",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "Red",
    "odds": {
     "china": 5912
@@ -630,7 +630,7 @@
   },
   {
    "label": "Base Facsimile Autographs FoilFractor /1",
-   "set": "Base Facsimile Autographs",
+   "set": "Base Facsimile Prints",
    "parallel": "FoilFractor",
    "odds": {
     "china": 30191
@@ -3802,5 +3802,35 @@
     "jumbo": 87204
    }
   }
- ]
+ ],
+ "exclusives": {
+  "Break Point": "Costco/Sams Club",
+  "Base Dylan Wang": "China",
+  "Base Player Number Variation": "Hobby",
+  "Project Rookie": "Costco/Sams Club",
+  "Base Facsimile Prints": "China",
+  "Base Flagship Real One Autograph (LeBron/SGA)": "Jumbo/Hanger",
+  "Flagship Real One Autographs Dylan Wang": "China",
+  "1981-82 Topps Chrome Autographs Mojo": "Silver Pack",
+  "1981 82 Topps Chrome Basketball Rookie Autographs": "Silver Pack",
+  "Fanatics Authentic Redemption": "Fanatics Value Blaster",
+  "1981 82 Topps Chrome Basketball": "Silver Pack",
+  "Certified Cold": "Retail",
+  "Comic Court": "Hobby/Jumbo",
+  "Crafted Excellence": "China Wave 1",
+  "From The Stands": "China",
+  "From The Vault": "Hobby/Jumbo",
+  "Levitation": "Hobby/Jumbo",
+  "Limited Stock": "Black Friday Value Blaster",
+  "New School": "Hobby/Jumbo",
+  "Oversized Topps Basketball Card": "Costco/Sams Club",
+  "Quest For The Crown": "Hobby/Jumbo",
+  "Scan And Slam": "Black Friday Value Blaster",
+  "Soundcheck": "Retail",
+  "Stars Of Destiny": "China",
+  "The Daily Dribble": "Hobby/Jumbo",
+  "The Flagship Collection Base Cards": "Costco/Sams Club",
+  "The Flagship Collection Chrome Base Cards": "Costco/Sams Club",
+  "The Journey": "China Wave 2"
+ }
 }
