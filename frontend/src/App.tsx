@@ -1,15 +1,18 @@
 import { useState, useRef, useEffect } from 'react'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
-import { LayoutDashboard, User, Shield, Layers, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { useAppStore } from './stores/appStore'
 import { fetchChecklists } from './api/client'
 import { useUrlSync } from './hooks/useUrlSync'
-import { useRunAnalysis } from './hooks/useRunAnalysis'
-import { navItemFor } from './navigation'
+import { useAutoAnalysis } from './hooks/useRunAnalysis'
+import { DESTINATIONS, destinationFor, navItemFor } from './navigation'
 import { NavRail } from './components/layout/NavRail'
 import { TopBar } from './components/layout/TopBar'
 import { SelectionPanel } from './components/layout/SelectionPanel'
 import { CommandPalette } from './components/layout/CommandPalette'
+import { DestinationTabs } from './components/layout/DestinationTabs'
+import { CollectionHeader } from './components/layout/CollectionHeader'
+import { NeedsCollection, BreakStart } from './components/layout/EmptyDestination'
 import { PageHeader } from './components/ui/primitives'
 import { HomeView, AnalysisSkeleton } from './components/views/HomeView'
 import { GlobalView } from './components/views/GlobalView'
@@ -43,7 +46,7 @@ const queryClient = new QueryClient({
 /** Vues qui portent déjà leur propre en-tête (bandeau, branding…). */
 const OWN_HEADER = new Set<ViewName>(['📚 Checklist Beckett', '📥 Import Intelligent', '🎲 État du Break'])
 
-function renderView(view: ViewName) {
+function renderView(view: ViewName, hasBreak: boolean) {
   switch (view) {
     case '🌍 Vue Globale': return <GlobalView />
     case '💎 Autos & Patchs':
@@ -64,37 +67,45 @@ function renderView(view: ViewName) {
     case '🔗 Mapping Odds': return <OddsMappingView />
     case '📤 Export': return <ExportView />
     case '📥 Import Intelligent': return <SmartImportView />
-    case '🎲 État du Break': return <BreakOverviewView />
+    case '🎲 État du Break': return hasBreak ? <BreakOverviewView /> : <BreakStart />
     case '📦 Guide des boîtes': return <BoxGuideView />
     default: return <GlobalView />
   }
 }
 
 function MainContent() {
-  const { analysisData, activeView, isAnalyzing, breakContext } = useAppStore()
+  const { analysisData, activeView, isAnalyzing, breakContext, selectedChecklistIds } = useAppStore()
   const item = navItemFor(activeView)
-
-  const standalone = activeView === '📥 Import Intelligent' || activeView === '📦 Guide des boîtes' || (activeView === '🎲 État du Break' && !!breakContext)
+  const destination = destinationFor(activeView)
+  const needsCollection = !!item?.needsAnalysis && !analysisData
 
   let body: React.ReactNode
-  if (isAnalyzing && !standalone) {
+  if (needsCollection && isAnalyzing) {
     body = <AnalysisSkeleton />
-  } else if (!analysisData && !standalone) {
+  } else if (needsCollection && destination?.id === 'collections') {
+    // Rien d'ouvert : l'accueil sert de porte d'entrée vers les collections.
     body = <HomeView />
   } else {
+    const breakStart = activeView === '🎲 État du Break' && !breakContext
+    const showHeader = item && !(OWN_HEADER.has(activeView) && !needsCollection && !breakStart)
     body = (
       <>
-        {item && !OWN_HEADER.has(activeView) && (
-          <PageHeader title={item.label} description={item.description} icon={item.icon} />
-        )}
-        {renderView(activeView)}
+        {destination?.id === 'collections' && analysisData && selectedChecklistIds.length > 0
+          ? <CollectionHeader />
+          : showHeader && (
+            destination
+              ? <PageHeader title={destination.label} description={destination.description} icon={destination.icon} />
+              : <PageHeader title={item.label} description={item.description} icon={item.icon} />
+          )}
+        {destination && <DestinationTabs destination={destination.id} />}
+        {needsCollection ? <NeedsCollection /> : renderView(activeView, !!breakContext)}
       </>
     )
   }
 
   return (
     <div className="px-4 md:px-8 py-6 md:py-8 pb-24 md:pb-10 max-w-[1440px] mx-auto w-full">
-      <div key={isAnalyzing ? 'loading' : activeView} style={{ animation: 'fadeIn 0.18s ease-out' }}>
+      <div key={needsCollection && isAnalyzing ? 'loading' : activeView} style={{ animation: 'fadeIn 0.18s ease-out' }}>
         {body}
       </div>
     </div>
@@ -118,13 +129,8 @@ function useCatalogSync() {
 }
 
 function MobileTabBar() {
-  const { activeView, setActiveView, openSelection, setPaletteOpen, analysisData, selectedChecklistIds } = useAppStore()
-  const current = navItemFor(activeView)?.view
-  const tabs = [
-    { label: 'Aperçu', icon: LayoutDashboard, view: '🌍 Vue Globale' as ViewName },
-    { label: 'Joueur', icon: User, view: '🔍 Analyse Joueur' as ViewName },
-    { label: 'Équipe', icon: Shield, view: '🛡️ Analyse Équipe' as ViewName },
-  ]
+  const { activeView, goToDestination, setPaletteOpen, breakContext } = useAppStore()
+  const current = destinationFor(activeView)?.id
   return (
     <nav
       className="md:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-5"
@@ -135,19 +141,23 @@ function MobileTabBar() {
         borderTop: '1px solid var(--border-subtle)',
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}
-      aria-label="Navigation rapide"
+      aria-label="Navigation principale"
     >
-      {tabs.map(({ label, icon: Icon, view }) => {
-        const active = !!analysisData && current === view
+      {DESTINATIONS.map(({ id, label, icon: Icon }) => {
+        const active = current === id
         return (
           <button
-            key={label}
-            onClick={() => (analysisData ? setActiveView(view) : openSelection('catalog'))}
-            className="flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold"
+            key={id}
+            onClick={() => goToDestination(id)}
+            aria-current={active ? 'page' : undefined}
+            className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold"
             style={{ color: active ? 'var(--accent)' : 'var(--text-tertiary)' }}
           >
             <Icon className="w-5 h-5" />
             {label}
+            {id === 'break' && breakContext && (
+              <span className="absolute top-2 left-1/2 ml-2 w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--danger)' }} aria-label="break en direct" />
+            )}
           </button>
         )
       })}
@@ -155,26 +165,17 @@ function MobileTabBar() {
         <Search className="w-5 h-5" />
         Chercher
       </button>
-      <button onClick={() => openSelection('catalog')} className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold" style={{ color: 'var(--text-tertiary)' }}>
-        <Layers className="w-5 h-5" />
-        Sélection
-        {selectedChecklistIds.length > 0 && (
-          <span className="absolute top-1.5 left-1/2 ml-1.5 min-w-4 h-4 px-1 rounded-full text-[10px] font-bold num flex items-center justify-center" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
-            {selectedChecklistIds.length}
-          </span>
-        )}
-      </button>
     </nav>
   )
 }
 
 function Shell() {
-  const { selectedSport, analysisData, activeView, selectedChecklistIds, theme } = useAppStore()
+  const { selectedSport, analysisData, activeView, theme } = useAppStore()
   const [navOpen, setNavOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
-  const runAnalysis = useRunAnalysis()
   useUrlSync()
   useCatalogSync()
+  useAutoAnalysis()
 
   const hasAnalysis = !!analysisData
   useEffect(() => {
@@ -190,12 +191,6 @@ function Shell() {
       m.removeAttribute('media')
     })
   }, [theme])
-
-  // Relance l'analyse au retour sur la page si une sélection existe mais pas de données.
-  useEffect(() => {
-    if (analysisData || selectedChecklistIds.length === 0) return
-    runAnalysis()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} data-theme={theme} style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>

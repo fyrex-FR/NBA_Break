@@ -1,41 +1,55 @@
 import { useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Package, Search, PenLine, Dot, CalendarDays, ExternalLink, Plus, Check, Play } from 'lucide-react'
+import { Package, Search, PenLine, Dot, CalendarDays, ExternalLink, Plus, Check, Play, ArrowLeft } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchBoxGuide, fetchBoxGuides } from '../../api/client'
-import { useRunAnalysis } from '../../hooks/useRunAnalysis'
+import { useOpenCollections, useOpenCollection, toEntry } from '../../hooks/useCollections'
+import { frenchDate, isUpcoming, shortProductName, usd } from '../../utils/boxGuide'
+import { BoxImage, CollectionCard } from '../shared/CollectionCard'
 import { EmptyState, Segmented, Sheet, SheetHeader } from '../ui/primitives'
 import type { BoxFormat, BoxGuideSummary } from '../../types'
 
 const SOURCE_URL = 'https://www.thehobbychecklist.com'
 
-/** « 2025-26 Panini Prizm Basketball » → « Panini Prizm ». */
-function shortProductName(name: string | null, season: string | null) {
-  let n = name ?? ''
-  if (season && n.startsWith(season)) n = n.slice(season.length)
-  return n.replace(/\s+Basketball$/i, '').trim()
-}
-
-function frenchDate(iso: string | null, withYear = true) {
-  if (!iso) return null
-  const d = new Date(`${iso}T12:00:00`)
-  return d.toLocaleDateString('fr-FR', withYear ? { day: 'numeric', month: 'long', year: 'numeric' } : { day: 'numeric', month: 'short' })
-}
-
-function isUpcoming(iso: string | null) {
-  return !!iso && new Date(`${iso}T23:59:59`).getTime() > Date.now()
-}
-
-function usd(price: number | null) {
-  if (price == null) return null
-  return price.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: price % 1 ? 2 : 0 })
-}
-
+/**
+ * Onglet « Boîte ».
+ * - Une ou plusieurs collections ouvertes avec un guide : la fiche boîte directement.
+ * - Sinon (ou sur demande) : le catalogue de toutes les boîtes.
+ */
 export function BoxGuideView() {
-  const { selectedSport, selectedChecklistIds } = useAppStore()
+  const open = useOpenCollections().filter((e) => e.guide)
+  const [browseAll, setBrowseAll] = useState(false)
+  const [pickedId, setPickedId] = useState<string | null>(null)
+
+  if (open.length > 0 && !browseAll) {
+    const current = open.find((e) => e.id === pickedId) ?? open[0]
+    return (
+      <div className="max-w-3xl">
+        {open.length > 1 && (
+          <div className="mb-4 -mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto no-scrollbar">
+            <Segmented
+              value={current.id}
+              onChange={setPickedId}
+              ariaLabel="Collection"
+              options={open.map((e) => ({ value: e.id, label: e.name }))}
+            />
+          </div>
+        )}
+        <BoxGuideBody key={current.id} guideId={current.id} mode="inline" />
+        <button type="button" onClick={() => setBrowseAll(true)} className="ui-btn ui-btn-secondary ui-btn-sm mt-6">
+          <Package className="w-3.5 h-3.5" /> Toutes les boîtes
+        </button>
+      </div>
+    )
+  }
+
+  return <BoxCatalog onBack={open.length > 0 ? () => setBrowseAll(false) : undefined} />
+}
+
+function BoxCatalog({ onBack }: { onBack?: () => void }) {
+  const { selectedSport, availableChecklists } = useAppStore()
   const [query, setQuery] = useState('')
   const [season, setSeason] = useState<string>('all')
-  const [onlySelection, setOnlySelection] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
 
   const { data, isLoading, error } = useQuery({
@@ -46,25 +60,19 @@ export function BoxGuideView() {
 
   const guides = useMemo(() => data?.guides ?? [], [data])
   const seasons = useMemo(() => [...new Set(guides.map((g) => g.season).filter(Boolean) as string[])].sort().reverse(), [guides])
+  const catalog = useMemo(() => new Map(availableChecklists.map((c) => [c.checklist_id, c])), [availableChecklists])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    const sel = new Set(selectedChecklistIds)
     return guides
       .filter((g) => season === 'all' || g.season === season)
-      .filter((g) => !onlySelection || (g.checklist_id && sel.has(g.checklist_id)))
       .filter((g) => !q || (g.name ?? g.source_slug).toLowerCase().includes(q))
       .sort((a, b) =>
         (b.season ?? '').localeCompare(a.season ?? '') ||
         (b.release_date ?? '').localeCompare(a.release_date ?? '') ||
         (a.name ?? '').localeCompare(b.name ?? ''),
       )
-  }, [guides, query, season, onlySelection, selectedChecklistIds])
-
-  const selectionCount = useMemo(() => {
-    const sel = new Set(selectedChecklistIds)
-    return guides.filter((g) => g.checklist_id && sel.has(g.checklist_id)).length
-  }, [guides, selectedChecklistIds])
+  }, [guides, query, season])
 
   if (error) {
     return <EmptyState icon={Package} title="Guide indisponible">Le guide des boîtes n’a pas pu être chargé.</EmptyState>
@@ -72,6 +80,11 @@ export function BoxGuideView() {
 
   return (
     <div>
+      {onBack && (
+        <button type="button" onClick={onBack} className="ui-btn ui-btn-ghost ui-btn-sm -ml-2 mb-3">
+          <ArrowLeft className="w-3.5 h-3.5" /> Retour à ma collection
+        </button>
+      )}
       <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center mb-4">
         <label className="relative flex-1 min-w-0 sm:max-w-sm">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: 'var(--text-quaternary)' }} />
@@ -83,36 +96,30 @@ export function BoxGuideView() {
             aria-label="Chercher une collection"
           />
         </label>
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-          <select className="ui-select flex-shrink-0" value={season} onChange={(e) => setSeason(e.target.value)} aria-label="Saison">
-            <option value="all">Toutes saisons</option>
-            {seasons.map((s) => <option key={s} value={s}>{s}</option>)}
-          </select>
-          <button
-            type="button"
-            className={`ui-chip flex-shrink-0 ${onlySelection ? 'is-active' : ''}`}
-            onClick={() => setOnlySelection((v) => !v)}
-            disabled={selectionCount === 0}
-            aria-pressed={onlySelection}
-          >
-            Ma sélection <span className="num">{selectionCount}</span>
-          </button>
-        </div>
+        <select className="ui-select self-start sm:self-auto" value={season} onChange={(e) => setSeason(e.target.value)} aria-label="Saison">
+          <option value="all">Toutes saisons</option>
+          {seasons.map((s) => <option key={s} value={s}>{s}</option>)}
+        </select>
       </div>
 
       {isLoading ? (
         <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => <div key={i} className="ui-skeleton h-[104px] rounded-2xl" />)}
+          {Array.from({ length: 6 }).map((_, i) => <div key={i} className="ui-skeleton h-[90px] rounded-2xl" />)}
         </div>
       ) : filtered.length === 0 ? (
         <EmptyState icon={Package} title="Aucune collection">Essaie une autre recherche ou une autre saison.</EmptyState>
       ) : (
         <ul className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-          {filtered.map((g) => (
-            <li key={g.checklist_id ?? g.source_slug}>
-              <GuideCard guide={g} onOpen={() => setOpenId(g.checklist_id ?? `thc:${g.source_slug}`)} />
-            </li>
-          ))}
+          {filtered.map((g) => {
+            const cl = g.checklist_id ? catalog.get(g.checklist_id) : undefined
+            return (
+              <li key={g.checklist_id ?? g.source_slug}>
+                {cl
+                  ? <CollectionCard entry={toEntry(cl, g)} onOpen={() => setOpenId(g.checklist_id!)} />
+                  : <OrphanGuideCard guide={g} onOpen={() => setOpenId(`thc:${g.source_slug}`)} />}
+              </li>
+            )
+          })}
         </ul>
       )}
 
@@ -126,160 +133,150 @@ export function BoxGuideView() {
   )
 }
 
-function GuideCard({ guide, onOpen }: { guide: BoxGuideSummary; onOpen: () => void }) {
+/** Collection du guide que NoClim n'a pas (encore) : consultable, pas ouvrable. */
+function OrphanGuideCard({ guide, onOpen }: { guide: BoxGuideSummary; onOpen: () => void }) {
   const hobby = guide.formats.find((f) => f.name === 'Hobby') ?? guide.formats[0]
-  const upcoming = isUpcoming(guide.release_date)
   return (
     <button type="button" onClick={onOpen} className="ui-card ui-row-hover w-full text-left p-2.5 flex gap-3 items-stretch">
-      <BoxImage src={guide.cover_image} className="w-[92px] h-[70px] sm:w-[104px] sm:h-[78px]" />
-      <div className="flex-1 min-w-0 flex flex-col justify-between gap-1.5 py-0.5">
+      <BoxImage src={guide.cover_image} className="w-[84px] h-[64px] sm:w-[96px] sm:h-[72px]" />
+      <div className="flex-1 min-w-0 flex flex-col justify-between gap-1 py-0.5">
         <div className="min-w-0">
-          <div className="text-[14px] leading-5 font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
-            {shortProductName(guide.name, guide.season)}
-          </div>
-          <div className="text-xs truncate" style={{ color: 'var(--text-tertiary)' }}>
-            {guide.season}
-            {upcoming && guide.release_date && <span style={{ color: 'var(--accent)' }}> · sortie le {frenchDate(guide.release_date, false)}</span>}
-          </div>
+          <div className="text-[14px] leading-5 font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{shortProductName(guide.name, guide.season)}</div>
+          <div className="text-xs truncate" style={{ color: 'var(--text-tertiary)' }}>{guide.season} · checklist pas encore dans NoClim</div>
         </div>
-        <div className="flex items-center gap-1.5 flex-wrap text-[11px]">
-          {hobby && (
-            <span className="font-stat" style={{ color: 'var(--text-secondary)' }}>
-              {hobby.name}
-              {hobby.autos_per_box ? <> · <b style={{ color: 'var(--cat-auto)' }}>{hobby.autos_per_box} auto{hobby.autos_per_box > 1 ? 's' : ''}</b></> : null}
-              {usd(hobby.price_usd) ? <> · {usd(hobby.price_usd)}</> : null}
-            </span>
-          )}
-          {guide.formats.length > 1 && (
-            <span style={{ color: 'var(--text-quaternary)' }}>+{guide.formats.length - 1} format{guide.formats.length > 2 ? 's' : ''}</span>
-          )}
-        </div>
+        {hobby && (
+          <div className="text-[11px] font-stat truncate" style={{ color: 'var(--text-secondary)' }}>
+            {hobby.name}
+            {hobby.autos_per_box ? <> · <b style={{ color: 'var(--cat-auto)' }}>{hobby.autos_per_box} auto{hobby.autos_per_box > 1 ? 's' : ''}</b></> : null}
+            {usd(hobby.price_usd) ? <> · {usd(hobby.price_usd)}</> : null}
+          </div>
+        )}
       </div>
     </button>
   )
 }
 
-function BoxImage({ src, className = '' }: { src: string | null; className?: string }) {
-  const [broken, setBroken] = useState(false)
-  return (
-    <div className={`rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center ${className}`} style={{ background: 'var(--bg-surface)' }}>
-      {src && !broken ? (
-        <img src={src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" onError={() => setBroken(true)} />
-      ) : (
-        <Package className="w-6 h-6" style={{ color: 'var(--text-quaternary)' }} />
-      )}
-    </div>
-  )
-}
-
-/* ── Fiche détaillée ────────────────────────────────────────────────────── */
+/* ── Fiche boîte : en panneau (catalogue) ou intégrée (onglet de la collection) ── */
 
 function BoxGuideSheet({ guideId, onClose }: { guideId: string | null; onClose: () => void }) {
-  const { selectedSport, availableChecklists, selectedChecklistIds, toggleChecklist } = useAppStore()
-  const runAnalysis = useRunAnalysis()
-  const [formatName, setFormatName] = useState<string | null>(null)
-  const [showAllPresentation, setShowAllPresentation] = useState(false)
-
-  const { data: guide, isLoading } = useQuery({
+  const { selectedSport } = useAppStore()
+  const { data: guide } = useQuery({
     queryKey: ['box-guide', selectedSport, guideId],
     queryFn: () => fetchBoxGuide(selectedSport, guideId!),
     enabled: !!guideId,
     staleTime: 60 * 60 * 1000,
   })
-
-  const format = guide?.formats.find((f) => f.name === formatName) ?? guide?.formats[0]
-  const inCatalog = !!guide?.checklist_id && availableChecklists.some((c) => c.checklist_id === guide.checklist_id)
-  const selected = !!guide?.checklist_id && selectedChecklistIds.includes(guide.checklist_id)
-
-  function close() {
-    setFormatName(null)
-    setShowAllPresentation(false)
-    onClose()
-  }
-
-  const presentation = guide?.presentation.filter((l) => l !== 'En bref') ?? []
-
   return (
-    <Sheet open={!!guideId} onClose={close} labelledBy="box-guide-title" width={560}>
+    <Sheet open={!!guideId} onClose={onClose} labelledBy="box-guide-title" width={560}>
       <SheetHeader
         id="box-guide-title"
         title={guide ? shortProductName(guide.name, guide.season) : 'Guide des boîtes'}
         subtitle={guide ? [guide.season, guide.brand].filter(Boolean).join(' · ') : undefined}
-        onClose={close}
+        onClose={onClose}
       />
-      <div className="flex-1 overflow-y-auto px-5 pb-6" style={{ borderTop: '1px solid var(--border-subtle)' }}>
-        {isLoading || !guide ? (
-          <div className="space-y-3 pt-4">
-            <div className="ui-skeleton h-44 rounded-2xl" />
-            <div className="ui-skeleton h-24 rounded-2xl" />
-          </div>
-        ) : (
-          <>
-            <div className="pt-4 flex gap-4 items-start">
-              <BoxImage src={format?.image ?? guide.cover_image} className="w-[132px] h-[100px] sm:w-[168px] sm:h-[126px]" />
-              <div className="flex-1 min-w-0 flex flex-col gap-2">
-                {inCatalog ? (
-                  <>
-                    <button
-                      type="button"
-                      className="ui-btn ui-btn-primary ui-btn-sm justify-center"
-                      onClick={() => { runAnalysis({ ids: [guide.checklist_id!], goTo: '🌍 Vue Globale' }); useAppStore.getState().setSelectedChecklistIds([guide.checklist_id!]); close() }}
-                    >
-                      <Play className="w-3.5 h-3.5" /> Analyser cette checklist
-                    </button>
-                    <button type="button" className="ui-btn ui-btn-secondary ui-btn-sm justify-center" onClick={() => toggleChecklist(guide.checklist_id!)}>
-                      {selected ? <><Check className="w-3.5 h-3.5" /> Dans la sélection</> : <><Plus className="w-3.5 h-3.5" /> Ajouter à la sélection</>}
-                    </button>
-                  </>
-                ) : (
-                  <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Checklist pas encore disponible dans NoClim.</p>
-                )}
-                {!guide.odds_published && (
-                  <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Cotes officielles non publiées.</p>
-                )}
-              </div>
-            </div>
-
-            {guide.formats.length > 1 && (
-              <div className="mt-5 -mx-5 px-5 overflow-x-auto no-scrollbar">
-                <Segmented
-                  value={format?.name ?? ''}
-                  onChange={setFormatName}
-                  ariaLabel="Format de boîte"
-                  options={guide.formats.map((f) => ({ value: f.name, label: f.name }))}
-                />
-              </div>
-            )}
-
-            {format && <FormatDetail format={format} />}
-
-            {presentation.length > 0 && (
-              <section className="mt-6">
-                <h3 className="ui-eyebrow mb-2">Présentation</h3>
-                <div className="space-y-2 text-sm leading-6" style={{ color: 'var(--text-secondary)' }}>
-                  {(showAllPresentation ? presentation : presentation.slice(0, 3)).map((line, i) => <p key={i}>{line}</p>)}
-                </div>
-                {presentation.length > 3 && (
-                  <button type="button" className="ui-btn ui-btn-ghost ui-btn-sm mt-1 -ml-2" onClick={() => setShowAllPresentation((v) => !v)}>
-                    {showAllPresentation ? 'Réduire' : 'Lire la suite'}
-                  </button>
-                )}
-              </section>
-            )}
-
-            <a
-              href={`${SOURCE_URL}/collections/${guide.source_slug}`}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-1.5 text-xs underline underline-offset-2"
-              style={{ color: 'var(--text-tertiary)' }}
-            >
-              Voir sur The Hobby Checklist <ExternalLink className="w-3 h-3" />
-            </a>
-          </>
-        )}
+      <div className="flex-1 overflow-y-auto px-5 pb-6 pt-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+        {guideId && <BoxGuideBody key={guideId} guideId={guideId} mode="sheet" onDone={onClose} />}
       </div>
     </Sheet>
+  )
+}
+
+function BoxGuideBody({ guideId, mode, onDone }: { guideId: string; mode: 'sheet' | 'inline'; onDone?: () => void }) {
+  const { selectedSport, availableChecklists, selectedChecklistIds, toggleChecklist } = useAppStore()
+  const openCollection = useOpenCollection()
+  const [formatName, setFormatName] = useState<string | null>(null)
+  const [showAllPresentation, setShowAllPresentation] = useState(false)
+
+  const { data: guide, isLoading, error } = useQuery({
+    queryKey: ['box-guide', selectedSport, guideId],
+    queryFn: () => fetchBoxGuide(selectedSport, guideId),
+    staleTime: 60 * 60 * 1000,
+  })
+
+  if (error) return <EmptyState icon={Package} title="Guide indisponible">Le guide de cette boîte n’a pas pu être chargé.</EmptyState>
+  if (isLoading || !guide) {
+    return (
+      <div className="space-y-3">
+        <div className="ui-skeleton h-36 rounded-2xl" />
+        <div className="ui-skeleton h-24 rounded-2xl" />
+      </div>
+    )
+  }
+
+  const format = guide.formats.find((f) => f.name === formatName) ?? guide.formats[0]
+  const inCatalog = !!guide.checklist_id && availableChecklists.some((c) => c.checklist_id === guide.checklist_id)
+  const selected = !!guide.checklist_id && selectedChecklistIds.includes(guide.checklist_id)
+  const presentation = guide.presentation.filter((l) => l !== 'En bref')
+
+  return (
+    <>
+      <div className="flex gap-4 items-start">
+        {/* Intégrée à la fiche collection, la photo générique est déjà dans l'en-tête : seule celle du format s'affiche. */}
+        {(mode === 'sheet' || format?.image) && (
+          <BoxImage src={format?.image ?? guide.cover_image} className="w-[132px] h-[100px] sm:w-[168px] sm:h-[126px]" />
+        )}
+        <div className="flex-1 min-w-0 flex flex-col gap-2">
+          {mode === 'sheet' && (inCatalog ? (
+            <>
+              <button type="button" className="ui-btn ui-btn-primary ui-btn-sm justify-center" onClick={() => { openCollection(guide.checklist_id!); onDone?.() }}>
+                <Play className="w-3.5 h-3.5" /> Ouvrir cette collection
+              </button>
+              <button type="button" className="ui-btn ui-btn-secondary ui-btn-sm justify-center" onClick={() => toggleChecklist(guide.checklist_id!)}>
+                {selected ? <><Check className="w-3.5 h-3.5" /> Ouverte</> : <><Plus className="w-3.5 h-3.5" /> Ouvrir en plus</>}
+              </button>
+            </>
+          ) : (
+            <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Checklist pas encore disponible dans NoClim.</p>
+          ))}
+          {mode === 'inline' && format && (
+            <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+              <div className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>Boîte {format.name}</div>
+              {format.cards_per_box != null && <div className="num">{format.cards_per_box} cartes par boîte</div>}
+            </div>
+          )}
+          {!guide.odds_published && (
+            <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Cotes officielles non publiées.</p>
+          )}
+        </div>
+      </div>
+
+      {guide.formats.length > 1 && (
+        <div className={`mt-5 overflow-x-auto no-scrollbar ${mode === 'sheet' ? '-mx-5 px-5' : '-mx-4 px-4 md:mx-0 md:px-0'}`}>
+          <Segmented
+            value={format?.name ?? ''}
+            onChange={setFormatName}
+            ariaLabel="Format de boîte"
+            options={guide.formats.map((f) => ({ value: f.name, label: f.name }))}
+          />
+        </div>
+      )}
+
+      {format && <FormatDetail format={format} />}
+
+      {presentation.length > 0 && (
+        <section className="mt-6">
+          <h3 className="text-[13px] font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Présentation</h3>
+          <div className="space-y-2 text-sm leading-6 max-w-[68ch]" style={{ color: 'var(--text-secondary)' }}>
+            {(showAllPresentation ? presentation : presentation.slice(0, 3)).map((line, i) => <p key={i}>{line}</p>)}
+          </div>
+          {presentation.length > 3 && (
+            <button type="button" className="ui-btn ui-btn-ghost ui-btn-sm mt-1 -ml-2" onClick={() => setShowAllPresentation((v) => !v)}>
+              {showAllPresentation ? 'Réduire' : 'Lire la suite'}
+            </button>
+          )}
+        </section>
+      )}
+
+      <a
+        href={`${SOURCE_URL}/collections/${guide.source_slug}`}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-6 flex items-center gap-1.5 text-xs underline underline-offset-2 w-fit"
+        style={{ color: 'var(--text-tertiary)' }}
+      >
+        Source : The Hobby Checklist <ExternalLink className="w-3 h-3" />
+      </a>
+    </>
   )
 }
 
@@ -334,7 +331,7 @@ function FormatDetail({ format: f }: { format: BoxFormat }) {
 
       {f.contents.length > 0 && (
         <div className="mt-4">
-          <h3 className="ui-eyebrow mb-2">Contenu moyen par boîte</h3>
+          <h3 className="text-[13px] font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Contenu moyen par boîte</h3>
           <ul className="space-y-1.5">
             {f.contents.map((c, i) => (
               <li key={i} className="flex items-start gap-2 text-sm" title={c.vo && c.vo !== c.fr ? `VO : ${c.vo}` : undefined}>
