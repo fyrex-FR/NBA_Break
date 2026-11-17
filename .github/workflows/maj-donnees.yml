@@ -1,12 +1,13 @@
-# Mise à jour hebdomadaire des données (guide des boîtes, odds).
+# Mise à jour des données (guide des boîtes, odds), déclenchement manuel.
 # Relance les imports et ouvre une PR seulement si les données ont changé.
 # Prérequis (une fois) : Settings › Actions › General › Workflow permissions ›
 # cocher « Allow GitHub Actions to create and approve pull requests ».
 name: Mise à jour hebdo des données
 
 on:
-  schedule:
-    - cron: "0 5 * * 1"   # lundi, 5 h UTC
+  # Plus de cron : la mise à jour tourne en local (scripts/maj_donnees_local.sh,
+  # cache de pages persistant, bien plus rapide). Ce workflow reste en filet
+  # de secours, à lancer à la main.
   workflow_dispatch:
 
 permissions:
