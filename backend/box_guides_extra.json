@@ -1,6 +1,6 @@
 {
  "_source": "Recherche web (fabricants, Cardboard Connection, Beckett…), sources par collection",
- "_imported_at": "2026-11-17T14:46:35+00:00",
+ "_imported_at": "2026-11-17T15:10:11+00:00",
  "_script": "scripts/import_box_research.py",
  "nba": {
   "1990-91-hoops-basketball": {
@@ -796,7 +796,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2017-18-panini-crown-royale-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -845,7 +845,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2017-18-panini-donruss-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1096,7 +1096,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2018-19-panini-chronicles-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1145,7 +1145,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2018-19-panini-contenders-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1194,7 +1194,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2018-19-panini-court-kings-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1254,7 +1254,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2018-19-panini-nba-hoops-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1299,7 +1299,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2018-19-panini-status-cover.webp",
    "formats": [
     {
      "name": "Blaster",
@@ -1418,7 +1418,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2019-20-panini-donruss-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1547,7 +1547,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2019-20-panini-nba-hoops-premium-stock-cover.webp",
    "formats": [
     {
      "name": "Hobby Hybrid",
@@ -1605,7 +1605,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-absolute-memorabilia-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1654,7 +1654,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-black-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1708,7 +1708,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-certified-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1802,7 +1802,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-chronicles-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1856,7 +1856,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-clearly-donruss-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1905,7 +1905,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-contenders-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -1989,7 +1989,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-contenders-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2043,7 +2043,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-court-kings-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2107,7 +2107,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-crown-royale-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2201,7 +2201,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-donruss-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2280,7 +2280,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-donruss-elite-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2340,7 +2340,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-donruss-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2524,7 +2524,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-flawless-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2613,7 +2613,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-flux-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2702,7 +2702,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-illusions-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2896,7 +2896,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-immaculate-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -2985,7 +2985,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-impeccable-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3064,7 +3064,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-mosaic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3208,7 +3208,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-national-treasures-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3302,7 +3302,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-nba-hoops-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3526,7 +3526,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-noir-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3601,7 +3601,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-obsidian-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3685,7 +3685,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-one-one-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3734,7 +3734,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-origins-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3823,7 +3823,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-prizm-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -3961,7 +3961,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-recon-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4029,7 +4029,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-revolution-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4084,7 +4084,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-select-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4173,7 +4173,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2020-21-panini-spectra-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4257,7 +4257,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-black-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4306,7 +4306,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-chronicles-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4350,7 +4350,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-contenders-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4464,7 +4464,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-contenders-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4518,7 +4518,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-court-kings-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4617,7 +4617,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-crown-royale-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4711,7 +4711,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-donruss-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4790,7 +4790,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-donruss-elite-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4879,7 +4879,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-donruss-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -4978,7 +4978,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-eminence-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5043,7 +5043,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-eminence-fotl.webp"
     }
    ],
    "presentation": [],
@@ -5062,7 +5062,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-flawless-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5122,7 +5122,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-flawless-fotl.webp"
     }
    ],
    "presentation": [],
@@ -5141,7 +5141,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-illusions-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5195,7 +5195,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-immaculate-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5279,7 +5279,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-impeccable-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5363,7 +5363,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-mosaic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5428,7 +5428,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-mosaic-fotl.webp"
     }
    ],
    "presentation": [],
@@ -5447,7 +5447,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-national-treasures-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5487,7 +5487,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-national-treasures-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -5536,7 +5536,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-nba-hoops-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5566,7 +5566,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-nba-hoops-hobby.webp"
     }
    ],
    "presentation": [],
@@ -5585,7 +5585,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-noir-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5669,7 +5669,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-obsidian-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5699,7 +5699,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-obsidian-hobby.webp"
     },
     {
      "name": "FOTL",
@@ -5753,7 +5753,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-one-one-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5813,7 +5813,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-one-one-fotl.webp"
     }
    ],
    "presentation": [],
@@ -5832,7 +5832,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-origins-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5916,7 +5916,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-photogenic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -5975,7 +5975,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-prizm-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6099,7 +6099,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-recon-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6173,7 +6173,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-revolution-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6252,7 +6252,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-select-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6312,7 +6312,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-select-fotl.webp"
     },
     {
      "name": "H2",
@@ -6356,7 +6356,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2021-22-panini-spectra-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6421,7 +6421,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2021-22-panini-spectra-fotl.webp"
     }
    ],
    "presentation": [],
@@ -6440,7 +6440,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-black-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6494,7 +6494,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-chronicles-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6543,7 +6543,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-contenders-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6598,7 +6598,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-contenders-fotl.webp"
     }
    ],
    "presentation": [],
@@ -6617,7 +6617,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-contenders-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6671,7 +6671,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-court-kings-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6760,7 +6760,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-crown-royale-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6835,7 +6835,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-crown-royale-fotl.webp"
     }
    ],
    "presentation": [],
@@ -6854,7 +6854,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-donruss-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -6928,7 +6928,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-donruss-elite-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7003,7 +7003,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-donruss-elite-fotl.webp"
     }
    ],
    "presentation": [],
@@ -7022,7 +7022,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-donruss-optic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7077,7 +7077,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-donruss-optic-fotl.webp"
     },
     {
      "name": "Fast Break",
@@ -7116,7 +7116,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-flux-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7181,7 +7181,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-flux-fotl.webp"
     }
    ],
    "presentation": [],
@@ -7200,7 +7200,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-immaculate-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7255,7 +7255,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-mosaic-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7315,7 +7315,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-mosaic-fotl.webp"
     },
     {
      "name": "Choice",
@@ -7390,7 +7390,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-national-treasures-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7450,7 +7450,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-national-treasures-fotl.webp"
     }
    ],
    "presentation": [],
@@ -7469,7 +7469,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-nba-hoops-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7518,7 +7518,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-noir-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7578,7 +7578,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-noir-fotl.webp"
     }
    ],
    "presentation": [],
@@ -7597,7 +7597,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-obsidian-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7667,7 +7667,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-obsidian-fotl.webp"
     }
    ],
    "presentation": [],
@@ -7686,7 +7686,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-one-one-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7746,7 +7746,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-one-one-fotl.webp"
     }
    ],
    "presentation": [],
@@ -7765,7 +7765,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-origins-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7830,7 +7830,7 @@
        "auto": true
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-origins-fotl.webp"
     },
     {
      "name": "H2",
@@ -7879,7 +7879,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-prizm-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -7954,7 +7954,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-prizm-fotl.webp"
     },
     {
      "name": "Choice",
@@ -8053,7 +8053,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-revolution-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -8132,7 +8132,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-select-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -8202,7 +8202,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-select-fotl.webp"
     },
     {
      "name": "H2",
@@ -8252,7 +8252,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2022-23-panini-spectra-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -8317,7 +8317,7 @@
        "auto": false
       }
      ],
-     "image": null
+     "image": "/boxes/2022-23-panini-spectra-fotl.webp"
     }
    ],
    "presentation": [],
@@ -8336,7 +8336,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2023-24-panini-donruss-cover.webp",
    "formats": [
     {
      "name": "Hobby",
@@ -8410,7 +8410,7 @@
    "brand": "Panini",
    "checklist_updated": null,
    "odds_published": false,
-   "cover_image": null,
+   "cover_image": "/boxes/2023-24-panini-nba-hoops-cover.webp",
    "formats": [
     {
      "name": "Hobby",
