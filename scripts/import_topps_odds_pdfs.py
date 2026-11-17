@@ -173,11 +173,13 @@ def parse_pdf(path: Path) -> tuple[list[str], list[dict], Counter]:
 
 def build_sheet(checklist_id: str, product_label: str | None, order: list[str], parsed: list[dict],
                 box_types: list[str], guide: dict | None) -> dict:
-    packs = {}
+    packs, boxes = {}, {}
     for f in (guide or {}).get("formats", []):
         for a in [f["name"], *(f.get("aliases") or [])]:
             if f.get("packs_per_box"):
                 packs.setdefault(a.lower(), int(f["packs_per_box"]))
+            if f.get("boxes_per_case"):
+                boxes.setdefault(a.lower(), int(f["boxes_per_case"]))
 
     configs, key_of = [], {}
     for name in order:
@@ -186,6 +188,8 @@ def build_sheet(checklist_id: str, product_label: str | None, order: list[str], 
         cfg = {"key": key, "label": name, "channel": ch, "group": gr}
         if packs.get(name.lower()):
             cfg["packs_per_box"] = packs[name.lower()]
+        if boxes.get(name.lower()):
+            cfg["boxes_per_case"] = boxes[name.lower()]
         configs.append(cfg)
         key_of[name] = key
 
@@ -267,6 +271,11 @@ def main() -> int:
             cur_cov = coverage(current, box_types)
             if cur_cov > cov + 0.02 or (abs(cur_cov - cov) <= 0.02 and len(current["rows"]) >= len(sheet["rows"])):
                 verdict = f"gardée (actuelle {len(current['rows'])} lignes, {cur_cov:.0%})"
+        if verdict == "écrite" and out.exists():
+            previous = json.loads(out.read_text(encoding="utf-8"))
+            for key in ("exclusives", "rarity"):
+                if previous.get(key):
+                    sheet[key] = previous[key]
         if verdict == "écrite" and not args.dry_run:
             out.write_text(json.dumps(sheet, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         extra = ", ".join(f"{n} {k}" for k, n in stats.items())

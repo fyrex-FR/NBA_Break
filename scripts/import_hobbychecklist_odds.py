@@ -143,6 +143,20 @@ def base_odds_of(section: dict, table: dict[str, dict[str, int]]) -> dict[str, i
     return found or table.get(section.get("id"), {})
 
 
+def add_boxes_per_case(sheet: dict, guide: dict) -> None:
+    """Complète les formats d'une feuille avec les boxes par case du guide des boîtes."""
+    bpc = {}
+    for f in guide.get("formats", []):
+        for a in [f["name"], *(f.get("aliases") or [])]:
+            if f.get("boxes_per_case"):
+                bpc.setdefault(a.lower(), int(f["boxes_per_case"]))
+                bpc.setdefault(slug(a), int(f["boxes_per_case"]))
+    for c in sheet.get("configs", []):
+        n = bpc.get(str(c.get("label", "")).lower()) or bpc.get(c.get("key", ""))
+        if n and not c.get("boxes_per_case"):
+            c["boxes_per_case"] = n
+
+
 def merge_exclusives(excl_by_set: dict[str, list[str | None]]) -> dict[str, str]:
     """Une exclusivité ne vaut pour une de nos séries que si toutes les séries du site
     qui y tombent la partagent (« Rookies » + « Rookies 2 » réunies chez nous : si
@@ -161,6 +175,26 @@ def exclusives_for(guide: dict, flight: str, box_types: list[str]) -> dict[str, 
         name = s["sectionName"].strip()
         set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types) or name
         by_set.setdefault(set_name, []).append(exclusive_of(s))
+    return merge_exclusives(by_set)
+
+
+def rarity_of(section: dict) -> str | None:
+    """Étiquette de rareté du site : « Case hit » (prioritaire) ou « SSP »."""
+    tags = set(re.findall(r'"className": "[^"]*text-\[9px\][^"]*uppercase[^"]*", "children": "([^"]+)"',
+                          json.dumps(section.get("summary"), ensure_ascii=False)))
+    if "Case hit" in tags:
+        return "case_hit"
+    if "SSP" in tags:
+        return "ssp"
+    return None
+
+
+def rarity_for(guide: dict, flight: str, box_types: list[str]) -> dict[str, str]:
+    by_set: dict[str, list[str | None]] = {}
+    for s in sections(flight):
+        name = s["sectionName"].strip()
+        set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types) or name
+        by_set.setdefault(set_name, []).append(rarity_of(s))
     return merge_exclusives(by_set)
 
 
@@ -241,6 +275,8 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         cfg = {"key": key, "label": f["name"], "channel": ch, "group": gr}
         if f.get("packs_per_box"):
             cfg["packs_per_box"] = int(f["packs_per_box"])
+        if f.get("boxes_per_case"):
+            cfg["boxes_per_case"] = int(f["boxes_per_case"])
         configs[key] = cfg
     # Nom exact d'abord, puis alias (un alias partagé ne doit pas voler un nom exact).
     for f in guide["formats"]:
@@ -262,12 +298,14 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
 
     rows, skipped, matched = [], 0, 0
     excl_by_set: dict[str, list[str | None]] = {}
+    rarity_by_set: dict[str, list[str | None]] = {}
     for s in secs:
         name = s["sectionName"].strip()
         # La série prend le nom exact de notre checklist quand on le retrouve.
         set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types or []) or name
         matched += set_name != name or name in (box_types or [])
         excl_by_set.setdefault(set_name, []).append(exclusive_of(s))
+        rarity_by_set.setdefault(set_name, []).append(rarity_of(s))
         base = base_odds_of(s, table)
         if base:
             rows.append({"label": name, "set": set_name, "parallel": "",
@@ -288,6 +326,7 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
                 rows.append({"label": label, "set": set_name, "parallel": p["name"], "odds": odds})
 
     exclusives = merge_exclusives(excl_by_set)
+    rarity = merge_exclusives(rarity_by_set)
     if not rows:
         return None
     used = {k for r in rows for k in r["odds"]}
@@ -301,6 +340,7 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         "configs": [c for k, c in configs.items() if k in used],
         "rows": rows,
         **({"exclusives": exclusives} if exclusives else {}),
+        **({"rarity": rarity} if rarity else {}),
         "_skipped_non_ratio": skipped,
         "_sets_matched": f"{matched}/{len(secs)}",
     }
@@ -382,11 +422,14 @@ def main() -> int:
         out = OUT_DIR / f"{cid}.json"
         if out.exists() and str(json.loads(out.read_text(encoding="utf-8")).get("source", "")).startswith("Topps — feuille"):
             pdf_sheet = json.loads(out.read_text(encoding="utf-8"))
-            excl = exclusives_for(g, decode_flight(page_for(g["source_slug"])), box_types_for(cid, mk))
-            if excl:
-                pdf_sheet["exclusives"] = excl
-                out.write_text(json.dumps(pdf_sheet, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-            skipped.append(f"{cid} (feuille du PDF officiel Topps, prioritaire ; {len(excl)} exclusivités ajoutées)")
+            flight, bts = decode_flight(page_for(g["source_slug"])), box_types_for(cid, mk)
+            excl, rar = exclusives_for(g, flight, bts), rarity_for(g, flight, bts)
+            for key, value in (("exclusives", excl), ("rarity", rar)):
+                if value:
+                    pdf_sheet[key] = value
+            add_boxes_per_case(pdf_sheet, g)
+            out.write_text(json.dumps(pdf_sheet, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            skipped.append(f"{cid} (PDF officiel prioritaire ; +{len(excl)} exclusivités, +{len(rar)} raretés)")
             continue
         if out.exists() and not args.force:
             skipped.append(f"{cid} (fichier local existant)")

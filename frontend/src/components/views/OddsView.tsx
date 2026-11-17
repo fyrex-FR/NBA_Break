@@ -27,9 +27,9 @@ const LEGEND_ITEMS: { code: OddsBadgeCode; description: string }[] = [
   { code: 'fanatics_only', description: 'Uniquement via Fanatics.' },
   { code: 'promo_only', description: 'Uniquement en pack promo.' },
   { code: 'partout', description: 'Disponible dans (quasi) toutes les configurations.' },
-  { code: 'sp', description: 'Short Print — meilleures odds 1:200 ou plus dur.' },
-  { code: 'ssp', description: 'Super Short Print — meilleures odds 1:1000 ou plus dur.' },
-  { code: 'case_hit', description: 'Case Hit — meilleures odds 1:20 000 ou plus dur.' },
+  { code: 'sp', description: 'Short Print — moins d’une carte toutes les 4 boxes (Hobby).' },
+  { code: 'ssp', description: 'Super Short Print — étiquette de l’éditeur, sinon moins d’une carte par case.' },
+  { code: 'case_hit', description: 'Case Hit — étiquette de l’éditeur, sinon moins d’une carte toutes les 3 cases.' },
 ]
 
 // Échelle log fixe (1 à 3 000 000) pour que l'intensité de la heatmap soit

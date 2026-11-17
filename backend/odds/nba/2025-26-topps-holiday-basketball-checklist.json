@@ -11,14 +11,16 @@
    "label": "Holiday Mega",
    "channel": "retail",
    "group": "mega",
-   "packs_per_box": 10
+   "packs_per_box": 10,
+   "boxes_per_case": 20
   },
   {
    "key": "holiday_advent_calendar",
    "label": "Holiday Advent Calendar",
    "channel": "special",
    "group": "holiday_advent_calendar",
-   "packs_per_box": 24
+   "packs_per_box": 24,
+   "boxes_per_case": 8
   },
   {
    "key": "advent_calendar",
@@ -212,5 +214,13 @@
     "advent_calendar": 2
    }
   }
- ]
+ ],
+ "rarity": {
+  "Base": "ssp",
+  "Base - SSP Variations": "ssp",
+  "Base - SSP Back Variations": "ssp",
+  "Frostbite Finishers": "ssp",
+  "Hidden Elf": "ssp",
+  "Oversized Die-Cut Ornaments": "ssp"
+ }
 }

@@ -11,21 +11,24 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 12
+   "packs_per_box": 12,
+   "boxes_per_case": 12
   },
   {
    "key": "mega",
    "label": "Mega",
    "channel": "retail",
    "group": "mega",
-   "packs_per_box": 7
+   "packs_per_box": 7,
+   "boxes_per_case": 20
   },
   {
    "key": "value_blaster",
    "label": "Value Blaster",
    "channel": "retail",
    "group": "value",
-   "packs_per_box": 8
+   "packs_per_box": 8,
+   "boxes_per_case": 40
   },
   {
    "key": "breaker",
@@ -1495,5 +1498,14 @@
     "hobby": 39395
    }
   }
- ]
+ ],
+ "rarity": {
+  "Advisory": "ssp",
+  "Dippers": "ssp",
+  "Helix": "ssp",
+  "Let's Go!": "ssp",
+  "Radiating Rookies": "ssp",
+  "Rock Stars": "ssp",
+  "Ultra Violet All-Stars": "ssp"
+ }
 }

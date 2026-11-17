@@ -11,7 +11,8 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 8
   }
  ],
  "rows": [
@@ -1767,5 +1768,11 @@
     "hobby": 54
    }
   }
- ]
+ ],
+ "rarity": {
+  "Daydreamers": "ssp",
+  "Dreamland": "ssp",
+  "Night Owls": "ssp",
+  "Night Shade": "ssp"
+ }
 }
