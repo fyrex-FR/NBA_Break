@@ -34,6 +34,7 @@ import { BreakOverviewView } from './components/views/BreakOverviewView'
 import { OddsView } from './components/views/OddsView'
 import { OddsMappingView } from './components/views/OddsMappingView'
 import { BoxGuideView } from './components/views/BoxGuideView'
+import { CatalogPlayersView, CatalogTeamsView } from './components/views/CatalogViews'
 import ChatWidget from './components/shared/ChatWidget'
 import type { ViewName } from './types'
 
@@ -69,6 +70,8 @@ function renderView(view: ViewName, hasBreak: boolean) {
     case '📥 Import Intelligent': return <SmartImportView />
     case '🎲 État du Break': return hasBreak ? <BreakOverviewView /> : <BreakStart />
     case '📦 Guide des boîtes': return <BoxGuideView />
+    case '🖊️ Qui a signé': return <CatalogPlayersView />
+    case '🏟️ Équipes catalogue': return <CatalogTeamsView />
     default: return <GlobalView />
   }
 }

@@ -13,7 +13,7 @@
 import type { LucideIcon } from 'lucide-react'
 import {
   LayoutDashboard, Gem, Users, TrendingUp, User, Shield, Scale, Sparkles,
-  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library,
+  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library, PenLine, LayoutGrid,
 } from 'lucide-react'
 import type { ViewName } from './types'
 
@@ -111,6 +111,11 @@ export const NAV_ITEMS: NavItem[] = [
     description: 'Roster, hits et cartes d’une équipe.', needsAnalysis: true,
   },
 
+  {
+    view: '🏟️ Équipes catalogue', slug: 'teams-all', label: 'Équipes, toutes collections', tab: 'Toutes collections', icon: LayoutGrid, group: 'teams',
+    description: 'Pour une équipe, les collections où elle a le plus de cartes qui comptent.', needsAnalysis: false,
+  },
+
   // ── Joueurs ──
   {
     view: '🔍 Analyse Joueur', slug: 'player', label: 'Joueur', tab: 'Fiche', icon: User, group: 'players', enabledKey: 'player_detail',
@@ -123,6 +128,11 @@ export const NAV_ITEMS: NavItem[] = [
   {
     view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', tab: 'Comparer', icon: Scale, group: 'players', enabledKey: 'comparator',
     description: 'Mets plusieurs joueurs côte à côte.', needsAnalysis: true,
+  },
+
+  {
+    view: '🖊️ Qui a signé', slug: 'signed', label: 'Qui a signé ?', tab: 'Toutes collections', icon: PenLine, group: 'players',
+    description: 'Tape un nom : toutes les collections où le joueur a des autos, memo et case hits.', needsAnalysis: false,
   },
 
   // ── Break ──

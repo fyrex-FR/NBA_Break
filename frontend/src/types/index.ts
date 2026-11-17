@@ -440,6 +440,8 @@ export type ViewName =
   | '🎯 Odds'
   | '🔗 Mapping Odds'
   | '📦 Guide des boîtes'
+  | '🖊️ Qui a signé'
+  | '🏟️ Équipes catalogue'
 
 export interface PlayerSeason {
   season: string
@@ -614,4 +616,51 @@ export interface BoxGuidesResponse {
   sport_key: string
   source: { _source?: string; _imported_at?: string }
   guides: BoxGuideSummary[]
+}
+
+// ---------------------------------------------------------------------------
+// Index du catalogue entier (« Qui a signé ? », équipes toutes collections)
+// ---------------------------------------------------------------------------
+
+export interface CatalogCounts {
+  logoman: number
+  case_hit: number
+  auto_mem: number
+  auto: number
+  mem: number
+  premium: number
+  cards: number
+}
+
+export interface CatalogCollectionRow extends CatalogCounts {
+  checklist_id: string
+  name: string
+  season: string
+  top_players?: { name: string; premium: number }[]
+}
+
+export interface CatalogPlayerHit {
+  name: string
+  team: string
+  totals: CatalogCounts
+  collections: number
+}
+
+export interface CatalogPlayerDetail {
+  name: string
+  team: string
+  totals: CatalogCounts
+  collections: CatalogCollectionRow[]
+}
+
+export interface CatalogTeamHit {
+  name: string
+  totals: CatalogCounts
+  collections: number
+}
+
+export interface CatalogTeamDetail {
+  name: string
+  totals: CatalogCounts
+  collections: CatalogCollectionRow[]
 }

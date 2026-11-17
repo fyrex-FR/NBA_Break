@@ -25,6 +25,10 @@ import type {
   PollResultsResponse,
   BoxGuide,
   BoxGuidesResponse,
+  CatalogPlayerHit,
+  CatalogPlayerDetail,
+  CatalogTeamHit,
+  CatalogTeamDetail,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -432,4 +436,24 @@ export function fetchBoxGuides(sportKey: string): Promise<BoxGuidesResponse> {
 
 export function fetchBoxGuide(sportKey: string, guideId: string): Promise<BoxGuide> {
   return fetchJSON(`/box-guides/${sportKey}/${encodeURIComponent(guideId)}`)
+}
+
+// ---------------------------------------------------------------------------
+// Index du catalogue (« Qui a signé ? »)
+// ---------------------------------------------------------------------------
+
+export function searchCatalogPlayers(sportKey: string, q: string): Promise<{ players: CatalogPlayerHit[] }> {
+  return fetchJSON(`/catalog/${sportKey}/players?q=${encodeURIComponent(q)}`)
+}
+
+export function fetchCatalogPlayer(sportKey: string, name: string): Promise<CatalogPlayerDetail> {
+  return fetchJSON(`/catalog/${sportKey}/players/${encodeURIComponent(name)}`)
+}
+
+export function fetchCatalogTeams(sportKey: string): Promise<{ teams: CatalogTeamHit[] }> {
+  return fetchJSON(`/catalog/${sportKey}/teams`)
+}
+
+export function fetchCatalogTeam(sportKey: string, name: string): Promise<CatalogTeamDetail> {
+  return fetchJSON(`/catalog/${sportKey}/teams/${encodeURIComponent(name)}`)
 }

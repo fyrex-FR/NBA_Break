@@ -1,4 +1,4 @@
-import { Library } from 'lucide-react'
+import { Library, Search } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { destinationFor, navItemFor } from '../../navigation'
 import { EmptyState } from '../ui/primitives'
@@ -14,11 +14,12 @@ const WHAT: Record<string, string> = {
 
 /** Une vue qui a besoin d'au moins une collection ouverte, alors qu'aucune ne l'est. */
 export function NeedsCollection() {
-  const { activeView, openSelection } = useAppStore()
+  const { activeView, openSelection, setActiveView } = useAppStore()
   const destination = destinationFor(activeView)
   const item = navItemFor(activeView)
   const what = (destination && WHAT[destination.id]) ?? item?.label.toLowerCase() ?? 'cette vue'
   const recent = useRecentCollections(4)
+  const catalogView = destination?.id === 'players' ? '🖊️ Qui a signé' as const : destination?.id === 'teams' ? '🏟️ Équipes catalogue' as const : null
   const openCollection = useOpenCollection()
   return (
     <>
@@ -26,9 +27,16 @@ export function NeedsCollection() {
       icon={destination?.icon ?? item?.icon ?? Library}
       title="Ouvre une collection"
       action={
-        <button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-primary">
-          <Library className="w-4 h-4" /> Choisir une collection
-        </button>
+        <div className="flex flex-wrap justify-center gap-2">
+          <button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-primary">
+            <Library className="w-4 h-4" /> Choisir une collection
+          </button>
+          {catalogView && (
+            <button onClick={() => setActiveView(catalogView)} className="ui-btn ui-btn-secondary">
+              <Search className="w-4 h-4" /> Chercher dans tout le catalogue
+            </button>
+          )}
+        </div>
       }
     >
       Pour voir {what}, choisis une ou plusieurs collections : Prizm, Chrome, Select…
