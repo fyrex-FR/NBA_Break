@@ -1,0 +1,626 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2023-24-topps-cosmic-chrome-basketball-checklist",
+ "product_label": "2023-24 Topps Cosmic Chrome Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Base Cards Nucleus Refractor",
+   "set": "Base Cards Nucleus",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Base Cards Aqua Equinox",
+   "set": "Base Cards Aqua Equinox",
+   "parallel": "",
+   "odds": {
+    "hobby": 46
+   }
+  },
+  {
+   "label": "Base Cards Blue Moon",
+   "set": "Base Cards Blue Moon",
+   "parallel": "",
+   "odds": {
+    "hobby": 69
+   }
+  },
+  {
+   "label": "Base Cards Green Space Dust",
+   "set": "Base Cards Green Space Dust",
+   "parallel": "",
+   "odds": {
+    "hobby": 91
+   }
+  },
+  {
+   "label": "Base Cards Gold Interstellar",
+   "set": "Base Cards Gold Interstellar",
+   "parallel": "",
+   "odds": {
+    "hobby": 137
+   }
+  },
+  {
+   "label": "Base Cards Orange Galactic",
+   "set": "Base Cards Orange Galactic",
+   "parallel": "",
+   "odds": {
+    "hobby": 273
+   }
+  },
+  {
+   "label": "Base Cards Black Eclipse",
+   "set": "Base Cards Black Eclipse",
+   "parallel": "",
+   "odds": {
+    "hobby": 681
+   }
+  },
+  {
+   "label": "Base Cards Red Flare",
+   "set": "Base Cards Red Flare",
+   "parallel": "",
+   "odds": {
+    "hobby": 1358
+   }
+  },
+  {
+   "label": "Base Cards Superfractor",
+   "set": "Base Cards Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 6706
+   }
+  },
+  {
+   "label": "Base Cards White Hole Refractor",
+   "set": "Base Cards White Hole",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Base Cards Pink Galaxy Refractor",
+   "set": "Base Cards Pink Galaxy",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Galaxy Greats",
+   "set": "Galaxy Greats",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Galaxy Greats Blue Moon",
+   "set": "Galaxy Greats",
+   "parallel": "Blue Moon",
+   "odds": {
+    "hobby": 393
+   }
+  },
+  {
+   "label": "Galaxy Greats Gold Interstellar",
+   "set": "Galaxy Greats",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 778
+   }
+  },
+  {
+   "label": "Galaxy Greats Orange Galactic",
+   "set": "Galaxy Greats",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 1553
+   }
+  },
+  {
+   "label": "Galaxy Greats Black Eclipse",
+   "set": "Galaxy Greats",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 3872
+   }
+  },
+  {
+   "label": "Galaxy Greats Red Flare",
+   "set": "Galaxy Greats",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 7698
+   }
+  },
+  {
+   "label": "Galaxy Greats Superfractor",
+   "set": "Galaxy Greats",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 38260
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent",
+   "set": "Extraterrestrial Talent",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent Blue Moon",
+   "set": "Extraterrestrial Talent",
+   "parallel": "Blue Moon",
+   "odds": {
+    "hobby": 550
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent Gold Interstellar",
+   "set": "Extraterrestrial Talent",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 1088
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent Orange Galactic",
+   "set": "Extraterrestrial Talent",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 2176
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent Black Eclipse",
+   "set": "Extraterrestrial Talent",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 5421
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent Red Flare",
+   "set": "Extraterrestrial Talent",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 10751
+   }
+  },
+  {
+   "label": "Extraterrestrial Talent Superfractor",
+   "set": "Extraterrestrial Talent",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 52034
+   }
+  },
+  {
+   "label": "Launched Into Orbit",
+   "set": "Launched Into Orbit",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Launched Into Orbit Blue Moon",
+   "set": "Launched Into Orbit",
+   "parallel": "Blue Moon",
+   "odds": {
+    "hobby": 550
+   }
+  },
+  {
+   "label": "Launched Into Orbit Gold Interstellar",
+   "set": "Launched Into Orbit",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 1088
+   }
+  },
+  {
+   "label": "Launched Into Orbit Orange Galactic",
+   "set": "Launched Into Orbit",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 2176
+   }
+  },
+  {
+   "label": "Launched Into Orbit Black Eclipse",
+   "set": "Launched Into Orbit",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 5421
+   }
+  },
+  {
+   "label": "Launched Into Orbit Red Flare",
+   "set": "Launched Into Orbit",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 10751
+   }
+  },
+  {
+   "label": "Launched Into Orbit Superfractor",
+   "set": "Launched Into Orbit",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 52034
+   }
+  },
+  {
+   "label": "Star Clusters",
+   "set": "Star Clusters",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Star Clusters Blue Moon",
+   "set": "Star Clusters",
+   "parallel": "Blue Moon",
+   "odds": {
+    "hobby": 916
+   }
+  },
+  {
+   "label": "Star Clusters Gold Interstellar",
+   "set": "Star Clusters",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 1812
+   }
+  },
+  {
+   "label": "Star Clusters Orange Galactic",
+   "set": "Star Clusters",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 3614
+   }
+  },
+  {
+   "label": "Star Clusters Black Eclipse",
+   "set": "Star Clusters",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 8972
+   }
+  },
+  {
+   "label": "Star Clusters Red Flare",
+   "set": "Star Clusters",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 17820
+   }
+  },
+  {
+   "label": "Star Clusters Superfractor",
+   "set": "Star Clusters",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 86723
+   }
+  },
+  {
+   "label": "Cosmic Heroes",
+   "set": "Cosmic Heroes",
+   "parallel": "",
+   "odds": {
+    "hobby": 267
+   }
+  },
+  {
+   "label": "Cosmic Dust",
+   "set": "Cosmic Dust",
+   "parallel": "",
+   "odds": {
+    "hobby": 2401
+   }
+  },
+  {
+   "label": "Planetary Pursuit Sun",
+   "set": "Planetary Pursuit - Sun",
+   "parallel": "",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Planetary Pursuit Mercury",
+   "set": "Planetary Pursuit - Mercury",
+   "parallel": "",
+   "odds": {
+    "hobby": 481
+   }
+  },
+  {
+   "label": "Planetary Pursuit Venus",
+   "set": "Planetary Pursuit - Venus",
+   "parallel": "",
+   "odds": {
+    "hobby": 961
+   }
+  },
+  {
+   "label": "Planetary Pursuit Earth",
+   "set": "Planetary Pursuit - Earth",
+   "parallel": "",
+   "odds": {
+    "hobby": 1919
+   }
+  },
+  {
+   "label": "Planetary Pursuit Mars",
+   "set": "Planetary Pursuit - Mars",
+   "parallel": "",
+   "odds": {
+    "hobby": 3604
+   }
+  },
+  {
+   "label": "Planetary Pursuit Jupiter",
+   "set": "Planetary Pursuit - Jupiter",
+   "parallel": "",
+   "odds": {
+    "hobby": 7187
+   }
+  },
+  {
+   "label": "Planetary Pursuit Saturn",
+   "set": "Planetary Pursuit - Saturn",
+   "parallel": "",
+   "odds": {
+    "hobby": 12045
+   }
+  },
+  {
+   "label": "Planetary Pursuit Uranus",
+   "set": "Planetary Pursuit - Uranus",
+   "parallel": "",
+   "odds": {
+    "hobby": 24090
+   }
+  },
+  {
+   "label": "Planetary Pursuit Neptune",
+   "set": "Planetary Pursuit - Neptune",
+   "parallel": "",
+   "odds": {
+    "hobby": 34233
+   }
+  },
+  {
+   "label": "Planetary Pursuit Pluto",
+   "set": "Planetary Pursuit - Pluto",
+   "parallel": "",
+   "odds": {
+    "hobby": 44857
+   }
+  },
+  {
+   "label": "Cosmic Chrome Autograph Variation Refractor",
+   "set": "Cosmic Chrome Autographs Refractors",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 614
+   }
+  },
+  {
+   "label": "Cosmic Chrome Autograph Variation Gold Interstellar",
+   "set": "Cosmic Chrome Autograph Variation Gold Interstellar",
+   "parallel": "",
+   "odds": {
+    "hobby": 267
+   }
+  },
+  {
+   "label": "Cosmic Chrome Autograph Variation Orange Galactic",
+   "set": "Cosmic Chrome Autograph Variation Orange Galactic",
+   "parallel": "",
+   "odds": {
+    "hobby": 534
+   }
+  },
+  {
+   "label": "Cosmic Chrome Autograph Variation Black Eclipse",
+   "set": "Cosmic Chrome Autograph Variation Black Eclipse",
+   "parallel": "",
+   "odds": {
+    "hobby": 1332
+   }
+  },
+  {
+   "label": "Cosmic Chrome Autograph Variation Red Flare",
+   "set": "Cosmic Chrome Autograph Variation Red Flare",
+   "parallel": "",
+   "odds": {
+    "hobby": 2661
+   }
+  },
+  {
+   "label": "Cosmic Chrome Autograph Variation Superfractor",
+   "set": "Cosmic Chrome Autograph Variation Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 13274
+   }
+  },
+  {
+   "label": "Milky Way Marks Refractor",
+   "set": "Milky Way Marks Refractors",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 1184
+   }
+  },
+  {
+   "label": "Milky Way Marks Refractor Gold Interstellar",
+   "set": "Milky Way Marks Refractors",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 762
+   }
+  },
+  {
+   "label": "Milky Way Marks Refractor Orange Galactic",
+   "set": "Milky Way Marks Refractors",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 1524
+   }
+  },
+  {
+   "label": "Milky Way Marks Refractor Black Eclipse",
+   "set": "Milky Way Marks Refractors",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 3793
+   }
+  },
+  {
+   "label": "Milky Way Marks Refractor Red Flare",
+   "set": "Milky Way Marks Refractors",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 7564
+   }
+  },
+  {
+   "label": "Milky Way Marks Refractor Superfractor",
+   "set": "Milky Way Marks Refractors",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 37167
+   }
+  },
+  {
+   "label": "Equinox Autographs Refractor",
+   "set": "Equinox Autographs Refractors",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 1184
+   }
+  },
+  {
+   "label": "Equinox Autographs Refractor Gold Interstellar",
+   "set": "Equinox Autographs Refractor",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 762
+   }
+  },
+  {
+   "label": "Equinox Autographs Refractor Orange Galactic",
+   "set": "Equinox Autographs Refractor",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 1524
+   }
+  },
+  {
+   "label": "Equinox Autographs Refractor Black Eclipse",
+   "set": "Equinox Autographs Refractor",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 3793
+   }
+  },
+  {
+   "label": "Equinox Autographs Refractor Red Flare",
+   "set": "Equinox Autographs Refractor",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 7564
+   }
+  },
+  {
+   "label": "Equinox Autographs Refractor Superfractor",
+   "set": "Equinox Autographs Refractor",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 37167
+   }
+  },
+  {
+   "label": "First Flight Signatures Refractor",
+   "set": "First Flight Signatures Refractors",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 1184
+   }
+  },
+  {
+   "label": "First Flight Signatures Refractor Gold Interstellar",
+   "set": "First Flight Signatures Refractors",
+   "parallel": "Gold Interstellar",
+   "odds": {
+    "hobby": 888
+   }
+  },
+  {
+   "label": "First Flight Signatures Refractor Orange Galactic",
+   "set": "First Flight Signatures Refractors",
+   "parallel": "Orange Galactic",
+   "odds": {
+    "hobby": 1773
+   }
+  },
+  {
+   "label": "First Flight Signatures Refractor Black Eclipse",
+   "set": "First Flight Signatures Refractors",
+   "parallel": "Black Eclipse",
+   "odds": {
+    "hobby": 4425
+   }
+  },
+  {
+   "label": "First Flight Signatures Refractor Red Flare",
+   "set": "First Flight Signatures Refractors",
+   "parallel": "Red Flare",
+   "odds": {
+    "hobby": 8850
+   }
+  },
+  {
+   "label": "First Flight Signatures Refractor Superfractor",
+   "set": "First Flight Signatures Refractors",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 43362
+   }
+  }
+ ]
+}

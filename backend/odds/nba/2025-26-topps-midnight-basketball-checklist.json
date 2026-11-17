@@ -1,0 +1,1771 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-midnight-basketball-checklist",
+ "product_label": "2025-26 Topps Midnight Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Zodiac",
+   "set": "Base",
+   "parallel": "Zodiac",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Morning",
+   "set": "Base",
+   "parallel": "Morning",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Twilight",
+   "set": "Base",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Dusk",
+   "set": "Base",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Base Summer Solstice",
+   "set": "Base",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Base Winter Solstice",
+   "set": "Base",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Base Moon Beam",
+   "set": "Base",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Base Moonrise",
+   "set": "Base",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Base Equinox",
+   "set": "Base",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Base Midnight",
+   "set": "Base",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 46
+   }
+  },
+  {
+   "label": "Base Daybreak",
+   "set": "Base",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 111
+   }
+  },
+  {
+   "label": "Base Witching Hour",
+   "set": "Base",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 184
+   }
+  },
+  {
+   "label": "Base Black Light",
+   "set": "Base",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 549
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Twilight",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Dusk",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Summer Solstice",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 31
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Winter Solstice",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 44
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Moon Beam",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Moonrise",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 62
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Equinox",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 77
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Midnight",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 128
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Daybreak",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 309
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Witching Hour",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 519
+   }
+  },
+  {
+   "label": "Rookie Jersey Autographs Black Light",
+   "set": "Rookie Jersey Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1527
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Dusk",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Summer Solstice",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Winter Solstice",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Moon Beam",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 34
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Moonrise",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 54
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Equinox",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 68
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Midnight",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 112
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Daybreak",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 268
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Witching Hour",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 450
+   }
+  },
+  {
+   "label": "Rookie Horizon Signatures Black Light",
+   "set": "Rookie Horizon Signatures",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1337
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Rookies",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Twilight",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Dusk",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 36
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Summer Solstice",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 54
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Moon Beam",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 68
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Winter Solstice",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 74
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Moonrise",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 103
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Equinox",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 129
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Midnight",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 213
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Daybreak",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 509
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Witching Hour",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 849
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Rookies Black Light",
+   "set": "Stroke Of Midnight Rookie Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2545
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Rookies",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Twilight",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Dusk",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 38
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Summer Solstice",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Moon Beam",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 71
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Winter Solstice",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Moonrise",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 107
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Equinox",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 134
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Midnight",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 224
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Daybreak",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 535
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Witching Hour",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 891
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Rookies Black Light",
+   "set": "Midnight Sun Rookie Signatures",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2673
+   }
+  },
+  {
+   "label": "Dark Marks Rookies",
+   "set": "Dark Marks",
+   "parallel": "Rookies",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Twilight",
+   "set": "Dark Marks Rookies",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Dusk",
+   "set": "Dark Marks Rookies",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Summer Solstice",
+   "set": "Dark Marks Rookies",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Moon Beam",
+   "set": "Dark Marks Rookies",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 223
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Winter Solstice",
+   "set": "Dark Marks Rookies",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 170
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Moonrise",
+   "set": "Dark Marks Rookies",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 217
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Equinox",
+   "set": "Dark Marks Rookies",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 269
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Midnight",
+   "set": "Dark Marks Rookies",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 446
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Daybreak",
+   "set": "Dark Marks Rookies",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 1069
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Witching Hour",
+   "set": "Dark Marks Rookies",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 1782
+   }
+  },
+  {
+   "label": "Dark Marks Rookies Black Light",
+   "set": "Dark Marks Rookies",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 5345
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies",
+   "set": "Dark Matter Autographs",
+   "parallel": "Rookies",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Twilight",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 75
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Dusk",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 80
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Summer Solstice",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 120
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Moon Beam",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 210
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Winter Solstice",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 154
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Moonrise",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 215
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Equinox",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 268
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Midnight",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 450
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Daybreak",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 1069
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Witching Hour",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 1782
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Rookies Black Light",
+   "set": "Dark Matter Rookie Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 5345
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies",
+   "set": "Midnight Oil Marks",
+   "parallel": "Rookies",
+   "odds": {
+    "hobby": 54
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Twilight",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 158
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Dusk",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 180
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Summer Solstice",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 268
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Moon Beam",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 357
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Winter Solstice",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 309
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Moonrise",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 428
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Equinox",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 540
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Midnight",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 891
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Daybreak",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 2227
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Witching Hour",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 3818
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Rookies Black Light",
+   "set": "Midnight Oil Marks Rookies",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 10689
+   }
+  },
+  {
+   "label": "Dark Marks",
+   "set": "Dark Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Dark Marks Dusk",
+   "set": "Dark Marks",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Dark Marks Summer Solstice",
+   "set": "Dark Marks",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Dark Marks Winter Solstice",
+   "set": "Dark Marks",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 73
+   }
+  },
+  {
+   "label": "Dark Marks Moon Beam",
+   "set": "Dark Marks",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 99
+   }
+  },
+  {
+   "label": "Dark Marks Moonrise",
+   "set": "Dark Marks",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "Dark Marks Equinox",
+   "set": "Dark Marks",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 112
+   }
+  },
+  {
+   "label": "Dark Marks Midnight",
+   "set": "Dark Marks",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 186
+   }
+  },
+  {
+   "label": "Dark Marks Daybreak",
+   "set": "Dark Marks",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 446
+   }
+  },
+  {
+   "label": "Dark Marks Witching Hour",
+   "set": "Dark Marks",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 743
+   }
+  },
+  {
+   "label": "Dark Marks Black Light",
+   "set": "Dark Marks",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2227
+   }
+  },
+  {
+   "label": "Dark Matter Autographs",
+   "set": "Dark Matter Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Dusk",
+   "set": "Dark Matter Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 42
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Summer Solstice",
+   "set": "Dark Matter Autographs",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Winter Solstice",
+   "set": "Dark Matter Autographs",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Moon Beam",
+   "set": "Dark Matter Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 143
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Moonrise",
+   "set": "Dark Matter Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 107
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Equinox",
+   "set": "Dark Matter Autographs",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 128
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Midnight",
+   "set": "Dark Matter Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 203
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Daybreak",
+   "set": "Dark Matter Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 486
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Witching Hour",
+   "set": "Dark Matter Autographs",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 810
+   }
+  },
+  {
+   "label": "Dark Matter Autographs Black Light",
+   "set": "Dark Matter Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2430
+   }
+  },
+  {
+   "label": "Midnight Oil Marks",
+   "set": "Midnight Oil Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Dusk",
+   "set": "Midnight Oil Marks",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Summer Solstice",
+   "set": "Midnight Oil Marks",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Winter Solstice",
+   "set": "Midnight Oil Marks",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 77
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Moon Beam",
+   "set": "Midnight Oil Marks",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Moonrise",
+   "set": "Midnight Oil Marks",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Equinox",
+   "set": "Midnight Oil Marks",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 112
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Midnight",
+   "set": "Midnight Oil Marks",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 186
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Daybreak",
+   "set": "Midnight Oil Marks",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 446
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Witching Hour",
+   "set": "Midnight Oil Marks",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 743
+   }
+  },
+  {
+   "label": "Midnight Oil Marks Black Light",
+   "set": "Midnight Oil Marks",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2227
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Twilight",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Dusk",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Summer Solstice",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Winter Solstice",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 38
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Moon Beam",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 34
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Moonrise",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 53
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Equinox",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 66
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Midnight",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 109
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Daybreak",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 261
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Witching Hour",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 435
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs Black Light",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1304
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures",
+   "set": "Midnight Sun Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Winter Solstice",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 59
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Moon Beam",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 191
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Moonrise",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 77
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Equinox",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 69
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Midnight",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 115
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Daybreak",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 275
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Witching Hour",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 457
+   }
+  },
+  {
+   "label": "Midnight Sun Signatures Black Light",
+   "set": "Midnight Sun Signatures",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1371
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Summer Solstice",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Summer Solstice",
+   "odds": {
+    "hobby": 535
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Winter Solstice",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Winter Solstice",
+   "odds": {
+    "hobby": 775
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Moon Beam",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Moon Beam",
+   "odds": {
+    "hobby": 775
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Moonrise",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Moonrise",
+   "odds": {
+    "hobby": 1069
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Equinox",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Equinox",
+   "odds": {
+    "hobby": 1371
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Midnight",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Midnight",
+   "odds": {
+    "hobby": 2227
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Daybreak",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Daybreak",
+   "odds": {
+    "hobby": 5345
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Witching Hour",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Witching Hour",
+   "odds": {
+    "hobby": 8907
+   }
+  },
+  {
+   "label": "Stroke of Midnight Autographs II Black Light",
+   "set": "Stroke Of Midnight Autographs",
+   "parallel": "II Black Light",
+   "odds": {
+    "hobby": 26721
+   }
+  },
+  {
+   "label": "Night Owls",
+   "set": "Night Owls",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Night Owls Morning",
+   "set": "Night Owls",
+   "parallel": "Morning",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Night Owls Twilight",
+   "set": "Night Owls",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Night Owls Dusk",
+   "set": "Night Owls",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Night Owls Summer Solstice",
+   "set": "Night Owls",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Night Owls Winter Solstice",
+   "set": "Night Owls",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 63
+   }
+  },
+  {
+   "label": "Night Owls Moon Beam",
+   "set": "Night Owls",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 74
+   }
+  },
+  {
+   "label": "Night Owls Moonrise",
+   "set": "Night Owls",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 89
+   }
+  },
+  {
+   "label": "Night Owls Equinox",
+   "set": "Night Owls",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 111
+   }
+  },
+  {
+   "label": "Night Owls Midnight",
+   "set": "Night Owls",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 184
+   }
+  },
+  {
+   "label": "Night Owls Daybreak",
+   "set": "Night Owls",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 439
+   }
+  },
+  {
+   "label": "Night Owls Witching Hour",
+   "set": "Night Owls",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 732
+   }
+  },
+  {
+   "label": "Night Owls Black Light",
+   "set": "Night Owls",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2194
+   }
+  },
+  {
+   "label": "Daydreamers",
+   "set": "Daydreamers",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Daydreamers Morning",
+   "set": "Daydreamers",
+   "parallel": "Morning",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Daydreamers Twilight",
+   "set": "Daydreamers",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Daydreamers Dusk",
+   "set": "Daydreamers",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 37
+   }
+  },
+  {
+   "label": "Daydreamers Summer Solstice",
+   "set": "Daydreamers",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Daydreamers Winter Solstice",
+   "set": "Daydreamers",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 79
+   }
+  },
+  {
+   "label": "Daydreamers Moon Beam",
+   "set": "Daydreamers",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 92
+   }
+  },
+  {
+   "label": "Daydreamers Moonrise",
+   "set": "Daydreamers",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 111
+   }
+  },
+  {
+   "label": "Daydreamers Equinox",
+   "set": "Daydreamers",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 138
+   }
+  },
+  {
+   "label": "Daydreamers Midnight",
+   "set": "Daydreamers",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 229
+   }
+  },
+  {
+   "label": "Daydreamers Daybreak",
+   "set": "Daydreamers",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 549
+   }
+  },
+  {
+   "label": "Daydreamers Witching Hour",
+   "set": "Daydreamers",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 908
+   }
+  },
+  {
+   "label": "Daydreamers Black Light",
+   "set": "Daydreamers",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2632
+   }
+  },
+  {
+   "label": "Insomnia",
+   "set": "Insomnia",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Insomnia Morning",
+   "set": "Insomnia",
+   "parallel": "Morning",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Insomnia Twilight",
+   "set": "Insomnia",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Insomnia Dusk",
+   "set": "Insomnia",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Insomnia Summer Solstice",
+   "set": "Insomnia",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Insomnia Winter Solstice",
+   "set": "Insomnia",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 63
+   }
+  },
+  {
+   "label": "Insomnia Moon Beam",
+   "set": "Insomnia",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 74
+   }
+  },
+  {
+   "label": "Insomnia Moonrise",
+   "set": "Insomnia",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 89
+   }
+  },
+  {
+   "label": "Insomnia Equinox",
+   "set": "Insomnia",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 111
+   }
+  },
+  {
+   "label": "Insomnia Midnight",
+   "set": "Insomnia",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 184
+   }
+  },
+  {
+   "label": "Insomnia Daybreak",
+   "set": "Insomnia",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 439
+   }
+  },
+  {
+   "label": "Insomnia Witching Hour",
+   "set": "Insomnia",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 732
+   }
+  },
+  {
+   "label": "Insomnia Black Light",
+   "set": "Insomnia",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2194
+   }
+  },
+  {
+   "label": "Moonfall",
+   "set": "Moonfall",
+   "parallel": "",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Moonfall Morning",
+   "set": "Moonfall",
+   "parallel": "Morning",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Moonfall Twilight",
+   "set": "Moonfall",
+   "parallel": "Twilight",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Moonfall Dusk",
+   "set": "Moonfall",
+   "parallel": "Dusk",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Moonfall Summer Solstice",
+   "set": "Moonfall",
+   "parallel": "Summer Solstice",
+   "odds": {
+    "hobby": 37
+   }
+  },
+  {
+   "label": "Moonfall Winter Solstice",
+   "set": "Moonfall",
+   "parallel": "Winter Solstice",
+   "odds": {
+    "hobby": 53
+   }
+  },
+  {
+   "label": "Moonfall Moon Beam",
+   "set": "Moonfall",
+   "parallel": "Moon Beam",
+   "odds": {
+    "hobby": 62
+   }
+  },
+  {
+   "label": "Moonfall Moonrise",
+   "set": "Moonfall",
+   "parallel": "Moonrise",
+   "odds": {
+    "hobby": 74
+   }
+  },
+  {
+   "label": "Moonfall Equinox",
+   "set": "Moonfall",
+   "parallel": "Equinox",
+   "odds": {
+    "hobby": 92
+   }
+  },
+  {
+   "label": "Moonfall Midnight",
+   "set": "Moonfall",
+   "parallel": "Midnight",
+   "odds": {
+    "hobby": 154
+   }
+  },
+  {
+   "label": "Moonfall Daybreak",
+   "set": "Moonfall",
+   "parallel": "Daybreak",
+   "odds": {
+    "hobby": 366
+   }
+  },
+  {
+   "label": "Moonfall Witching Hour",
+   "set": "Moonfall",
+   "parallel": "Witching Hour",
+   "odds": {
+    "hobby": 613
+   }
+  },
+  {
+   "label": "Moonfall Black Light",
+   "set": "Moonfall",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1816
+   }
+  },
+  {
+   "label": "Nightshade",
+   "set": "Night Shade",
+   "parallel": "",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Nightshade Black Light",
+   "set": "Night Shade",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1816
+   }
+  },
+  {
+   "label": "Dreamland",
+   "set": "Dreamland",
+   "parallel": "",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Dreamland Black Light",
+   "set": "Dreamland",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 1816
+   }
+  },
+  {
+   "label": "Night Vision",
+   "set": "Night Vision",
+   "parallel": "",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Night Vision Black Light",
+   "set": "Night Vision",
+   "parallel": "Black Light",
+   "odds": {
+    "hobby": 2194
+   }
+  },
+  {
+   "label": "Twilight",
+   "set": "Twilight",
+   "parallel": "",
+   "odds": {
+    "hobby": 54
+   }
+  }
+ ]
+}

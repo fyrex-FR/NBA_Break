@@ -1,0 +1,475 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2024-25-topps-inception-basketball-checklist",
+ "product_label": "2024-25 Topps Inception Basketball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Green",
+   "set": "Base Set",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards Purple",
+   "set": "Base Set",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Pink",
+   "set": "Base Set",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Red",
+   "set": "Base Set",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Holo Gold",
+   "set": "Base Cards Holo",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base Set",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Base Cards Camo",
+   "set": "Base Cards Camo",
+   "parallel": "",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Base Cards Inception",
+   "set": "Base Cards Inception",
+   "parallel": "",
+   "odds": {
+    "hobby": 395
+   }
+  },
+  {
+   "label": "Launch",
+   "set": "Launch",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Pink",
+   "set": "Rookie Jumbo Relic Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Red",
+   "set": "Rookie Jumbo Relic Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Holo Gold",
+   "set": "Rookie Jumbo Relic Autographs",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Blue",
+   "set": "Rookie Jumbo Relic Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Camo",
+   "set": "Rookie Jumbo Relic Autographs",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 134
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Inception",
+   "set": "Rookie Jumbo Relic Autographs",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1333
+   }
+  },
+  {
+   "label": "Rookie Autographs",
+   "set": "Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Rookie Autographs Pink",
+   "set": "Rookie Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Rookie Autographs Red",
+   "set": "Rookie Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Rookie Autographs Holo Gold",
+   "set": "Rookie Autographs",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Rookie Autographs Blue",
+   "set": "Rookie Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Rookie Autographs Camo",
+   "set": "Rookie Autographs",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 98
+   }
+  },
+  {
+   "label": "Rookie Autographs Inception",
+   "set": "Rookie Autographs",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 967
+   }
+  },
+  {
+   "label": "Autographs",
+   "set": "Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Autographs Pink",
+   "set": "Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Autographs Red",
+   "set": "Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Autographs Holo Gold",
+   "set": "Autographs",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Autographs Blue",
+   "set": "Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 35
+   }
+  },
+  {
+   "label": "Autographs Camo",
+   "set": "Autographs",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 87
+   }
+  },
+  {
+   "label": "Autographs Inception",
+   "set": "Autographs",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 859
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs",
+   "set": "Memory Lane Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs Pink",
+   "set": "Memory Lane Marks",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs Red",
+   "set": "Memory Lane Marks",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs Holo Gold",
+   "set": "Memory Lane Marks",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs Blue",
+   "set": "Memory Lane Marks",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 32
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs Camo",
+   "set": "Memory Lane Marks",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 79
+   }
+  },
+  {
+   "label": "Memory Lane Marks Autographs Inception",
+   "set": "Memory Lane Marks",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 773
+   }
+  },
+  {
+   "label": "Grail Chasing Signatures Pink",
+   "set": "Grail Chasing Signatures",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 44
+   }
+  },
+  {
+   "label": "Grail Chasing Signatures Red",
+   "set": "Grail Chasing Signatures",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Grail Chasing Signatures Holo Gold",
+   "set": "Grail Chasing Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Grail Chasing Signatures Blue",
+   "set": "Grail Chasing Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 32
+   }
+  },
+  {
+   "label": "Grail Chasing Signatures Camo",
+   "set": "Grail Chasing Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 79
+   }
+  },
+  {
+   "label": "Grail Chasing Signatures Inception",
+   "set": "Grail Chasing Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 773
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Pink",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Red",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Holo Gold",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 31
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Blue",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 50
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Camo",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Inception",
+   "set": "Rookie Jumbo Relics",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1171
+   }
+  },
+  {
+   "label": "Relics",
+   "set": "Relic Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Relics Pink",
+   "set": "Relic Cards",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Relics Red",
+   "set": "Relic Cards",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Relics Holo Gold",
+   "set": "Relic Cards",
+   "parallel": "Holo Gold",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Relics Blue",
+   "set": "Relic Cards",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Relics Camo",
+   "set": "Relic Cards",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 137
+   }
+  },
+  {
+   "label": "Relics Inception",
+   "set": "Relic Cards",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1333
+   }
+  }
+ ]
+}

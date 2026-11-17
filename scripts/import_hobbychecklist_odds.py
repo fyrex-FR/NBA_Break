@@ -42,6 +42,8 @@ BASE = "https://www.thehobbychecklist.com"
 API = "https://checklist-api.cardvaults.app/api"
 UA = "NoClim-import/1.0 (import des cotes, avec accord de l'editeur)"
 MIN_ROWS = 20
+# Préfixes de `source` des feuilles produites par nos scripts (remplaçables).
+GENERATED_SOURCES = ("The Hobby Checklist", "Topps — feuille d'odds officielle")
 
 # Formats → (channel, group) de notre contrat. Le reste retombe sur des règles par mot-clé.
 CHANNELS = {
@@ -290,9 +292,19 @@ def master_key() -> str | None:
 
 
 def r2_sheets() -> set[str]:
+    """Feuilles à ne jamais remplacer : celles servies en prod (R2 ∪ repo) qui ne
+    viennent pas de nos générateurs, c'est-à-dire faites à la main depuis un PDF."""
     req = urllib.request.Request(f"{API}/odds/nba", headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as r:
-        return set(json.loads(r.read())["checklist_ids"])
+        served = set(json.loads(r.read())["checklist_ids"])
+    generated = set()
+    for p in OUT_DIR.glob("*.json"):
+        try:
+            if str(json.loads(p.read_text(encoding="utf-8")).get("source", "")).startswith(GENERATED_SOURCES):
+                generated.add(p.stem)
+        except (OSError, json.JSONDecodeError):
+            pass
+    return served - generated
 
 
 def main() -> int:
@@ -312,9 +324,9 @@ def main() -> int:
             continue
         if args.only and g["source_slug"] != args.only:
             continue
-        # Déjà sur R2 = feuille faite à la main depuis le PDF Topps (plus détaillée) : on n'y touche jamais.
+        # Feuille faite à la main depuis le PDF Topps (plus détaillée) : on n'y touche jamais.
         if cid in existing_r2:
-            skipped.append(f"{cid} (déjà sur R2)")
+            skipped.append(f"{cid} (feuille faite à la main)")
             continue
         out = OUT_DIR / f"{cid}.json"
         if out.exists() and not args.force:

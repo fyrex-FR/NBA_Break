@@ -1,0 +1,139 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-chrome-sapphire-basketball-checklist",
+ "product_label": "2025-26 Topps Chrome Basketball Sapphire",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 8
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Sapphire Gold",
+   "set": "Base",
+   "parallel": "Sapphire Gold",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Sapphire Orange",
+   "set": "Base",
+   "parallel": "Sapphire Orange",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Base Sapphire Black",
+   "set": "Base",
+   "parallel": "Sapphire Black",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Base Sapphire Red",
+   "set": "Base",
+   "parallel": "Sapphire Red",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Topps Certified Autograph Issue Rookies Sapphire Red",
+   "set": "Topps Certified Autograph Issue - Rookies",
+   "parallel": "Sapphire Red",
+   "odds": {
+    "hobby": 898
+   }
+  },
+  {
+   "label": "Topps Certified Autograph Issue Rookies Sapphire Padpardascha",
+   "set": "Topps Certified Autograph Issue - Rookies",
+   "parallel": "Sapphire Padpardascha",
+   "odds": {
+    "hobby": 4489
+   }
+  },
+  {
+   "label": "Next Stop Signatures Sapphire Gold",
+   "set": "Next Stop Signatures",
+   "parallel": "Sapphire Gold",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "SKY-Write Signatures Sapphire Gold",
+   "set": "Sky-Write Signatures",
+   "parallel": "Sapphire Gold",
+   "odds": {
+    "hobby": 77
+   }
+  },
+  {
+   "label": "SKY-Write Signatures Sapphire Orange",
+   "set": "Sky-Write Signatures",
+   "parallel": "Sapphire Orange",
+   "odds": {
+    "hobby": 154
+   }
+  },
+  {
+   "label": "SKY-Write Signatures Sapphire Black",
+   "set": "Sky-Write Signatures",
+   "parallel": "Sapphire Black",
+   "odds": {
+    "hobby": 385
+   }
+  },
+  {
+   "label": "SKY-Write Signatures Sapphire Red",
+   "set": "Sky-Write Signatures",
+   "parallel": "Sapphire Red",
+   "odds": {
+    "hobby": 770
+   }
+  },
+  {
+   "label": "Sapphire Selections Orange ***X4 up***",
+   "set": "Sapphire Selections Orange ***X4 up***",
+   "parallel": "",
+   "odds": {
+    "hobby": 167
+   }
+  },
+  {
+   "label": "Sapphire Selections Red ***X4 up***",
+   "set": "Sapphire Selections Red ***X4 up***",
+   "parallel": "",
+   "odds": {
+    "hobby": 833
+   }
+  },
+  {
+   "label": "Sapphire Selections Superfractors ***X4 up***",
+   "set": "Sapphire Selections Superfractors ***X4 up***",
+   "parallel": "",
+   "odds": {
+    "hobby": 4040
+   }
+  },
+  {
+   "label": "Infinity",
+   "set": "Infinity",
+   "parallel": "",
+   "odds": {
+    "hobby": 160
+   }
+  }
+ ]
+}

@@ -41,6 +41,21 @@ publiées sur thehobbychecklist.com, avec l'accord de son éditeur :
 python3 scripts/import_hobbychecklist_odds.py --force
 ```
 
+## Feuilles importées depuis les PDF officiels Topps
+
+`scripts/import_topps_odds_pdfs.py` lit les PDF de https://www.topps.com/pages/odds
+(sources dans `scripts/topps_odds_sources.json`, `{checklist_id: url}`) et écrit dans
+`backend/odds/nba/`. Les cotes sont rattachées à leur colonne (Hobby, Jumbo, Breaker,
+Value…) par leur position dans la page : une case vide n'apparaît pas dans le texte brut.
+Les « N:1 » (base) et les lignes « (cancelled) » sont ignorés. Une feuille existante n'est
+remplacée que si la version PDF rattache autant ou plus de cotes à nos séries ; une
+feuille faite à la main n'est jamais touchée.
+
+```bash
+pip install -r backend/requirements.txt -r scripts/requirements-dev.txt
+python scripts/import_topps_odds_pdfs.py            # --dry-run pour un rapport
+```
+
 ## Format JSON
 
 ```jsonc
