@@ -7,7 +7,7 @@ import { useOpenCollections } from '../../hooks/useCollections'
 import { frenchDate, isUpcoming, usd } from '../../utils/boxGuide'
 import { BoxImage } from '../shared/CollectionCard'
 import { EmptyState, Segmented } from '../ui/primitives'
-import type { BoxFormat } from '../../types'
+import type { BoxFormat, BoxGuide } from '../../types'
 
 const SOURCE_URL = 'https://www.thehobbychecklist.com'
 
@@ -81,7 +81,7 @@ function BoxGuideBody({ guideId }: { guideId: string }) {
               {format.cards_per_box != null && <div className="num">{format.cards_per_box} cartes par boîte</div>}
             </div>
           )}
-          {!guide.odds_published && (
+          {!guide.odds_published && guide.origin !== 'recherche' && (
             <p className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Cotes officielles non publiées.</p>
           )}
         </div>
@@ -114,6 +114,25 @@ function BoxGuideBody({ guideId }: { guideId: string }) {
         </section>
       )}
 
+      <GuideSources guide={guide} />
+    </>
+  )
+}
+
+const CONFIDENCE_NOTE: Record<string, string> = {
+  high: 'Infos vérifiées (fabricant ou deux sources concordantes).',
+  medium: 'Une seule source : à confirmer.',
+  low: 'Infos partielles, à confirmer avant de s’y fier.',
+}
+
+function hostOf(url: string) {
+  try { return new URL(url).hostname.replace(/^www\./, '') } catch { return url }
+}
+
+/** Provenance du guide : The Hobby Checklist, ou recherche web avec ses sources et sa fiabilité. */
+function GuideSources({ guide }: { guide: BoxGuide }) {
+  if (guide.origin !== 'recherche') {
+    return (
       <a
         href={`${SOURCE_URL}/collections/${guide.source_slug}`}
         target="_blank"
@@ -123,7 +142,25 @@ function BoxGuideBody({ guideId }: { guideId: string }) {
       >
         Source : The Hobby Checklist <ExternalLink className="w-3 h-3" />
       </a>
-    </>
+    )
+  }
+  const sources = guide.sources ?? []
+  return (
+    <div className="mt-6 text-xs space-y-1" style={{ color: 'var(--text-tertiary)' }}>
+      {guide.confidence && (
+        <p style={{ color: guide.confidence === 'high' ? 'var(--text-tertiary)' : 'var(--warning)' }}>{CONFIDENCE_NOTE[guide.confidence]}</p>
+      )}
+      {sources.length > 0 && (
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          Sources :
+          {sources.map((u) => (
+            <a key={u} href={u} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline underline-offset-2">
+              {hostOf(u)} <ExternalLink className="w-3 h-3" />
+            </a>
+          ))}
+        </p>
+      )}
+    </div>
   )
 }
 
@@ -154,7 +191,8 @@ function FormatDetail({ format: f }: { format: BoxFormat }) {
           <PenLine className="w-4 h-4 self-center" style={{ color: 'var(--cat-auto)' }} />
           {f.autos_per_box != null && (
             <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              <b className="text-[22px] font-stat font-semibold" style={{ color: 'var(--text-primary)' }}>{f.autos_per_box}</b> auto{f.autos_per_box > 1 ? 's' : ''} / boîte
+              <b className="text-[22px] font-stat font-semibold" style={{ color: 'var(--text-primary)' }}>{f.autos_per_box}</b>{' '}
+              {f.hits_mixed ? `hit${f.autos_per_box > 1 ? 's' : ''} (auto ou memo)` : `auto${f.autos_per_box > 1 ? 's' : ''}`} / boîte
             </span>
           )}
           {f.autos_per_case != null && (

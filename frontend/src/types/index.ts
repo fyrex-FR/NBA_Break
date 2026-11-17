@@ -574,6 +574,8 @@ export interface BoxFormat {
   case_from_shops: boolean
   contents: BoxContentLine[]
   image: string | null
+  /** Le nombre garanti mélange autos et memorabilia (« 3 Autographs or Memorabilia »). */
+  hits_mixed?: boolean
 }
 
 export interface BoxGuide {
@@ -587,6 +589,11 @@ export interface BoxGuide {
   cover_image: string | null
   formats: BoxFormat[]
   presentation: string[]
+  /** « thehobbychecklist » (par défaut) ou « recherche » (recherche web sourcée). */
+  origin?: 'thehobbychecklist' | 'recherche'
+  confidence?: 'high' | 'medium' | 'low' | null
+  sources?: string[]
+  notes?: string
 }
 
 export interface BoxGuideSummary {
@@ -597,8 +604,10 @@ export interface BoxGuideSummary {
   brand: string | null
   cover_image: string | null
   release_date: string | null
-  formats: Pick<BoxFormat, 'name' | 'cards_per_box' | 'packs_per_box' | 'boxes_per_case' | 'autos_per_box' | 'price_usd' | 'release_date'>[]
+  formats: Pick<BoxFormat, 'name' | 'cards_per_box' | 'packs_per_box' | 'boxes_per_case' | 'autos_per_box' | 'price_usd' | 'release_date' | 'hits_mixed'>[]
   hobby_autos_per_box: number | null
+  origin?: 'thehobbychecklist' | 'recherche'
+  confidence?: 'high' | 'medium' | 'low' | null
 }
 
 export interface BoxGuidesResponse {

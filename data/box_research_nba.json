@@ -1,0 +1,4562 @@
+{
+ "2022-23-panini-prizm-basketball-checklist": {
+  "checklist_id": "2022-23-panini-prizm-basketball-checklist",
+  "name": "2022-23 Panini Prizm Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-04-12",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 12,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "22 Prizms Parallels",
+     "10 Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 12,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2023-04-12",
+    "contents": [
+     "2 Autographs",
+     "2 FOTL Prizms (#/35 or less)",
+     "22 Additional Prizms Parallels",
+     "10 Inserts"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "3 Choice Exclusive Prizms",
+     "2 Silver Prizms",
+     "2 Additional Prizms"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 9,
+    "packs_per_box": 10,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "12 Prizms Parallels",
+     "6 Inserts",
+     "1 Rookie Variation"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-prizm-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Hobby config listed under FOTL section (\"mirrors Hobby\"); another retailer search summary also says Hobby 12x12 with 2 autos, 22 Prizms, 10 inserts; MSRP $350 mentioned by an aggregator only (not recorded). Retail (24 packs x 4 cards) and Blaster not covered."
+ },
+ "2022-23-panini-national-treasures-basketball-checklist": {
+  "checklist_id": "2022-23-panini-national-treasures-basketball-checklist",
+  "name": "2022-23 Panini National Treasures Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-11-15",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "4 Memorabilia"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL RPA (#/24 or less)",
+     "Hobby box contents"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-national-treasures-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Autographs described as \"four autographs and four relics\" per box; FOTL via Dutch auction ($8,500 start, $3,500 floor; not an MSRP)."
+ },
+ "2022-23-panini-select-basketball-checklist": {
+  "checklist_id": "2022-23-panini-select-basketball-checklist",
+  "name": "2022-23 Panini Select Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-06-28",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs or Memorabilia (slated)",
+     "12 Prizm Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Autograph (#/30 or less)",
+     "2 Additional Autographs/Memorabilia",
+     "1 FOTL Parallel (#/15 or less)",
+     "11 Additional Prizm Parallels"
+    ]
+   },
+   {
+    "name": "H2",
+    "cards_per_pack": 6,
+    "packs_per_box": 4,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "6 Prizm Parallels",
+     "Disco Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-select-basketball-nba-cards",
+   "https://www.beckett.com/news/2022-23-panini-select-basketball-cards/"
+  ],
+  "confidence": "high",
+  "notes": "CC and Beckett (via search summary) agree on Hobby 5x12x12 and release date; 3 hits are autos or memorabilia, not strictly autographs."
+ },
+ "2022-23-panini-mosaic-basketball-checklist": {
+  "checklist_id": "2022-23-panini-mosaic-basketball-checklist",
+  "name": "2022-23 Panini Mosaic Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-09-01",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Average 1 Autograph",
+     "Exclusive Mosaic Pink (#/149) parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Same as Hobby",
+     "Pink Swirl (#/20) / Green Swirl (#/5) FOTL parallels"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "7 Parallels average",
+     "Black Gold parallel (#/8)"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 12,
+    "packs_per_box": 12,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Rookie Variation"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-mosaic-basketball-nba-cards",
+   "https://www.beckett.com/news/2022-23-panini-mosaic-basketball-cards/"
+  ],
+  "confidence": "high",
+  "notes": "CC and Beckett agree on 15x10x12 hobby, Choice 8x1x20; auto count is average of 1 (not guaranteed per source)."
+ },
+ "2022-23-panini-donruss-optic-basketball-checklist": {
+  "checklist_id": "2022-23-panini-donruss-optic-basketball-checklist",
+  "name": "2022-23 Panini Donruss Optic Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-05-10",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph (average)",
+     "20 Inserts/Parallels (average)"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Purple Stars FOTL parallels"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 9,
+    "packs_per_box": 10,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-donruss-optic-basketball-nba-cards",
+   "https://www.beckett.com/news/2022-23-donruss-optic-basketball-cards/"
+  ],
+  "confidence": "high",
+  "notes": "CC and Beckett agree on hobby 4x20x12. Retail 20x4 and Blaster 6x5 per search summary (not recorded as formats)."
+ },
+ "2022-23-panini-immaculate-basketball-checklist": {
+  "checklist_id": "2022-23-panini-immaculate-basketball-checklist",
+  "name": "2022-23 Panini Immaculate Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2024-01-12",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 5,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "2 Memorabilia",
+     "1 Base card or parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-immaculate-collection-basketball-nba-cards",
+   "https://www.beckett.com/news/2022-23-panini-immaculate-basketball-cards/"
+  ],
+  "confidence": "medium",
+  "notes": "Release date disagreement: CC estimate 2024-01-12, Beckett 2024-01-31. Boxes per case 5 per CC only."
+ },
+ "2022-23-panini-black-basketball-checklist": {
+  "checklist_id": "2022-23-panini-black-basketball-checklist",
+  "name": "2022-23 Panini Black Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-07-26",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Base",
+     "2 Base Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-black-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-chronicles-basketball-checklist": {
+  "checklist_id": "2022-23-panini-chronicles-basketball-checklist",
+  "name": "2022-23 Panini Chronicles Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-07-19",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 6,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Hobby-exclusive parallels",
+     "Rookie and veteran autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-chronicles-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Autos described as average of 2 only; Chronicles also has retail formats not covered."
+ },
+ "2022-23-panini-contenders-basketball-checklist": {
+  "checklist_id": "2022-23-panini-contenders-basketball-checklist",
+  "name": "2022-23 Panini Contenders Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-04-05",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 4,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs (Rookie/Veteran Ticket)"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Blue Shimmer (#/21) or Red Shimmer (#/5) autograph",
+     "Opening Night Ticket parallel (#/25)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-contenders-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-contenders-optic-basketball-checklist": {
+  "checklist_id": "2022-23-panini-contenders-optic-basketball-checklist",
+  "name": "2022-23 Panini Contenders Optic Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-09-29",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Parallels",
+     "2 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-contenders-optic-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Release date is an estimate on CC."
+ },
+ "2022-23-panini-court-kings-basketball-checklist": {
+  "checklist_id": "2022-23-panini-court-kings-basketball-checklist",
+  "name": "2022-23 Panini Court Kings Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-03-29",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Memorabilia",
+     "Inserts"
+    ]
+   },
+   {
+    "name": "International Blaster",
+    "cards_per_pack": 6,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Acetate Rookies",
+     "Inserts",
+     "Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-court-kings-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-crown-royale-basketball-checklist": {
+  "checklist_id": "2022-23-panini-crown-royale-basketball-checklist",
+  "name": "2022-23 Panini Crown Royale Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-05-17",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Memorabilia",
+     "2 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Autograph (#/7 or less)",
+     "1 Memorabilia",
+     "1 FOTL Parallel",
+     "1 Additional Insert/Parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-crown-royale-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "FOTL Dutch auction $850 start to $350 floor (not MSRP)."
+ },
+ "2022-23-panini-donruss-basketball-checklist": {
+  "checklist_id": "2022-23-panini-donruss-basketball-checklist",
+  "name": "2022-23 Panini Donruss Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-03-08",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 30,
+    "packs_per_box": 10,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "60 Inserts/Parallels (average)"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Exclusive Parallels",
+     "5 Exclusive Rated Rookies"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-donruss-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Config looks unusual (30 cards x 10 packs x 10 boxes, 1 auto) from a single summarized fetch; verify before use."
+ },
+ "2022-23-panini-donruss-elite-basketball-checklist": {
+  "checklist_id": "2022-23-panini-donruss-elite-basketball-checklist",
+  "name": "2022-23 Panini Donruss Elite Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-03-15",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "16 Inserts/Parallels",
+     "2 Base Rookies"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 FOTL Parallels",
+     "14 Inserts/Parallels",
+     "2 Base Rookies"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-donruss-elite-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-flux-basketball-checklist": {
+  "checklist_id": "2022-23-panini-flux-basketball-checklist",
+  "name": "2022-23 Panini Flux Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-10-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "20 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Titan FOTL parallel (Purple Scope #/17 or Gold Scope #/8)",
+     "1 Autograph",
+     "20 Inserts/Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-flux-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-nba-hoops-basketball-checklist": {
+  "checklist_id": "2022-23-panini-nba-hoops-basketball-checklist",
+  "name": "2022-23 Panini NBA Hoops Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-01-11",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "24 Inserts/Parallels (average)",
+     "Hoops Ink / Hot Signatures / Rookie Ink autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-nba-hoops-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "Premium Box Set and Standard Blaster also exist, configs not stated."
+ },
+ "2022-23-panini-noir-basketball-checklist": {
+  "checklist_id": "2022-23-panini-noir-basketball-checklist",
+  "name": "2022-23 Panini Noir Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-10-20",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Relics (average)",
+     "3 Limited base cards"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Relics (average)",
+     "1 gold-framed #/11 card"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-noir-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Autograph count not stated on page (average 4 hits listed)."
+ },
+ "2022-23-panini-obsidian-basketball-checklist": {
+  "checklist_id": "2022-23-panini-obsidian-basketball-checklist",
+  "name": "2022-23 Panini Obsidian Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-07-07",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 Parallels/Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Autograph (#/27 or less)",
+     "1 Additional Autograph",
+     "1 FOTL Parallel",
+     "1 Additional Parallel/Insert"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-obsidian-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-one-one-basketball-checklist": {
+  "checklist_id": "2022-23-panini-one-one-basketball-checklist",
+  "name": "2022-23 Panini One One Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-12-06",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 2,
+    "packs_per_box": 1,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Base/Parallel/Insert"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 2,
+    "packs_per_box": 1,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Pink Autograph",
+     "1 FOTL Pink Base card"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-one-and-one-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-origins-basketball-checklist": {
+  "checklist_id": "2022-23-panini-origins-basketball-checklist",
+  "name": "2022-23 Panini Origins Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-03-22",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Additional Hit (Auto or Relic)",
+     "2 Parallels",
+     "1 Insert"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Rookie Autograph (#/40 or #/8)"
+    ]
+   },
+   {
+    "name": "H2",
+    "cards_per_pack": 6,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Parallels",
+     "6 Inserts/Insert Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-origins-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2022-23-panini-revolution-basketball-checklist": {
+  "checklist_id": "2022-23-panini-revolution-basketball-checklist",
+  "name": "2022-23 Panini Revolution Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-04-19",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 8,
+    "boxes_per_case": 16,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Rookies",
+     "8 Parallels",
+     "4 Inserts (averages)"
+    ]
+   },
+   {
+    "name": "Chinese New Year",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 8,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Exclusive Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-revolution-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Autograph count not stated."
+ },
+ "2022-23-panini-spectra-basketball-checklist": {
+  "checklist_id": "2022-23-panini-spectra-basketball-checklist",
+  "name": "2022-23 Panini Spectra Basketball",
+  "season": "2022-23",
+  "brand": "Panini",
+  "release_date": "2023-09-06",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 4,
+    "boxes_per_case": 8,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Parallels",
+     "4 Autographs"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 4,
+    "packs_per_box": 4,
+    "boxes_per_case": 8,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Rookie Jersey Autograph (#/30 or less)",
+     "3 Additional Autographs",
+     "4 Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2022-23-panini-spectra-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2023-24-panini-donruss-basketball-checklist": {
+  "checklist_id": "2023-24-panini-donruss-basketball-checklist",
+  "name": "2023-24 Panini Donruss Basketball",
+  "season": "2023-24",
+  "brand": "Panini",
+  "release_date": "2024-01-24",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 30,
+    "packs_per_box": 10,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Rated Rookie Signatures / Dominators / Next Day autographs"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Choice-exclusive parallels",
+     "Autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2023-24-donruss-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Same unusual 30x10x10 config as other Donruss years from a single summarized fetch; verify."
+ },
+ "2023-24-panini-nba-hoops-basketball-checklist": {
+  "checklist_id": "2023-24-panini-nba-hoops-basketball-checklist",
+  "name": "2023-24 Panini NBA Hoops Basketball",
+  "season": "2023-24",
+  "brand": "Panini",
+  "release_date": "2023-11-22",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "24 Inserts/Parallels (average)",
+     "Hobby-exclusive inserts and autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2023-24-panini-nba-hoops-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "Autograph average ~1, not guaranteed."
+ },
+ "2021-22-panini-black-basketball-checklist": {
+  "checklist_id": "2021-22-panini-black-basketball-checklist",
+  "name": "2021-22 Panini Black Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-09-09",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Base Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-black-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "FOTL Dutch auction $750 -> $250 (not MSRP)."
+ },
+ "2021-22-panini-chronicles-basketball-checklist": {
+  "checklist_id": "2021-22-panini-chronicles-basketball-checklist",
+  "name": "2021-22 Panini Chronicles Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-09-21",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 6,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Hobby-only inserts (Gala, Gold Standard, Limited, Plates & Patches, Timeless Treasures, Titanium)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-chronicles-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "2 autos is average."
+ },
+ "2021-22-panini-contenders-basketball-checklist": {
+  "checklist_id": "2021-22-panini-contenders-basketball-checklist",
+  "name": "2021-22 Panini Contenders Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-04-13",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 Base Parallels",
+     "8 Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "FOTL Shimmer Autograph",
+     "FOTL Opening Ticket Parallel",
+     "8 Inserts"
+    ]
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph or Relic"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-contenders-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-contenders-optic-basketball-checklist": {
+  "checklist_id": "2021-22-panini-contenders-optic-basketball-checklist",
+  "name": "2021-22 Panini Contenders Optic Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-12-14",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Parallels",
+     "2 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-contenders-optic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-court-kings-basketball-checklist": {
+  "checklist_id": "2021-22-panini-court-kings-basketball-checklist",
+  "name": "2021-22 Panini Court Kings Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-05-06",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Relic",
+     "1 Rookie",
+     "2 Inserts",
+     "1 Parallel"
+    ]
+   },
+   {
+    "name": "International Blaster",
+    "cards_per_pack": 6,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Acetate Rookies",
+     "4 Inserts",
+     "1 Parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-court-kings-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Release date an estimate on CC."
+ },
+ "2021-22-panini-crown-royale-basketball-checklist": {
+  "checklist_id": "2021-22-panini-crown-royale-basketball-checklist",
+  "name": "2021-22 Panini Crown Royale Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-05-11",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Relic",
+     "2 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph (#/17 or less)",
+     "1 Relic",
+     "1 FOTL Parallel (#/21 or less)",
+     "1 Insert/Parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-crown-royale-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-donruss-basketball-checklist": {
+  "checklist_id": "2021-22-panini-donruss-basketball-checklist",
+  "name": "2021-22 Panini Donruss Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-02-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 30,
+    "packs_per_box": 10,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "60 Inserts/Parallels",
+     "1 Relic"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Exclusive Parallels",
+     "5 Exclusive Rated Rookies"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-donruss-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Unusual 30x10x10 config from one summarized fetch; verify."
+ },
+ "2021-22-panini-donruss-elite-basketball-checklist": {
+  "checklist_id": "2021-22-panini-donruss-elite-basketball-checklist",
+  "name": "2021-22 Panini Donruss Elite Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-02-18",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "8 Parallels",
+     "8 Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Exclusive Parallels (#/17 or #/3)",
+     "8 Additional Parallels",
+     "8 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-donruss-elite-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-donruss-optic-basketball-checklist": {
+  "checklist_id": "2021-22-panini-donruss-optic-basketball-checklist",
+  "name": "2021-22 Panini Donruss Optic Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-09-02",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Insert or Parallel per pack"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Purple Stars (#/13) parallel"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Choice / Choice Black Gold (#/8) Opti-Graphs and Rated Rookie Signatures"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-donruss-optic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-eminence-basketball-checklist": {
+  "checklist_id": "2021-22-panini-eminence-basketball-checklist",
+  "name": "2021-22 Panini Eminence Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2023-04-07",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 1,
+    "autos_per_box": 9,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "9 Autographs",
+     "1 Other card"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 1,
+    "autos_per_box": 9,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Rookie Autograph Platinum Bar (1/1)",
+     "8 Autographs",
+     "1 Other card"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-eminence-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-flawless-basketball-checklist": {
+  "checklist_id": "2021-22-panini-flawless-basketball-checklist",
+  "name": "2021-22 Panini Flawless Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2023-05-19",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 2,
+    "autos_per_box": 9,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "9 Autographs/Memorabilia",
+     "1 Diamond card"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 9,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "9 Autographs/Memorabilia",
+     "2 Bronze Diamond cards (#/3)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-flawless-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "9 hits are autos or memorabilia (slated), not strictly autographs."
+ },
+ "2021-22-panini-illusions-basketball-checklist": {
+  "checklist_id": "2021-22-panini-illusions-basketball-checklist",
+  "name": "2021-22 Panini Illusions Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-09-09",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 14,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "14 Parallels",
+     "14 Inserts",
+     "1 Autograph"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-illusions-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-immaculate-basketball-checklist": {
+  "checklist_id": "2021-22-panini-immaculate-basketball-checklist",
+  "name": "2021-22 Panini Immaculate Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2023-01-18",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 5,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "2 Memorabilia"
+    ]
+   },
+   {
+    "name": "FOTL Premium Edition",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 5,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Premium Edition Autographs",
+     "1 Additional Autograph",
+     "2 Relics"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-immaculate-collection-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-impeccable-basketball-checklist": {
+  "checklist_id": "2021-22-panini-impeccable-basketball-checklist",
+  "name": "2021-22 Panini Impeccable Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-05-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 9,
+    "packs_per_box": 1,
+    "boxes_per_case": 3,
+    "autos_per_box": 5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "5 Autographs",
+     "1 Metal Insert"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "5 Autographs",
+     "1 FOTL Silver Bar",
+     "1 Metal Insert"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-impeccable-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-mosaic-basketball-checklist": {
+  "checklist_id": "2021-22-panini-mosaic-basketball-checklist",
+  "name": "2021-22 Panini Mosaic Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2023-01-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph (average)",
+     "~20 Parallels",
+     "~20 Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 FOTL Swirl Parallels (Pink #/11 or Green #/10)",
+     "1 Autograph"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-mosaic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Release date seems late for 2021-22 (CC says Jan 25 2023)."
+ },
+ "2021-22-panini-national-treasures-basketball-checklist": {
+  "checklist_id": "2021-22-panini-national-treasures-basketball-checklist",
+  "name": "2021-22 Panini National Treasures Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-07-20",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "4 Memorabilia",
+     "1 Base/Parallel",
+     "1 Printing Plate"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs + 1 FOTL Rookie Patch Auto",
+     "4 Memorabilia"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-national-treasures-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-noir-basketball-checklist": {
+  "checklist_id": "2021-22-panini-noir-basketball-checklist",
+  "name": "2021-22 Panini Noir Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-06-08",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "3 Relics"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "3 Relics",
+     "1 Bonus FOTL Gold Frame card"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-noir-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-obsidian-basketball-checklist": {
+  "checklist_id": "2021-22-panini-obsidian-basketball-checklist",
+  "name": "2021-22 Panini Obsidian Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-08-17",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 Parallels or Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Autograph",
+     "1 Additional Autograph",
+     "2 FOTL Base Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-obsidian-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-one-one-basketball-checklist": {
+  "checklist_id": "2021-22-panini-one-one-basketball-checklist",
+  "name": "2021-22 Panini One One Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-11-04",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 2,
+    "packs_per_box": 1,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Base/Insert"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 2,
+    "packs_per_box": 1,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Pink Autograph (#/15 or #/3)",
+     "1 FOTL Pink Base (#/6)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-one-and-one-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "FOTL Dutch auction $1,750 -> $750 (not MSRP)."
+ },
+ "2021-22-panini-origins-basketball-checklist": {
+  "checklist_id": "2021-22-panini-origins-basketball-checklist",
+  "name": "2021-22 Panini Origins Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-03-11",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Hits (autos and/or relics)",
+     "2 Parallels/Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "FOTL Rookie Auto Purple (#/49)",
+     "1 Additional Auto or Relic",
+     "FOTL Parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-origins-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Autographs not guaranteed per page (hits may be relics)."
+ },
+ "2025-26-topps-chrome-cactus-jack-x-nba-all-star-game-basketball-checklist": {
+  "checklist_id": "2025-26-topps-chrome-cactus-jack-x-nba-all-star-game-basketball-checklist",
+  "name": "2025-26 Topps Chrome Cactus Jack X NBA All Star Game Basketball",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "All-Star Game Box",
+    "cards_per_pack": 4,
+    "packs_per_box": 2,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "8 cards per box"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2025-26-topps-chrome-cactus-jack-basketball-x-nba-all-star-game-basketball-cards/ (via search summary only)",
+   "https://www.steelcitycollectibles.com/i/2025-26-topps-chrome-cactus-jack-basketball-x-nba-all-star-game-box (via search summary only)"
+  ],
+  "confidence": "low",
+  "notes": "Search summary: ASG box 4 cards x 2 packs, 100-card set (Beckett), sold only at NBA Crossover during All-Star Weekend, reported ~$700 and 1 per person (not recorded as price; not verified). One retailer (SoleSavy) lists 2 cards/pack. A separate Cactus Jack Chrome Hobby Box (20 packs x 4 cards, release 2026-06-19 per Topps Ripped) exists and is NOT the same product. Beckett/Topps pages returned 403 on direct fetch."
+ },
+ "2023-24-topps-cosmic-chrome-basketball-checklist": {
+  "checklist_id": "2023-24-topps-cosmic-chrome-basketball-checklist",
+  "name": "2023-24 Topps Cosmic Chrome Basketball",
+  "season": "2023-24",
+  "brand": "Topps",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Cosmic Chrome Autograph Variations",
+     "Milky Way Marks",
+     "Equinox Autographs",
+     "First Flight Signatures"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.blowoutcards.com/2023-24-topps-cosmic-chrome-basketball-hobby-box.html (via search summary only)"
+  ],
+  "confidence": "low",
+  "notes": "Search listings agree on 4 cards x 20 packs; 12 boxes/case from one retailer; guaranteed autos and release date not found. Cardboard Connection URL guesses 404."
+ },
+ "2021-22-panini-photogenic-basketball-checklist": {
+  "checklist_id": "2021-22-panini-photogenic-basketball-checklist",
+  "name": "2021-22 Panini Photogenic Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-06-20",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 10,
+    "boxes_per_case": 14,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Rookies",
+     "3 Parallels",
+     "3 Inserts",
+     "1 Autograph (break average)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-photogenic-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-prizm-basketball-checklist": {
+  "checklist_id": "2021-22-panini-prizm-basketball-checklist",
+  "name": "2021-22 Panini Prizm Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-07-08",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 12,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs (implied by 2)",
+     "22 Prizms Parallels",
+     "10 Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 FOTL Shimmer Prizms (#/30 or less)",
+     "22 Prizms Parallels",
+     "10 Inserts"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 9,
+    "packs_per_box": 10,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Prizms Parallels",
+     "6 Inserts",
+     "1 Rookie Variation"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-prizm-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "FOTL Dutch auction $2,800 -> $1,100 (not MSRP). Hobby autos shown as 2 on the page."
+ },
+ "2021-22-panini-recon-basketball-checklist": {
+  "checklist_id": "2021-22-panini-recon-basketball-checklist",
+  "name": "2021-22 Panini Recon Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-08-05",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "~20 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 6,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Bonus FOTL Parallels (#/18 or #/3)",
+     "~20 Inserts/Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-recon-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-revolution-basketball-checklist": {
+  "checklist_id": "2021-22-panini-revolution-basketball-checklist",
+  "name": "2021-22 Panini Revolution Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-04-27",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 8,
+    "boxes_per_case": 16,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Rookies",
+     "4 Inserts",
+     "8 Parallels"
+    ]
+   },
+   {
+    "name": "Chinese New Year",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Exclusive Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-revolution-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Autographs not stated."
+ },
+ "2021-22-panini-select-basketball-checklist": {
+  "checklist_id": "2021-22-panini-select-basketball-checklist",
+  "name": "2021-22 Panini Select Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-10-26",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs or Memorabilia (slated)",
+     "1 Prizm Parallel per pack"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Autograph",
+     "1 FOTL Parallel"
+    ]
+   },
+   {
+    "name": "H2",
+    "cards_per_pack": 6,
+    "packs_per_box": 4,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Disco Prizms"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-select-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2021-22-panini-spectra-basketball-checklist": {
+  "checklist_id": "2021-22-panini-spectra-basketball-checklist",
+  "name": "2021-22 Panini Spectra Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-10-21",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "1 Parallel and 1 Autograph per pack",
+     "8 Base"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 4,
+    "packs_per_box": 4,
+    "boxes_per_case": 8,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Exclusive Rookie Jersey Autograph",
+     "3 Additional Autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-spectra-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Date is the FOTL release; hobby date not stated. FOTL Dutch auction $2,000 -> $750 (not MSRP). Hobby presumably 4x4x8 like FOTL (not confirmed)."
+ },
+ "2021-22-panini-nba-hoops-basketball-checklist": {
+  "checklist_id": "2021-22-panini-nba-hoops-basketball-checklist",
+  "name": "2021-22 Panini NBA Hoops Basketball",
+  "season": "2021-22",
+  "brand": "Panini",
+  "release_date": "2022-01-07",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "~24 Inserts/Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2021-22-panini-nba-hoops-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "Premium Box Set exists (Tribute autos #/10), config not stated."
+ },
+ "2020-21-panini-black-basketball-checklist": {
+  "checklist_id": "2020-21-panini-black-basketball-checklist",
+  "name": "2020-21 Panini Black Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-10-11",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Base (/149 or less)",
+     "2 Base Parallels (/65 or less)",
+     "1 Rookie Autograph"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-black-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "FOTL Dutch auction $1,000 -> $250 (not MSRP)."
+ },
+ "2020-21-panini-certified-basketball-checklist": {
+  "checklist_id": "2020-21-panini-certified-basketball-checklist",
+  "name": "2020-21 Panini Certified Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-02-17",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Rookie Auto",
+     "1 Additional Auto",
+     "10 Parallels",
+     "8 Inserts/Insert Parallels"
+    ]
+   },
+   {
+    "name": "Asia",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Exclusive Parallel or Autograph",
+     "1 Exclusive Parallel",
+     "4 Base Asia cards"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-certified-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-chronicles-basketball-checklist": {
+  "checklist_id": "2020-21-panini-chronicles-basketball-checklist",
+  "name": "2020-21 Panini Chronicles Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-11-24",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 6,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Short-printed Gold Standard and Titanium rookies",
+     "Gala rookies",
+     "Rookie and veteran autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-chronicles-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "2 autos is average."
+ },
+ "2020-21-panini-contenders-basketball-checklist": {
+  "checklist_id": "2020-21-panini-contenders-basketball-checklist",
+  "name": "2020-21 Panini Contenders Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-05-19",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Rookie Ticket Autographs",
+     "Base parallels",
+     "Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 10,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Shimmer Rookie Ticket Autograph",
+     "Opening Night parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-contenders-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-donruss-basketball-checklist": {
+  "checklist_id": "2020-21-panini-donruss-basketball-checklist",
+  "name": "2020-21 Panini Donruss Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-03-03",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 30,
+    "packs_per_box": 10,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "~60 Inserts/Parallels",
+     "Laser parallels"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "5 Rated Rookies",
+     "3 Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-donruss-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Unusual 30x10x10 config from a single summarized fetch (same across Donruss years); verify."
+ },
+ "2020-21-panini-donruss-optic-basketball-checklist": {
+  "checklist_id": "2020-21-panini-donruss-optic-basketball-checklist",
+  "name": "2020-21 Panini Donruss Optic Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-09-17",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "20 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Purple Stars Parallel",
+     "19 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "5 Parallels",
+     "2 Base Rated Rookie Choice"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 5,
+    "packs_per_box": 18,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "18 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "H2",
+    "cards_per_pack": 10,
+    "packs_per_box": 4,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "8 Exclusive Prizms",
+     "2 Holos",
+     "2 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-donruss-optic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-absolute-memorabilia-basketball-checklist": {
+  "checklist_id": "2020-21-panini-absolute-memorabilia-basketball-checklist",
+  "name": "2020-21 Panini Absolute Memorabilia Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-03-24",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 2,
+    "boxes_per_case": 10,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 Relics"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-absolute-memorabilia-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-contenders-optic-basketball-checklist": {
+  "checklist_id": "2020-21-panini-contenders-optic-basketball-checklist",
+  "name": "2020-21 Panini Contenders Optic Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-12-01",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Parallels",
+     "2 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-contenders-optic-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-court-kings-basketball-checklist": {
+  "checklist_id": "2020-21-panini-court-kings-basketball-checklist",
+  "name": "2020-21 Panini Court Kings Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-05-26",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Relic",
+     "1 Rookie",
+     "1 Parallel",
+     "2 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-court-kings-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Page lists 2 autographs-or-relics combined, 1 each in contents."
+ },
+ "2020-21-panini-crown-royale-basketball-checklist": {
+  "checklist_id": "2020-21-panini-crown-royale-basketball-checklist",
+  "name": "2020-21 Panini Crown Royale Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-05-05",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Relic",
+     "2 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Autograph",
+     "1 Relic",
+     "1 FOTL Parallel",
+     "1 Insert/Parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-crown-royale-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-flawless-basketball-checklist": {
+  "checklist_id": "2020-21-panini-flawless-basketball-checklist",
+  "name": "2020-21 Panini Flawless Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2022-01-26",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 2,
+    "autos_per_box": 8,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "8 Autographs",
+     "1 Memorabilia",
+     "1 Diamond card"
+    ]
+   },
+   {
+    "name": "FOTL Premium",
+    "cards_per_pack": 11,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 8,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "8 Autographs",
+     "1 Memorabilia",
+     "2 Bronze FOTL Diamond cards (#/3)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-flawless-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-flux-basketball-checklist": {
+  "checklist_id": "2020-21-panini-flux-basketball-checklist",
+  "name": "2020-21 Panini Flux Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-12-15",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Uncirculated topper",
+     "4 Inserts",
+     "1 Insert Prizm",
+     "3 Silver parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Uncirculated topper (#/38 or less)",
+     "Purple Scope (#/18) or Gold Scope (#/8) parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-flux-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-illusions-basketball-checklist": {
+  "checklist_id": "2020-21-panini-illusions-basketball-checklist",
+  "name": "2020-21 Panini Illusions Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-11-17",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 14,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "14 Parallels",
+     "8 Inserts/Parallels",
+     "5 Acetate/Parallels"
+    ]
+   },
+   {
+    "name": "Asia",
+    "cards_per_pack": 12,
+    "packs_per_box": 4,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Parallels",
+     "6 Inserts/Parallels",
+     "2 Acetate/Parallels"
+    ]
+   },
+   {
+    "name": "Retail",
+    "cards_per_pack": 6,
+    "packs_per_box": 20,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Base Parallels",
+     "8 Inserts/Parallels",
+     "4 Acetate Pink"
+    ]
+   },
+   {
+    "name": "Mega",
+    "cards_per_pack": 6,
+    "packs_per_box": 10,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "5 Base Parallels",
+     "3 Inserts/Parallels",
+     "2 Acetate Sapphire"
+    ]
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": 6,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Base Parallels",
+     "2 Inserts/Parallels",
+     "1 Acetate Emerald"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-illusions-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Release date estimated on CC; hobby autograph average 1 (not guaranteed per page)."
+ },
+ "2020-21-panini-immaculate-basketball-checklist": {
+  "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
+  "name": "2020-21 Panini Immaculate Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-12-31",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 5,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "2 Memorabilia"
+    ]
+   },
+   {
+    "name": "FOTL Premium Edition",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 5,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Rookie Sneaker Swatch Signature PE",
+     "1 Patch Autograph PE",
+     "1 Additional Autograph",
+     "2 Relics"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-immaculate-collection-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-impeccable-basketball-checklist": {
+  "checklist_id": "2020-21-panini-impeccable-basketball-checklist",
+  "name": "2020-21 Panini Impeccable Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-06-16",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 9,
+    "packs_per_box": 1,
+    "boxes_per_case": 3,
+    "autos_per_box": 5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "5 Autographs",
+     "1 Metal Insert"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 9,
+    "packs_per_box": 1,
+    "boxes_per_case": 3,
+    "autos_per_box": 5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "5 Autographs",
+     "1 Silver NBA Logo FOTL (#/15)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-impeccable-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-mosaic-basketball-checklist": {
+  "checklist_id": "2020-21-panini-mosaic-basketball-checklist",
+  "name": "2020-21 Panini Mosaic Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-12-03",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "~20 Inserts",
+     "5 Silver and 15 Mosaic parallels",
+     "1 Autograph"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Swirl FOTL parallels (Pink #/11, Green #/10)"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 8,
+    "packs_per_box": 18,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "10 Fast Break parallels",
+     "1 Rookie Variation",
+     "5 Inserts"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Exclusive Mosaic parallels",
+     "2 Choice Red/Green Rookies"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-mosaic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-national-treasures-basketball-checklist": {
+  "checklist_id": "2020-21-panini-national-treasures-basketball-checklist",
+  "name": "2020-21 Panini National Treasures Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-08-11",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "4 Relics",
+     "1 Printing Plate"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 11,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": 5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Rookie Patch Autograph",
+     "4 Autographs",
+     "4 Relics",
+     "1 Printing Plate"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-national-treasures-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-nba-hoops-basketball-checklist": {
+  "checklist_id": "2020-21-panini-nba-hoops-basketball-checklist",
+  "name": "2020-21 Panini NBA Hoops Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-02-03",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "24 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Retail",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "24 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Gravity Feed",
+    "cards_per_pack": 8,
+    "packs_per_box": 48,
+    "boxes_per_case": 6,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "48 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Fat Pack",
+    "cards_per_pack": 30,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "48 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": 8,
+    "packs_per_box": 11,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph or Relic",
+     "11 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Winter Blaster",
+    "cards_per_pack": 8,
+    "packs_per_box": 11,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph or Relic",
+     "Winter-themed parallels"
+    ]
+   },
+   {
+    "name": "Premium Box Set",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "270-card base set",
+     "1 Hoops Tribute Autograph"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-nba-hoops-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Format details from one page; the Fat Pack config (30 cards x 12) looks odd."
+ },
+ "2020-21-panini-obsidian-basketball-checklist": {
+  "checklist_id": "2020-21-panini-obsidian-basketball-checklist",
+  "name": "2020-21 Panini Obsidian Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-09-29",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 Parallels or Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "1 Electric Etch Blue or Contra base parallel",
+     "1 Parallel/Insert"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-obsidian-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-one-one-basketball-checklist": {
+  "checklist_id": "2020-21-panini-one-one-basketball-checklist",
+  "name": "2020-21 Panini One One Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-12-08",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 2,
+    "packs_per_box": 1,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Base or Insert"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-one-and-one-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-origins-basketball-checklist": {
+  "checklist_id": "2020-21-panini-origins-basketball-checklist",
+  "name": "2020-21 Panini Origins Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-04-14",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Rookie Autograph",
+     "1 Additional Auto or Relic",
+     "2 Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Purple Rookie Auto (#/49)",
+     "1 Additional Auto or Relic",
+     "Purple parallel (#/21)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-origins-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-prizm-basketball-checklist": {
+  "checklist_id": "2020-21-panini-prizm-basketball-checklist",
+  "name": "2020-21 Panini Prizm Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-03-31",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 12,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "22 Prizm Parallels",
+     "10 Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Shimmer Prizms",
+     "22 Prizm Parallels",
+     "10 Inserts"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 5,
+    "packs_per_box": 18,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Prizms",
+     "6 Inserts",
+     "1 Rookie Variation"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-prizm-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Fast Break 5x18x20 here vs 9x10x20 on later years; not cross-checked."
+ },
+ "2020-21-panini-select-basketball-checklist": {
+  "checklist_id": "2020-21-panini-select-basketball-checklist",
+  "name": "2020-21 Panini Select Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-07-30",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "12 Prizm Parallels",
+     "10 Premier Level base",
+     "2 Courtside base"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL Pulsar Prizm Auto",
+     "2 other Autos/Memorabilia",
+     "1 FOTL Pulsar Prizm parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-select-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "3 hits are autos or memorabilia."
+ },
+ "2020-21-panini-spectra-basketball-checklist": {
+  "checklist_id": "2020-21-panini-spectra-basketball-checklist",
+  "name": "2020-21 Panini Spectra Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-08-20",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 4,
+    "boxes_per_case": 8,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "4 Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 4,
+    "packs_per_box": 4,
+    "boxes_per_case": 8,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 FOTL RPA",
+     "3 Additional Autographs",
+     "4 Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-spectra-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2020-21-panini-clearly-donruss-basketball-checklist": {
+  "checklist_id": "2020-21-panini-clearly-donruss-basketball-checklist",
+  "name": "2020-21 Panini Clearly Donruss Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-07-23",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 4,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Parallels",
+     "1 Insert"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-clearly-donruss-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "Autographs not stated."
+ },
+ "2020-21-panini-recon-basketball-checklist": {
+  "checklist_id": "2020-21-panini-recon-basketball-checklist",
+  "name": "2020-21 Panini Recon Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-10-27",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 10,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "~10 Base Parallels"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2020-21-panini-recon-basketball-cards (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Single source via search summary; FOTL pack config not given."
+ },
+ "2020-21-panini-noir-basketball-checklist": {
+  "checklist_id": "2020-21-panini-noir-basketball-checklist",
+  "name": "2020-21 Panini Noir Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-07-02",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "7 Hits (Autographs or Memorabilia)"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "7 Hits (Autographs or Memorabilia)",
+     "1 Gold-framed card"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2020-21-panini-noir-basketball-cards/ (via search summary)",
+   "https://www.cardboardconnection.com/2020-21-panini-noir-basketball-cards (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Beckett and CC agree (via search summary): 1 pack of 10 cards, 4 boxes/case, 7 hits (autos or relics); guaranteed autograph count not split out."
+ },
+ "2020-21-panini-donruss-elite-basketball-checklist": {
+  "checklist_id": "2020-21-panini-donruss-elite-basketball-checklist",
+  "name": "2020-21 Panini Donruss Elite Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-07-14",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "8 Inserts",
+     "8 Parallels",
+     "2 Rookies"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2020-21-donruss-elite-basketball-cards/ (via search summary)",
+   "https://www.cardboardconnection.com/2020-21-elite-basketball-cards (via search summary)"
+  ],
+  "confidence": "high",
+  "notes": "Beckett and CC agree on config and date (search summary). Sold on Panini site by Dutch auction from $600 (not MSRP)."
+ },
+ "2019-20-panini-donruss-optic-basketball-checklist": {
+  "checklist_id": "2019-20-panini-donruss-optic-basketball-checklist",
+  "name": "2019-20 Panini Donruss Optic Basketball",
+  "season": "2019-20",
+  "brand": "Panini",
+  "release_date": "2020-02-12",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Prizm-style parallels",
+     "Rated Rookie Signatures"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 5,
+    "packs_per_box": 18,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Fast Break parallels"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 6,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Choice-exclusive parallels"
+    ]
+   },
+   {
+    "name": "FOTL Premium",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Purple Stars rookie and base autographs",
+     "Purple Stars base parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2019-20-donruss-optic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2018-19-panini-chronicles-basketball-checklist": {
+  "checklist_id": "2018-19-panini-chronicles-basketball-checklist",
+  "name": "2018-19 Panini Chronicles Basketball",
+  "season": "2018-19",
+  "brand": "Panini",
+  "release_date": "2019-06-28",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 6,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Rookie cards from multiple Panini brands",
+     "Hard-signed and sticker autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2018-19-panini-chronicles-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Hobby 2 autos listed as average; retail not covered."
+ },
+ "2018-19-panini-contenders-basketball-checklist": {
+  "checklist_id": "2018-19-panini-contenders-basketball-checklist",
+  "name": "2018-19 Panini Contenders Basketball",
+  "season": "2018-19",
+  "brand": "Panini",
+  "release_date": "2018-12-26",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "On-card Rookie Ticket Autographs",
+     "Season Ticket base"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2018-19-panini-contenders-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "2 autos listed as average."
+ },
+ "2018-19-panini-status-basketball-checklist": {
+  "checklist_id": "2018-19-panini-status-basketball-checklist",
+  "name": "2018-19 Panini Status Basketball",
+  "season": "2018-19",
+  "brand": "Panini",
+  "release_date": "2019-03-27",
+  "formats": [
+   {
+    "name": "Blaster",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph or Relic (slated)",
+     "40 cards per box"
+    ]
+   },
+   {
+    "name": "Hanger",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "30 cards per box",
+     "Swatches",
+     "Orange rookies",
+     "Blue parallels"
+    ]
+   },
+   {
+    "name": "Fat Pack",
+    "cards_per_pack": 15,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Aqua rookies",
+     "Red parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2018-19-panini-status-basketball-nba-cards"
+  ],
+  "confidence": "low",
+  "notes": "Retail-only product; pack counts not stated."
+ },
+ "2017-18-panini-chronicles-basketball-checklist": {
+  "checklist_id": "2017-18-panini-chronicles-basketball-checklist",
+  "name": "2017-18 Panini Chronicles Basketball",
+  "season": "2017-18",
+  "brand": "Panini",
+  "release_date": "2018-01-24",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 3,
+    "boxes_per_case": 10,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Autographs or Relics (3)",
+     "Rookies from multiple Panini brands"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2017-18-panini-chronicles-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "3 hits are autos or relics."
+ },
+ "2017-18-panini-crown-royale-basketball-checklist": {
+  "checklist_id": "2017-18-panini-crown-royale-basketball-checklist",
+  "name": "2017-18 Panini Crown Royale Basketball",
+  "season": "2017-18",
+  "brand": "Panini",
+  "release_date": "2018-08-17",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 12,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Memorabilia/Relic"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2017-18-panini-crown-royale-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Autograph 1 listed as average."
+ },
+ "2017-18-panini-donruss-optic-basketball-checklist": {
+  "checklist_id": "2017-18-panini-donruss-optic-basketball-checklist",
+  "name": "2017-18 Panini Donruss Optic Basketball",
+  "season": "2017-18",
+  "brand": "Panini",
+  "release_date": "2018-04-04",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Rated Rookie Signatures",
+     "Parallels",
+     "Inserts"
+    ]
+   },
+   {
+    "name": "Fast Break",
+    "cards_per_pack": 5,
+    "packs_per_box": 18,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "8 Exclusive Prizm parallels",
+     "Fast Break Signatures"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2017-18-donruss-optic-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2017-18-panini-prestige-basketball-checklist": {
+  "checklist_id": "2017-18-panini-prestige-basketball-checklist",
+  "name": "2017-18 Panini Prestige Basketball",
+  "season": "2017-18",
+  "brand": "Panini",
+  "release_date": "2018-02-21",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 24,
+    "boxes_per_case": 16,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Crystal parallels",
+     "~24 Inserts/Parallels"
+    ]
+   },
+   {
+    "name": "Retail",
+    "cards_per_pack": 6,
+    "packs_per_box": 24,
+    "boxes_per_case": 16,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Horizon, Mist, Rain parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2017-18-panini-prestige-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": ""
+ },
+ "2017-18-panini-status-basketball-checklist": {
+  "checklist_id": "2017-18-panini-status-basketball-checklist",
+  "name": "2017-18 Panini Status Basketball",
+  "season": "2017-18",
+  "brand": "Panini",
+  "release_date": "2018-01-31",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 10,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "Inserts/Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2017-18-panini-status-basketball-nba-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Hobby listing for a product usually retail; verify."
+ },
+ "2019-20-panini-nba-hoops-premium-stock-basketball-checklist": {
+  "checklist_id": "2019-20-panini-nba-hoops-premium-stock-basketball-checklist",
+  "name": "2019-20 Panini NBA Hoops Premium Stock Basketball",
+  "season": "2019-20",
+  "brand": "Panini",
+  "release_date": "2020-12-16",
+  "formats": [
+   {
+    "name": "Hobby Hybrid",
+    "cards_per_pack": 6,
+    "packs_per_box": 4,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": 4,
+    "packs_per_box": 8,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2019-20-nba-hoops-premium-stock-basketball-cards (via search summary)",
+   "https://www.beckett.com/news/2019-20-hoops-premium-stock-basketball-cards/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Beckett and CC agree on Hobby Hybrid 6x4x20 and 2020-12-16 (search summary). Blaster 4x8 from CC only. Box set released 2020-11-25 (separate). Autograph guarantee not found."
+ },
+ "2018-19-panini-court-kings-basketball-checklist": {
+  "checklist_id": "2018-19-panini-court-kings-basketball-checklist",
+  "name": "2018-19 Panini Court Kings Basketball",
+  "season": "2018-19",
+  "brand": "Panini",
+  "release_date": "2019-04-03",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs (average)",
+     "2 Rookies",
+     "2 Inserts",
+     "1 Parallel"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2018-19-panini-court-kings-basketball-cards (via search summary)",
+   "https://www.beckett.com/news/3-notable-2018-19-panini-court-kings-basketball-sales-beckett-pricing-insider/ (via search summary)"
+  ],
+  "confidence": "high",
+  "notes": "CC and Beckett agree (search summary)."
+ },
+ "2018-19-panini-nba-hoops-basketball-checklist": {
+  "checklist_id": "2018-19-panini-nba-hoops-basketball-checklist",
+  "name": "2018-19 Panini NBA Hoops Basketball",
+  "season": "2018-19",
+  "brand": "Panini",
+  "release_date": "2018-10-24",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2018-19-nba-hoops/ (via search summary)",
+   "https://www.cardboardconnection.com/2018-19-panini-nba-hoops-basketball-cards/amp (via search summary)"
+  ],
+  "confidence": "high",
+  "notes": "Beckett and CC agree on 8x24x20 and date (search summary). Retail config not found; Premium Box Set 2018-10-31 separate."
+ },
+ "2017-18-panini-nba-hoops-basketball-checklist": {
+  "checklist_id": "2017-18-panini-nba-hoops-basketball-checklist",
+  "name": "2017-18 Panini NBA Hoops Basketball",
+  "season": "2017-18",
+  "brand": "Panini",
+  "release_date": "2017-10-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2017-18-panini-nba-hoops-basketball (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Single source (search summary). Blaster (11 packs) exists, cards/pack unclear."
+ },
+ "2016-17-panini-donruss-basketball-checklist": {
+  "checklist_id": "2016-17-panini-donruss-basketball-checklist",
+  "name": "2016-17 Panini Donruss Basketball",
+  "season": "2016-17",
+  "brand": "Panini",
+  "release_date": "2016-11-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 12,
+    "packs_per_box": 24,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Memorabilia",
+     "24 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2016-17-donruss-basketball-cards",
+   "https://www.beckett.com/news/2016-17-donruss-basketball/ (via search summary)"
+  ],
+  "confidence": "high",
+  "notes": "Beckett and CC agree on 12x24x20, 1 auto + 1 relic; release date conflict: Beckett 2016-11-23, CC 2016-11-25."
+ },
+ "2014-15-panini-donruss-basketball-checklist": {
+  "checklist_id": "2014-15-panini-donruss-basketball-checklist",
+  "name": "2014-15 Panini Donruss Basketball",
+  "season": "2014-15",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autograph/Memorabilia cards (combined)",
+     "48 Inserts",
+     "24 Metalized",
+     "3 Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2014-15-donruss-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "Single source; release date not stated; page says 3 hits total (autos and memorabilia), a reviewer got fewer."
+ },
+ "2013-14-panini-basketball-checklist": {
+  "checklist_id": "2013-14-panini-basketball-checklist",
+  "name": "2013-14 Panini Basketball",
+  "season": "2013-14",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs"
+    ]
+   },
+   {
+    "name": "Retail",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph or Rookie Jersey"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2013-14-panini-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "Single source; release date and boxes/case not stated."
+ },
+ "2013-14-panini-prestige-basketball-checklist": {
+  "checklist_id": "2013-14-panini-prestige-basketball-checklist",
+  "name": "2013-14 Panini Prestige Basketball",
+  "season": "2013-14",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs",
+     "2 Memorabilia",
+     "20 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2013-14-panini-prestige-basketball-cards",
+   "https://www.beckett.com/news/first-look-2013-14-prestige-basketball/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "CC and Beckett preview agree on 24 packs, 2 autos + 2 memorabilia; cards/pack and exact date (early Nov 2013 per Beckett preview) not found."
+ },
+ "2013-14-panini-totally-certified-basketball-checklist": {
+  "checklist_id": "2013-14-panini-totally-certified-basketball-checklist",
+  "name": "2013-14 Panini Totally Certified Basketball",
+  "season": "2013-14",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": null,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "3 Memorabilia"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2013-14-panini-totally-certified-basketball-cards"
+  ],
+  "confidence": "medium",
+  "notes": "Multiple search results agree 6 packs x 5 cards, 3 autos + 3 memorabilia; date not found."
+ },
+ "2012-13-panini-gold-standard-basketball-checklist": {
+  "checklist_id": "2012-13-panini-gold-standard-basketball-checklist",
+  "name": "2012-13 Panini Gold Standard Basketball",
+  "season": "2012-13",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 4,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs",
+     "1 Memorabilia",
+     "1 Metal card"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2012-13-panini-gold-standard-basketball-cards",
+   "https://www.beckett.com/news/first-look-2012-13-panini-gold-standard/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "CC and Beckett agree 4 autos per box; release only \"April\" (2013) per Beckett preview."
+ },
+ "2012-13-panini-hoops-basketball-checklist": {
+  "checklist_id": "2012-13-panini-hoops-basketball-checklist",
+  "name": "2012-13 Panini Hoops Basketball",
+  "season": "2012-13",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 2,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2012-13-nba-hoops-basketball-cards",
+   "https://www.beckett.com/news/first-look-2012-13-panini-basketball-cards/ (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Packs per box conflict: Beckett 24 vs CC 36; 24 recorded. Cards/pack unknown. Release \"late February\" 2013 per Beckett preview."
+ },
+ "2012-13-panini-prestige-basketball-checklist": {
+  "checklist_id": "2012-13-panini-prestige-basketball-checklist",
+  "name": "2012-13 Panini Prestige Basketball",
+  "season": "2012-13",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "1 Memorabilia",
+     "Kobe Bryant Anthology 5-card box topper"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2012-13-prestige-basketball-cards",
+   "https://www.beckett.com/news/first-look-2012-13-prestige-basketball/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "CC and Beckett agree on 24 packs, 3 autos + 1 memorabilia; release \"August\" per Beckett preview."
+ },
+ "2012-13-panini-totally-certified-basketball-checklist": {
+  "checklist_id": "2012-13-panini-totally-certified-basketball-checklist",
+  "name": "2012-13 Panini Totally Certified Basketball",
+  "season": "2012-13",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": 6,
+    "boxes_per_case": null,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "3 Additional Autographs or Memorabilia"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2012-13-panini-totally-certified-basketball-cards"
+  ],
+  "confidence": "low",
+  "notes": "A reviewer reports fewer hits; cards/pack and date not found."
+ },
+ "2010-11-panini-season-update-basketball-checklist": {
+  "checklist_id": "2010-11-panini-season-update-basketball-checklist",
+  "name": "2010-11 Panini Season Update Basketball",
+  "season": "2010-11",
+  "brand": "Panini",
+  "release_date": "2011-07-10",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "3 Game-Used Memorabilia",
+     "14 Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.cardboardconnection.com/2010-11-panini-nba-season-update-basketball"
+  ],
+  "confidence": "low",
+  "notes": "Release date estimated by CC; pack config not found."
+ },
+ "1990-91-hoops-basketball": {
+  "checklist_id": "1990-91-hoops-basketball",
+  "name": "1990-91 Hoops Basketball",
+  "season": "1990-91",
+  "brand": "Hoops",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Wax",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/basketball/1990-91/hoops/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Beckett (via search summary): 15-card plastic-wrap packs, 36 per box. Release date not found. Combined-set checklist; Series 1 (336 cards) and Series 2 (104 cards) were sold in separate packs. Autographs not applicable (0)."
+ },
+ "1990-91-hoops-basketball-series-1": {
+  "checklist_id": "1990-91-hoops-basketball-series-1",
+  "name": "1990-91 Hoops Basketball Series 1",
+  "season": "1990-91",
+  "brand": "Hoops",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Wax",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/basketball/1990-91/hoops/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Beckett (via search summary): 15-card plastic-wrap packs, 36 per box. Release date not found. Series 1 packs. Autographs not applicable (0)."
+ },
+ "1990-91-hoops-basketball-series-2": {
+  "checklist_id": "1990-91-hoops-basketball-series-2",
+  "name": "1990-91 Hoops Basketball Series 2",
+  "season": "1990-91",
+  "brand": "Hoops",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Wax",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/basketball/1990-91/hoops/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Beckett (via search summary): 15-card plastic-wrap packs, 36 per box. Release date not found. Series 2 packs. Autographs not applicable (0)."
+ },
+ "1991-92-hoops-basketball": {
+  "checklist_id": "1991-92-hoops-basketball",
+  "name": "1991-92 Hoops Basketball",
+  "season": "1991-92",
+  "brand": "Hoops",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/hoops (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Box configuration (packs/box, cards/pack) not found in searches; set issued in two series (330 and 260 cards). Not guessed."
+ },
+ "1991-92-hoops-basketball-series-1": {
+  "checklist_id": "1991-92-hoops-basketball-series-1",
+  "name": "1991-92 Hoops Basketball Series 1",
+  "season": "1991-92",
+  "brand": "Hoops",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/hoops (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Box configuration (packs/box, cards/pack) not found in searches; set issued in two series (330 and 260 cards). Not guessed."
+ },
+ "1991-92-hoops-basketball-series-2": {
+  "checklist_id": "1991-92-hoops-basketball-series-2",
+  "name": "1991-92 Hoops Basketball Series 2",
+  "season": "1991-92",
+  "brand": "Hoops",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/hoops (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Box configuration (packs/box, cards/pack) not found in searches; set issued in two series (330 and 260 cards). Not guessed."
+ },
+ "1991-92-skybox-basketball": {
+  "checklist_id": "1991-92-skybox-basketball",
+  "name": "1991-92 Skybox Basketball",
+  "season": "1991-92",
+  "brand": "SkyBox",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/skybox/ (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Beckett: 15-card foil packs (also 62-card blister packs); packs per box not found. Not guessed."
+ },
+ "1993-94-skybox-premium-basketball": {
+  "checklist_id": "1993-94-skybox-premium-basketball",
+  "name": "1993-94 Skybox Premium Basketball",
+  "season": "1993-94",
+  "brand": "SkyBox",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Wax",
+    "cards_per_pack": 12,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/basketball/1993-94/skybox-premium/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Single source family (Beckett): 12-card packs, 36 per box; no release date found."
+ },
+ "1993-94-topps-basketball": {
+  "checklist_id": "1993-94-topps-basketball",
+  "name": "1993-94 Topps Basketball",
+  "season": "1993-94",
+  "brand": "Topps",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1993-94/topps-gold (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Beckett: base set issued in two 198-card series in 12, 15 and 29-card packs; packs per box not found. Not guessed."
+ },
+ "1993-94-topps-basketball-series-1": {
+  "checklist_id": "1993-94-topps-basketball-series-1",
+  "name": "1993-94 Topps Basketball Series 1",
+  "season": "1993-94",
+  "brand": "Topps",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1993-94/topps-gold (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Beckett: base set issued in two 198-card series in 12, 15 and 29-card packs; packs per box not found. Not guessed."
+ },
+ "1993-94-topps-basketball-series-2": {
+  "checklist_id": "1993-94-topps-basketball-series-2",
+  "name": "1993-94 Topps Basketball Series 2",
+  "season": "1993-94",
+  "brand": "Topps",
+  "release_date": null,
+  "formats": [],
+  "sources": [
+   "https://www.beckett.com/basketball/1993-94/topps-gold (via search summary)"
+  ],
+  "confidence": "low",
+  "notes": "Beckett: base set issued in two 198-card series in 12, 15 and 29-card packs; packs per box not found. Not guessed."
+ },
+ "1994-skybox-usa-basketball": {
+  "checklist_id": "1994-skybox-usa-basketball",
+  "name": "1994 Skybox Usa Basketball",
+  "season": "1994",
+  "brand": "SkyBox",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Wax",
+    "cards_per_pack": 10,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/basketball/1994/skybox-usa/ (via search summary)"
+  ],
+  "confidence": "medium",
+  "notes": "Beckett only: 10-card packs, 24 per box (Beckett lists 89 base cards vs 156 in our checklist); release date not found."
+ },
+ "2020-21-panini-revolution-basketball-checklist": {
+  "checklist_id": "2020-21-panini-revolution-basketball-checklist",
+  "name": "2020-21 Panini Revolution Basketball",
+  "season": "2020-21",
+  "brand": "Panini",
+  "release_date": "2021-03-10",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 8,
+    "boxes_per_case": 16,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Rookies",
+     "4 Inserts",
+     "8 Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2020-21-panini-revolution-basketball-cards/ (via search summary)",
+   "https://www.cardboardconnection.com/2020-21-panini-revolution-basketball-cards (via search summary)"
+  ],
+  "confidence": "high",
+  "notes": "Beckett and CC agree (search summary); Beckett: no autographs/memorabilia guaranteed."
+ }
+}
