@@ -492,17 +492,44 @@ def build_set_summaries(sheet):
     return {"sets": summaries, "configs_by_key": configs_by_key}
 
 
+def normalize_exclusive_label(label):
+    """« China Wave 1 » → « China », « Black Friday Target Blaster » → « Black Friday »…"""
+    text = str(label or "").strip()
+    low = text.lower()
+    if low.startswith("china"):
+        return "China"
+    if low.startswith("black friday"):
+        return "Black Friday"
+    if "rip night" in low:
+        return "Rip Night"
+    return text
+
+
+_HOBBY_WORDS = {"hobby", "jumbo"}
+_DELIGHT_WORDS = {"delight", "breaker delight", "breaker"}
+
+
 def exclusive_badge(label):
     """Badge de disponibilité pour une exclusivité déclarée (« Hobby/Jumbo »,
-    « Retail », « China », « Costco/Sams Club »…)."""
-    parts = {p.strip().lower() for p in str(label or "").split("/") if p.strip()}
+    « Retail SKUs », « China », « Costco/Sams Club »…)."""
+    text = normalize_exclusive_label(label)
+    parts = {p.strip().lower() for p in text.split("/") if p.strip()}
     if not parts:
         return None
-    if parts <= {"hobby", "jumbo"}:
+    if parts <= _HOBBY_WORDS:
         return BADGE_HOBBY_ONLY
-    if parts <= {"retail"} | RETAIL_GROUPS:
+    # « Hobby SKUs » = toutes les boîtes hobby (Hobby, Jumbo, Breaker Delight).
+    if parts == {"hobby skus"} or (parts <= _HOBBY_WORDS | _DELIGHT_WORDS and parts & _DELIGHT_WORDS and parts & _HOBBY_WORDS):
+        return BADGE_HOBBY_DELIGHT
+    if parts <= _DELIGHT_WORDS:
+        return BADGE_DELIGHT_ONLY
+    if parts <= {"retail", "retail skus"} | RETAIL_GROUPS:
         return BADGE_RETAIL_ONLY
-    return f"only:{str(label).strip()}"
+    if len(parts) == 1 and next(iter(parts)).startswith("fanatics"):
+        return BADGE_FANATICS_ONLY
+    if parts == {"sapphire"}:
+        return BADGE_SAPPHIRE_ONLY
+    return f"only:{text}"
 
 
 def _apply_exclusives(summaries, exclusives):

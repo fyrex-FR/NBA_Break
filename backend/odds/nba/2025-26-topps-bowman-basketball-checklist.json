@@ -4319,5 +4319,15 @@
     "mega": 23058
    }
   }
- ]
+ ],
+ "exclusives": {
+  "Buzz Factor Autographs": "Hobby SKUs",
+  "Future Script": "Hobby SKUs",
+  "Opening Statement Signatures": "Hobby SKUs",
+  "Paper Prospect Retail Autographs": "Retail",
+  "Paper Rookie And Veterans Retail Autographs": "Retail",
+  "Timeless Touch Signatures": "Hobby SKUs",
+  "Mega Prospects": "Mega",
+  "Mega Rookies": "Mega"
+ }
 }

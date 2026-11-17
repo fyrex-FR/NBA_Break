@@ -122,8 +122,13 @@ python scripts/import_topps_odds_pdfs.py            # --dry-run pour un rapport
 
 `{set: libellé du format}` — une série réservée à un format. Elle prime sur la disponibilité
 déduite des cotes et donne un badge même aux séries sans aucune cote publiée :
-`Hobby`, `Jumbo`, `Hobby/Jumbo` → `hobby_only` ; `Retail` (ou un group retail) → `retail_only` ;
-tout autre libellé → `only:<libellé>` (affiché « China only », « Costco/Sams Club only »…).
+`Hobby`, `Jumbo`, `Hobby/Jumbo` → `hobby_only` ; `Hobby SKUs` → `hobby_delight` ;
+`Breaker Delight` → `delight_only` ; `Retail`, `Retail SKUs` ou un group retail → `retail_only` ;
+`Fanatics…` → `fanatics_only` ; tout autre libellé → `only:<libellé>` (« China only »,
+« Costco/Sams Club only »…), avec « China Wave 1/2 » → China, « Black Friday … » → Black Friday.
+
+Quand plusieurs séries du site tombent dans une seule de nos séries (ex. « Rookies » et
+« Rookies 2 » réunies), l'exclusivité ne s'applique que si elles la partagent toutes.
 Une exclusivité à un seul format spécial déduite des cotes (ex. group `china`) donne aussi
 `only:<group>` au lieu de `retail_only`.
 

@@ -143,6 +143,27 @@ def base_odds_of(section: dict, table: dict[str, dict[str, int]]) -> dict[str, i
     return found or table.get(section.get("id"), {})
 
 
+def merge_exclusives(excl_by_set: dict[str, list[str | None]]) -> dict[str, str]:
+    """Une exclusivité ne vaut pour une de nos séries que si toutes les séries du site
+    qui y tombent la partagent (« Rookies » + « Rookies 2 » réunies chez nous : si
+    l'une est partout, la série n'est pas exclusive)."""
+    out = {}
+    for set_name, values in excl_by_set.items():
+        if values and all(v and v == values[0] for v in values):
+            out[set_name] = values[0]
+    return out
+
+
+def exclusives_for(guide: dict, flight: str, box_types: list[str]) -> dict[str, str]:
+    """Exclusivités du site, rattachées aux séries de notre checklist."""
+    by_set: dict[str, list[str | None]] = {}
+    for s in sections(flight):
+        name = s["sectionName"].strip()
+        set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types) or name
+        by_set.setdefault(set_name, []).append(exclusive_of(s))
+    return merge_exclusives(by_set)
+
+
 def exclusive_of(section: dict) -> str | None:
     """Format auquel la série est réservée (pastille « Exclusif Costco/Sams Club »)."""
     m = re.search(r'\["Exclusif",\s*" ",\s*"([^"]+)"\]', json.dumps(section.get("summary"), ensure_ascii=False))
@@ -153,6 +174,14 @@ def exclusive_of(section: dict) -> str | None:
 
 
 # ── Correspondance des noms de séries avec nos « Box Type » ─────────────────
+
+# Rattachements vérifiés à la main, quand les noms divergent trop pour la règle automatique.
+SET_ALIASES = {
+    "2025-26-topps-chrome-basketball-checklist": {"Topps Certified Autograph Issue": "Autograph Issue - Veterans"},
+    "2026-27-topps-flagship-basketball-checklist": {
+        "1981-82 Topps Chrome Autographs Mojo": "1981 82 Topps Chrome Basketball Veteran Autographs",
+    },
+}
 
 _SYN = {"autographs": "auto", "autograph": "auto", "autographed": "auto", "rookies": "rookie",
         "veterans": "veteran", "relics": "relic", "signatures": "signature", "&": "and"}
@@ -232,15 +261,13 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         return key
 
     rows, skipped, matched = [], 0, 0
-    exclusives: dict[str, str] = {}
+    excl_by_set: dict[str, list[str | None]] = {}
     for s in secs:
         name = s["sectionName"].strip()
         # La série prend le nom exact de notre checklist quand on le retrouve.
-        set_name = match_set(name, box_types or []) or name
+        set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types or []) or name
         matched += set_name != name or name in (box_types or [])
-        excl = exclusive_of(s)
-        if excl:
-            exclusives[set_name] = excl
+        excl_by_set.setdefault(set_name, []).append(exclusive_of(s))
         base = base_odds_of(s, table)
         if base:
             rows.append({"label": name, "set": set_name, "parallel": "",
@@ -260,6 +287,7 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
                     label += f" /{p['printRun']}"
                 rows.append({"label": label, "set": set_name, "parallel": p["name"], "odds": odds})
 
+    exclusives = merge_exclusives(excl_by_set)
     if not rows:
         return None
     used = {k for r in rows for k in r["odds"]}
@@ -353,7 +381,12 @@ def main() -> int:
             continue
         out = OUT_DIR / f"{cid}.json"
         if out.exists() and str(json.loads(out.read_text(encoding="utf-8")).get("source", "")).startswith("Topps — feuille"):
-            skipped.append(f"{cid} (feuille du PDF officiel Topps, prioritaire)")
+            pdf_sheet = json.loads(out.read_text(encoding="utf-8"))
+            excl = exclusives_for(g, decode_flight(page_for(g["source_slug"])), box_types_for(cid, mk))
+            if excl:
+                pdf_sheet["exclusives"] = excl
+                out.write_text(json.dumps(pdf_sheet, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            skipped.append(f"{cid} (feuille du PDF officiel Topps, prioritaire ; {len(excl)} exclusivités ajoutées)")
             continue
         if out.exists() and not args.force:
             skipped.append(f"{cid} (fichier local existant)")
