@@ -673,7 +673,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "",
    "odds": {
     "hobby": 8,
@@ -682,7 +682,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Quin Gold /49",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Quin Gold",
    "odds": {
     "hobby": 12,
@@ -691,7 +691,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Ultramarine Blue /39",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Ultramarine Blue",
    "odds": {
     "hobby": 14,
@@ -700,7 +700,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Cadmium Orange /25",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Cadmium Orange",
    "odds": {
     "hobby": 22,
@@ -709,7 +709,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Winsor Green /10",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Winsor Green",
    "odds": {
     "hobby": 55,
@@ -718,7 +718,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Pyrrol Scarlet /5",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Pyrrol Scarlet",
    "odds": {
     "hobby": 111,
@@ -727,7 +727,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Platinum /1",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Platinum",
    "odds": {
     "hobby": 283,
@@ -736,7 +736,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "",
    "odds": {
     "hobby": 8,
@@ -745,7 +745,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs Quin Gold /49",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "Quin Gold",
    "odds": {
     "hobby": 12,
@@ -754,7 +754,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs Ultramarine Blue /39",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "Ultramarine Blue",
    "odds": {
     "hobby": 14,
@@ -763,7 +763,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs Cadmium Orange /25",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "Cadmium Orange",
    "odds": {
     "hobby": 22,
@@ -772,7 +772,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs Winsor Green /10",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "Winsor Green",
    "odds": {
     "hobby": 55,
@@ -781,7 +781,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs Pyrrol Scarlet /5",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "Pyrrol Scarlet",
    "odds": {
     "hobby": 111,
@@ -790,7 +790,7 @@
   },
   {
    "label": "Motif Rookie Dual Relic Autographs Platinum /1",
-   "set": "Motif Rookie Dual Relic Autographs",
+   "set": "Motif Rookie Dual Relics",
    "parallel": "Platinum",
    "odds": {
     "hobby": 597,

@@ -555,7 +555,7 @@
   },
   {
    "label": "Base Clear Variation",
-   "set": "Base Clear Variation",
+   "set": "Base",
    "parallel": "",
    "odds": {
     "hobby": 24579,
@@ -567,7 +567,7 @@
   },
   {
    "label": "Base Player Number Variation",
-   "set": "Base Player Number Variation",
+   "set": "Base",
    "parallel": "",
    "odds": {
     "hobby": 1807
@@ -575,7 +575,7 @@
   },
   {
    "label": "Base Team Color Border Variation",
-   "set": "Base Team Color Border Variation",
+   "set": "Base",
    "parallel": "",
    "odds": {
     "hobby": 240,
@@ -3811,10 +3811,8 @@
  "exclusives": {
   "Break Point": "Costco/Sams Club",
   "Base Dylan Wang": "China",
-  "Base Player Number Variation": "Hobby",
   "Project Rookie": "Costco/Sams Club",
   "Base Facsimile Prints": "China",
-  "Base Flagship Real One Autograph (LeBron/SGA)": "Jumbo/Hanger",
   "Flagship Real One Autographs Dylan Wang": "China",
   "1981 82 Topps Chrome Basketball Veteran Autographs": "Silver Pack",
   "1981 82 Topps Chrome Basketball Rookie Autographs": "Silver Pack",

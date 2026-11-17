@@ -414,7 +414,7 @@
   },
   {
    "label": "Base Chrome Veteran Class",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "",
    "odds": {
     "hobby": 2,
@@ -425,7 +425,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Refractor",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Refractor",
    "odds": {
     "hobby": 6,
@@ -436,7 +436,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Pandora Refractor",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Pandora Refractor",
    "odds": {
     "value_blaster": 13,
@@ -445,7 +445,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Pandora Yellow Refractor",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Pandora Yellow Refractor",
    "odds": {
     "value_blaster": 36,
@@ -454,7 +454,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Yellow Refractor /275",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Yellow Refractor",
    "odds": {
     "value_blaster": 407,
@@ -463,7 +463,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Magenta Refractor /250",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Magenta Refractor",
    "odds": {
     "hobby": 58,
@@ -474,7 +474,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Teal Refractor /225",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Teal Refractor",
    "odds": {
     "hobby": 64,
@@ -485,7 +485,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Indigo Refractor /175",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Indigo Refractor",
    "odds": {
     "hobby": 82,
@@ -496,7 +496,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Green Refractor /150",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Green Refractor",
    "odds": {
     "hobby": 96,
@@ -507,7 +507,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Purple Refractor /199",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Purple Refractor",
    "odds": {
     "hobby": 143,
@@ -518,7 +518,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Pink Refractor /75",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Pink Refractor",
    "odds": {
     "hobby": 191,
@@ -529,7 +529,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Orange Refractor /50",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Orange Refractor",
    "odds": {
     "hobby": 286,
@@ -540,7 +540,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Red Refractor /25",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Red Refractor",
    "odds": {
     "hobby": 571,
@@ -551,7 +551,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Red Lava Refractor /25",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Red Lava Refractor",
    "odds": {
     "hobby": 571,
@@ -562,7 +562,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Gold Refractor /10",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Gold Refractor",
    "odds": {
     "hobby": 1426,
@@ -573,7 +573,7 @@
   },
   {
    "label": "Base Chrome Veteran Class Blue Refractor /5",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "Blue Refractor",
    "odds": {
     "hobby": 2851,
@@ -584,7 +584,7 @@
   },
   {
    "label": "Base Chrome Veteran Class SuperFractor /1",
-   "set": "Base Chrome Veteran Class",
+   "set": "Chrome - Veteran Class",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 14661,
@@ -595,7 +595,7 @@
   },
   {
    "label": "Base Chrome Rookie Class",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "",
    "odds": {
     "hobby": 4,
@@ -606,7 +606,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Refractor",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Refractor",
    "odds": {
     "hobby": 12,
@@ -617,7 +617,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Pandora Refractor",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Pandora Refractor",
    "odds": {
     "value_blaster": 25,
@@ -626,7 +626,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Pandora Yellow Refractor",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Pandora Yellow Refractor",
    "odds": {
     "value_blaster": 71,
@@ -635,7 +635,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Yellow Refractor /275",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Yellow Refractor",
    "odds": {
     "value_blaster": 814,
@@ -644,7 +644,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Magenta Refractor /250",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Magenta Refractor",
    "odds": {
     "hobby": 115,
@@ -655,7 +655,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Teal Refractor /225",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Teal Refractor",
    "odds": {
     "hobby": 127,
@@ -666,7 +666,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Indigo Refractor /175",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Indigo Refractor",
    "odds": {
     "hobby": 163,
@@ -677,7 +677,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Green Refractor /150",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Green Refractor",
    "odds": {
     "hobby": 191,
@@ -688,7 +688,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Purple Refractor /100",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Purple Refractor",
    "odds": {
     "hobby": 286,
@@ -699,7 +699,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Pink Refractor /75",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Pink Refractor",
    "odds": {
     "hobby": 381,
@@ -710,7 +710,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Orange Refractor /50",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Orange Refractor",
    "odds": {
     "hobby": 571,
@@ -721,7 +721,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Red Refractor /25",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Red Refractor",
    "odds": {
     "hobby": 1141,
@@ -732,7 +732,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Red Lava Refractor /25",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Red Lava Refractor",
    "odds": {
     "hobby": 1141,
@@ -743,7 +743,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Gold Refractor /10",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Gold Refractor",
    "odds": {
     "hobby": 2851,
@@ -754,7 +754,7 @@
   },
   {
    "label": "Base Chrome Rookie Class Blue Refractor /5",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "Blue Refractor",
    "odds": {
     "hobby": 5702,
@@ -765,7 +765,7 @@
   },
   {
    "label": "Base Chrome Rookie Class SuperFractor /1",
-   "set": "Base Chrome Rookie Class",
+   "set": "Chrome - Rookie Class",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 29322,
@@ -776,7 +776,7 @@
   },
   {
    "label": "Base Rookie Class Autographs",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "",
    "odds": {
     "hobby": 28,
@@ -787,7 +787,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Purple /100",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Purple",
    "odds": {
     "hobby": 184,
@@ -798,7 +798,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Orange /50",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Orange",
    "odds": {
     "hobby": 367,
@@ -809,7 +809,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Red /25",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Red",
    "odds": {
     "hobby": 734,
@@ -820,7 +820,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Red Lava /25",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Red Lava",
    "odds": {
     "hobby": 804,
@@ -831,7 +831,7 @@
   },
   {
    "label": "Base Rookie Class Autographs White Gold /10",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "White Gold",
    "odds": {
     "hobby": 1825,
@@ -842,7 +842,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Gold /10",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Gold",
    "odds": {
     "hobby": 1833,
@@ -853,7 +853,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Blue /5",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Blue",
    "odds": {
     "hobby": 3633,
@@ -864,7 +864,7 @@
   },
   {
    "label": "Base Rookie Class Autographs Black /1",
-   "set": "Base Rookie Class Autographs",
+   "set": "Rookie Class Autographs",
    "parallel": "Black",
    "odds": {
     "hobby": 17848,
@@ -952,7 +952,7 @@
   },
   {
    "label": "Base Veteran Class Autographs",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "",
    "odds": {
     "hobby": 57,
@@ -963,7 +963,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Purple /100",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Purple",
    "odds": {
     "hobby": 193,
@@ -974,7 +974,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Orange /50",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Orange",
    "odds": {
     "hobby": 384,
@@ -985,7 +985,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Red /25",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Red",
    "odds": {
     "hobby": 735,
@@ -996,7 +996,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Red Lava /25",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Red Lava",
    "odds": {
     "hobby": 823,
@@ -1007,7 +1007,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Gold /10",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Gold",
    "odds": {
     "hobby": 1825,
@@ -1018,7 +1018,7 @@
   },
   {
    "label": "Base Veteran Class Autographs White Gold /10",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "White Gold",
    "odds": {
     "hobby": 1833,
@@ -1029,7 +1029,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Blue /5",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Blue",
    "odds": {
     "hobby": 3666,
@@ -1040,7 +1040,7 @@
   },
   {
    "label": "Base Veteran Class Autographs Black /1",
-   "set": "Base Veteran Class Autographs",
+   "set": "Veteran Class Autographs",
    "parallel": "Black",
    "odds": {
     "hobby": 17848,

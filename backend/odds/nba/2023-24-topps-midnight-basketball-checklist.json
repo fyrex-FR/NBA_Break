@@ -18,72 +18,72 @@
  "rows": [
   {
    "label": "Base Cards Zodiac",
-   "set": "Base Cards Zodiac",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Zodiac",
    "odds": {
     "hobby": 2
    }
   },
   {
    "label": "Base Cards Morning",
-   "set": "Base Cards Morning",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Morning",
    "odds": {
     "hobby": 3
    }
   },
   {
    "label": "Base Cards Twilight",
-   "set": "Base Cards Twilight",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Twilight",
    "odds": {
     "hobby": 5
    }
   },
   {
    "label": "Base Cards Dusk",
-   "set": "Base Cards Dusk",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Dusk",
    "odds": {
     "hobby": 6
    }
   },
   {
    "label": "Base Cards Moon Beam",
-   "set": "Base Cards Moon Beam",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Moon Beam",
    "odds": {
     "hobby": 9
    }
   },
   {
    "label": "Base Cards Moonrise",
-   "set": "Base Cards Moonrise",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Moonrise",
    "odds": {
     "hobby": 18
    }
   },
   {
    "label": "Base Cards Midnight",
-   "set": "Base Cards Midnight",
-   "parallel": "",
+   "set": "Stroke of Midnight Autographs",
+   "parallel": "Base Cards Midnight",
    "odds": {
     "hobby": 36
    }
   },
   {
    "label": "Base Cards Daybreak",
-   "set": "Base Cards Daybreak",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Daybreak",
    "odds": {
     "hobby": 87
    }
   },
   {
    "label": "Base Cards Black Light",
-   "set": "Base Cards Black Light",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Black Light",
    "odds": {
     "hobby": 431
    }

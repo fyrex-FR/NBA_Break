@@ -42,7 +42,7 @@
   },
   {
    "label": "Base Cards Common Blue Refractor Checkerboard",
-   "set": "Base Cards Common Blue Refractor",
+   "set": "Base - Common",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 3
@@ -50,16 +50,16 @@
   },
   {
    "label": "Base Cards Common Purple Refractor Checkerboard",
-   "set": "Base Cards Common Purple Refractor Checkerboard",
-   "parallel": "",
+   "set": "Base - Common",
+   "parallel": "Base Cards Common Purple Refractor Checkerboard",
    "odds": {
     "hobby": 3
    }
   },
   {
    "label": "Base Cards Common Die Cut",
-   "set": "Base Cards Common Die Cut",
-   "parallel": "",
+   "set": "Base - Common",
+   "parallel": "Base Cards Common Die Cut",
    "odds": {
     "hobby": 4
    }
@@ -90,8 +90,8 @@
   },
   {
    "label": "Base Cards Common Red Black Vapor",
-   "set": "Base Cards Common Red Black Vapor",
-   "parallel": "",
+   "set": "Base - Common",
+   "parallel": "Base Cards Common Red Black Vapor",
    "odds": {
     "hobby": 26
    }
@@ -107,7 +107,7 @@
   {
    "label": "Base Cards Common Superfractor",
    "set": "Base - Common",
-   "parallel": "",
+   "parallel": "Base Cards Common Superfractor",
    "odds": {
     "hobby": 260
    }
@@ -139,7 +139,7 @@
   {
    "label": "Base Cards Uncommon",
    "set": "Base - Uncommon",
-   "parallel": "",
+   "parallel": "Base Cards Uncommon",
    "odds": {
     "hobby": 1
    }
@@ -251,7 +251,7 @@
   {
    "label": "Base Cards Rare",
    "set": "Base - Rare",
-   "parallel": "",
+   "parallel": "Base Cards Rare",
    "odds": {
     "hobby": 3
    }
@@ -434,7 +434,7 @@
   },
   {
    "label": "Arrivals Blue Checkerboard",
-   "set": "Arrivals Blue",
+   "set": "Arrivals",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 10
@@ -522,7 +522,7 @@
   },
   {
    "label": "Showstoppers Blue Checkerboard",
-   "set": "Showstoppers Blue",
+   "set": "Showstoppers",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 10
@@ -610,7 +610,7 @@
   },
   {
    "label": "Debut Blue Checkerboard",
-   "set": "Debut Blue",
+   "set": "Debut",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 10
@@ -698,7 +698,7 @@
   },
   {
    "label": "Finishers Blue Checkerboard",
-   "set": "Finishers Blue",
+   "set": "Finishers",
    "parallel": "Checkerboard",
    "odds": {
     "hobby": 29
@@ -802,7 +802,7 @@
   },
   {
    "label": "Finest Autographs Red/Black Vapor Geometric",
-   "set": "Finest Autographs Red/Black Vapor",
+   "set": "Finest Autographs",
    "parallel": "Geometric",
    "odds": {
     "hobby": 31
@@ -858,7 +858,7 @@
   },
   {
    "label": "Rookie Finest Autographs Red/Black Vapor Geometric",
-   "set": "Rookie Finest Autographs Red/Black Vapor",
+   "set": "Rookie Finest Autographs",
    "parallel": "Geometric",
    "odds": {
     "hobby": 32
@@ -914,15 +914,15 @@
   },
   {
    "label": "Flashbacks Autographs",
-   "set": "Flashbacks Autographs",
-   "parallel": "",
+   "set": "Flashback Autographs",
+   "parallel": "Flashbacks Autographs",
    "odds": {
     "hobby": 170
    }
   },
   {
    "label": "Flashbacks Autographs Refractor",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Refractor",
    "odds": {
     "hobby": 99
@@ -930,7 +930,7 @@
   },
   {
    "label": "Flashbacks Autographs Gold Refractor",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Gold Refractor",
    "odds": {
     "hobby": 99
@@ -938,7 +938,7 @@
   },
   {
    "label": "Flashbacks Autographs Black Refractor",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Black Refractor",
    "odds": {
     "hobby": 197
@@ -946,7 +946,7 @@
   },
   {
    "label": "Flashbacks Autographs Red/Black Vapor",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Red/Black Vapor",
    "odds": {
     "hobby": 492
@@ -954,7 +954,7 @@
   },
   {
    "label": "Flashbacks Autographs Red Refractor",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Red Refractor",
    "odds": {
     "hobby": 981
@@ -962,7 +962,7 @@
   },
   {
    "label": "Flashbacks Autographs Superfractor",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Superfractor",
    "odds": {
     "hobby": 1529
@@ -970,7 +970,7 @@
   },
   {
    "label": "Flashbacks Autographs Blue Geometric",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Blue Geometric",
    "odds": {
     "hobby": 6
@@ -978,7 +978,7 @@
   },
   {
    "label": "Flashbacks Autographs Gold Geometric",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Gold Geometric",
    "odds": {
     "hobby": 7
@@ -986,7 +986,7 @@
   },
   {
    "label": "Flashbacks Autographs Black Geometric",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Black Geometric",
    "odds": {
     "hobby": 13
@@ -1002,7 +1002,7 @@
   },
   {
    "label": "Flashbacks Autographs Red Geometric",
-   "set": "Flashbacks Autographs",
+   "set": "Flashback Autographs",
    "parallel": "Red Geometric",
    "odds": {
     "hobby": 63
@@ -1090,7 +1090,7 @@
   },
   {
    "label": "Masters Autographs Red/Black Vapor Geometric",
-   "set": "Masters Autographs Red/Black Vapor",
+   "set": "Masters Autographs",
    "parallel": "Geometric",
    "odds": {
     "hobby": 32

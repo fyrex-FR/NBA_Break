@@ -58,8 +58,8 @@
   },
   {
    "label": "Base Cards Platinum",
-   "set": "Base Cards Platinum",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Platinum",
    "odds": {
     "hobby": 99
    }
@@ -67,7 +67,7 @@
   {
    "label": "Rookie Patch Autographs",
    "set": "Base - Rookie Patch Autographs",
-   "parallel": "",
+   "parallel": "Rookie Patch Autographs",
    "odds": {
     "hobby": 3
    }
@@ -234,8 +234,8 @@
   },
   {
    "label": "Jersey Tag Autographs",
-   "set": "Jersey Tag Autographs",
-   "parallel": "",
+   "set": "Jersey Tags Autographs",
+   "parallel": "Jersey Tag Autographs",
    "odds": {
     "hobby": 246
    }
@@ -658,15 +658,15 @@
   },
   {
    "label": "Round Ball Relics",
-   "set": "Round Ball Relics",
-   "parallel": "",
+   "set": "Ruond Ball Relics",
+   "parallel": "Round Ball Relics",
    "odds": {
     "hobby": 4
    }
   },
   {
    "label": "Round Ball Relics Blue",
-   "set": "Round Ball Relics",
+   "set": "Ruond Ball Relics",
    "parallel": "Blue",
    "odds": {
     "hobby": 10
@@ -674,7 +674,7 @@
   },
   {
    "label": "Round Ball Relics Gold",
-   "set": "Round Ball Relics",
+   "set": "Ruond Ball Relics",
    "parallel": "Gold",
    "odds": {
     "hobby": 20
@@ -682,7 +682,7 @@
   },
   {
    "label": "Round Ball Relics Green",
-   "set": "Round Ball Relics",
+   "set": "Ruond Ball Relics",
    "parallel": "Green",
    "odds": {
     "hobby": 40
@@ -690,7 +690,7 @@
   },
   {
    "label": "Round Ball Relics Platinum",
-   "set": "Round Ball Relics",
+   "set": "Ruond Ball Relics",
    "parallel": "Platinum",
    "odds": {
     "hobby": 196
