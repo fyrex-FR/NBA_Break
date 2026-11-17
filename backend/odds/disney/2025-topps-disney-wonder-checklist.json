@@ -1,0 +1,480 @@
+{
+ "version": 1,
+ "sport": "disney",
+ "checklist_id": "2025-topps-disney-wonder-checklist",
+ "product_label": "2025 Topps Disney Wonder",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value_box",
+   "label": "Value Box",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "fat_pack",
+   "label": "Fat Pack",
+   "channel": "retail",
+   "group": "fat_pack"
+  },
+  {
+   "key": "ea_hh",
+   "label": "EA HH",
+   "channel": "retail",
+   "group": "value"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Set Tier 1",
+   "set": "BASE SET TIER 1",
+   "parallel": "",
+   "odds": {
+    "hobby": 1,
+    "value_box": 1,
+    "fat_pack": 1,
+    "ea_hh": 1
+   }
+  },
+  {
+   "label": "Base Set Tier 2",
+   "set": "BASE SET TIER 2",
+   "parallel": "",
+   "odds": {
+    "hobby": 1,
+    "value_box": 1,
+    "fat_pack": 1,
+    "ea_hh": 1
+   }
+  },
+  {
+   "label": "Princess Gold Foil",
+   "set": "Princess Gold Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 66631,
+    "value_box": 57221,
+    "fat_pack": 11539,
+    "ea_hh": 11539
+   }
+  },
+  {
+   "label": "Princess Orange Foil",
+   "set": "Princess Orange Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 133261,
+    "value_box": 110041,
+    "fat_pack": 21924,
+    "ea_hh": 21924
+   }
+  },
+  {
+   "label": "Princess Black",
+   "set": "Princess",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 333150,
+    "value_box": 286104,
+    "fat_pack": 54810,
+    "ea_hh": 54810
+   }
+  },
+  {
+   "label": "Princess Red Sparkle",
+   "set": "Princess Red Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 666300,
+    "value_box": 476840,
+    "fat_pack": 109620,
+    "ea_hh": 109620
+   }
+  },
+  {
+   "label": "Princess Gold Foil",
+   "set": "Princess Gold Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 121146,
+    "value_box": 102180,
+    "fat_pack": 21924,
+    "ea_hh": 21924
+   }
+  },
+  {
+   "label": "Princess Orange Foil",
+   "set": "Princess Orange Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 266521,
+    "value_box": 204360,
+    "fat_pack": 43848,
+    "ea_hh": 43848
+   }
+  },
+  {
+   "label": "Princess Black",
+   "set": "Princess",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 666300,
+    "value_box": 476840,
+    "fat_pack": 109620,
+    "ea_hh": 109620
+   }
+  },
+  {
+   "label": "Princess Red Sparkle",
+   "set": "Princess Red Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 1430520,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  },
+  {
+   "label": "Villian Gold Foil",
+   "set": "Villian Gold Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 74034,
+    "value_box": 62197,
+    "fat_pack": 12180,
+    "ea_hh": 12180
+   }
+  },
+  {
+   "label": "Villian Orange Foil",
+   "set": "Villian Orange Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 148067,
+    "value_box": 119210,
+    "fat_pack": 24360,
+    "ea_hh": 24360
+   }
+  },
+  {
+   "label": "Villian Black Sparkle",
+   "set": "Villian Black Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 333150,
+    "value_box": 286104,
+    "fat_pack": 54810,
+    "ea_hh": 54810
+   }
+  },
+  {
+   "label": "Villian Red Sparkle",
+   "set": "Villian Red Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 666300,
+    "value_box": 715260,
+    "fat_pack": 109620,
+    "ea_hh": 109620
+   }
+  },
+  {
+   "label": "Villian Gold Foil",
+   "set": "Villian Gold Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 111051,
+    "value_box": 89408,
+    "fat_pack": 18270,
+    "ea_hh": 18270
+   }
+  },
+  {
+   "label": "Villian Orange Foil",
+   "set": "Villian Orange Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 222101,
+    "value_box": 178815,
+    "fat_pack": 36540,
+    "ea_hh": 36540
+   }
+  },
+  {
+   "label": "Villian Black Sparkle",
+   "set": "Villian Black Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 666300,
+    "value_box": 476840,
+    "fat_pack": 109620,
+    "ea_hh": 109620
+   }
+  },
+  {
+   "label": "Villian Red Sparkle",
+   "set": "Villian Red Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 715260,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  },
+  {
+   "label": "Character Variation",
+   "set": "BASE SET FROZEN CHARACTER VARIATION",
+   "parallel": "Character Variation",
+   "odds": {
+    "hobby": 4,
+    "value_box": 4
+   }
+  },
+  {
+   "label": "Enchanted Stickers",
+   "set": "ENCHANTED STICKERS",
+   "parallel": "",
+   "odds": {
+    "hobby": 9,
+    "value_box": 9,
+    "fat_pack": 9,
+    "ea_hh": 9
+   }
+  },
+  {
+   "label": "Story Gold Foil",
+   "set": "Story Gold Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 35069,
+    "value_box": 29195,
+    "fat_pack": 5926,
+    "ea_hh": 5926
+   }
+  },
+  {
+   "label": "Story Orange Foil",
+   "set": "Story Orange Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 70137,
+    "value_box": 57221,
+    "fat_pack": 11539,
+    "ea_hh": 11539
+   }
+  },
+  {
+   "label": "Story Red Foil",
+   "set": "Story Red Foil",
+   "parallel": "",
+   "odds": {
+    "hobby": 333150,
+    "value_box": 286104,
+    "fat_pack": 54810,
+    "ea_hh": 54810
+   }
+  },
+  {
+   "label": "Story Foilfractor",
+   "set": "Story Foilfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 1430520,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  },
+  {
+   "label": "Furry Friends",
+   "set": "FURRY FRIENDS",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "value_box": 4,
+    "fat_pack": 4,
+    "ea_hh": 4
+   }
+  },
+  {
+   "label": "Greeting's From…",
+   "set": "GREETINGS FROM",
+   "parallel": "Greeting's From…",
+   "odds": {
+    "hobby": 9,
+    "value_box": 9,
+    "fat_pack": 9,
+    "ea_hh": 9
+   }
+  },
+  {
+   "label": "Season's Greetings",
+   "set": "SEASONS GREETINGS",
+   "parallel": "Season's Greetings",
+   "odds": {
+    "hobby": 7,
+    "value_box": 7
+   }
+  },
+  {
+   "label": "PrincessFractors",
+   "set": "PRINCESS FRACTORS",
+   "parallel": "PrincessFractors",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 1430520,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  },
+  {
+   "label": "Shiny",
+   "set": "SHINY",
+   "parallel": "",
+   "odds": {
+    "hobby": 300,
+    "value_box": 280,
+    "fat_pack": 108,
+    "ea_hh": 108
+   }
+  },
+  {
+   "label": "Enchantments Gold",
+   "set": "TOPPS ENCHANTMENTS",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 44420,
+    "value_box": 36680,
+    "fat_pack": 7308,
+    "ea_hh": 7308
+   }
+  },
+  {
+   "label": "Enchantments Red",
+   "set": "TOPPS ENCHANTMENTS",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 444201,
+    "value_box": 357630,
+    "fat_pack": 73080,
+    "ea_hh": 73080
+   }
+  },
+  {
+   "label": "Enchantments",
+   "set": "TOPPS ENCHANTMENTS",
+   "parallel": "Enchantments",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 1430520,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  },
+  {
+   "label": "Sketch Cards",
+   "set": "Sketch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 2666,
+    "value_box": 2862,
+    "fat_pack": 1097,
+    "ea_hh": 1097
+   }
+  },
+  {
+   "label": "and Casas Gold Foil",
+   "set": "CASTLES COTTAGES AND CASAS",
+   "parallel": "Gold Foil",
+   "odds": {
+    "hobby": 44420,
+    "value_box": 36680,
+    "fat_pack": 7308,
+    "ea_hh": 7308
+   }
+  },
+  {
+   "label": "and Casas Orange",
+   "set": "CASTLES COTTAGES AND CASAS",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 88840,
+    "value_box": 71526,
+    "fat_pack": 14616,
+    "ea_hh": 14616
+   }
+  },
+  {
+   "label": "and Casas Red Foil",
+   "set": "CASTLES COTTAGES AND CASAS",
+   "parallel": "Red Foil",
+   "odds": {
+    "hobby": 444201,
+    "value_box": 357630,
+    "fat_pack": 73080,
+    "ea_hh": 73080
+   }
+  },
+  {
+   "label": "and Casas",
+   "set": "CASTLES COTTAGES AND CASAS",
+   "parallel": "and Casas",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 1430520,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  },
+  {
+   "label": "Tapestries",
+   "set": "TAPESTRIES",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Enchantments",
+   "set": "TOPPS ENCHANTMENTS",
+   "parallel": "Enchantments",
+   "odds": {
+    "hobby": 3632,
+    "value_box": 14306,
+    "fat_pack": 2193,
+    "ea_hh": 2193
+   }
+  },
+  {
+   "label": "Slipper Chrome Die",
+   "set": "Slipper Chrome Die",
+   "parallel": "",
+   "odds": {
+    "hobby": 444201,
+    "value_box": 357630,
+    "fat_pack": 73080,
+    "ea_hh": 73080
+   }
+  },
+  {
+   "label": "Upon a Star Die Cut",
+   "set": "TOPPS CHROME WISH UPON A STAR DIE CUT",
+   "parallel": "Upon a Star Die Cut",
+   "odds": {
+    "hobby": 1332600,
+    "value_box": 1430520,
+    "fat_pack": 219240,
+    "ea_hh": 219240
+   }
+  }
+ ]
+}

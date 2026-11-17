@@ -66,10 +66,16 @@ CHANNELS = {
 }
 
 
+# Colonnes régionales des Value Box Topps (Europe/Asie, CEE, Amérique centrale…).
+REGION_CODES = {"ea", "se", "cee", "caa", "sku", "ea hh", "se hh"}
+
+
 def channel_group(name: str) -> tuple[str, str]:
     low = name.lower().strip()
     if low in CHANNELS:
         return CHANNELS[low]
+    if low in REGION_CODES:
+        return "retail", "value"
     if low.startswith("fanatics"):
         return "special", "fanatics"
     if "sapphire" in low:
@@ -377,28 +383,28 @@ def page_for(slug_: str) -> str:
     return body
 
 
-def box_types_for(checklist_id: str, master_key: str | None) -> list[str]:
-    body = json.dumps({"sport_key": "nba", "checklist_ids": [checklist_id], "master_key": master_key}).encode()
+def box_types_for(checklist_id: str, master_key: str | None, sport: str = "nba") -> list[str]:
+    body = json.dumps({"sport_key": sport, "checklist_ids": [checklist_id], "master_key": master_key}).encode()
     req = urllib.request.Request(f"{API}/analyze", data=body, headers={"Content-Type": "application/json", "User-Agent": UA})
     with urllib.request.urlopen(req, timeout=180) as r:
         cards = json.loads(r.read())["cards"]
     return sorted({c.get("Box Type") for c in cards if c.get("Box Type")})
 
 
-def master_key() -> str | None:
-    req = urllib.request.Request(f"{API}/sports/nba/checklists", headers={"User-Agent": UA})
+def master_key(sport: str = "nba") -> str | None:
+    req = urllib.request.Request(f"{API}/sports/{sport}/checklists", headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.loads(r.read()).get("master_key")
 
 
-def r2_sheets() -> set[str]:
+def r2_sheets(sport: str = "nba") -> set[str]:
     """Feuilles à ne jamais remplacer : celles servies en prod (R2 ∪ repo) qui ne
     viennent pas de nos générateurs, c'est-à-dire faites à la main depuis un PDF."""
-    req = urllib.request.Request(f"{API}/odds/nba", headers={"User-Agent": UA})
+    req = urllib.request.Request(f"{API}/odds/{sport}", headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as r:
         served = set(json.loads(r.read())["checklist_ids"])
     generated = set()
-    for p in OUT_DIR.glob("*.json"):
+    for p in (OUT_DIR.parent / sport).glob("*.json"):
         try:
             if str(json.loads(p.read_text(encoding="utf-8")).get("source", "")).startswith(GENERATED_SOURCES):
                 generated.add(p.stem)

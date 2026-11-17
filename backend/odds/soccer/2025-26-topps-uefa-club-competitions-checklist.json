@@ -1,0 +1,2513 @@
+{
+ "version": 1,
+ "sport": "soccer",
+ "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+ "product_label": "2025-26 Topps UEFA Club Competitions",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value",
+   "label": "Value",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "hanger",
+   "label": "Hanger",
+   "channel": "retail",
+   "group": "hanger"
+  },
+  {
+   "key": "london_store",
+   "label": "London Store",
+   "channel": "special",
+   "group": "london_store"
+  },
+  {
+   "key": "carnaval",
+   "label": "Carnaval",
+   "channel": "special",
+   "group": "carnaval"
+  },
+  {
+   "key": "retail",
+   "label": "Retail",
+   "channel": "retail",
+   "group": "retail"
+  },
+  {
+   "key": "spring_tin",
+   "label": "Spring Tin",
+   "channel": "special",
+   "group": "spring_tin"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Pink Diamante",
+   "set": "Base",
+   "parallel": "Cards Pink Diamante",
+   "odds": {
+    "hanger": 10
+   }
+  },
+  {
+   "label": "Base Cards Neon Yellow Flowfractor",
+   "set": "Base",
+   "parallel": "Cards Neon Yellow Flowfractor",
+   "odds": {
+    "hobby": 24,
+    "london_store": 24
+   }
+  },
+  {
+   "label": "Base Cards Neon Pink Flowfractor",
+   "set": "Base",
+   "parallel": "Cards Neon Pink Flowfractor",
+   "odds": {
+    "hobby": 48,
+    "london_store": 48
+   }
+  },
+  {
+   "label": "Base Cards Neon Blue Flowfractor",
+   "set": "Base",
+   "parallel": "Cards Neon Blue Flowfractor",
+   "odds": {
+    "hobby": 72,
+    "london_store": 72
+   }
+  },
+  {
+   "label": "Base Cards Neon Purple Flowfractor",
+   "set": "Base",
+   "parallel": "Cards Neon Purple Flowfractor",
+   "odds": {
+    "hobby": 192,
+    "london_store": 192
+   }
+  },
+  {
+   "label": "Base Cards Neon Green Flowfractor",
+   "set": "Base",
+   "parallel": "Cards Neon Green Flowfractor",
+   "odds": {
+    "hobby": 384,
+    "london_store": 384
+   }
+  },
+  {
+   "label": "Base Cards Holo Foil",
+   "set": "Base",
+   "parallel": "Cards Holo Foil",
+   "odds": {
+    "value": 10,
+    "hanger": 10
+   }
+  },
+  {
+   "label": "Base Cards Yellow Holo",
+   "set": "Base",
+   "parallel": "Cards Yellow Holo",
+   "odds": {
+    "value": 49,
+    "hanger": 12
+   }
+  },
+  {
+   "label": "Base Cards Purple Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 55,
+    "hanger": 18
+   }
+  },
+  {
+   "label": "Base Cards Blue Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 94,
+    "hanger": 26
+   }
+  },
+  {
+   "label": "Base Cards Green Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 137,
+    "hanger": 45
+   }
+  },
+  {
+   "label": "Base Cards Black And White Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 206,
+    "hanger": 40
+   }
+  },
+  {
+   "label": "Base Cards Gold Holo",
+   "set": "Gold Framed Messi Anniversary Sketch Cards",
+   "parallel": "Holo",
+   "odds": {
+    "value": 294,
+    "hanger": 68
+   }
+  },
+  {
+   "label": "Base Cards Orange Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 642,
+    "hanger": 110
+   }
+  },
+  {
+   "label": "Base Cards Black Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 1581,
+    "hanger": 284
+   }
+  },
+  {
+   "label": "Base Cards Red Holo",
+   "set": "Base",
+   "parallel": "Holo",
+   "odds": {
+    "value": 3573,
+    "hanger": 458
+   }
+  },
+  {
+   "label": "Base Cards Platinum Holo",
+   "set": "Base",
+   "parallel": "Cards Platinum Holo",
+   "odds": {
+    "value": 20541,
+    "hanger": 1891
+   }
+  },
+  {
+   "label": "Base Cards Aqua Holo Foil",
+   "set": "Base",
+   "parallel": "Holo Foil",
+   "odds": {
+    "value": 500,
+    "hanger": 500
+   }
+  },
+  {
+   "label": "Base Cards Pink Holo",
+   "set": "Base",
+   "parallel": "Cards Pink Holo",
+   "odds": {
+    "value": 19,
+    "hanger": 5
+   }
+  },
+  {
+   "label": "Base Cards Raindrops",
+   "set": "Base",
+   "parallel": "Cards Raindrops",
+   "odds": {
+    "hobby": 4,
+    "london_store": 4
+   }
+  },
+  {
+   "label": "Base Cards Purple Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 43,
+    "london_store": 43
+   }
+  },
+  {
+   "label": "Base Cards Blue Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 72,
+    "london_store": 72
+   }
+  },
+  {
+   "label": "Base Cards Green Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 109,
+    "london_store": 109
+   }
+  },
+  {
+   "label": "Base Cards Black And White Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 143,
+    "london_store": 143
+   }
+  },
+  {
+   "label": "Base Cards Gold Raindrops",
+   "set": "Gold Framed Messi Anniversary Sketch Cards",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 215,
+    "london_store": 215
+   }
+  },
+  {
+   "label": "Base Cards Orange Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 429,
+    "london_store": 429
+   }
+  },
+  {
+   "label": "Base Cards Black Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 1071,
+    "london_store": 1071
+   }
+  },
+  {
+   "label": "Base Cards Red Raindrops",
+   "set": "Base",
+   "parallel": "Raindrops",
+   "odds": {
+    "hobby": 2137,
+    "london_store": 2137
+   }
+  },
+  {
+   "label": "Base Cards Yellow Inferno",
+   "set": "Base",
+   "parallel": "Cards Yellow Inferno",
+   "odds": {
+    "value": 36
+   }
+  },
+  {
+   "label": "Base Cards Purple Inferno",
+   "set": "Base",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 43
+   }
+  },
+  {
+   "label": "Base Cards Blue Inferno",
+   "set": "Base",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 71
+   }
+  },
+  {
+   "label": "Base Cards Green Inferno",
+   "set": "Base",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 108
+   }
+  },
+  {
+   "label": "Base Cards Gold Inferno",
+   "set": "Gold Framed Messi Anniversary Sketch Cards",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 213
+   }
+  },
+  {
+   "label": "Base Cards Orange Inferno",
+   "set": "Base",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 426
+   }
+  },
+  {
+   "label": "Base Cards Black Inferno",
+   "set": "Base",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 1063
+   }
+  },
+  {
+   "label": "Base Cards Red Inferno",
+   "set": "Base",
+   "parallel": "Inferno",
+   "odds": {
+    "value": 2125
+   }
+  },
+  {
+   "label": "Base Cards Aqua",
+   "set": "Base",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 500,
+    "london_store": 500
+   }
+  },
+  {
+   "label": "Base Cards Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 43,
+    "london_store": 43
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 72,
+    "london_store": 72
+   }
+  },
+  {
+   "label": "Base Cards Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 109,
+    "london_store": 109
+   }
+  },
+  {
+   "label": "Base Cards Black And White",
+   "set": "Base",
+   "parallel": "And White",
+   "odds": {
+    "hobby": 143,
+    "london_store": 143
+   }
+  },
+  {
+   "label": "Base Cards Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 215,
+    "london_store": 215
+   }
+  },
+  {
+   "label": "Base Cards Orange",
+   "set": "Base",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 429,
+    "london_store": 429
+   }
+  },
+  {
+   "label": "Base Cards Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1071,
+    "london_store": 1071
+   }
+  },
+  {
+   "label": "Base Cards Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 2137,
+    "london_store": 2137
+   }
+  },
+  {
+   "label": "Base Cards Foilfractor",
+   "set": "Base",
+   "parallel": "Cards Foilfractor",
+   "odds": {
+    "hobby": 10529,
+    "london_store": 10529
+   }
+  },
+  {
+   "label": "Base Cards Printing Plates",
+   "set": "Base",
+   "parallel": "Cards Printing Plates",
+   "odds": {
+    "hobby": 2674,
+    "london_store": 2509
+   }
+  },
+  {
+   "label": "Base Cards First Card",
+   "set": "Base",
+   "parallel": "Cards First Card",
+   "odds": {
+    "hobby": 10529,
+    "london_store": 10529
+   }
+  },
+  {
+   "label": "Base Cards Team Logo Border Variations",
+   "set": "Base",
+   "parallel": "Cards Team Logo Border Variations",
+   "odds": {
+    "hobby": 288,
+    "london_store": 288
+   }
+  },
+  {
+   "label": "Base Cards Easter Egg Variation",
+   "set": "Base",
+   "parallel": "Cards Easter Egg Variation",
+   "odds": {
+    "hobby": 5706,
+    "value": 186786,
+    "hanger": 21657,
+    "london_store": 5706
+   }
+  },
+  {
+   "label": "Base Cards Short Prints",
+   "set": "Base - Super Short Prints",
+   "parallel": "Base Cards Short Prints",
+   "odds": {
+    "hobby": 190,
+    "value": 5976,
+    "hanger": 527,
+    "london_store": 190
+   }
+  },
+  {
+   "label": "Base Cards Super Short Prints",
+   "set": "Base - Super Short Prints",
+   "parallel": "Base Cards Super Short Prints",
+   "odds": {
+    "hobby": 2280,
+    "value": 70425,
+    "hanger": 9453,
+    "london_store": 2280
+   }
+  },
+  {
+   "label": "Roots Carnaval Base",
+   "set": "Roots",
+   "parallel": "Carnaval Base",
+   "odds": {
+    "carnaval": 4
+   }
+  },
+  {
+   "label": "Roots",
+   "set": "Roots",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "value": 7,
+    "hanger": 3,
+    "london_store": 8,
+    "spring_tin": 3
+   }
+  },
+  {
+   "label": "Roots Green",
+   "set": "Roots",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 1152,
+    "value": 36517,
+    "hanger": 4727,
+    "london_store": 1141
+   }
+  },
+  {
+   "label": "Roots Gold",
+   "set": "Roots",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2280,
+    "value": 70425,
+    "hanger": 9453,
+    "london_store": 2281
+   }
+  },
+  {
+   "label": "Roots Orange",
+   "set": "Roots",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 4570,
+    "value": 140850,
+    "hanger": 18906,
+    "london_store": 5017
+   }
+  },
+  {
+   "label": "Roots Black",
+   "set": "Roots",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 11411,
+    "value": 328650,
+    "hanger": 43717,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Roots Red",
+   "set": "Roots",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 22950,
+    "value": 985950,
+    "hanger": 86717,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Roots Foilfractor",
+   "set": "Roots",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 113474,
+    "value": 2054640,
+    "hanger": 173248,
+    "london_store": 25344
+   }
+  },
+  {
+   "label": "Trophy Chasers",
+   "set": "Trophy Chasers",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "value": 4,
+    "hanger": 2,
+    "london_store": 5,
+    "spring_tin": 2
+   }
+  },
+  {
+   "label": "Trophy Chasers Green",
+   "set": "Trophy Chasers",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 658,
+    "value": 20541,
+    "hanger": 2579,
+    "london_store": 661
+   }
+  },
+  {
+   "label": "Trophy Chasers Gold",
+   "set": "Trophy Chasers",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1304,
+    "value": 41082,
+    "hanger": 5157,
+    "london_store": 1321
+   }
+  },
+  {
+   "label": "Trophy Chasers Orange",
+   "set": "Trophy Chasers",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 2606,
+    "value": 82163,
+    "hanger": 9453,
+    "london_store": 2509
+   }
+  },
+  {
+   "label": "Trophy Chasers Black",
+   "set": "Trophy Chasers",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 6526,
+    "value": 197190,
+    "hanger": 28359,
+    "london_store": 6272
+   }
+  },
+  {
+   "label": "Trophy Chasers Red",
+   "set": "Trophy Chasers",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 13010,
+    "value": 492975,
+    "hanger": 56717,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Trophy Chasers Foilfractor",
+   "set": "Trophy Chasers",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 63829,
+    "value": 2054640,
+    "hanger": 173248,
+    "london_store": 25344
+   }
+  },
+  {
+   "label": "Best Of The Best",
+   "set": "Best Of The Best",
+   "parallel": "",
+   "odds": {
+    "hobby": 15,
+    "value": 14,
+    "hanger": 6,
+    "london_store": 16,
+    "spring_tin": 5
+   }
+  },
+  {
+   "label": "Best Of The Best Green",
+   "set": "Best Of The Best",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 2303,
+    "value": 75843,
+    "hanger": 9453,
+    "london_store": 2281
+   }
+  },
+  {
+   "label": "Best Of The Best Gold",
+   "set": "Best Of The Best",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 4570,
+    "value": 140850,
+    "hanger": 18906,
+    "london_store": 5017
+   }
+  },
+  {
+   "label": "Best Of The Best Orange",
+   "set": "Best Of The Best",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 9119,
+    "value": 328650,
+    "hanger": 28359,
+    "london_store": 8362
+   }
+  },
+  {
+   "label": "Best Of The Best Black",
+   "set": "Best Of The Best",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 22950,
+    "value": 985950,
+    "hanger": 56717,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Best Of The Best Red",
+   "set": "Best Of The Best",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 45390,
+    "value": 2054640,
+    "hanger": 173248,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Best Of The Best Foilfractor",
+   "set": "Best Of The Best",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 226947,
+    "value": 2054640,
+    "hanger": 173248,
+    "london_store": 25344
+   }
+  },
+  {
+   "label": "Born Champ",
+   "set": "Born Champ",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "value": 10,
+    "hanger": 4,
+    "london_store": 10,
+    "spring_tin": 4
+   }
+  },
+  {
+   "label": "Born Champ Green",
+   "set": "Born Champ",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 1535,
+    "value": 70950,
+    "hanger": 6302,
+    "london_store": 1568
+   }
+  },
+  {
+   "label": "Born Champ Gold",
+   "set": "Born Champ",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 3040,
+    "value": 136595,
+    "hanger": 11344,
+    "london_store": 3136
+   }
+  },
+  {
+   "label": "Born Champ Orange",
+   "set": "Born Champ",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 6079,
+    "value": 293190,
+    "hanger": 28359,
+    "london_store": 6272
+   }
+  },
+  {
+   "label": "Born Champ Black",
+   "set": "Born Champ",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 15243,
+    "value": 513975,
+    "hanger": 56717,
+    "london_store": 12085
+   }
+  },
+  {
+   "label": "Born Champ Red",
+   "set": "Born Champ",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 30038,
+    "value": 985950,
+    "hanger": 173248,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Born Champ Foilfractor",
+   "set": "Born Champ",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 145895,
+    "value": 985950,
+    "hanger": 173248,
+    "london_store": 25344
+   }
+  },
+  {
+   "label": "8Bit Shots",
+   "set": "8Bit Shots",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "value": 7,
+    "hanger": 3,
+    "london_store": 8,
+    "spring_tin": 3
+   }
+  },
+  {
+   "label": "8Bit Shots Green",
+   "set": "8Bit Shots",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 1152,
+    "value": 36517,
+    "hanger": 4727,
+    "london_store": 1141
+   }
+  },
+  {
+   "label": "8Bit Shots Gold",
+   "set": "8Bit Shots",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2280,
+    "value": 70425,
+    "hanger": 9453,
+    "london_store": 2281
+   }
+  },
+  {
+   "label": "8Bit Shots Orange",
+   "set": "8Bit Shots",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 4570,
+    "value": 140850,
+    "hanger": 18906,
+    "london_store": 5017
+   }
+  },
+  {
+   "label": "8Bit Shots Black",
+   "set": "8Bit Shots",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 11411,
+    "value": 328650,
+    "hanger": 43717,
+    "london_store": 8543
+   }
+  },
+  {
+   "label": "8Bit Shots Red",
+   "set": "8Bit Shots",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 22950,
+    "value": 684950,
+    "hanger": 86717,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "8Bit Shots Foilfractor",
+   "set": "8Bit Shots",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 113474,
+    "value": 2054640,
+    "hanger": 173248,
+    "london_store": 25344
+   }
+  },
+  {
+   "label": "Epicenter",
+   "set": "Epicenter",
+   "parallel": "",
+   "odds": {
+    "value": 280
+   }
+  },
+  {
+   "label": "Epicenter Foilfractor",
+   "set": "Epicenter",
+   "parallel": "Foilfractor",
+   "odds": {
+    "value": 82163
+   }
+  },
+  {
+   "label": "Home Pitch Advantage",
+   "set": "Home Pitch Advantage",
+   "parallel": "",
+   "odds": {
+    "hobby": 288,
+    "london_store": 288
+   }
+  },
+  {
+   "label": "Home Pitch Advantage Red",
+   "set": "Home Pitch Advantage",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 14087,
+    "london_store": 14087
+   }
+  },
+  {
+   "label": "Home Pitch Advantage Foilfractor",
+   "set": "Home Pitch Advantage",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 68084,
+    "london_store": 68084
+   }
+  },
+  {
+   "label": "Mindgame",
+   "set": "Mindgame",
+   "parallel": "",
+   "odds": {
+    "hobby": 1152,
+    "london_store": 1152
+   }
+  },
+  {
+   "label": "Murals",
+   "set": "Murals",
+   "parallel": "",
+   "odds": {
+    "hobby": 2304,
+    "london_store": 2304
+   }
+  },
+  {
+   "label": "Jigsaw",
+   "set": "Jigsaw",
+   "parallel": "",
+   "odds": {
+    "hobby": 8362,
+    "london_store": 8362
+   }
+  },
+  {
+   "label": "Hype",
+   "set": "Hype",
+   "parallel": "",
+   "odds": {
+    "hobby": 68084
+   }
+  },
+  {
+   "label": "The Grail",
+   "set": "The Grail",
+   "parallel": "",
+   "odds": {
+    "hobby": 27980,
+    "london_store": 27980
+   }
+  },
+  {
+   "label": "Ucc Sketch Cards",
+   "set": "UCC Sketch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 10639,
+    "london_store": 10639
+   }
+  },
+  {
+   "label": "Gold Framed Messi Anniversary Sketch Cards",
+   "set": "Gold Framed Messi Anniversary Sketch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 107502
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Green",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Green",
+   "odds": {
+    "carnaval": 5
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Purple",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Purple",
+   "odds": {
+    "carnaval": 6
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Yellow",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Yellow",
+   "odds": {
+    "carnaval": 9
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Orange",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Orange",
+   "odds": {
+    "carnaval": 17
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Black",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Black",
+   "odds": {
+    "carnaval": 42
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Red",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Red",
+   "odds": {
+    "carnaval": 83
+   }
+  },
+  {
+   "label": "Carnaval Base Cards Samba Gold",
+   "set": "Carnaval Base Cards Samba",
+   "parallel": "Gold",
+   "odds": {
+    "carnaval": 408
+   }
+  },
+  {
+   "label": "Brazilian Artists",
+   "set": "Brazilian Artists",
+   "parallel": "",
+   "odds": {
+    "carnaval": 8
+   }
+  },
+  {
+   "label": "Carnaval Mindgame",
+   "set": "Carnaval Mindgame",
+   "parallel": "",
+   "odds": {
+    "carnaval": 96
+   }
+  },
+  {
+   "label": "Base Cards Sunflower",
+   "set": "Base",
+   "parallel": "Cards Sunflower",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Blue Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 23,
+    "retail": 20
+   }
+  },
+  {
+   "label": "Base Cards Green Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 33,
+    "retail": 33
+   }
+  },
+  {
+   "label": "Base Cards Purple Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 42,
+    "retail": 49
+   }
+  },
+  {
+   "label": "Base Cards Yellow Sunflower",
+   "set": "Base",
+   "parallel": "Cards Yellow Sunflower",
+   "odds": {
+    "hobby": 63,
+    "retail": 73
+   }
+  },
+  {
+   "label": "Base Cards Orange Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 126,
+    "retail": 146
+   }
+  },
+  {
+   "label": "Base Cards Black Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 335,
+    "retail": 292
+   }
+  },
+  {
+   "label": "Base Cards Red Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 670,
+    "retail": 582
+   }
+  },
+  {
+   "label": "Base Cards Gold Sunflower",
+   "set": "Gold Framed Messi Anniversary Sketch Cards",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 3012,
+    "retail": 4241
+   }
+  },
+  {
+   "label": "Base Cards Diamond Plaid",
+   "set": "Base",
+   "parallel": "Cards Diamond Plaid",
+   "odds": {
+    "retail": 1
+   }
+  },
+  {
+   "label": "Base Cards Yellow Diamond Plaid",
+   "set": "Base",
+   "parallel": "Cards Yellow Diamond Plaid",
+   "odds": {
+    "retail": 2
+   }
+  },
+  {
+   "label": "Base Cards Pink Diamond Plaid",
+   "set": "Base",
+   "parallel": "Cards Pink Diamond Plaid",
+   "odds": {
+    "retail": 5
+   }
+  },
+  {
+   "label": "Base Cards Green Diamond Plaid",
+   "set": "Base",
+   "parallel": "Diamond Plaid",
+   "odds": {
+    "retail": 10
+   }
+  },
+  {
+   "label": "Base Cards Red Diamond Plaid",
+   "set": "Base",
+   "parallel": "Diamond Plaid",
+   "odds": {
+    "retail": 50
+   }
+  },
+  {
+   "label": "Born Champ Ucc Japan",
+   "set": "Born Champ",
+   "parallel": "Ucc Japan",
+   "odds": {
+    "hobby": 6,
+    "retail": 3
+   }
+  },
+  {
+   "label": "Born Champ Ucc Japan Yellow Sunflower",
+   "set": "Born Champ",
+   "parallel": "Yellow Sunflower",
+   "odds": {
+    "hobby": 835,
+    "retail": 975
+   }
+  },
+  {
+   "label": "Born Champ Ucc Japan Orange Sunflower",
+   "set": "Born Champ",
+   "parallel": "Orange Sunflower",
+   "odds": {
+    "hobby": 1760,
+    "retail": 1620
+   }
+  },
+  {
+   "label": "Born Champ Ucc Japan Black Sunflower",
+   "set": "Born Champ",
+   "parallel": "Black Sunflower",
+   "odds": {
+    "hobby": 4016,
+    "retail": 5768
+   }
+  },
+  {
+   "label": "Born Champ Ucc Japan Red Sunflower",
+   "set": "Born Champ",
+   "parallel": "Red Sunflower",
+   "odds": {
+    "hobby": 8242,
+    "retail": 9612
+   }
+  },
+  {
+   "label": "Born Champ Ucc Japan Gold Sunflower",
+   "set": "Born Champ",
+   "parallel": "Gold Sunflower",
+   "odds": {
+    "hobby": 39147,
+    "retail": 48060
+   }
+  },
+  {
+   "label": "Pitch Heroes",
+   "set": "Pitch Heroes",
+   "parallel": "",
+   "odds": {
+    "hobby": 6,
+    "retail": 3
+   }
+  },
+  {
+   "label": "Pitch Heroes Yellow Sunflower",
+   "set": "Pitch Heroes",
+   "parallel": "Yellow Sunflower",
+   "odds": {
+    "hobby": 835,
+    "retail": 975
+   }
+  },
+  {
+   "label": "Pitch Heroes Orange Sunflower",
+   "set": "Pitch Heroes",
+   "parallel": "Orange Sunflower",
+   "odds": {
+    "hobby": 1760,
+    "retail": 1620
+   }
+  },
+  {
+   "label": "Pitch Heroes Black Sunflower",
+   "set": "Pitch Heroes",
+   "parallel": "Black Sunflower",
+   "odds": {
+    "hobby": 4016,
+    "retail": 5768
+   }
+  },
+  {
+   "label": "Pitch Heroes Red Sunflower",
+   "set": "Pitch Heroes",
+   "parallel": "Red Sunflower",
+   "odds": {
+    "hobby": 8242,
+    "retail": 9612
+   }
+  },
+  {
+   "label": "Pitch Heroes Gold Sunflower",
+   "set": "Pitch Heroes",
+   "parallel": "Gold Sunflower",
+   "odds": {
+    "hobby": 39147,
+    "retail": 48060
+   }
+  },
+  {
+   "label": "Legends Of Nippon",
+   "set": "Legends Of Nippon",
+   "parallel": "",
+   "odds": {
+    "hobby": 21,
+    "retail": 9
+   }
+  },
+  {
+   "label": "Legends Of Nippon Yellow Sunflower",
+   "set": "Legends Of Nippon",
+   "parallel": "Yellow Sunflower",
+   "odds": {
+    "hobby": 2499,
+    "retail": 2943
+   }
+  },
+  {
+   "label": "Legends Of Nippon Orange Sunflower",
+   "set": "Legends Of Nippon",
+   "parallel": "Orange Sunflower",
+   "odds": {
+    "hobby": 5052,
+    "retail": 5768
+   }
+  },
+  {
+   "label": "Legends Of Nippon Black Sunflower",
+   "set": "Legends Of Nippon",
+   "parallel": "Black Sunflower",
+   "odds": {
+    "hobby": 12363,
+    "retail": 14418
+   }
+  },
+  {
+   "label": "Legends Of Nippon Red Sunflower",
+   "set": "Legends Of Nippon",
+   "parallel": "Red Sunflower",
+   "odds": {
+    "hobby": 24725,
+    "retail": 28836
+   }
+  },
+  {
+   "label": "Legends Of Nippon Gold Sunflower",
+   "set": "Legends Of Nippon",
+   "parallel": "Gold Sunflower",
+   "odds": {
+    "hobby": 117440,
+    "retail": 144178
+   }
+  },
+  {
+   "label": "Base Cards Cherry Blossom Variations",
+   "set": "Base",
+   "parallel": "Cards Cherry Blossom Variations",
+   "odds": {
+    "hobby": 288
+   }
+  },
+  {
+   "label": "Base Cards Egg",
+   "set": "Base",
+   "parallel": "Cards Egg",
+   "odds": {
+    "spring_tin": 1
+   }
+  },
+  {
+   "label": "Base Cards Rabbits",
+   "set": "Base",
+   "parallel": "Cards Rabbits",
+   "odds": {
+    "spring_tin": 8
+   }
+  },
+  {
+   "label": "Base Cards Flowers",
+   "set": "Base",
+   "parallel": "Cards Flowers",
+   "odds": {
+    "spring_tin": 16
+   }
+  },
+  {
+   "label": "Base Cards Umbrella",
+   "set": "Base",
+   "parallel": "Cards Umbrella",
+   "odds": {
+    "spring_tin": 79
+   }
+  },
+  {
+   "label": "Base Cards Watering Can",
+   "set": "Base",
+   "parallel": "Cards Watering Can",
+   "odds": {
+    "spring_tin": 158
+   }
+  },
+  {
+   "label": "Base Cards Birds",
+   "set": "Base",
+   "parallel": "Cards Birds",
+   "odds": {
+    "spring_tin": 782
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Aqua",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Blue",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Green",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Purple",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Gold",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 36
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Orange",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 72
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Black",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 179
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Red",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 367
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Cards Superfractor",
+   "set": "Ultimate Stage Chrome",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 1774
+   }
+  },
+  {
+   "label": "Regency Chrome Cards Orange",
+   "set": "Regency Chrome",
+   "parallel": "Orange",
+   "odds": {
+    "london_store": 2
+   }
+  },
+  {
+   "label": "Regency Chrome Cards Black",
+   "set": "Regency Chrome",
+   "parallel": "Black",
+   "odds": {
+    "london_store": 5
+   }
+  },
+  {
+   "label": "Regency Chrome Cards Red",
+   "set": "Regency Chrome",
+   "parallel": "Red",
+   "odds": {
+    "london_store": 9
+   }
+  },
+  {
+   "label": "Regency Chrome Cards Superfractor",
+   "set": "Regency Chrome",
+   "parallel": "Superfractor",
+   "odds": {
+    "london_store": 44
+   }
+  },
+  {
+   "label": "Base Autos",
+   "set": "Base Autographs",
+   "parallel": "Base Autos",
+   "odds": {
+    "hobby": 150,
+    "value": 280,
+    "hanger": 112,
+    "london_store": 109,
+    "spring_tin": 894
+   }
+  },
+  {
+   "label": "Base Autos Blue",
+   "set": "Base Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 387,
+    "value": 2320,
+    "hanger": 498,
+    "london_store": 386
+   }
+  },
+  {
+   "label": "Base Autos Green",
+   "set": "Base Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 562,
+    "value": 1953,
+    "hanger": 652,
+    "london_store": 738,
+    "spring_tin": 6253
+   }
+  },
+  {
+   "label": "Base Autos Green Inferno Holo",
+   "set": "Base",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 1053
+   }
+  },
+  {
+   "label": "Base Autos Black And White",
+   "set": "Base Autographs",
+   "parallel": "Black And White",
+   "odds": {
+    "hobby": 640,
+    "value": 3331,
+    "hanger": 799,
+    "london_store": 612,
+    "spring_tin": 10630
+   }
+  },
+  {
+   "label": "Base Autos Gold",
+   "set": "Base Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 767,
+    "value": 4402,
+    "hanger": 978,
+    "london_store": 1141,
+    "spring_tin": 10630
+   }
+  },
+  {
+   "label": "Base Autos Gold Inferno Holo",
+   "set": "Base",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 835
+   }
+  },
+  {
+   "label": "Base Autos Orange",
+   "set": "Base Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1451,
+    "value": 7888,
+    "hanger": 1830,
+    "london_store": 1394,
+    "spring_tin": 15186
+   }
+  },
+  {
+   "label": "Base Autos Orange Inferno Holo",
+   "set": "Base",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 1366
+   }
+  },
+  {
+   "label": "Base Autos Black",
+   "set": "Base Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 3274,
+    "value": 19719,
+    "hanger": 4052,
+    "london_store": 4181,
+    "spring_tin": 17717
+   }
+  },
+  {
+   "label": "Base Autos Black Inferno Holo",
+   "set": "Base",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 2892
+   }
+  },
+  {
+   "label": "Base Autos Red",
+   "set": "Base Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 6547,
+    "value": 35213,
+    "hanger": 8103,
+    "london_store": 6272,
+    "spring_tin": 106299
+   }
+  },
+  {
+   "label": "Base Autos Red Inferno Holo",
+   "set": "Base",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 5245
+   }
+  },
+  {
+   "label": "Base Autos Foilfractor",
+   "set": "Base Autographs",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 32421,
+    "value": 197190,
+    "hanger": 56717,
+    "london_store": 25085,
+    "spring_tin": 106299
+   }
+  },
+  {
+   "label": "Future Stars Autos",
+   "set": "Future Stars Autographs",
+   "parallel": "Future Stars Autos",
+   "odds": {
+    "hobby": 1187,
+    "value": 3944,
+    "hanger": 1319,
+    "london_store": 896,
+    "spring_tin": 1899
+   }
+  },
+  {
+   "label": "Future Stars Autos Blue",
+   "set": "Future Stars Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 3410,
+    "value": 11465,
+    "hanger": 3782,
+    "london_store": 2788,
+    "spring_tin": 6253
+   }
+  },
+  {
+   "label": "Future Stars Autos Green",
+   "set": "Future Stars Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 5278,
+    "value": 17298,
+    "hanger": 5672,
+    "london_store": 4181,
+    "spring_tin": 6253
+   }
+  },
+  {
+   "label": "Future Stars Autos Green Inferno Holo",
+   "set": "Future Stars Autos Green",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 6944
+   }
+  },
+  {
+   "label": "Future Stars Autos Black And White",
+   "set": "Future Stars Autographs",
+   "parallel": "Black And White",
+   "odds": {
+    "hobby": 7093,
+    "value": 22930,
+    "hanger": 7090,
+    "london_store": 6272,
+    "spring_tin": 6253
+   }
+  },
+  {
+   "label": "Future Stars Autos Gold",
+   "set": "Future Stars Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 9370,
+    "value": 28999,
+    "hanger": 9453,
+    "london_store": 8362,
+    "spring_tin": 6253
+   }
+  },
+  {
+   "label": "Future Stars Autos Gold Inferno Holo",
+   "set": "Future Stars Autos Gold",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 6895
+   }
+  },
+  {
+   "label": "Future Stars Autos Orange",
+   "set": "Future Stars Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 18402,
+    "value": 57998,
+    "hanger": 18906,
+    "london_store": 12543,
+    "spring_tin": 15186
+   }
+  },
+  {
+   "label": "Future Stars Autos Orange Inferno Holo",
+   "set": "Future Stars Autos Orange",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 11879
+   }
+  },
+  {
+   "label": "Future Stars Autos Black",
+   "set": "Future Stars Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 47501,
+    "value": 140850,
+    "hanger": 56717,
+    "london_store": 25085,
+    "spring_tin": 35433
+   }
+  },
+  {
+   "label": "Future Stars Autos Black Inferno Holo",
+   "set": "Future Stars Autos Black",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 28999
+   }
+  },
+  {
+   "label": "Future Stars Autos Red",
+   "set": "Future Stars Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 92842,
+    "value": 328650,
+    "hanger": 86717,
+    "london_store": 25085,
+    "spring_tin": 76299
+   }
+  },
+  {
+   "label": "Future Stars Autos Red Inferno Holo",
+   "set": "Future Stars Autos Red",
+   "parallel": "Inferno Holo",
+   "odds": {
+    "value": 57998
+   }
+  },
+  {
+   "label": "Future Stars Autos Foilfractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 408504,
+    "value": 1985950,
+    "hanger": 173248
+   }
+  },
+  {
+   "label": "Teammates Dual Autos",
+   "set": "Teammates Dual Autographs",
+   "parallel": "Teammates Dual Autos",
+   "odds": {
+    "hobby": 58358,
+    "value": 197190,
+    "hanger": 56717
+   }
+  },
+  {
+   "label": "Teammates Dual Autos Orange",
+   "set": "Teammates Dual Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 113474,
+    "value": 492975,
+    "hanger": 86717
+   }
+  },
+  {
+   "label": "Teammates Dual Autos Black",
+   "set": "Teammates Dual Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 70432,
+    "value": 246488,
+    "hanger": 86717
+   }
+  },
+  {
+   "label": "Teammates Dual Autos Red",
+   "set": "Teammates Dual Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 120149,
+    "value": 492975,
+    "hanger": 173248,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Teammates Dual Autos Foilfractor",
+   "set": "Teammates Dual Autographs",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 510630,
+    "value": 1985950
+   }
+  },
+  {
+   "label": "Roots Autos",
+   "set": "Roots",
+   "parallel": "Autos",
+   "odds": {
+    "hobby": 10475,
+    "value": 36517,
+    "hanger": 11344,
+    "london_store": 8362
+   }
+  },
+  {
+   "label": "Roots Autos Foilfractor",
+   "set": "Roots Autographs",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 226947,
+    "value": 985950,
+    "hanger": 173248
+   }
+  },
+  {
+   "label": "Best Of The Best Autos",
+   "set": "Best Of The Best",
+   "parallel": "Autos",
+   "odds": {
+    "hobby": 4450,
+    "value": 15650,
+    "hanger": 5157,
+    "london_store": 4181
+   }
+  },
+  {
+   "label": "Best Of The Best Autos Foilfractor",
+   "set": "Best Of The Best Autos",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 291789,
+    "value": 985950
+   }
+  },
+  {
+   "label": "Topps 1955 Chrome Autos Gold Refractor",
+   "set": "Topps 1955 Chrome Autos",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 2622,
+    "london_store": 2509
+   }
+  },
+  {
+   "label": "Topps 1955 Chrome Autos Orange Refractor",
+   "set": "Topps 1955 Chrome Autos",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3811,
+    "london_store": 3584
+   }
+  },
+  {
+   "label": "Topps 1955 Chrome Autos Black Refractor",
+   "set": "Topps 1955 Chrome Autos",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 6134,
+    "london_store": 8362
+   }
+  },
+  {
+   "label": "Topps 1955 Chrome Autos Red Refractor",
+   "set": "Topps 1955 Chrome Autos",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10422,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Topps 1955 Chrome Autos Superfractor",
+   "set": "Topps 1955 Chrome Autos Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 52373,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Marks Of Excellence Green Foil",
+   "set": "Marks Of Excellence",
+   "parallel": "Green Foil",
+   "odds": {
+    "hobby": 29602,
+    "value": 98595,
+    "hanger": 34359,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Marks Of Excellence Gold Foil",
+   "set": "Marks Of Excellence",
+   "parallel": "Gold Foil",
+   "odds": {
+    "hobby": 9820,
+    "value": 33999,
+    "hanger": 11344,
+    "london_store": 8362
+   }
+  },
+  {
+   "label": "Marks Of Excellence Orange Foil",
+   "set": "Marks Of Excellence",
+   "parallel": "Orange Foil",
+   "odds": {
+    "hobby": 17021,
+    "value": 57998,
+    "hanger": 18906,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Marks Of Excellence Purple Foil",
+   "set": "Marks Of Excellence",
+   "parallel": "Purple Foil",
+   "odds": {
+    "hobby": 42553,
+    "value": 140850,
+    "hanger": 43312,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Marks Of Excellence Red Foil",
+   "set": "Marks Of Excellence",
+   "parallel": "Red Foil",
+   "odds": {
+    "hobby": 88806,
+    "value": 328650,
+    "hanger": 86717
+   }
+  },
+  {
+   "label": "Marks Of Excellence Black Foil",
+   "set": "Marks Of Excellence",
+   "parallel": "Black Foil",
+   "odds": {
+    "hobby": 340420,
+    "value": 1985950
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Autograph Cards Base",
+   "set": "Ultimate Stage Chrome Cards Autograph",
+   "parallel": "Ultimate Stage Chrome Autograph Cards Base",
+   "odds": {
+    "hobby": 34
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Autograph Cards Red",
+   "set": "Ultimate Stage Chrome Cards Autograph",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 613
+   }
+  },
+  {
+   "label": "Ultimate Stage Chrome Autograph Cards Superfractor",
+   "set": "Ultimate Stage Chrome Cards Autograph",
+   "parallel": "Ultimate Stage Chrome Autograph Cards Superfractor",
+   "odds": {
+    "hobby": 3040
+   }
+  },
+  {
+   "label": "Regency Chrome Autograph Cards Base",
+   "set": "Regency Chrome Cards Autographs",
+   "parallel": "Regency Chrome Autograph Cards Base",
+   "odds": {
+    "london_store": 12
+   }
+  },
+  {
+   "label": "Regency Chrome Autograph Cards Red",
+   "set": "Regency Chrome Cards Autographs",
+   "parallel": "Red",
+   "odds": {
+    "london_store": 15
+   }
+  },
+  {
+   "label": "Regency Chrome Autograph Cards Superfractor",
+   "set": "Regency Chrome Cards Autographs",
+   "parallel": "Regency Chrome Autograph Cards Superfractor",
+   "odds": {
+    "london_store": 71
+   }
+  },
+  {
+   "label": "Base Autos Sunflower",
+   "set": "Base Autographs",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 116,
+    "retail": 176
+   }
+  },
+  {
+   "label": "Base Autos Yellow Sunflower",
+   "set": "Base Autographs",
+   "parallel": "Yellow Sunflower",
+   "odds": {
+    "hobby": 199,
+    "retail": 412
+   }
+  },
+  {
+   "label": "Base Autos Orange Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 341,
+    "retail": 1442
+   }
+  },
+  {
+   "label": "Base Autos Black Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 771,
+    "retail": 2884
+   }
+  },
+  {
+   "label": "Base Autos Red Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 1350,
+    "retail": 7209
+   }
+  },
+  {
+   "label": "Base Autos Gold Sunflower",
+   "set": "Base",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 7012,
+    "retail": 14418
+   }
+  },
+  {
+   "label": "Future Stars Autos Sunflower",
+   "set": "Future Stars Autographs",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 763,
+    "retail": 1442
+   }
+  },
+  {
+   "label": "Future Stars Autos Yellow Sunflower",
+   "set": "Future Stars Autographs",
+   "parallel": "Yellow Sunflower",
+   "odds": {
+    "hobby": 1950,
+    "retail": 3204
+   }
+  },
+  {
+   "label": "Future Stars Autos Orange Sunflower",
+   "set": "Future Stars Autos Orange",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 3309,
+    "retail": 5768
+   }
+  },
+  {
+   "label": "Future Stars Autos Black Sunflower",
+   "set": "Future Stars Autos Black",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 7962,
+    "retail": 18023
+   }
+  },
+  {
+   "label": "Future Stars Autos Red Sunflower",
+   "set": "Future Stars Autos Red",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 16199,
+    "retail": 28836
+   }
+  },
+  {
+   "label": "Future Stars Autos Gold Sunflower",
+   "set": "Future Stars Autos Gold",
+   "parallel": "Sunflower",
+   "odds": {
+    "hobby": 67109
+   }
+  },
+  {
+   "label": "Carnaval Autographs",
+   "set": "Carnaval Autographs",
+   "parallel": "",
+   "odds": {
+    "carnaval": 39
+   }
+  },
+  {
+   "label": "Carnaval Autographs Yellow Samba",
+   "set": "Carnaval Autographs",
+   "parallel": "Yellow Samba",
+   "odds": {
+    "carnaval": 116
+   }
+  },
+  {
+   "label": "Carnaval Autographs Orange Samba",
+   "set": "Carnaval Autographs",
+   "parallel": "Orange Samba",
+   "odds": {
+    "carnaval": 191
+   }
+  },
+  {
+   "label": "Carnaval Autographs Black Samba",
+   "set": "Carnaval Autographs",
+   "parallel": "Black Samba",
+   "odds": {
+    "carnaval": 423
+   }
+  },
+  {
+   "label": "Carnaval Autographs Red Samba",
+   "set": "Carnaval Autographs",
+   "parallel": "Red Samba",
+   "odds": {
+    "carnaval": 732
+   }
+  },
+  {
+   "label": "Carnaval Autographs Gold Samba",
+   "set": "Carnaval Autographs",
+   "parallel": "Gold Samba",
+   "odds": {
+    "carnaval": 3627
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Base",
+   "set": "Topps Superstar Relics",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 130,
+    "london_store": 130
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Purple",
+   "set": "Topps Superstar Relics",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 197,
+    "london_store": 188
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Blue",
+   "set": "Topps Superstar Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 286,
+    "london_store": 273
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Green",
+   "set": "Topps Superstar Relics",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 434,
+    "london_store": 412
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Gold",
+   "set": "Topps Superstar Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 858,
+    "london_store": 810
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Orange",
+   "set": "Topps Superstar Relics",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1715,
+    "london_store": 1568
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Black",
+   "set": "Topps Superstar Relics",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4271,
+    "london_store": 4181
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Red",
+   "set": "Topps Superstar Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 8542,
+    "london_store": 8362
+   }
+  },
+  {
+   "label": "Topps Superstar Relics Foilfractor",
+   "set": "Topps Superstar Relics",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 42706,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Premium Class Relics",
+   "set": "Premium Class Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 6617,
+    "london_store": 6272
+   }
+  },
+  {
+   "label": "Premium Class Relics Red",
+   "set": "Premium Class Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 27633,
+    "london_store": 25085
+   }
+  },
+  {
+   "label": "Premium Class Relics Foilfractor",
+   "set": "Premium Class Relics",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 156586
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Base",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Base",
+   "odds": {
+    "value": 42
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Green",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Green",
+   "odds": {
+    "value": 430
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Gold",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Gold",
+   "odds": {
+    "value": 852
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Orange",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Orange",
+   "odds": {
+    "value": 1700
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Black",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Black",
+   "odds": {
+    "value": 4250
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Red",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Red",
+   "odds": {
+    "value": 8427
+   }
+  },
+  {
+   "label": "Starball Commemorative Relics Foilfractor",
+   "set": "Starball Commemorative Relics",
+   "parallel": "Foilfractor",
+   "odds": {
+    "value": 41082
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Topps Superstar Auto Relics",
+   "odds": {
+    "hobby": 840,
+    "london_store": 1004
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics Green",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 883,
+    "london_store": 837
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics Gold",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1398,
+    "london_store": 1792
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics Orange",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 2699,
+    "london_store": 3584
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics Black",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 6526,
+    "london_store": 4181
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics Red",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 13010,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Topps Superstar Auto Relics Foilfractor",
+   "set": "Topps Superstar Autographed Relics",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 63829
+   }
+  },
+  {
+   "label": "Premium Class Auto Relics",
+   "set": "Premium Class Autographed Relics",
+   "parallel": "Premium Class Auto Relics",
+   "odds": {
+    "hobby": 8337,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Premium Class Auto Relics Red",
+   "set": "Premium Class Autographed Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 26187,
+    "london_store": 12543
+   }
+  },
+  {
+   "label": "Premium Class Auto Relics Foilfractor",
+   "set": "Premium Class Autographed Relics",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 120149
+   }
+  },
+  {
+   "label": "Griezmann Ucl Milestones Auto Relic",
+   "set": "Griezmann UCL Milestone Autographed Relics",
+   "parallel": "Griezmann Ucl Milestones Auto Relic",
+   "odds": {
+    "hobby": 291789
+   }
+  },
+  {
+   "label": "Griezmann Ucl Milestones Auto Relic Club Logo",
+   "set": "Griezmann UCL Milestone Autographed Relics",
+   "parallel": "Club Logo",
+   "odds": {
+    "hobby": 2042520
+   }
+  },
+  {
+   "label": "Griezmann Ucl Milestones Auto Relic Starball",
+   "set": "Griezmann UCL Milestone Autographed Relics",
+   "parallel": "Starball",
+   "odds": {
+    "hobby": 2042520
+   }
+  },
+  {
+   "label": "Griezmann Ucl Milestones Auto Relic Laundry Tag",
+   "set": "Griezmann UCL Milestone Autographed Relics",
+   "parallel": "Laundry Tag",
+   "odds": {
+    "hobby": 2042520
+   }
+  }
+ ]
+}

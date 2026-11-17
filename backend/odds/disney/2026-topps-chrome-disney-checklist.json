@@ -1,0 +1,1919 @@
+{
+ "version": 1,
+ "sport": "disney",
+ "checklist_id": "2026-topps-chrome-disney-checklist",
+ "product_label": "2026 Topps Chrome Disney",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "cee",
+   "label": "CEE",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "ea",
+   "label": "EA",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "se",
+   "label": "SE",
+   "channel": "retail",
+   "group": "value"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base Set",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 1,
+    "cee": 1,
+    "ea": 1,
+    "se": 1
+   }
+  },
+  {
+   "label": "Base Card Refractor",
+   "set": "Base Set",
+   "parallel": "Card Refractor",
+   "odds": {
+    "hobby": 2,
+    "cee": 3,
+    "ea": 3,
+    "se": 3
+   }
+  },
+  {
+   "label": "Base Card Magenta Refractor",
+   "set": "Base Set",
+   "parallel": "Card Magenta Refractor",
+   "odds": {
+    "hobby": 21,
+    "cee": 69,
+    "ea": 68,
+    "se": 68
+   }
+  },
+  {
+   "label": "Base Card Pink Refractor",
+   "set": "Base Set",
+   "parallel": "Card Pink Refractor",
+   "odds": {
+    "hobby": 33,
+    "cee": 109,
+    "ea": 109,
+    "se": 109
+   }
+  },
+  {
+   "label": "Base Card Yellow and Green Raywave",
+   "set": "Base Set",
+   "parallel": "Card Yellow and Green Raywave",
+   "odds": {
+    "hobby": 37,
+    "cee": 121,
+    "ea": 121,
+    "se": 121
+   }
+  },
+  {
+   "label": "Base Card Aqua Refractor",
+   "set": "Base Set",
+   "parallel": "Card Aqua Refractor",
+   "odds": {
+    "hobby": 42,
+    "cee": 138,
+    "ea": 138,
+    "se": 138
+   }
+  },
+  {
+   "label": "Base Card Purple and Light Green Shimmer Refractor",
+   "set": "Base Set",
+   "parallel": "Card Purple and Light Green Shimmer Refractor",
+   "odds": {
+    "hobby": 47,
+    "cee": 157,
+    "ea": 157,
+    "se": 157
+   }
+  },
+  {
+   "label": "Base Card Blue Refractor",
+   "set": "Base Set",
+   "parallel": "Card Blue Refractor",
+   "odds": {
+    "hobby": 55,
+    "cee": 181,
+    "ea": 181,
+    "se": 181
+   }
+  },
+  {
+   "label": "Base Card Dark Blue and Light Blue Lava",
+   "set": "Base Set",
+   "parallel": "Card Dark Blue and Light Blue Lava",
+   "odds": {
+    "hobby": 66,
+    "cee": 218,
+    "ea": 217,
+    "se": 218
+   }
+  },
+  {
+   "label": "Base Card 101 Dalmatians Black and White Shimmer",
+   "set": "Base Set",
+   "parallel": "Card 101 Dalmatians Black and White Shimmer",
+   "odds": {
+    "hobby": 81,
+    "cee": 269,
+    "ea": 269,
+    "se": 269
+   }
+  },
+  {
+   "label": "Base Card Green Refractor",
+   "set": "Base Set",
+   "parallel": "Card Green Refractor",
+   "odds": {
+    "hobby": 83,
+    "cee": 274,
+    "ea": 274,
+    "se": 274
+   }
+  },
+  {
+   "label": "Base Card Purple Refractor",
+   "set": "Base Set",
+   "parallel": "Card Purple Refractor",
+   "odds": {
+    "hobby": 109,
+    "cee": 363,
+    "ea": 362,
+    "se": 362
+   }
+  },
+  {
+   "label": "Base Card Gold Refractor",
+   "set": "Base Set",
+   "parallel": "Card Gold Refractor",
+   "odds": {
+    "hobby": 163,
+    "cee": 543,
+    "ea": 543,
+    "se": 543
+   }
+  },
+  {
+   "label": "Base Card Pearl Refractor",
+   "set": "Base Set",
+   "parallel": "Card Pearl Refractor",
+   "odds": {
+    "hobby": 266,
+    "cee": 888,
+    "ea": 885,
+    "se": 887
+   }
+  },
+  {
+   "label": "Base Card Mickey Mouse Red and Black Refractor",
+   "set": "Base Set",
+   "parallel": "Card Mickey Mouse Red and Black Refractor",
+   "odds": {
+    "hobby": 291,
+    "cee": 969,
+    "ea": 970,
+    "se": 970
+   }
+  },
+  {
+   "label": "Base Card Orange Refractor",
+   "set": "Base Set",
+   "parallel": "Card Orange Refractor",
+   "odds": {
+    "hobby": 326,
+    "cee": 1085,
+    "ea": 1085,
+    "se": 1087
+   }
+  },
+  {
+   "label": "Base Card Black Refractor",
+   "set": "Base Set",
+   "parallel": "Card Black Refractor",
+   "odds": {
+    "hobby": 814,
+    "cee": 2712,
+    "ea": 2705,
+    "se": 2719
+   }
+  },
+  {
+   "label": "Base Card Red Refractor",
+   "set": "Base Set",
+   "parallel": "Card Red Refractor",
+   "odds": {
+    "hobby": 1628,
+    "cee": 5423,
+    "ea": 5486,
+    "se": 5413
+   }
+  },
+  {
+   "label": "Base Card Superfractor",
+   "set": "Base Set",
+   "parallel": "Card Superfractor",
+   "odds": {
+    "hobby": 6686,
+    "cee": 34858,
+    "ea": 64000,
+    "se": 31622
+   }
+  },
+  {
+   "label": "Base Card Prism Refractor",
+   "set": "Base Set",
+   "parallel": "Card Prism Refractor",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Card Aqua Wave",
+   "set": "Base Set",
+   "parallel": "Card Aqua Wave",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Base Card Blue Wave",
+   "set": "Base Set",
+   "parallel": "Card Blue Wave",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Base Card Green Wave",
+   "set": "Base Set",
+   "parallel": "Card Green Wave",
+   "odds": {
+    "hobby": 42
+   }
+  },
+  {
+   "label": "Base Card Gold Wave",
+   "set": "Base Set",
+   "parallel": "Card Gold Wave",
+   "odds": {
+    "hobby": 83
+   }
+  },
+  {
+   "label": "Base Card When You Wish Upon a Star Refractor",
+   "set": "Base Set",
+   "parallel": "Card When You Wish Upon a Star Refractor",
+   "odds": {
+    "hobby": 283
+   }
+  },
+  {
+   "label": "Base Card Red Wave",
+   "set": "Base Set",
+   "parallel": "Card Red Wave",
+   "odds": {
+    "hobby": 831
+   }
+  },
+  {
+   "label": "Base Card X-Fractor",
+   "set": "Base Set",
+   "parallel": "Card X-Fractor",
+   "odds": {
+    "cee": 2,
+    "ea": 2,
+    "se": 2
+   }
+  },
+  {
+   "label": "Base Card Raywave",
+   "set": "Base Set",
+   "parallel": "Card Raywave",
+   "odds": {
+    "cee": 4,
+    "ea": 4,
+    "se": 4
+   }
+  },
+  {
+   "label": "Base Card Pink Mini Diamond",
+   "set": "Base Set",
+   "parallel": "Card Pink Mini Diamond",
+   "odds": {
+    "cee": 53,
+    "ea": 53,
+    "se": 53
+   }
+  },
+  {
+   "label": "Base Card Aqua Mini Diamond",
+   "set": "Base Set",
+   "parallel": "Card Aqua Mini Diamond",
+   "odds": {
+    "cee": 66,
+    "ea": 66,
+    "se": 66
+   }
+  },
+  {
+   "label": "Base Card Blue Mini Diamond",
+   "set": "Base Set",
+   "parallel": "Card Blue Mini Diamond",
+   "odds": {
+    "cee": 87,
+    "ea": 87,
+    "se": 87
+   }
+  },
+  {
+   "label": "Base Card Green Mini Diamond",
+   "set": "Base Set",
+   "parallel": "Card Green Mini Diamond",
+   "odds": {
+    "cee": 132,
+    "ea": 132,
+    "se": 132
+   }
+  },
+  {
+   "label": "Darkwing Duck 35th Anniversary",
+   "set": "Darkwing Duck 35th Anniversary",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "cee": 10,
+    "ea": 10,
+    "se": 10
+   }
+  },
+  {
+   "label": "Darkwing Duck 35th Anniversary Orange Refractor",
+   "set": "Darkwing Duck 35th Anniversary",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Darkwing Duck 35th Anniversary Black Refractor",
+   "set": "Darkwing Duck 35th Anniversary",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Darkwing Duck 35th Anniversary Red Refractor",
+   "set": "Darkwing Duck 35th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Alice in Wonderland 75th Anniversary",
+   "set": "Alice In Wonderland 75th Anniversary",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "cee": 10,
+    "ea": 10,
+    "se": 10
+   }
+  },
+  {
+   "label": "Alice in Wonderland 75th Anniversary Orange Refractor",
+   "set": "Alice In Wonderland 75th Anniversary",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Alice in Wonderland 75th Anniversary Black Refractor",
+   "set": "Alice In Wonderland 75th Anniversary",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Alice in Wonderland 75th Anniversary Red Refractor",
+   "set": "Alice In Wonderland 75th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Cars 20th Anniversary",
+   "set": "Cars 20th Anniversary",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "cee": 10,
+    "ea": 10,
+    "se": 10
+   }
+  },
+  {
+   "label": "Cars 20th Anniversary Orange Refractor",
+   "set": "Cars 20th Anniversary",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Cars 20th Anniversary Black Refractor",
+   "set": "Cars 20th Anniversary",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Cars 20th Anniversary Red Refractor",
+   "set": "Cars 20th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Monsters, Inc. 25th Anniversary",
+   "set": "Monsters Inc. 25th Anniversary",
+   "parallel": "Monsters, Inc. 25th Anniversary",
+   "odds": {
+    "hobby": 7,
+    "cee": 7,
+    "ea": 7,
+    "se": 7
+   }
+  },
+  {
+   "label": "Monsters, Inc. 25th Anniversary Orange Refractor",
+   "set": "Monsters Inc. 25th Anniversary",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4349,
+    "cee": 14353,
+    "ea": 14770,
+    "se": 14305
+   }
+  },
+  {
+   "label": "Monsters, Inc. 25th Anniversary Black Refractor",
+   "set": "Monsters Inc. 25th Anniversary",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 10932,
+    "cee": 34858,
+    "ea": 38400,
+    "se": 35342
+   }
+  },
+  {
+   "label": "Monsters, Inc. 25th Anniversary Red Refractor",
+   "set": "Monsters Inc. 25th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 21863,
+    "cee": 81334,
+    "ea": 64000,
+    "se": 75100
+   }
+  },
+  {
+   "label": "Disney Channel",
+   "set": "Disney Channel",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "cee": 5,
+    "ea": 5,
+    "se": 5
+   }
+  },
+  {
+   "label": "Disney Channel Orange Refractor",
+   "set": "Disney Channel",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3262,
+    "cee": 11091,
+    "ea": 10667,
+    "se": 10924
+   }
+  },
+  {
+   "label": "Disney Channel Black Refractor",
+   "set": "Disney Channel",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 8171,
+    "cee": 27112,
+    "ea": 27429,
+    "se": 27310
+   }
+  },
+  {
+   "label": "Disney Channel Red Refractor",
+   "set": "Disney Channel",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Disney Channel Superfractor",
+   "set": "Disney Channel",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 80890,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 300400
+   }
+  },
+  {
+   "label": "Disney Ink and Paint",
+   "set": "Disney Ink And Paint",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "cee": 10,
+    "ea": 10,
+    "se": 10
+   }
+  },
+  {
+   "label": "Disney Ink and Paint Mickey Mouse Red and Black Refractor",
+   "set": "Disney Ink And Paint",
+   "parallel": "Mickey Mouse Red and Black Refractor",
+   "odds": {
+    "hobby": 5820,
+    "cee": 18770,
+    "ea": 19200,
+    "se": 19381
+   }
+  },
+  {
+   "label": "Disney Ink and Paint Orange Refractor",
+   "set": "Disney Ink And Paint",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Disney Ink and Paint Black Refractor",
+   "set": "Disney Ink And Paint",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Disney Ink and Paint Red Refractor",
+   "set": "Disney Ink And Paint",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Future Stars",
+   "set": "Future Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "cee": 10,
+    "ea": 10,
+    "se": 10
+   }
+  },
+  {
+   "label": "Future Stars Mickey Mouse Red and Black Refractor",
+   "set": "Future Stars",
+   "parallel": "Mickey Mouse Red and Black Refractor",
+   "odds": {
+    "hobby": 5820,
+    "cee": 18770,
+    "ea": 19200,
+    "se": 19381
+   }
+  },
+  {
+   "label": "Future Stars Orange Refractor",
+   "set": "Future Stars",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Future Stars Black Refractor",
+   "set": "Future Stars",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Future Stars Red Refractor",
+   "set": "Future Stars",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Iconic Moments",
+   "set": "Iconic Moments",
+   "parallel": "",
+   "odds": {
+    "hobby": 7,
+    "cee": 7,
+    "ea": 7,
+    "se": 7
+   }
+  },
+  {
+   "label": "Iconic Moments Mickey Mouse Red and Black Refractor",
+   "set": "Iconic Moments",
+   "parallel": "Mickey Mouse Red and Black Refractor",
+   "odds": {
+    "hobby": 3871,
+    "cee": 12843,
+    "ea": 12800,
+    "se": 13061
+   }
+  },
+  {
+   "label": "Iconic Moments Orange Refractor",
+   "set": "Iconic Moments",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4349,
+    "cee": 14353,
+    "ea": 14770,
+    "se": 14305
+   }
+  },
+  {
+   "label": "Iconic Moments Black Refractor",
+   "set": "Iconic Moments",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 10932,
+    "cee": 34858,
+    "ea": 38400,
+    "se": 35342
+   }
+  },
+  {
+   "label": "Iconic Moments Red Refractor",
+   "set": "Iconic Moments",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 21863,
+    "cee": 81334,
+    "ea": 64000,
+    "se": 75100
+   }
+  },
+  {
+   "label": "Base Card Image Variations Base Speckle",
+   "set": "Base Set",
+   "parallel": "Card Image Variations Base Speckle",
+   "odds": {
+    "hobby": 543,
+    "cee": 1808,
+    "ea": 1812,
+    "se": 1810
+   }
+  },
+  {
+   "label": "Base Card Image Variations Mickey Mouse Red and Black",
+   "set": "Base Set",
+   "parallel": "Card Image Variations Mickey Mouse Red and Black",
+   "odds": {
+    "hobby": 5820,
+    "cee": 18770,
+    "ea": 19200,
+    "se": 19381
+   }
+  },
+  {
+   "label": "Base Card Image Variations Orange Speckle",
+   "set": "Base Set",
+   "parallel": "Card Image Variations Orange Speckle",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Base Card Image Variations Black Speckle",
+   "set": "Base Set",
+   "parallel": "Card Image Variations Black Speckle",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Base Card Image Variations Red Speckle",
+   "set": "Base Set",
+   "parallel": "Card Image Variations Red Speckle",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 3262,
+    "cee": 11091,
+    "ea": 10667,
+    "se": 10924
+   }
+  },
+  {
+   "label": "Mickey & Friends MLB Home Jersey Set",
+   "set": "Mickey And Friends MLB Home Jerseys",
+   "parallel": "Mickey & Friends MLB Home Jersey Set",
+   "odds": {
+    "hobby": 987,
+    "cee": 3298,
+    "ea": 3311,
+    "se": 3284
+   }
+  },
+  {
+   "label": "Mickey & Friends MLB Home Jersey Set Black Refractor",
+   "set": "Mickey And Friends MLB Home Jerseys",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 5429,
+    "cee": 18770,
+    "ea": 17455,
+    "se": 18207
+   }
+  },
+  {
+   "label": "Mickey & Friends MLB Home Jersey Set Red Refractor",
+   "set": "Mickey And Friends MLB Home Jerseys",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10932,
+    "cee": 34858,
+    "ea": 38400,
+    "se": 35342
+   }
+  },
+  {
+   "label": "Mickey & Friends MLB Home Jersey Set Superfractor",
+   "set": "Mickey And Friends MLB Home Jerseys",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 53927,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "Scorched Base Speckle",
+   "set": "Scorched",
+   "parallel": "Speckle",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Scorched Black Refractor",
+   "set": "Scorched",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Scorched Red Refractor",
+   "set": "Scorched",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 67408,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "Toy Story 5 First Edition Base Speckle",
+   "set": "Toy Story 5 First Edition",
+   "parallel": "Speckle",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Toy Story 5 First Edition Black Refractor",
+   "set": "Toy Story 5 First Edition",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Toy Story 5 First Edition Red Refractor",
+   "set": "Toy Story 5 First Edition",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 67408,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "Golden Age Posters Sparkle Base",
+   "set": "Golden Age Posters",
+   "parallel": "Sparkle Base",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 97622
+   }
+  },
+  {
+   "label": "Golden Age Posters Black Refractor",
+   "set": "Golden Age Posters",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 209189
+   }
+  },
+  {
+   "label": "Golden Age Posters Red Refractor",
+   "set": "Golden Age Posters",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 67408,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 366080
+   }
+  },
+  {
+   "label": "Tron Tek",
+   "set": "Tron Tek",
+   "parallel": "",
+   "odds": {
+    "hobby": 96,
+    "cee": 160,
+    "ea": 160,
+    "se": 160
+   }
+  },
+  {
+   "label": "Tron Tek Gold",
+   "set": "Tron Tek",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 3262,
+    "cee": 11091,
+    "ea": 10667,
+    "se": 10924
+   }
+  },
+  {
+   "label": "Tron Tek Orange",
+   "set": "Tron Tek",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Tron Tek Green",
+   "set": "Tron Tek",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Tron Tek Red",
+   "set": "Tron Tek",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Art of Disney",
+   "set": "Art Of Disney",
+   "parallel": "",
+   "odds": {
+    "hobby": 99,
+    "cee": 200,
+    "ea": 200,
+    "se": 200
+   }
+  },
+  {
+   "label": "Art of Disney Kaleidoscope",
+   "set": "Art Of Disney",
+   "parallel": "Kaleidoscope",
+   "odds": {
+    "hobby": 6524,
+    "cee": 22182,
+    "ea": 21334,
+    "se": 21458
+   }
+  },
+  {
+   "label": "Art of Disney Shimmer",
+   "set": "Art Of Disney",
+   "parallel": "Shimmer",
+   "odds": {
+    "hobby": 16509,
+    "cee": 61000,
+    "ea": 48000,
+    "se": 54619
+   }
+  },
+  {
+   "label": "Art of Disney Raywave",
+   "set": "Art Of Disney",
+   "parallel": "Raywave",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Disney Reflections",
+   "set": "Disney Reflections",
+   "parallel": "",
+   "odds": {
+    "hobby": 511,
+    "cee": 880,
+    "ea": 880,
+    "se": 880
+   }
+  },
+  {
+   "label": "Disney Reflections Kaleidoscope",
+   "set": "Disney Reflections",
+   "parallel": "Kaleidoscope",
+   "odds": {
+    "hobby": 13047,
+    "cee": 40667,
+    "ea": 48000,
+    "se": 42915
+   }
+  },
+  {
+   "label": "Disney Reflections Shimmer",
+   "set": "Disney Reflections",
+   "parallel": "Shimmer",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Disney Reflections Raywave",
+   "set": "Disney Reflections",
+   "parallel": "Raywave",
+   "odds": {
+    "hobby": 67408,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "High School Musical 20th Anniversary",
+   "set": "High School Musical 20th Anniversary",
+   "parallel": "",
+   "odds": {
+    "cee": 8,
+    "ea": 8,
+    "se": 8
+   }
+  },
+  {
+   "label": "High School Musical 20th Anniversary Orange Refractor",
+   "set": "High School Musical 20th Anniversary",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "cee": 9984,
+    "ea": 9984,
+    "se": 9984
+   }
+  },
+  {
+   "label": "High School Musical 20th Anniversary Black Refractor",
+   "set": "High School Musical 20th Anniversary",
+   "parallel": "Black Refractor",
+   "odds": {
+    "cee": 25342,
+    "ea": 25342,
+    "se": 25342
+   }
+  },
+  {
+   "label": "High School Musical 20th Anniversary Red Refractor",
+   "set": "High School Musical 20th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "cee": 51677,
+    "ea": 51677,
+    "se": 51677
+   }
+  },
+  {
+   "label": "High School Musical 20th Anniversary Superfractor",
+   "set": "High School Musical 20th Anniversary",
+   "parallel": "Superfractor",
+   "odds": {
+    "cee": 329440,
+    "ea": 329440,
+    "se": 329440
+   }
+  },
+  {
+   "label": "Moana 10th Anniversary",
+   "set": "Moana 10th Anniversary",
+   "parallel": "",
+   "odds": {
+    "cee": 4,
+    "ea": 4,
+    "se": 4
+   }
+  },
+  {
+   "label": "Moana 10th Anniversary Orange Refractor",
+   "set": "Moana 10th Anniversary",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "cee": 4320,
+    "ea": 4320,
+    "se": 4320
+   }
+  },
+  {
+   "label": "Moana 10th Anniversary Black Refractor",
+   "set": "Moana 10th Anniversary",
+   "parallel": "Black Refractor",
+   "odds": {
+    "cee": 10800,
+    "ea": 10800,
+    "se": 10800
+   }
+  },
+  {
+   "label": "Moana 10th Anniversary Red Refractor",
+   "set": "Moana 10th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "cee": 22060,
+    "ea": 22060,
+    "se": 22060
+   }
+  },
+  {
+   "label": "Moana 10th Anniversary Superfractor",
+   "set": "Moana 10th Anniversary",
+   "parallel": "Superfractor",
+   "odds": {
+    "cee": 148115,
+    "ea": 148115,
+    "se": 148115
+   }
+  },
+  {
+   "label": "Facsimile Autographs",
+   "set": "Facsimile Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3871,
+    "cee": 12843,
+    "ea": 12800,
+    "se": 13061
+   }
+  },
+  {
+   "label": "Facsimile Autographs Black Refractor",
+   "set": "Facsimile Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 10932,
+    "cee": 34858,
+    "ea": 38400,
+    "se": 35342
+   }
+  },
+  {
+   "label": "Facsimile Autographs Red Refractor",
+   "set": "Facsimile Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 21863,
+    "cee": 81334,
+    "ea": 64000,
+    "se": 75100
+   }
+  },
+  {
+   "label": "Dual Facsimile Autographs",
+   "set": "Disney Chrome Dual Facsimile Autographs",
+   "parallel": "Dual Facsimile Autographs",
+   "odds": {
+    "hobby": 9746,
+    "cee": 30500,
+    "ea": 32000,
+    "se": 31622
+   }
+  },
+  {
+   "label": "Dual Facsimile Autographs Black Refractor",
+   "set": "Disney Chrome Dual Facsimile Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 26964,
+    "cee": 81334,
+    "ea": 192000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Dual Facsimile Autographs Red Refractor",
+   "set": "Disney Chrome Dual Facsimile Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 53927,
+    "cee": 244000,
+    "ea": 296000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "Triple Facsimile Autographs",
+   "set": "Disney Chrome Triple Facsimile Autographs",
+   "parallel": "Triple Facsimile Autographs",
+   "odds": {
+    "hobby": 11556,
+    "cee": 40667,
+    "ea": 38400,
+    "se": 37550
+   }
+  },
+  {
+   "label": "Triple Facsimile Autographs Black Refractor",
+   "set": "Disney Chrome Triple Facsimile Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 32356,
+    "cee": 122000,
+    "ea": 96000,
+    "se": 100134
+   }
+  },
+  {
+   "label": "Triple Facsimile Autographs Red Refractor",
+   "set": "Disney Chrome Triple Facsimile Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 67408,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "Quad Facsimile Autographs",
+   "set": "Disney Chrome Quad Facsimile Autographs",
+   "parallel": "Quad Facsimile Autographs",
+   "odds": {
+    "hobby": 19260,
+    "cee": 61000,
+    "ea": 64000,
+    "se": 66756
+   }
+  },
+  {
+   "label": "Quad Facsimile Autographs Black Refractor",
+   "set": "Disney Chrome Quad Facsimile Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 53927,
+    "cee": 244000,
+    "ea": 192000,
+    "se": 200267
+   }
+  },
+  {
+   "label": "Quad Facsimile Autographs Red Refractor",
+   "set": "Disney Chrome Quad Facsimile Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 101112,
+    "cee": 244000,
+    "ea": 592000,
+    "se": 300400
+   }
+  },
+  {
+   "label": "Dumbo 85th Anniversary Base Speckle",
+   "set": "Dumbo 85th Anniversary",
+   "parallel": "Speckle",
+   "odds": {
+    "hobby": 9987
+   }
+  },
+  {
+   "label": "Dumbo 85th Anniversary Red Refractor",
+   "set": "Dumbo 85th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 404448
+   }
+  },
+  {
+   "label": "Dumbo 85th Anniversary Superfractor",
+   "set": "Dumbo 85th Anniversary",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 808896
+   }
+  },
+  {
+   "label": "Winnie the Pooh 100th Anniversary Base Speckle Refractor",
+   "set": "Winnie The Pooh 100th Anniversary",
+   "parallel": "Speckle Refractor",
+   "odds": {
+    "hobby": 839
+   }
+  },
+  {
+   "label": "Winnie the Pooh 100th Anniversary Red Refractor",
+   "set": "Winnie The Pooh 100th Anniversary",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 17211
+   }
+  },
+  {
+   "label": "Winnie the Pooh 100th Anniversary Superfractor",
+   "set": "Winnie The Pooh 100th Anniversary",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 115557
+   }
+  },
+  {
+   "label": "Super Strength Chrome Base Speckle",
+   "set": "Super Strength Chrome",
+   "parallel": "Speckle",
+   "odds": {
+    "hobby": 8426
+   }
+  },
+  {
+   "label": "Super Strength Chrome Black Refractor",
+   "set": "Super Strength Chrome",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 17211
+   }
+  },
+  {
+   "label": "Super Strength Chrome Red Refractor",
+   "set": "Super Strength Chrome",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 36768
+   }
+  },
+  {
+   "label": "Super Strength Chrome Superfractor",
+   "set": "Super Strength Chrome",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 161780
+   }
+  },
+  {
+   "label": "Lilo and Stitch Base Sparkle",
+   "set": "Lilo and Stitch Base Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 1425
+   }
+  },
+  {
+   "label": "Lilo and Stitch Orange Refractor",
+   "set": "Lilo And Stitch Shadowback",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4844
+   }
+  },
+  {
+   "label": "Lilo and Stitch Black Refractor",
+   "set": "Lilo And Stitch Shadowback",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 12074
+   }
+  },
+  {
+   "label": "Lilo and Stitch Red Refractor",
+   "set": "Lilo And Stitch Shadowback",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 23792
+   }
+  },
+  {
+   "label": "Lilo and Stitch Superfractor",
+   "set": "Lilo And Stitch Shadowback",
+   "parallel": "Lilo and Stitch Superfractor",
+   "odds": {
+    "hobby": 115557
+   }
+  },
+  {
+   "label": "The Heart of Te Fiti Base Sparkle",
+   "set": "The Heart of Te Fiti Base Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 11393
+   }
+  },
+  {
+   "label": "The Heart of Te Fiti Orange Refractor",
+   "set": "The Heart Of Te Fiti Shadowbox",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 33704
+   }
+  },
+  {
+   "label": "The Heart of Te Fiti Black Refractor",
+   "set": "The Heart Of Te Fiti Shadowbox",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 80890
+   }
+  },
+  {
+   "label": "The Heart of Te Fiti Red Refractor",
+   "set": "The Heart Of Te Fiti Shadowbox",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 161780
+   }
+  },
+  {
+   "label": "The Heart of Te Fiti Superfractor",
+   "set": "The Heart Of Te Fiti Shadowbox",
+   "parallel": "The Heart of Te Fiti Superfractor",
+   "odds": {
+    "hobby": 808896
+   }
+  },
+  {
+   "label": "The Rose Base Sparkle",
+   "set": "The Rose Base Sparkle",
+   "parallel": "",
+   "odds": {
+    "hobby": 23792
+   }
+  },
+  {
+   "label": "The Rose Black Refractor",
+   "set": "The Rose Shadowbox",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 80890
+   }
+  },
+  {
+   "label": "The Rose Red Refractor",
+   "set": "The Rose Shadowbox",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 161780
+   }
+  },
+  {
+   "label": "The Rose Superfractor",
+   "set": "The Rose Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 808896
+   }
+  },
+  {
+   "label": "Mickey and Friends Ukiyo-e Base",
+   "set": "Mickey And Friends Ukiyo-E",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 335
+   }
+  },
+  {
+   "label": "Mickey and Friends Ukiyo-e Kaleidoscope",
+   "set": "Mickey And Friends Ukiyo-E",
+   "parallel": "Kaleidoscope",
+   "odds": {
+    "hobby": 3371
+   }
+  },
+  {
+   "label": "Mickey and Friends Ukiyo-e Shimmer",
+   "set": "Mickey And Friends Ukiyo-E",
+   "parallel": "Shimmer",
+   "odds": {
+    "hobby": 8426
+   }
+  },
+  {
+   "label": "Mickey and Friends Ukiyo-e Raywave",
+   "set": "Mickey And Friends Ukiyo-E",
+   "parallel": "Raywave",
+   "odds": {
+    "hobby": 17211
+   }
+  },
+  {
+   "label": "Mickey and Friends Ukiyo-e Superfractor",
+   "set": "Mickey And Friends Ukiyo-E",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 80890
+   }
+  },
+  {
+   "label": "Sketch Cards Gold Base",
+   "set": "Sketch Cards",
+   "parallel": "Gold Base",
+   "odds": {
+    "hobby": 336,
+    "cee": 1374,
+    "ea": 1374,
+    "se": 1374
+   }
+  },
+  {
+   "label": "Sketch Cards Black",
+   "set": "Sketch Cards",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 3275,
+    "cee": 16997,
+    "ea": 16997,
+    "se": 16997
+   }
+  },
+  {
+   "label": "Disney Interal Artists Sketch",
+   "set": "Disney Interal Artists Sketch",
+   "parallel": "",
+   "odds": {
+    "hobby": 27893
+   }
+  },
+  {
+   "label": "Pixar Interal Artists Sketch",
+   "set": "Pixar Interal Artists Sketch",
+   "parallel": "",
+   "odds": {
+    "hobby": 40445
+   }
+  },
+  {
+   "label": "Authentic Autographs Refractor Base",
+   "set": "Authentic Autographs",
+   "parallel": "Refractor Base",
+   "odds": {
+    "hobby": 296,
+    "cee": 1210,
+    "ea": 1210,
+    "se": 1210
+   }
+  },
+  {
+   "label": "Authentic Autographs Gold Refractor",
+   "set": "Authentic Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 425,
+    "cee": 1737,
+    "ea": 1737,
+    "se": 1737
+   }
+  },
+  {
+   "label": "Authentic Autographs Mickey Mouse Red and Black Refractor",
+   "set": "Authentic Autographs",
+   "parallel": "Red and Black Refractor",
+   "odds": {
+    "hobby": 716,
+    "cee": 2929,
+    "ea": 2929,
+    "se": 2929
+   }
+  },
+  {
+   "label": "Authentic Autographs Orange Refractor",
+   "set": "Authentic Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 802,
+    "cee": 3282,
+    "ea": 3282,
+    "se": 3282
+   }
+  },
+  {
+   "label": "Authentic Autographs Black Refractor",
+   "set": "Authentic Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1950,
+    "cee": 7976,
+    "ea": 7976,
+    "se": 7976
+   }
+  },
+  {
+   "label": "Authentic Autographs Red Refractor",
+   "set": "Authentic Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 3889,
+    "cee": 15951,
+    "ea": 15951,
+    "se": 15951
+   }
+  },
+  {
+   "label": "Authentic Autographs Superfractor",
+   "set": "Authentic Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 19260,
+    "cee": 79754,
+    "ea": 79754,
+    "se": 79754
+   }
+  },
+  {
+   "label": "Cars Authentic Autographs Checker Flag X-Fractor",
+   "set": "Cars Authentic Autographs",
+   "parallel": "Checker Flag X-Fractor",
+   "odds": {
+    "hobby": 47583,
+    "cee": 207361,
+    "ea": 207361,
+    "se": 207360
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation",
+   "set": "Disney Channel",
+   "parallel": "Autograph Variation",
+   "odds": {
+    "hobby": 2064,
+    "cee": 8430,
+    "ea": 8430,
+    "se": 8430
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Green Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 2910,
+    "cee": 11918,
+    "ea": 11918,
+    "se": 11918
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Purple Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 3852,
+    "cee": 15710,
+    "ea": 15710,
+    "se": 15710
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Gold Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5778,
+    "cee": 23564,
+    "ea": 23564,
+    "se": 23564
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Mickey Mouse Red and Black Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Mickey Mouse Red and Black Refractor",
+   "odds": {
+    "hobby": 10240,
+    "cee": 41472,
+    "ea": 41472,
+    "se": 41472
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Orange Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 11556,
+    "cee": 47128,
+    "ea": 47128,
+    "se": 47128
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Black Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 28890,
+    "cee": 115200,
+    "ea": 115200,
+    "se": 115200
+   }
+  },
+  {
+   "label": "Disney Channel Autograph Variation Red Refractor",
+   "set": "Disney Channel Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 57779,
+    "cee": 259200,
+    "ea": 259200,
+    "se": 259200
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs",
+   "set": "Disney Princess Autographs",
+   "parallel": "Disney Princesses Autographs",
+   "odds": {
+    "hobby": 2879,
+    "cee": 11782,
+    "ea": 11782,
+    "se": 11782
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Green Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 2910,
+    "cee": 11918,
+    "ea": 11918,
+    "se": 11918
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Purple Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 3852,
+    "cee": 15710,
+    "ea": 15710,
+    "se": 15710
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Gold Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 5778,
+    "cee": 23564,
+    "ea": 23564,
+    "se": 23564
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Mickey Mouse Red and Black Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Mickey Mouse Red and Black Refractor",
+   "odds": {
+    "hobby": 10240,
+    "cee": 41472,
+    "ea": 41472,
+    "se": 41472
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Orange Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 11556,
+    "cee": 47128,
+    "ea": 47128,
+    "se": 47128
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Black Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 28890,
+    "cee": 115200,
+    "ea": 115200,
+    "se": 115200
+   }
+  },
+  {
+   "label": "Disney Princesses Autographs Red Refractor",
+   "set": "Disney Princess Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 57779,
+    "cee": 259200,
+    "ea": 259200,
+    "se": 259200
+   }
+  },
+  {
+   "label": "Disney Dual Autographs",
+   "set": "Disney Dual Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 14445,
+    "cee": 57600,
+    "ea": 57600,
+    "se": 57600
+   }
+  },
+  {
+   "label": "Disney Dual Autographs Red Refractor",
+   "set": "Disney Dual Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 28890,
+    "cee": 115200,
+    "ea": 115200,
+    "se": 115200
+   }
+  },
+  {
+   "label": "Disney Triple Autographs",
+   "set": "Disney Triple Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 40445,
+    "cee": 172800,
+    "ea": 172800,
+    "se": 172800
+   }
+  },
+  {
+   "label": "Disney Quad Autographs",
+   "set": "Disney Quad Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 36768,
+    "cee": 148115,
+    "ea": 148115,
+    "se": 148115
+   }
+  }
+ ]
+}

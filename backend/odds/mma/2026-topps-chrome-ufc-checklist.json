@@ -1,0 +1,2468 @@
+{
+ "version": 1,
+ "sport": "mma",
+ "checklist_id": "2026-topps-chrome-ufc-checklist",
+ "product_label": "2026 Topps Chrome UFC",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "breaker",
+   "label": "Breaker",
+   "channel": "hobby",
+   "group": "delight"
+  },
+  {
+   "key": "value",
+   "label": "Value",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base Set",
+   "parallel": "Base",
+   "odds": {
+    "value": 1
+   }
+  },
+  {
+   "label": "Base Refractor",
+   "set": "Base Set",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 3,
+    "value": 3,
+    "mega": 3
+   }
+  },
+  {
+   "label": "Base Prism Refractor",
+   "set": "Base Set",
+   "parallel": "Prism Refractor",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Negative Refractor",
+   "set": "Base Set",
+   "parallel": "Negative Refractor",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Sonar Refractor",
+   "set": "Base Set",
+   "parallel": "Sonar Refractor",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base UFC Glove Refractor",
+   "set": "Base Set",
+   "parallel": "UFC Glove Refractor",
+   "odds": {
+    "value": 2
+   }
+  },
+  {
+   "label": "Base Blue RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "Blue RayWave Refractor",
+   "odds": {
+    "value": 64
+   }
+  },
+  {
+   "label": "Base Purple RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "Purple RayWave Refractor",
+   "odds": {
+    "value": 128
+   }
+  },
+  {
+   "label": "Base Gold RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "Gold RayWave Refractor",
+   "odds": {
+    "value": 192
+   }
+  },
+  {
+   "label": "Base Orange RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "Orange RayWave Refractor",
+   "odds": {
+    "value": 383
+   }
+  },
+  {
+   "label": "Base Black RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "Black RayWave Refractor",
+   "odds": {
+    "value": 956
+   }
+  },
+  {
+   "label": "Base Red RayWave Refractor",
+   "set": "Base Set",
+   "parallel": "Red RayWave Refractor",
+   "odds": {
+    "value": 1912
+   }
+  },
+  {
+   "label": "Base X-Fractors",
+   "set": "Base Set",
+   "parallel": "X-Fractors",
+   "odds": {
+    "mega": 1
+   }
+  },
+  {
+   "label": "Base Blue Mini Diamonds Refractor",
+   "set": "Base Set",
+   "parallel": "Blue Mini Diamonds Refractor",
+   "odds": {
+    "mega": 20
+   }
+  },
+  {
+   "label": "Base Purple Mini Diamonds Refractor",
+   "set": "Base Set",
+   "parallel": "Purple Mini Diamonds Refractor",
+   "odds": {
+    "mega": 39
+   }
+  },
+  {
+   "label": "Base Gold Mini Diamonds Refractor",
+   "set": "Base Set",
+   "parallel": "Gold Mini Diamonds Refractor",
+   "odds": {
+    "mega": 58
+   }
+  },
+  {
+   "label": "Base Orange Mini Diamonds Refractor",
+   "set": "Base Set",
+   "parallel": "Orange Mini Diamonds Refractor",
+   "odds": {
+    "mega": 115
+   }
+  },
+  {
+   "label": "Base Black Mini Diamonds Refractor",
+   "set": "Base Set",
+   "parallel": "Black Mini Diamonds Refractor",
+   "odds": {
+    "mega": 288
+   }
+  },
+  {
+   "label": "Base Red Mini Diamonds Refractor",
+   "set": "Base Set",
+   "parallel": "Red Mini Diamonds Refractor",
+   "odds": {
+    "mega": 575
+   }
+  },
+  {
+   "label": "Base Magenta Refractor",
+   "set": "Base Set",
+   "parallel": "Magenta Refractor",
+   "odds": {
+    "hobby": 13,
+    "breaker": 3,
+    "value": 83,
+    "mega": 55
+   }
+  },
+  {
+   "label": "Base Teal Refractor",
+   "set": "Base Set",
+   "parallel": "Teal Refractor",
+   "odds": {
+    "hobby": 17,
+    "breaker": 4,
+    "value": 111,
+    "mega": 73
+   }
+  },
+  {
+   "label": "Base Yellow Refractor",
+   "set": "Base Set",
+   "parallel": "Yellow Refractor",
+   "odds": {
+    "hobby": 19,
+    "breaker": 4,
+    "value": 120,
+    "mega": 79
+   }
+  },
+  {
+   "label": "Base Pink Refractor",
+   "set": "Base Set",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "hobby": 21,
+    "breaker": 5,
+    "value": 132,
+    "mega": 87
+   }
+  },
+  {
+   "label": "Base Aqua Refractor",
+   "set": "Base Set",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "hobby": 26,
+    "breaker": 6,
+    "value": 166,
+    "mega": 109
+   }
+  },
+  {
+   "label": "Base Blue Refractor",
+   "set": "Base Set",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 34,
+    "breaker": 8,
+    "value": 220,
+    "mega": 145
+   }
+  },
+  {
+   "label": "Base Green Refractor",
+   "set": "Base Set",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 52,
+    "breaker": 11,
+    "value": 333,
+    "mega": 219
+   }
+  },
+  {
+   "label": "Base Gold Refractor",
+   "set": "Base Set",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 102,
+    "breaker": 22,
+    "value": 660,
+    "mega": 434
+   }
+  },
+  {
+   "label": "Base Orange Refractor",
+   "set": "Base Set",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 204,
+    "breaker": 43,
+    "value": 1319,
+    "mega": 867
+   }
+  },
+  {
+   "label": "Base Black Refractor",
+   "set": "Base Set",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 509,
+    "breaker": 106,
+    "value": 3296,
+    "mega": 2167
+   }
+  },
+  {
+   "label": "Base OctaFractor",
+   "set": "Base Set",
+   "parallel": "OctaFractor",
+   "odds": {
+    "hobby": 636
+   }
+  },
+  {
+   "label": "Base Red Refractor",
+   "set": "Base Set",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1017,
+    "breaker": 211,
+    "value": 6592,
+    "mega": 4333
+   }
+  },
+  {
+   "label": "Base Superfractors",
+   "set": "Base Set",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 5081,
+    "breaker": 1054,
+    "value": 32959,
+    "mega": 21664
+   }
+  },
+  {
+   "label": "Base Blue Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Blue Geometric Refractor",
+   "odds": {
+    "breaker": 1
+   }
+  },
+  {
+   "label": "Base Green Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Green Geometric Refractor",
+   "odds": {
+    "breaker": 1
+   }
+  },
+  {
+   "label": "Base Gold Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 2
+   }
+  },
+  {
+   "label": "Base Orange Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 3
+   }
+  },
+  {
+   "label": "Base Purple Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 7
+   }
+  },
+  {
+   "label": "Base Red Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 13
+   }
+  },
+  {
+   "label": "Base Black Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 31
+   }
+  },
+  {
+   "label": "FrozenFractors(#'d -5,-4,-3,-2,-1)",
+   "set": "FrozenFractors(#'d -5,-4,-3,-2,-1)",
+   "parallel": "",
+   "odds": {
+    "hobby": 529
+   }
+  },
+  {
+   "label": "All-Action",
+   "set": "All Action",
+   "parallel": "All-Action",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "All-Action Refractor",
+   "set": "All Action",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "All-Action Blue Refractor",
+   "set": "All Action",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 71
+   }
+  },
+  {
+   "label": "All-Action Green Refractor",
+   "set": "All Action",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 107
+   }
+  },
+  {
+   "label": "All-Action Gold Refractor",
+   "set": "All Action",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 212
+   }
+  },
+  {
+   "label": "All-Action Orange Refractor",
+   "set": "All Action",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 423
+   }
+  },
+  {
+   "label": "All-Action Black Refractor",
+   "set": "All Action",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1057
+   }
+  },
+  {
+   "label": "All-Action Red Refractor",
+   "set": "All Action",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2114
+   }
+  },
+  {
+   "label": "All-Action Superfractors",
+   "set": "All Action",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 10567
+   }
+  },
+  {
+   "label": "All-Action Geometric Refractor",
+   "set": "All Action",
+   "parallel": "Geometric Refractor",
+   "odds": {
+    "breaker": 5
+   }
+  },
+  {
+   "label": "All-Action Gold Geometric Refractor",
+   "set": "All Action",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 5
+   }
+  },
+  {
+   "label": "All-Action Purple Geometric Refractor",
+   "set": "All Action",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "All-Action Black Geometric Refractor",
+   "set": "All Action",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 122
+   }
+  },
+  {
+   "label": "1986 Topps",
+   "set": "1986 Topps",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "1986 Topps Refractor",
+   "set": "1986 Topps",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "1986 Topps Blue Refractor",
+   "set": "1986 Topps",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 177
+   }
+  },
+  {
+   "label": "1986 Topps Green Refractor",
+   "set": "1986 Topps",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 267
+   }
+  },
+  {
+   "label": "1986 Topps Gold Refractor",
+   "set": "1986 Topps",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 529
+   }
+  },
+  {
+   "label": "1986 Topps Orange Refractor",
+   "set": "1986 Topps",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1057
+   }
+  },
+  {
+   "label": "1986 Topps Black Refractor",
+   "set": "1986 Topps",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2642
+   }
+  },
+  {
+   "label": "1986 Topps Red Refractor",
+   "set": "1986 Topps",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 5284
+   }
+  },
+  {
+   "label": "1986 Topps Superfractors",
+   "set": "1986 Topps",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 26417
+   }
+  },
+  {
+   "label": "1986 Topps Geometric Refractor",
+   "set": "1986 Topps",
+   "parallel": "Geometric Refractor",
+   "odds": {
+    "breaker": 12
+   }
+  },
+  {
+   "label": "1986 Topps Gold Geometric Refractor",
+   "set": "1986 Topps",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 13
+   }
+  },
+  {
+   "label": "1986 Topps Purple Geometric Refractor",
+   "set": "1986 Topps",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 61
+   }
+  },
+  {
+   "label": "1986 Topps Black Geometric Refractor",
+   "set": "1986 Topps",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 303
+   }
+  },
+  {
+   "label": "Striking Distance",
+   "set": "Striking Distance",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Striking Distance Refractor",
+   "set": "Striking Distance",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Striking Distance Blue Refractor",
+   "set": "Striking Distance",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 118
+   }
+  },
+  {
+   "label": "Striking Distance Green Refractor",
+   "set": "Striking Distance",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 178
+   }
+  },
+  {
+   "label": "Striking Distance Gold Refractor",
+   "set": "Striking Distance",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 353
+   }
+  },
+  {
+   "label": "Striking Distance Orange Refractor",
+   "set": "Striking Distance",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 705
+   }
+  },
+  {
+   "label": "Striking Distance Black Refractor",
+   "set": "Striking Distance",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1762
+   }
+  },
+  {
+   "label": "Striking Distance Red Refractor",
+   "set": "Striking Distance",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 3523
+   }
+  },
+  {
+   "label": "Striking Distance Superfractors",
+   "set": "Striking Distance",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 17612
+   }
+  },
+  {
+   "label": "Striking Distance Geometric Refractor",
+   "set": "Striking Distance",
+   "parallel": "Geometric Refractor",
+   "odds": {
+    "breaker": 8
+   }
+  },
+  {
+   "label": "Striking Distance Gold Geomtric Refractor",
+   "set": "Striking Distance",
+   "parallel": "Gold Geomtric Refractor",
+   "odds": {
+    "breaker": 9
+   }
+  },
+  {
+   "label": "Striking Distance Purple Geometric Refractor",
+   "set": "Striking Distance",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 41
+   }
+  },
+  {
+   "label": "Striking Distance Black Geometric Refractor",
+   "set": "Striking Distance",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 202
+   }
+  },
+  {
+   "label": "Big Ticket",
+   "set": "Big Ticket",
+   "parallel": "",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Big Ticket Gold Refractor",
+   "set": "Big Ticket",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 432
+   }
+  },
+  {
+   "label": "Big Ticket Black Refractor",
+   "set": "Big Ticket",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2157
+   }
+  },
+  {
+   "label": "Big Ticket Red Refractor",
+   "set": "Big Ticket",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 4313
+   }
+  },
+  {
+   "label": "Big Ticket Superfractors",
+   "set": "Big Ticket",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 21565
+   }
+  },
+  {
+   "label": "Split Decision",
+   "set": "Split Decision",
+   "parallel": "",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Split Decision Gold Refractor",
+   "set": "Split Decision",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 432
+   }
+  },
+  {
+   "label": "Split Decision Black Refractor",
+   "set": "Split Decision",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2157
+   }
+  },
+  {
+   "label": "Split Decision Red Refractor",
+   "set": "Split Decision",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 4313
+   }
+  },
+  {
+   "label": "Split Decision Superfractors",
+   "set": "Split Decision",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 21565
+   }
+  },
+  {
+   "label": "Fight Night Flashback",
+   "set": "Fight Night Flashbacks",
+   "parallel": "Fight Night Flashback",
+   "odds": {
+    "hobby": 71
+   }
+  },
+  {
+   "label": "Fight Night Flashback Gold Refractor",
+   "set": "Fight Night Flashbacks",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 540
+   }
+  },
+  {
+   "label": "Fight Night Flashback Black Refractor",
+   "set": "Fight Night Flashbacks",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2696
+   }
+  },
+  {
+   "label": "Fight Night Flashback Red Refractor",
+   "set": "Fight Night Flashbacks",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 5392
+   }
+  },
+  {
+   "label": "Fight Night Flashback Superfractors",
+   "set": "Fight Night Flashbacks",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 26956
+   }
+  },
+  {
+   "label": "Pulse Check",
+   "set": "Pulse Check",
+   "parallel": "",
+   "odds": {
+    "hobby": 94
+   }
+  },
+  {
+   "label": "Pulse Check Gold Refractor",
+   "set": "Pulse Check",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 719
+   }
+  },
+  {
+   "label": "Pulse Check Black Refractor",
+   "set": "Pulse Check",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3595
+   }
+  },
+  {
+   "label": "Pulse Check Red Refractor",
+   "set": "Pulse Check",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7189
+   }
+  },
+  {
+   "label": "Pulse Check Superfractors",
+   "set": "Pulse Check",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 35942
+   }
+  },
+  {
+   "label": "Youthquake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 94
+   }
+  },
+  {
+   "label": "Youthquake Gold Refractor",
+   "set": "Youthquake",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 719
+   }
+  },
+  {
+   "label": "Youthquake Black Refractor",
+   "set": "Youthquake",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3595
+   }
+  },
+  {
+   "label": "Youthquake Red Refractor",
+   "set": "Youthquake",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7189
+   }
+  },
+  {
+   "label": "Youthquake Superfractors",
+   "set": "Youthquake",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 35942
+   }
+  },
+  {
+   "label": "Global Warriors",
+   "set": "Global Warriors",
+   "parallel": "",
+   "odds": {
+    "value": 4,
+    "mega": 4
+   }
+  },
+  {
+   "label": "Global Warriors Refractor",
+   "set": "Global Warriors",
+   "parallel": "Refractor",
+   "odds": {
+    "value": 110,
+    "mega": 77
+   }
+  },
+  {
+   "label": "Global Warriors Aqua Refractor",
+   "set": "Global Warriors",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "value": 549,
+    "mega": 385
+   }
+  },
+  {
+   "label": "Global Warriors Blue Refractor",
+   "set": "Global Warriors",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "value": 729,
+    "mega": 511
+   }
+  },
+  {
+   "label": "Global Warriors Green Refractor",
+   "set": "Global Warriors",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 1104,
+    "mega": 774
+   }
+  },
+  {
+   "label": "Global Warriors Gold Refractor",
+   "set": "Global Warriors",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "value": 2185,
+    "mega": 1531
+   }
+  },
+  {
+   "label": "Global Warriors Orange Refractor",
+   "set": "Global Warriors",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "value": 4370,
+    "mega": 3062
+   }
+  },
+  {
+   "label": "Global Warriors Black Refractor",
+   "set": "Global Warriors",
+   "parallel": "Black Refractor",
+   "odds": {
+    "value": 10924,
+    "mega": 7655
+   }
+  },
+  {
+   "label": "Global Warriors Red Refractor",
+   "set": "Global Warriors",
+   "parallel": "Red Refractor",
+   "odds": {
+    "value": 21847,
+    "mega": 15309
+   }
+  },
+  {
+   "label": "Global Warriors Superfractors",
+   "set": "Global Warriors",
+   "parallel": "Superfractors",
+   "odds": {
+    "value": 109235,
+    "mega": 76544
+   }
+  },
+  {
+   "label": "Allen & Ginter",
+   "set": "Allen And Ginter",
+   "parallel": "Allen & Ginter",
+   "odds": {
+    "value": 3,
+    "mega": 4
+   }
+  },
+  {
+   "label": "Allen & Ginter Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Refractor",
+   "odds": {
+    "value": 92,
+    "mega": 64
+   }
+  },
+  {
+   "label": "Allen & Ginter Aqua Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "value": 458,
+    "mega": 321
+   }
+  },
+  {
+   "label": "Allen & Ginter Blue Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "value": 607,
+    "mega": 426
+   }
+  },
+  {
+   "label": "Allen & Ginter Green Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 920,
+    "mega": 645
+   }
+  },
+  {
+   "label": "Allen & Ginter Gold Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "value": 1821,
+    "mega": 1276
+   }
+  },
+  {
+   "label": "Allen & Ginter Orange Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "value": 3642,
+    "mega": 2552
+   }
+  },
+  {
+   "label": "Allen & Ginter Black Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Black Refractor",
+   "odds": {
+    "value": 9103,
+    "mega": 6379
+   }
+  },
+  {
+   "label": "Allen & Ginter Red Refractor",
+   "set": "Allen And Ginter",
+   "parallel": "Red Refractor",
+   "odds": {
+    "value": 18206,
+    "mega": 12758
+   }
+  },
+  {
+   "label": "Allen & Ginter Superfractors",
+   "set": "Allen And Ginter",
+   "parallel": "Superfractors",
+   "odds": {
+    "value": 91029,
+    "mega": 63787
+   }
+  },
+  {
+   "label": "Manifesting Moments",
+   "set": "Manifesting Moments",
+   "parallel": "",
+   "odds": {
+    "value": 9,
+    "mega": 10
+   }
+  },
+  {
+   "label": "Manifesting Moments Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Refractor",
+   "odds": {
+    "value": 274,
+    "mega": 192
+   }
+  },
+  {
+   "label": "Manifesting Moments Aqua Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "value": 1373,
+    "mega": 962
+   }
+  },
+  {
+   "label": "Manifesting Moments Blue Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "value": 1821,
+    "mega": 1276
+   }
+  },
+  {
+   "label": "Manifesting Moments Green Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 2759,
+    "mega": 1933
+   }
+  },
+  {
+   "label": "Manifesting Moments Gold Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "value": 5462,
+    "mega": 3828
+   }
+  },
+  {
+   "label": "Manifesting Moments Orange Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "value": 10924,
+    "mega": 7655
+   }
+  },
+  {
+   "label": "Manifesting Moments Black Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Black Refractor",
+   "odds": {
+    "value": 27309,
+    "mega": 19136
+   }
+  },
+  {
+   "label": "Manifesting Moments Red Refractor",
+   "set": "Manifesting Moments",
+   "parallel": "Red Refractor",
+   "odds": {
+    "value": 54618,
+    "mega": 38272
+   }
+  },
+  {
+   "label": "Manifesting Moments Superfractors",
+   "set": "Manifesting Moments",
+   "parallel": "Superfractors",
+   "odds": {
+    "value": 273086,
+    "mega": 191360
+   }
+  },
+  {
+   "label": "In Your Face",
+   "set": "In Your Face",
+   "parallel": "",
+   "odds": {
+    "value": 6,
+    "mega": 7
+   }
+  },
+  {
+   "label": "In Your Face Refractor",
+   "set": "In Your Face",
+   "parallel": "Refractor",
+   "odds": {
+    "value": 183,
+    "mega": 128
+   }
+  },
+  {
+   "label": "In Your Face Aqua Refractor",
+   "set": "In Your Face",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "value": 915,
+    "mega": 642
+   }
+  },
+  {
+   "label": "In Your Face Blue Refractor",
+   "set": "In Your Face",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "value": 1214,
+    "mega": 851
+   }
+  },
+  {
+   "label": "In Your Face Green Refractor",
+   "set": "In Your Face",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 1839,
+    "mega": 1289
+   }
+  },
+  {
+   "label": "In Your Face Gold Refractor",
+   "set": "In Your Face",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "value": 3642,
+    "mega": 2552
+   }
+  },
+  {
+   "label": "In Your Face Orange Refractor",
+   "set": "In Your Face",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "value": 7283,
+    "mega": 5103
+   }
+  },
+  {
+   "label": "In Your Face Black Refractor",
+   "set": "In Your Face",
+   "parallel": "Black Refractor",
+   "odds": {
+    "value": 18206,
+    "mega": 12758
+   }
+  },
+  {
+   "label": "In Your Face Red Refractor",
+   "set": "In Your Face",
+   "parallel": "Red Refractor",
+   "odds": {
+    "value": 36412,
+    "mega": 25515
+   }
+  },
+  {
+   "label": "In Your Face Superfractors",
+   "set": "In Your Face",
+   "parallel": "Superfractors",
+   "odds": {
+    "value": 182058,
+    "mega": 127574
+   }
+  },
+  {
+   "label": "Impact Point",
+   "set": "Impact Points",
+   "parallel": "Impact Point",
+   "odds": {
+    "value": 5,
+    "mega": 5
+   }
+  },
+  {
+   "label": "Impact Point Refractor",
+   "set": "Impact Points",
+   "parallel": "Refractor",
+   "odds": {
+    "value": 137,
+    "mega": 96
+   }
+  },
+  {
+   "label": "Impact Point Aqua Refractor",
+   "set": "Impact Points",
+   "parallel": "Aqua Refractor",
+   "odds": {
+    "value": 687,
+    "mega": 481
+   }
+  },
+  {
+   "label": "Impact Point Blue Refractor",
+   "set": "Impact Points",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "value": 911,
+    "mega": 638
+   }
+  },
+  {
+   "label": "Impact Point Green Refractor",
+   "set": "Impact Points",
+   "parallel": "Green Refractor",
+   "odds": {
+    "value": 1380,
+    "mega": 967
+   }
+  },
+  {
+   "label": "Impact Point Gold Refractor",
+   "set": "Impact Points",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "value": 2731,
+    "mega": 1914
+   }
+  },
+  {
+   "label": "Impact Point Orange Refractor",
+   "set": "Impact Points",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "value": 5462,
+    "mega": 3828
+   }
+  },
+  {
+   "label": "Impact Point Black Refractor",
+   "set": "Impact Points",
+   "parallel": "Black Refractor",
+   "odds": {
+    "value": 13655,
+    "mega": 9568
+   }
+  },
+  {
+   "label": "Impact Point Red Refractor",
+   "set": "Impact Points",
+   "parallel": "Red Refractor",
+   "odds": {
+    "value": 27309,
+    "mega": 19136
+   }
+  },
+  {
+   "label": "Impact Point Superfractors",
+   "set": "Impact Points",
+   "parallel": "Superfractors",
+   "odds": {
+    "value": 136543,
+    "mega": 95680
+   }
+  },
+  {
+   "label": "Immortal Force",
+   "set": "Immortal Force",
+   "parallel": "",
+   "odds": {
+    "hobby": 288,
+    "breaker": 16,
+    "value": 480,
+    "mega": 240
+   }
+  },
+  {
+   "label": "Radiating Rookies",
+   "set": "Radiating Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 288,
+    "breaker": 16,
+    "value": 960,
+    "mega": 480
+   }
+  },
+  {
+   "label": "Kings & Queens",
+   "set": "Kings And Queens",
+   "parallel": "Kings & Queens",
+   "odds": {
+    "hobby": 72
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 1554,
+    "breaker": 81,
+    "value": 9558,
+    "mega": 1914
+   }
+  },
+  {
+   "label": "Helix Superfractor",
+   "set": "Helix",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 155393,
+    "breaker": 8080,
+    "value": 955800,
+    "mega": 191360
+   }
+  },
+  {
+   "label": "Hidden Gems",
+   "set": "Hidden Gems",
+   "parallel": "",
+   "odds": {
+    "hobby": 3582,
+    "breaker": 162,
+    "value": 152928,
+    "mega": 45927
+   }
+  },
+  {
+   "label": "Hidden Gems Citrine",
+   "set": "Hidden Gems",
+   "parallel": "Citrine",
+   "odds": {
+    "hobby": 17910,
+    "breaker": 808,
+    "value": 764640,
+    "mega": 229632
+   }
+  },
+  {
+   "label": "Hidden Gems Alexandrite",
+   "set": "Hidden Gems",
+   "parallel": "Alexandrite",
+   "odds": {
+    "hobby": 35820,
+    "breaker": 1616,
+    "value": 1529280,
+    "mega": 459264
+   }
+  },
+  {
+   "label": "Hidden Gems Painite",
+   "set": "Hidden Gems",
+   "parallel": "Painite",
+   "odds": {
+    "hobby": 179097,
+    "breaker": 8080,
+    "value": 7646400,
+    "mega": 2296320
+   }
+  },
+  {
+   "label": "Let's Go",
+   "set": "Let's Go",
+   "parallel": "",
+   "odds": {
+    "hobby": 3582,
+    "breaker": 162,
+    "value": 152928,
+    "mega": 45927
+   }
+  },
+  {
+   "label": "Let's Go Superfractor",
+   "set": "Let's Go",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 179097,
+    "breaker": 6060
+   }
+  },
+  {
+   "label": "Base Autograph Variations",
+   "set": "Base Set",
+   "parallel": "Autograph Variations",
+   "odds": {
+    "hobby": 17,
+    "breaker": 4,
+    "value": 161,
+    "mega": 33
+   }
+  },
+  {
+   "label": "Base Autograph Variations Refractor",
+   "set": "Base Set",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 47,
+    "breaker": 9,
+    "value": 462,
+    "mega": 93
+   }
+  },
+  {
+   "label": "Base Autograph Variations Blue Refractor",
+   "set": "Base Set",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 84,
+    "breaker": 16,
+    "value": 819,
+    "mega": 164
+   }
+  },
+  {
+   "label": "Base Autograph Variations Gold Refractor",
+   "set": "Base Set",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 243,
+    "breaker": 46,
+    "value": 2392,
+    "mega": 479
+   }
+  },
+  {
+   "label": "Base Autograph Variations Orange Refractor",
+   "set": "Base Set",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 485,
+    "breaker": 91,
+    "value": 4776,
+    "mega": 957
+   }
+  },
+  {
+   "label": "Base Autograph Variations Black Refractor",
+   "set": "Base Set",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1236,
+    "breaker": 232,
+    "value": 12165,
+    "mega": 2436
+   }
+  },
+  {
+   "label": "Base Autograph Variations Red Refractor",
+   "set": "Base Set",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2424,
+    "breaker": 454,
+    "value": 23866,
+    "mega": 4779
+   }
+  },
+  {
+   "label": "Base Autograph Variations Superfractors",
+   "set": "Base Set",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 12253,
+    "breaker": 2296,
+    "value": 120682,
+    "mega": 24162
+   }
+  },
+  {
+   "label": "Base Autograph Variations Geometric",
+   "set": "Base Set",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 3
+   }
+  },
+  {
+   "label": "Base Autograph Variations Gold Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 3
+   }
+  },
+  {
+   "label": "Base Autograph Variations Orange Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 6
+   }
+  },
+  {
+   "label": "Base Autograph Variations Purple Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 14
+   }
+  },
+  {
+   "label": "Base Autograph Variations Red Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 28
+   }
+  },
+  {
+   "label": "Base Autograph Variations Black Geometric Refractor",
+   "set": "Base Set",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 69
+   }
+  },
+  {
+   "label": "1986 Topps Signatures",
+   "set": "1986 Topps",
+   "parallel": "Signatures",
+   "odds": {
+    "hobby": 106,
+    "breaker": 20,
+    "value": 1037,
+    "mega": 208
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 182,
+    "breaker": 35,
+    "value": 1792,
+    "mega": 359
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Blue Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 241,
+    "breaker": 45,
+    "value": 2365,
+    "mega": 474
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Gold Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 721,
+    "breaker": 135,
+    "value": 7095,
+    "mega": 1421
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Orange Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1438,
+    "breaker": 270,
+    "value": 14160,
+    "mega": 2835
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Black Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3595,
+    "breaker": 674,
+    "value": 35400,
+    "mega": 7088
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Red Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7189,
+    "breaker": 1347,
+    "value": 70800,
+    "mega": 14175
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Superfractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 35942,
+    "breaker": 6734,
+    "value": 354000,
+    "mega": 70875
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Geometric",
+   "set": "1986 Topps Signatures",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 8
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Gold Geometric Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 9
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Orange Geometric Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 17
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Purple Geometric Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 41
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Red Geometric Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 81
+   }
+  },
+  {
+   "label": "1986 Topps Signatures Black Geometric Refractor",
+   "set": "1986 Topps Signatures",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 202
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 112,
+    "breaker": 21,
+    "value": 1103,
+    "mega": 221
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 191,
+    "breaker": 36,
+    "value": 1876,
+    "mega": 376
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Blue Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 248,
+    "breaker": 47,
+    "value": 2443,
+    "mega": 490
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Gold Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 745,
+    "breaker": 140,
+    "value": 7335,
+    "mega": 1469
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Orange Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1492,
+    "breaker": 280,
+    "value": 14689,
+    "mega": 2941
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Black Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3719,
+    "breaker": 697,
+    "value": 36621,
+    "mega": 7332
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Red Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7437,
+    "breaker": 1394,
+    "value": 73242,
+    "mega": 14664
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Superfractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 37181,
+    "breaker": 6966,
+    "value": 366207,
+    "mega": 73319
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Geometric",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 8
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Gold Geometric Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 9
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Orange Geometric Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 17
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Purple Geometric Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 42
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Red Geometric Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 84
+   }
+  },
+  {
+   "label": "Chrome Lineage Autographs Black Geometric Refractor",
+   "set": "Chrome Lineage Autographs",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 209
+   }
+  },
+  {
+   "label": "Marks of Champions",
+   "set": "Marks Of Champions",
+   "parallel": "",
+   "odds": {
+    "hobby": 309,
+    "breaker": 58,
+    "value": 3035,
+    "mega": 608
+   }
+  },
+  {
+   "label": "Marks of Champions Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 540,
+    "breaker": 101,
+    "value": 5310,
+    "mega": 1064
+   }
+  },
+  {
+   "label": "Marks of Champions Blue Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 719,
+    "breaker": 135,
+    "value": 7080,
+    "mega": 1418
+   }
+  },
+  {
+   "label": "Marks of Champions Gold Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 2360,
+    "breaker": 443,
+    "value": 23239,
+    "mega": 4653
+   }
+  },
+  {
+   "label": "Marks of Champions Orange Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4313,
+    "breaker": 808,
+    "value": 42480,
+    "mega": 8505
+   }
+  },
+  {
+   "label": "Marks of Champions Black Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 10783,
+    "breaker": 2020,
+    "value": 106200,
+    "mega": 21263
+   }
+  },
+  {
+   "label": "Marks of Champions Red Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 21565,
+    "breaker": 4040,
+    "value": 212400,
+    "mega": 42525
+   }
+  },
+  {
+   "label": "Marks of Champions Superfractor",
+   "set": "Marks Of Champions",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 107824,
+    "breaker": 20200,
+    "value": 1062000,
+    "mega": 212623
+   }
+  },
+  {
+   "label": "Marks of Champions Geometric",
+   "set": "Marks Of Champions",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 23
+   }
+  },
+  {
+   "label": "Marks of Champions Gold Geometric Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "Marks of Champions Orange Geometric Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 49
+   }
+  },
+  {
+   "label": "Marks of Champions Purple Geometric Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 122
+   }
+  },
+  {
+   "label": "Marks of Champions Red Geometric Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 243
+   }
+  },
+  {
+   "label": "Marks of Champions Black Geometric Refractor",
+   "set": "Marks Of Champions",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 606
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs",
+   "set": "Octagon Legends Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 419,
+    "breaker": 79,
+    "value": 4122,
+    "mega": 826
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 684,
+    "breaker": 129,
+    "value": 6735,
+    "mega": 1349
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Blue Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 799,
+    "breaker": 150,
+    "value": 7867,
+    "mega": 1575
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Gold Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 2201,
+    "breaker": 413,
+    "value": 21674,
+    "mega": 4340
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Orange Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4313,
+    "breaker": 808,
+    "value": 42480,
+    "mega": 8505
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Black Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 10783,
+    "breaker": 2020,
+    "value": 106200,
+    "mega": 21263
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Red Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 21565,
+    "breaker": 4040,
+    "value": 212400,
+    "mega": 42525
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Superfractors",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 107824,
+    "breaker": 20200,
+    "value": 1062000,
+    "mega": 212623
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Geometric",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Gold Geometric Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Orange Geometric Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 49
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Purple Geometric Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 122
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Red Geometric Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 243
+   }
+  },
+  {
+   "label": "Octagon Legends Autographs Black Geometric Refractor",
+   "set": "Octagon Legends Autographs",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 606
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 193,
+    "breaker": 37,
+    "value": 1898,
+    "mega": 380
+   }
+  },
+  {
+   "label": "Future Stars Autographs Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 305,
+    "breaker": 58,
+    "value": 2998,
+    "mega": 601
+   }
+  },
+  {
+   "label": "Future Stars Autographs Blue Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 400,
+    "breaker": 75,
+    "value": 3934,
+    "mega": 788
+   }
+  },
+  {
+   "label": "Future Stars Autographs Gold Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1199,
+    "breaker": 225,
+    "value": 11800,
+    "mega": 2363
+   }
+  },
+  {
+   "label": "Future Stars Autographs Orange Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 2360,
+    "breaker": 443,
+    "value": 23239,
+    "mega": 4653
+   }
+  },
+  {
+   "label": "Future Stars Autographs Black Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 5392,
+    "breaker": 1010,
+    "value": 53100,
+    "mega": 10632
+   }
+  },
+  {
+   "label": "Future Stars Autographs Red Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10783,
+    "breaker": 2020,
+    "value": 106200,
+    "mega": 21263
+   }
+  },
+  {
+   "label": "Future Stars Autographs Superfractors",
+   "set": "Future Stars Autographs",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 53912,
+    "breaker": 10100,
+    "value": 531000,
+    "mega": 106312
+   }
+  },
+  {
+   "label": "Future Stars Autographs Geometric",
+   "set": "Future Stars Autographs",
+   "parallel": "Geometric",
+   "odds": {
+    "breaker": 13
+   }
+  },
+  {
+   "label": "Future Stars Autographs Gold Geometric Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 13
+   }
+  },
+  {
+   "label": "Future Stars Autographs Orange Geometric Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 25
+   }
+  },
+  {
+   "label": "Future Stars Autographs Purple Geometric Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 61
+   }
+  },
+  {
+   "label": "Future Stars Autographs Red Geometric Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 122
+   }
+  },
+  {
+   "label": "Future Stars Autographs Black Geometric Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 303
+   }
+  },
+  {
+   "label": "Quoted Autographs",
+   "set": "Quoted Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 5446,
+    "breaker": 1021,
+    "value": 53637,
+    "mega": 10739
+   }
+  },
+  {
+   "label": "Quoted Autographs Red Refractor",
+   "set": "Quoted Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10783,
+    "breaker": 2020,
+    "value": 106200,
+    "mega": 21263
+   }
+  },
+  {
+   "label": "Quoted Autographs SuperFractor",
+   "set": "Quoted Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 53912,
+    "breaker": 10100,
+    "value": 531000,
+    "mega": 106312
+   }
+  },
+  {
+   "label": "Topps 2009 Variation Signatures",
+   "set": "Topps 2009 Variation Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 3893,
+    "breaker": 730,
+    "value": 38340,
+    "mega": 7676
+   }
+  },
+  {
+   "label": "Topps 2009 Variation Signatures Red Refractor",
+   "set": "Topps 2009 Variation Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7758,
+    "breaker": 1454,
+    "value": 76403,
+    "mega": 15297
+   }
+  },
+  {
+   "label": "Topps 2009 Variation Signatures SuperFractor",
+   "set": "Topps 2009 Variation Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 38509,
+    "breaker": 7215,
+    "value": 379286,
+    "mega": 75937
+   }
+  },
+  {
+   "label": "Vanquisher Ink",
+   "set": "Vanquisher Ink",
+   "parallel": "",
+   "odds": {
+    "hobby": 2434,
+    "breaker": 456,
+    "value": 23973,
+    "mega": 4800
+   }
+  },
+  {
+   "label": "Vanquisher Ink Red Refractor",
+   "set": "Vanquisher Ink",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 4879,
+    "breaker": 915,
+    "value": 48055,
+    "mega": 9621
+   }
+  },
+  {
+   "label": "Vanquisher Ink SuperFractor",
+   "set": "Vanquisher Ink",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 23961,
+    "breaker": 4489,
+    "value": 236000,
+    "mega": 47250
+   }
+  },
+  {
+   "label": "UFC Debut Patch Autographs",
+   "set": "UFC Debut Patch Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 132084,
+    "breaker": 6060,
+    "value": 1911600,
+    "mega": 287040
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback Purple Refractor",
+   "set": "2025 Chrome UFC Buyback",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 21134,
+    "value": 152928,
+    "mega": 45927
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback Red & Blue Refractor",
+   "set": "2025 Chrome UFC Buyback Red &",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 14089,
+    "value": 101952,
+    "mega": 30618
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback Negative Refractor",
+   "set": "2025 Chrome UFC Buyback",
+   "parallel": "Negative Refractor",
+   "odds": {
+    "hobby": 10674,
+    "value": 77237,
+    "mega": 23196
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback Sepia Refractor",
+   "set": "2025 Chrome UFC Buyback Sepia",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 8454,
+    "value": 61172,
+    "mega": 18371
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback Refractor",
+   "set": "2025 Chrome UFC Buyback",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 7045,
+    "value": 50976,
+    "mega": 15309
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback Prism Refractor",
+   "set": "2025 Chrome UFC Buyback",
+   "parallel": "Prism Refractor",
+   "odds": {
+    "hobby": 4227,
+    "value": 30586,
+    "mega": 9186
+   }
+  },
+  {
+   "label": "2025 Chrome UFC Buyback X-Fractor",
+   "set": "2025 Chrome UFC Buyback X-Fractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 3523,
+    "value": 25488,
+    "mega": 7655
+   }
+  }
+ ]
+}

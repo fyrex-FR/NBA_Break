@@ -1,0 +1,461 @@
+{
+ "version": 1,
+ "sport": "disney",
+ "checklist_id": "2026-topps-disney-neon-checklist",
+ "product_label": "2026 Topps Disney Neon",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value_box",
+   "label": "Value Box",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "mega_box",
+   "label": "Mega Box",
+   "channel": "retail",
+   "group": "mega"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards",
+   "set": "Base Set",
+   "parallel": "Base Cards",
+   "odds": {
+    "hobby": 1,
+    "value_box": 1,
+    "mega_box": 1
+   }
+  },
+  {
+   "label": "Pink/Green/Blue",
+   "set": "Pink/Green/Blue",
+   "parallel": "",
+   "odds": {
+    "hobby": 58,
+    "value_box": 436,
+    "mega_box": 309
+   }
+  },
+  {
+   "label": "Purple/Yellow/Blue",
+   "set": "Purple/Yellow/Blue",
+   "parallel": "",
+   "odds": {
+    "hobby": 87,
+    "value_box": 660,
+    "mega_box": 469
+   }
+  },
+  {
+   "label": "Anniversary Gold",
+   "set": "A Goofy Movie 30th Anniversary Auto Variation",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2856,
+    "value_box": 21685,
+    "mega_box": 14746
+   }
+  },
+  {
+   "label": "Anniversary Orange",
+   "set": "A Goofy Movie 30th Anniversary Auto Variation",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 5739,
+    "value_box": 43370,
+    "mega_box": 30774
+   }
+  },
+  {
+   "label": "Anniversary Black",
+   "set": "A Goofy Movie 30th Anniversary Auto Variation",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 14346,
+    "value_box": 110834,
+    "mega_box": 76934
+   }
+  },
+  {
+   "label": "Anniversary Red",
+   "set": "A Goofy Movie 30th Anniversary Auto Variation",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 28692,
+    "value_box": 221667,
+    "mega_box": 153867
+   }
+  },
+  {
+   "label": "Anniversary",
+   "set": "A Goofy Movie 30th Anniversary Auto Variation",
+   "parallel": "Anniversary",
+   "odds": {
+    "hobby": 133894,
+    "value_box": 997501,
+    "mega_box": 923201
+   }
+  },
+  {
+   "label": "Family First",
+   "set": "Family First",
+   "parallel": "",
+   "odds": {
+    "hobby": 2,
+    "value_box": 3,
+    "mega_box": 3
+   }
+  },
+  {
+   "label": "Manga Madness",
+   "set": "Manga Madness",
+   "parallel": "",
+   "odds": {
+    "hobby": 7,
+    "value_box": 9,
+    "mega_box": 7
+   }
+  },
+  {
+   "label": "Phineas and Ferb",
+   "set": "Phineas and Ferb",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "value_box": 5,
+    "mega_box": 5
+   }
+  },
+  {
+   "label": "Epic Mickey",
+   "set": "Epic Mickey",
+   "parallel": "",
+   "odds": {
+    "hobby": 7,
+    "value_box": 12,
+    "mega_box": 8
+   }
+  },
+  {
+   "label": "Variation Gold",
+   "set": "Variation",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 980,
+    "value_box": 7445,
+    "mega_box": 5233
+   }
+  },
+  {
+   "label": "Variation Black",
+   "set": "Variation",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4899,
+    "value_box": 39760,
+    "mega_box": 26378
+   }
+  },
+  {
+   "label": "Variation Red",
+   "set": "Variation",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 9798,
+    "value_box": 73889,
+    "mega_box": 54306
+   }
+  },
+  {
+   "label": "Variation",
+   "set": "Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 48202,
+    "value_box": 399000,
+    "mega_box": 230801
+   }
+  },
+  {
+   "label": "Prints Gold Wave",
+   "set": "Prints",
+   "parallel": "Gold Wave",
+   "odds": {
+    "hobby": 1481,
+    "value_box": 11360,
+    "mega_box": 8110
+   }
+  },
+  {
+   "label": "Prints Orange Wave",
+   "set": "Prints",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 2961,
+    "value_box": 22720,
+    "mega_box": 16220
+   }
+  },
+  {
+   "label": "Prints Black Wave",
+   "set": "Prints",
+   "parallel": "Black Wave",
+   "odds": {
+    "hobby": 7393,
+    "value_box": 53014,
+    "mega_box": 40550
+   }
+  },
+  {
+   "label": "Prints Red Wave",
+   "set": "Prints",
+   "parallel": "Red Wave",
+   "odds": {
+    "hobby": 14878,
+    "value_box": 106027,
+    "mega_box": 81100
+   }
+  },
+  {
+   "label": "Neon Villains Lava",
+   "set": "Neon Villains",
+   "parallel": "Lava",
+   "odds": {
+    "hobby": 2470,
+    "value_box": 18821,
+    "mega_box": 13380
+   }
+  },
+  {
+   "label": "Scrooge's Money Bin",
+   "set": "Scrooge's Money Bin",
+   "parallel": "",
+   "odds": {
+    "hobby": 302,
+    "mega_box": 370
+   }
+  },
+  {
+   "label": "The Muppets Puzzle",
+   "set": "The Muppets Puzzle",
+   "parallel": "",
+   "odds": {
+    "mega_box": 3
+   }
+  },
+  {
+   "label": "Sketch Cards",
+   "set": "Sketch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 1963,
+    "value_box": 6768,
+    "mega_box": 6759
+   }
+  },
+  {
+   "label": "Neon PETG Lights",
+   "set": "Neon Lights (PETG)",
+   "parallel": "Neon PETG Lights",
+   "odds": {
+    "hobby": 20,
+    "value_box": 140,
+    "mega_box": 10
+   }
+  },
+  {
+   "label": "Chrome Neon Etch",
+   "set": "Chrome Neon Etch",
+   "parallel": "",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Gold Shimmer",
+   "set": "Gold Shimmer",
+   "parallel": "",
+   "odds": {
+    "hobby": 253
+   }
+  },
+  {
+   "label": "Orange Wave",
+   "set": "Orange Wave",
+   "parallel": "",
+   "odds": {
+    "hobby": 682,
+    "value_box": 5209,
+    "mega_box": 3723
+   }
+  },
+  {
+   "label": "Black Speckle",
+   "set": "Black Speckle",
+   "parallel": "",
+   "odds": {
+    "hobby": 1262
+   }
+  },
+  {
+   "label": "Autographs PETG",
+   "set": "Neon Lights (PETG)",
+   "parallel": "Autographs PETG",
+   "odds": {
+    "hobby": 1440,
+    "value_box": 4894,
+    "mega_box": 4916
+   }
+  },
+  {
+   "label": "Autographs PETG",
+   "set": "Neon Lights (PETG)",
+   "parallel": "Autographs PETG",
+   "odds": {
+    "hobby": 14346,
+    "value_box": 53014,
+    "mega_box": 54067
+   }
+  },
+  {
+   "label": "Autographs PETG",
+   "set": "Neon Lights (PETG)",
+   "parallel": "Autographs PETG",
+   "odds": {
+    "hobby": 70885,
+    "value_box": 318080,
+    "mega_box": 162200
+   }
+  },
+  {
+   "label": "Autograph Black",
+   "set": "Autograph",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 21910,
+    "value_box": 79520,
+    "mega_box": 81100
+   }
+  },
+  {
+   "label": "Autograph Red",
+   "set": "Autograph",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 43038,
+    "value_box": 159040,
+    "mega_box": 162200
+   }
+  },
+  {
+   "label": "Prints Auto Variation",
+   "set": "Prints Auto Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 6180,
+    "value_box": 21206,
+    "mega_box": 23172
+   }
+  },
+  {
+   "label": "Prints Auto Variation",
+   "set": "Prints Auto Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 30899,
+    "value_box": 106027,
+    "mega_box": 162200
+   }
+  },
+  {
+   "label": "Prints Auto Variation",
+   "set": "Prints Auto Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 60252,
+    "value_box": 318080,
+    "mega_box": 162200
+   }
+  },
+  {
+   "label": "Auto Variation Gold",
+   "set": "Auto Variation",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 6180,
+    "value_box": 21206,
+    "mega_box": 23172
+   }
+  },
+  {
+   "label": "Auto Variation Black",
+   "set": "Auto Variation",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 30899,
+    "value_box": 106027,
+    "mega_box": 162200
+   }
+  },
+  {
+   "label": "Auto Variation Red",
+   "set": "Auto Variation",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 60252,
+    "value_box": 318080,
+    "mega_box": 162200
+   }
+  },
+  {
+   "label": "Autos Gold Shimmer",
+   "set": "Autos Gold Shimmer",
+   "parallel": "",
+   "odds": {
+    "hobby": 786,
+    "value_box": 2673,
+    "mega_box": 2704
+   }
+  },
+  {
+   "label": "Autos Orange Wave",
+   "set": "Autos",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 1516,
+    "value_box": 5215,
+    "mega_box": 5233
+   }
+  },
+  {
+   "label": "Autos Black Speckle",
+   "set": "Autos",
+   "parallel": "Black Speckle",
+   "odds": {
+    "hobby": 3545,
+    "value_box": 12234,
+    "mega_box": 12477
+   }
+  },
+  {
+   "label": "Autos Red Lava",
+   "set": "Autos",
+   "parallel": "Red Lava",
+   "odds": {
+    "hobby": 7089,
+    "value_box": 24468,
+    "mega_box": 27034
+   }
+  }
+ ]
+}

@@ -1,0 +1,898 @@
+{
+ "version": 1,
+ "sport": "starwars",
+ "checklist_id": "2026-topps-star-wars-galaxy-chrome-checklist",
+ "product_label": "2026 Star Wars Chrome Galaxy",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "Cards",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards Refractor Parallel",
+   "set": "Base",
+   "parallel": "Refractor Parallel",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards Mini-Diamond Refractor Parallel",
+   "set": "Base",
+   "parallel": "Mini-Diamond Refractor Parallel",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Magenta Lava Refractor Parallel",
+   "set": "Base",
+   "parallel": "Magenta Lava Refractor Parallel",
+   "odds": {
+    "hobby": 37
+   }
+  },
+  {
+   "label": "Base Cards Green Shimmer Refractor Parallel",
+   "set": "Base",
+   "parallel": "Green Shimmer Refractor Parallel",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Base Cards Green Kaleidescope Refractor Parallel",
+   "set": "Base",
+   "parallel": "Green Kaleidescope Refractor Parallel",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Base Cards Blue Ray Wave Refractor Parallel",
+   "set": "Base",
+   "parallel": "Blue Ray Wave Refractor Parallel",
+   "odds": {
+    "hobby": 54
+   }
+  },
+  {
+   "label": "Base Cards Purple Speckle Refractor Parallel",
+   "set": "Base",
+   "parallel": "Purple Speckle Refractor Parallel",
+   "odds": {
+    "hobby": 75
+   }
+  },
+  {
+   "label": "Base Cards Atomic Refractor Parallell",
+   "set": "Base",
+   "parallel": "Atomic Refractor Parallell",
+   "odds": {
+    "hobby": 62
+   }
+  },
+  {
+   "label": "Base Cards Wave Refractor Parallel",
+   "set": "Base",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 94
+   }
+  },
+  {
+   "label": "Base Cards Star Wars Logofractor Parallel",
+   "set": "Base",
+   "parallel": "Star Wars Logofractor Parallel",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Base Cards Prism Refractor Parallel",
+   "set": "Base",
+   "parallel": "Prism Refractor Parallel",
+   "odds": {
+    "hobby": 124
+   }
+  },
+  {
+   "label": "Base Cards Mojo Refractor Parallel",
+   "set": "Base",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 186
+   }
+  },
+  {
+   "label": "Base Cards Orange Refractor Parallel",
+   "set": "Base",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 372
+   }
+  },
+  {
+   "label": "Base Cards X-Fractor Parallel",
+   "set": "Base",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 930
+   }
+  },
+  {
+   "label": "Base Cards Star Wars Red Logofractor Parallel",
+   "set": "Base",
+   "parallel": "Star Wars Red Logofractor Parallel",
+   "odds": {
+    "hobby": 1861
+   }
+  },
+  {
+   "label": "Base Cards Red Refractor Parallel",
+   "set": "Base",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 1861
+   }
+  },
+  {
+   "label": "Base Cards Superfractor Parallel",
+   "set": "Base",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 9343
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic",
+   "set": "Knights of the Old Republic",
+   "parallel": "Art of Knights of the Old Republic",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Green Shimmer Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Green Shimmer Refractor Parallel",
+   "odds": {
+    "hobby": 312
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Blue Ray Wave Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Blue Ray Wave Refractor Parallel",
+   "odds": {
+    "hobby": 354
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Atomic Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Atomic Refractor Parallel",
+   "odds": {
+    "hobby": 413
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Wave Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 626
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Prism Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Prism Refractor Parallel",
+   "odds": {
+    "hobby": 826
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Mojo Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 1240
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Orange Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 2480
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic X-Fractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 6207
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Red Refractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 12327
+   }
+  },
+  {
+   "label": "Art of Knights of the Old Republic Superfractor Parallel",
+   "set": "Knights of the Old Republic",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 59170
+   }
+  },
+  {
+   "label": "Art of Rogue One",
+   "set": "Art of Rogue One",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Art of Rogue One Green Shimmer Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Green Shimmer Refractor Parallel",
+   "odds": {
+    "hobby": 312
+   }
+  },
+  {
+   "label": "Art of Rogue One Blue Ray Wave Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Blue Ray Wave Refractor Parallel",
+   "odds": {
+    "hobby": 354
+   }
+  },
+  {
+   "label": "Art of Rogue One Atomic Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Atomic Refractor Parallel",
+   "odds": {
+    "hobby": 413
+   }
+  },
+  {
+   "label": "Art of Rogue One Wave Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 626
+   }
+  },
+  {
+   "label": "Art of Rogue One Prism Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Prism Refractor Parallel",
+   "odds": {
+    "hobby": 826
+   }
+  },
+  {
+   "label": "Art of Rogue One Mojo Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 1240
+   }
+  },
+  {
+   "label": "Art of Rogue One Orange Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 2480
+   }
+  },
+  {
+   "label": "Art of Rogue One X-Fractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 6207
+   }
+  },
+  {
+   "label": "Art of Rogue One Red Refractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 12327
+   }
+  },
+  {
+   "label": "Art of Rogue One Superfractor Parallel",
+   "set": "Art of Rogue One",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 59170
+   }
+  },
+  {
+   "label": "Art of the Dark Side",
+   "set": "Art of the Dark Side",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Art of the Dark Side Green Shimmer Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Green Shimmer Refractor Parallel",
+   "odds": {
+    "hobby": 312
+   }
+  },
+  {
+   "label": "Art of the Dark Side Blue Ray Wave Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Blue Ray Wave Refractor Parallel",
+   "odds": {
+    "hobby": 354
+   }
+  },
+  {
+   "label": "Art of the Dark Side Atomic Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Atomic Refractor Parallel",
+   "odds": {
+    "hobby": 413
+   }
+  },
+  {
+   "label": "Art of the Dark Side Wave Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 626
+   }
+  },
+  {
+   "label": "Art of the Dark Side Prism Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Prism Refractor Parallel",
+   "odds": {
+    "hobby": 826
+   }
+  },
+  {
+   "label": "Art of the Dark Side Mojo Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 1240
+   }
+  },
+  {
+   "label": "Art of the Dark Side Orange Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 2480
+   }
+  },
+  {
+   "label": "Art of the Dark Side X-Fractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 6207
+   }
+  },
+  {
+   "label": "Art of the Dark Side Red Refractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 12327
+   }
+  },
+  {
+   "label": "Art of the Dark Side Superfractor Parallel",
+   "set": "Art of the Dark Side",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 59170
+   }
+  },
+  {
+   "label": "Duel on Cloud City",
+   "set": "Duel On Cloud City",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Duel on Cloud City Green Shimmer Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Green Shimmer Refractor Parallel",
+   "odds": {
+    "hobby": 312
+   }
+  },
+  {
+   "label": "Duel on Cloud City Blue Ray Wave Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Blue Ray Wave Refractor Parallel",
+   "odds": {
+    "hobby": 354
+   }
+  },
+  {
+   "label": "Duel on Cloud City Atomic Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Atomic Refractor Parallel",
+   "odds": {
+    "hobby": 413
+   }
+  },
+  {
+   "label": "Duel on Cloud City Wave Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 626
+   }
+  },
+  {
+   "label": "Duel on Cloud City Prism Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Prism Refractor Parallel",
+   "odds": {
+    "hobby": 826
+   }
+  },
+  {
+   "label": "Duel on Cloud City Mojo Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 1240
+   }
+  },
+  {
+   "label": "Duel on Cloud City Orange Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 2480
+   }
+  },
+  {
+   "label": "Duel on Cloud City X-Fractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 6207
+   }
+  },
+  {
+   "label": "Duel on Cloud City Red Refractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 12327
+   }
+  },
+  {
+   "label": "Duel on Cloud City Superfractor Parallel",
+   "set": "Duel On Cloud City",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 59170
+   }
+  },
+  {
+   "label": "Galactic Anthology",
+   "set": "Galactic Anthology",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Galactic Anthology Green Shimmer Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Green Shimmer Refractor Parallel",
+   "odds": {
+    "hobby": 312
+   }
+  },
+  {
+   "label": "Galactic Anthology Blue Ray Wave Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Blue Ray Wave Refractor Parallel",
+   "odds": {
+    "hobby": 354
+   }
+  },
+  {
+   "label": "Galactic Anthology Atomic Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Atomic Refractor Parallel",
+   "odds": {
+    "hobby": 413
+   }
+  },
+  {
+   "label": "Galactic Anthology Wave Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 626
+   }
+  },
+  {
+   "label": "Galactic Anthology Prism Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Prism Refractor Parallel",
+   "odds": {
+    "hobby": 826
+   }
+  },
+  {
+   "label": "Galactic Anthology Mojo Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 1240
+   }
+  },
+  {
+   "label": "Galactic Anthology Orange Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 2480
+   }
+  },
+  {
+   "label": "Galactic Anthology X-Fractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 6207
+   }
+  },
+  {
+   "label": "Galactic Anthology Red Refractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 12327
+   }
+  },
+  {
+   "label": "Galactic Anthology Superfractor Parallel",
+   "set": "Galactic Anthology",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 59170
+   }
+  },
+  {
+   "label": "Chrome Layers Original Art",
+   "set": "Topps Chrome Layers",
+   "parallel": "Chrome Layers Original Art",
+   "odds": {
+    "hobby": 432
+   }
+  },
+  {
+   "label": "Chrome Layers Original Art Orange Refractor Parallel",
+   "set": "Topps Chrome Layers",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 3375
+   }
+  },
+  {
+   "label": "Chrome Layers Original Art X-Fractor Parallel",
+   "set": "Topps Chrome Layers",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 8453
+   }
+  },
+  {
+   "label": "Chrome Layers Original Art Red Refractor Parallel",
+   "set": "Topps Chrome Layers",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 17069
+   }
+  },
+  {
+   "label": "Chrome Layers Original Art Superfractor Parallel",
+   "set": "Topps Chrome Layers",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 80686
+   }
+  },
+  {
+   "label": "Comic Fractor",
+   "set": "ComicFractor",
+   "parallel": "Comic Fractor",
+   "odds": {
+    "hobby": 1080
+   }
+  },
+  {
+   "label": "Comic Fractor Orange Refractor Parallel",
+   "set": "ComicFractor",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 7459
+   }
+  },
+  {
+   "label": "Comic Fractor X-Fractor Parallel",
+   "set": "ComicFractor",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 18491
+   }
+  },
+  {
+   "label": "Comic Fractor Red Refractor Parallel",
+   "set": "ComicFractor",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 36981
+   }
+  },
+  {
+   "label": "Comic Fractor Superfractor Parallel",
+   "set": "ComicFractor",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 177509
+   }
+  },
+  {
+   "label": "Force Energy",
+   "set": "Force Energy",
+   "parallel": "",
+   "odds": {
+    "hobby": 216
+   }
+  },
+  {
+   "label": "Force Energy Orange Refractor Parallel",
+   "set": "Force Energy",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 3714
+   }
+  },
+  {
+   "label": "Force Energy X-Fractor Parallel",
+   "set": "Force Energy",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 9343
+   }
+  },
+  {
+   "label": "Force Energy Red Refractor Parallel",
+   "set": "Force Energy",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 18491
+   }
+  },
+  {
+   "label": "Force Energy Superfractor Parallel",
+   "set": "Force Energy",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 88755
+   }
+  },
+  {
+   "label": "Original Art Puzzle Cards",
+   "set": "Original Art Puzzle",
+   "parallel": "Cards",
+   "odds": {
+    "hobby": 216
+   }
+  },
+  {
+   "label": "Original Art Puzzle Cards Orange Refractor Parallel",
+   "set": "Original Art Puzzle",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 1034
+   }
+  },
+  {
+   "label": "Original Art Puzzle Cards X-Fractor Parallel",
+   "set": "Original Art Puzzle",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 2588
+   }
+  },
+  {
+   "label": "Original Art Puzzle Cards Red Refractor Parallel",
+   "set": "Original Art Puzzle",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 5161
+   }
+  },
+  {
+   "label": "Original Art Puzzle Cards Superfractor Parallel",
+   "set": "Original Art Puzzle",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 25359
+   }
+  },
+  {
+   "label": "Dual Autographs",
+   "set": "Dual Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 18114
+   }
+  },
+  {
+   "label": "Dual Autographs Red Refractor Parallel",
+   "set": "Dual Autographs",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 18114
+   }
+  },
+  {
+   "label": "Dual Autographs Superfractor Parallel",
+   "set": "Dual Autographs",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 88755
+   }
+  },
+  {
+   "label": "Galaxy Autographs",
+   "set": "Galaxy Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 657
+   }
+  },
+  {
+   "label": "Galaxy Autographs Atomic Refractor Parallel",
+   "set": "Galaxy Autographs",
+   "parallel": "Atomic Refractor Parallel",
+   "odds": {
+    "hobby": 763
+   }
+  },
+  {
+   "label": "Galaxy Autographs Wave Refractor Parallel",
+   "set": "Galaxy Autographs",
+   "parallel": "Wave Refractor Parallel",
+   "odds": {
+    "hobby": 924
+   }
+  },
+  {
+   "label": "Galaxy Autographs Mojo Refractor Parallel",
+   "set": "Galaxy Autographs",
+   "parallel": "Mojo Refractor Parallel",
+   "odds": {
+    "hobby": 1017
+   }
+  },
+  {
+   "label": "Galaxy Autographs Orange Refractor Parallel",
+   "set": "Galaxy Autographs",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "hobby": 1076
+   }
+  },
+  {
+   "label": "Galaxy Autographs Red Refractor Parallel",
+   "set": "Galaxy Autographs",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "hobby": 3061
+   }
+  },
+  {
+   "label": "Galaxy Autographs Superfractor Parallel",
+   "set": "Galaxy Autographs",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 14793
+   }
+  },
+  {
+   "label": "Triple Autographs",
+   "set": "Triple Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 30605
+   }
+  },
+  {
+   "label": "Triple Autographs Superfractor Parallel",
+   "set": "Triple Autographs",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 98616
+   }
+  },
+  {
+   "label": "Quad Autographs",
+   "set": "Quad Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 59170
+   }
+  },
+  {
+   "label": "Quad Autographs Superfractor Parallel",
+   "set": "Quad Autographs",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "hobby": 177509
+   }
+  },
+  {
+   "label": "Sketch Cards Silver Foil Parallel",
+   "set": "Sketch Cards Silver Foil Parallel",
+   "parallel": "",
+   "odds": {
+    "hobby": 83
+   }
+  },
+  {
+   "label": "Sketch Cards Gold Foil Stamp Parallel",
+   "set": "Sketch Cards Gold Foil Stamp Parallel",
+   "parallel": "",
+   "odds": {
+    "hobby": 726
+   }
+  },
+  {
+   "label": "Sketch Cards Black Foil Stamp Parallel",
+   "set": "Sketch Cards Black Foil Stamp Parallel",
+   "parallel": "",
+   "odds": {
+    "hobby": 2099
+   }
+  }
+ ]
+}
