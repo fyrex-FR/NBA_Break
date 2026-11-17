@@ -26,6 +26,7 @@ Sortie : backend/odds/nba/<checklist_id>.json
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import re
 import sys
@@ -231,7 +232,7 @@ def _tokens(name: str) -> list[str]:
     return [_SYN.get(w, w) for w in words if w not in _NOISE]
 
 
-def match_set(name: str, box_types: list[str]) -> str | None:
+def match_set(name: str, box_types: list[str], _strip: bool = True) -> str | None:
     """Box Type de notre checklist qui correspond à une série du site, ou None."""
     if not box_types:
         return None
@@ -247,21 +248,29 @@ def match_set(name: str, box_types: list[str]) -> str | None:
         a, b = set(toks), set(bt_toks)
         scored.append((len(a & b) / len(a | b), bt))
     scored.sort(reverse=True)
-    if not scored or scored[0][0] < 0.6:
-        # Repli : un mot distinctif (« Facsimile ») qui ne désigne qu'une seule de nos séries.
-        distinct = set(toks) - _GENERIC
-        if distinct:
-            cands = [bt for bt in box_types if distinct <= set(_tokens(bt))]
-            if len(cands) == 1:
-                return cands[0]
-        return None
-    # Ex æquo : on ne devine pas (le mapping manuel de l'app prendra le relais).
-    if len(scored) > 1 and scored[1][0] == scored[0][0]:
-        return None
-    return scored[0][1]
+    if scored and scored[0][0] >= 0.6 and not (len(scored) > 1 and scored[1][0] == scored[0][0]):
+        return scored[0][1]
+    # « Base Chrome Veteran Class » (feuille) = « Chrome - Veteran Class » (checklist).
+    if _strip and toks[:1] == ["base"] and len(toks) > 1:
+        found = match_set(" ".join(name.split()[1:]), box_types, _strip=False)
+        if found:
+            return found
+    # Un mot distinctif (« Facsimile ») qui ne désigne qu'une seule de nos séries.
+    distinct = set(toks) - _GENERIC
+    if distinct:
+        cands = [bt for bt in box_types if distinct <= set(_tokens(bt))]
+        if len(cands) == 1:
+            return cands[0]
+    # Faute de frappe dans la source (« Acyrlic Drip Autographs »).
+    close = difflib.get_close_matches(compact, {"".join(_tokens(bt)): bt for bt in box_types}, n=1, cutoff=0.92)
+    if close:
+        return {"".join(_tokens(bt)): bt for bt in box_types}[close[0]]
+    # Parallèle prise pour une série : « Base Cards Zodiac » → notre série « Base ».
+    prefixes = [bt for bt in box_types if _tokens(bt) and toks[:len(_tokens(bt))] == _tokens(bt) and len(toks) > len(_tokens(bt))]
+    if prefixes:
+        return max(prefixes, key=lambda bt: len(_tokens(bt)))
+    return None
 
-
-# ── Construction de la feuille ──────────────────────────────────────────────
 
 def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) -> dict | None:
     secs = sections(flight)

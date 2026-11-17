@@ -698,7 +698,7 @@
   },
   {
    "label": "Midnight Oil Marks Rookies",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Rookies",
    "odds": {
     "hobby": 54
@@ -970,15 +970,15 @@
   },
   {
    "label": "Midnight Oil Marks",
-   "set": "Midnight Oil Marks",
-   "parallel": "",
+   "set": "Midngiht Oil Marks",
+   "parallel": "Midnight Oil Marks",
    "odds": {
     "hobby": 15
    }
   },
   {
    "label": "Midnight Oil Marks Dusk",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Dusk",
    "odds": {
     "hobby": 45
@@ -986,7 +986,7 @@
   },
   {
    "label": "Midnight Oil Marks Summer Solstice",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Summer Solstice",
    "odds": {
     "hobby": 57
@@ -994,7 +994,7 @@
   },
   {
    "label": "Midnight Oil Marks Winter Solstice",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Winter Solstice",
    "odds": {
     "hobby": 77
@@ -1002,7 +1002,7 @@
   },
   {
    "label": "Midnight Oil Marks Moon Beam",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Moon Beam",
    "odds": {
     "hobby": 90
@@ -1010,7 +1010,7 @@
   },
   {
    "label": "Midnight Oil Marks Moonrise",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Moonrise",
    "odds": {
     "hobby": 90
@@ -1018,7 +1018,7 @@
   },
   {
    "label": "Midnight Oil Marks Equinox",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Equinox",
    "odds": {
     "hobby": 112
@@ -1026,7 +1026,7 @@
   },
   {
    "label": "Midnight Oil Marks Midnight",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Midnight",
    "odds": {
     "hobby": 186
@@ -1034,7 +1034,7 @@
   },
   {
    "label": "Midnight Oil Marks Daybreak",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Daybreak",
    "odds": {
     "hobby": 446
@@ -1042,7 +1042,7 @@
   },
   {
    "label": "Midnight Oil Marks Witching Hour",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Witching Hour",
    "odds": {
     "hobby": 743
@@ -1050,7 +1050,7 @@
   },
   {
    "label": "Midnight Oil Marks Black Light",
-   "set": "Midnight Oil Marks",
+   "set": "Midngiht Oil Marks",
    "parallel": "Black Light",
    "odds": {
     "hobby": 2227
@@ -1715,7 +1715,7 @@
   {
    "label": "Nightshade",
    "set": "Night Shade",
-   "parallel": "",
+   "parallel": "Nightshade",
    "odds": {
     "hobby": 28
    }

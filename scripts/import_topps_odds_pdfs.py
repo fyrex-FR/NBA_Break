@@ -199,10 +199,16 @@ def build_sheet(checklist_id: str, product_label: str | None, order: list[str], 
         if not r["odds"]:
             continue
         root = derive_set_root(r["label"], labels)
+        set_name = match_set(root, box_types) or root
+        parallel = derive_parallel(r["label"], root)
+        if not parallel and set_name != root:
+            # « Base Cards Zodiac » rattaché à notre « Base » : le reste du libellé est la parallèle.
+            words = r["label"].split()
+            parallel = " ".join(words[len(set_name.split()):]) if r["label"].lower().startswith(set_name.lower()) else root
         rows.append({
             "label": r["label"],
-            "set": match_set(root, box_types) or root,
-            "parallel": derive_parallel(r["label"], root),
+            "set": set_name,
+            "parallel": parallel,
             "odds": {key_of[c]: n for c, n in r["odds"].items()},
         })
     used = {k for r in rows for k in r["odds"]}

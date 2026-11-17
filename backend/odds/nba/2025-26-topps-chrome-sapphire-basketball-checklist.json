@@ -105,24 +105,24 @@
   },
   {
    "label": "Sapphire Selections Orange ***X4 up***",
-   "set": "Sapphire Selections Orange ***X4 up***",
-   "parallel": "",
+   "set": "Sapphire Selections",
+   "parallel": "Orange ***X4 up***",
    "odds": {
     "hobby": 167
    }
   },
   {
    "label": "Sapphire Selections Red ***X4 up***",
-   "set": "Sapphire Selections Red ***X4 up***",
-   "parallel": "",
+   "set": "Sapphire Selections",
+   "parallel": "Red ***X4 up***",
    "odds": {
     "hobby": 833
    }
   },
   {
    "label": "Sapphire Selections Superfractors ***X4 up***",
-   "set": "Sapphire Selections Superfractors ***X4 up***",
-   "parallel": "",
+   "set": "Sapphire Selections",
+   "parallel": "Superfractors ***X4 up***",
    "odds": {
     "hobby": 4040
    }

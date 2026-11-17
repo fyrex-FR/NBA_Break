@@ -347,7 +347,7 @@
   },
   {
    "label": "Base Chrome LeBron James Gold Refractor Autographs",
-   "set": "Base Chrome LeBron James Gold Refractor Autographs",
+   "set": "Base",
    "parallel": "",
    "odds": {
     "hobby": 29061
@@ -355,7 +355,7 @@
   },
   {
    "label": "Base Chrome LeBron James Gold Refractor Autographs Red Geometric Refractor",
-   "set": "Base Chrome LeBron James Gold Refractor Autographs",
+   "set": "Base",
    "parallel": "Red Geometric Refractor",
    "odds": {
     "breaker": 2405
@@ -363,7 +363,7 @@
   },
   {
    "label": "Base Chrome LeBron James Gold Refractor Autographs Black Refractor",
-   "set": "Base Chrome LeBron James Gold Refractor Autographs",
+   "set": "Base",
    "parallel": "Black Refractor",
    "odds": {
     "hobby": 58121
@@ -371,7 +371,7 @@
   },
   {
    "label": "Base Chrome LeBron James Gold Refractor Autographs Red Refractor",
-   "set": "Base Chrome LeBron James Gold Refractor Autographs",
+   "set": "Base",
    "parallel": "Red Refractor",
    "odds": {
     "hobby": 116242
@@ -379,7 +379,7 @@
   },
   {
    "label": "Base Chrome LeBron James Gold Refractor Autographs SuperFractor",
-   "set": "Base Chrome LeBron James Gold Refractor Autographs",
+   "set": "Base",
    "parallel": "SuperFractor",
    "odds": {
     "hobby": 581208

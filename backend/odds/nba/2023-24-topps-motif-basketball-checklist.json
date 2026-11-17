@@ -18,7 +18,7 @@
  "rows": [
   {
    "label": "Base Cards Ultramarine Blue",
-   "set": "Base Cards Ultramarine",
+   "set": "Base",
    "parallel": "Blue",
    "odds": {
     "hobby": 2
@@ -26,7 +26,7 @@
   },
   {
    "label": "Base Cards Cadmium Orange",
-   "set": "Base Cards Cadmium",
+   "set": "Base",
    "parallel": "Orange",
    "odds": {
     "hobby": 4
@@ -34,7 +34,7 @@
   },
   {
    "label": "Base Cards Winsor Green",
-   "set": "Base Cards Winsor",
+   "set": "Base",
    "parallel": "Green",
    "odds": {
     "hobby": 9
@@ -42,15 +42,15 @@
   },
   {
    "label": "Base Cards Pyrrol Scarlet",
-   "set": "Base Cards Pyrrol Scarlet",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Pyrrol Scarlet",
    "odds": {
     "hobby": 19
    }
   },
   {
    "label": "Base Cards Quinn Gold",
-   "set": "Base Cards Quinn",
+   "set": "Base",
    "parallel": "Gold",
    "odds": {
     "hobby": 94
@@ -58,7 +58,7 @@
   },
   {
    "label": "Base Cards Printing Plates Black",
-   "set": "Base Cards Printing Plates",
+   "set": "Base",
    "parallel": "Black",
    "odds": {
     "hobby": 94
@@ -66,7 +66,7 @@
   },
   {
    "label": "Base Cards Printing Plates Yellow",
-   "set": "Base Cards Printing Plates",
+   "set": "Base",
    "parallel": "Yellow",
    "odds": {
     "hobby": 94
@@ -74,7 +74,7 @@
   },
   {
    "label": "Base Cards Printing Plates Magenta",
-   "set": "Base Cards Printing Plates",
+   "set": "Base",
    "parallel": "Magenta",
    "odds": {
     "hobby": 94
@@ -82,8 +82,8 @@
   },
   {
    "label": "Base Cards Printing Plates Cyan",
-   "set": "Base Cards Printing Plates Cyan",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Printing Plates Cyan",
    "odds": {
     "hobby": 94
    }
@@ -170,15 +170,15 @@
   },
   {
    "label": "Acyrlic Drip Autographs",
-   "set": "Acyrlic Drip Autographs",
-   "parallel": "",
+   "set": "Acrylic Drip Autographs",
+   "parallel": "Acyrlic Drip Autographs",
    "odds": {
     "hobby": 3
    }
   },
   {
    "label": "Acyrlic Drip Autographs Ultramarine Blue",
-   "set": "Acyrlic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
    "parallel": "Ultramarine Blue",
    "odds": {
     "hobby": 5
@@ -186,7 +186,7 @@
   },
   {
    "label": "Acyrlic Drip Autographs Cadmium Orange",
-   "set": "Acyrlic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
    "parallel": "Cadmium Orange",
    "odds": {
     "hobby": 8
@@ -194,7 +194,7 @@
   },
   {
    "label": "Acyrlic Drip Autographs Winsor Green",
-   "set": "Acyrlic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
    "parallel": "Winsor Green",
    "odds": {
     "hobby": 19
@@ -202,7 +202,7 @@
   },
   {
    "label": "Acyrlic Drip Autographs Pyrrol Scarlet",
-   "set": "Acyrlic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
    "parallel": "Pyrrol Scarlet",
    "odds": {
     "hobby": 38
@@ -210,7 +210,7 @@
   },
   {
    "label": "Acyrlic Drip Autographs Quinn Gold",
-   "set": "Acyrlic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
    "parallel": "Quinn Gold",
    "odds": {
     "hobby": 189
@@ -218,7 +218,7 @@
   },
   {
    "label": "Acyrlic Drip Autographs Printing Plates",
-   "set": "Acyrlic Drip Autographs",
+   "set": "Acrylic Drip Autographs",
    "parallel": "Printing Plates",
    "odds": {
     "hobby": 189
@@ -283,7 +283,7 @@
   {
    "label": "Gallery Graphs Autographs",
    "set": "Gallery Graphs",
-   "parallel": "",
+   "parallel": "Autographs",
    "odds": {
     "hobby": 3
    }
@@ -498,15 +498,15 @@
   },
   {
    "label": "Motif Rookie Relic Autographs",
-   "set": "Motif Rookie Relic Autographs",
-   "parallel": "",
+   "set": "Motif Rookie Relics",
+   "parallel": "Motif Rookie Relic Autographs",
    "odds": {
     "hobby": 8
    }
   },
   {
    "label": "Motif Rookie Relic Autographs Ultramarine Blue",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Ultramarine Blue",
    "odds": {
     "hobby": 11
@@ -514,7 +514,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Cadmium Orange",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Cadmium Orange",
    "odds": {
     "hobby": 14
@@ -522,7 +522,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Winsor Green",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Winsor Green",
    "odds": {
     "hobby": 36
@@ -530,7 +530,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Pyrrol Scarlet",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Pyrrol Scarlet",
    "odds": {
     "hobby": 71
@@ -538,7 +538,7 @@
   },
   {
    "label": "Motif Rookie Relic Autographs Quinn Gold",
-   "set": "Motif Rookie Relic Autographs",
+   "set": "Motif Rookie Relics",
    "parallel": "Quinn Gold",
    "odds": {
     "hobby": 355
@@ -547,7 +547,7 @@
   {
    "label": "Motif Rookie Dual Relic Autographs",
    "set": "Motif Rookie Relics Dual",
-   "parallel": "",
+   "parallel": "Motif Rookie Dual Relic Autographs",
    "odds": {
     "hobby": 8
    }
@@ -643,7 +643,7 @@
   {
    "label": "Motif Rookie Quad Relic Autographs",
    "set": "Motif Rookie Relic Autographs Quad",
-   "parallel": "",
+   "parallel": "Motif Rookie Quad Relic Autographs",
    "odds": {
     "hobby": 10
    }
@@ -739,7 +739,7 @@
   {
    "label": "Motif Rookie Dual Relics",
    "set": "Motif Rookie Relics Dual",
-   "parallel": "",
+   "parallel": "Motif Rookie Dual Relics",
    "odds": {
     "hobby": 8
    }
@@ -834,8 +834,8 @@
   },
   {
    "label": "Base Cards Gallery Certification",
-   "set": "Base Cards Gallery Certification",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Gallery Certification",
    "odds": {
     "hobby": 30
    }

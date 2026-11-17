@@ -50,7 +50,7 @@
   },
   {
    "label": "Base Cards Holo Gold",
-   "set": "Base Cards Holo",
+   "set": "Base Set",
    "parallel": "Gold",
    "odds": {
     "hobby": 8
@@ -66,16 +66,16 @@
   },
   {
    "label": "Base Cards Camo",
-   "set": "Base Cards Camo",
-   "parallel": "",
+   "set": "Base Set",
+   "parallel": "Base Cards Camo",
    "odds": {
     "hobby": 40
    }
   },
   {
    "label": "Base Cards Inception",
-   "set": "Base Cards Inception",
-   "parallel": "",
+   "set": "Base Set",
+   "parallel": "Base Cards Inception",
    "odds": {
     "hobby": 395
    }
@@ -259,7 +259,7 @@
   {
    "label": "Memory Lane Marks Autographs",
    "set": "Memory Lane Marks",
-   "parallel": "",
+   "parallel": "Autographs",
    "odds": {
     "hobby": 22
    }
@@ -347,7 +347,7 @@
   {
    "label": "Grail Chasing Signatures Camo",
    "set": "Grail Chasing Signatures",
-   "parallel": "",
+   "parallel": "Camo",
    "odds": {
     "hobby": 79
    }
@@ -355,7 +355,7 @@
   {
    "label": "Grail Chasing Signatures Inception",
    "set": "Grail Chasing Signatures",
-   "parallel": "",
+   "parallel": "Inception",
    "odds": {
     "hobby": 773
    }
@@ -363,7 +363,7 @@
   {
    "label": "Rookie Jumbo Relic",
    "set": "Rookie Jumbo Relics",
-   "parallel": "",
+   "parallel": "Rookie Jumbo Relic",
    "odds": {
     "hobby": 8
    }
@@ -419,7 +419,7 @@
   {
    "label": "Relics",
    "set": "Relic Cards",
-   "parallel": "",
+   "parallel": "Relics",
    "odds": {
     "hobby": 3
    }

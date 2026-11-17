@@ -33,7 +33,7 @@
   {
    "label": "Base Common",
    "set": "Base - Common",
-   "parallel": "",
+   "parallel": "Base Common",
    "odds": {
     "hobby": 1,
     "player_samples": 1
@@ -83,7 +83,7 @@
   },
   {
    "label": "Base Common Refractors Purple Xfractor",
-   "set": "Base Common Refractors Purple",
+   "set": "Base - Common",
    "parallel": "Xfractor",
    "odds": {
     "hobby": 22,
@@ -92,7 +92,7 @@
   },
   {
    "label": "Base Common Refractors Blue XFractor",
-   "set": "Base Common Refractors Blue",
+   "set": "Base - Common",
    "parallel": "XFractor",
    "odds": {
     "hobby": 33,
@@ -236,7 +236,7 @@
   {
    "label": "Base Uncommon",
    "set": "Base - Uncommon",
-   "parallel": "",
+   "parallel": "Base Uncommon",
    "odds": {
     "hobby": 1,
     "player_samples": 1
@@ -286,7 +286,7 @@
   },
   {
    "label": "Base Uncommon Refractors Purple Xfractor",
-   "set": "Base Uncommon Refractors Purple",
+   "set": "Base - Uncommon",
    "parallel": "Xfractor",
    "odds": {
     "hobby": 33,
@@ -295,7 +295,7 @@
   },
   {
    "label": "Base Uncommon Refractors Blue XFractor",
-   "set": "Base Uncommon Refractors Blue",
+   "set": "Base - Uncommon",
    "parallel": "XFractor",
    "odds": {
     "hobby": 43,
@@ -424,7 +424,7 @@
   {
    "label": "Base Rare",
    "set": "Base - Rare",
-   "parallel": "",
+   "parallel": "Base Rare",
    "odds": {
     "hobby": 3,
     "player_samples": 1
@@ -474,7 +474,7 @@
   },
   {
    "label": "Base Rare Refractors Blue XFractor",
-   "set": "Base Rare Refractors Blue",
+   "set": "Base - Rare",
    "parallel": "XFractor",
    "odds": {
     "hobby": 66,
@@ -783,7 +783,7 @@
   },
   {
    "label": "Arrivals Refractors Blue XFractor",
-   "set": "Arrivals Refractors Blue",
+   "set": "Arrivals",
    "parallel": "XFractor",
    "odds": {
     "hobby": 108,
@@ -792,7 +792,7 @@
   },
   {
    "label": "Showstoppers Refractors Blue XFractor",
-   "set": "Showstoppers Refractors Blue",
+   "set": "Showstoppers",
    "parallel": "XFractor",
    "odds": {
     "hobby": 108,
@@ -801,7 +801,7 @@
   },
   {
    "label": "Debut Refractors Blue XFractor",
-   "set": "Debut Refractors Blue",
+   "set": "Debut",
    "parallel": "XFractor",
    "odds": {
     "hobby": 108,
@@ -810,7 +810,7 @@
   },
   {
    "label": "Finishers Refractors Blue XFractor",
-   "set": "Finishers Refractors Blue",
+   "set": "Finishers",
    "parallel": "XFractor",
    "odds": {
     "hobby": 323,
@@ -1277,7 +1277,7 @@
   {
    "label": "Rookie Autographs",
    "set": "Finest Rookie Autographs",
-   "parallel": "",
+   "parallel": "Rookie Autographs",
    "odds": {
     "hobby": 12,
     "player_samples": 2
@@ -1717,7 +1717,7 @@
   },
   {
    "label": "Flashback Autographs Refractors Red/Black Vapor Geometric",
-   "set": "Flashback Autographs Refractors Red/Black Vapor",
+   "set": "Flashback Autographs",
    "parallel": "Geometric",
    "odds": {
     "breaker_delight": 48,
@@ -1726,7 +1726,7 @@
   },
   {
    "label": "Masters Autographs Refractors Red/Black Vapor Geometric",
-   "set": "Masters Autographs Refractors Red/Black Vapor",
+   "set": "Masters Autographs",
    "parallel": "Geometric",
    "odds": {
     "breaker_delight": 48,

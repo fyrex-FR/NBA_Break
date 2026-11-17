@@ -24,7 +24,7 @@
   },
   {
    "label": "Base Cards Nucleus Refractor",
-   "set": "Base Cards Nucleus",
+   "set": "Base",
    "parallel": "Refractor",
    "odds": {
     "hobby": 20
@@ -32,71 +32,71 @@
   },
   {
    "label": "Base Cards Aqua Equinox",
-   "set": "Base Cards Aqua Equinox",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Aqua Equinox",
    "odds": {
     "hobby": 46
    }
   },
   {
    "label": "Base Cards Blue Moon",
-   "set": "Base Cards Blue Moon",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Blue Moon",
    "odds": {
     "hobby": 69
    }
   },
   {
    "label": "Base Cards Green Space Dust",
-   "set": "Base Cards Green Space Dust",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Green Space Dust",
    "odds": {
     "hobby": 91
    }
   },
   {
    "label": "Base Cards Gold Interstellar",
-   "set": "Base Cards Gold Interstellar",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Gold Interstellar",
    "odds": {
     "hobby": 137
    }
   },
   {
    "label": "Base Cards Orange Galactic",
-   "set": "Base Cards Orange Galactic",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Orange Galactic",
    "odds": {
     "hobby": 273
    }
   },
   {
    "label": "Base Cards Black Eclipse",
-   "set": "Base Cards Black Eclipse",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Black Eclipse",
    "odds": {
     "hobby": 681
    }
   },
   {
    "label": "Base Cards Red Flare",
-   "set": "Base Cards Red Flare",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Red Flare",
    "odds": {
     "hobby": 1358
    }
   },
   {
    "label": "Base Cards Superfractor",
-   "set": "Base Cards Superfractor",
-   "parallel": "",
+   "set": "Base",
+   "parallel": "Cards Superfractor",
    "odds": {
     "hobby": 6706
    }
   },
   {
    "label": "Base Cards White Hole Refractor",
-   "set": "Base Cards White Hole",
+   "set": "Base",
    "parallel": "Refractor",
    "odds": {
     "hobby": 121
@@ -104,7 +104,7 @@
   },
   {
    "label": "Base Cards Pink Galaxy Refractor",
-   "set": "Base Cards Pink Galaxy",
+   "set": "Base",
    "parallel": "Refractor",
    "odds": {
     "hobby": 33
@@ -353,7 +353,7 @@
   {
    "label": "Planetary Pursuit Sun",
    "set": "Planetary Pursuit - Sun",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Sun",
    "odds": {
     "hobby": 121
    }
@@ -361,7 +361,7 @@
   {
    "label": "Planetary Pursuit Mercury",
    "set": "Planetary Pursuit - Mercury",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Mercury",
    "odds": {
     "hobby": 481
    }
@@ -369,7 +369,7 @@
   {
    "label": "Planetary Pursuit Venus",
    "set": "Planetary Pursuit - Venus",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Venus",
    "odds": {
     "hobby": 961
    }
@@ -377,7 +377,7 @@
   {
    "label": "Planetary Pursuit Earth",
    "set": "Planetary Pursuit - Earth",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Earth",
    "odds": {
     "hobby": 1919
    }
@@ -385,7 +385,7 @@
   {
    "label": "Planetary Pursuit Mars",
    "set": "Planetary Pursuit - Mars",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Mars",
    "odds": {
     "hobby": 3604
    }
@@ -393,7 +393,7 @@
   {
    "label": "Planetary Pursuit Jupiter",
    "set": "Planetary Pursuit - Jupiter",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Jupiter",
    "odds": {
     "hobby": 7187
    }
@@ -401,7 +401,7 @@
   {
    "label": "Planetary Pursuit Saturn",
    "set": "Planetary Pursuit - Saturn",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Saturn",
    "odds": {
     "hobby": 12045
    }
@@ -409,7 +409,7 @@
   {
    "label": "Planetary Pursuit Uranus",
    "set": "Planetary Pursuit - Uranus",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Uranus",
    "odds": {
     "hobby": 24090
    }
@@ -417,7 +417,7 @@
   {
    "label": "Planetary Pursuit Neptune",
    "set": "Planetary Pursuit - Neptune",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Neptune",
    "odds": {
     "hobby": 34233
    }
@@ -425,7 +425,7 @@
   {
    "label": "Planetary Pursuit Pluto",
    "set": "Planetary Pursuit - Pluto",
-   "parallel": "",
+   "parallel": "Planetary Pursuit Pluto",
    "odds": {
     "hobby": 44857
    }
@@ -536,7 +536,7 @@
   },
   {
    "label": "Equinox Autographs Refractor Gold Interstellar",
-   "set": "Equinox Autographs Refractor",
+   "set": "Equinox Autographs Refractors",
    "parallel": "Gold Interstellar",
    "odds": {
     "hobby": 762
@@ -544,7 +544,7 @@
   },
   {
    "label": "Equinox Autographs Refractor Orange Galactic",
-   "set": "Equinox Autographs Refractor",
+   "set": "Equinox Autographs Refractors",
    "parallel": "Orange Galactic",
    "odds": {
     "hobby": 1524
@@ -552,7 +552,7 @@
   },
   {
    "label": "Equinox Autographs Refractor Black Eclipse",
-   "set": "Equinox Autographs Refractor",
+   "set": "Equinox Autographs Refractors",
    "parallel": "Black Eclipse",
    "odds": {
     "hobby": 3793
@@ -560,7 +560,7 @@
   },
   {
    "label": "Equinox Autographs Refractor Red Flare",
-   "set": "Equinox Autographs Refractor",
+   "set": "Equinox Autographs Refractors",
    "parallel": "Red Flare",
    "odds": {
     "hobby": 7564
@@ -568,7 +568,7 @@
   },
   {
    "label": "Equinox Autographs Refractor Superfractor",
-   "set": "Equinox Autographs Refractor",
+   "set": "Equinox Autographs Refractors",
    "parallel": "Superfractor",
    "odds": {
     "hobby": 37167

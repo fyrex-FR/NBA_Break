@@ -685,7 +685,7 @@
   },
   {
    "label": "Triple Power Autos",
-   "set": "Triple Power Autos",
+   "set": "Triple Power Autographs",
    "parallel": "",
    "odds": {
     "hobby": 25
@@ -693,7 +693,7 @@
   },
   {
    "label": "Triple Power Autos Bronze /25",
-   "set": "Triple Power Autos",
+   "set": "Triple Power Autographs",
    "parallel": "Bronze",
    "odds": {
     "hobby": 23,
@@ -702,7 +702,7 @@
   },
   {
    "label": "Triple Power Autos Blue /15",
-   "set": "Triple Power Autos",
+   "set": "Triple Power Autographs",
    "parallel": "Blue",
    "odds": {
     "hobby": 48,
@@ -711,7 +711,7 @@
   },
   {
    "label": "Triple Power Autos Gold /10",
-   "set": "Triple Power Autos",
+   "set": "Triple Power Autographs",
    "parallel": "Gold",
    "odds": {
     "hobby": 68,
@@ -720,7 +720,7 @@
   },
   {
    "label": "Triple Power Autos Red /5",
-   "set": "Triple Power Autos",
+   "set": "Triple Power Autographs",
    "parallel": "Red",
    "odds": {
     "hobby": 123,
@@ -729,7 +729,7 @@
   },
   {
    "label": "Triple Power Autos Platinum /1",
-   "set": "Triple Power Autos",
+   "set": "Triple Power Autographs",
    "parallel": "Platinum",
    "odds": {
     "hobby": 492,

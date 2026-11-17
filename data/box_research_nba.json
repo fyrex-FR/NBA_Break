@@ -325,10 +325,13 @@
   ],
   "sources": [
    "https://www.cardboardconnection.com/2022-23-panini-immaculate-collection-basketball-nba-cards",
-   "https://www.beckett.com/news/2022-23-panini-immaculate-basketball-cards/"
+   "https://www.beckett.com/news/2022-23-panini-immaculate-basketball-cards/",
+   "https://www.waxstat.com/boxes/2022-23-panini-immaculate-basketball-hobby-box",
+   "https://www.dacardworld.com/sports-cards/2022-23-panini-immaculate-basketball-hobby-box",
+   "https://www.smokeandmirrorshobby.com/collections/all/products/2022-23-panini-immaculate-basketball-hobby-box"
   ],
   "confidence": "medium",
-  "notes": "Release date disagreement: CC estimate 2024-01-12, Beckett 2024-01-31. Boxes per case 5 per CC only."
+  "notes": "Hobby 6x1x5, avg 3 autos + 2 memorabilia CONFIRMED (unchanged) per Waxstat/Dacardworld/Blowout and Smoke and Mirrors. Release date 2024-01-31 per several retailers (CC estimate 01-12 appears to be pre-release, StockX 2023-11-22 outlier) -> kept 2024-01-31."
  },
  "2022-23-panini-black-basketball-checklist": {
   "checklist_id": "2022-23-panini-black-basketball-checklist",
@@ -382,10 +385,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2022-23-panini-chronicles-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2022-23-panini-chronicles-basketball-nba-cards",
+   "https://giantsportscards.com/products/2022-23-panini-chronicles-basketball-hobby-box",
+   "https://giantsportscards.com/products/2022-23-panini-chronicles-basketball-hobby-12-box-case"
   ],
-  "confidence": "low",
-  "notes": "Autos described as average of 2 only; Chronicles also has retail formats not covered."
+  "confidence": "high",
+  "notes": "Hobby 8x6x12, avg 2 autos (24 per case) agreed by Giant, Midwest, Mint Ink, Popcultcha etc. -> config high. Release date 2023-07-19 only appears on a case listing (may be listing date); not confirmed, kept. Retail formats not covered."
  },
  "2022-23-panini-contenders-basketball-checklist": {
   "checklist_id": "2022-23-panini-contenders-basketball-checklist",
@@ -452,10 +457,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2022-23-panini-contenders-optic-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2022-23-panini-contenders-optic-basketball-nba-cards",
+   "https://blog.paniniamerica.net/survive-the-nba-offseason-with-contenders-optic-basketball/",
+   "https://www.dacardworld.com/sports-cards/2022-23-panini-contenders-optic-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Release date is an estimate on CC."
+  "confidence": "high",
+  "notes": "Hobby 6x1x20, avg 1 auto CONFIRMED (unchanged) per Panini America blog, Dacardworld, Gamenerdz, Waxstat; release 2023-09-29 (not an estimate: multiple retailers and checklist sites agree)."
  },
  "2022-23-panini-court-kings-basketball-checklist": {
   "checklist_id": "2022-23-panini-court-kings-basketball-checklist",
@@ -582,10 +589,14 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2022-23-donruss-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2022-23-donruss-basketball-nba-cards",
+   "https://blog.paniniamerica.net/?p=287559",
+   "https://giantsportscards.com/products/2022-23-panini-donruss-basketball-hobby-box",
+   "https://www.gamenerdz.com/2022-23-panini-donruss-basketball-hobby-box",
+   "https://www.blowoutcards.com/2022-23-panini-donruss-basketball-hobby-10-box-case-22175.html"
   ],
-  "confidence": "low",
-  "notes": "Config looks unusual (30 cards x 10 packs x 10 boxes, 1 auto) from a single summarized fetch; verify before use."
+  "confidence": "high",
+  "notes": "Hobby 30x10x10, 1 auto avg CONFIRMED (unchanged) per Panini America blog ('available tomorrow 3/8', 30 cards/pack, 10 packs/box) + Giant + GameNerdz + Blowout 10-box case. Release 2023-03-08 consistent with Panini blog. Choice (10x1x20) per Diggaz listing, not further verified."
  },
  "2022-23-panini-donruss-elite-basketball-checklist": {
   "checklist_id": "2022-23-panini-donruss-elite-basketball-checklist",
@@ -698,10 +709,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2022-23-panini-nba-hoops-basketball-cards"
+   "https://www.cardboardconnection.com/2022-23-panini-nba-hoops-basketball-cards",
+   "https://www.beckett.com/news/2022-23-panini-nba-hoops-basketball-cards/",
+   "https://www.sportscollectorsdaily.com/202223-panini-nba-hoops-basketball-hobby-box__94873/"
   ],
-  "confidence": "low",
-  "notes": "Premium Box Set and Standard Blaster also exist, configs not stated."
+  "confidence": "high",
+  "notes": "Hobby 8x24x20, avg 1 auto + 24 inserts/parallels CONFIRMED per Beckett checklist (also release 2023-01-11, matches), Sports Collectors Daily and Dacardworld. Cardlines says Jan 6 (outlier). Premium Box Set/Blaster not verified."
  },
  "2022-23-panini-noir-basketball-checklist": {
   "checklist_id": "2022-23-panini-noir-basketball-checklist",
@@ -715,7 +728,7 @@
     "cards_per_pack": 10,
     "packs_per_box": 1,
     "boxes_per_case": 4,
-    "autos_per_box": null,
+    "autos_per_box": 4,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -740,10 +753,13 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2022-23-panini-noir-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2022-23-panini-noir-basketball-nba-cards",
+   "https://blog.paniniamerica.net/noir-basketball-puts-the-spotlight-on-the-nbas-brightest-stars/",
+   "https://www.blowoutcards.com/2022-23-panini-noir-basketball-hobby-4-box-case.html",
+   "https://dacardworld.com/sports-cards/2022-23-panini-noir-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Autograph count not stated on page (average 4 hits listed)."
+  "confidence": "medium",
+  "notes": "Hobby 10x1x4 confirmed (Blowout 4-box case, Dacardworld, retailers); avg 4 autos + 3 memorabilia + 3 base/parallels per retailer listings (autos_per_box null->4 avg). Release 2023-10-20 per most retailers (Panini blog says Oct 12 for FOTL variant only). On-card autos only."
  },
  "2022-23-panini-obsidian-basketball-checklist": {
   "checklist_id": "2022-23-panini-obsidian-basketball-checklist",
@@ -1009,10 +1025,14 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2023-24-donruss-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2023-24-donruss-basketball-nba-cards",
+   "https://giantsportscards.com/products/2023-24-panini-donruss-basketball-hobby-box",
+   "https://remicardtrader.ca/en/products/2023-24-panini-donruss-nba-basketball-hobby-box",
+   "https://www.blowoutcards.com/2023-24-panini-donruss-basketball-hobby-box.html",
+   "https://giantsportscards.com/products/2023-24-panini-donruss-choice-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Same unusual 30x10x10 config as other Donruss years from a single summarized fetch; verify."
+  "confidence": "high",
+  "notes": "Hobby 30 cards x 10 packs CONFIRMED (unchanged) per Giant, Remi Card Trader, Blowout (3 retailers). Boxes/case 10 and 1 auto not re-verified for this year (consistent with other years per Panini). Choice 10x1x20 per Giant. Release 2024-01-24 not re-verified. Also exists: Donruss Hobby International 4 packs x 10 cards (not recorded)."
  },
  "2023-24-panini-nba-hoops-basketball-checklist": {
   "checklist_id": "2023-24-panini-nba-hoops-basketball-checklist",
@@ -1037,10 +1057,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2023-24-panini-nba-hoops-basketball-cards"
+   "https://www.cardboardconnection.com/2023-24-panini-nba-hoops-basketball-cards",
+   "https://giantsportscards.com/products/2023-24-panini-nba-hoops-basketball-hobby-box",
+   "https://giantsportscards.com/products/2023-24-panini-nba-hoops-basketball-hobby-20-box-case"
   ],
-  "confidence": "low",
-  "notes": "Autograph average ~1, not guaranteed."
+  "confidence": "medium",
+  "notes": "Hobby 8x24 confirmed by Giant Sports Cards (also 20 boxes/case via Giant case page) and Dacardworld listings; boxes_per_case null->20 (one retailer). Autos average ~1 not re-verified; left null. Release date 2023-11-22 not re-verified."
  },
  "2021-22-panini-black-basketball-checklist": {
   "checklist_id": "2021-22-panini-black-basketball-checklist",
@@ -1092,10 +1114,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2021-22-panini-chronicles-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2021-22-panini-chronicles-basketball-nba-cards",
+   "https://www.beckett.com/news/2021-22-panini-chronicles-basketball-cards/",
+   "https://www.blowoutcards.com/2021-22-panini-chronicles-basketball-hobby-12-box-case.html"
   ],
-  "confidence": "low",
-  "notes": "2 autos is average."
+  "confidence": "high",
+  "notes": "Hobby 8x6x12, avg 2 autos CONFIRMED (unchanged) per multiple retailers (TheCardVault, Hollywood, Blowout 12-box case, Diggaz) and Beckett; release 2022-09-21 per Beckett + Blowout (StockX lists 2022-09-14). 2 autos is an average."
  },
  "2021-22-panini-contenders-basketball-checklist": {
   "checklist_id": "2021-22-panini-contenders-basketball-checklist",
@@ -1224,10 +1248,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2021-22-panini-court-kings-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2021-22-panini-court-kings-basketball-nba-cards",
+   "https://blog.paniniamerica.net/?p=281078",
+   "https://www.dacardworld.com/sports-cards/2021-22-panini-court-kings-basketball-hobby-16-box-case"
   ],
-  "confidence": "low",
-  "notes": "Release date an estimate on CC."
+  "confidence": "high",
+  "notes": "Hobby 10 cards x 1 pack x 16 boxes/case, avg 1 auto + 1 memorabilia + 1 rookie + 1 parallel + 2 inserts + 4 base CONFIRMED per Panini America blog and Waxstat/Dacardworld case listings. Release 2022-05-06 per Panini (Panini Direct launch; some retailers say 05-04)."
  },
  "2021-22-panini-crown-royale-basketball-checklist": {
   "checklist_id": "2021-22-panini-crown-royale-basketball-checklist",
@@ -1311,10 +1337,13 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2021-22-donruss-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2021-22-donruss-basketball-nba-cards",
+   "https://blog.paniniamerica.net/coming-soon-2021-22-donruss-basketball-hobby/",
+   "https://www.blowoutcards.com/2021-22-panini-donruss-basketball-hobby-10-box-case.html",
+   "https://www.diggaztradingcards.com.au/?p=70276"
   ],
-  "confidence": "low",
-  "notes": "Unusual 30x10x10 config from one summarized fetch; verify."
+  "confidence": "high",
+  "notes": "Hobby 30x10x10, 1 auto avg CONFIRMED (unchanged) per Panini America announcement + Blowout 10-box case + Diggaz. Release date 2022-02-25 not re-verified. Choice format not re-verified."
  },
  "2021-22-panini-donruss-elite-basketball-checklist": {
   "checklist_id": "2021-22-panini-donruss-elite-basketball-checklist",
@@ -1867,17 +1896,18 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2021-22-panini-origins-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2021-22-panini-origins-basketball-nba-cards",
+   "https://blog.paniniamerica.net/?p=279836"
   ],
-  "confidence": "low",
-  "notes": "Autographs not guaranteed per page (hits may be relics)."
+  "confidence": "high",
+  "notes": "Hobby 7 cards x 1 pack x 12 boxes/case CONFIRMED per Panini America blog + Cardboard Connection + Checklist Center. Panini states avg 2 autograph-or-memorabilia cards, 2 parallels/inserts, 3 base per box, so autos not guaranteed (left null). Release 2022-03-11 per Panini blog estimate and CC (Checklist Center says 03-09)."
  },
  "2025-26-topps-chrome-cactus-jack-x-nba-all-star-game-basketball-checklist": {
   "checklist_id": "2025-26-topps-chrome-cactus-jack-x-nba-all-star-game-basketball-checklist",
   "name": "2025-26 Topps Chrome Cactus Jack X NBA All Star Game Basketball",
   "season": "2025-26",
   "brand": "Topps",
-  "release_date": null,
+  "release_date": "2026-02-13",
   "formats": [
    {
     "name": "All-Star Game Box",
@@ -1886,26 +1916,30 @@
     "boxes_per_case": null,
     "autos_per_box": null,
     "autos_per_case": null,
-    "price_usd": null,
-    "release_date": null,
+    "price_usd": 700,
+    "release_date": "2026-02-13",
     "contents": [
-     "8 cards per box"
+     "8 cards per box",
+     "100-card base set",
+     "20-card All-Star Game Autographs (/25 or fewer, odds unknown)",
+     "Sicko Stars inserts (25-card set)"
     ]
    }
   ],
   "sources": [
-   "https://www.beckett.com/news/2025-26-topps-chrome-cactus-jack-basketball-x-nba-all-star-game-basketball-cards/ (via search summary only)",
-   "https://www.steelcitycollectibles.com/i/2025-26-topps-chrome-cactus-jack-basketball-x-nba-all-star-game-box (via search summary only)"
+   "https://www.beckett.com/news/2025-26-topps-chrome-cactus-jack-basketball-x-nba-all-star-game-basketball-cards/",
+   "https://www.steelcitycollectibles.com/i/2025-26-topps-chrome-cactus-jack-basketball-x-nba-all-star-game-box",
+   "https://www.checklistinsider.com/2025-26-topps-chrome-cactus-jack-x-nba-all-star-game?noamp=mobile"
   ],
-  "confidence": "low",
-  "notes": "Search summary: ASG box 4 cards x 2 packs, 100-card set (Beckett), sold only at NBA Crossover during All-Star Weekend, reported ~$700 and 1 per person (not recorded as price; not verified). One retailer (SoleSavy) lists 2 cards/pack. A separate Cactus Jack Chrome Hobby Box (20 packs x 4 cards, release 2026-06-19 per Topps Ripped) exists and is NOT the same product. Beckett/Topps pages returned 403 on direct fetch."
+  "confidence": "high",
+  "notes": "Confirmed 4 cards x 2 packs = 8 cards (Checklist Insider page + Steel City + Beckett per search; only SoleSavy says 2/pack, outlier). Added release_date 2026-02-13 (Checklist Insider). Sold only via NBA Crossover All-Star Fan Experience pickup at $700/box (Checklist Insider; price_usd recorded as 700, event-only). Contents: 100-card base (Cooper Flagg, Dylan Harper rookies), 20-card All-Star Game Autographs set (/25 or fewer, odds unknown, so autos_per_box not set), 25-card Sicko Stars insert; parallels Orange /50, Laser /25, Black /10, Red /5, SuperFractor. Separate product from the regular Cactus Jack Chrome Hobby Box (20x4)."
  },
  "2023-24-topps-cosmic-chrome-basketball-checklist": {
   "checklist_id": "2023-24-topps-cosmic-chrome-basketball-checklist",
   "name": "2023-24 Topps Cosmic Chrome Basketball",
   "season": "2023-24",
   "brand": "Topps",
-  "release_date": null,
+  "release_date": "2024-12-27",
   "formats": [
    {
     "name": "Hobby",
@@ -1925,10 +1959,14 @@
    }
   ],
   "sources": [
-   "https://www.blowoutcards.com/2023-24-topps-cosmic-chrome-basketball-hobby-box.html (via search summary only)"
+   "https://www.blowoutcards.com/2023-24-topps-cosmic-chrome-basketball-hobby-box.html",
+   "https://www.cardboardconnection.com/2024-topps-cosmic-chrome-basketball",
+   "https://cardsmithsbreaks.com/product/2023-24-topps-cosmic-chrome-basketball-hobby-box/",
+   "https://hollywoodcollectibles.com/products/2023-24-topps-cosmic-chrome-basketball-hobby-box",
+   "https://remicardtrader.ca/en/products/2023-24-topps-cosmic-chrome-basketball"
   ],
-  "confidence": "low",
-  "notes": "Search listings agree on 4 cards x 20 packs; 12 boxes/case from one retailer; guaranteed autos and release date not found. Cardboard Connection URL guesses 404."
+  "confidence": "medium",
+  "notes": "Hobby 4x20 kept: Blowout/Hollywood/QS Cards/Remi/Dacardworld retailers agree (4 cards x 20 packs); Cardboard Connection page instead says 12 packs x 5 cards and 'at least one auto' (CC's reader comment disputes the guarantee) - treated as an outlier. Release date set to 2024-12-27 (Cardsmiths + Dacardworld; Remi says 2025-01-07, another source 2024-08-15 appears to be Topps Chrome); NOT the 2023-24 season, product shipped Dec 2024. Guaranteed autos NOT stated by any source (retailers only name Cosmic Chrome Autographs, Milky Way Marks, Equinox, First Flight Signatures), so autos_per_box left null. Boxes/case 12 from one retailer only (Remi)."
  },
  "2021-22-panini-photogenic-basketball-checklist": {
   "checklist_id": "2021-22-panini-photogenic-basketball-checklist",
@@ -2226,7 +2264,7 @@
    "https://www.cardboardconnection.com/2021-22-panini-nba-hoops-basketball-cards"
   ],
   "confidence": "low",
-  "notes": "Premium Box Set exists (Tribute autos #/10), config not stated."
+  "notes": "Not re-verified in this pass (no source found stating its config); 8x24 consistent with adjacent Hoops years (2022-23 Beckett, 2023-24 Giant) but kept low."
  },
  "2020-21-panini-black-basketball-checklist": {
   "checklist_id": "2020-21-panini-black-basketball-checklist",
@@ -2326,10 +2364,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2020-21-panini-chronicles-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2020-21-panini-chronicles-basketball-nba-cards",
+   "https://blog.paniniamerica.net/panini-america-delivers-a-detailed-first-look-at-the-upcoming-2020-21-chronicles-basketball/",
+   "https://dacardworld.com/sports-cards/2020-21-panini-chronicles-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "2 autos is average."
+  "confidence": "high",
+  "notes": "Hobby 8x6x12, avg 2 autos CONFIRMED per Panini America first-look blog and Checklist Center. Release 2021-11-24 per Cardlines, Checklist Center, Dacardworld (Panini preview estimated 2021-11-17). 2 autos is an average."
  },
  "2020-21-panini-contenders-basketball-checklist": {
   "checklist_id": "2020-21-panini-contenders-basketball-checklist",
@@ -2411,10 +2451,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2020-21-donruss-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2020-21-donruss-basketball-nba-cards",
+   "https://blog.paniniamerica.net/?p=266975",
+   "https://www.waxstat.com/boxes/2020-21-panini-donruss-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Unusual 30x10x10 config from a single summarized fetch (same across Donruss years); verify."
+  "confidence": "high",
+  "notes": "Hobby 30x10x10, 1 auto avg CONFIRMED (unchanged) per Panini America blog (30 cards/pack, 10 packs/box, 10 boxes/case, avg 1 auto + 1 memorabilia + 60 inserts/parallels) and retailer listings. Release 2021-03-03 per Waxstat (unchanged). Choice format not re-verified."
  },
  "2020-21-panini-donruss-optic-basketball-checklist": {
   "checklist_id": "2020-21-panini-donruss-optic-basketball-checklist",
@@ -2736,7 +2778,7 @@
     "cards_per_pack": 6,
     "packs_per_box": 14,
     "boxes_per_case": 12,
-    "autos_per_box": null,
+    "autos_per_box": 1,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -2808,10 +2850,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2020-21-panini-illusions-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2020-21-panini-illusions-basketball-nba-cards",
+   "https://blog.paniniamerica.net/?p=278538",
+   "https://www.waxstat.com/boxes/2020-21-panini-illusions-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Release date estimated on CC; hobby autograph average 1 (not guaranteed per page)."
+  "confidence": "medium",
+  "notes": "Hobby 6x14x12, avg 1 auto + 14 parallels + 8 inserts + 5 acetate per Panini America (hobby, Panini-direct exclusive) and Cardboard Connection. Release date unsettled: CC estimate 2021-11-17, Checklist Center 'November 2021', WaxStat 2021-12-06; kept 2021-11-17, medium. Retail/mega/blaster formats not re-verified."
  },
  "2020-21-panini-immaculate-basketball-checklist": {
   "checklist_id": "2020-21-panini-immaculate-basketball-checklist",
@@ -3420,10 +3464,13 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2020-21-clearly-donruss-basketball-cards"
+   "https://www.cardboardconnection.com/2020-21-clearly-donruss-basketball-cards",
+   "https://www.blowoutcards.com/2020-21-panini-clearly-donruss-basketball-hobby-box.html",
+   "https://www.smokeandmirrorshobby.com/products/2020-21-clearly-donruss-basketball-hobby-box",
+   "https://blog.paniniamerica.net/panini-america-delivers-a-detailed-first-look-at-the-upcoming-2020-21-clearly-donruss-basketball/"
   ],
-  "confidence": "low",
-  "notes": "Autographs not stated."
+  "confidence": "medium",
+  "notes": "Hobby 5x4 confirmed per Blowout + Smoke and Mirrors (4 packs x 5 cards). Release date 2021-07-23 per WaxStat and Smoke and Mirrors (Panini preview estimated July 25). Autographs per box NOT stated by any source (Clearly Rated Rookie Autographs exist); left null. Boxes/case 12 kept unverified."
  },
  "2020-21-panini-recon-basketball-checklist": {
   "checklist_id": "2020-21-panini-recon-basketball-checklist",
@@ -3459,10 +3506,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2020-21-panini-recon-basketball-cards (via search summary)"
+   "https://www.cardboardconnection.com/2020-21-panini-recon-basketball-cards",
+   "https://blog.paniniamerica.net/panini-america-delivers-a-detailed-first-look-at-the-upcoming-2020-21-recon-basketball/",
+   "https://www.blowoutcards.com/sports-cards/basketball-cards/2020-21/2020-21-panini-recon-basketball-hobby-box.html"
   ],
-  "confidence": "low",
-  "notes": "Single source via search summary; FOTL pack config not given."
+  "confidence": "high",
+  "notes": "Hobby 6x10, avg 2 autos CONFIRMED per Panini America first look + Blowout listing; release 2021-10-27 per Panini preview and most sources (StockX 10-20). 12 boxes/case (Blowout case listing exists; not stated numerically here). FOTL not verified."
  },
  "2020-21-panini-noir-basketball-checklist": {
   "checklist_id": "2020-21-panini-noir-basketball-checklist",
@@ -3628,10 +3677,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2018-19-panini-chronicles-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2018-19-panini-chronicles-basketball-nba-cards",
+   "https://www.beckett.com/news/2018-19-panini-chronicles-basketball-cards/",
+   "https://www.blowoutcards.com/2018-19-panini-chronicles-basketball-hobby-box.html"
   ],
-  "confidence": "low",
-  "notes": "Hobby 2 autos listed as average; retail not covered."
+  "confidence": "high",
+  "notes": "Hobby 8x6x12, avg 2 autos CONFIRMED per Beckett, Panini America blog, Blowout, Checklist Center; release 2019-06-28 per Beckett/Blowout/Checklist Center agree. Retail formats still not covered."
  },
  "2018-19-panini-contenders-basketball-checklist": {
   "checklist_id": "2018-19-panini-contenders-basketball-checklist",
@@ -3670,54 +3721,51 @@
   "formats": [
    {
     "name": "Blaster",
-    "cards_per_pack": null,
-    "packs_per_box": null,
-    "boxes_per_case": null,
-    "autos_per_box": 1,
-    "autos_per_case": null,
-    "price_usd": null,
-    "release_date": null,
-    "contents": [
-     "1 Autograph or Relic (slated)",
-     "40 cards per box"
-    ]
-   },
-   {
-    "name": "Hanger",
-    "cards_per_pack": null,
-    "packs_per_box": null,
-    "boxes_per_case": null,
+    "cards_per_pack": 5,
+    "packs_per_box": 8,
+    "boxes_per_case": 20,
     "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
     "contents": [
-     "30 cards per box",
-     "Swatches",
-     "Orange rookies",
-     "Blue parallels"
+     "Exclusive Green and Purple parallels"
+    ]
+   },
+   {
+    "name": "Hanger",
+    "cards_per_pack": 30,
+    "packs_per_box": 1,
+    "boxes_per_case": 36,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "Orange and Blue parallels",
+     "Swatches (hanger only)"
     ]
    },
    {
     "name": "Fat Pack",
     "cards_per_pack": 15,
-    "packs_per_box": null,
-    "boxes_per_case": null,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
     "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
     "contents": [
-     "Aqua rookies",
-     "Red parallels"
+     "Aqua parallel (fat pack only)"
     ]
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2018-19-panini-status-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2018-19-panini-status-basketball-nba-cards",
+   "https://www.blowoutcards.com/2018-19-panini-status-basketball-fat-pack-box.html"
   ],
-  "confidence": "low",
-  "notes": "Retail-only product; pack counts not stated."
+  "confidence": "medium",
+  "notes": "Retail-only product; pack configs filled in from a single search summary of Cardboard Connection/Blowout retail pages: Blaster 8 packs x 5 cards, 20 boxes/case; Hanger 1 pack x 30 cards, 36/case; Fat pack box 12 packs x 15 cards, 12/case. Hanger autos/blaster autos 1 per previous pass not supported (cleared). Release 2019-03-27 per Checklist Center/Beckett March 2019 (Blowout hanger lists 2019-04-03). Page text not directly fetched."
  },
  "2017-18-panini-chronicles-basketball-checklist": {
   "checklist_id": "2017-18-panini-chronicles-basketball-checklist",
@@ -3882,10 +3930,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2017-18-panini-status-basketball-nba-cards"
+   "https://www.cardboardconnection.com/2017-18-panini-status-basketball-nba-cards",
+   "https://waxstat.com/boxes/2017-18-panini-status-basketball-hobby-20-box-case",
+   "https://www.blowoutcards.com/2017-18-panini-status-basketball-hobby-box.html"
   ],
-  "confidence": "medium",
-  "notes": "Hobby listing for a product usually retail; verify."
+  "confidence": "high",
+  "notes": "Hobby 6x10x20, avg 1 auto + 10 RC + 10 inserts/parallels CONFIRMED per Cardboard Connection, Waxstat, Blowout, Diggaz, Steel City; it IS a hobby product (hobby 20-box case) with a separate Walmart retail version. Release 2018-01-31 per WaxStat/Blowout (Cardsmiths 2019-05-06 is wrong)."
  },
  "2019-20-panini-nba-hoops-premium-stock-basketball-checklist": {
   "checklist_id": "2019-20-panini-nba-hoops-premium-stock-basketball-checklist",
@@ -4035,17 +4085,18 @@
   ],
   "sources": [
    "https://www.cardboardconnection.com/2016-17-donruss-basketball-cards",
-   "https://www.beckett.com/news/2016-17-donruss-basketball/ (via search summary)"
+   "https://www.beckett.com/news/2016-17-donruss-basketball/",
+   "https://blog.paniniamerica.net/teaser-gallery-panini-america-breaks-a-box-of-the-new-2016-17-donruss-basketball/"
   ],
   "confidence": "high",
-  "notes": "Beckett and CC agree on 12x24x20, 1 auto + 1 relic; release date conflict: Beckett 2016-11-23, CC 2016-11-25."
+  "notes": "Confirmed unchanged: 12x24x20, 1 auto + 1 relic per Cardboard Connection and Panini teaser; release 2016-11-25 per CC and Panini America teaser post dated 2016-11-25 (Beckett's 11-23 was the conflict; CC/Panini preferred)."
  },
  "2014-15-panini-donruss-basketball-checklist": {
   "checklist_id": "2014-15-panini-donruss-basketball-checklist",
   "name": "2014-15 Panini Donruss Basketball",
   "season": "2014-15",
   "brand": "Panini",
-  "release_date": null,
+  "release_date": "2015-02-25",
   "formats": [
    {
     "name": "Hobby",
@@ -4065,17 +4116,20 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2014-15-donruss-basketball-cards"
+   "https://www.cardboardconnection.com/2014-15-donruss-basketball-cards",
+   "https://blog.paniniamerica.net/panini-america-offers-detailed-first-look-at-2014-15-donruss-basketball-gallery/",
+   "https://waxstat.com/boxes/2014-15-panini-donruss-basketball-hobby-box",
+   "https://www.dacardworld.com/sports-cards/2014-15-panini-donruss-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Single source; release date not stated; page says 3 hits total (autos and memorabilia), a reviewer got fewer."
+  "confidence": "high",
+  "notes": "Hobby 8x24 CONFIRMED per Panini America blog + Waxstat + Dacardworld. Release set to 2015-02-25 (Waxstat, Dacardworld, Panini teaser dated 2015-02-25; StockX 2014-12-10 wrong). Hits: 3 autograph-or-memorabilia cards per box (+24 metalized, 48 inserts, 3 parallels); autos_per_box left null because mix varies."
  },
  "2013-14-panini-basketball-checklist": {
   "checklist_id": "2013-14-panini-basketball-checklist",
   "name": "2013-14 Panini Basketball",
   "season": "2013-14",
   "brand": "Panini",
-  "release_date": null,
+  "release_date": "2014-04-09",
   "formats": [
    {
     "name": "Hobby",
@@ -4105,10 +4159,13 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2013-14-panini-basketball-cards"
+   "https://www.cardboardconnection.com/2013-14-panini-basketball-cards",
+   "https://blog.paniniamerica.net/?p=73145",
+   "https://www.beckett.com/news/first-look-2013-14-panini-basketball-cards/",
+   "https://www.blowoutcards.com/sports-cards/2013-14-panini-basketball-hobby-box.html"
   ],
-  "confidence": "low",
-  "notes": "Single source; release date and boxes/case not stated."
+  "confidence": "high",
+  "notes": "Hobby 10x24 with 2 autos per box CONFIRMED per Panini Peek blog; retail 8x24 with 1 auto/memorabilia hit (search summary). Release date set 2014-04-09 (Blowout; Beckett and Panini say early April 2014). boxes_per_case 12 from gogts.net only: not confirmed, left null."
  },
  "2013-14-panini-prestige-basketball-checklist": {
   "checklist_id": "2013-14-panini-prestige-basketball-checklist",
@@ -4207,24 +4264,28 @@
   "formats": [
    {
     "name": "Hobby",
-    "cards_per_pack": null,
-    "packs_per_box": 24,
+    "cards_per_pack": 8,
+    "packs_per_box": 36,
     "boxes_per_case": null,
     "autos_per_box": 2,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
     "contents": [
-     "2 Autographs"
+     "Two autographs per hobby box (guaranteed per retailers)"
     ]
    }
   ],
   "sources": [
    "https://www.cardboardconnection.com/2012-13-nba-hoops-basketball-cards",
-   "https://www.beckett.com/news/first-look-2012-13-panini-basketball-cards/ (via search summary)"
+   "https://www.beckett.com/news/first-look-2012-13-panini-basketball-cards/",
+   "https://stockx.com/2012-13-panini-hoops-basketball-hobby-box",
+   "https://www.waxstat.com/boxes/2012-13-panini-nba-hoops-basketball-hobby-box",
+   "https://www.steelcitycollectibles.com/i/2012-13-panini-nba-hoops-basketball-hobby-box",
+   "https://www.dacardworld.com/sports-cards/2012-13-panini-hoops-basketball-hobby-box"
   ],
-  "confidence": "low",
-  "notes": "Packs per box conflict: Beckett 24 vs CC 36; 24 recorded. Cards/pack unknown. Release \"late February\" 2013 per Beckett preview."
+  "confidence": "high",
+  "notes": "packs_per_box 24->36, cards_per_pack null->8 per StockX, WaxStat and Steel City/Dacardworld listings (all 36 packs x 8 cards, 2 autos per hobby box). The 24-pack figure (Beckett 'first look', late Feb 2013, 10 cards/pack) belongs to the separate 2012-13 Panini Basketball flagship product, not NBA Hoops. Release date left null: WaxStat says 2012-08-17, StockX lists 2012-10-03 (description says Aug 2012); unresolved. Retail box 36x5, blaster 11x5 reported by Blowout."
  },
  "2012-13-panini-prestige-basketball-checklist": {
   "checklist_id": "2012-13-panini-prestige-basketball-checklist",
@@ -4279,10 +4340,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2012-13-panini-totally-certified-basketball-cards"
+   "https://www.cardboardconnection.com/2012-13-panini-totally-certified-basketball-cards",
+   "https://www.ozcardtrader.com.au/threads/panini-peek-preview-gallery-2012-13-totally-certified-basketball-8-must-see-images.127841/?amp=1",
+   "https://www.beckett.com/news/beckett-by-the-numbers-2012-13-totally-certified/"
   ],
-  "confidence": "low",
-  "notes": "A reviewer reports fewer hits; cards/pack and date not found."
+  "confidence": "medium",
+  "notes": "Per Panini Peek preview: 6-pack box, 300-card base, 6 autograph/memorabilia cards per box with at least 3 autographs guaranteed (consistent with previous 3 autos). Release 'early November' 2012 (year implied by 2012-13 set; left null). Cards per pack still unknown. The earlier worry about 'fewer hits' from a reviewer is unsupported by Panini's stated guarantee."
  },
  "2010-11-panini-season-update-basketball-checklist": {
   "checklist_id": "2010-11-panini-season-update-basketball-checklist",
@@ -4293,8 +4356,8 @@
   "formats": [
    {
     "name": "Hobby",
-    "cards_per_pack": null,
-    "packs_per_box": null,
+    "cards_per_pack": 10,
+    "packs_per_box": 24,
     "boxes_per_case": null,
     "autos_per_box": 1,
     "autos_per_case": null,
@@ -4308,10 +4371,12 @@
    }
   ],
   "sources": [
-   "https://www.cardboardconnection.com/2010-11-panini-nba-season-update-basketball"
+   "https://www.cardboardconnection.com/2010-11-panini-nba-season-update-basketball",
+   "https://blog.paniniamerica.net/panini-peek-2010-11-nba-season-update/",
+   "https://community.cardboardconnection.com/forums/forum/sports-card-products/product-reviews/basketball-reviews/29817-10-11-panini-season-update-basketball"
   ],
-  "confidence": "low",
-  "notes": "Release date estimated by CC; pack config not found."
+  "confidence": "medium",
+  "notes": "Per Panini Peek blog: avg 1 auto + 3 memorabilia + 14 inserts per box, pack SRP $2.99, July 10 release. Config 24 packs x 10 cards from a Cardboard Connection forum post only (packs_per_box/cards_per_pack null->24/10, medium). Year of release 2011-07-10 inferred (product is the 2010-11 season update); Panini blog snippet did not show the year."
  },
  "1990-91-hoops-basketball": {
   "checklist_id": "1990-91-hoops-basketball",
@@ -4325,7 +4390,7 @@
     "cards_per_pack": 15,
     "packs_per_box": 36,
     "boxes_per_case": null,
-    "autos_per_box": 0,
+    "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -4350,7 +4415,7 @@
     "cards_per_pack": 15,
     "packs_per_box": 36,
     "boxes_per_case": null,
-    "autos_per_box": 0,
+    "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -4375,7 +4440,7 @@
     "cards_per_pack": 15,
     "packs_per_box": 36,
     "boxes_per_case": null,
-    "autos_per_box": 0,
+    "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -4394,12 +4459,29 @@
   "season": "1991-92",
   "brand": "Hoops",
   "release_date": null,
-  "formats": [],
-  "sources": [
-   "https://www.beckett.com/basketball/1991-92/hoops (via search summary)"
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "540 cards per box"
+    ]
+   }
   ],
-  "confidence": "low",
-  "notes": "Box configuration (packs/box, cards/pack) not found in searches; set issued in two series (330 and 260 cards). Not guessed."
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/hoops",
+   "https://pastimesports.ca/collections/manufacturer_skybox/products/1991-92-hoops-series-1-nba-basketball-hobby-box",
+   "https://bleeckertrading.com/products/1991-92-nba-hoops-series-1-basketball-hobby-box",
+   "https://www.steelcitycollectibles.com/i/1991-92-hoops-series-2-basketball-box"
+  ],
+  "confidence": "medium",
+  "notes": "formats null->Hobby 15 cards x 36 packs per several retailers (Pastime Sports, Bleecker Trading, Steel City, 100clubil listings for Series 1/Series 2). Retailer listings only; series-1 and series-2 boxes both listed 36x15. Pastime Sports once lists a Skybox Series 1 at 12 cards but that is a different product."
  },
  "1991-92-hoops-basketball-series-1": {
   "checklist_id": "1991-92-hoops-basketball-series-1",
@@ -4407,12 +4489,29 @@
   "season": "1991-92",
   "brand": "Hoops",
   "release_date": null,
-  "formats": [],
-  "sources": [
-   "https://www.beckett.com/basketball/1991-92/hoops (via search summary)"
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "540 cards per box"
+    ]
+   }
   ],
-  "confidence": "low",
-  "notes": "Box configuration (packs/box, cards/pack) not found in searches; set issued in two series (330 and 260 cards). Not guessed."
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/hoops",
+   "https://pastimesports.ca/collections/manufacturer_skybox/products/1991-92-hoops-series-1-nba-basketball-hobby-box",
+   "https://bleeckertrading.com/products/1991-92-nba-hoops-series-1-basketball-hobby-box",
+   "https://www.steelcitycollectibles.com/i/1991-92-hoops-series-2-basketball-box"
+  ],
+  "confidence": "medium",
+  "notes": "formats null->Hobby 15 cards x 36 packs per several retailers (Pastime Sports, Bleecker Trading, Steel City, 100clubil listings for Series 1/Series 2). Retailer listings only; series-1 and series-2 boxes both listed 36x15. Pastime Sports once lists a Skybox Series 1 at 12 cards but that is a different product."
  },
  "1991-92-hoops-basketball-series-2": {
   "checklist_id": "1991-92-hoops-basketball-series-2",
@@ -4420,12 +4519,29 @@
   "season": "1991-92",
   "brand": "Hoops",
   "release_date": null,
-  "formats": [],
-  "sources": [
-   "https://www.beckett.com/basketball/1991-92/hoops (via search summary)"
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "540 cards per box"
+    ]
+   }
   ],
-  "confidence": "low",
-  "notes": "Box configuration (packs/box, cards/pack) not found in searches; set issued in two series (330 and 260 cards). Not guessed."
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/hoops",
+   "https://pastimesports.ca/collections/manufacturer_skybox/products/1991-92-hoops-series-1-nba-basketball-hobby-box",
+   "https://bleeckertrading.com/products/1991-92-nba-hoops-series-1-basketball-hobby-box",
+   "https://www.steelcitycollectibles.com/i/1991-92-hoops-series-2-basketball-box"
+  ],
+  "confidence": "medium",
+  "notes": "formats null->Hobby 15 cards x 36 packs per several retailers (Pastime Sports, Bleecker Trading, Steel City, 100clubil listings for Series 1/Series 2). Retailer listings only; series-1 and series-2 boxes both listed 36x15. Pastime Sports once lists a Skybox Series 1 at 12 cards but that is a different product."
  },
  "1991-92-skybox-basketball": {
   "checklist_id": "1991-92-skybox-basketball",
@@ -4433,12 +4549,28 @@
   "season": "1991-92",
   "brand": "SkyBox",
   "release_date": null,
-  "formats": [],
-  "sources": [
-   "https://www.beckett.com/basketball/1991-92/skybox/ (via search summary)"
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "540 cards per box"
+    ]
+   }
   ],
-  "confidence": "low",
-  "notes": "Beckett: 15-card foil packs (also 62-card blister packs); packs per box not found. Not guessed."
+  "sources": [
+   "https://www.beckett.com/basketball/1991-92/skybox/",
+   "https://www.midwestcards.com/products/1991-92-skybox-series-1-basketball-hobby-box",
+   "https://bleeckertrading.com/products/1991-92-skybox-basketball-sealed-hobby-box"
+  ],
+  "confidence": "medium",
+  "notes": "formats null->Hobby 15 cards x 36 packs per Midwest Cards, Bleecker Trading, Target and Beckett (15-card foil packs). Pastime Sports lists 12 cards for one Skybox listing (conflict, outlier)."
  },
  "1993-94-skybox-premium-basketball": {
   "checklist_id": "1993-94-skybox-premium-basketball",
@@ -4452,7 +4584,7 @@
     "cards_per_pack": 12,
     "packs_per_box": 36,
     "boxes_per_case": null,
-    "autos_per_box": 0,
+    "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -4471,12 +4603,24 @@
   "season": "1993-94",
   "brand": "Topps",
   "release_date": null,
-  "formats": [],
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
   "sources": [
-   "https://www.beckett.com/basketball/1993-94/topps-gold (via search summary)"
+   "https://www.beckett.com/basketball/1993-94/topps-gold"
   ],
   "confidence": "low",
-  "notes": "Beckett: base set issued in two 198-card series in 12, 15 and 29-card packs; packs per box not found. Not guessed."
+  "notes": "36 packs per box (eBay listing for Series 1); cards per pack conflicted (one listing says 12, Beckett lists 12/15/29-card packs). Left cards_per_pack null. Confidence stays low."
  },
  "1993-94-topps-basketball-series-1": {
   "checklist_id": "1993-94-topps-basketball-series-1",
@@ -4484,12 +4628,24 @@
   "season": "1993-94",
   "brand": "Topps",
   "release_date": null,
-  "formats": [],
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": null,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
   "sources": [
-   "https://www.beckett.com/basketball/1993-94/topps-gold (via search summary)"
+   "https://www.beckett.com/basketball/1993-94/topps-gold"
   ],
   "confidence": "low",
-  "notes": "Beckett: base set issued in two 198-card series in 12, 15 and 29-card packs; packs per box not found. Not guessed."
+  "notes": "36 packs per box (eBay listing for Series 1); cards per pack conflicted (one listing says 12, Beckett lists 12/15/29-card packs). Left cards_per_pack null. Confidence stays low."
  },
  "1993-94-topps-basketball-series-2": {
   "checklist_id": "1993-94-topps-basketball-series-2",
@@ -4497,12 +4653,25 @@
   "season": "1993-94",
   "brand": "Topps",
   "release_date": null,
-  "formats": [],
-  "sources": [
-   "https://www.beckett.com/basketball/1993-94/topps-gold (via search summary)"
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 36,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
   ],
-  "confidence": "low",
-  "notes": "Beckett: base set issued in two 198-card series in 12, 15 and 29-card packs; packs per box not found. Not guessed."
+  "sources": [
+   "https://www.beckett.com/basketball/1993-94/topps-gold",
+   "https://bleeckertrading.com/products/1993-94-topps-nba-basketball-series-2-hobby-box"
+  ],
+  "confidence": "medium",
+  "notes": "Bleecker Trading listing gives 36 packs x 15 cards for Series 2 hobby; single retailer, medium. Beckett lists 12/15/29-card packs for the set."
  },
  "1994-skybox-usa-basketball": {
   "checklist_id": "1994-skybox-usa-basketball",
@@ -4516,7 +4685,7 @@
     "cards_per_pack": 10,
     "packs_per_box": 24,
     "boxes_per_case": null,
-    "autos_per_box": 0,
+    "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
@@ -4541,7 +4710,7 @@
     "cards_per_pack": 5,
     "packs_per_box": 8,
     "boxes_per_case": 16,
-    "autos_per_box": 0,
+    "autos_per_box": null,
     "autos_per_case": null,
     "price_usd": null,
     "release_date": null,
