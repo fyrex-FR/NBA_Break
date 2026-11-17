@@ -1,0 +1,78 @@
+# Mise à jour hebdomadaire des données (guide des boîtes, odds).
+# Relance les imports et ouvre une PR seulement si les données ont changé.
+# Prérequis (une fois) : Settings › Actions › General › Workflow permissions ›
+# cocher « Allow GitHub Actions to create and approve pull requests ».
+name: Mise à jour hebdo des données
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # lundi, 5 h UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: maj-donnees
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            backend/requirements.txt
+            scripts/requirements-dev.txt
+
+      - name: Dépendances
+        run: pip install -r backend/requirements.txt -r scripts/requirements-dev.txt
+
+      - name: Guide des boîtes (The Hobby Checklist)
+        run: python scripts/import_hobbychecklist_boxes.py 2>&1 | tee -a import.log
+
+      - name: Odds (The Hobby Checklist)
+        run: python scripts/import_hobbychecklist_odds.py --force 2>&1 | tee -a import.log
+
+      - name: Odds (PDF officiels Topps)
+        run: python scripts/import_topps_odds_pdfs.py 2>&1 | tee -a import.log
+
+      - name: Ignorer les changements de date seuls
+        run: python scripts/ci_drop_noise_changes.py
+
+      - name: Résumé
+        id: summary
+        run: |
+          {
+            echo 'body<<EOF'
+            echo 'Mise à jour automatique (workflow « Mise à jour hebdo des données »).'
+            echo
+            echo '```'
+            grep -E "collections écrites|Reliées|feuilles écrites|^✓|^✗|écartée" import.log | head -80 || true
+            echo '```'
+            echo
+            echo 'Vérifie les photos et les nouvelles collections avant de merger.'
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+          rm -f import.log
+
+      - name: Ouvrir la PR si quelque chose a changé
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto/maj-donnees
+          base: main
+          commit-message: "Mise à jour hebdo des données (guide des boîtes, odds)"
+          title: "Mise à jour hebdo des données (guide des boîtes, odds)"
+          body: ${{ steps.summary.outputs.body }}
+          add-paths: |
+            backend/box_guides.json
+            backend/odds/**
+            frontend/public/boxes/**
+          delete-branch: true
