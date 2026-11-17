@@ -132,6 +132,24 @@ Quand plusieurs séries du site tombent dans une seule de nos séries (ex. « Ro
 Une exclusivité à un seul format spécial déduite des cotes (ex. group `china`) donne aussi
 `only:<group>` au lieu de `retail_only`.
 
+## Rareté (SP / SSP / Case hit)
+
+```jsonc
+"rarity": { "All Kings": "case_hit", "Helix": "ssp" }
+```
+
+Champ optionnel `{set: sp|ssp|case_hit}` : la rareté déclarée par l'éditeur (étiquettes
+« Case hit » / « SSP » de The Hobby Checklist, désignations SSP de Topps). **Quand une feuille
+en déclare, seules ces séries ont un badge de rareté** : l'éditeur étiquette une sélection
+(ses vrais case hits), pas toutes les séries rares — chaque série d'autos prise seule est
+« rare » sans être un case hit.
+
+Sans ce champ, la rareté est calculée sur la cote de la version de base dans le format Hobby
+(sinon le format principal de la série), rapportée à ses `packs_per_box` / `boxes_per_case` :
+SP = moins d'une carte toutes les 4 boxes ; SSP = moins d'une par case ; Case hit = moins
+d'une toutes les 3 cases. Sans `packs_per_box`, seuils fixes par paquet (1:200 / 1:1000 / 1:20 000).
+`boxes_per_case` est un champ optionnel des `configs`, comme `packs_per_box`.
+
 ## Sémantique de `channel` / `group` / `packs_per_box`
 
 - **`channel`** ∈ `hobby | retail | special`. Sert de classification large pour l'UI

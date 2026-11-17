@@ -11,14 +11,16 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 6
+   "packs_per_box": 6,
+   "boxes_per_case": 8
   },
   {
    "key": "breaker_delight",
    "label": "Breaker Delight",
    "channel": "hobby",
    "group": "delight",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 8
   },
   {
    "key": "player_samples",

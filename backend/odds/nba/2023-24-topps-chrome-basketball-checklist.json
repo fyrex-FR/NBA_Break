@@ -11,7 +11,8 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 12
+   "packs_per_box": 12,
+   "boxes_per_case": 12
   },
   {
    "key": "breaker_delight",

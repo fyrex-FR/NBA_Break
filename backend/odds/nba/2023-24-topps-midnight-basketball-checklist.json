@@ -11,7 +11,8 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 12
   }
  ],
  "rows": [
@@ -631,5 +632,9 @@
     "hobby": 20
    }
   }
- ]
+ ],
+ "rarity": {
+  "After Hours": "ssp",
+  "Dream Chasers": "ssp"
+ }
 }

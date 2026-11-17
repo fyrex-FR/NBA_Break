@@ -11,35 +11,40 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 20
+   "packs_per_box": 20,
+   "boxes_per_case": 12
   },
   {
    "key": "jumbo",
    "label": "Jumbo",
    "channel": "hobby",
    "group": "jumbo",
-   "packs_per_box": 10
+   "packs_per_box": 10,
+   "boxes_per_case": 6
   },
   {
    "key": "mega",
    "label": "Mega",
    "channel": "retail",
    "group": "mega",
-   "packs_per_box": 12
+   "packs_per_box": 12,
+   "boxes_per_case": 20
   },
   {
    "key": "value_blaster",
    "label": "Value Blaster",
    "channel": "retail",
    "group": "value",
-   "packs_per_box": 10
+   "packs_per_box": 10,
+   "boxes_per_case": 40
   },
   {
    "key": "hanger",
    "label": "Hanger",
    "channel": "retail",
    "group": "hanger",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 24
   },
   {
    "key": "fat_pack",
@@ -3832,5 +3837,13 @@
   "The Flagship Collection Base Cards": "Costco/Sams Club",
   "The Flagship Collection Chrome Base Cards": "Costco/Sams Club",
   "The Journey": "China Wave 2"
+ },
+ "rarity": {
+  "All Kings": "case_hit",
+  "Bounce": "case_hit",
+  "Class Of 26": "case_hit",
+  "Comic Court": "case_hit",
+  "Hardwood Stars": "case_hit",
+  "Quest For The Crown": "case_hit"
  }
 }

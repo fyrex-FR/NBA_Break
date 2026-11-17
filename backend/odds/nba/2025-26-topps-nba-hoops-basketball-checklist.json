@@ -11,21 +11,24 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 20
+   "packs_per_box": 20,
+   "boxes_per_case": 12
   },
   {
    "key": "jumbo",
    "label": "Jumbo",
    "channel": "hobby",
    "group": "jumbo",
-   "packs_per_box": 10
+   "packs_per_box": 10,
+   "boxes_per_case": 8
   },
   {
    "key": "value_blaster",
    "label": "Value Blaster",
    "channel": "retail",
    "group": "value",
-   "packs_per_box": 7
+   "packs_per_box": 7,
+   "boxes_per_case": 40
   },
   {
    "key": "fanatics_value_blaster",
@@ -39,7 +42,8 @@
    "label": "Hanger",
    "channel": "retail",
    "group": "hanger",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 64
   }
  ],
  "rows": [
@@ -1741,5 +1745,9 @@
   "Oasis": "Hobby/Jumbo",
   "Pay Attention": "Hobby/Jumbo",
   "The Buzz": "Retail"
+ },
+ "rarity": {
+  "Hoopnotic": "ssp",
+  "Oasis": "ssp"
  }
 }

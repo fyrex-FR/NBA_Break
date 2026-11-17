@@ -11,7 +11,8 @@
    "label": "Hobby",
    "channel": "hobby",
    "group": "hobby",
-   "packs_per_box": 1
+   "packs_per_box": 1,
+   "boxes_per_case": 3
   },
   {
    "key": "fdi",
