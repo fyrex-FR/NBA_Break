@@ -6,6 +6,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { ViewName, AnalyzeResponse, ChecklistInfo, BreakContext } from '../types'
+import { DESTINATIONS, navItemFor, type DestinationId } from '../navigation'
 
 interface AppState {
   // Theme
@@ -30,6 +31,10 @@ interface AppState {
   // Navigation
   activeView: ViewName
   setActiveView: (view: ViewName) => void
+  /** Dernier onglet ouvert dans chaque destination (retour au même endroit). */
+  lastViews: Partial<Record<DestinationId, ViewName>>
+  /** Ouvre une destination ; re-toucher la destination courante revient à son onglet par défaut. */
+  goToDestination: (id: DestinationId) => void
 
   // Analysis results (not persisted)
   analysisData: AnalyzeResponse | null
@@ -76,7 +81,7 @@ interface AppState {
   setChatOpen: (open: boolean) => void
 }
 
-export type SelectionTab = 'catalog' | 'presets' | 'voggt' | 'upload'
+export type SelectionTab = 'catalog' | 'presets' | 'upload'
 
 /**
  * Coupe toutes les transitions le temps d'un changement de thème : sinon des
@@ -134,7 +139,22 @@ export const useAppStore = create<AppState>()(
 
       // Navigation
       activeView: '🌍 Vue Globale',
-      setActiveView: (view) => set({ activeView: view }),
+      setActiveView: (view) => {
+        const group = navItemFor(view)?.group
+        const isDestination = DESTINATIONS.some((d) => d.id === group)
+        set((s) => ({
+          activeView: view,
+          lastViews: isDestination ? { ...s.lastViews, [group as DestinationId]: view } : s.lastViews,
+        }))
+      },
+      lastViews: {},
+      goToDestination: (id) => {
+        const dest = DESTINATIONS.find((d) => d.id === id)
+        if (!dest) return
+        const current = navItemFor(get().activeView)?.group
+        const target = current === id ? dest.defaultView : get().lastViews[id] ?? dest.defaultView
+        get().setActiveView(target)
+      },
 
       // Analysis
       analysisData: null,

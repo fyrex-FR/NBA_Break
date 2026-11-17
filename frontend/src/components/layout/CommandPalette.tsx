@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Search, User, Shield, Layers, Sun, Moon, Play, CornerDownLeft, Radio, Bookmark, MessageCircle } from 'lucide-react'
+import { Search, User, Shield, Library, Sun, Moon, CornerDownLeft, Radio, Bookmark, MessageCircle } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
-import { NAV_ITEMS, isItemEnabled, sectionLabel } from '../../navigation'
-import { useRunAnalysis } from '../../hooks/useRunAnalysis'
+import { NAV_ITEMS, isItemEnabled, groupLabel } from '../../navigation'
 import { formatCount } from '../../utils/checklists'
 
 interface Command {
@@ -27,7 +26,6 @@ export function CommandPalette() {
     paletteOpen, setPaletteOpen, analysisData, selectedSport, breakContext,
     setActiveView, setTargetPlayer, setTargetTeam, openSelection, toggleTheme, theme, selectedChecklistIds, setChatOpen,
   } = useAppStore()
-  const runAnalysis = useRunAnalysis()
   const [query, setQuery] = useState('')
   const [index, setIndex] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -81,23 +79,17 @@ export function CommandPalette() {
     const out: Command[] = []
 
     const actions: Command[] = [
-      { id: 'a:select', group: 'Actions', label: 'Choisir des checklists', icon: Layers, keywords: 'selection catalogue', run: () => { close(); openSelection('catalog') } },
+      { id: 'a:select', group: 'Actions', label: 'Choisir les collections', icon: Library, keywords: 'selection catalogue checklists collections', run: () => { close(); openSelection('catalog') } },
       { id: 'a:presets', group: 'Actions', label: 'Ouvrir un preset', icon: Bookmark, keywords: 'preset sauvegarde', run: () => { close(); openSelection('presets') } },
-      { id: 'a:voggt', group: 'Actions', label: 'Charger un break Voggt', icon: Radio, keywords: 'voggt show live', run: () => { close(); openSelection('voggt') } },
-      ...(selectedChecklistIds.length > 0 ? [{
-        id: 'a:run', group: 'Actions', label: analysisData ? "Relancer l'analyse" : "Lancer l'analyse", icon: Play, keywords: 'analyser lancer',
-        run: () => { close(); runAnalysis({ goTo: analysisData ? null : '🌍 Vue Globale' }) },
-      }] : []),
+      { id: 'a:voggt', group: 'Actions', label: 'Charger un break Voggt', icon: Radio, keywords: 'voggt show live', run: () => { close(); setActiveView('🎲 État du Break') } },
       { id: 'a:chat', group: 'Actions', label: "Demander à l'assistant", icon: MessageCircle, keywords: 'chat ia question assistant', run: () => { close(); setChatOpen(true) } },
       { id: 'a:theme', group: 'Actions', label: theme === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre', icon: theme === 'dark' ? Sun : Moon, keywords: 'theme dark light', run: () => { toggleTheme(); close() } },
     ]
 
     const views: Command[] = NAV_ITEMS
       .filter((i) => isItemEnabled(i, analysisData?.enabled_views, selectedSport))
-      .filter((i) => i.view !== '🎲 État du Break' || !!breakContext)
-      .filter((i) => !i.needsAnalysis || !!analysisData)
       .map((i) => ({
-        id: `v:${i.slug}`, group: 'Aller à', label: i.label, hint: sectionLabel(i.section), icon: i.icon, keywords: i.description,
+        id: `v:${i.slug}`, group: 'Aller à', label: i.label, hint: groupLabel(i.group), icon: i.icon, keywords: i.description,
         run: () => { setActiveView(i.view); close() },
       }))
 

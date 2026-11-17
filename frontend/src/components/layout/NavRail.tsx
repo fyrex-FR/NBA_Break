@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { ChevronDown, ChevronRight, Check, PanelLeftClose, PanelLeftOpen, Sun, Moon, BookOpenText, Lock, MessageCircle } from 'lucide-react'
+import { ChevronDown, ChevronRight, Check, PanelLeftClose, PanelLeftOpen, Sun, Moon, BookOpenText, MessageCircle } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchSports } from '../../api/client'
-import { NAV_ITEMS, NAV_SECTIONS, isItemEnabled, navItemFor, type NavItem } from '../../navigation'
+import { DESTINATIONS, destinationFor, itemsOf, navItemFor, type NavItem } from '../../navigation'
 import { Popover } from '../ui/primitives'
 
 interface NavRailProps {
@@ -120,74 +121,82 @@ function SportSwitcher({ collapsed, onPicked }: { collapsed: boolean; onPicked: 
 }
 
 function NavSections({ collapsed, onNavigate }: { collapsed: boolean; onNavigate: () => void }) {
-  const { activeView, setActiveView, analysisData, selectedSport, breakContext, openSelection } = useAppStore()
-  const [adminOpen, setAdminOpen] = useState(() => navItemFor(activeView)?.section === 'admin')
+  const { activeView, setActiveView, goToDestination, analysisData, selectedSport, breakContext } = useAppStore()
+  const [adminOpen, setAdminOpen] = useState(() => navItemFor(activeView)?.group === 'admin')
   const activeItem = navItemFor(activeView)
+  const currentDestination = destinationFor(activeView)?.id
   const enabled = analysisData?.enabled_views
+  const tools = itemsOf('tools', enabled, selectedSport)
+  const admin = itemsOf('admin', enabled, selectedSport)
 
-  function go(item: NavItem) {
-    if (item.needsAnalysis && !analysisData) {
-      openSelection('catalog')
-    } else {
-      setActiveView(item.view)
-    }
-    onNavigate()
+  const row = (key: string, label: string, Icon: LucideIcon, active: boolean, onClick: () => void, extra?: React.ReactNode) => (
+    <li key={key}>
+      <button
+        onClick={() => { onClick(); onNavigate() }}
+        aria-current={active ? 'page' : undefined}
+        title={collapsed ? label : undefined}
+        className={`ui-nav-item group relative w-full flex items-center gap-2.5 rounded-lg ${collapsed ? 'justify-center h-10' : 'h-11 md:h-9 px-2.5 text-[15px] md:text-[14px]'}`}
+      >
+        {active && <span className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full" style={{ background: 'var(--accent)' }} />}
+        <Icon className="w-[18px] h-[18px] flex-shrink-0" style={{ color: active ? 'var(--accent)' : undefined }} />
+        {!collapsed && <span className={`flex-1 text-left truncate ${active ? 'font-semibold' : ''}`}>{label}</span>}
+        {extra}
+      </button>
+    </li>
+  )
+
+  const subRow = (item: NavItem) => {
+    const Icon = item.icon
+    const active = activeItem?.view === item.view
+    return (
+      <li key={item.view}>
+        <button
+          onClick={() => { setActiveView(item.view); onNavigate() }}
+          aria-current={active ? 'page' : undefined}
+          title={collapsed ? item.label : undefined}
+          className={`ui-nav-item relative w-full flex items-center gap-2.5 rounded-lg text-[13px] ${collapsed ? 'justify-center h-9' : 'h-10 md:h-8 px-2.5 text-[14px] md:text-[13px]'}`}
+        >
+          {active && <span className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full" style={{ background: 'var(--accent)' }} />}
+          <Icon className="w-4 h-4 flex-shrink-0" style={{ color: active ? 'var(--accent)' : undefined }} />
+          {!collapsed && <span className="flex-1 text-left truncate">{item.label}</span>}
+        </button>
+      </li>
+    )
   }
 
   return (
-    <div className="space-y-4">
-      {NAV_SECTIONS.map((section) => {
-        const items = NAV_ITEMS.filter((i) => i.section === section.id)
-          .filter((i) => isItemEnabled(i, enabled, selectedSport))
-          .filter((i) => i.view !== '🎲 État du Break' || !!breakContext)
-        if (items.length === 0) return null
-        const isAdmin = !!section.collapsible
-        const expanded = !isAdmin || adminOpen || collapsed
-        return (
-          <div key={section.id}>
-            {!collapsed ? (
-              isAdmin ? (
-                <button onClick={() => setAdminOpen((v) => !v)} className="w-full flex items-center gap-1 px-2.5 mb-1 ui-eyebrow hover:text-[var(--text-secondary)]">
-                  {section.label}
-                  {adminOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
-                </button>
-              ) : (
-                <div className="px-2.5 mb-1 ui-eyebrow">{section.label}</div>
-              )
-            ) : (
-              <div className="mx-auto mb-2 w-5 h-px" style={{ background: 'var(--border-standard)' }} />
-            )}
-            {expanded && (
-              <ul className="space-y-0.5">
-                {items.map((item) => {
-                  const locked = item.needsAnalysis && !analysisData
-                  const active = activeItem?.view === item.view && !locked
-                  const Icon = item.icon
-                  return (
-                    <li key={item.view}>
-                      <button
-                        onClick={() => go(item)}
-                        aria-current={active ? 'page' : undefined}
-                        title={collapsed ? item.label : locked ? 'Lance une analyse pour ouvrir cette vue' : undefined}
-                        data-locked={locked}
-                        className={`ui-nav-item group relative w-full flex items-center gap-2.5 rounded-lg text-[13px] ${collapsed ? 'justify-center h-9' : 'h-10 md:h-8 px-2.5 text-[14px] md:text-[13px]'}`}
-                      >
-                        {active && <span className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full" style={{ background: 'var(--accent)' }} />}
-                        <Icon className="w-4 h-4 flex-shrink-0" style={{ color: active ? 'var(--accent)' : undefined }} />
-                        {!collapsed && <span className="flex-1 text-left truncate">{item.label}</span>}
-                        {!collapsed && item.view === '🎲 État du Break' && (
-                          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--danger)' }} />
-                        )}
-                        {!collapsed && locked && <Lock className="w-3 h-3 opacity-0 group-hover:opacity-100" />}
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </div>
-        )
-      })}
+    <div className="space-y-5">
+      <ul className="space-y-0.5">
+        {DESTINATIONS.map((d) => row(
+          d.id, d.label, d.icon, currentDestination === d.id, () => goToDestination(d.id),
+          d.id === 'break' && breakContext && !collapsed
+            ? <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--danger)' }} aria-label="break en direct" />
+            : null,
+        ))}
+      </ul>
+
+      {tools.length > 0 && (
+        <div>
+          {!collapsed
+            ? <div className="px-2.5 mb-1 ui-eyebrow">Outils</div>
+            : <div className="mx-auto mb-2 w-5 h-px" style={{ background: 'var(--border-standard)' }} />}
+          <ul className="space-y-0.5">{tools.map(subRow)}</ul>
+        </div>
+      )}
+
+      {admin.length > 0 && (
+        <div>
+          {!collapsed ? (
+            <button onClick={() => setAdminOpen((v) => !v)} className="w-full flex items-center gap-1 px-2.5 mb-1 ui-eyebrow hover:text-[var(--text-secondary)]" aria-expanded={adminOpen}>
+              Admin
+              {adminOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+            </button>
+          ) : (
+            <div className="mx-auto mb-2 w-5 h-px" style={{ background: 'var(--border-standard)' }} />
+          )}
+          {(adminOpen || collapsed) && <ul className="space-y-0.5">{admin.map(subRow)}</ul>}
+        </div>
+      )}
     </div>
   )
 }

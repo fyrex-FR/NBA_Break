@@ -105,12 +105,12 @@ export function BreakModePanel({ onAfterLoad }: BreakModePanelProps) {
               className="ui-input pl-8"
             />
           </div>
-          <button onClick={handleFetchShow} disabled={loading || !url.trim()} className="ui-btn ui-btn-primary" style={{ height: 34 }}>
+          <button onClick={handleFetchShow} disabled={loading || !url.trim()} className="ui-btn ui-btn-primary">
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Charger'}
           </button>
         </div>
         <p className="text-xs mt-2" style={{ color: 'var(--text-quaternary)' }}>
-          NoClim détecte les produits du break, sélectionne les checklists et lance l'analyse.
+          NoClim reconnaît les produits du break, ouvre les collections et affiche chaque spot avec son contenu et son prix.
         </p>
       </div>
 
