@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query'
 import { Package, Search, PenLine, Dot, CalendarDays, ExternalLink, Plus, Check, Play } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchBoxGuide, fetchBoxGuides } from '../../api/client'
-import { useRunAnalysis } from '../../hooks/useRunAnalysis'
 import { EmptyState, Segmented, Sheet, SheetHeader } from '../ui/primitives'
 import type { BoxFormat, BoxGuideSummary } from '../../types'
 
@@ -35,7 +34,7 @@ export function BoxGuideView() {
   const { selectedSport, selectedChecklistIds } = useAppStore()
   const [query, setQuery] = useState('')
   const [season, setSeason] = useState<string>('all')
-  const [onlySelection, setOnlySelection] = useState(false)
+  const [onlySelection, setOnlySelection] = useState(() => useAppStore.getState().selectedChecklistIds.length > 0)
   const [openId, setOpenId] = useState<string | null>(null)
 
   const { data, isLoading, error } = useQuery({
@@ -176,7 +175,6 @@ function BoxImage({ src, className = '' }: { src: string | null; className?: str
 
 function BoxGuideSheet({ guideId, onClose }: { guideId: string | null; onClose: () => void }) {
   const { selectedSport, availableChecklists, selectedChecklistIds, toggleChecklist } = useAppStore()
-  const runAnalysis = useRunAnalysis()
   const [formatName, setFormatName] = useState<string | null>(null)
   const [showAllPresentation, setShowAllPresentation] = useState(false)
 
@@ -223,9 +221,9 @@ function BoxGuideSheet({ guideId, onClose }: { guideId: string | null; onClose: 
                     <button
                       type="button"
                       className="ui-btn ui-btn-primary ui-btn-sm justify-center"
-                      onClick={() => { runAnalysis({ ids: [guide.checklist_id!], goTo: '🌍 Vue Globale' }); useAppStore.getState().setSelectedChecklistIds([guide.checklist_id!]); close() }}
+                      onClick={() => { useAppStore.getState().setSelectedChecklistIds([guide.checklist_id!]); useAppStore.getState().setActiveView('🌍 Vue Globale'); close() }}
                     >
-                      <Play className="w-3.5 h-3.5" /> Analyser cette checklist
+                      <Play className="w-3.5 h-3.5" /> Ouvrir cette collection
                     </button>
                     <button type="button" className="ui-btn ui-btn-secondary ui-btn-sm justify-center" onClick={() => toggleChecklist(guide.checklist_id!)}>
                       {selected ? <><Check className="w-3.5 h-3.5" /> Dans la sélection</> : <><Plus className="w-3.5 h-3.5" /> Ajouter à la sélection</>}

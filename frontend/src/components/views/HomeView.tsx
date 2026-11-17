@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Layers, Radio, Bookmark, Play, Check, Plus, Trophy, Dices, Target, Wand2, ArrowRight, Loader2 } from 'lucide-react'
+import { Library, Radio, Bookmark, Play, Check, Plus, Trophy, Dices, Target, Wand2, ArrowRight, Loader2 } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchPresets } from '../../api/client'
 import { useRunAnalysis } from '../../hooks/useRunAnalysis'
@@ -64,27 +64,23 @@ export function HomeView() {
             </p>
             <div className="mt-7 flex flex-wrap gap-2.5">
               {count > 0 ? (
+                // Ici seulement si l'analyse automatique a échoué : on propose de réessayer.
                 <button onClick={() => runAnalysis({ goTo: '🌍 Vue Globale' })} disabled={isAnalyzing} className="ui-btn ui-btn-primary ui-btn-lg w-full sm:w-auto">
                   {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
-                  Analyser {plural(count, 'checklist')}
+                  Réessayer l’analyse
                   <span className="num font-normal opacity-80">· {formatCount(selectedRows)} cartes</span>
                 </button>
               ) : (
                 <button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-primary ui-btn-lg w-full sm:w-auto">
-                  <Layers className="w-4 h-4" /> Choisir des checklists
+                  <Library className="w-4 h-4" /> Choisir une collection
                 </button>
               )}
-              <button onClick={() => openSelection(count > 0 ? 'catalog' : 'voggt')} className="ui-btn ui-btn-secondary ui-btn-lg flex-1 sm:flex-none">
-                {count > 0 ? <><Layers className="w-4 h-4" /> Modifier</> : <><Radio className="w-4 h-4" /> Break Voggt</>}
+              <button onClick={() => setActiveView('🎲 État du Break')} className="ui-btn ui-btn-secondary ui-btn-lg flex-1 sm:flex-none">
+                <Radio className="w-4 h-4" /> Break Voggt
               </button>
-              {count > 0 && (
-                <button onClick={() => openSelection('voggt')} className="ui-btn ui-btn-secondary ui-btn-lg flex-1 sm:flex-none">
-                  <Radio className="w-4 h-4" /> Break Voggt
-                </button>
-              )}
             </div>
             <p className="mt-5 text-xs" style={{ color: 'var(--text-tertiary)' }}>
-              <span className="font-stat text-[13px]" style={{ color: 'var(--text-primary)' }}>{formatCount(availableChecklists.length)}</span> checklists prêtes à croiser pour ce sport.
+              <span className="font-stat text-[13px]" style={{ color: 'var(--text-primary)' }}>{formatCount(availableChecklists.length)}</span> collections prêtes à croiser pour ce sport.
             </p>
           </div>
           <div className="relative">

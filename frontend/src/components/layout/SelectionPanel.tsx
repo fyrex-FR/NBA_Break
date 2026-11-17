@@ -1,22 +1,24 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import {
-  Search, ChevronDown, ChevronRight, Trash2, Target, Bookmark, Radio, UploadCloud,
+  Search, ChevronDown, ChevronRight, Trash2, Target, Bookmark, UploadCloud,
   FileSpreadsheet, Play, Check, X, Wand2, Loader2, Library, Link as LinkIcon,
 } from 'lucide-react'
 import { useAppStore, type SelectionTab } from '../../stores/appStore'
 import { fetchPresets, savePreset, deletePreset, uploadChecklist, deleteChecklist } from '../../api/client'
-import { useRunAnalysis, sameIds } from '../../hooks/useRunAnalysis'
+
 import { useOddsConfig } from '../../hooks/useOddsConfig'
 import { formatChecklistName, sortChecklists, formatCount, plural, type ChecklistSort } from '../../utils/checklists'
 import { Sheet, SheetHeader, Segmented, EmptyState, CheckboxMark } from '../ui/primitives'
-import { BreakModePanel } from './BreakModePanel'
 import type { ChecklistInfo, PresetInfo } from '../../types'
 
 /**
- * Panneau de sélection des checklists (catalogue, presets, break Voggt, ajout).
+ * Panneau des collections ouvertes (catalogue, presets, ajout). L'analyse suit
+ * toute seule : cocher une collection suffit.
  * Remplace l'ancienne sidebar : la sélection est un moment, pas un décor permanent.
  */
+const MAX_BULK = 12
+
 export function SelectionPanel() {
   const { selectionOpen, closeSelection, selectionTab, openSelection, selectedSport } = useAppStore()
   const sportLabel = useSportLabel(selectedSport)
@@ -25,7 +27,7 @@ export function SelectionPanel() {
     <Sheet open={selectionOpen} onClose={closeSelection} labelledBy="selection-title" width={540}>
       <SheetHeader
         id="selection-title"
-        title="Sélection des checklists"
+        title="Collections ouvertes"
         subtitle={sportLabel}
         onClose={closeSelection}
       />
@@ -37,7 +39,6 @@ export function SelectionPanel() {
           options={[
             { value: 'catalog', label: 'Catalogue', icon: Library },
             { value: 'presets', label: 'Presets', icon: Bookmark },
-            { value: 'voggt', label: 'Break Voggt', icon: Radio },
             { value: 'upload', label: 'Ajouter', icon: UploadCloud },
           ]}
         />
@@ -45,9 +46,6 @@ export function SelectionPanel() {
       <div className="flex-1 min-h-0 flex flex-col" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         {selectionTab === 'catalog' && <CatalogTab />}
         {selectionTab === 'presets' && <PresetsTab />}
-        {selectionTab === 'voggt' && (
-          <div className="flex-1 overflow-y-auto p-5"><BreakModePanel onAfterLoad={closeSelection} /></div>
-        )}
         {selectionTab === 'upload' && <UploadTab />}
       </div>
       <SelectionFooter />
@@ -180,7 +178,8 @@ function CatalogTab() {
             </button>
           )}
           <div className="ml-auto">
-            {filtered.length > 0 && !allVisibleSelected && (
+            {/* L'analyse suit chaque coche : « tout cocher » seulement sur une liste filtrée raisonnable. */}
+            {filtered.length > 0 && filtered.length <= MAX_BULK && !allVisibleSelected && (
               <button
                 onClick={() => setSelectedChecklistIds(Array.from(new Set([...selectedChecklistIds, ...visibleIds])))}
                 className="ui-btn ui-btn-ghost ui-btn-sm"
@@ -350,7 +349,6 @@ function DeleteChecklistDialog({ checklist, onClose, onDeleted }: { checklist: C
 function PresetsTab() {
   const { selectedSport, selectedChecklistIds, setSelectedChecklistIds, openSelection, closeSelection } = useAppStore()
   const queryClient = useQueryClient()
-  const runAnalysis = useRunAnalysis()
   const [name, setName] = useState('')
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null)
 
@@ -428,10 +426,10 @@ function PresetsTab() {
                   Modifier
                 </button>
                 <button
-                  onClick={() => { setSelectedChecklistIds(p.checklist_ids); closeSelection(); runAnalysis({ ids: p.checklist_ids, goTo: '🌍 Vue Globale' }) }}
+                  onClick={() => { setSelectedChecklistIds(p.checklist_ids); closeSelection() }}
                   className="ui-btn ui-btn-secondary ui-btn-sm"
                 >
-                  <Play className="w-3 h-3" /> Analyser
+                  <Play className="w-3 h-3" /> Ouvrir
                 </button>
               </li>
             ))}
@@ -523,59 +521,43 @@ function UploadTab() {
 /* ── Pied du panneau : récap + action ───────────────────────────────────── */
 
 function SelectionFooter() {
-  const {
-    selectedChecklistIds, availableChecklists, analyzedChecklistIds, analysisData,
-    deselectAllChecklists, closeSelection, isAnalyzing,
-  } = useAppStore()
-  const runAnalysis = useRunAnalysis()
+  const { selectedChecklistIds, availableChecklists, deselectAllChecklists, closeSelection, isAnalyzing } = useAppStore()
   const [copied, setCopied] = useState(false)
 
   const rows = availableChecklists
     .filter((c) => selectedChecklistIds.includes(c.checklist_id))
     .reduce((sum, c) => sum + c.rows, 0)
   const count = selectedChecklistIds.length
-  const upToDate = !!analysisData && sameIds(selectedChecklistIds, analyzedChecklistIds)
 
   return (
     <div className="flex-shrink-0 px-5 py-4 flex items-center gap-3" style={{ borderTop: '1px solid var(--border-standard)', background: 'var(--bg-panel)' }}>
       <div className="flex-1 min-w-0">
         <div className="text-sm font-semibold num" style={{ color: 'var(--text-primary)' }}>
-          {count === 0 ? 'Aucune checklist' : plural(count, 'checklist')}
+          {count === 0 ? 'Aucune collection' : plural(count, 'collection')}
         </div>
         <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-tertiary)' }}>
-          {count > 0 ? <span className="num">{formatCount(rows)} cartes</span> : <span>Coche au moins une checklist</span>}
+          {count === 0 && <span>Coche au moins une collection</span>}
+          {count > 0 && isAnalyzing && <span className="inline-flex items-center gap-1"><Loader2 className="w-3 h-3 animate-spin" /> Analyse…</span>}
+          {count > 0 && !isAnalyzing && <span className="num">{formatCount(rows)} cartes</span>}
           {count > 0 && (
-            <>
-              <button
-                onClick={() => { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 1800) }}
-                className="inline-flex items-center gap-1 hover:underline"
-                style={{ color: copied ? 'var(--success)' : 'var(--text-tertiary)' }}
-              >
-                {copied ? <Check className="w-3 h-3" /> : <LinkIcon className="w-3 h-3" />} {copied ? 'Lien copié' : 'Partager'}
-              </button>
-            </>
+            <button
+              onClick={() => { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 1800) }}
+              className="inline-flex items-center gap-1 hover:underline"
+              style={{ color: copied ? 'var(--success)' : 'var(--text-tertiary)' }}
+            >
+              {copied ? <Check className="w-3 h-3" /> : <LinkIcon className="w-3 h-3" />} {copied ? 'Lien copié' : 'Partager'}
+            </button>
           )}
         </div>
       </div>
       {count > 0 && (
-        <button onClick={deselectAllChecklists} className="ui-btn ui-btn-ghost ui-btn-danger ui-btn-lg !px-3" title="Décocher toutes les checklists">
+        <button onClick={deselectAllChecklists} className="ui-btn ui-btn-ghost ui-btn-danger ui-btn-lg !px-3" title="Fermer toutes les collections">
           <Trash2 className="w-4 h-4" /> Vider
         </button>
       )}
-      {upToDate ? (
-        <button onClick={closeSelection} className="ui-btn ui-btn-secondary ui-btn-lg">
-          <Check className="w-4 h-4" style={{ color: 'var(--success)' }} /> À jour
-        </button>
-      ) : (
-        <button
-          onClick={() => { closeSelection(); runAnalysis({ goTo: analysisData ? null : '🌍 Vue Globale' }) }}
-          disabled={count === 0 || isAnalyzing}
-          className="ui-btn ui-btn-primary ui-btn-lg"
-        >
-          {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
-          {analysisData ? 'Mettre à jour' : 'Analyser'}
-        </button>
-      )}
+      <button onClick={closeSelection} className="ui-btn ui-btn-primary ui-btn-lg">
+        {count > 0 ? 'Voir' : 'Fermer'}
+      </button>
     </div>
   )
 }

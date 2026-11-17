@@ -56,3 +56,11 @@ export function errorMessage(err: unknown, fallback = 'Erreur inattendue') {
   if (typeof err === 'string' && err) return err
   return fallback
 }
+
+/** Libellé court d'une collection : « Panini Prizm · 25-26 ». */
+export function shortCollectionLabel(cl: { checklist_name: string; display_name?: string }) {
+  const { name, year } = formatChecklistName(cl.checklist_name, cl.display_name)
+  const clean = name.replace(/\s+(Basketball|Football|Soccer|Checklist)\b/gi, '').trim()
+  const season = year.replace(/^\d{2}(\d{2})-(\d{2})$/, '$1-$2')
+  return season ? `${clean} · ${season}` : clean
+}
