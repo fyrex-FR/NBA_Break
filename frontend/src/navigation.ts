@@ -1,127 +1,168 @@
 /**
  * Registre unique de navigation.
+ *
+ * La navigation est organisée par objets : quatre destinations (Collections,
+ * Équipes, Joueurs, Break), chacune avec ses onglets. Les outils (export,
+ * import) et l'admin vivent dans un menu secondaire.
+ *
  * Les ViewName historiques restent les identifiants internes (les vues
- * s'appellent entre elles avec), le registre leur associe libellé, icône,
- * section, slug d'URL et description de page.
+ * s'appellent entre elles avec) ; le registre leur associe destination,
+ * libellé d'onglet, icône, slug d'URL et description.
  */
 
 import type { LucideIcon } from 'lucide-react'
 import {
-  LayoutDashboard, Gem, Users, Sparkles, TrendingUp, User, Shield, Scale,
-  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package,
+  LayoutDashboard, Gem, Users, TrendingUp, User, Shield, Scale, Sparkles,
+  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library,
 } from 'lucide-react'
 import type { ViewName } from './types'
 
-export type NavSectionId = 'analyse' | 'fiches' | 'break' | 'donnees' | 'admin'
+export type DestinationId = 'collections' | 'teams' | 'players' | 'break'
+export type NavGroupId = DestinationId | 'tools' | 'admin'
+
+export interface Destination {
+  id: DestinationId
+  label: string
+  description: string
+  icon: LucideIcon
+  defaultView: ViewName
+}
+
+export const DESTINATIONS: Destination[] = [
+  {
+    id: 'collections', label: 'Collections', icon: Library, defaultView: '🌍 Vue Globale',
+    description: 'Ce que contiennent les collections ouvertes : hits, boîte, checklist, odds.',
+  },
+  {
+    id: 'teams', label: 'Équipes', icon: Shield, defaultView: '🛡️ Analyse Équipe',
+    description: 'Roster, hits et cartes d’une équipe dans les collections ouvertes.',
+  },
+  {
+    id: 'players', label: 'Joueurs', icon: User, defaultView: '🔍 Analyse Joueur',
+    description: 'Toutes les cartes d’un joueur, les rookies, et la comparaison.',
+  },
+  {
+    id: 'break', label: 'Break', icon: Radio, defaultView: '🎲 État du Break',
+    description: 'Le break Voggt en cours et la valeur de chaque spot.',
+  },
+]
 
 export interface NavItem {
   view: ViewName
   slug: string
+  /** Libellé complet (palette, menu outils). */
   label: string
+  /** Libellé court de l'onglet dans sa destination. */
+  tab: string
   description: string
   icon: LucideIcon
-  section: NavSectionId
+  group: NavGroupId
+  /** Onglet rangé dans le menu « Plus » de sa destination. */
+  overflow?: boolean
   /** Clé `enabled_views` côté backend — masque l'entrée si le sport la désactive. */
   enabledKey?: string
-  /** La vue a besoin d'une analyse chargée. */
+  /** La vue a besoin d'une analyse (au moins une collection ouverte). */
   needsAnalysis: boolean
-  /** Vues regroupées sous la même entrée de menu (onglets internes). */
+  /** Vues regroupées sous la même entrée (onglets internes). */
   aliases?: ViewName[]
   /** Entrée affichée uniquement pour certains sports. */
   sports?: string[]
 }
 
-export const NAV_SECTIONS: { id: NavSectionId; label: string; collapsible?: boolean }[] = [
-  { id: 'analyse', label: 'Analyse' },
-  { id: 'fiches', label: 'Fiches' },
-  { id: 'break', label: 'Break' },
-  { id: 'donnees', label: 'Données' },
-  { id: 'admin', label: 'Outils admin', collapsible: true },
-]
-
 export const NAV_ITEMS: NavItem[] = [
+  // ── Collections ──
   {
-    view: '🌍 Vue Globale', slug: 'overview', label: "Vue d'ensemble", icon: LayoutDashboard, section: 'analyse',
-    description: 'Volumes, répartition des hits et classements de la sélection.', needsAnalysis: true,
+    view: '🌍 Vue Globale', slug: 'overview', label: "Vue d'ensemble", tab: 'Aperçu', icon: LayoutDashboard, group: 'collections',
+    description: 'Volumes, répartition des hits et classements des collections ouvertes.', needsAnalysis: true,
   },
   {
-    view: '💎 Autos & Patchs', slug: 'hits', label: 'Hits premium', icon: Gem, section: 'analyse', enabledKey: 'autos_patchs',
+    view: '💎 Autos & Patchs', slug: 'hits', label: 'Hits premium', tab: 'Hits', icon: Gem, group: 'collections', enabledKey: 'autos_patchs',
     description: 'Autos, memorabilia, Logoman et case hits : qui concentre les cartes qui comptent.', needsAnalysis: true,
     aliases: ['🔥 Logoman', '✨ Case Hits'],
   },
   {
-    view: '👥 Multi-Joueurs', slug: 'multi', label: 'Multi-joueurs', icon: Users, section: 'analyse', enabledKey: 'multi_players',
-    description: 'Cartes partagées entre plusieurs joueurs (dual, triple, quad…).', needsAnalysis: true,
-  },
-  {
-    view: '🧨 Rookies', slug: 'rookies', label: 'Rookies', icon: Sparkles, section: 'analyse', enabledKey: 'rookies',
-    description: 'Rookie cards présentes dans la sélection.', needsAnalysis: true,
-  },
-  {
-    view: '📈 Tendances', slug: 'trends', label: 'Tendances', icon: TrendingUp, section: 'analyse', enabledKey: 'trends',
-    description: "Évolution des volumes d'une saison à l'autre.", needsAnalysis: true,
-  },
-
-  {
-    view: '🔍 Analyse Joueur', slug: 'player', label: 'Joueur', icon: User, section: 'fiches', enabledKey: 'player_detail',
-    description: 'Toutes les cartes d’un joueur, par catégorie et par produit.', needsAnalysis: true,
-  },
-  {
-    view: '🛡️ Analyse Équipe', slug: 'team', label: 'Équipe', icon: Shield, section: 'fiches', enabledKey: 'team_detail',
-    description: 'Roster, hits et cartes d’une équipe.', needsAnalysis: true,
-  },
-  {
-    view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', icon: Scale, section: 'fiches', enabledKey: 'comparator',
-    description: 'Mets plusieurs joueurs côte à côte.', needsAnalysis: true,
-  },
-
-  {
-    view: '🎲 État du Break', slug: 'live', label: 'Break en cours', icon: Radio, section: 'break',
-    description: 'Spots vendus et restants du break Voggt chargé.', needsAnalysis: false,
-  },
-  {
-    view: '🧩 Simulation de Break', slug: 'simulation', label: 'Simulation', icon: Dices, section: 'break', enabledKey: 'break_simulation',
-    description: 'Valeur de chaque spot selon la méthode de break.', needsAnalysis: true,
-  },
-  {
-    view: '🎯 Odds', slug: 'odds', label: 'Odds', icon: Target, section: 'break', enabledKey: 'odds',
-    description: 'Probabilités Topps par configuration de box.', needsAnalysis: true,
-  },
-  {
-    view: '📤 Export', slug: 'export', label: 'Export', icon: Download, section: 'break', enabledKey: 'export',
-    description: 'Fichier Excel personnalisé de la sélection.', needsAnalysis: true,
-  },
-
-  {
-    view: '📦 Guide des boîtes', slug: 'boxes', label: 'Guide des boîtes', icon: Package, section: 'donnees', sports: ['nba'],
+    view: '📦 Guide des boîtes', slug: 'boxes', label: 'Guide des boîtes', tab: 'Boîte', icon: Package, group: 'collections', sports: ['nba'],
     description: 'Formats de boîte, contenu moyen, autos garantis, prix et dates de sortie.', needsAnalysis: false,
   },
   {
-    view: '📚 Checklist Beckett', slug: 'beckett', label: 'Checklist', icon: BookOpen, section: 'donnees', enabledKey: 'checklist_browser',
+    view: '📚 Checklist Beckett', slug: 'beckett', label: 'Checklist', tab: 'Checklist', icon: BookOpen, group: 'collections', enabledKey: 'checklist_browser',
     description: 'Parcours la checklist complète, carte par carte.', needsAnalysis: true,
   },
   {
-    view: '📁 Par Fichier', slug: 'files', label: 'Par fichier', icon: FileText, section: 'donnees', enabledKey: 'file_analysis',
+    view: '🎯 Odds', slug: 'odds', label: 'Odds', tab: 'Odds', icon: Target, group: 'collections', enabledKey: 'odds',
+    description: 'Probabilités Topps par configuration de box.', needsAnalysis: true,
+  },
+  {
+    view: '👥 Multi-Joueurs', slug: 'multi', label: 'Multi-joueurs', tab: 'Multi-joueurs', icon: Users, group: 'collections', enabledKey: 'multi_players', overflow: true,
+    description: 'Cartes partagées entre plusieurs joueurs (dual, triple, quad…).', needsAnalysis: true,
+  },
+  {
+    view: '📁 Par Fichier', slug: 'files', label: 'Par fichier', tab: 'Par fichier', icon: FileText, group: 'collections', enabledKey: 'file_analysis', overflow: true,
     description: 'Répartition des cartes par checklist source.', needsAnalysis: true,
   },
   {
-    view: '📥 Import Intelligent', slug: 'import', label: 'Import IA', icon: Wand2, section: 'donnees', enabledKey: 'smart_import',
+    view: '📈 Tendances', slug: 'trends', label: 'Tendances', tab: 'Tendances', icon: TrendingUp, group: 'collections', enabledKey: 'trends', overflow: true,
+    description: "Évolution des volumes d'une saison à l'autre.", needsAnalysis: true,
+  },
+
+  // ── Équipes ──
+  {
+    view: '🛡️ Analyse Équipe', slug: 'team', label: 'Équipe', tab: 'Équipe', icon: Shield, group: 'teams', enabledKey: 'team_detail',
+    description: 'Roster, hits et cartes d’une équipe.', needsAnalysis: true,
+  },
+
+  // ── Joueurs ──
+  {
+    view: '🔍 Analyse Joueur', slug: 'player', label: 'Joueur', tab: 'Fiche', icon: User, group: 'players', enabledKey: 'player_detail',
+    description: 'Toutes les cartes d’un joueur, par catégorie et par produit.', needsAnalysis: true,
+  },
+  {
+    view: '🧨 Rookies', slug: 'rookies', label: 'Rookies', tab: 'Rookies', icon: Sparkles, group: 'players', enabledKey: 'rookies',
+    description: 'Rookie cards présentes dans les collections ouvertes.', needsAnalysis: true,
+  },
+  {
+    view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', tab: 'Comparer', icon: Scale, group: 'players', enabledKey: 'comparator',
+    description: 'Mets plusieurs joueurs côte à côte.', needsAnalysis: true,
+  },
+
+  // ── Break ──
+  {
+    view: '🎲 État du Break', slug: 'live', label: 'Break en cours', tab: 'En cours', icon: Radio, group: 'break',
+    description: 'Spots vendus et restants du break Voggt chargé.', needsAnalysis: false,
+  },
+  {
+    view: '🧩 Simulation de Break', slug: 'simulation', label: 'Simulation', tab: 'Simulation', icon: Dices, group: 'break', enabledKey: 'break_simulation',
+    description: 'Valeur de chaque spot selon la méthode de break.', needsAnalysis: true,
+  },
+
+  // ── Outils ──
+  {
+    view: '📤 Export', slug: 'export', label: 'Export Excel', tab: 'Export', icon: Download, group: 'tools', enabledKey: 'export',
+    description: 'Fichier Excel personnalisé des collections ouvertes.', needsAnalysis: true,
+  },
+  {
+    view: '📥 Import Intelligent', slug: 'import', label: 'Import IA', tab: 'Import IA', icon: Wand2, group: 'tools', enabledKey: 'smart_import',
     description: 'Transforme un PDF ou une capture de checklist en fichier exploitable.', needsAnalysis: false,
   },
 
+  // ── Admin ──
   {
-    view: '🧪 Détection Auto/Mem', slug: 'detection', label: 'Détection Auto/Mem', icon: FlaskConical, section: 'admin', enabledKey: 'detection',
+    view: '🧪 Détection Auto/Mem', slug: 'detection', label: 'Détection Auto/Mem', tab: 'Détection', icon: FlaskConical, group: 'admin', enabledKey: 'detection',
     description: 'Corrige la classification des card types (auto, memo, case hit).', needsAnalysis: true,
   },
   {
-    view: '🔗 Mapping Odds', slug: 'odds-mapping', label: 'Mapping odds', icon: Link2, section: 'admin', enabledKey: 'odds_mapping',
+    view: '🔗 Mapping Odds', slug: 'odds-mapping', label: 'Mapping odds', tab: 'Mapping odds', icon: Link2, group: 'admin', enabledKey: 'odds_mapping',
     description: 'Associe les lignes de la feuille d’odds aux card types.', needsAnalysis: true,
   },
   {
-    view: '🦸 Attribution Marvel', slug: 'marvel', label: 'Attribution Marvel', icon: Drama, section: 'admin', enabledKey: 'marvel_attribution',
+    view: '🦸 Attribution Marvel', slug: 'marvel', label: 'Attribution Marvel', tab: 'Marvel', icon: Drama, group: 'admin', enabledKey: 'marvel_attribution',
     description: 'Rattache les personnages Marvel à leurs univers.', needsAnalysis: true,
   },
 ]
+
+export const GROUP_LABELS: Record<NavGroupId, string> = {
+  collections: 'Collections', teams: 'Équipes', players: 'Joueurs', break: 'Break', tools: 'Outils', admin: 'Outils admin',
+}
 
 const BY_VIEW = new Map<ViewName, NavItem>()
 for (const item of NAV_ITEMS) {
@@ -154,8 +195,18 @@ export function viewForSlug(slug: string | null): ViewName | null {
   return SLUG_TO_VIEW.get(slug) ?? null
 }
 
-export function sectionLabel(id: NavSectionId): string {
-  return NAV_SECTIONS.find((s) => s.id === id)?.label ?? ''
+export function groupLabel(id: NavGroupId): string {
+  return GROUP_LABELS[id]
+}
+
+export function destinationFor(view: ViewName): Destination | undefined {
+  const group = navItemFor(view)?.group
+  return DESTINATIONS.find((d) => d.id === group)
+}
+
+/** Onglets visibles d'une destination (ou d'un groupe). */
+export function itemsOf(group: NavGroupId, enabledViews: Record<string, boolean> | undefined, sport: string): NavItem[] {
+  return NAV_ITEMS.filter((i) => i.group === group && isItemEnabled(i, enabledViews, sport))
 }
 
 export function isItemEnabled(item: NavItem, enabledViews: Record<string, boolean> | undefined, sport: string): boolean {

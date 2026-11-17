@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import { Menu, Search, Layers, Target, Check, RefreshCw, Loader2, Radio, X } from 'lucide-react'
+import { Menu, Search, Library, Target, Check, Loader2, Radio, X } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
-import { navItemFor, sectionLabel } from '../../navigation'
+import { destinationFor, itemsOf, navItemFor } from '../../navigation'
 import { useOddsConfig, ODDS_CHANNEL_LABELS_FR, ODDS_CHANNEL_ORDER } from '../../hooks/useOddsConfig'
-import { useRunAnalysis, sameIds } from '../../hooks/useRunAnalysis'
-import { formatCount, plural } from '../../utils/checklists'
+import { plural, shortCollectionLabel } from '../../utils/checklists'
 import { Popover } from '../ui/primitives'
 
 export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
-  const { activeView, setPaletteOpen, analysisData } = useAppStore()
+  const { activeView, setPaletteOpen, analysisData, isAnalyzing, selectedSport, selectedChecklistIds } = useAppStore()
   const item = navItemFor(activeView)
+  const destination = destinationFor(activeView)
+  const multiTab = !!destination && itemsOf(destination.id, analysisData?.enabled_views, selectedSport).length > 1
+  const showsHome = !!item?.needsAnalysis && !analysisData && destination?.id === 'collections'
   const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
 
   return (
@@ -28,13 +30,23 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
         <Menu className="w-5 h-5" />
       </button>
 
-      <div className="min-w-0 flex items-center gap-1.5 text-[13px]">
-        {item && analysisData && (
-          <span className="hidden lg:inline" style={{ color: 'var(--text-quaternary)' }}>{sectionLabel(item.section)} /</span>
+      {/* Sur mobile, la barre du bas dit déjà où on est : on laisse la place à la collection ouverte. */}
+      <div className={`min-w-0 items-center gap-1.5 text-[13px] ${destination && selectedChecklistIds.length > 0 ? 'hidden sm:flex' : 'flex'}`}>
+        {showsHome ? (
+          <span className="font-semibold truncate" style={{ color: 'var(--text-primary)' }}>Accueil</span>
+        ) : (
+          <>
+            {/* Mobile : la destination (les onglets montrent où on est). Desktop : « Collections / Hits ». */}
+            <span className={`font-semibold truncate text-[var(--text-primary)] ${multiTab ? 'sm:font-normal sm:text-[var(--text-quaternary)]' : ''}`}>
+              {destination?.label ?? item?.label ?? 'Accueil'}
+            </span>
+            {multiTab && item && (
+              <span className="hidden sm:inline font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
+                <span style={{ color: 'var(--text-quaternary)' }} className="font-normal">/ </span>{item.tab}
+              </span>
+            )}
+          </>
         )}
-        <span className="font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
-          {analysisData || item?.needsAnalysis === false ? item?.label ?? 'Accueil' : 'Accueil'}
-        </span>
       </div>
 
       <div className="flex-1" />
@@ -56,48 +68,37 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
       <button onClick={() => setPaletteOpen(true)} className="sm:hidden ui-btn ui-btn-ghost ui-btn-icon" aria-label="Rechercher">
         <Search className="w-5 h-5" />
       </button>
+
+      {/* Analyse en cours alors qu'un résultat est déjà affiché : simple filet de progression. */}
+      {isAnalyzing && analysisData && <span className="ui-progress-line" role="progressbar" aria-label="Mise à jour de l’analyse" />}
     </header>
   )
 }
 
 function SelectionChip() {
-  const { selectedChecklistIds, analyzedChecklistIds, analysisData, availableChecklists, openSelection, isAnalyzing } = useAppStore()
-  const runAnalysis = useRunAnalysis()
+  const { selectedChecklistIds, availableChecklists, openSelection, isAnalyzing } = useAppStore()
+  const open = availableChecklists.filter((c) => selectedChecklistIds.includes(c.checklist_id))
   const count = selectedChecklistIds.length
-  const dirty = count > 0 && (!analysisData || !sameIds(selectedChecklistIds, analyzedChecklistIds))
-  const rows = availableChecklists
-    .filter((c) => selectedChecklistIds.includes(c.checklist_id))
-    .reduce((s, c) => s + c.rows, 0)
+  const first = open[0]
 
   return (
-    <div className="flex items-center">
-      <button
-        onClick={() => openSelection('catalog')}
-        className={`ui-btn ui-btn-secondary !h-10 sm:!h-8 !px-2.5 ${dirty ? '!rounded-r-none' : ''}`}
-        title="Choisir les checklists"
-      >
-        <Layers className="w-4 h-4" style={{ color: 'var(--accent)' }} />
-        {count === 0 ? (
-          <span>Choisir des checklists</span>
-        ) : (
-          <>
-            <span className="num">{plural(count, 'checklist')}</span>
-            <span className="hidden md:inline num" style={{ color: 'var(--text-quaternary)' }}>· {formatCount(rows)} cartes</span>
-          </>
-        )}
-      </button>
-      {dirty && (
-        <button
-          onClick={() => runAnalysis({ goTo: analysisData ? null : '🌍 Vue Globale' })}
-          disabled={isAnalyzing}
-          className="ui-btn ui-btn-primary !h-10 sm:!h-8 !px-3 sm:!px-2.5 !rounded-l-none"
-          title="La sélection a changé depuis la dernière analyse"
-        >
-          {isAnalyzing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
-          <span className="hidden sm:inline">{analysisData ? 'Mettre à jour' : 'Analyser'}</span>
-        </button>
+    <button
+      onClick={() => openSelection('catalog')}
+      className="ui-btn ui-btn-secondary !h-10 sm:!h-8 !px-2.5 min-w-0 max-w-[200px] sm:max-w-[300px]"
+      title={count ? open.map(shortCollectionLabel).join('\n') : 'Choisir les collections'}
+    >
+      {isAnalyzing
+        ? <Loader2 className="w-4 h-4 flex-shrink-0 animate-spin" style={{ color: 'var(--accent)' }} />
+        : <Library className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--accent)' }} />}
+      {count === 0 ? (
+        <span className="truncate">Choisir une collection</span>
+      ) : (
+        <>
+          <span className="truncate">{first ? shortCollectionLabel(first) : plural(count, 'collection')}</span>
+          {count > 1 && <span className="num flex-shrink-0 font-semibold" style={{ color: 'var(--accent)' }}>+{count - 1}</span>}
+        </>
       )}
-    </div>
+    </button>
   )
 }
 

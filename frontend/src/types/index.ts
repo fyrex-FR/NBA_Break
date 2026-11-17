@@ -597,7 +597,7 @@ export interface BoxGuideSummary {
   brand: string | null
   cover_image: string | null
   release_date: string | null
-  formats: Pick<BoxFormat, 'name' | 'cards_per_box' | 'packs_per_box' | 'boxes_per_case' | 'autos_per_box' | 'price_usd'>[]
+  formats: Pick<BoxFormat, 'name' | 'cards_per_box' | 'packs_per_box' | 'boxes_per_case' | 'autos_per_box' | 'price_usd' | 'release_date'>[]
   hobby_autos_per_box: number | null
 }
 

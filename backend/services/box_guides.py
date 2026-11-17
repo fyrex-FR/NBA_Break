@@ -59,7 +59,7 @@ def summary(guide: dict) -> dict:
         "cover_image": guide.get("cover_image"),
         "release_date": release,
         "formats": [
-            {k: f.get(k) for k in ("name", "cards_per_box", "packs_per_box", "boxes_per_case", "autos_per_box", "price_usd")}
+            {k: f.get(k) for k in ("name", "cards_per_box", "packs_per_box", "boxes_per_case", "autos_per_box", "price_usd", "release_date")}
             for f in guide["formats"]
         ],
         "hobby_autos_per_box": hobby.get("autos_per_box") if hobby else None,
