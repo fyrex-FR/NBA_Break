@@ -1,0 +1,1194 @@
+{
+ "version": 1,
+ "sport": "mma",
+ "checklist_id": "2024-topps-finest-ufc-checklist",
+ "product_label": "2024 Topps Finest UFC",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Common Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Base Cards Common",
+   "set": "Base",
+   "parallel": "Cards Common",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Common Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "Base Cards Common Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Base Cards Common Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Base Cards Common Die Cut",
+   "set": "Base",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Base Cards Common Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 41
+   }
+  },
+  {
+   "label": "Base Cards Common Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Base Cards Common Red Black",
+   "set": "Base",
+   "parallel": "Red Black",
+   "odds": {
+    "hobby": 102
+   }
+  },
+  {
+   "label": "Base Cards Common Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 203
+   }
+  },
+  {
+   "label": "Base Cards Common",
+   "set": "Base",
+   "parallel": "Cards Common",
+   "odds": {
+    "hobby": 1992
+   }
+  },
+  {
+   "label": "Base Cards Common Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Common Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 52
+   }
+  },
+  {
+   "label": "Base Cards Common Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Base Cards Common Aqua",
+   "set": "Base",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Common Yellow",
+   "set": "Base",
+   "parallel": "Yellow",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Base Cards Common Tangerine",
+   "set": "Base",
+   "parallel": "Tangerine",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Base Cards Uncommon",
+   "set": "Base",
+   "parallel": "Cards Uncommon",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards Uncommon",
+   "set": "Base",
+   "parallel": "Cards Uncommon",
+   "odds": {
+    "hobby": 60
+   }
+  },
+  {
+   "label": "Base Cards Uncommon",
+   "set": "Base",
+   "parallel": "Cards Uncommon",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Die Cut",
+   "set": "Base",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 102
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 135
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 404
+   }
+  },
+  {
+   "label": "Base Cards Uncommon",
+   "set": "Base",
+   "parallel": "Cards Uncommon",
+   "odds": {
+    "hobby": 1992
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 52
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Aqua",
+   "set": "Base",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Uncommon Yellow",
+   "set": "Base",
+   "parallel": "Yellow",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Base Cards Uncommon",
+   "set": "Base",
+   "parallel": "Cards Uncommon",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Base Cards Rare",
+   "set": "Base",
+   "parallel": "Cards Rare",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Rare Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 240
+   }
+  },
+  {
+   "label": "Base Cards Rare Checkerboard",
+   "set": "Base",
+   "parallel": "Checkerboard",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Base Cards Rare Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Base Cards Rare Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Base Cards Rare Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 42
+   }
+  },
+  {
+   "label": "Base Cards Rare Die Cut",
+   "set": "Base",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Base Cards Rare Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 102
+   }
+  },
+  {
+   "label": "Base Cards Rare Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 135
+   }
+  },
+  {
+   "label": "Base Cards Rare Red Black",
+   "set": "Base",
+   "parallel": "Red Black",
+   "odds": {
+    "hobby": 203
+   }
+  },
+  {
+   "label": "Base Cards Rare Red Refractor",
+   "set": "Base",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 671
+   }
+  },
+  {
+   "label": "Base Cards Rare Superfractor",
+   "set": "Base",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 1992
+   }
+  },
+  {
+   "label": "Base Cards Rare Red Shimmer",
+   "set": "Base",
+   "parallel": "Red Shimmer",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Rare Gold Shimmer",
+   "set": "Base",
+   "parallel": "Shimmer",
+   "odds": {
+    "hobby": 52
+   }
+  },
+  {
+   "label": "Base Cards Rare Green Shimmer",
+   "set": "Base",
+   "parallel": "Green Shimmer",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Base Cards Rare Aqua Glitter",
+   "set": "Base",
+   "parallel": "Aqua Glitter",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Rare Yellow Glitter",
+   "set": "Base",
+   "parallel": "Yellow Glitter",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Base Cards Rare Tangerine",
+   "set": "Base",
+   "parallel": "Tangerine",
+   "odds": {
+    "hobby": 121
+   }
+  },
+  {
+   "label": "Chaos",
+   "set": "Chaos",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Chaos Refractor",
+   "set": "Chaos",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Chaos Checkerboard",
+   "set": "Chaos",
+   "parallel": "Checkerboard",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Chaos Die Cut",
+   "set": "Chaos",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "Chaos Gold Refractor",
+   "set": "Chaos",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 135
+   }
+  },
+  {
+   "label": "Chaos Black Refractor",
+   "set": "Chaos",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 270
+   }
+  },
+  {
+   "label": "Chaos Red Refractor",
+   "set": "Chaos",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1333
+   }
+  },
+  {
+   "label": "Chaos Superfractor",
+   "set": "Chaos",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 6440
+   }
+  },
+  {
+   "label": "Chaos Red Shimmer",
+   "set": "Chaos",
+   "parallel": "Red Shimmer",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Chaos Gold Shimmer",
+   "set": "Chaos",
+   "parallel": "Gold Shimmer",
+   "odds": {
+    "hobby": 172
+   }
+  },
+  {
+   "label": "Chaos Green Shimmer",
+   "set": "Chaos",
+   "parallel": "Green Shimmer",
+   "odds": {
+    "hobby": 73
+   }
+  },
+  {
+   "label": "Chaos Aqua Glitter",
+   "set": "Chaos",
+   "parallel": "Aqua Glitter",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Chaos Yellow Glitter",
+   "set": "Chaos",
+   "parallel": "Yellow Glitter",
+   "odds": {
+    "hobby": 269
+   }
+  },
+  {
+   "label": "Chaos Tangerine Glitter",
+   "set": "Chaos",
+   "parallel": "Tangerine Glitter",
+   "odds": {
+    "hobby": 400
+   }
+  },
+  {
+   "label": "Intimidators",
+   "set": "Intimidators",
+   "parallel": "",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Intimidators Refractor",
+   "set": "Intimidators",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Intimidators Checkerboard",
+   "set": "Intimidators",
+   "parallel": "Checkerboard",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Intimidators Die Cut",
+   "set": "Intimidators",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "Intimidators Gold Refractor",
+   "set": "Intimidators",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 135
+   }
+  },
+  {
+   "label": "Intimidators Black Refractor",
+   "set": "Intimidators",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 270
+   }
+  },
+  {
+   "label": "Intimidators Red Refractor",
+   "set": "Intimidators",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1333
+   }
+  },
+  {
+   "label": "Intimidators Superfractor",
+   "set": "Intimidators",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 6440
+   }
+  },
+  {
+   "label": "Intimidators Red Shimmer",
+   "set": "Intimidators",
+   "parallel": "Red Shimmer",
+   "odds": {
+    "hobby": 21
+   }
+  },
+  {
+   "label": "Intimidators Gold Shimmer",
+   "set": "Intimidators",
+   "parallel": "Gold Shimmer",
+   "odds": {
+    "hobby": 172
+   }
+  },
+  {
+   "label": "Intimidators Green Shimmer",
+   "set": "Intimidators",
+   "parallel": "Green Shimmer",
+   "odds": {
+    "hobby": 73
+   }
+  },
+  {
+   "label": "Intimidators Aqua Glitter",
+   "set": "Intimidators",
+   "parallel": "Aqua Glitter",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Intimidators Yellow Glitter",
+   "set": "Intimidators",
+   "parallel": "Yellow Glitter",
+   "odds": {
+    "hobby": 269
+   }
+  },
+  {
+   "label": "Intimidators Tangerine Glitter",
+   "set": "Intimidators",
+   "parallel": "Tangerine Glitter",
+   "odds": {
+    "hobby": 400
+   }
+  },
+  {
+   "label": "Finishers",
+   "set": "Finishers",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Finishers Refractor",
+   "set": "Finishers",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Finishers Checkerboard",
+   "set": "Finishers",
+   "parallel": "Checkerboard",
+   "odds": {
+    "hobby": 80
+   }
+  },
+  {
+   "label": "Finishers Die Cut",
+   "set": "Finishers",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 180
+   }
+  },
+  {
+   "label": "Finishers Gold Refractor",
+   "set": "Finishers",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 270
+   }
+  },
+  {
+   "label": "Finishers Black Refractor",
+   "set": "Finishers",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 537
+   }
+  },
+  {
+   "label": "Finishers Red Refractor",
+   "set": "Finishers",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2647
+   }
+  },
+  {
+   "label": "Finishers Superfractor",
+   "set": "Finishers",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 12879
+   }
+  },
+  {
+   "label": "Finishers Red Shimmer",
+   "set": "Finishers",
+   "parallel": "Red Shimmer",
+   "odds": {
+    "hobby": 42
+   }
+  },
+  {
+   "label": "Finishers Gold Shimmer",
+   "set": "Finishers",
+   "parallel": "Gold Shimmer",
+   "odds": {
+    "hobby": 344
+   }
+  },
+  {
+   "label": "Finishers Green Shimmer",
+   "set": "Finishers",
+   "parallel": "Green Shimmer",
+   "odds": {
+    "hobby": 144
+   }
+  },
+  {
+   "label": "Finishers Aqua Glitter",
+   "set": "Finishers",
+   "parallel": "Aqua Glitter",
+   "odds": {
+    "hobby": 80
+   }
+  },
+  {
+   "label": "Finishers Yellow Glitter",
+   "set": "Finishers",
+   "parallel": "Yellow Glitter",
+   "odds": {
+    "hobby": 538
+   }
+  },
+  {
+   "label": "Finishers Tangerine Glitter",
+   "set": "Finishers",
+   "parallel": "Tangerine Glitter",
+   "odds": {
+    "hobby": 800
+   }
+  },
+  {
+   "label": "Headliners",
+   "set": "Headliners",
+   "parallel": "",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "Headliners Refractor",
+   "set": "Headliners",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Headliners Checkerboard",
+   "set": "Headliners",
+   "parallel": "Checkerboard",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "Headliners Die Cut",
+   "set": "Headliners",
+   "parallel": "Die Cut",
+   "odds": {
+    "hobby": 108
+   }
+  },
+  {
+   "label": "Headliners Gold Refractor",
+   "set": "Headliners",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 162
+   }
+  },
+  {
+   "label": "Headliners Black Refractor",
+   "set": "Headliners",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 324
+   }
+  },
+  {
+   "label": "Headliners Red Refractor",
+   "set": "Headliners",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 1597
+   }
+  },
+  {
+   "label": "Headliners Superfractor",
+   "set": "Headliners",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 7728
+   }
+  },
+  {
+   "label": "Headliners Red Shimmer",
+   "set": "Headliners",
+   "parallel": "Red Shimmer",
+   "odds": {
+    "hobby": 26
+   }
+  },
+  {
+   "label": "Headliners Gold Shimmer",
+   "set": "Headliners",
+   "parallel": "Gold Shimmer",
+   "odds": {
+    "hobby": 206
+   }
+  },
+  {
+   "label": "Headliners Green Shimmer",
+   "set": "Headliners",
+   "parallel": "Green Shimmer",
+   "odds": {
+    "hobby": 87
+   }
+  },
+  {
+   "label": "Headliners Aqua Glitter",
+   "set": "Headliners",
+   "parallel": "Aqua Glitter",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "Headliners Yellow Glitter",
+   "set": "Headliners",
+   "parallel": "Yellow Glitter",
+   "odds": {
+    "hobby": 322
+   }
+  },
+  {
+   "label": "Headliners Tangerine Glitter",
+   "set": "Headliners",
+   "parallel": "Tangerine Glitter",
+   "odds": {
+    "hobby": 480
+   }
+  },
+  {
+   "label": "Fight Glove Die Cut",
+   "set": "Fight Glove Die-Cuts",
+   "parallel": "Fight Glove Die Cut",
+   "odds": {
+    "hobby": 240
+   }
+  },
+  {
+   "label": "Centurions",
+   "set": "Centurions",
+   "parallel": "",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "Bombardiers",
+   "set": "Bombardiers",
+   "parallel": "",
+   "odds": {
+    "hobby": 481
+   }
+  },
+  {
+   "label": "Finest Autographs",
+   "set": "Finest Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Finest Autographs Refractor",
+   "set": "Finest Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Finest Autographs Blue",
+   "set": "Finest Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 34
+   }
+  },
+  {
+   "label": "Finest Autographs Gold",
+   "set": "Finest Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Finest Autographs Black",
+   "set": "Finest Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 80
+   }
+  },
+  {
+   "label": "Finest Autographs Red Black",
+   "set": "Finest Autographs",
+   "parallel": "Red Black",
+   "odds": {
+    "hobby": 198
+   }
+  },
+  {
+   "label": "Finest Autographs Red",
+   "set": "Finest Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 396
+   }
+  },
+  {
+   "label": "Finest Autographs",
+   "set": "Finest Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 1972
+   }
+  },
+  {
+   "label": "Finest Autographs Red Shimmer",
+   "set": "Finest Autographs",
+   "parallel": "Shimmer",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Finest Autographs Gold",
+   "set": "Finest Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 51
+   }
+  },
+  {
+   "label": "Finest Autographs Aqua Glitter",
+   "set": "Finest Autographs",
+   "parallel": "Aqua Glitter",
+   "odds": {
+    "hobby": 109
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs",
+   "set": "Rookie Finest Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 44
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs",
+   "set": "Rookie Finest Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 59
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Blue",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Gold",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 114
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Black",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 227
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Red",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 564
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Red",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 1124
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs",
+   "set": "Rookie Finest Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 5520
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Red",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Gold",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 145
+   }
+  },
+  {
+   "label": "Rookie Finest Autographs Aqua",
+   "set": "Rookie Finest Autographs",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 286
+   }
+  },
+  {
+   "label": "Intimidators Autographs",
+   "set": "Intimidators",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 26
+   }
+  },
+  {
+   "label": "Intimidators Autographs",
+   "set": "Intimidators",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 37
+   }
+  },
+  {
+   "label": "Intimidators Autographs Blue",
+   "set": "Intimidators Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 59
+   }
+  },
+  {
+   "label": "Intimidators Autographs Gold",
+   "set": "Intimidators Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 63
+   }
+  },
+  {
+   "label": "Intimidators Autographs Black",
+   "set": "Intimidators Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 124
+   }
+  },
+  {
+   "label": "Intimidators Autographs Red",
+   "set": "Intimidators Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 309
+   }
+  },
+  {
+   "label": "Intimidators Autographs Red",
+   "set": "Intimidators Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 616
+   }
+  },
+  {
+   "label": "Intimidators Autographs",
+   "set": "Intimidators",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 3067
+   }
+  },
+  {
+   "label": "Intimidators Autographs Red",
+   "set": "Intimidators Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 26
+   }
+  },
+  {
+   "label": "Intimidators Autographs Gold",
+   "set": "Intimidators Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 80
+   }
+  },
+  {
+   "label": "Intimidators Autographs Aqua",
+   "set": "Intimidators Autographs",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 161
+   }
+  },
+  {
+   "label": "Ufc Fight Glove Autographs",
+   "set": "UFC Fight Glove Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 400
+   }
+  },
+  {
+   "label": "Ufc Fight Glove Autographs",
+   "set": "UFC Fight Glove Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 9660
+   }
+  }
+ ]
+}

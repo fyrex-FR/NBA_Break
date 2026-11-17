@@ -61,5 +61,105 @@
    "label": "2025-26 Topps Signature Class Basketball",
    "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025-26_Topps_Signature_Class_Basketball_Odds.pdf"
   }
+ },
+ "nfl": {
+  "2025-topps-chrome-football-checklist": {
+   "label": "2025 Topps Chrome Football",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Chrome_Football_Odds.pdf?v=1776193199"
+  },
+  "2025-topps-resurgence-football-checklist": {
+   "label": "2025 Topps Resurgence Football",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Resurgence_Football_Odds_1.pdf?v=1785355384"
+  }
+ },
+ "soccer": {
+  "2025-26-topps-uefa-club-competitions-checklist": {
+   "label": "2025-26 Topps UEFA Club Competitions",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025-26_Topps_UCC_Club_Competitions_Odds_v2.pdf?v=1769110018"
+  },
+  "2025-topps-chrome-mls-soccer-checklist": {
+   "label": "Topps Chrome MLS 2025",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_MLS_Chrome_Odds.pdf?v=1777050150"
+  }
+ },
+ "wwe": {
+  "2026-topps-universe-wwe-checklist": {
+   "label": "2026 Topps Universe WWE",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Topps_Universe_WWE_Odds.pdf?v=1789484084"
+  },
+  "2025-topps-chrome-wwe-checklist-clean": {
+   "label": "2025 Topps WWE Chrome",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025ToppsChromeWWEOdds.pdf"
+  }
+ },
+ "disney": {
+  "2026-topps-chrome-disney-checklist": {
+   "label": "2026 Topps Chrome Disney",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Disney_Chrome_Odds_1.pdf?v=1781705214"
+  },
+  "2026-topps-disney-neon-checklist": {
+   "label": "2026 Topps Disney Neon",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Topps_Disney_Neon_Odds.pdf?v=1773149064"
+  },
+  "2025-topps-disney-wonder-checklist": {
+   "label": "2025 Topps Disney Wonder",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Disney_Wonder_Odds.pdf?v=1758199999"
+  },
+  "2025-topps-disneyland-70th-anniversary-checklist": {
+   "label": "2025 Topps Disneyland 70th Anniversary",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Disneyland_70th_Anniversary_Odds.pdf?v=1770391017"
+  }
+ },
+ "marvel": {
+  "2025-topps-chrome-deadpool-checklist": {
+   "label": "2025 Topps Chrome Deadpool",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Chrome_Deadpool_Odds.pdf?v=1773762703"
+  },
+  "2025-topps-chrome-marvel-studios-checklist": {
+   "label": "2025 Topps Marvel Studios Chrome",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Marvel_Studios_Chrome_Odds.pdf?v=1764623035"
+  },
+  "2025-topps-marvel-comic-book-heroes-checklist": {
+   "label": "2025 Marvel Comic Book Heroes 1975 Anniversary",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Marvel_Comic_Book_Heroes_1975_Golden_Anniversary.pdf?v=1785417306"
+  },
+  "2025-topps-marvel-comics-chrome-checklist": {
+   "label": "2025 Topps Chrome Marvel",
+   "url": "https://cdn.shopify.com/s/files/1/0739/2015/1805/files/Marvel_Chrome_2025_Odds.pdf?v=1750074385"
+  }
+ },
+ "starwars": {
+  "2026-topps-chrome-star-wars-checklist": {
+   "label": "2026 Topps Chrome Star Wars",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026-09-29_2026-Topps-Chrome-Star-Wars_Odds-2.pdf?v=1790777195"
+  },
+  "2026-topps-star-wars-galaxy-chrome-checklist": {
+   "label": "2026 Star Wars Chrome Galaxy",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Stars_Wars_Chrome_Galaxy.pdf?v=1786638023"
+  }
+ },
+ "mma": {
+  "2026-topps-chrome-ufc-checklist": {
+   "label": "2026 Topps Chrome UFC",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_UFC_Chrome_Odds.pdf?v=1779134050"
+  },
+  "2026-topps-midnight-ufc-checklist": {
+   "label": "2026 Topps Midnight UFC",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Topps_UFC_Midnight_Odds.pdf?v=1776194785"
+  },
+  "2024-topps-finest-ufc-checklist": {
+   "label": "2024 Topps Finest UFC",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2024ToppsFinestUFCOdds.pdf?v=1738964373"
+  }
+ },
+ "baseball": {
+  "2026-topps-allen-ginter-baseball-checklist": {
+   "label": "2026 Topps Allen & Ginter Baseball",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026-09-29_MLB-ALLEN-_-GINTER-2026_Odds.pdf?v=1790697457"
+  },
+  "2025-topps-stadium-club-baseball-checklist": {
+   "label": "2025 Topps Stadium Club Baseball",
+   "url": "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Stadium_Club_Baseball_Odds.pdf?v=1769442573"
+  }
  }
 }

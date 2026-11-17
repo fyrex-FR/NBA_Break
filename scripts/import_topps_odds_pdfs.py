@@ -51,10 +51,11 @@ from import_hobbychecklist_odds import (  # noqa: E402
 
 SOURCES = ROOT / "scripts" / "topps_odds_sources.json"
 GUIDES = ROOT / "backend" / "box_guides.json"
-OUT_DIR = ROOT / "backend" / "odds" / "nba"
+ODDS_DIR = ROOT / "backend" / "odds"
 CACHE = Path.home() / ".cache" / "noclim" / "topps_odds"
 UA = "Mozilla/5.0 (NoClim odds import)"
 
+MIN_COVERAGE = 0.5
 RATIO = re.compile(r"^(\d[\d,]*):(\d[\d,]*)$")
 # Libellés de colonnes connus (plusieurs mots possibles), du plus long au plus court.
 COLUMN_WORDS = [
@@ -172,7 +173,7 @@ def parse_pdf(path: Path) -> tuple[list[str], list[dict], Counter]:
 # ── Construction de la feuille ──────────────────────────────────────────────
 
 def build_sheet(checklist_id: str, product_label: str | None, order: list[str], parsed: list[dict],
-                box_types: list[str], guide: dict | None) -> dict:
+                box_types: list[str], guide: dict | None, sport: str = "nba") -> dict:
     packs, boxes = {}, {}
     for f in (guide or {}).get("formats", []):
         for a in [f["name"], *(f.get("aliases") or [])]:
@@ -214,7 +215,7 @@ def build_sheet(checklist_id: str, product_label: str | None, order: list[str], 
     used = {k for r in rows for k in r["odds"]}
     return {
         "version": 1,
-        "sport": "nba",
+        "sport": sport,
         "checklist_id": checklist_id,
         "product_label": product_label,
         "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
@@ -248,30 +249,49 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--only", help="checklist_id à traiter seul")
     ap.add_argument("--dry-run", action="store_true", help="rapport sans écrire")
+    ap.add_argument("--sport", help="un seul sport (nba, nfl, soccer…)")
     args = ap.parse_args()
 
-    sources = json.loads(SOURCES.read_text(encoding="utf-8"))["nba"]
-    guides = json.loads(GUIDES.read_text(encoding="utf-8"))["nba"]
-    on_r2 = r2_sheets()
-    mk = master_key()
+    all_sources = json.loads(SOURCES.read_text(encoding="utf-8"))
+    all_guides = json.loads(GUIDES.read_text(encoding="utf-8"))
+    for sport in sorted(k for k in all_sources if not k.startswith("_")):
+        if args.sport and sport != args.sport:
+            continue
+        run_sport(sport, all_sources[sport], all_guides.get(sport, {}), args)
+    return 0
 
+
+def run_sport(sport: str, sources: dict, guides: dict, args) -> None:
+    on_r2 = r2_sheets(sport)
+    mk = master_key(sport)
+    out_dir = ODDS_DIR / sport
+    out_dir.mkdir(parents=True, exist_ok=True)
+    print(f"── {sport}")
     for cid, src in sorted(sources.items()):
         if args.only and cid != args.only:
             continue
         if cid in on_r2:
             print(f"· {cid} : feuille faite à la main, on n'y touche pas")
             continue
-        order, parsed, stats = parse_pdf(pdf_for(src["url"]))
-        box_types = box_types_for(cid, mk)
-        sheet = build_sheet(cid, src.get("label"), order, parsed, box_types, guides.get(cid))
+        try:
+            order, parsed, stats = parse_pdf(pdf_for(src["url"]))
+        except Exception as e:  # PDF déplacé ou retiré par Topps
+            print(f"✗ {cid} : PDF indisponible ({e})")
+            continue
+        box_types = box_types_for(cid, mk, sport)
+        sheet = build_sheet(cid, src.get("label"), order, parsed, box_types, guides.get(cid), sport)
         errors = validate_odds_sheet(sheet)
         cov = coverage(sheet, box_types)
-        out = OUT_DIR / f"{cid}.json"
+        out = out_dir / f"{cid}.json"
         verdict = "écrite"
         # Feuille officielle = complète par définition : pas de minimum de lignes, juste valide et non vide.
         # (Les feuilles déjà écrites par ce script sont remplacées, sauf si la version actuelle rattache mieux.)
         if errors or not sheet["rows"]:
             verdict = f"écartée ({len(sheet['rows'])} lignes{', invalide' if errors else ''})"
+        elif cov < MIN_COVERAGE:
+            # Séries trop peu rattachées aux nôtres (mise en page du PDF, ou séries découpées
+            # autrement dans la checklist) : la feuille fausserait plus qu'elle n'aide.
+            verdict = f"écartée (seulement {cov:.0%} des cotes rattachées à nos séries)"
         elif out.exists():
             current = json.loads(out.read_text(encoding="utf-8"))
             cur_cov = coverage(current, box_types)
@@ -287,7 +307,6 @@ def main() -> int:
         extra = ", ".join(f"{n} {k}" for k, n in stats.items())
         print(f"{'✓' if verdict == 'écrite' else '·'} {cid} : {len(sheet['rows'])} lignes · "
               f"colonnes {order} · cotes rattachées {cov:.0%} → {verdict}" + (f" · ignorées : {extra}" if extra else ""))
-    return 0
 
 
 if __name__ == "__main__":

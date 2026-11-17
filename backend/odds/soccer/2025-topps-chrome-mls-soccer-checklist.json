@@ -1,0 +1,1674 @@
+{
+ "version": 1,
+ "sport": "soccer",
+ "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+ "product_label": "Topps Chrome MLS 2025",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value",
+   "label": "Value",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "hanger",
+   "label": "Hanger",
+   "channel": "retail",
+   "group": "hanger"
+  },
+  {
+   "key": "mania",
+   "label": "Mania",
+   "channel": "special",
+   "group": "mania"
+  },
+  {
+   "key": "sapphire",
+   "label": "Sapphire",
+   "channel": "special",
+   "group": "sapphire"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards",
+   "set": "Base",
+   "parallel": "Cards",
+   "odds": {
+    "hobby": 1,
+    "value": 1,
+    "hanger": 1
+   }
+  },
+  {
+   "label": "Base Cards Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 6,
+    "value": 7,
+    "mania": 1
+   }
+  },
+  {
+   "label": "Base Cards Wave",
+   "set": "Base",
+   "parallel": "Wave",
+   "odds": {
+    "value": 2
+   }
+  },
+  {
+   "label": "Base Cards Prism",
+   "set": "Base",
+   "parallel": "Prism",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Magenta Pulsar",
+   "set": "Base",
+   "parallel": "Magenta Pulsar",
+   "odds": {
+    "hanger": 1
+   }
+  },
+  {
+   "label": "Base Cards Sapphire",
+   "set": "Base",
+   "parallel": "Sapphire",
+   "odds": {
+    "sapphire": 1
+   }
+  },
+  {
+   "label": "Base Cards Mania",
+   "set": "Base",
+   "parallel": "Mania",
+   "odds": {
+    "mania": 1
+   }
+  },
+  {
+   "label": "Base Cards Blue Lava",
+   "set": "Base",
+   "parallel": "Blue Lava",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Base Cards White Lava",
+   "set": "Base",
+   "parallel": "White Lava",
+   "odds": {
+    "hobby": 40
+   }
+  },
+  {
+   "label": "Base Cards Red Lava",
+   "set": "Base",
+   "parallel": "Red Lava",
+   "odds": {
+    "hobby": 60
+   }
+  },
+  {
+   "label": "Base Cards Pink Mini Diamonds",
+   "set": "Base",
+   "parallel": "Pink Mini Diamonds",
+   "odds": {
+    "value": 27,
+    "hanger": 7
+   }
+  },
+  {
+   "label": "Base Cards Aqua",
+   "set": "Base",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Base Cards Aqua Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 30,
+    "hanger": 9
+   }
+  },
+  {
+   "label": "Base Cards Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Base Cards Blue Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 38,
+    "hanger": 14
+   }
+  },
+  {
+   "label": "Base Cards Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 38,
+    "mania": 2
+   }
+  },
+  {
+   "label": "Base Cards Green Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 61,
+    "hanger": 18
+   }
+  },
+  {
+   "label": "Base Cards Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 49,
+    "mania": 3
+   }
+  },
+  {
+   "label": "Base Cards Purple Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 76,
+    "hanger": 26
+   }
+  },
+  {
+   "label": "Base Cards Purple Wave",
+   "set": "Base",
+   "parallel": "Purple Wave",
+   "odds": {
+    "hobby": 49,
+    "mania": 3
+   }
+  },
+  {
+   "label": "Base Cards Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 75,
+    "mania": 3
+   }
+  },
+  {
+   "label": "Base Cards Gold Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 117,
+    "hanger": 34
+   }
+  },
+  {
+   "label": "Base Cards Gold Wave",
+   "set": "Base",
+   "parallel": "Gold Wave",
+   "odds": {
+    "hobby": 75,
+    "mania": 3
+   }
+  },
+  {
+   "label": "Base Cards Gold Sapphire",
+   "set": "Base",
+   "parallel": "Gold Sapphire",
+   "odds": {
+    "sapphire": 5
+   }
+  },
+  {
+   "label": "Base Cards Pearl",
+   "set": "Base",
+   "parallel": "Pearl",
+   "odds": {
+    "hobby": 126,
+    "mania": 5
+   }
+  },
+  {
+   "label": "Base Cards Orange",
+   "set": "Base",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 151,
+    "mania": 6
+   }
+  },
+  {
+   "label": "Base Cards Orange Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 250,
+    "hanger": 70
+   }
+  },
+  {
+   "label": "Base Cards Orange Wave",
+   "set": "Base",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 151,
+    "mania": 6
+   }
+  },
+  {
+   "label": "Base Cards Orange Sapphire",
+   "set": "Base",
+   "parallel": "Orange Sapphire",
+   "odds": {
+    "sapphire": 9
+   }
+  },
+  {
+   "label": "Base Cards Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 386,
+    "mania": 11
+   }
+  },
+  {
+   "label": "Base Cards Black Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 661,
+    "hanger": 156
+   }
+  },
+  {
+   "label": "Base Cards Black Wave",
+   "set": "Base",
+   "parallel": "Black Wave",
+   "odds": {
+    "hobby": 386,
+    "mania": 11
+   }
+  },
+  {
+   "label": "Base Cards Black Sapphire",
+   "set": "Base",
+   "parallel": "Black Sapphire",
+   "odds": {
+    "sapphire": 22
+   }
+  },
+  {
+   "label": "Base Cards Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 729,
+    "mania": 41
+   }
+  },
+  {
+   "label": "Base Cards Red Mini Diamonds",
+   "set": "Base",
+   "parallel": "Mini Diamonds",
+   "odds": {
+    "value": 1132,
+    "hanger": 434
+   }
+  },
+  {
+   "label": "Base Cards Red Wave",
+   "set": "Base",
+   "parallel": "Red Wave",
+   "odds": {
+    "hobby": 729,
+    "mania": 41
+   }
+  },
+  {
+   "label": "Base Cards Red Sapphire",
+   "set": "Base",
+   "parallel": "Red Sapphire",
+   "odds": {
+    "sapphire": 43
+   }
+  },
+  {
+   "label": "Base Cards Frozenfractor",
+   "set": "Base",
+   "parallel": "Frozenfractor",
+   "odds": {
+    "hobby": 1099,
+    "value": 4136,
+    "hanger": 794,
+    "mania": 82
+   }
+  },
+  {
+   "label": "Base Cards Superfractor",
+   "set": "Base",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 6657,
+    "value": 19513,
+    "hanger": 7139,
+    "mania": 58
+   }
+  },
+  {
+   "label": "Base Cards Padparadscha",
+   "set": "Base",
+   "parallel": "Padparadscha",
+   "odds": {
+    "sapphire": 212
+   }
+  },
+  {
+   "label": "Base Card Super Short Prints",
+   "set": "Base - Super Short Prints",
+   "parallel": "Base Card Super Short Prints",
+   "odds": {
+    "hobby": 9283,
+    "value": 79268,
+    "hanger": 8522
+   }
+  },
+  {
+   "label": "Base Card Super Short Prints Orange",
+   "set": "Base - Super Short Prints",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 18307,
+    "value": 158536,
+    "hanger": 15827
+   }
+  },
+  {
+   "label": "Base Card Super Short Prints Black",
+   "set": "Base - Super Short Prints",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 47075,
+    "value": 396340,
+    "hanger": 36928
+   }
+  },
+  {
+   "label": "Base Card Super Short Prints Red",
+   "set": "Base - Super Short Prints",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 82380,
+    "value": 792680,
+    "hanger": 110784
+   }
+  },
+  {
+   "label": "Base Card Super Short Prints Superfractor",
+   "set": "Base - Super Short Prints",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 329520,
+    "value": 792680
+   }
+  },
+  {
+   "label": "Topps 1995",
+   "set": "Topps 1995",
+   "parallel": "",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Topps 1995 Green",
+   "set": "Topps 1995",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Topps 1995 Purple",
+   "set": "Topps 1995",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Topps 1995 Gold",
+   "set": "Topps 1995",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Topps 1995 Pearl",
+   "set": "Topps 1995",
+   "parallel": "Pearl",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "Topps 1995 Orange",
+   "set": "Topps 1995",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Topps 1995 Black",
+   "set": "Topps 1995",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 116
+   }
+  },
+  {
+   "label": "Topps 1995 Red",
+   "set": "Topps 1995",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 231
+   }
+  },
+  {
+   "label": "Topps 1995 Superfractor",
+   "set": "Topps 1995",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 1137
+   }
+  },
+  {
+   "label": "Big City Strikers",
+   "set": "Big City Stickers",
+   "parallel": "Big City Strikers",
+   "odds": {
+    "hobby": 12,
+    "value": 9,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "Big City Strikers Green",
+   "set": "Big City Stickers",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 465,
+    "value": 3808,
+    "hanger": 418
+   }
+  },
+  {
+   "label": "Big City Strikers Purple",
+   "set": "Big City Stickers",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 614,
+    "value": 3002,
+    "hanger": 550
+   }
+  },
+  {
+   "label": "Big City Strikers Gold",
+   "set": "Big City Stickers",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 921,
+    "value": 7523,
+    "hanger": 827
+   }
+  },
+  {
+   "label": "Big City Strikers Orange",
+   "set": "Big City Stickers",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1841,
+    "value": 15230,
+    "hanger": 1636
+   }
+  },
+  {
+   "label": "Big City Strikers Black",
+   "set": "Big City Stickers",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4609,
+    "value": 32864,
+    "hanger": 4134
+   }
+  },
+  {
+   "label": "Big City Strikers Red",
+   "set": "Big City Stickers",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 9283,
+    "value": 78050,
+    "hanger": 8726
+   }
+  },
+  {
+   "label": "Big City Strikers Superfractor",
+   "set": "Big City Stickers",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 47075,
+    "value": 312200,
+    "hanger": 39264
+   }
+  },
+  {
+   "label": "Big City Strikers Skylight Variation",
+   "set": "Big City Stickers",
+   "parallel": "Skylight Variation",
+   "odds": {
+    "hobby": 240
+   }
+  },
+  {
+   "label": "Big City Strikers Skylight Variation Superfractor",
+   "set": "Big City Stickers - Skylight Variation",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 65904,
+    "value": 208134,
+    "hanger": 39264
+   }
+  },
+  {
+   "label": "Class of Their Own",
+   "set": "Class Of Their Own",
+   "parallel": "",
+   "odds": {
+    "hobby": 12,
+    "value": 9,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "Class of Their Own Green",
+   "set": "Class Of Their Own",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 465,
+    "value": 3808,
+    "hanger": 418
+   }
+  },
+  {
+   "label": "Class of Their Own Purple",
+   "set": "Class Of Their Own",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 614,
+    "value": 3002,
+    "hanger": 550
+   }
+  },
+  {
+   "label": "Class of Their Own Gold",
+   "set": "Class Of Their Own",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 921,
+    "value": 7523,
+    "hanger": 827
+   }
+  },
+  {
+   "label": "Class of Their Own Orange",
+   "set": "Class Of Their Own",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1841,
+    "value": 15230,
+    "hanger": 1636
+   }
+  },
+  {
+   "label": "Class of Their Own Black",
+   "set": "Class Of Their Own",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4609,
+    "value": 32864,
+    "hanger": 4134
+   }
+  },
+  {
+   "label": "Class of Their Own Red",
+   "set": "Class Of Their Own",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 9283,
+    "value": 78050,
+    "hanger": 8726
+   }
+  },
+  {
+   "label": "Class of Their Own Superfractor",
+   "set": "Class Of Their Own",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 47075,
+    "value": 312200,
+    "hanger": 39264
+   }
+  },
+  {
+   "label": "Elimination",
+   "set": "Elimination",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "value": 6,
+    "hanger": 2
+   }
+  },
+  {
+   "label": "Elimination Green",
+   "set": "Elimination",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 310,
+    "value": 2539,
+    "hanger": 279
+   }
+  },
+  {
+   "label": "Elimination Purple",
+   "set": "Elimination",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 409,
+    "value": 3002,
+    "hanger": 367
+   }
+  },
+  {
+   "label": "Elimination Gold",
+   "set": "Elimination",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 614,
+    "value": 4996,
+    "hanger": 550
+   }
+  },
+  {
+   "label": "Elimination Orange",
+   "set": "Elimination",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1228,
+    "value": 10071,
+    "hanger": 1107
+   }
+  },
+  {
+   "label": "Elimination Black",
+   "set": "Elimination",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 3066,
+    "value": 23126,
+    "hanger": 2805
+   }
+  },
+  {
+   "label": "Elimination Red",
+   "set": "Elimination",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 6160,
+    "value": 48031,
+    "hanger": 5610
+   }
+  },
+  {
+   "label": "Elimination Superfractor",
+   "set": "Elimination",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 29957,
+    "value": 312200,
+    "hanger": 26176
+   }
+  },
+  {
+   "label": "Fast Lane",
+   "set": "Fast Lane",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "value": 6,
+    "hanger": 2
+   }
+  },
+  {
+   "label": "Fast Lane Sapphire",
+   "set": "Fast Lane",
+   "parallel": "Sapphire",
+   "odds": {
+    "sapphire": 4
+   }
+  },
+  {
+   "label": "Fast Lane Green",
+   "set": "Fast Lane",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 310,
+    "value": 2539,
+    "hanger": 279
+   }
+  },
+  {
+   "label": "Fast Lane Purple",
+   "set": "Fast Lane",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 409,
+    "value": 5575,
+    "hanger": 367
+   }
+  },
+  {
+   "label": "Fast Lane Gold",
+   "set": "Fast Lane",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 614,
+    "value": 4996,
+    "hanger": 550
+   }
+  },
+  {
+   "label": "Fast Lane Gold Sapphire",
+   "set": "Fast Lane",
+   "parallel": "Gold Sapphire",
+   "odds": {
+    "sapphire": 29
+   }
+  },
+  {
+   "label": "Fast Lane Orange",
+   "set": "Fast Lane",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1228,
+    "value": 10071,
+    "hanger": 1107
+   }
+  },
+  {
+   "label": "Fast Lane Orange Sapphire",
+   "set": "Fast Lane",
+   "parallel": "Orange Sapphire",
+   "odds": {
+    "sapphire": 57
+   }
+  },
+  {
+   "label": "Fast Lane Black",
+   "set": "Fast Lane",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 3066,
+    "value": 41627,
+    "hanger": 2805
+   }
+  },
+  {
+   "label": "Fast Lane Black Sapphire",
+   "set": "Fast Lane",
+   "parallel": "Black Sapphire",
+   "odds": {
+    "sapphire": 142
+   }
+  },
+  {
+   "label": "Fast Lane Red",
+   "set": "Fast Lane",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 6160,
+    "value": 48031,
+    "hanger": 5610
+   }
+  },
+  {
+   "label": "Fast Lane Red Sapphire",
+   "set": "Fast Lane",
+   "parallel": "Red Sapphire",
+   "odds": {
+    "sapphire": 283
+   }
+  },
+  {
+   "label": "Fast Lane Superfractor",
+   "set": "Fast Lane",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 29957,
+    "value": 312200,
+    "hanger": 26176
+   }
+  },
+  {
+   "label": "Fast Lane Padparadscha",
+   "set": "Fast Lane",
+   "parallel": "Padparadscha",
+   "odds": {
+    "sapphire": 1394
+   }
+  },
+  {
+   "label": "Pearlers",
+   "set": "Pearlers",
+   "parallel": "",
+   "odds": {
+    "hobby": 480
+   }
+  },
+  {
+   "label": "Pearlers Cherry Pearl",
+   "set": "Pearlers",
+   "parallel": "Cherry Pearl",
+   "odds": {
+    "hobby": 2305
+   }
+  },
+  {
+   "label": "Pearlers White Pearl",
+   "set": "Pearlers",
+   "parallel": "White Pearl",
+   "odds": {
+    "hobby": 4609
+   }
+  },
+  {
+   "label": "Pearlers Golden Pearl",
+   "set": "Pearlers",
+   "parallel": "Golden Pearl",
+   "odds": {
+    "hobby": 22726
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 1382
+   }
+  },
+  {
+   "label": "Helix Superfractor",
+   "set": "Helix",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 131808
+   }
+  },
+  {
+   "label": "Mvp",
+   "set": "MVP",
+   "parallel": "",
+   "odds": {
+    "hobby": 13730
+   }
+  },
+  {
+   "label": "The Grail",
+   "set": "The Grail",
+   "parallel": "",
+   "odds": {
+    "hobby": 13730
+   }
+  },
+  {
+   "label": "MLS Trophy Superfractor",
+   "set": "MLS Trophy Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 659040
+   }
+  },
+  {
+   "label": "Sapphire Selections",
+   "set": "Sapphire Selections",
+   "parallel": "",
+   "odds": {
+    "sapphire": 40
+   }
+  },
+  {
+   "label": "Sapphire Selections Orange",
+   "set": "Sapphire Selections",
+   "parallel": "Orange",
+   "odds": {
+    "sapphire": 85
+   }
+  },
+  {
+   "label": "Sapphire Selections Black",
+   "set": "Sapphire Selections",
+   "parallel": "Black",
+   "odds": {
+    "sapphire": 212
+   }
+  },
+  {
+   "label": "Sapphire Selections Red",
+   "set": "Sapphire Selections",
+   "parallel": "Red",
+   "odds": {
+    "sapphire": 426
+   }
+  },
+  {
+   "label": "Sapphire Selections Superfractor",
+   "set": "Sapphire Selections",
+   "parallel": "Superfractor",
+   "odds": {
+    "sapphire": 2127
+   }
+  },
+  {
+   "label": "Infinite Sapphire",
+   "set": "Infinite Sapphire",
+   "parallel": "",
+   "odds": {
+    "sapphire": 80
+   }
+  },
+  {
+   "label": "Infinite Sapphire Superfractor",
+   "set": "Infinite Sapphire",
+   "parallel": "Superfractor",
+   "odds": {
+    "sapphire": 4040
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards",
+   "set": "Chrome Autographs",
+   "parallel": "Chrome Autograph Cards",
+   "odds": {
+    "hobby": 786,
+    "value": 543,
+    "hanger": 257
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Sapphire",
+   "set": "Chrome Autographs",
+   "parallel": "Sapphire",
+   "odds": {
+    "sapphire": 46
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Aqua",
+   "set": "Chrome Autographs",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 88,
+    "value": 6862,
+    "hanger": 366
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Aqua Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Aqua Wave",
+   "odds": {
+    "hobby": 87
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Blue",
+   "set": "Chrome Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 108,
+    "value": 903,
+    "hanger": 397
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Blue Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Blue Wave",
+   "odds": {
+    "hobby": 93
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Green",
+   "set": "Chrome Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 129,
+    "value": 1086,
+    "hanger": 479
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Green Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Green Wave",
+   "odds": {
+    "hobby": 119
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Pink X-Fractor",
+   "set": "Chrome Autographs",
+   "parallel": "X-Fractor",
+   "odds": {
+    "mania": 2
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Purple",
+   "set": "Chrome Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 156,
+    "value": 1307,
+    "hanger": 578
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Purple Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Purple Wave",
+   "odds": {
+    "hobby": 136
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Gold",
+   "set": "Chrome Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 182,
+    "value": 2002,
+    "hanger": 893
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Gold Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Gold Wave",
+   "odds": {
+    "hobby": 160
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Gold Sapphire",
+   "set": "Chrome Autographs",
+   "parallel": "Gold Sapphire",
+   "odds": {
+    "sapphire": 23
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Pink Shimmer",
+   "set": "Chrome Autographs",
+   "parallel": "Shimmer",
+   "odds": {
+    "mania": 2
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Orange",
+   "set": "Chrome Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 353,
+    "value": 2974,
+    "hanger": 1309
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Orange Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 301
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Orange Sapphire",
+   "set": "Chrome Autographs",
+   "parallel": "Orange Sapphire",
+   "odds": {
+    "sapphire": 38
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Pink Pulsar",
+   "set": "Chrome Autographs",
+   "parallel": "Pulsar",
+   "odds": {
+    "mania": 3
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Black",
+   "set": "Chrome Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 836,
+    "value": 7096,
+    "hanger": 3021
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Black Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Black Wave",
+   "odds": {
+    "hobby": 705
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Black Sapphire",
+   "set": "Chrome Autographs",
+   "parallel": "Black Sapphire",
+   "odds": {
+    "sapphire": 51
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Pink",
+   "set": "Chrome Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "mania": 6
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Red",
+   "set": "Chrome Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 1656,
+    "value": 13876,
+    "hanger": 6041
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Red Wave",
+   "set": "Chrome Autographs",
+   "parallel": "Red Wave",
+   "odds": {
+    "hobby": 1409
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Red Sapphire",
+   "set": "Chrome Autographs",
+   "parallel": "Red Sapphire",
+   "odds": {
+    "sapphire": 101
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Superfractor",
+   "set": "Chrome Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 8238,
+    "value": 69378,
+    "hanger": 26176
+   }
+  },
+  {
+   "label": "Chrome Autograph Cards Padparadscha",
+   "set": "Chrome Autographs",
+   "parallel": "Padparadscha",
+   "odds": {
+    "sapphire": 501
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Cards",
+   "set": "MLS Renaissance Autographs",
+   "parallel": "MLS Renaissance Autograph Cards",
+   "odds": {
+    "hobby": 718,
+    "mania": 28
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Cards Gold",
+   "set": "MLS Renaissance Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1121,
+    "mania": 33
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Cards Ruby",
+   "set": "MLS Renaissance Autographs",
+   "parallel": "Ruby",
+   "odds": {
+    "hobby": 2346,
+    "mania": 51
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Cards Platinum",
+   "set": "MLS Renaissance Autographs",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 16899,
+    "mania": 76
+   }
+  },
+  {
+   "label": "Chrome Dual Autograph Cards",
+   "set": "Chrome Dual Autographs",
+   "parallel": "Chrome Dual Autograph Cards",
+   "odds": {
+    "hobby": 1604,
+    "value": 13574,
+    "hanger": 6041
+   }
+  },
+  {
+   "label": "Chrome Dual Autograph Cards Orange",
+   "set": "Chrome Dual Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 2680,
+    "value": 22300,
+    "hanger": 9816
+   }
+  },
+  {
+   "label": "Chrome Dual Autograph Cards Black",
+   "set": "Chrome Dual Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 6337,
+    "value": 78050,
+    "hanger": 26176
+   }
+  },
+  {
+   "label": "Chrome Dual Autograph Cards Red",
+   "set": "Chrome Dual Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 13181,
+    "value": 104067,
+    "hanger": 78528
+   }
+  },
+  {
+   "label": "Chrome Dual Autograph Cards Superfractor",
+   "set": "Chrome Dual Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 59913,
+    "value": 312200
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards",
+   "set": "Topps 1995",
+   "parallel": "Autograph Cards",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Green",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 26
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Purple",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 29
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Gold",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 36
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Pearl",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Pearl",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Orange",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 56
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Black",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 119
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Red",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 231
+   }
+  },
+  {
+   "label": "Topps 1995 Autograph Cards Superfractor",
+   "set": "Topps 1995 Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 1154
+   }
+  },
+  {
+   "label": "MLS Anniversary Autograph Book Superfractor",
+   "set": "MLS Anniversary Autograph Book Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 659040
+   }
+  },
+  {
+   "label": "MLS All-Timers Autograph Cards",
+   "set": "MLS All-Timers Autograph Cards",
+   "parallel": "",
+   "odds": {
+    "mania": 11
+   }
+  },
+  {
+   "label": "MLS All-Timers Autograph Cards Green",
+   "set": "MLS All-Timers Autograph Cards",
+   "parallel": "Green",
+   "odds": {
+    "mania": 3
+   }
+  },
+  {
+   "label": "MLS All-Timers Autograph Cards Purple",
+   "set": "MLS All-Timers Autograph Cards",
+   "parallel": "Purple",
+   "odds": {
+    "mania": 3
+   }
+  },
+  {
+   "label": "MLS All-Timers Autograph Cards Gold",
+   "set": "MLS All-Timers Autograph Cards",
+   "parallel": "Gold",
+   "odds": {
+    "mania": 3
+   }
+  },
+  {
+   "label": "MLS All-timers Autograph Cards Orange",
+   "set": "MLS All-timers Autograph Cards",
+   "parallel": "Orange",
+   "odds": {
+    "mania": 6
+   }
+  },
+  {
+   "label": "MLS All-timers Autograph Cards Black",
+   "set": "MLS All-timers Autograph Cards",
+   "parallel": "Black",
+   "odds": {
+    "mania": 11
+   }
+  },
+  {
+   "label": "MLS All-Timers Autograph Cards Red",
+   "set": "MLS All-Timers Autograph Cards",
+   "parallel": "Red",
+   "odds": {
+    "mania": 21
+   }
+  },
+  {
+   "label": "MLS All-Timers Autograph Cards Superfractor",
+   "set": "MLS All-Timers Autograph Cards",
+   "parallel": "Superfractor",
+   "odds": {
+    "mania": 104
+   }
+  },
+  {
+   "label": "Mania Autograph Cards",
+   "set": "Mania Autograph Cards",
+   "parallel": "",
+   "odds": {
+    "mania": 47
+   }
+  },
+  {
+   "label": "Mania Autograph Cards Black Prism",
+   "set": "Mania Autograph Cards",
+   "parallel": "Black Prism",
+   "odds": {
+    "mania": 70
+   }
+  },
+  {
+   "label": "Mania Autograph Cards Red Lava",
+   "set": "Mania Autograph Cards",
+   "parallel": "Red Lava",
+   "odds": {
+    "mania": 136
+   }
+  },
+  {
+   "label": "Mania Autograph Cards Black Lava",
+   "set": "Mania Autograph Cards",
+   "parallel": "Black Lava",
+   "odds": {
+    "mania": 226
+   }
+  },
+  {
+   "label": "Mania Autograph Cards Pink Lava",
+   "set": "Mania Autograph Cards",
+   "parallel": "Pink Lava",
+   "odds": {
+    "mania": 339
+   }
+  },
+  {
+   "label": "Mania Autograph Cards Superfractor",
+   "set": "Mania Autograph Cards",
+   "parallel": "Superfractor",
+   "odds": {
+    "mania": 667
+   }
+  },
+  {
+   "label": "Sapphire Selections Autograph Cards",
+   "set": "Sapphire Selections",
+   "parallel": "Autograph Cards",
+   "odds": {
+    "sapphire": 1641
+   }
+  },
+  {
+   "label": "Sapphire Selections Autograph Cards Black Sapphire",
+   "set": "Sapphire Selections Autograph Cards",
+   "parallel": "Black Sapphire",
+   "odds": {
+    "sapphire": 684
+   }
+  },
+  {
+   "label": "Sapphire Selections Autograph Cards Red Sapphire",
+   "set": "Sapphire Selections Autograph Cards",
+   "parallel": "Red Sapphire",
+   "odds": {
+    "sapphire": 586
+   }
+  },
+  {
+   "label": "Sapphire Selections Autograph Cards Superfractor",
+   "set": "Sapphire Selections Autograph Cards",
+   "parallel": "Superfractor",
+   "odds": {
+    "sapphire": 2930
+   }
+  },
+  {
+   "label": "MLS x Apple TV Match Worn Patch Cards",
+   "set": "MLS x Apple TV Match Worn Patch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 11171
+   }
+  },
+  {
+   "label": "MLS Debut Patch Autograph Cards",
+   "set": "MLS Debut Patch Autographs",
+   "parallel": "MLS Debut Patch Autograph Cards",
+   "odds": {
+    "hobby": 4280
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Relic Cards Gold",
+   "set": "MLS Renaissance Autographed Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 54920,
+    "value": 312200,
+    "mania": 677
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Relic Cards Ruby",
+   "set": "MLS Renaissance Autographed Relics",
+   "parallel": "MLS Renaissance Autograph Relic Cards Ruby",
+   "odds": {
+    "hobby": 109840,
+    "value": 624400,
+    "mania": 1016
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph Relic Cards Platinum",
+   "set": "MLS Renaissance Autographed Relics",
+   "parallel": "MLS Renaissance Autograph Relic Cards Platinum",
+   "odds": {
+    "hobby": 659040,
+    "mania": 2031
+   }
+  },
+  {
+   "label": "MLS Renaissance Autograph MLS Logo Patch Card Platinum",
+   "set": "MLS Renaissance Autographs",
+   "parallel": "MLS Renaissance Autograph MLS Logo Patch Card Platinum",
+   "odds": {
+    "hobby": 659040
+   }
+  },
+  {
+   "label": "Rookie Arrival Autograph Patch Cards",
+   "set": "Rookie Arrival Autographed Patches",
+   "parallel": "Rookie Arrival Autograph Patch Cards",
+   "odds": {
+    "hobby": 47075
+   }
+  },
+  {
+   "label": "Rookie Arrival Autograph Patch Cards Blue",
+   "set": "Rookie Arrival Autographed Patches",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 131808
+   }
+  },
+  {
+   "label": "Rookie Arrival Autograph Patch Card Gold",
+   "set": "Rookie Arrival Autographed Patches",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 659040
+   }
+  },
+  {
+   "label": "Record Debut Autograph Triple Relic Cards",
+   "set": "Record Debut Autograph Triple Relic Cards",
+   "parallel": "",
+   "odds": {
+    "mania": 145
+   }
+  },
+  {
+   "label": "Record Debut Autograph Triple Relic Card Gold",
+   "set": "Record Debut Autograph Triple Relic Card",
+   "parallel": "Gold",
+   "odds": {
+    "mania": 2031
+   }
+  }
+ ]
+}

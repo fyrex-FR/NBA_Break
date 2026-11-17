@@ -1,0 +1,867 @@
+{
+ "version": 1,
+ "sport": "baseball",
+ "checklist_id": "2025-topps-stadium-club-baseball-checklist",
+ "product_label": "2025 Topps Stadium Club Baseball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value",
+   "label": "Value",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "se",
+   "label": "SE",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "ea",
+   "label": "EA",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 1,
+    "se": 1,
+    "ea": 1
+   }
+  },
+  {
+   "label": "Base Members Only",
+   "set": "Base",
+   "parallel": "Members Only",
+   "odds": {
+    "hobby": 256,
+    "se": 1728,
+    "ea": 1728
+   }
+  },
+  {
+   "label": "Base Photographer's Proof",
+   "set": "Base",
+   "parallel": "Photographer's Proof",
+   "odds": {
+    "hobby": 512,
+    "se": 3456,
+    "ea": 3456
+   }
+  },
+  {
+   "label": "Base Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 80,
+    "se": 699,
+    "ea": 484
+   }
+  },
+  {
+   "label": "Base Turquoise",
+   "set": "Base",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 169,
+    "se": 1397,
+    "ea": 967
+   }
+  },
+  {
+   "label": "Base Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 315,
+    "se": 2764,
+    "ea": 1914
+   }
+  },
+  {
+   "label": "Base Rainbow Foilboard",
+   "set": "Base",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 629,
+    "se": 5547,
+    "ea": 3841
+   }
+  },
+  {
+   "label": "Base Sepia",
+   "set": "Base",
+   "parallel": "Sepia",
+   "odds": {
+    "se": 19,
+    "ea": 13
+   }
+  },
+  {
+   "label": "Base Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Bronze",
+   "set": "Base",
+   "parallel": "Bronze",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Base Blue",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 32
+   }
+  },
+  {
+   "label": "Base Gold Rainbow Foilboard",
+   "set": "Base",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 8797
+   }
+  },
+  {
+   "label": "Base Black and White",
+   "set": "Base",
+   "parallel": "Black and White",
+   "odds": {
+    "hobby": 90
+   }
+  },
+  {
+   "label": "Base Pink",
+   "set": "Base",
+   "parallel": "Pink",
+   "odds": {
+    "se": 1,
+    "ea": 1
+   }
+  },
+  {
+   "label": "Base Light Blue",
+   "set": "Base",
+   "parallel": "Light Blue",
+   "odds": {
+    "se": 2,
+    "ea": 2
+   }
+  },
+  {
+   "label": "Base Lime Green",
+   "set": "Base",
+   "parallel": "Lime Green",
+   "odds": {
+    "se": 2,
+    "ea": 2
+   }
+  },
+  {
+   "label": "Beam Team",
+   "set": "Beam Team",
+   "parallel": "",
+   "odds": {
+    "hobby": 256,
+    "se": 1728,
+    "ea": 1728
+   }
+  },
+  {
+   "label": "Base Printing Plates Cyan",
+   "set": "Base",
+   "parallel": "Printing Plates Cyan",
+   "odds": {
+    "hobby": 2593
+   }
+  },
+  {
+   "label": "Concentration",
+   "set": "Concentration",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "se": 8,
+    "ea": 8
+   }
+  },
+  {
+   "label": "Concentration Pink",
+   "set": "Concentration",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 1024,
+    "se": 6912,
+    "ea": 6912
+   }
+  },
+  {
+   "label": "Concentration Turquoise",
+   "set": "Concentration",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 1269,
+    "se": 11172,
+    "ea": 7736
+   }
+  },
+  {
+   "label": "Concentration Gold",
+   "set": "Concentration",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2512,
+    "se": 22032,
+    "ea": 15257
+   }
+  },
+  {
+   "label": "Concentration Gold Rainbow Foilboard",
+   "set": "Concentration",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 129241,
+    "value": 602695,
+    "mega": 468779,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "In Case of Emergency",
+   "set": "In Case Of Emergency",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "se": 8,
+    "ea": 8
+   }
+  },
+  {
+   "label": "In Case of Emergency Pink",
+   "set": "In Case Of Emergency",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 1024,
+    "se": 6912,
+    "ea": 6912
+   }
+  },
+  {
+   "label": "In Case of Emergency Turquoise",
+   "set": "In Case Of Emergency",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 1269,
+    "se": 11172,
+    "ea": 7736
+   }
+  },
+  {
+   "label": "In Case of Emergency Gold",
+   "set": "In Case Of Emergency",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2512,
+    "se": 22032,
+    "ea": 15257
+   }
+  },
+  {
+   "label": "In Case of Emergency Gold Rainbow Foilboard",
+   "set": "In Case Of Emergency",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 129241,
+    "value": 602695,
+    "mega": 468779,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Savage Sluggers",
+   "set": "Savage Sluggers",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "se": 8,
+    "ea": 8
+   }
+  },
+  {
+   "label": "Savage Sluggers Pink",
+   "set": "Savage Sluggers",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 1024,
+    "se": 6912,
+    "ea": 6912
+   }
+  },
+  {
+   "label": "Savage Sluggers Turquoise",
+   "set": "Savage Sluggers",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 1269,
+    "se": 11172,
+    "ea": 7736
+   }
+  },
+  {
+   "label": "Savage Sluggers Gold",
+   "set": "Savage Sluggers",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2512,
+    "se": 22032,
+    "ea": 15257
+   }
+  },
+  {
+   "label": "Savage Sluggers Gold Rainbow Foilboard",
+   "set": "Savage Sluggers",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 129241,
+    "value": 602695,
+    "mega": 468779,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Yours For The Taking",
+   "set": "Yours For The Taking",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "se": 8,
+    "ea": 8
+   }
+  },
+  {
+   "label": "Yours For The Taking Pink",
+   "set": "Yours For The Taking",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 1024,
+    "se": 6912,
+    "ea": 6912
+   }
+  },
+  {
+   "label": "Yours For The Taking Turquoise",
+   "set": "Yours For The Taking",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 1269,
+    "se": 11172,
+    "ea": 7736
+   }
+  },
+  {
+   "label": "Yours For The Taking Gold",
+   "set": "Yours For The Taking",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 2512,
+    "se": 22032,
+    "ea": 15257
+   }
+  },
+  {
+   "label": "Yours For The Taking Gold Rainbow Foilboard",
+   "set": "Yours For The Taking",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 129241,
+    "value": 602695,
+    "mega": 468779,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Base Card Autograps",
+   "set": "Base",
+   "parallel": "Card Autograps",
+   "odds": {
+    "hobby": 32,
+    "se": 75,
+    "ea": 33
+   }
+  },
+  {
+   "label": "Base Card Autographs Yellow",
+   "set": "Base",
+   "parallel": "Card Autographs Yellow",
+   "odds": {
+    "hobby": 62,
+    "se": 344,
+    "ea": 630
+   }
+  },
+  {
+   "label": "Base Card Autographs Turquoise",
+   "set": "Base",
+   "parallel": "Card Autographs Turquoise",
+   "odds": {
+    "hobby": 132,
+    "se": 3212,
+    "ea": 2224
+   }
+  },
+  {
+   "label": "Base Card Autographs Gold",
+   "set": "Base",
+   "parallel": "Card Autographs Gold",
+   "odds": {
+    "hobby": 283,
+    "se": 4197,
+    "ea": 2906
+   }
+  },
+  {
+   "label": "Base Card Autographs Rainbow Foilboard",
+   "set": "Base",
+   "parallel": "Card Autographs Rainbow Foilboard",
+   "odds": {
+    "hobby": 431
+   }
+  },
+  {
+   "label": "Base Card Autographs Green",
+   "set": "Base",
+   "parallel": "Card Autographs Green",
+   "odds": {
+    "se": 25769,
+    "ea": 9618
+   }
+  },
+  {
+   "label": "Base Card Autographs Gold Rainbow Foilboard",
+   "set": "Base Autographs",
+   "parallel": "Rainbow Foilboard",
+   "odds": {
+    "hobby": 10981
+   }
+  },
+  {
+   "label": "Base Chrome Autographs",
+   "set": "Base",
+   "parallel": "Chrome Autographs",
+   "odds": {
+    "hobby": 246,
+    "se": 1703,
+    "ea": 1179
+   }
+  },
+  {
+   "label": "Base Chrome Autographs Turquoise",
+   "set": "Chrome Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 453,
+    "se": 5433,
+    "ea": 3762
+   }
+  },
+  {
+   "label": "Base Chrome Autographs Gold",
+   "set": "Chrome Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 831,
+    "se": 10866,
+    "ea": 7524
+   }
+  },
+  {
+   "label": "Base Chrome Autographs Orange",
+   "set": "Chrome Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1857,
+    "se": 16876,
+    "ea": 11686
+   }
+  },
+  {
+   "label": "Base Chrome Autographs Superfractor",
+   "set": "Chrome Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 34289,
+    "value": 185445,
+    "mega": 305132,
+    "se": 396574,
+    "ea": 274615
+   }
+  },
+  {
+   "label": "Abstract Autographs",
+   "set": "Abstract Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 1662,
+    "se": 12203,
+    "ea": 8450
+   }
+  },
+  {
+   "label": "Abstract Autographs Turquoise",
+   "set": "Abstract Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 2446,
+    "se": 36053,
+    "ea": 24965
+   }
+  },
+  {
+   "label": "Abstract Autographs Purple",
+   "set": "Abstract Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 6641,
+    "value": 168556,
+    "ea": 109846,
+    "mega": 135615,
+    "se": 158630
+   }
+  },
+  {
+   "label": "Abstract Autographs Green",
+   "set": "Abstract Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 30003,
+    "value": 301348,
+    "mega": 488212,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Abstract Autographs Gold Rainbow Foilboard",
+   "set": "Abstract Autographs",
+   "parallel": "Gold Rainbow Foilboard",
+   "odds": {
+    "hobby": 336026,
+    "value": 803594,
+    "mega": 813686,
+    "se": 264383,
+    "ea": 183077
+   }
+  },
+  {
+   "label": "Concentration Autographs",
+   "set": "Concentration",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 2059,
+    "se": 12203,
+    "ea": 8450
+   }
+  },
+  {
+   "label": "Concentration Autographs Turquoise",
+   "set": "Concentration Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 4098,
+    "se": 36053,
+    "ea": 24965
+   }
+  },
+  {
+   "label": "Concentration Autographs Purple",
+   "set": "Concentration Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 11750,
+    "value": 168556,
+    "ea": 109846,
+    "mega": 135615,
+    "se": 158630
+   }
+  },
+  {
+   "label": "Concentration Autographs Green",
+   "set": "Concentration Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 36525,
+    "value": 301348,
+    "mega": 488212,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Concentration Autographs Gold Rainbow Foilboard",
+   "set": "Concentration Autographs",
+   "parallel": "Gold Rainbow Foilboard",
+   "odds": {
+    "hobby": 560043,
+    "value": 803594,
+    "mega": 813686,
+    "se": 264383,
+    "ea": 183077
+   }
+  },
+  {
+   "label": "Dual Autographs",
+   "set": "Dual Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 6886,
+    "se": 49572,
+    "ea": 34327
+   }
+  },
+  {
+   "label": "Dual Autographs Turquoise",
+   "set": "Dual Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 12729,
+    "se": 46656,
+    "ea": 32308
+   }
+  },
+  {
+   "label": "Dual Autographs Purple",
+   "set": "Dual Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 5754,
+    "value": 100450,
+    "mega": 162738,
+    "se": 198287,
+    "ea": 137308
+   }
+  },
+  {
+   "label": "Dual Autographs Green",
+   "set": "Dual Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 46671,
+    "value": 482156,
+    "mega": 813686,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Dual Autographs Gold Rainbow Foilboard",
+   "set": "Dual Autographs",
+   "parallel": "Gold Rainbow Foilboard",
+   "odds": {
+    "hobby": 560043,
+    "value": 1205390,
+    "mega": 1220528,
+    "se": 396574,
+    "ea": 274615
+   }
+  },
+  {
+   "label": "Goin' Yard Autographs",
+   "set": "Goin' Yard Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 1871,
+    "se": 9117,
+    "ea": 6313
+   }
+  },
+  {
+   "label": "Goin' Yard Autographs Turquoise",
+   "set": "Goin' Yard Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 2527,
+    "se": 27350,
+    "ea": 18939
+   }
+  },
+  {
+   "label": "Goin' Yard Autographs Purple",
+   "set": "Goin' Yard Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 7001,
+    "value": 125337,
+    "ea": 78462,
+    "mega": 101711,
+    "se": 113307
+   }
+  },
+  {
+   "label": "Goin' Yard Autographs Green",
+   "set": "Goin' Yard Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 25457,
+    "value": 301348,
+    "mega": 488212,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Goin' Yard Autographs Gold Rainbow Foilboard",
+   "set": "Goin' Yard Autographs",
+   "parallel": "Gold Rainbow Foilboard",
+   "odds": {
+    "hobby": 420033,
+    "value": 602695,
+    "mega": 610264,
+    "se": 198287,
+    "ea": 137308
+   }
+  },
+  {
+   "label": "In Case of Emergency Autographs",
+   "set": "In Case Of Emergency",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 4331,
+    "se": 9117,
+    "ea": 6313
+   }
+  },
+  {
+   "label": "In Case of Emergency Autographs Turquoise",
+   "set": "In Case Of Emergency Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 4265,
+    "se": 27350,
+    "ea": 18939
+   }
+  },
+  {
+   "label": "In Case of Emergency Autographs Purple",
+   "set": "In Case Of Emergency Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 6341,
+    "value": 125337,
+    "ea": 78462,
+    "mega": 101711,
+    "se": 113307
+   }
+  },
+  {
+   "label": "In Case of Emergency Autographs Green",
+   "set": "In Case Of Emergency Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 23664,
+    "value": 301348,
+    "mega": 488212,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "In Case of Emergency Autographs Gold Rainbow Foilboard",
+   "set": "In Case Of Emergency Autographs",
+   "parallel": "Gold Rainbow Foilboard",
+   "odds": {
+    "hobby": 420033,
+    "value": 602695,
+    "mega": 610264,
+    "se": 198287,
+    "ea": 74005
+   }
+  },
+  {
+   "label": "Savage Sluggers Autographs",
+   "set": "Savage Sluggers",
+   "parallel": "Autographs",
+   "odds": {
+    "hobby": 4928,
+    "se": 9117,
+    "ea": 6313
+   }
+  },
+  {
+   "label": "Savage Sluggers Autographs Turquoise",
+   "set": "Savage Sluggers Autographs",
+   "parallel": "Turquoise",
+   "odds": {
+    "hobby": 3742,
+    "se": 27350,
+    "ea": 18939
+   }
+  },
+  {
+   "label": "Savage Sluggers Autographs Purple",
+   "set": "Savage Sluggers Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 6110,
+    "value": 125337,
+    "ea": 78462,
+    "mega": 101711,
+    "se": 113307
+   }
+  },
+  {
+   "label": "Savage Sluggers Autographs Green",
+   "set": "Savage Sluggers Autographs",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 22107,
+    "value": 301348,
+    "mega": 488212,
+    "se": 793148,
+    "ea": 549230
+   }
+  },
+  {
+   "label": "Savage Sluggers Autographs Gold Rainbow Foilboard",
+   "set": "Savage Sluggers Autographs",
+   "parallel": "Gold Rainbow Foilboard",
+   "odds": {
+    "hobby": 280022,
+    "value": 602695,
+    "mega": 610264,
+    "se": 198287,
+    "ea": 137308
+   }
+  }
+ ]
+}

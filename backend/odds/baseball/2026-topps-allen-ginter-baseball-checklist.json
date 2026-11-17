@@ -1,0 +1,971 @@
+{
+ "version": 1,
+ "sport": "baseball",
+ "checklist_id": "2026-topps-allen-ginter-baseball-checklist",
+ "product_label": "2026 Topps Allen & Ginter Baseball",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "fat_pack",
+   "label": "Fat Pack",
+   "channel": "retail",
+   "group": "fat_pack"
+  },
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value_box",
+   "label": "Value Box",
+   "channel": "retail",
+   "group": "value"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Card Chrome Variation",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Base Card Chrome Variation",
+   "odds": {
+    "fat_pack": 324,
+    "hobby": 13,
+    "value_box": 320
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Refractor Parallel",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation X-Fractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "X-Fractor Parallel",
+   "odds": {
+    "hobby": 288
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Blue Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Blue Refractor Parallel",
+   "odds": {
+    "fat_pack": 311,
+    "hobby": 543,
+    "value_box": 724
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Green Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Green Refractor Parallel",
+   "odds": {
+    "fat_pack": 470,
+    "hobby": 823,
+    "value_box": 1098
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Purple Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Purple Refractor Parallel",
+   "odds": {
+    "fat_pack": 621,
+    "hobby": 1086,
+    "value_box": 1449
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Gold Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Gold Refractor Parallel",
+   "odds": {
+    "fat_pack": 932,
+    "hobby": 1630,
+    "value_box": 2173
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Orange Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "fat_pack": 1862,
+    "hobby": 3258,
+    "value_box": 4350
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Red Refractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "fat_pack": 9395,
+    "hobby": 16309,
+    "value_box": 21752
+   }
+  },
+  {
+   "label": "Base Card Chrome Variation Superfractor Parallel",
+   "set": "Base Cards Chrome Variation",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "fat_pack": 48079,
+    "hobby": 81987,
+    "value_box": 108185
+   }
+  },
+  {
+   "label": "Base Card Mini Sized",
+   "set": "Base Cards",
+   "parallel": "Base Card Mini Sized",
+   "odds": {
+    "fat_pack": 1,
+    "hobby": 2,
+    "value_box": 3
+   }
+  },
+  {
+   "label": "Base Card Mini Sized A&G Logo Parallel",
+   "set": "Base Cards",
+   "parallel": "A&G Logo Parallel",
+   "odds": {
+    "fat_pack": 3,
+    "hobby": 5,
+    "value_box": 5
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Black Bordered Parallel",
+   "set": "Base Cards",
+   "parallel": "Black Bordered Parallel",
+   "odds": {
+    "fat_pack": 5,
+    "hobby": 10,
+    "value_box": 10
+   }
+  },
+  {
+   "label": "Base Card Mini Sized No Number Parallel",
+   "set": "Base Cards",
+   "parallel": "No Number Parallel",
+   "odds": {
+    "fat_pack": 311,
+    "hobby": 543,
+    "value_box": 724
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Brooklyn Back Parallel",
+   "set": "Base Cards",
+   "parallel": "Brooklyn Back Parallel",
+   "odds": {
+    "fat_pack": 620,
+    "hobby": 1086,
+    "value_box": 1448
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Wood Parallel",
+   "set": "Base Cards",
+   "parallel": "Wood Parallel",
+   "odds": {
+    "hobby": 10453
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Gold Bordered Parallel",
+   "set": "Base Cards",
+   "parallel": "Gold Bordered Parallel",
+   "odds": {
+    "fat_pack": 10,
+    "value_box": 10
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Glossy Parallel",
+   "set": "Base Cards",
+   "parallel": "Glossy Parallel",
+   "odds": {
+    "fat_pack": 15316,
+    "hobby": 27315,
+    "value_box": 35961
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Printing Plates Framed",
+   "set": "Base Cards",
+   "parallel": "Printing Plates Framed",
+   "odds": {
+    "fat_pack": 3847,
+    "hobby": 6785,
+    "value_box": 9047
+   }
+  },
+  {
+   "label": "Base Card Mini Sized Metals",
+   "set": "Base Cards",
+   "parallel": "Metals",
+   "odds": {
+    "hobby": 6958
+   }
+  },
+  {
+   "label": "Base Cards Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 24,
+    "hobby": 24,
+    "value_box": 48
+   }
+  },
+  {
+   "label": "Base Cards Blue Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Blue Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 104,
+    "hobby": 181,
+    "value_box": 241
+   }
+  },
+  {
+   "label": "Base Cards Green Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Green Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 157,
+    "hobby": 274,
+    "value_box": 366
+   }
+  },
+  {
+   "label": "Base Cards Gold Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Gold Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 311,
+    "hobby": 543,
+    "value_box": 724
+   }
+  },
+  {
+   "label": "Base Cards Orange Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Orange Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 621,
+    "hobby": 1086,
+    "value_box": 1450
+   }
+  },
+  {
+   "label": "Base Cards Black Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Black Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 1548,
+    "hobby": 2718,
+    "value_box": 3616
+   }
+  },
+  {
+   "label": "Base Cards Red Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Red Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 3132,
+    "hobby": 5436,
+    "value_box": 7251
+   }
+  },
+  {
+   "label": "Base Cards Purple Foil Filagree Parallel",
+   "set": "Base Cards",
+   "parallel": "Purple Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 16026,
+    "hobby": 27329,
+    "value_box": 36062
+   }
+  },
+  {
+   "label": "Base Cards Silver Portrait Parallel",
+   "set": "Base Cards",
+   "parallel": "Silver Portrait Parallel",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Cards Glossy Parallel",
+   "set": "Base Cards",
+   "parallel": "Glossy Parallel",
+   "odds": {
+    "fat_pack": 16026,
+    "hobby": 27329,
+    "value_box": 36062
+   }
+  },
+  {
+   "label": "Base Card Daguerreotype Variation Redemption Card",
+   "set": "Base Cards",
+   "parallel": "Base Card Daguerreotype Variation Redemption Card",
+   "odds": {
+    "fat_pack": 48079,
+    "hobby": 75838,
+    "value_box": 105411
+   }
+  },
+  {
+   "label": "Base Card Mini Stained Glass Variation",
+   "set": "Base Cards Mini Stained Glass Variation",
+   "parallel": "Base Card Mini Stained Glass Variation",
+   "odds": {
+    "fat_pack": 1242,
+    "hobby": 2173,
+    "value_box": 2897
+   }
+  },
+  {
+   "label": "Base Mini Card Chrome Variation",
+   "set": "Base Cards Mini Chrome Variation",
+   "parallel": "Base Mini Card Chrome Variation",
+   "odds": {
+    "fat_pack": 10,
+    "hobby": 24,
+    "value_box": 24
+   }
+  },
+  {
+   "label": "Base Mini Card Chrome Variation Gold Refractor Parallel",
+   "set": "Base Cards Mini Chrome Variation",
+   "parallel": "Gold Refractor Parallel",
+   "odds": {
+    "fat_pack": 932,
+    "hobby": 1630,
+    "value_box": 2173
+   }
+  },
+  {
+   "label": "Base Mini Card Chrome Variation Red Refractor Parallel",
+   "set": "Base Cards Mini Chrome Variation",
+   "parallel": "Red Refractor Parallel",
+   "odds": {
+    "fat_pack": 9395,
+    "hobby": 16309,
+    "value_box": 21752
+   }
+  },
+  {
+   "label": "Base Mini Card Chrome Variation Superfractor Parallel",
+   "set": "Base Cards Mini Chrome Variation",
+   "parallel": "Superfractor Parallel",
+   "odds": {
+    "fat_pack": 48079,
+    "hobby": 81987,
+    "value_box": 108185
+   }
+  },
+  {
+   "label": "Base Mini Card Chrome Variation Orange Refractor Parallel",
+   "set": "Base Cards Mini Chrome Variation",
+   "parallel": "Orange Refractor Parallel",
+   "odds": {
+    "fat_pack": 1862,
+    "hobby": 3258,
+    "value_box": 4350
+   }
+  },
+  {
+   "label": "Tin Type Base Card Variation",
+   "set": "Tin Type Base Card Variation",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 4644,
+    "hobby": 8155,
+    "value_box": 10847
+   }
+  },
+  {
+   "label": "50 Ways To Say Hello",
+   "set": "Mini 50 Ways To Say Hello",
+   "parallel": "50 Ways To Say Hello",
+   "odds": {
+    "fat_pack": 14,
+    "hobby": 14,
+    "value_box": 14
+   }
+  },
+  {
+   "label": "Allen & Ginter Double Rip Cards",
+   "set": "Allen & Ginter Double Rip Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 1212
+   }
+  },
+  {
+   "label": "Allen & Ginter Rip Cards",
+   "set": "Allen & Ginter Rip Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 81
+   }
+  },
+  {
+   "label": "Musical Methods",
+   "set": "Mini Musical Methods",
+   "parallel": "Musical Methods",
+   "odds": {
+    "fat_pack": 35,
+    "hobby": 35,
+    "value_box": 35
+   }
+  },
+  {
+   "label": "N34",
+   "set": "N34",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 14,
+    "hobby": 14,
+    "value_box": 14
+   }
+  },
+  {
+   "label": "N43",
+   "set": "N43",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 2,
+    "hobby": 5,
+    "value_box": 5
+   }
+  },
+  {
+   "label": "Rookie Design Variations",
+   "set": "Rookie Design Variations",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 35,
+    "hobby": 35,
+    "value_box": 35
+   }
+  },
+  {
+   "label": "Uniform Countdown",
+   "set": "Uniform Countdown",
+   "parallel": "",
+   "odds": {
+    "hobby": 8818
+   }
+  },
+  {
+   "label": "Wicked Power",
+   "set": "Wicked Power",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 2,
+    "hobby": 3,
+    "value_box": 3
+   }
+  },
+  {
+   "label": "Allen & Ginter Framed Relics Mini",
+   "set": "Allen & Ginter Framed Relics Mini Size I",
+   "parallel": "Allen & Ginter Framed Relics Mini",
+   "odds": {
+    "fat_pack": 132,
+    "hobby": 70,
+    "value_box": 331
+   }
+  },
+  {
+   "label": "Allen & Ginter Dual Autograph Full Size Cards",
+   "set": "Allen & Ginter Dual Autograph Full Size Cards",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 408672,
+    "hobby": 275773,
+    "value_box": 1370347
+   }
+  },
+  {
+   "label": "Allen & Ginter Quintuple Autograph Full Size Cards",
+   "set": "Allen & Ginter Quintuple Autograph Full Size Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 60670
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographs Full Size Cards",
+   "set": "Allen & Ginter Autographs Full Size Cards",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 19461,
+    "hobby": 10283,
+    "value_box": 48941
+   }
+  },
+  {
+   "label": "Allen & Ginter Dual Autograph Full Size Cards Red Ink Parallel",
+   "set": "Allen & Ginter Dual Autograph Full Size Cards",
+   "parallel": "Red Ink Parallel",
+   "odds": {
+    "fat_pack": 469800,
+    "hobby": 433358,
+    "value_box": 2055520
+   }
+  },
+  {
+   "label": "Allen & Ginter Quintuple Autograph Full Size Cards Red Ink",
+   "set": "Allen & Ginter Quintuple Autograph Full Size Cards",
+   "parallel": "Red Ink",
+   "odds": {
+    "hobby": 151675
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographs Full Size Cards Red Ink Parallel",
+   "set": "Allen & Ginter Autographs Full Size Cards",
+   "parallel": "Red Ink Parallel",
+   "odds": {
+    "fat_pack": 272448,
+    "hobby": 151675,
+    "value_box": 685173
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Lineup Card Relics",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 163469,
+    "hobby": 84264,
+    "value_box": 411104
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Relic Cards",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Allen & Ginter Autographed Relic Cards",
+   "odds": {
+    "fat_pack": 1746,
+    "hobby": 927,
+    "value_box": 4397
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Relic Cards Gold Foil Filagree",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Gold Foil Filagree",
+   "odds": {
+    "fat_pack": 3665,
+    "hobby": 1947,
+    "value_box": 9238
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Relic Cards Orange Foil Filagree",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Orange Foil Filagree",
+   "odds": {
+    "fat_pack": 5523,
+    "hobby": 2934,
+    "value_box": 13936
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Relic Cards Black Foil Filagree",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Black Foil Filagree",
+   "odds": {
+    "fat_pack": 13853,
+    "hobby": 7327,
+    "value_box": 34839
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Relic Cards Red Foil Filagree",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Red Foil Filagree",
+   "odds": {
+    "fat_pack": 31436,
+    "hobby": 16486,
+    "value_box": 76130
+   }
+  },
+  {
+   "label": "Allen & Ginter Autographed Relic Cards Purple Foil Filagree",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Purple Foil Filagree",
+   "odds": {
+    "fat_pack": 163469,
+    "hobby": 79829,
+    "value_box": 373731
+   }
+  },
+  {
+   "label": "Allen & Ginter Dual Autographed Relic Cards",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Allen & Ginter Dual Autographed Relic Cards",
+   "odds": {
+    "fat_pack": 29191,
+    "hobby": 15637,
+    "value_box": 74746
+   }
+  },
+  {
+   "label": "Allen & Ginter Dual Autographed Relic Cards Red Foil Filagree",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Red Foil Filagree",
+   "odds": {
+    "fat_pack": 58382,
+    "hobby": 31273,
+    "value_box": 146823
+   }
+  },
+  {
+   "label": "Allen & Ginter Dual Autographed Relic Cards Purple Foil",
+   "set": "Allen & Ginter Autographed Lineup Card Relics",
+   "parallel": "Purple Foil",
+   "odds": {
+    "fat_pack": 272448,
+    "hobby": 168528,
+    "value_box": 822208
+   }
+  },
+  {
+   "label": "Allen & Ginter Employee Autograph Framed Mini Size",
+   "set": "Allen & Ginter Employee Autograph Framed Mini Size",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 68112,
+    "hobby": 34868,
+    "value_box": 164442
+   }
+  },
+  {
+   "label": "Carte De Visite Autographs",
+   "set": "Carte De Visite Autographs",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 16026,
+    "hobby": 8497,
+    "value_box": 40304
+   }
+  },
+  {
+   "label": "Carte De Visite Autographs Red Ink Parallel",
+   "set": "Carte De Visite Autographs",
+   "parallel": "Red Ink Parallel",
+   "odds": {
+    "fat_pack": 204336,
+    "hobby": 104604,
+    "value_box": 513880
+   }
+  },
+  {
+   "label": "Cut Signatures",
+   "set": "Cut Signatures",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 163469,
+    "hobby": 89221,
+    "value_box": 411104
+   }
+  },
+  {
+   "label": "Dynasty Autographed Patch Cards Redemption Card",
+   "set": "Dynasty Autographed Patch Cards",
+   "parallel": "Redemption Card",
+   "odds": {
+    "fat_pack": 90816,
+    "hobby": 50558,
+    "value_box": 241826
+   }
+  },
+  {
+   "label": "Dynasty Autographed Patch Cards Silver Parallel Redemption",
+   "set": "Dynasty Autographed Patch Cards",
+   "parallel": "Silver Parallel Redemption",
+   "odds": {
+    "fat_pack": 204336,
+    "hobby": 97855,
+    "value_box": 456782
+   }
+  },
+  {
+   "label": "Dynasty Autographed Patch Cards Gold Parallel Redemption",
+   "set": "Dynasty Autographed Patch Cards",
+   "parallel": "Gold Parallel Redemption",
+   "odds": {
+    "fat_pack": 469800,
+    "hobby": 505584,
+    "value_box": 2055520
+   }
+  },
+  {
+   "label": "Mini Baseball Autograph Cards Framed Mini Size",
+   "set": "Mini Baseball Autographs",
+   "parallel": "Mini Baseball Autograph Cards Framed Mini Size",
+   "odds": {
+    "fat_pack": 205,
+    "hobby": 67,
+    "value_box": 555
+   }
+  },
+  {
+   "label": "Mini Baseball Autograph Cards Framed Mini Size Green Frame",
+   "set": "Mini Baseball Autographs",
+   "parallel": "Green Frame",
+   "odds": {
+    "fat_pack": 571,
+    "hobby": 186,
+    "value_box": 1547
+   }
+  },
+  {
+   "label": "Mini Baseball Autograph Cards Framed Mini Size Blue Frame",
+   "set": "Mini Baseball Autographs",
+   "parallel": "Blue Frame",
+   "odds": {
+    "fat_pack": 824,
+    "hobby": 267,
+    "value_box": 2224
+   }
+  },
+  {
+   "label": "Mini Baseball Autograph Cards Framed Mini Size Black Frame",
+   "set": "Mini Baseball Autographs",
+   "parallel": "Black Frame",
+   "odds": {
+    "fat_pack": 1656,
+    "hobby": 537,
+    "value_box": 4477
+   }
+  },
+  {
+   "label": "Mini Baseball Autograph Cards Framed Mini Size Red Ink",
+   "set": "Mini Baseball Autographs",
+   "parallel": "Red Ink",
+   "odds": {
+    "hobby": 1016
+   }
+  },
+  {
+   "label": "Mini Baseball Autograph Cards Framed Mini Size Purple Frame",
+   "set": "Mini Baseball Autographs",
+   "parallel": "Purple Frame",
+   "odds": {
+    "hobby": 9954
+   }
+  },
+  {
+   "label": "Mini Non Baseball Autograph Cards Framed Mini Size",
+   "set": "Mini Non Baseball Autographs",
+   "parallel": "Mini Non Baseball Autograph Cards Framed Mini Size",
+   "odds": {
+    "fat_pack": 463,
+    "hobby": 150,
+    "value_box": 1254
+   }
+  },
+  {
+   "label": "Mini Non Baseball Autograph Cards Framed Mini Size Green",
+   "set": "Mini Non Baseball Autographs",
+   "parallel": "Green",
+   "odds": {
+    "fat_pack": 1132,
+    "hobby": 368,
+    "value_box": 3062
+   }
+  },
+  {
+   "label": "Mini Non Baseball Autograph Cards Framed Mini Size Blue Frame",
+   "set": "Mini Non Baseball Autographs",
+   "parallel": "Blue Frame",
+   "odds": {
+    "fat_pack": 2085,
+    "hobby": 676,
+    "value_box": 5634
+   }
+  },
+  {
+   "label": "Mini Non Baseball Autograph Cards Framed Mini Size Black",
+   "set": "Mini Non Baseball Autographs",
+   "parallel": "Black",
+   "odds": {
+    "fat_pack": 4205,
+    "hobby": 1368,
+    "value_box": 11429
+   }
+  },
+  {
+   "label": "Mini Non Baseball Autograph Cards Framed Mini Size Red Ink",
+   "set": "Mini Non Baseball Autographs",
+   "parallel": "Red Ink",
+   "odds": {
+    "hobby": 2689
+   }
+  },
+  {
+   "label": "Mini Non Baseball Autograph Cards Framed Mini Size Purple",
+   "set": "Mini Non Baseball Autographs",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 25708
+   }
+  },
+  {
+   "label": "Relic Cut Signatures",
+   "set": "Relic Cut Signatures",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 469800,
+    "hobby": 379188,
+    "value_box": 2055520
+   }
+  },
+  {
+   "label": "Allen & Ginter Lineup Card Relics",
+   "set": "Allen & Ginter Lineup Card Relics",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 90816,
+    "hobby": 47399,
+    "value_box": 228391
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size A",
+   "set": "Allen & Ginter Relics Full Size A",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 70,
+    "hobby": 37,
+    "value_box": 176
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size A A&G Back Parallel",
+   "set": "Allen & Ginter Relics Full Size A",
+   "parallel": "A&G Back Parallel",
+   "odds": {
+    "fat_pack": 1965,
+    "hobby": 1043,
+    "value_box": 4947
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size A No Number Parallel",
+   "set": "Allen & Ginter Relics Full Size A",
+   "parallel": "No Number Parallel",
+   "odds": {
+    "fat_pack": 3892,
+    "hobby": 2062,
+    "value_box": 9788
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size A Brooklyn Back Parallel",
+   "set": "Allen & Ginter Relics Full Size A",
+   "parallel": "Brooklyn Back Parallel",
+   "odds": {
+    "fat_pack": 9616,
+    "hobby": 5090,
+    "value_box": 24183
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size A Topps Back Parallel",
+   "set": "Allen & Ginter Relics Full Size A",
+   "parallel": "Topps Back Parallel",
+   "odds": {
+    "fat_pack": 19461,
+    "hobby": 10424,
+    "value_box": 49531
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size A A&G Man Back Parallel",
+   "set": "Allen & Ginter Relics Full Size A",
+   "parallel": "A&G Man Back Parallel",
+   "odds": {
+    "fat_pack": 102168,
+    "hobby": 53219,
+    "value_box": 256940
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size B",
+   "set": "Allen & Ginter Relics Full Size B",
+   "parallel": "",
+   "odds": {
+    "fat_pack": 132,
+    "hobby": 70,
+    "value_box": 331
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size B Gold Foil Filagree Parallel",
+   "set": "Allen & Ginter Relics Full Size B",
+   "parallel": "Gold Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 2809,
+    "hobby": 1487,
+    "value_box": 7039
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size B Orange Foil Filagree Parallel",
+   "set": "Allen & Ginter Relics Full Size B",
+   "parallel": "Orange Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 5523,
+    "hobby": 2928,
+    "value_box": 13889
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size B Black Foil Filagree Parallel",
+   "set": "Allen & Ginter Relics Full Size B",
+   "parallel": "Black Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 13853,
+    "hobby": 7310,
+    "value_box": 34547
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size B Red Foil Filagree Parallel",
+   "set": "Allen & Ginter Relics Full Size B",
+   "parallel": "Red Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 29191,
+    "hobby": 15637,
+    "value_box": 74746
+   }
+  },
+  {
+   "label": "Allen & Ginter Relics Full Size B Purple Foil Filagree Parallel",
+   "set": "Allen & Ginter Relics Full Size B",
+   "parallel": "Purple Foil Filagree Parallel",
+   "odds": {
+    "fat_pack": 163469,
+    "hobby": 84264,
+    "value_box": 411104
+   }
+  }
+ ]
+}

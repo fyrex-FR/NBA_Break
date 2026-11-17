@@ -1,0 +1,2002 @@
+{
+ "version": 1,
+ "sport": "nfl",
+ "checklist_id": "2025-topps-resurgence-football-checklist",
+ "product_label": "2025 Topps Resurgence Football",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Surge",
+   "set": "Base",
+   "parallel": "Surge",
+   "odds": {
+    "hobby": 127
+   }
+  },
+  {
+   "label": "Base Black & White Surge",
+   "set": "Base",
+   "parallel": "Black & White Surge",
+   "odds": {
+    "hobby": 135
+   }
+  },
+  {
+   "label": "Base Bronze Surge",
+   "set": "Base",
+   "parallel": "Bronze Surge",
+   "odds": {
+    "hobby": 144
+   }
+  },
+  {
+   "label": "Base Magenta Surge",
+   "set": "Base",
+   "parallel": "Magenta Surge",
+   "odds": {
+    "hobby": 180
+   }
+  },
+  {
+   "label": "Base Navy Surge",
+   "set": "Base",
+   "parallel": "Navy Surge",
+   "odds": {
+    "hobby": 196
+   }
+  },
+  {
+   "label": "Base Aqua Surge",
+   "set": "Base",
+   "parallel": "Aqua Surge",
+   "odds": {
+    "hobby": 215
+   }
+  },
+  {
+   "label": "Base Yellow Surge",
+   "set": "Base",
+   "parallel": "Yellow Surge",
+   "odds": {
+    "hobby": 239
+   }
+  },
+  {
+   "label": "Base Crimson Surge",
+   "set": "Base",
+   "parallel": "Crimson Surge",
+   "odds": {
+    "hobby": 270
+   }
+  },
+  {
+   "label": "Base Green Surge",
+   "set": "Base",
+   "parallel": "Green Surge",
+   "odds": {
+    "hobby": 307
+   }
+  },
+  {
+   "label": "Base Teal Surge",
+   "set": "Base",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 361
+   }
+  },
+  {
+   "label": "Base White Surge",
+   "set": "Base",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 430
+   }
+  },
+  {
+   "label": "Base Digital Surge",
+   "set": "Base",
+   "parallel": "Digital Surge",
+   "odds": {
+    "hobby": 537
+   }
+  },
+  {
+   "label": "Base Blue Surge",
+   "set": "Base",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 543
+   }
+  },
+  {
+   "label": "Base Purple Surge",
+   "set": "Base",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 716
+   }
+  },
+  {
+   "label": "Base Gold Power Surge",
+   "set": "Base",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 1075
+   }
+  },
+  {
+   "label": "Base Orange Power Surge",
+   "set": "Base",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 2149
+   }
+  },
+  {
+   "label": "Base Lime Green Power Surge",
+   "set": "Base",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 3585
+   }
+  },
+  {
+   "label": "Base Pink Power Surge",
+   "set": "Base",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 5384
+   }
+  },
+  {
+   "label": "Base Red Power Surge",
+   "set": "Base",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 10811
+   }
+  },
+  {
+   "label": "Base Superfractor",
+   "set": "Base",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 54053
+   }
+  },
+  {
+   "label": "Base High Voltage",
+   "set": "Base",
+   "parallel": "High Voltage",
+   "odds": {
+    "hobby": 279
+   }
+  },
+  {
+   "label": "Base Blue and Orange Spark",
+   "set": "Base",
+   "parallel": "Blue and Orange Spark",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Sky Blue and Pink Shock",
+   "set": "Base",
+   "parallel": "Sky Blue and Pink Shock",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Base Silver Static",
+   "set": "Base",
+   "parallel": "Silver Static",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Orange Static",
+   "set": "Base",
+   "parallel": "Orange Static",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Base Lime Green Static",
+   "set": "Base",
+   "parallel": "Lime Green Static",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Base Pink Static",
+   "set": "Base",
+   "parallel": "Pink Static",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Base Red Static",
+   "set": "Base",
+   "parallel": "Red Static",
+   "odds": {
+    "hobby": 46
+   }
+  },
+  {
+   "label": "Base Black Static",
+   "set": "Base",
+   "parallel": "Black Static",
+   "odds": {
+    "hobby": 114
+   }
+  },
+  {
+   "label": "Rookies Base",
+   "set": "Base Rookies",
+   "parallel": "Rookies Base",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Rookies Refractor",
+   "set": "Rookies",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Rookies Prism",
+   "set": "Rookies",
+   "parallel": "Prism",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Rookies Surge",
+   "set": "Rookies Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 127
+   }
+  },
+  {
+   "label": "Rookies Black & White Surge",
+   "set": "Rookies Black & White Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 135
+   }
+  },
+  {
+   "label": "Rookies Bronze Surge",
+   "set": "Rookies Bronze Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 144
+   }
+  },
+  {
+   "label": "Rookies Magenta Surge",
+   "set": "Rookies Magenta Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 180
+   }
+  },
+  {
+   "label": "Rookies Navy Surge",
+   "set": "Rookies Navy Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 196
+   }
+  },
+  {
+   "label": "Rookies Aqua Surge",
+   "set": "Rookies Aqua Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 215
+   }
+  },
+  {
+   "label": "Rookies Yellow Surge",
+   "set": "Rookies Yellow Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 239
+   }
+  },
+  {
+   "label": "Rookies Crimson Surge",
+   "set": "Rookies Crimson Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 270
+   }
+  },
+  {
+   "label": "Rookies Green Surge",
+   "set": "Rookies Green Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 307
+   }
+  },
+  {
+   "label": "Rookies Teal Surge",
+   "set": "Rookies Teal Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 361
+   }
+  },
+  {
+   "label": "Rookies White Surge",
+   "set": "Rookies White Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 430
+   }
+  },
+  {
+   "label": "Rookies Digital Surge",
+   "set": "Rookies Digital Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 537
+   }
+  },
+  {
+   "label": "Rookies Blue Surge",
+   "set": "Rookies Blue Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 543
+   }
+  },
+  {
+   "label": "Rookies Purple Surge",
+   "set": "Rookies Purple Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 716
+   }
+  },
+  {
+   "label": "Rookies Gold Power Surge",
+   "set": "Rookies Gold Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 1075
+   }
+  },
+  {
+   "label": "Rookies Orange Power Surge",
+   "set": "Rookies Orange Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 2149
+   }
+  },
+  {
+   "label": "Rookies Lime Green Power Surge",
+   "set": "Rookies Lime Green Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 3585
+   }
+  },
+  {
+   "label": "Rookies Pink Power Surge",
+   "set": "Rookies Pink Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 5384
+   }
+  },
+  {
+   "label": "Rookies Red Power Surge",
+   "set": "Rookies Red Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 10811
+   }
+  },
+  {
+   "label": "Rookies Superfractor",
+   "set": "Rookies Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 54053
+   }
+  },
+  {
+   "label": "Rookies High Voltage",
+   "set": "Rookies High Voltage",
+   "parallel": "",
+   "odds": {
+    "hobby": 279
+   }
+  },
+  {
+   "label": "Rookies Blue and Orange Spark",
+   "set": "Rookies Blue and Orange Spark",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Rookies Sky Blue and Pink Shock",
+   "set": "Rookies Sky Blue and Pink Shock",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Rookies Silver Static",
+   "set": "Rookies Silver Static",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Rookies Orange Static",
+   "set": "Rookies Orange Static",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Rookies Lime Green Static",
+   "set": "Rookies Lime Green Static",
+   "parallel": "",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Rookies Pink Static",
+   "set": "Rookies Pink Static",
+   "parallel": "",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Rookies Red Static",
+   "set": "Rookies Red Static",
+   "parallel": "",
+   "odds": {
+    "hobby": 46
+   }
+  },
+  {
+   "label": "Rookies Black Static",
+   "set": "Rookies Black Static",
+   "parallel": "",
+   "odds": {
+    "hobby": 114
+   }
+  },
+  {
+   "label": "Electro Lights",
+   "set": "Electro Lights",
+   "parallel": "",
+   "odds": {
+    "hobby": 116
+   }
+  },
+  {
+   "label": "Perfect Fits",
+   "set": "Perfect Fits",
+   "parallel": "",
+   "odds": {
+    "hobby": 37
+   }
+  },
+  {
+   "label": "Wired",
+   "set": "Wired",
+   "parallel": "",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "String Theory",
+   "set": "String Theory",
+   "parallel": "",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Protonyx Base",
+   "set": "Protonyx",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Protonyx Refractor",
+   "set": "Protonyx",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Protonyx Surge",
+   "set": "Protonyx",
+   "parallel": "Surge",
+   "odds": {
+    "hobby": 506
+   }
+  },
+  {
+   "label": "Protonyx Bronze Surge",
+   "set": "Protonyx",
+   "parallel": "Bronze Surge",
+   "odds": {
+    "hobby": 614
+   }
+  },
+  {
+   "label": "Protonyx Magenta Surge",
+   "set": "Protonyx",
+   "parallel": "Magenta Surge",
+   "odds": {
+    "hobby": 719
+   }
+  },
+  {
+   "label": "Protonyx Navy Surge",
+   "set": "Protonyx",
+   "parallel": "Navy Surge",
+   "odds": {
+    "hobby": 782
+   }
+  },
+  {
+   "label": "Protonyx Aqua Surge",
+   "set": "Protonyx",
+   "parallel": "Aqua Surge",
+   "odds": {
+    "hobby": 860
+   }
+  },
+  {
+   "label": "Protonyx Yellow Surge",
+   "set": "Protonyx",
+   "parallel": "Yellow Surge",
+   "odds": {
+    "hobby": 955
+   }
+  },
+  {
+   "label": "Protonyx Crimson Surge",
+   "set": "Protonyx",
+   "parallel": "Crimson Surge",
+   "odds": {
+    "hobby": 1180
+   }
+  },
+  {
+   "label": "Protonyx Green Surge",
+   "set": "Protonyx",
+   "parallel": "Green Surge",
+   "odds": {
+    "hobby": 1228
+   }
+  },
+  {
+   "label": "Protonyx Teal Surge",
+   "set": "Protonyx",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 1442
+   }
+  },
+  {
+   "label": "Protonyx White Surge",
+   "set": "Protonyx",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 1720
+   }
+  },
+  {
+   "label": "Protonyx Blue Surge",
+   "set": "Protonyx",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 2169
+   }
+  },
+  {
+   "label": "Protonyx Purple Surge",
+   "set": "Protonyx",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 2863
+   }
+  },
+  {
+   "label": "Protonyx Gold Power Surge",
+   "set": "Protonyx",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 4304
+   }
+  },
+  {
+   "label": "Protonyx Orange Power Surge",
+   "set": "Protonyx",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 8608
+   }
+  },
+  {
+   "label": "Protonyx Lime Green Power Surge",
+   "set": "Protonyx",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 14376
+   }
+  },
+  {
+   "label": "Protonyx Pink Power Surge",
+   "set": "Protonyx",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 21796
+   }
+  },
+  {
+   "label": "Protonyx Red Power Surge",
+   "set": "Protonyx",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 43591
+   }
+  },
+  {
+   "label": "Protonyx SuperFractor",
+   "set": "Protonyx",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 225221
+   }
+  },
+  {
+   "label": "Conductors Base",
+   "set": "Conductors",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Conductors Refractor",
+   "set": "Conductors",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Conductors Surge",
+   "set": "Conductors",
+   "parallel": "Surge",
+   "odds": {
+    "hobby": 506
+   }
+  },
+  {
+   "label": "Conductors Bronze Surge",
+   "set": "Conductors",
+   "parallel": "Bronze Surge",
+   "odds": {
+    "hobby": 614
+   }
+  },
+  {
+   "label": "Conductors Magenta Surge",
+   "set": "Conductors",
+   "parallel": "Magenta Surge",
+   "odds": {
+    "hobby": 719
+   }
+  },
+  {
+   "label": "Conductors Navy Surge",
+   "set": "Conductors",
+   "parallel": "Navy Surge",
+   "odds": {
+    "hobby": 782
+   }
+  },
+  {
+   "label": "Conductors Aqua Surge",
+   "set": "Conductors",
+   "parallel": "Aqua Surge",
+   "odds": {
+    "hobby": 860
+   }
+  },
+  {
+   "label": "Conductors Yellow Surge",
+   "set": "Conductors",
+   "parallel": "Yellow Surge",
+   "odds": {
+    "hobby": 955
+   }
+  },
+  {
+   "label": "Conductors Crimson Surge",
+   "set": "Conductors",
+   "parallel": "Crimson Surge",
+   "odds": {
+    "hobby": 1180
+   }
+  },
+  {
+   "label": "Conductors Green Surge",
+   "set": "Conductors",
+   "parallel": "Green Surge",
+   "odds": {
+    "hobby": 1228
+   }
+  },
+  {
+   "label": "Conductors Teal Surge",
+   "set": "Conductors",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 1442
+   }
+  },
+  {
+   "label": "Conductors White Surge",
+   "set": "Conductors",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 1720
+   }
+  },
+  {
+   "label": "Conductors Blue Surge",
+   "set": "Conductors",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 2169
+   }
+  },
+  {
+   "label": "Conductors Purple Surge",
+   "set": "Conductors",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 2863
+   }
+  },
+  {
+   "label": "Conductors Gold Power Surge",
+   "set": "Conductors",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 4304
+   }
+  },
+  {
+   "label": "Conductors Orange Power Surge",
+   "set": "Conductors",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 8608
+   }
+  },
+  {
+   "label": "Conductors Lime Green Power Surge",
+   "set": "Conductors",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 14376
+   }
+  },
+  {
+   "label": "Conductors Pink Power Surge",
+   "set": "Conductors",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 21796
+   }
+  },
+  {
+   "label": "Conductors Red Power Surge",
+   "set": "Conductors",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 43591
+   }
+  },
+  {
+   "label": "Conductors SuperFractor",
+   "set": "Conductors",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 225221
+   }
+  },
+  {
+   "label": "Circuit Breakers Base",
+   "set": "Circuit Breakers",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Circuit Breakers Refractor",
+   "set": "Circuit Breakers",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Circuit Breakers Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Surge",
+   "odds": {
+    "hobby": 506
+   }
+  },
+  {
+   "label": "Circuit Breakers Bronze Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Bronze Surge",
+   "odds": {
+    "hobby": 614
+   }
+  },
+  {
+   "label": "Circuit Breakers Magenta Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Magenta Surge",
+   "odds": {
+    "hobby": 719
+   }
+  },
+  {
+   "label": "Circuit Breakers Navy Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Navy Surge",
+   "odds": {
+    "hobby": 782
+   }
+  },
+  {
+   "label": "Circuit Breakers Aqua Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Aqua Surge",
+   "odds": {
+    "hobby": 860
+   }
+  },
+  {
+   "label": "Circuit Breakers Yellow Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Yellow Surge",
+   "odds": {
+    "hobby": 955
+   }
+  },
+  {
+   "label": "Circuit Breakers Crimson Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Crimson Surge",
+   "odds": {
+    "hobby": 1180
+   }
+  },
+  {
+   "label": "Circuit Breakers Green Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Green Surge",
+   "odds": {
+    "hobby": 1228
+   }
+  },
+  {
+   "label": "Circuit Breakers Teal Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 1442
+   }
+  },
+  {
+   "label": "Circuit Breakers White Surge",
+   "set": "Circuit Breakers",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 1720
+   }
+  },
+  {
+   "label": "Circuit Breakers Blue Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 2169
+   }
+  },
+  {
+   "label": "Circuit Breakers Purple Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 2863
+   }
+  },
+  {
+   "label": "Circuit Breakers Gold Power Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 4304
+   }
+  },
+  {
+   "label": "Circuit Breakers Orange Power Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 8608
+   }
+  },
+  {
+   "label": "Circuit Breakers Lime Green Power Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 14376
+   }
+  },
+  {
+   "label": "Circuit Breakers Pink Power Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 21796
+   }
+  },
+  {
+   "label": "Circuit Breakers Red Power Surge",
+   "set": "Circuit Breakers",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 43591
+   }
+  },
+  {
+   "label": "Circuit Breakers SuperFractor",
+   "set": "Circuit Breakers",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 225221
+   }
+  },
+  {
+   "label": "Voltaic Base",
+   "set": "Voltaic",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Voltaic Refractor",
+   "set": "Voltaic",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Voltaic Surge",
+   "set": "Voltaic",
+   "parallel": "Surge",
+   "odds": {
+    "hobby": 506
+   }
+  },
+  {
+   "label": "Voltaic Bronze Surge",
+   "set": "Voltaic",
+   "parallel": "Bronze Surge",
+   "odds": {
+    "hobby": 614
+   }
+  },
+  {
+   "label": "Voltaic Magenta Surge",
+   "set": "Voltaic",
+   "parallel": "Magenta Surge",
+   "odds": {
+    "hobby": 719
+   }
+  },
+  {
+   "label": "Voltaic Navy Surge",
+   "set": "Voltaic",
+   "parallel": "Navy Surge",
+   "odds": {
+    "hobby": 782
+   }
+  },
+  {
+   "label": "Voltaic Aqua Surge",
+   "set": "Voltaic",
+   "parallel": "Aqua Surge",
+   "odds": {
+    "hobby": 860
+   }
+  },
+  {
+   "label": "Voltaic Yellow Surge",
+   "set": "Voltaic",
+   "parallel": "Yellow Surge",
+   "odds": {
+    "hobby": 955
+   }
+  },
+  {
+   "label": "Voltaic Crimson Surge",
+   "set": "Voltaic",
+   "parallel": "Crimson Surge",
+   "odds": {
+    "hobby": 1180
+   }
+  },
+  {
+   "label": "Voltaic Green Surge",
+   "set": "Voltaic",
+   "parallel": "Green Surge",
+   "odds": {
+    "hobby": 1228
+   }
+  },
+  {
+   "label": "Voltaic Teal Surge",
+   "set": "Voltaic",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 1442
+   }
+  },
+  {
+   "label": "Voltaic White Surge",
+   "set": "Voltaic",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 1720
+   }
+  },
+  {
+   "label": "Voltaic Blue Surge",
+   "set": "Voltaic",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 2169
+   }
+  },
+  {
+   "label": "Voltaic Purple Surge",
+   "set": "Voltaic",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 2863
+   }
+  },
+  {
+   "label": "Voltaic Gold Power Surge",
+   "set": "Voltaic",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 4304
+   }
+  },
+  {
+   "label": "Voltaic Orange Power Surge",
+   "set": "Voltaic",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 8608
+   }
+  },
+  {
+   "label": "Voltaic Lime Green Power Surge",
+   "set": "Voltaic",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 14376
+   }
+  },
+  {
+   "label": "Voltaic Pink Power Surge",
+   "set": "Voltaic",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 21796
+   }
+  },
+  {
+   "label": "Voltaic Red Power Surge",
+   "set": "Voltaic",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 43591
+   }
+  },
+  {
+   "label": "Voltaic SuperFractor",
+   "set": "Voltaic",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 225221
+   }
+  },
+  {
+   "label": "Base Signatures",
+   "set": "Base",
+   "parallel": "Signatures",
+   "odds": {
+    "hobby": 1007
+   }
+  },
+  {
+   "label": "Base Signatures Blue Surge",
+   "set": "Base Signatures",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 802
+   }
+  },
+  {
+   "label": "Base Signatures Gold Power Surge",
+   "set": "Base Signatures",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 1254
+   }
+  },
+  {
+   "label": "Base Signatures Orange Power Surge",
+   "set": "Base Signatures",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 1906
+   }
+  },
+  {
+   "label": "Base Signatures Lime Green Power Surge",
+   "set": "Base Signatures",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 3058
+   }
+  },
+  {
+   "label": "Base Signatures Pink Power Surge",
+   "set": "Base Signatures",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 4475
+   }
+  },
+  {
+   "label": "Base Signatures Red Power Surge",
+   "set": "Base Signatures",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 8950
+   }
+  },
+  {
+   "label": "Base Signatures SuperFractor",
+   "set": "Base Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 45045
+   }
+  },
+  {
+   "label": "Base Signatures Silver Static",
+   "set": "Base Signatures",
+   "parallel": "Silver Static",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Base Signatures Gold Static",
+   "set": "Base Signatures",
+   "parallel": "Gold Static",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Base Signatures Orange Static",
+   "set": "Base Signatures",
+   "parallel": "Orange Static",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Base Signatures Lime Green Static",
+   "set": "Base Signatures",
+   "parallel": "Lime Green Static",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Base Signatures Pink Static",
+   "set": "Base Signatures",
+   "parallel": "Pink Static",
+   "odds": {
+    "hobby": 29
+   }
+  },
+  {
+   "label": "Base Signatures Red Static",
+   "set": "Base Signatures",
+   "parallel": "Red Static",
+   "odds": {
+    "hobby": 57
+   }
+  },
+  {
+   "label": "Base Signatures Black Static",
+   "set": "Base Signatures",
+   "parallel": "Black Static",
+   "odds": {
+    "hobby": 143
+   }
+  },
+  {
+   "label": "Rookies Signatures",
+   "set": "Base Rookie Signatures",
+   "parallel": "Rookies Signatures",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Rookies Signatures Black & White",
+   "set": "Base Rookie Signatures",
+   "parallel": "Black & White",
+   "odds": {
+    "hobby": 100
+   }
+  },
+  {
+   "label": "Rookies Signatures Magenta Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Magenta Surge",
+   "odds": {
+    "hobby": 125
+   }
+  },
+  {
+   "label": "Rookies Signatures Aqua Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Aqua Surge",
+   "odds": {
+    "hobby": 149
+   }
+  },
+  {
+   "label": "Rookies Signatures White Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 298
+   }
+  },
+  {
+   "label": "Rookies Signatures Blue Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 376
+   }
+  },
+  {
+   "label": "Rookies Signatures Purple Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 497
+   }
+  },
+  {
+   "label": "Rookies Signatures Gold Power Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 745
+   }
+  },
+  {
+   "label": "Rookies Signatures Orange Power Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 1489
+   }
+  },
+  {
+   "label": "Rookies Signatures Lime Green Power Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 2457
+   }
+  },
+  {
+   "label": "Rookies Signatures Pink Power Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 3683
+   }
+  },
+  {
+   "label": "Rookies Signatures Red Power Surge",
+   "set": "Base Rookie Signatures",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 7385
+   }
+  },
+  {
+   "label": "Rookies Signatures SuperFractor",
+   "set": "Base Rookie Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 37537
+   }
+  },
+  {
+   "label": "Rookies Signatures Silver Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Silver Static",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Rookies Signatures Gold Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Gold Static",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Rookies Signatures Orange Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Orange Static",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Rookies Signatures Lime Green Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Lime Green Static",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Rookies Signatures Pink Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Pink Static",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Rookies Signatures Red Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Red Static",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Rookies Signatures Black Static",
+   "set": "Base Rookie Signatures",
+   "parallel": "Black Static",
+   "odds": {
+    "hobby": 118
+   }
+  },
+  {
+   "label": "Molecular Marks Base",
+   "set": "Molecular Marks",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 1702
+   }
+  },
+  {
+   "label": "Molecular Marks Blue Surge",
+   "set": "Molecular Marks",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 2125
+   }
+  },
+  {
+   "label": "Molecular Marks Gold Power Surge",
+   "set": "Molecular Marks",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 2977
+   }
+  },
+  {
+   "label": "Molecular Marks Orange Power Surge",
+   "set": "Molecular Marks",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 5726
+   }
+  },
+  {
+   "label": "Molecular Marks Lime Green Power Surge",
+   "set": "Molecular Marks",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 9584
+   }
+  },
+  {
+   "label": "Molecular Marks Pink Power Surge",
+   "set": "Molecular Marks",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 14376
+   }
+  },
+  {
+   "label": "Molecular Marks Red Power Surge",
+   "set": "Molecular Marks",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 28752
+   }
+  },
+  {
+   "label": "Molecular Marks SuperFractor",
+   "set": "Molecular Marks",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 150147
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Base",
+   "set": "Arc Flash Autographs",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 1254
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Blue Surge",
+   "set": "Arc Flash Autographs",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 1805
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Gold Power Surge",
+   "set": "Arc Flash Autographs",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 2977
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Orange Power Surge",
+   "set": "Arc Flash Autographs",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 5726
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Lime Green Power Surge",
+   "set": "Arc Flash Autographs",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 9584
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Pink Power Surge",
+   "set": "Arc Flash Autographs",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 14376
+   }
+  },
+  {
+   "label": "Arc Flash Autographs Red Power Surge",
+   "set": "Arc Flash Autographs",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 28752
+   }
+  },
+  {
+   "label": "Arc Flash Autographs SuperFractor",
+   "set": "Arc Flash Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 150147
+   }
+  },
+  {
+   "label": "Neon Initiates Base",
+   "set": "Neon Initiates Autographs",
+   "parallel": "Neon Initiates Base",
+   "odds": {
+    "hobby": 851
+   }
+  },
+  {
+   "label": "Neon Initiates Blue Surge",
+   "set": "Neon Initiates Blue Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 1290
+   }
+  },
+  {
+   "label": "Neon Initiates Gold Power Surge",
+   "set": "Neon Initiates Gold Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 2466
+   }
+  },
+  {
+   "label": "Neon Initiates Orange Power Surge",
+   "set": "Neon Initiates Orange Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 4932
+   }
+  },
+  {
+   "label": "Neon Initiates Lime Green Power Surge",
+   "set": "Neon Initiates Lime Green Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 8240
+   }
+  },
+  {
+   "label": "Neon Initiates Pink Power Surge",
+   "set": "Neon Initiates Pink Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 12398
+   }
+  },
+  {
+   "label": "Neon Initiates Red Power Surge",
+   "set": "Neon Initiates Red Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 25025
+   }
+  },
+  {
+   "label": "Neon Initiates SuperFractor",
+   "set": "Neon Initiates SuperFractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 135132
+   }
+  },
+  {
+   "label": "Thermal Red Ink Autographs Base",
+   "set": "Thermal Red Ink Autographs",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 5342
+   }
+  },
+  {
+   "label": "Thermal Red Ink Autographs Red Power Surge",
+   "set": "Thermal Red Ink Autographs",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 36523
+   }
+  },
+  {
+   "label": "Thermal Red Ink Autographs SuperFractor",
+   "set": "Thermal Red Ink Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 193046
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Base",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Teal Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 16
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures White Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Blue Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 25
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Purple Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 32
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Gold Power Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Orange Power Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 94
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Lime Green Power Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 152
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Pink Power Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 228
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Red Power Surge",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 456
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures SuperFractor",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 2279
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Electron",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Electron",
+   "odds": {
+    "hobby": 44
+   }
+  },
+  {
+   "label": "Resurgence Rookie Relic Signatures Proton",
+   "set": "Resurgence Rookie Relic Signatures",
+   "parallel": "Proton",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Base",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Base",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Teal Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Teal Surge",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs White Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "White Surge",
+   "odds": {
+    "hobby": 26
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Blue Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Blue Surge",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Purple Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Purple Surge",
+   "odds": {
+    "hobby": 43
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Gold Power Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Gold Power Surge",
+   "odds": {
+    "hobby": 63
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Orange Power Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Orange Power Surge",
+   "odds": {
+    "hobby": 126
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Lime Green Power Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Lime Green Power Surge",
+   "odds": {
+    "hobby": 210
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Pink Power Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Pink Power Surge",
+   "odds": {
+    "hobby": 308
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Red Power Surge",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Red Power Surge",
+   "odds": {
+    "hobby": 616
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs SuperFractor",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 3255
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Electron",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Electron",
+   "odds": {
+    "hobby": 59
+   }
+  },
+  {
+   "label": "Amped Up Rookie Relic Autographs Proton",
+   "set": "Amped Up Rookie Relic Autographs",
+   "parallel": "Proton",
+   "odds": {
+    "hobby": 61
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Base",
+   "set": "Radial Rookie Relics Autographs",
+   "parallel": "Radial Rookie Relics Base",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Teal Surge",
+   "set": "Radial Rookie Relics Teal Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Radial Rookie Relics White Surge",
+   "set": "Radial Rookie Relics White Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 24
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Blue Surge",
+   "set": "Radial Rookie Relics Blue Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Purple Surge",
+   "set": "Radial Rookie Relics Purple Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 41
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Gold Power Surge",
+   "set": "Radial Rookie Relics Gold Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 62
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Orange Power Surge",
+   "set": "Radial Rookie Relics Orange Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 123
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Lime Green Power Surge",
+   "set": "Radial Rookie Relics Lime Green Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 206
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Pink Power Surge",
+   "set": "Radial Rookie Relics Pink Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 308
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Red Power Surge",
+   "set": "Radial Rookie Relics Red Power Surge",
+   "parallel": "",
+   "odds": {
+    "hobby": 633
+   }
+  },
+  {
+   "label": "Radial Rookie Relics SuperFractor",
+   "set": "Radial Rookie Relics Autographs",
+   "parallel": "Radial Rookie Relics SuperFractor",
+   "odds": {
+    "hobby": 3255
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Electron",
+   "set": "Radial Rookie Relics Autographs",
+   "parallel": "Radial Rookie Relics Electron",
+   "odds": {
+    "hobby": 59
+   }
+  },
+  {
+   "label": "Radial Rookie Relics Proton",
+   "set": "Radial Rookie Relics Autographs",
+   "parallel": "Radial Rookie Relics Proton",
+   "odds": {
+    "hobby": 61
+   }
+  }
+ ]
+}

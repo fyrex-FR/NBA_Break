@@ -1,0 +1,1676 @@
+{
+ "version": 1,
+ "sport": "starwars",
+ "checklist_id": "2026-topps-chrome-star-wars-checklist",
+ "product_label": "2026 Topps Chrome Star Wars",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "delight",
+   "label": "Delight",
+   "channel": "hobby",
+   "group": "delight"
+  },
+  {
+   "key": "sapphire",
+   "label": "Sapphire",
+   "channel": "special",
+   "group": "sapphire"
+  },
+  {
+   "key": "value_box",
+   "label": "Value Box",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "club_super_box",
+   "label": "CLUB SUPER BOX",
+   "channel": "special",
+   "group": "club_super_box"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Characters Rainbow Refractor",
+   "set": "Characters Rainbow",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 2,
+    "value_box": 3
+   }
+  },
+  {
+   "label": "Characters Prism Refractor",
+   "set": "Characters",
+   "parallel": "Prism Refractor",
+   "odds": {
+    "hobby": 6,
+    "value_box": 12
+   }
+  },
+  {
+   "label": "Characters Black & White Shimmer Refractor",
+   "set": "Characters Black & White Shimmer",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 80,
+    "value_box": 160
+   }
+  },
+  {
+   "label": "Characters Raywave Refractor",
+   "set": "Characters",
+   "parallel": "Raywave Refractor",
+   "odds": {
+    "value_box": 2
+   }
+  },
+  {
+   "label": "Characters Purple Geometric Refractor",
+   "set": "Characters",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "delight": 1
+   }
+  },
+  {
+   "label": "Characters Purple Refractor",
+   "set": "Characters",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "hobby": 13,
+    "delight": 13,
+    "value_box": 525
+   }
+  },
+  {
+   "label": "Characters Skywalker Blue Refractor",
+   "set": "Characters Skywalker",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 17,
+    "delight": 17,
+    "value_box": 800
+   }
+  },
+  {
+   "label": "Characters Green Refractor",
+   "set": "Characters",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 25,
+    "delight": 25,
+    "value_box": 1213
+   }
+  },
+  {
+   "label": "Characters Gold Refractor",
+   "set": "Characters",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 50,
+    "delight": 50,
+    "value_box": 2401
+   }
+  },
+  {
+   "label": "Characters Rebel Orange Wave Refractor",
+   "set": "Characters Rebel",
+   "parallel": "Orange Wave Refractor",
+   "odds": {
+    "hobby": 101,
+    "delight": 100,
+    "value_box": 4803
+   }
+  },
+  {
+   "label": "Characters Orange Geometric Refractor",
+   "set": "Characters",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "delight": 2
+   }
+  },
+  {
+   "label": "Characters Orange Refractor",
+   "set": "Characters",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 101,
+    "delight": 100,
+    "value_box": 4803
+   }
+  },
+  {
+   "label": "Characters Mustafar Black Lava Refractor",
+   "set": "Characters Mustafar",
+   "parallel": "Black Lava Refractor",
+   "odds": {
+    "hobby": 252,
+    "delight": 249,
+    "value_box": 12006
+   }
+  },
+  {
+   "label": "Characters Black Geometric",
+   "set": "Characters",
+   "parallel": "Black Geometric",
+   "odds": {
+    "delight": 6
+   }
+  },
+  {
+   "label": "Characters Black Refractor",
+   "set": "Characters",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 252,
+    "delight": 249,
+    "value_box": 12006
+   }
+  },
+  {
+   "label": "Characters Dathomir Red Wave Refractor",
+   "set": "Characters Dathomir",
+   "parallel": "Red Wave Refractor",
+   "odds": {
+    "hobby": 504,
+    "delight": 498,
+    "value_box": 24037
+   }
+  },
+  {
+   "label": "Characters Red Geometric",
+   "set": "Characters",
+   "parallel": "Red Geometric",
+   "odds": {
+    "delight": 12
+   }
+  },
+  {
+   "label": "Characters Red Refractor",
+   "set": "Characters",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 504,
+    "delight": 498,
+    "value_box": 24037
+   }
+  },
+  {
+   "label": "Characters Superfractor",
+   "set": "Characters Superfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 2529,
+    "delight": 2501,
+    "value_box": 120687
+   }
+  },
+  {
+   "label": "Characters Gold Sapphire Parallel",
+   "set": "Characters Gold Sapphire Parallel",
+   "parallel": "",
+   "odds": {
+    "sapphire": 6
+   }
+  },
+  {
+   "label": "Characters Orange Sapphire",
+   "set": "Characters",
+   "parallel": "Orange Sapphire",
+   "odds": {
+    "sapphire": 12
+   }
+  },
+  {
+   "label": "Characters Black Sapphire",
+   "set": "Characters",
+   "parallel": "Black Sapphire",
+   "odds": {
+    "sapphire": 29
+   }
+  },
+  {
+   "label": "Characters Red Sapphire",
+   "set": "Characters",
+   "parallel": "Red Sapphire",
+   "odds": {
+    "sapphire": 59
+   }
+  },
+  {
+   "label": "Characters Padparadscha Sapphire",
+   "set": "Characters Padparadscha",
+   "parallel": "Sapphire",
+   "odds": {
+    "sapphire": 296
+   }
+  },
+  {
+   "label": "Characters Hoth Frozenfractor",
+   "set": "Characters Hoth Frozenfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 504,
+    "delight": 498,
+    "value_box": 24037
+   }
+  },
+  {
+   "label": "Characters Autograph",
+   "set": "Characters Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 16,
+    "delight": 1,
+    "value_box": 837
+   }
+  },
+  {
+   "label": "Characters Autograph Gold Refractor",
+   "set": "Characters Autograph",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 119,
+    "delight": 6,
+    "value_box": 6326
+   }
+  },
+  {
+   "label": "Characters Autograph Orange Refractor",
+   "set": "Characters Autograph",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 203,
+    "delight": 10,
+    "value_box": 10842
+   }
+  },
+  {
+   "label": "Characters Autograph Black Refractor",
+   "set": "Characters Autograph",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 427,
+    "delight": 22,
+    "value_box": 22809
+   }
+  },
+  {
+   "label": "Characters Autograph Red Refractor",
+   "set": "Characters Autograph",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 788,
+    "delight": 40,
+    "value_box": 42051
+   }
+  },
+  {
+   "label": "Characters Autograph Superfractor",
+   "set": "Characters Autograph",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 3876,
+    "delight": 199,
+    "value_box": 206805
+   }
+  },
+  {
+   "label": "Characters Autograph Blue Sapphire",
+   "set": "Characters Autograph",
+   "parallel": "Blue Sapphire",
+   "odds": {
+    "sapphire": 20
+   }
+  },
+  {
+   "label": "Characters Autograph Padparadscha Sapphire",
+   "set": "Characters Autograph",
+   "parallel": "Padparadscha Sapphire",
+   "odds": {
+    "sapphire": 317
+   }
+  },
+  {
+   "label": "Characters Sw Logofractor",
+   "set": "Characters Sw Logofractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 27
+   }
+  },
+  {
+   "label": "Characters Galaxy Refractor",
+   "set": "Characters Galaxy",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 168,
+    "delight": 166,
+    "value_box": 8007
+   }
+  },
+  {
+   "label": "Characters Aqua/Blue Sapphire Lightning",
+   "set": "Characters Aqua/Blue Sapphire Lightning",
+   "parallel": "",
+   "odds": {
+    "sapphire": 4
+   }
+  },
+  {
+   "label": "Characters Autograph Red Sapphire",
+   "set": "Characters Autograph",
+   "parallel": "Red Sapphire",
+   "odds": {
+    "sapphire": 64
+   }
+  },
+  {
+   "label": "Characters Autograph Green Refractor",
+   "set": "Characters Autograph",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 67,
+    "delight": 3,
+    "value_box": 3553
+   }
+  },
+  {
+   "label": "Characters Autograph Sw Logofractor",
+   "set": "Characters Autograph",
+   "parallel": "Sw Logofractor",
+   "odds": {
+    "hobby": 110,
+    "delight": 6,
+    "value_box": 5890
+   }
+  },
+  {
+   "label": "Characters Aurebesh",
+   "set": "Characters Aurebesh",
+   "parallel": "",
+   "odds": {
+    "hobby": 25,
+    "delight": 25,
+    "value_box": 1213
+   }
+  },
+  {
+   "label": "Characters Aurebesh Orange Refractor",
+   "set": "Characters Aurebesh",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 101,
+    "delight": 100,
+    "value_box": 4803
+   }
+  },
+  {
+   "label": "Characters Aurebesh Black Refractor",
+   "set": "Characters Aurebesh",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 252,
+    "delight": 249,
+    "value_box": 12006
+   }
+  },
+  {
+   "label": "Characters Aurebesh Red Refractor",
+   "set": "Characters Aurebesh",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 504,
+    "delight": 498,
+    "value_box": 24037
+   }
+  },
+  {
+   "label": "Characters Aurebesh Superfractor",
+   "set": "Characters Aurebesh",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 2529,
+    "delight": 2501,
+    "value_box": 120687
+   }
+  },
+  {
+   "label": "Characters Aurebesh Gold Refractor",
+   "set": "Characters Aurebesh",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 50,
+    "delight": 50,
+    "value_box": 2401
+   }
+  },
+  {
+   "label": "Characters Design Variation Rainbow Refractor",
+   "set": "Characters Design Variation",
+   "parallel": "Rainbow Refractor",
+   "odds": {
+    "club_super_box": 2
+   }
+  },
+  {
+   "label": "Characters Design Variation Green Refractor",
+   "set": "Characters Design Variation",
+   "parallel": "Green Refractor",
+   "odds": {
+    "club_super_box": 70
+   }
+  },
+  {
+   "label": "Characters Design Variation Gold Refractor",
+   "set": "Characters Design Variation",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "club_super_box": 138
+   }
+  },
+  {
+   "label": "Characters Design Variation Orange Refractor",
+   "set": "Characters Design Variation",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "club_super_box": 276
+   }
+  },
+  {
+   "label": "Characters Design Variation Black Refractor",
+   "set": "Characters Design Variation",
+   "parallel": "Black Refractor",
+   "odds": {
+    "club_super_box": 690
+   }
+  },
+  {
+   "label": "Characters Design Variation Red Wave",
+   "set": "Characters Design Variation",
+   "parallel": "Red Wave",
+   "odds": {
+    "club_super_box": 1387
+   }
+  },
+  {
+   "label": "Characters Design Variation Superfractor",
+   "set": "Characters Design Variation",
+   "parallel": "Superfractor",
+   "odds": {
+    "club_super_box": 7080
+   }
+  },
+  {
+   "label": "Characters Design Variation Autograph",
+   "set": "Characters Design Variation",
+   "parallel": "Autograph",
+   "odds": {
+    "club_super_box": 501
+   }
+  },
+  {
+   "label": "Characters Design Variation Autograph Superfractor",
+   "set": "Characters Design Variation Autograph",
+   "parallel": "Superfractor",
+   "odds": {
+    "club_super_box": 7507
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters",
+   "set": "Andor Season 2 Characters",
+   "parallel": "",
+   "odds": {
+    "hobby": 9,
+    "value_box": 14
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Green Refractor",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 299,
+    "delight": 296,
+    "value_box": 14277
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Gold Refractor",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 593,
+    "delight": 586,
+    "value_box": 28293
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Orange Refractor",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1190,
+    "delight": 1177,
+    "value_box": 56794
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Black Refractor",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2979,
+    "delight": 2946,
+    "value_box": 142160
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Red Refractor",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 5995,
+    "delight": 5929,
+    "value_box": 286074
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Superfractor",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 34685,
+    "delight": 34303,
+    "value_box": 1655143
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Autograph",
+   "set": "Andor Season 2 Characters",
+   "parallel": "Autograph",
+   "odds": {
+    "hobby": 526,
+    "delight": 26,
+    "value_box": 20829
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Autograph Gold Refractor",
+   "set": "Andor Season 2 Characters Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 2016,
+    "delight": 104,
+    "value_box": 107542
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Autograph Orange Refractor",
+   "set": "Andor Season 2 Characters Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 3135,
+    "delight": 161,
+    "value_box": 167288
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Autograph Black Refractor",
+   "set": "Andor Season 2 Characters Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 5879,
+    "delight": 302,
+    "value_box": 313665
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Autograph Red Refractor",
+   "set": "Andor Season 2 Characters Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 10078,
+    "delight": 518,
+    "value_box": 537711
+   }
+  },
+  {
+   "label": "Andor Season 2 Characters Autograph Superfractor",
+   "set": "Andor Season 2 Characters Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 50391,
+    "delight": 2591,
+    "value_box": 2688557
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments",
+   "set": "Andor Season 2 Moments",
+   "parallel": "",
+   "odds": {
+    "hobby": 12,
+    "value_box": 19
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments Green Refractor",
+   "set": "Andor Season 2 Moments",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 424,
+    "delight": 419,
+    "value_box": 20220
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments Gold Refractor",
+   "set": "Andor Season 2 Moments",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 839,
+    "delight": 829,
+    "value_box": 40021
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments Orange Refractor",
+   "set": "Andor Season 2 Moments",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1680,
+    "delight": 1662,
+    "value_box": 80180
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments Black Refractor",
+   "set": "Andor Season 2 Moments",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 4260,
+    "delight": 4213,
+    "value_box": 203263
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments Red Refractor",
+   "set": "Andor Season 2 Moments",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 8671,
+    "delight": 8576,
+    "value_box": 413786
+   }
+  },
+  {
+   "label": "Andor Season 2 Moments Superfractor",
+   "set": "Andor Season 2 Moments",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 53954,
+    "delight": 53360,
+    "value_box": 2574667
+   }
+  },
+  {
+   "label": "Bonus Stage",
+   "set": "Bonus Stage",
+   "parallel": "",
+   "odds": {
+    "hobby": 320,
+    "delight": 24,
+    "value_box": 1280
+   }
+  },
+  {
+   "label": "Bonus Stage Superfractor",
+   "set": "Bonus Stage",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 53954,
+    "delight": 53360,
+    "value_box": 2574667
+   }
+  },
+  {
+   "label": "Comicfractor",
+   "set": "Comicfractor",
+   "parallel": "",
+   "odds": {
+    "hobby": 400,
+    "delight": 30,
+    "value_box": 1600
+   }
+  },
+  {
+   "label": "Comicfractor Orange Refractor",
+   "set": "Comicfractor",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 4081,
+    "delight": 4036,
+    "value_box": 194723
+   }
+  },
+  {
+   "label": "Comicfractor X-Fractor",
+   "set": "Comicfractor",
+   "parallel": "X-Fractor",
+   "odds": {
+    "hobby": 10332,
+    "delight": 10218,
+    "value_box": 493021
+   }
+  },
+  {
+   "label": "Comicfractor Red Refractor",
+   "set": "Comicfractor",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 22072,
+    "delight": 21829,
+    "value_box": 1053273
+   }
+  },
+  {
+   "label": "Comicfractor Superfractor",
+   "set": "Comicfractor",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 242795,
+    "delight": 240120,
+    "value_box": 11586000
+   }
+  },
+  {
+   "label": "Cosmic Crystals",
+   "set": "Cosmic Crystals",
+   "parallel": "",
+   "odds": {
+    "hobby": 400,
+    "delight": 30,
+    "value_box": 1600
+   }
+  },
+  {
+   "label": "Cosmic Crystals Superfractor",
+   "set": "Cosmic Crystals",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 10332,
+    "delight": 10218,
+    "value_box": 493021
+   }
+  },
+  {
+   "label": "Eras",
+   "set": "Eras",
+   "parallel": "",
+   "odds": {
+    "hobby": 400,
+    "delight": 30,
+    "value_box": 1600
+   }
+  },
+  {
+   "label": "Eras Superfractor",
+   "set": "Eras",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 80932,
+    "delight": 80040,
+    "value_box": 3862000
+   }
+  },
+  {
+   "label": "Factions",
+   "set": "Factions",
+   "parallel": "",
+   "odds": {
+    "hobby": 80,
+    "delight": 6,
+    "value_box": 320
+   }
+  },
+  {
+   "label": "Factions X-Fractor",
+   "set": "Factions",
+   "parallel": "X-Fractor",
+   "odds": {
+    "hobby": 5058,
+    "delight": 5002,
+    "value_box": 241375
+   }
+  },
+  {
+   "label": "Factions Wave Refractor",
+   "set": "Factions",
+   "parallel": "Wave Refractor",
+   "odds": {
+    "hobby": 10332,
+    "delight": 10218,
+    "value_box": 493021
+   }
+  },
+  {
+   "label": "Factions Superfractor",
+   "set": "Factions",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 69370,
+    "delight": 68606,
+    "value_box": 3310286
+   }
+  },
+  {
+   "label": "Galactic Maximalists",
+   "set": "Galactic Maximalists",
+   "parallel": "",
+   "odds": {
+    "hobby": 400,
+    "delight": 30,
+    "value_box": 1600
+   }
+  },
+  {
+   "label": "Galactic Maximalists Mini Diamonds Refractor",
+   "set": "Galactic Maximalists",
+   "parallel": "Mini Diamonds Refractor",
+   "odds": {
+    "hobby": 1007,
+    "delight": 996,
+    "value_box": 48075
+   }
+  },
+  {
+   "label": "Galactic Maximalists Mojo Refractor",
+   "set": "Galactic Maximalists",
+   "parallel": "Mojo Refractor",
+   "odds": {
+    "hobby": 2023,
+    "delight": 2001,
+    "value_box": 96550
+   }
+  },
+  {
+   "label": "Galactic Maximalists X-Fractor",
+   "set": "Galactic Maximalists",
+   "parallel": "X-Fractor",
+   "odds": {
+    "hobby": 5058,
+    "delight": 5002,
+    "value_box": 241375
+   }
+  },
+  {
+   "label": "Galactic Maximalists Wave Refractor",
+   "set": "Galactic Maximalists",
+   "parallel": "Wave Refractor",
+   "odds": {
+    "hobby": 10332,
+    "delight": 10218,
+    "value_box": 493021
+   }
+  },
+  {
+   "label": "Galactic Maximalists Superfractor",
+   "set": "Galactic Maximalists",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 69370,
+    "delight": 68606,
+    "value_box": 3310286
+   }
+  },
+  {
+   "label": "Hidden Gems Emerald",
+   "set": "Hidden Gems Emerald",
+   "parallel": "",
+   "odds": {
+    "sapphire": 237
+   }
+  },
+  {
+   "label": "Hidden Gems Onyx",
+   "set": "Hidden Gems Onyx",
+   "parallel": "",
+   "odds": {
+    "sapphire": 1209
+   }
+  },
+  {
+   "label": "Hidden Gems Ruby",
+   "set": "Hidden Gems Ruby",
+   "parallel": "",
+   "odds": {
+    "sapphire": 2582
+   }
+  },
+  {
+   "label": "Hidden Gems Padparadscha",
+   "set": "Hidden Gems Padparadscha",
+   "parallel": "",
+   "odds": {
+    "sapphire": 28400
+   }
+  },
+  {
+   "label": "Kyber Light",
+   "set": "Kyber Light",
+   "parallel": "",
+   "odds": {
+    "hobby": 240,
+    "delight": 18,
+    "value_box": 960
+   }
+  },
+  {
+   "label": "Kyber Light X-Fractor",
+   "set": "Kyber Light",
+   "parallel": "X-Fractor",
+   "odds": {
+    "hobby": 5058,
+    "delight": 5002,
+    "value_box": 241375
+   }
+  },
+  {
+   "label": "Kyber Light Wave Refractor",
+   "set": "Kyber Light",
+   "parallel": "Wave Refractor",
+   "odds": {
+    "hobby": 10332,
+    "delight": 10218,
+    "value_box": 493021
+   }
+  },
+  {
+   "label": "Kyber Light Superfractor",
+   "set": "Kyber Light",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 69370,
+    "delight": 68606,
+    "value_box": 3310286
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Mando & Grogu Characters",
+   "odds": {
+    "hobby": 8,
+    "value_box": 13
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Green Refractor",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 196,
+    "delight": 193,
+    "value_box": 9332
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Gold Refractor",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 387,
+    "delight": 383,
+    "value_box": 18478
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Orange Refractor",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 776,
+    "delight": 767,
+    "value_box": 37016
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Black Refractor",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1950,
+    "delight": 1929,
+    "value_box": 93060
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Red Refractor",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 3916,
+    "delight": 3873,
+    "value_box": 186871
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Superfractor",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 21113,
+    "delight": 20880,
+    "value_box": 1007478
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Autograph",
+   "set": "The Mandalorian and Grogu Characters",
+   "parallel": "Autograph",
+   "odds": {
+    "hobby": 1110,
+    "delight": 56,
+    "value_box": 43111
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Autograph Gold Refractor",
+   "set": "The Mandalorian and Grogu Characters Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 7055,
+    "delight": 363,
+    "value_box": 376398
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Autograph Orange Refractor",
+   "set": "The Mandalorian and Grogu Characters Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 14110,
+    "delight": 726,
+    "value_box": 752796
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Autograph Black Refractor",
+   "set": "The Mandalorian and Grogu Characters Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 14110,
+    "delight": 726,
+    "value_box": 752796
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Autograph Red Refractor",
+   "set": "The Mandalorian and Grogu Characters Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 28219,
+    "delight": 1451,
+    "value_box": 1505592
+   }
+  },
+  {
+   "label": "Mando & Grogu Characters Autograph Superfractor",
+   "set": "The Mandalorian and Grogu Characters Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 141096,
+    "delight": 7255,
+    "value_box": 7527959
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Mando & Grogu Moments",
+   "odds": {
+    "hobby": 13,
+    "value_box": 20
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments Green Refractor",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 299,
+    "delight": 296,
+    "value_box": 14277
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments Gold Refractor",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 593,
+    "delight": 586,
+    "value_box": 28293
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments Orange Refractor",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1190,
+    "delight": 1177,
+    "value_box": 56794
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments Black Refractor",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2979,
+    "delight": 2946,
+    "value_box": 142160
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments Red Refractor",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 5995,
+    "delight": 5929,
+    "value_box": 286074
+   }
+  },
+  {
+   "label": "Mando & Grogu Moments Superfractor",
+   "set": "The Mandalorian and Grogu Moments",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 34685,
+    "delight": 34303,
+    "value_box": 1655143
+   }
+  },
+  {
+   "label": "Oblivion",
+   "set": "Oblivion",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "value_box": 8
+   }
+  },
+  {
+   "label": "Oblivion Superfractor",
+   "set": "Oblivion",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 37353,
+    "delight": 36942,
+    "value_box": 1782462
+   }
+  },
+  {
+   "label": "Oblivion X-Fractor",
+   "set": "Oblivion",
+   "parallel": "X-Fractor",
+   "odds": {
+    "hobby": 3174,
+    "delight": 3139,
+    "value_box": 151451
+   }
+  },
+  {
+   "label": "Oblivion Wave Refractor",
+   "set": "Oblivion",
+   "parallel": "Wave Refractor",
+   "odds": {
+    "hobby": 6389,
+    "delight": 6319,
+    "value_box": 304895
+   }
+  },
+  {
+   "label": "Printing Plate Book Card",
+   "set": "Printing Plate Book Card",
+   "parallel": "",
+   "odds": {
+    "hobby": 3664,
+    "delight": 133
+   }
+  },
+  {
+   "label": "Reflections",
+   "set": "Reflections",
+   "parallel": "",
+   "odds": {
+    "hobby": 400,
+    "delight": 30,
+    "value_box": 1600
+   }
+  },
+  {
+   "label": "Reflections Superfractor",
+   "set": "Reflections",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 242795,
+    "delight": 240120,
+    "value_box": 11586000
+   }
+  },
+  {
+   "label": "Reflections Kaleidoscope Refractor",
+   "set": "Reflections",
+   "parallel": "Kaleidoscope Refractor",
+   "odds": {
+    "hobby": 4081,
+    "delight": 4036,
+    "value_box": 194723
+   }
+  },
+  {
+   "label": "Reflections Raywave Refractor",
+   "set": "Reflections",
+   "parallel": "Raywave Refractor",
+   "odds": {
+    "hobby": 22072,
+    "delight": 21829,
+    "value_box": 1053273
+   }
+  },
+  {
+   "label": "Sketch Cards",
+   "set": "Sketch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 86,
+    "delight": 4
+   }
+  },
+  {
+   "label": "Sketch Cards Gold Foil",
+   "set": "Sketch Cards",
+   "parallel": "Gold Foil",
+   "odds": {
+    "hobby": 1081,
+    "delight": 32
+   }
+  },
+  {
+   "label": "Sketch Cards Black Foil",
+   "set": "Sketch Cards",
+   "parallel": "Black Foil",
+   "odds": {
+    "hobby": 2121,
+    "delight": 222
+   }
+  },
+  {
+   "label": "Stormtrooper Command",
+   "set": "Stormtrooper Command",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "value_box": 8
+   }
+  },
+  {
+   "label": "Stormtrooper Command Green Refractor",
+   "set": "Stormtrooper Command",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 254,
+    "delight": 251,
+    "value_box": 12132
+   }
+  },
+  {
+   "label": "Stormtrooper Command Gold Refractor",
+   "set": "Stormtrooper Command",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 503,
+    "delight": 498,
+    "value_box": 24012
+   }
+  },
+  {
+   "label": "Stormtrooper Command Orange Refractor",
+   "set": "Stormtrooper Command",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1007,
+    "delight": 996,
+    "value_box": 48075
+   }
+  },
+  {
+   "label": "Stormtrooper Command Black Refractor",
+   "set": "Stormtrooper Command",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 2516,
+    "delight": 2488,
+    "value_box": 120062
+   }
+  },
+  {
+   "label": "Stormtrooper Command Red Refractor",
+   "set": "Stormtrooper Command",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 5058,
+    "delight": 5002,
+    "value_box": 241375
+   }
+  },
+  {
+   "label": "Stormtrooper Command Superfractor",
+   "set": "Stormtrooper Command",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 28564,
+    "delight": 28249,
+    "value_box": 1363059
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest",
+   "set": "Galaxy's Cutest",
+   "parallel": "The Galaxy'S Cutest",
+   "odds": {
+    "hobby": 10,
+    "value_box": 20
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest Green Refractor",
+   "set": "Galaxy's Cutest",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 339,
+    "delight": 335,
+    "value_box": 16182
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest Gold Refractor",
+   "set": "Galaxy's Cutest",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 672,
+    "delight": 664,
+    "value_box": 32050
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest Orange Refractor",
+   "set": "Galaxy's Cutest",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1345,
+    "delight": 1330,
+    "value_box": 64188
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest Black Refractor",
+   "set": "Galaxy's Cutest",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3372,
+    "delight": 3335,
+    "value_box": 160917
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest Red Refractor",
+   "set": "Galaxy's Cutest",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 6839,
+    "delight": 6764,
+    "value_box": 326366
+   }
+  },
+  {
+   "label": "The Galaxy'S Cutest Superfractor",
+   "set": "Galaxy's Cutest",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 40466,
+    "delight": 40020,
+    "value_box": 1931000
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters",
+   "set": "Visions Season 3 Characters",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "value_box": 13
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Green Refractor",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 363,
+    "delight": 359,
+    "value_box": 17331
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Gold Refractor",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 719,
+    "delight": 711,
+    "value_box": 34329
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Orange Refractor",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1441,
+    "delight": 1425,
+    "value_box": 68760
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Black Refractor",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 3624,
+    "delight": 3584,
+    "value_box": 172925
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Red Refractor",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7357,
+    "delight": 7276,
+    "value_box": 351091
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Superfractor",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 44145,
+    "delight": 43658,
+    "value_box": 2106545
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Autograph",
+   "set": "Visions Season 3 Characters",
+   "parallel": "Autograph",
+   "odds": {
+    "hobby": 604,
+    "delight": 30,
+    "value_box": 23766
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Autograph Gold Refractor",
+   "set": "Visions Season 3 Characters Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 3527,
+    "delight": 181,
+    "value_box": 188199
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Autograph Orange Refractor",
+   "set": "Visions Season 3 Characters Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 7055,
+    "delight": 363,
+    "value_box": 376398
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Autograph Black Refractor",
+   "set": "Visions Season 3 Characters Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 14110,
+    "delight": 726,
+    "value_box": 752796
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Autograph Red Refractor",
+   "set": "Visions Season 3 Characters Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 28219,
+    "delight": 1451,
+    "value_box": 1505592
+   }
+  },
+  {
+   "label": "Visions Season 3 Characters Autograph Superfractor",
+   "set": "Visions Season 3 Characters Autographs",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 141096,
+    "delight": 7255,
+    "value_box": 7527959
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments",
+   "set": "Visions Season 3 Moments",
+   "parallel": "",
+   "odds": {
+    "hobby": 13,
+    "value_box": 20
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments Green Refractor",
+   "set": "Visions Season 3 Moments",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 565,
+    "delight": 559,
+    "value_box": 26976
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments Gold Refractor",
+   "set": "Visions Season 3 Moments",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1121,
+    "delight": 1109,
+    "value_box": 53515
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments Orange Refractor",
+   "set": "Visions Season 3 Moments",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 2259,
+    "delight": 2234,
+    "value_box": 107777
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments Black Refractor",
+   "set": "Visions Season 3 Moments",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 5646,
+    "delight": 5584,
+    "value_box": 269442
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments Red Refractor",
+   "set": "Visions Season 3 Moments",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 11562,
+    "delight": 11434,
+    "value_box": 551714
+   }
+  },
+  {
+   "label": "Visions Season 3 Moments Superfractor",
+   "set": "Visions Season 3 Moments",
+   "parallel": "Superfractor",
+   "odds": {
+    "hobby": 80932,
+    "delight": 80040,
+    "value_box": 3862000
+   }
+  },
+  {
+   "label": "Duo Autos Blue Sapphire",
+   "set": "Duo Autographs",
+   "parallel": "Blue Sapphire",
+   "odds": {
+    "sapphire": 607
+   }
+  },
+  {
+   "label": "Trio Autos Padparadscha Sapphire",
+   "set": "Trio Autos Padparadscha",
+   "parallel": "Sapphire",
+   "odds": {
+    "sapphire": 3035
+   }
+  }
+ ]
+}

@@ -1,0 +1,2018 @@
+{
+ "version": 1,
+ "sport": "wwe",
+ "checklist_id": "2025-topps-chrome-wwe-checklist-clean",
+ "product_label": "2025 Topps WWE Chrome",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Cards Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Prism Refractor",
+   "set": "Base",
+   "parallel": "Prism Refractor",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Base Cards Neon Green And",
+   "set": "Base",
+   "parallel": "And",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Sepia Refractor",
+   "set": "Base",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards X-Fractor",
+   "set": "Base",
+   "parallel": "Cards X-Fractor",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards Red, White, And",
+   "set": "Base",
+   "parallel": "And",
+   "odds": {
+    "hobby": 14
+   }
+  },
+  {
+   "label": "Base Cards Black And Gold",
+   "set": "Base",
+   "parallel": "Black And Gold",
+   "odds": {
+    "hobby": 93
+   }
+  },
+  {
+   "label": "Base Cards Pink Shimmer",
+   "set": "Base",
+   "parallel": "Cards Pink Shimmer",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Base Cards Red And Blue",
+   "set": "Base",
+   "parallel": "Red And Blue",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Speckle",
+   "set": "Base",
+   "parallel": "Speckle",
+   "odds": {
+    "hobby": 23
+   }
+  },
+  {
+   "label": "Base Cards Blue Refractor",
+   "set": "Base",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "hobby": 78
+   }
+  },
+  {
+   "label": "Base Cards Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 118
+   }
+  },
+  {
+   "label": "Base Cards Gold Refractor",
+   "set": "Base",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 233
+   }
+  },
+  {
+   "label": "Base Cards Steel Cage",
+   "set": "Base",
+   "parallel": "Cards Steel Cage",
+   "odds": {
+    "hobby": 52
+   }
+  },
+  {
+   "label": "Base Cards Orange",
+   "set": "Base",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 467
+   }
+  },
+  {
+   "label": "Base Cards Teal Lazer",
+   "set": "Base",
+   "parallel": "Cards Teal Lazer",
+   "odds": {
+    "hobby": 67
+   }
+  },
+  {
+   "label": "Base Cards Black Refractor",
+   "set": "Base",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1166
+   }
+  },
+  {
+   "label": "Base Cards Red Refractor",
+   "set": "Base",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2332
+   }
+  },
+  {
+   "label": "Base Cards Superfractor",
+   "set": "Base",
+   "parallel": "Cards Superfractor",
+   "odds": {
+    "hobby": 11664
+   }
+  },
+  {
+   "label": "Base Cards Geometric",
+   "set": "Base",
+   "parallel": "Geometric",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards Blue Geometric",
+   "set": "Base",
+   "parallel": "Blue Geometric",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards Neon Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards Gold Geometric",
+   "set": "Base",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "hobby": 1
+   }
+  },
+  {
+   "label": "Base Cards Orange",
+   "set": "Base",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Base Cards Purple",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Base Cards Red Geometric",
+   "set": "Base",
+   "parallel": "Red Geometric",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Base Cards Black Geometric",
+   "set": "Base",
+   "parallel": "Black Geometric",
+   "odds": {
+    "hobby": 31
+   }
+  },
+  {
+   "label": "Base Image Variations",
+   "set": "Image Variation",
+   "parallel": "Base Image Variations",
+   "odds": {
+    "hobby": 123
+   }
+  },
+  {
+   "label": "Base Image Variations",
+   "set": "Image Variation",
+   "parallel": "Base Image Variations",
+   "odds": {
+    "hobby": 3819
+   }
+  },
+  {
+   "label": "Frozenfractor Base",
+   "set": "Frozenfractor Base",
+   "parallel": "",
+   "odds": {
+    "hobby": 487
+   }
+  },
+  {
+   "label": "Paradigm",
+   "set": "Paradigm",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Paradigm Refractors",
+   "set": "Paradigm",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "Paradigm Blue Refractors",
+   "set": "Paradigm",
+   "parallel": "Blue Refractors",
+   "odds": {
+    "hobby": 106
+   }
+  },
+  {
+   "label": "Paradigm Green Refractors",
+   "set": "Paradigm",
+   "parallel": "Green Refractors",
+   "odds": {
+    "hobby": 160
+   }
+  },
+  {
+   "label": "Paradigm Gold Refractors",
+   "set": "Paradigm",
+   "parallel": "Gold Refractors",
+   "odds": {
+    "hobby": 317
+   }
+  },
+  {
+   "label": "Paradigm Orange",
+   "set": "Paradigm",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 633
+   }
+  },
+  {
+   "label": "Paradigm Black Refractors",
+   "set": "Paradigm",
+   "parallel": "Black Refractors",
+   "odds": {
+    "hobby": 1583
+   }
+  },
+  {
+   "label": "Paradigm Red Refractors",
+   "set": "Paradigm",
+   "parallel": "Red Refractors",
+   "odds": {
+    "hobby": 3166
+   }
+  },
+  {
+   "label": "Paradigm Superfractors",
+   "set": "Paradigm",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 15274
+   }
+  },
+  {
+   "label": "Paradigm Aqua Geometric",
+   "set": "Paradigm",
+   "parallel": "Aqua Geometric",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Paradigm Neon Green",
+   "set": "Paradigm",
+   "parallel": "Neon Green",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Paradigm Gold Geometric",
+   "set": "Paradigm",
+   "parallel": "Gold Geometric",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Paradigm Purple Geometric",
+   "set": "Paradigm",
+   "parallel": "Purple Geometric",
+   "odds": {
+    "hobby": 49
+   }
+  },
+  {
+   "label": "Paradigm Black Geometric",
+   "set": "Paradigm",
+   "parallel": "Black Geometric",
+   "odds": {
+    "hobby": 246
+   }
+  },
+  {
+   "label": "1985 Topps (Legends)",
+   "set": "1985 Topps Legends",
+   "parallel": "1985 Topps (Legends)",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "1985 Topps (Legends)",
+   "set": "1985 Topps Legends",
+   "parallel": "1985 Topps (Legends)",
+   "odds": {
+    "hobby": 28
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Blue",
+   "set": "1985 Topps Legends",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 102
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Neon",
+   "set": "1985 Topps Legends",
+   "parallel": "Neon",
+   "odds": {
+    "hobby": 154
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Gold",
+   "set": "1985 Topps Legends",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 306
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Orange",
+   "set": "1985 Topps Legends",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 611
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Black",
+   "set": "1985 Topps Legends",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1527
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Red",
+   "set": "1985 Topps Legends",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 3055
+   }
+  },
+  {
+   "label": "1985 Topps (Legends)",
+   "set": "1985 Topps Legends",
+   "parallel": "1985 Topps (Legends)",
+   "odds": {
+    "hobby": 15274
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Aqua",
+   "set": "1985 Topps Legends",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Neon",
+   "set": "1985 Topps Legends",
+   "parallel": "Neon",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Gold",
+   "set": "1985 Topps Legends",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Purple",
+   "set": "1985 Topps Legends",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 49
+   }
+  },
+  {
+   "label": "1985 Topps (Legends) Black",
+   "set": "1985 Topps Legends",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 246
+   }
+  },
+  {
+   "label": "Women'S Division",
+   "set": "Women's Division",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Women'S Division",
+   "set": "Women's Division",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Women'S Division Blue",
+   "set": "Women's Division",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 64
+   }
+  },
+  {
+   "label": "Women'S Division Neon Green",
+   "set": "Women's Division",
+   "parallel": "Neon Green",
+   "odds": {
+    "hobby": 96
+   }
+  },
+  {
+   "label": "Women'S Division Gold",
+   "set": "Women's Division",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 191
+   }
+  },
+  {
+   "label": "Women'S Division Orange",
+   "set": "Women's Division",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 382
+   }
+  },
+  {
+   "label": "Women'S Division Black",
+   "set": "Women's Division",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 955
+   }
+  },
+  {
+   "label": "Women'S Division Red",
+   "set": "Women's Division",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 1909
+   }
+  },
+  {
+   "label": "Women'S Division",
+   "set": "Women's Division",
+   "parallel": "",
+   "odds": {
+    "hobby": 9547
+   }
+  },
+  {
+   "label": "Women'S Division Aqua",
+   "set": "Women's Division",
+   "parallel": "Aqua",
+   "odds": {
+    "hobby": 2
+   }
+  },
+  {
+   "label": "Women'S Division Neon Green",
+   "set": "Women's Division",
+   "parallel": "Neon Green",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Women'S Division Gold",
+   "set": "Women's Division",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Women'S Division Purple",
+   "set": "Women's Division",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 31
+   }
+  },
+  {
+   "label": "Women'S Division Black",
+   "set": "Women's Division",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 154
+   }
+  },
+  {
+   "label": "The Time Is Now",
+   "set": "The Time Is Now",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "The Time Is Now Gold",
+   "set": "The Time Is Now",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 305
+   }
+  },
+  {
+   "label": "The Time Is Now Black",
+   "set": "The Time Is Now",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1527
+   }
+  },
+  {
+   "label": "The Time Is Now Red",
+   "set": "The Time Is Now",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 3055
+   }
+  },
+  {
+   "label": "The Time Is Now",
+   "set": "The Time Is Now",
+   "parallel": "",
+   "odds": {
+    "hobby": 15274
+   }
+  },
+  {
+   "label": "Slammy",
+   "set": "Slammy",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Slammy Gold Refractors",
+   "set": "Slammy",
+   "parallel": "Gold Refractors",
+   "odds": {
+    "hobby": 305
+   }
+  },
+  {
+   "label": "Slammy Black Refractors",
+   "set": "Slammy",
+   "parallel": "Black Refractors",
+   "odds": {
+    "hobby": 1527
+   }
+  },
+  {
+   "label": "Slammy Red Refractors",
+   "set": "Slammy",
+   "parallel": "Red Refractors",
+   "odds": {
+    "hobby": 3055
+   }
+  },
+  {
+   "label": "Slammy Superfractors",
+   "set": "Slammy",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 15274
+   }
+  },
+  {
+   "label": "Shifting Gears",
+   "set": "Shifting Gears",
+   "parallel": "",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Shifting Gears Gold",
+   "set": "Shifting Gears",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 382
+   }
+  },
+  {
+   "label": "Shifting Gears Black",
+   "set": "Shifting Gears",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1909
+   }
+  },
+  {
+   "label": "Shifting Gears Red",
+   "set": "Shifting Gears",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 3819
+   }
+  },
+  {
+   "label": "Shifting Gears",
+   "set": "Shifting Gears",
+   "parallel": "",
+   "odds": {
+    "hobby": 19093
+   }
+  },
+  {
+   "label": "Family Tree",
+   "set": "Family Tree",
+   "parallel": "",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "Family Tree Gold",
+   "set": "Family Tree",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 546
+   }
+  },
+  {
+   "label": "Family Tree Black",
+   "set": "Family Tree",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 2728
+   }
+  },
+  {
+   "label": "Family Tree Red Refractors",
+   "set": "Family Tree",
+   "parallel": "Red Refractors",
+   "odds": {
+    "hobby": 5455
+   }
+  },
+  {
+   "label": "Family Tree Superfractors",
+   "set": "Family Tree",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 27276
+   }
+  },
+  {
+   "label": "Embedded",
+   "set": "Embedded",
+   "parallel": "",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Embedded Gold Refractors",
+   "set": "Embedded",
+   "parallel": "Gold Refractors",
+   "odds": {
+    "hobby": 509
+   }
+  },
+  {
+   "label": "Embedded Black Refractors",
+   "set": "Embedded",
+   "parallel": "Black Refractors",
+   "odds": {
+    "hobby": 2546
+   }
+  },
+  {
+   "label": "Embedded Red Refractors",
+   "set": "Embedded",
+   "parallel": "Red Refractors",
+   "odds": {
+    "hobby": 5091
+   }
+  },
+  {
+   "label": "Embedded Superfractors",
+   "set": "Embedded",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 25457
+   }
+  },
+  {
+   "label": "Wrestlemania Recall",
+   "set": "WrestleMania Recall",
+   "parallel": "",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Wrestlemania Recall",
+   "set": "WrestleMania Recall",
+   "parallel": "",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Blue",
+   "set": "WrestleMania Recall",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 311
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Neon",
+   "set": "WrestleMania Recall",
+   "parallel": "Neon",
+   "odds": {
+    "hobby": 472
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Red,",
+   "set": "WrestleMania Recall",
+   "parallel": "Red,",
+   "odds": {
+    "hobby": 549
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Gold - - - 1:3.040 1:934 1:3.040 1:3.040",
+   "set": "WrestleMania Recall",
+   "parallel": "Gold - - - 1:3.040 1:934 1:3.040 1:3.040",
+   "odds": {
+    "hobby": 934
+   }
+  },
+  {
+   "label": "Wrestlemania Recall",
+   "set": "WrestleMania Recall",
+   "parallel": "",
+   "odds": {
+    "hobby": 1876
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Black - - - 1:11.676 1:3,631 1:11.676 1:11.676",
+   "set": "WrestleMania Recall",
+   "parallel": "- - - 1:11.676 1:3,631 1:11.676 1:11.676",
+   "odds": {
+    "hobby": 3631
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Black",
+   "set": "WrestleMania Recall",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4690
+   }
+  },
+  {
+   "label": "Wrestlemania Recall Red",
+   "set": "WrestleMania Recall",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 9380
+   }
+  },
+  {
+   "label": "Wrestlemania Recall",
+   "set": "WrestleMania Recall",
+   "parallel": "",
+   "odds": {
+    "hobby": 56280
+   }
+  },
+  {
+   "label": "Allen & Ginter",
+   "set": "Allen & Ginter",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Allen & Ginter Refractors",
+   "set": "Allen & Ginter",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 11
+   }
+  },
+  {
+   "label": "Allen & Ginter Blue",
+   "set": "Allen & Ginter",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 78
+   }
+  },
+  {
+   "label": "Allen & Ginter Neon Green",
+   "set": "Allen & Ginter",
+   "parallel": "Neon Green",
+   "odds": {
+    "hobby": 118
+   }
+  },
+  {
+   "label": "Allen & Ginter Red, White,",
+   "set": "Allen & Ginter",
+   "parallel": "Red, White,",
+   "odds": {
+    "hobby": 137
+   }
+  },
+  {
+   "label": "Allen & Ginter Gold",
+   "set": "Allen & Ginter",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 233
+   }
+  },
+  {
+   "label": "Allen & Ginter Orange",
+   "set": "Allen & Ginter",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 467
+   }
+  },
+  {
+   "label": "Allen & Ginter Black And",
+   "set": "Allen & Ginter",
+   "parallel": "Black And",
+   "odds": {
+    "hobby": 897
+   }
+  },
+  {
+   "label": "Allen & Ginter Black",
+   "set": "Allen & Ginter",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1166
+   }
+  },
+  {
+   "label": "Allen & Ginter Red",
+   "set": "Allen & Ginter",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 2333
+   }
+  },
+  {
+   "label": "Allen & Ginter",
+   "set": "Allen & Ginter",
+   "parallel": "",
+   "odds": {
+    "hobby": 11644
+   }
+  },
+  {
+   "label": "1985 Topps (Current)",
+   "set": "1985 Topps Current",
+   "parallel": "1985 Topps (Current)",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "1985 Topps (Current)",
+   "set": "1985 Topps Current",
+   "parallel": "1985 Topps (Current)",
+   "odds": {
+    "hobby": 18
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Blue",
+   "set": "1985 Topps Current",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 124
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Neon",
+   "set": "1985 Topps Current",
+   "parallel": "Neon",
+   "odds": {
+    "hobby": 189
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Red,",
+   "set": "1985 Topps Current",
+   "parallel": "Red,",
+   "odds": {
+    "hobby": 220
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Gold",
+   "set": "1985 Topps Current",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 373
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Orange",
+   "set": "1985 Topps Current",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 748
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Black",
+   "set": "1985 Topps Current",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1443
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Black",
+   "set": "1985 Topps Current",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 1876
+   }
+  },
+  {
+   "label": "1985 Topps (Current) Red",
+   "set": "1985 Topps Current",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 3752
+   }
+  },
+  {
+   "label": "1985 Topps (Current)",
+   "set": "1985 Topps Current",
+   "parallel": "1985 Topps (Current)",
+   "odds": {
+    "hobby": 18760
+   }
+  },
+  {
+   "label": "Title Town",
+   "set": "Title Town",
+   "parallel": "",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Title Town Refractors",
+   "set": "Title Town",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 45
+   }
+  },
+  {
+   "label": "Title Town Blue Refractors",
+   "set": "Title Town",
+   "parallel": "Blue Refractors",
+   "odds": {
+    "hobby": 311
+   }
+  },
+  {
+   "label": "Title Town Neon Green",
+   "set": "Title Town",
+   "parallel": "Neon Green",
+   "odds": {
+    "hobby": 472
+   }
+  },
+  {
+   "label": "Title Town Red, White, And",
+   "set": "Title Town",
+   "parallel": "Red, White, And",
+   "odds": {
+    "hobby": 549
+   }
+  },
+  {
+   "label": "Title Town Gold Refractors",
+   "set": "Title Town",
+   "parallel": "Gold Refractors",
+   "odds": {
+    "hobby": 934
+   }
+  },
+  {
+   "label": "Title Town Orange",
+   "set": "Title Town",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1876
+   }
+  },
+  {
+   "label": "Title Town Black And Gold",
+   "set": "Title Town",
+   "parallel": "Black And Gold",
+   "odds": {
+    "hobby": 3631
+   }
+  },
+  {
+   "label": "Title Town Black",
+   "set": "Title Town",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4690
+   }
+  },
+  {
+   "label": "Title Town Red Refractors",
+   "set": "Title Town",
+   "parallel": "Red Refractors",
+   "odds": {
+    "hobby": 9380
+   }
+  },
+  {
+   "label": "Title Town Superfractors",
+   "set": "Title Town",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 56280
+   }
+  },
+  {
+   "label": "Tag Teams",
+   "set": "Tag Team",
+   "parallel": "",
+   "odds": {
+    "hobby": 10
+   }
+  },
+  {
+   "label": "Tag Teams Refractors",
+   "set": "Tag Team",
+   "parallel": "Refractors",
+   "odds": {
+    "hobby": 30
+   }
+  },
+  {
+   "label": "Tag Teams Blue Refractors",
+   "set": "Tag Team",
+   "parallel": "Blue Refractors",
+   "odds": {
+    "hobby": 207
+   }
+  },
+  {
+   "label": "Tag Teams Neon Green",
+   "set": "Tag Team",
+   "parallel": "Neon Green",
+   "odds": {
+    "hobby": 314
+   }
+  },
+  {
+   "label": "Tag Teams Red, White, And",
+   "set": "Tag Team",
+   "parallel": "Red, White, And",
+   "odds": {
+    "hobby": 366
+   }
+  },
+  {
+   "label": "Tag Teams Gold Refractors",
+   "set": "Tag Team",
+   "parallel": "Gold Refractors",
+   "odds": {
+    "hobby": 624
+   }
+  },
+  {
+   "label": "Tag Teams Orange",
+   "set": "Tag Team",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 1251
+   }
+  },
+  {
+   "label": "Tag Teams Black And Gold",
+   "set": "Tag Team",
+   "parallel": "Black And Gold",
+   "odds": {
+    "hobby": 2395
+   }
+  },
+  {
+   "label": "Tag Teams Black Refractors",
+   "set": "Tag Team",
+   "parallel": "Black Refractors",
+   "odds": {
+    "hobby": 3127
+   }
+  },
+  {
+   "label": "Tag Teams Red Refractors",
+   "set": "Tag Team",
+   "parallel": "Red Refractors",
+   "odds": {
+    "hobby": 6253
+   }
+  },
+  {
+   "label": "Tag Teams Superfractors",
+   "set": "Tag Team",
+   "parallel": "Superfractors",
+   "odds": {
+    "hobby": 32160
+   }
+  },
+  {
+   "label": "Persona",
+   "set": "Persona",
+   "parallel": "",
+   "odds": {
+    "hobby": 115
+   }
+  },
+  {
+   "label": "Mania",
+   "set": "Mania",
+   "parallel": "",
+   "odds": {
+    "hobby": 60
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 17
+   }
+  },
+  {
+   "label": "Headshots",
+   "set": "Headshots",
+   "parallel": "",
+   "odds": {
+    "hobby": 120
+   }
+  },
+  {
+   "label": "Let'S Go",
+   "set": "Let's Go!",
+   "parallel": "Let'S Go",
+   "odds": {
+    "hobby": 100
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 523
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 233
+   }
+  },
+  {
+   "label": "Blue Brand Chrome 1:89 - - 1:1.331 1:272 1:1.331 1:1.331",
+   "set": "Blue Brand Autograph",
+   "parallel": "1:89 - - 1:1.331 1:272 1:1.331 1:1.331",
+   "odds": {
+    "hobby": 272
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 814
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 1644
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 4078
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 8338
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 41689
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 15
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 69
+   }
+  },
+  {
+   "label": "Blue Brand Chrome",
+   "set": "Blue Brand Autograph",
+   "parallel": "Blue Brand Chrome",
+   "odds": {
+    "hobby": 175
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 478
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 220
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 258
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 753
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 1510
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 3761
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 7504
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 37520
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 34
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 68
+   }
+  },
+  {
+   "label": "Red Brand Chrome",
+   "set": "Red Brand Autograph",
+   "parallel": "Red Brand Chrome",
+   "odds": {
+    "hobby": 172
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 624
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 280
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 322
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 966
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 1920
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 4739
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 10118
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 60032
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 9
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 20
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 37
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 96
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 204
+   }
+  },
+  {
+   "label": "Legendary Chrome",
+   "set": "Legendary Autograph",
+   "parallel": "Legendary Chrome",
+   "odds": {
+    "hobby": 503
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 363
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 172
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 189
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 576
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 1191
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 3059
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs Red",
+   "set": "NXT Chrome Autograph",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 5685
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 28862
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 3
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 7
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 13
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 33
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs Red",
+   "set": "NXT Chrome Autograph",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 64
+   }
+  },
+  {
+   "label": "Nxt Chrome Autographs",
+   "set": "NXT Chrome Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 157
+   }
+  },
+  {
+   "label": "Main Event Autographs",
+   "set": "Main Event Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 1036
+   }
+  },
+  {
+   "label": "Main Event Autographs",
+   "set": "Main Event Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 466
+   }
+  },
+  {
+   "label": "Main Event Autographs Blue",
+   "set": "Main Event Autograph",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 532
+   }
+  },
+  {
+   "label": "Main Event Autographs Gold",
+   "set": "Main Event Autograph",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1621
+   }
+  },
+  {
+   "label": "Main Event Autographs",
+   "set": "Main Event Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 3200
+   }
+  },
+  {
+   "label": "Main Event Autographs",
+   "set": "Main Event Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 7983
+   }
+  },
+  {
+   "label": "Main Event Autographs Red",
+   "set": "Main Event Autograph",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 15966
+   }
+  },
+  {
+   "label": "Main Event Autographs",
+   "set": "Main Event Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 78989
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 1301
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 602
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 668
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 2004
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 4078
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 10005
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 20011
+   }
+  },
+  {
+   "label": "Marks Of Champions",
+   "set": "Marks of Champions Autograph",
+   "parallel": "Marks Of Champions",
+   "odds": {
+    "hobby": 100053
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 975
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 439
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 505
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 1519
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 3050
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 7657
+   }
+  },
+  {
+   "label": "Hall Of Fame Autographs",
+   "set": "Hall of Fame Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 15211
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 1436
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 668
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 761
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 2274
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 4710
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 22971
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autograph",
+   "parallel": "",
+   "odds": {
+    "hobby": 112560
+   }
+  },
+  {
+   "label": "Base Cards Aqua Shimmer",
+   "set": "Base",
+   "parallel": "Cards Aqua Shimmer",
+   "odds": {
+    "hobby": 19
+   }
+  },
+  {
+   "label": "Base Card Autograph Gold",
+   "set": "Base",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 892
+   }
+  },
+  {
+   "label": "Base Card Autograph",
+   "set": "Base",
+   "parallel": "Card Autograph",
+   "odds": {
+    "hobby": 362
+   }
+  },
+  {
+   "label": "Base Card Autograph Black",
+   "set": "Base",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 899
+   }
+  },
+  {
+   "label": "Base Card Autograph Red",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 1797
+   }
+  },
+  {
+   "label": "Base Card Autograph",
+   "set": "Base",
+   "parallel": "Card Autograph",
+   "odds": {
+    "hobby": 8987
+   }
+  }
+ ]
+}

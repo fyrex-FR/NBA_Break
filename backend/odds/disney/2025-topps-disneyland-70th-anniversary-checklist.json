@@ -1,0 +1,430 @@
+{
+ "version": 1,
+ "sport": "disney",
+ "checklist_id": "2025-topps-disneyland-70th-anniversary-checklist",
+ "product_label": "2025 Topps Disneyland 70th Anniversary",
+ "source": "Topps — feuille d'odds officielle (PDF topps.com/pages/odds)",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby"
+  },
+  {
+   "key": "value_box",
+   "label": "Value Box",
+   "channel": "retail",
+   "group": "value"
+  },
+  {
+   "key": "disneyland_exclusive",
+   "label": "Disneyland Exclusive",
+   "channel": "special",
+   "group": "disneyland_exclusive"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Set",
+   "set": "Base Set",
+   "parallel": "",
+   "odds": {
+    "hobby": 1,
+    "value_box": 1,
+    "disneyland_exclusive": 1
+   }
+  },
+  {
+   "label": "Base Set Rainbow Foil",
+   "set": "Base Set",
+   "parallel": "Rainbow Foil",
+   "odds": {
+    "hobby": 2,
+    "disneyland_exclusive": 2
+   }
+  },
+  {
+   "label": "Base Set Green Foil",
+   "set": "Base Set",
+   "parallel": "Green Foil",
+   "odds": {
+    "hobby": 21,
+    "value_box": 487,
+    "disneyland_exclusive": 128
+   }
+  },
+  {
+   "label": "Base Set Blue Foil",
+   "set": "Base Set",
+   "parallel": "Blue Foil",
+   "odds": {
+    "hobby": 42,
+    "value_box": 979,
+    "disneyland_exclusive": 157
+   }
+  },
+  {
+   "label": "Base Set Gold Foil",
+   "set": "Base Set",
+   "parallel": "Gold Foil",
+   "odds": {
+    "hobby": 79,
+    "value_box": 1937,
+    "disneyland_exclusive": 1397
+   }
+  },
+  {
+   "label": "Base Set Orange Foil",
+   "set": "Base Set",
+   "parallel": "Orange Foil",
+   "odds": {
+    "hobby": 157,
+    "value_box": 3873,
+    "disneyland_exclusive": 2794
+   }
+  },
+  {
+   "label": "Base Set Black Foil",
+   "set": "Base Set",
+   "parallel": "Black Foil",
+   "odds": {
+    "hobby": 392,
+    "value_box": 9667,
+    "disneyland_exclusive": 7183
+   }
+  },
+  {
+   "label": "Base Set Red Foil",
+   "set": "Base Set",
+   "parallel": "Red Foil",
+   "odds": {
+    "hobby": 785,
+    "value_box": 19468,
+    "disneyland_exclusive": 12570
+   }
+  },
+  {
+   "label": "Base Set Foilfractor",
+   "set": "Base Set",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 3942,
+    "value_box": 100120,
+    "disneyland_exclusive": 50280
+   }
+  },
+  {
+   "label": "on Wheels Gold",
+   "set": "1954 Topps Disneyland On Wheels",
+   "parallel": "Gold",
+   "odds": {
+    "disneyland_exclusive": 76
+   }
+  },
+  {
+   "label": "Main Street Gold",
+   "set": "From Silver Screen To Main Street",
+   "parallel": "Gold",
+   "odds": {
+    "disneyland_exclusive": 76
+   }
+  },
+  {
+   "label": "Posters",
+   "set": "Posters",
+   "parallel": "",
+   "odds": {
+    "hobby": 9,
+    "value_box": 21,
+    "disneyland_exclusive": 8
+   }
+  },
+  {
+   "label": "Posters Gold Foil",
+   "set": "Posters",
+   "parallel": "Gold Foil",
+   "odds": {
+    "hobby": 840,
+    "value_box": 20921,
+    "disneyland_exclusive": 14366
+   }
+  },
+  {
+   "label": "Posters Orange Foil",
+   "set": "Posters",
+   "parallel": "Orange Foil",
+   "odds": {
+    "hobby": 1682,
+    "value_box": 41226,
+    "disneyland_exclusive": 33520
+   }
+  },
+  {
+   "label": "Posters Black Foil",
+   "set": "Posters",
+   "parallel": "Black Foil",
+   "odds": {
+    "hobby": 4205,
+    "value_box": 100120,
+    "disneyland_exclusive": 100560
+   }
+  },
+  {
+   "label": "Posters Red Foil",
+   "set": "Posters",
+   "parallel": "Red Foil",
+   "odds": {
+    "hobby": 8272,
+    "value_box": 233614,
+    "disneyland_exclusive": 100560
+   }
+  },
+  {
+   "label": "Posters Foilfractor",
+   "set": "Posters",
+   "parallel": "Foilfractor",
+   "odds": {
+    "hobby": 42048,
+    "value_box": 1401680,
+    "disneyland_exclusive": 100560
+   }
+  },
+  {
+   "label": "Posters PETG Variation",
+   "set": "Posters",
+   "parallel": "PETG Variation",
+   "odds": {
+    "hobby": 764,
+    "value_box": 18942,
+    "disneyland_exclusive": 12570
+   }
+  },
+  {
+   "label": "The Lands",
+   "set": "The Lands",
+   "parallel": "",
+   "odds": {
+    "hobby": 12,
+    "value_box": 28,
+    "disneyland_exclusive": 10
+   }
+  },
+  {
+   "label": "The Lands Gold Foil",
+   "set": "The Lands",
+   "parallel": "Gold Foil",
+   "odds": {
+    "hobby": 1177,
+    "value_box": 29202,
+    "disneyland_exclusive": 20112
+   }
+  },
+  {
+   "label": "The Lands Orange Foil",
+   "set": "The Lands",
+   "parallel": "Orange Foil",
+   "odds": {
+    "hobby": 2358,
+    "value_box": 58404,
+    "disneyland_exclusive": 33520
+   }
+  },
+  {
+   "label": "The Lands Black Foil",
+   "set": "The Lands",
+   "parallel": "Black Foil",
+   "odds": {
+    "hobby": 5937,
+    "value_box": 140168,
+    "disneyland_exclusive": 100560
+   }
+  },
+  {
+   "label": "Chrome Orange Wave",
+   "set": "Chrome",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 1809,
+    "value_box": 45216,
+    "disneyland_exclusive": 25140
+   }
+  },
+  {
+   "label": "A Pirate's Life Chrome",
+   "set": "A Pirate's Life Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 876,
+    "value_box": 21565,
+    "disneyland_exclusive": 16760
+   }
+  },
+  {
+   "label": "Eighth Wonder Chrome",
+   "set": "Eighth Wonder Chrome",
+   "parallel": "",
+   "odds": {
+    "hobby": 1530,
+    "value_box": 37884,
+    "disneyland_exclusive": 25140
+   }
+  },
+  {
+   "label": "Chrome Orange Wave",
+   "set": "Chrome",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 24028,
+    "value_box": 700840,
+    "disneyland_exclusive": 100560
+   }
+  },
+  {
+   "label": "Room Chrome Orange",
+   "set": "Greetings From The Tiki Room Chrome",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 5937,
+    "value_box": 140168,
+    "disneyland_exclusive": 100560
+   }
+  },
+  {
+   "label": "Happy Haunts Chrome",
+   "set": "Happy Haunts Chrome",
+   "parallel": "",
+   "odds": {
+    "disneyland_exclusive": 76
+   }
+  },
+  {
+   "label": "Chrome Orange Wave",
+   "set": "Chrome",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 1682,
+    "value_box": 41226,
+    "disneyland_exclusive": 33520
+   }
+  },
+  {
+   "label": "Chrome Orange Wave",
+   "set": "Chrome",
+   "parallel": "Orange Wave",
+   "odds": {
+    "hobby": 1682,
+    "value_box": 41226,
+    "disneyland_exclusive": 33520
+   }
+  },
+  {
+   "label": "Autographs 70th",
+   "set": "Autographs 70th",
+   "parallel": "",
+   "odds": {
+    "disneyland_exclusive": 40
+   }
+  },
+  {
+   "label": "Character Nametags",
+   "set": "Character Nametags",
+   "parallel": "",
+   "odds": {
+    "hobby": 840,
+    "value_box": 20921,
+    "disneyland_exclusive": 14366
+   }
+  },
+  {
+   "label": "Attraction Autographs",
+   "set": "Attraction Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 237,
+    "value_box": 1462,
+    "disneyland_exclusive": 234
+   }
+  },
+  {
+   "label": "Icons Autographs 70th",
+   "set": "Icons Autographs",
+   "parallel": "70th",
+   "odds": {
+    "hobby": 1020,
+    "value_box": 6286,
+    "disneyland_exclusive": 1006
+   }
+  },
+  {
+   "label": "Icons Autographs Gold",
+   "set": "Icons Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 1222,
+    "value_box": 7536,
+    "disneyland_exclusive": 1198
+   }
+  },
+  {
+   "label": "Icons Autographs",
+   "set": "Icons Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2139,
+    "value_box": 13224,
+    "disneyland_exclusive": 2095
+   }
+  },
+  {
+   "label": "Icons Autographs Black",
+   "set": "Icons Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 4996,
+    "value_box": 30472,
+    "disneyland_exclusive": 5028
+   }
+  },
+  {
+   "label": "Icons Autographs Red",
+   "set": "Icons Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 9521,
+    "value_box": 58404,
+    "disneyland_exclusive": 9142
+   }
+  },
+  {
+   "label": "Icons Autographs",
+   "set": "Icons Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 45871,
+    "value_box": 280336,
+    "disneyland_exclusive": 50280
+   }
+  },
+  {
+   "label": "Enchanted Relics",
+   "set": "Enchanted Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 274,
+    "value_box": 1689,
+    "disneyland_exclusive": 270
+   }
+  },
+  {
+   "label": "Sketch Cards",
+   "set": "Sketch Cards",
+   "parallel": "",
+   "odds": {
+    "hobby": 171,
+    "disneyland_exclusive": 503
+   }
+  }
+ ]
+}
