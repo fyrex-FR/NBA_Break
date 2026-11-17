@@ -11,6 +11,7 @@ import { TopBar } from './components/layout/TopBar'
 import { SelectionPanel } from './components/layout/SelectionPanel'
 import { CommandPalette } from './components/layout/CommandPalette'
 import { DestinationTabs } from './components/layout/DestinationTabs'
+import { CollectionHeader } from './components/layout/CollectionHeader'
 import { NeedsCollection, BreakStart } from './components/layout/EmptyDestination'
 import { PageHeader } from './components/ui/primitives'
 import { HomeView, AnalysisSkeleton } from './components/views/HomeView'
@@ -73,7 +74,7 @@ function renderView(view: ViewName, hasBreak: boolean) {
 }
 
 function MainContent() {
-  const { analysisData, activeView, isAnalyzing, breakContext } = useAppStore()
+  const { analysisData, activeView, isAnalyzing, breakContext, selectedChecklistIds } = useAppStore()
   const item = navItemFor(activeView)
   const destination = destinationFor(activeView)
   const needsCollection = !!item?.needsAnalysis && !analysisData
@@ -89,11 +90,13 @@ function MainContent() {
     const showHeader = item && !(OWN_HEADER.has(activeView) && !needsCollection && !breakStart)
     body = (
       <>
-        {showHeader && (
-          destination
-            ? <PageHeader title={destination.label} description={destination.description} icon={destination.icon} />
-            : <PageHeader title={item.label} description={item.description} icon={item.icon} />
-        )}
+        {destination?.id === 'collections' && analysisData && selectedChecklistIds.length > 0
+          ? <CollectionHeader />
+          : showHeader && (
+            destination
+              ? <PageHeader title={destination.label} description={destination.description} icon={destination.icon} />
+              : <PageHeader title={item.label} description={item.description} icon={item.icon} />
+          )}
         {destination && <DestinationTabs destination={destination.id} />}
         {needsCollection ? <NeedsCollection /> : renderView(activeView, !!breakContext)}
       </>
