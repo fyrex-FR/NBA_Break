@@ -10,7 +10,16 @@ export function BoxImage({ src, className = '', style }: { src: string | null | 
   return (
     <div className={`rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center ${className}`} style={{ background: 'var(--bg-surface)', ...style }}>
       {src && !broken ? (
-        <img src={src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" onError={() => setBroken(true)} />
+        // Photos détourées (fond transparent), en portrait comme en paysage : on montre la boîte entière.
+        <img
+          src={src}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-contain p-1"
+          style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35))' }}
+          onError={() => setBroken(true)}
+        />
       ) : (
         <Package className="w-1/3 h-1/3 max-w-6 max-h-6" style={{ color: 'var(--text-quaternary)' }} />
       )}
@@ -42,7 +51,7 @@ export function CollectionCard({ entry, onOpen, hasOdds }: { entry: CollectionEn
   const upcoming = isUpcoming(release)
   return (
     <button type="button" onClick={onOpen} className="ui-card ui-row-hover w-full text-left p-2.5 flex gap-3 items-stretch">
-      <BoxImage src={entry.guide?.cover_image} className="w-[84px] h-[64px] sm:w-[96px] sm:h-[72px]" />
+      <BoxImage src={entry.guide?.cover_image} className="w-[72px] h-[72px] sm:w-[80px] sm:h-[80px]" />
       <div className="flex-1 min-w-0 flex flex-col justify-between gap-1 py-0.5">
         <div className="min-w-0">
           <div className="text-[14px] leading-5 font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{entry.name}</div>

@@ -138,7 +138,7 @@ function OrphanGuideCard({ guide, onOpen }: { guide: BoxGuideSummary; onOpen: ()
   const hobby = guide.formats.find((f) => f.name === 'Hobby') ?? guide.formats[0]
   return (
     <button type="button" onClick={onOpen} className="ui-card ui-row-hover w-full text-left p-2.5 flex gap-3 items-stretch">
-      <BoxImage src={guide.cover_image} className="w-[84px] h-[64px] sm:w-[96px] sm:h-[72px]" />
+      <BoxImage src={guide.cover_image} className="w-[72px] h-[72px] sm:w-[80px] sm:h-[80px]" />
       <div className="flex-1 min-w-0 flex flex-col justify-between gap-1 py-0.5">
         <div className="min-w-0">
           <div className="text-[14px] leading-5 font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{shortProductName(guide.name, guide.season)}</div>

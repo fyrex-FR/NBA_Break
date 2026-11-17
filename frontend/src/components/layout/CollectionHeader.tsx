@@ -22,7 +22,7 @@ export function CollectionHeader() {
   return (
     <header className="flex items-center gap-3.5 sm:gap-5 mb-4 sm:mb-5">
       {single ? (
-        <BoxImage src={single.guide?.cover_image} className="w-[76px] h-[57px] sm:w-[120px] sm:h-[90px] !rounded-2xl" style={{ boxShadow: 'var(--shadow-card)' }} />
+        <BoxImage src={single.guide?.cover_image} className="w-[72px] h-[72px] sm:w-[104px] sm:h-[104px] !rounded-2xl" style={{ boxShadow: 'var(--shadow-card)' }} />
       ) : (
         <div className="flex flex-shrink-0" aria-hidden>
           {open.slice(0, 3).map((e, i) => (
