@@ -677,7 +677,7 @@
   },
   {
    "label": "Arrivals Refractors XFractor",
-   "set": "Arrivals Refractors",
+   "set": "Arrivals",
    "parallel": "XFractor",
    "odds": {
     "hobby": 20
@@ -685,7 +685,7 @@
   },
   {
    "label": "Showstoppers Refractors XFractor",
-   "set": "Showstoppers Refractors",
+   "set": "Showstoppers",
    "parallel": "XFractor",
    "odds": {
     "hobby": 20
@@ -693,7 +693,7 @@
   },
   {
    "label": "Debut Refractors XFractor",
-   "set": "Debut Refractors",
+   "set": "Debut",
    "parallel": "XFractor",
    "odds": {
     "hobby": 20
@@ -701,7 +701,7 @@
   },
   {
    "label": "Finishers Refractors XFractor",
-   "set": "Finishers Refractors",
+   "set": "Finishers",
    "parallel": "XFractor",
    "odds": {
     "hobby": 60
@@ -745,7 +745,7 @@
   },
   {
    "label": "Arrivals Refractors Purple XFractor",
-   "set": "Arrivals Refractors",
+   "set": "Arrivals",
    "parallel": "Purple XFractor",
    "odds": {
     "hobby": 86,
@@ -754,7 +754,7 @@
   },
   {
    "label": "Showstoppers Refractors Purple XFractor",
-   "set": "Showstoppers Refractors",
+   "set": "Showstoppers",
    "parallel": "Purple XFractor",
    "odds": {
     "hobby": 86,
@@ -763,7 +763,7 @@
   },
   {
    "label": "Debut Refractors Purple XFractor",
-   "set": "Debut Refractors",
+   "set": "Debut",
    "parallel": "Purple XFractor",
    "odds": {
     "hobby": 86,
@@ -772,7 +772,7 @@
   },
   {
    "label": "Finishers Refractors Purple XFractor",
-   "set": "Finishers Refractors",
+   "set": "Finishers",
    "parallel": "Purple XFractor",
    "odds": {
     "hobby": 256,
@@ -817,7 +817,7 @@
   },
   {
    "label": "Arrivals Refractors Die Cut",
-   "set": "Arrivals Refractors",
+   "set": "Arrivals",
    "parallel": "Die Cut",
    "odds": {
     "hobby": 144,
@@ -826,7 +826,7 @@
   },
   {
    "label": "Showstoppers Refractors Die Cut",
-   "set": "Showstoppers Refractors",
+   "set": "Showstoppers",
    "parallel": "Die Cut",
    "odds": {
     "hobby": 144,
@@ -835,7 +835,7 @@
   },
   {
    "label": "Debut Refractors Die Cut",
-   "set": "Debut Refractors",
+   "set": "Debut",
    "parallel": "Die Cut",
    "odds": {
     "hobby": 144,
@@ -844,7 +844,7 @@
   },
   {
    "label": "Finishers Refractors Die Cut",
-   "set": "Finishers Refractors",
+   "set": "Finishers",
    "parallel": "Die Cut",
    "odds": {
     "hobby": 432,

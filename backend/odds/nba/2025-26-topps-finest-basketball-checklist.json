@@ -1748,5 +1748,9 @@
     "breaker_delight": 161
    }
   }
- ]
+ ],
+ "exclusives": {
+  "Colossal Shots Autographs": "Breaker Delight",
+  "Electrifying Signatures": "Breaker Delight"
+ }
 }

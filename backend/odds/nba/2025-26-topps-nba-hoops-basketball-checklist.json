@@ -1719,5 +1719,27 @@
     "hanger": 97803
    }
   }
- ]
+ ],
+ "exclusives": {
+  "Hoops Hyper Signatures": "Retail",
+  "Hoops Rookie Signatures": "Hobby/Jumbo",
+  "Hoops Rookie First Signs": "Retail",
+  "Hoops Signs": "Hobby/Jumbo",
+  "Block By Block": "Retail",
+  "Boom Shaka Laka": "Retail",
+  "Bounce House": "Hobby/Jumbo",
+  "Checkmate": "Hobby/Jumbo",
+  "Dunkumentory": "Hobby/Jumbo",
+  "Finals Pursuit": "Hobby/Jumbo",
+  "Hardwired": "Retail",
+  "Hoopers": "Hobby/Jumbo",
+  "Hoopnotic": "Hobby/Jumbo",
+  "Jam Packed": "Retail",
+  "Joy": "Hobby/Jumbo",
+  "Net 2 Net": "Retail",
+  "Next Episode": "Hobby/Jumbo",
+  "Oasis": "Hobby/Jumbo",
+  "Pay Attention": "Hobby/Jumbo",
+  "The Buzz": "Retail"
+ }
 }

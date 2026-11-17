@@ -2084,5 +2084,12 @@
     "mega": 821667
    }
   }
- ]
+ ],
+ "exclusives": {
+  "Aristocrats": "Retail",
+  "Leviathans": "Hobby/Jumbo",
+  "Monarchs Of The Game": "Hobby/Jumbo",
+  "Odyssey": "Retail",
+  "Pressure Points": "Retail"
+ }
 }

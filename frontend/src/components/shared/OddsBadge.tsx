@@ -59,6 +59,10 @@ function resolve(code: OddsBadgeCode): { label: string; colors: Colors } {
     const group = code.slice('best:'.length)
     return { label: `Best : ${groupLabel(group)}`, colors: BEST_STYLE }
   }
+  if (code.startsWith('only:')) {
+    // Exclusif à un format spécial (China, Silver Pack…).
+    return { label: `${groupLabel(code.slice('only:'.length))} only`, colors: tone('#a855f7') }
+  }
   if (AVAILABILITY_LABELS[code]) {
     return { label: AVAILABILITY_LABELS[code], colors: AVAILABILITY_STYLES[code] || FALLBACK_STYLE }
   }

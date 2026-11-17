@@ -143,11 +143,52 @@ def base_odds_of(section: dict, table: dict[str, dict[str, int]]) -> dict[str, i
     return found or table.get(section.get("id"), {})
 
 
+def merge_exclusives(excl_by_set: dict[str, list[str | None]]) -> dict[str, str]:
+    """Une exclusivité ne vaut pour une de nos séries que si toutes les séries du site
+    qui y tombent la partagent (« Rookies » + « Rookies 2 » réunies chez nous : si
+    l'une est partout, la série n'est pas exclusive)."""
+    out = {}
+    for set_name, values in excl_by_set.items():
+        if values and all(v and v == values[0] for v in values):
+            out[set_name] = values[0]
+    return out
+
+
+def exclusives_for(guide: dict, flight: str, box_types: list[str]) -> dict[str, str]:
+    """Exclusivités du site, rattachées aux séries de notre checklist."""
+    by_set: dict[str, list[str | None]] = {}
+    for s in sections(flight):
+        name = s["sectionName"].strip()
+        set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types) or name
+        by_set.setdefault(set_name, []).append(exclusive_of(s))
+    return merge_exclusives(by_set)
+
+
+def exclusive_of(section: dict) -> str | None:
+    """Format auquel la série est réservée (pastille « Exclusif Costco/Sams Club »)."""
+    m = re.search(r'\["Exclusif",\s*" ",\s*"([^"]+)"\]', json.dumps(section.get("summary"), ensure_ascii=False))
+    if not m:
+        return None
+    # « China Wave 1 » = format « China Wave 1 » ; on retire seulement un compteur isolé type « 100 ».
+    return re.sub(r"\s+\d+$", "", m.group(1)).strip() if not re.search(r"Wave \d+$", m.group(1)) else m.group(1).strip()
+
+
 # ── Correspondance des noms de séries avec nos « Box Type » ─────────────────
+
+# Rattachements vérifiés à la main, quand les noms divergent trop pour la règle automatique.
+SET_ALIASES = {
+    "2025-26-topps-chrome-basketball-checklist": {"Topps Certified Autograph Issue": "Autograph Issue - Veterans"},
+    "2026-27-topps-flagship-basketball-checklist": {
+        "1981-82 Topps Chrome Autographs Mojo": "1981 82 Topps Chrome Basketball Veteran Autographs",
+    },
+}
 
 _SYN = {"autographs": "auto", "autograph": "auto", "autographed": "auto", "rookies": "rookie",
         "veterans": "veteran", "relics": "relic", "signatures": "signature", "&": "and"}
 _NOISE = {"topps", "set", "the", "card", "cards"}
+# Mots trop courants pour identifier une série à eux seuls.
+_GENERIC = {"base", "auto", "relic", "rookie", "signature", "variation", "variations", "parallel", "parallels",
+            "insert", "inserts", "refractor", "refractors", "chrome", "series", "basketball", "and", "of", "veteran"}
 
 
 def _tokens(name: str) -> list[str]:
@@ -173,6 +214,12 @@ def match_set(name: str, box_types: list[str]) -> str | None:
         scored.append((len(a & b) / len(a | b), bt))
     scored.sort(reverse=True)
     if not scored or scored[0][0] < 0.6:
+        # Repli : un mot distinctif (« Facsimile ») qui ne désigne qu'une seule de nos séries.
+        distinct = set(toks) - _GENERIC
+        if distinct:
+            cands = [bt for bt in box_types if distinct <= set(_tokens(bt))]
+            if len(cands) == 1:
+                return cands[0]
         return None
     # Ex æquo : on ne devine pas (le mapping manuel de l'app prendra le relais).
     if len(scored) > 1 and scored[1][0] == scored[0][0]:
@@ -214,11 +261,13 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         return key
 
     rows, skipped, matched = [], 0, 0
+    excl_by_set: dict[str, list[str | None]] = {}
     for s in secs:
         name = s["sectionName"].strip()
         # La série prend le nom exact de notre checklist quand on le retrouve.
-        set_name = match_set(name, box_types or []) or name
+        set_name = SET_ALIASES.get(guide.get("checklist_id"), {}).get(name) or match_set(name, box_types or []) or name
         matched += set_name != name or name in (box_types or [])
+        excl_by_set.setdefault(set_name, []).append(exclusive_of(s))
         base = base_odds_of(s, table)
         if base:
             rows.append({"label": name, "set": set_name, "parallel": "",
@@ -238,6 +287,7 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
                     label += f" /{p['printRun']}"
                 rows.append({"label": label, "set": set_name, "parallel": p["name"], "odds": odds})
 
+    exclusives = merge_exclusives(excl_by_set)
     if not rows:
         return None
     used = {k for r in rows for k in r["odds"]}
@@ -250,6 +300,7 @@ def build_sheet(guide: dict, flight: str, box_types: list[str] | None = None) ->
         "updated_at": date.today().isoformat(),
         "configs": [c for k, c in configs.items() if k in used],
         "rows": rows,
+        **({"exclusives": exclusives} if exclusives else {}),
         "_skipped_non_ratio": skipped,
         "_sets_matched": f"{matched}/{len(secs)}",
     }
@@ -329,6 +380,14 @@ def main() -> int:
             skipped.append(f"{cid} (feuille faite à la main)")
             continue
         out = OUT_DIR / f"{cid}.json"
+        if out.exists() and str(json.loads(out.read_text(encoding="utf-8")).get("source", "")).startswith("Topps — feuille"):
+            pdf_sheet = json.loads(out.read_text(encoding="utf-8"))
+            excl = exclusives_for(g, decode_flight(page_for(g["source_slug"])), box_types_for(cid, mk))
+            if excl:
+                pdf_sheet["exclusives"] = excl
+                out.write_text(json.dumps(pdf_sheet, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            skipped.append(f"{cid} (feuille du PDF officiel Topps, prioritaire ; {len(excl)} exclusivités ajoutées)")
+            continue
         if out.exists() and not args.force:
             skipped.append(f"{cid} (fichier local existant)")
             continue
