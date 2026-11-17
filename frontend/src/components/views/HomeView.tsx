@@ -1,185 +1,180 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Library, Radio, Bookmark, Play, Trophy, Dices, Target, Wand2, ArrowRight, Loader2 } from 'lucide-react'
+import { Search, Bookmark, Play, Radio, Layers, Loader2, Library, AlertTriangle } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchPresets } from '../../api/client'
 import { useRunAnalysis } from '../../hooks/useRunAnalysis'
-import { HeroDemo } from './HeroDemo'
+import { useOddsConfig } from '../../hooks/useOddsConfig'
+import { useAllCollections, useOpenCollection, type CollectionEntry } from '../../hooks/useCollections'
+import { GaugeSpinner } from '../ui/GaugeSpinner'
+import { EmptyState } from '../ui/primitives'
 import { CollectionCard } from '../shared/CollectionCard'
 import { ReleaseCalendar } from '../shared/ReleaseCalendar'
-import { useOpenCollection, useRecentCollections } from '../../hooks/useCollections'
-import { GaugeSpinner } from '../ui/GaugeSpinner'
-import { HeroCard } from './HeroCard'
-import { useOddsConfig } from '../../hooks/useOddsConfig'
-import { formatChecklistName, formatCount, plural, sortChecklists } from '../../utils/checklists'
+import { plural } from '../../utils/checklists'
 import type { PresetInfo } from '../../types'
 
-const RECENT_LIMIT = 4
-const COLLECTIONS_LIMIT = 8
-
-/** Accueil Collections quand rien n'est ouvert : un toucher sur une collection l'ouvre. */
+/**
+ * Accueil = le catalogue des collections. Un toucher ouvre une collection
+ * (le parcours principal) ; le calendrier des sorties est à côté.
+ */
 export function HomeView() {
-  const {
-    selectedSport, availableChecklists, selectedChecklistIds, setSelectedChecklistIds,
-    openSelection, setActiveView, isAnalyzing,
-  } = useAppStore()
+  const { selectedSport, selectedChecklistIds, openSelection, setActiveView, isAnalyzing } = useAppStore()
   const runAnalysis = useRunAnalysis()
   const { oddsChecklistIds } = useOddsConfig()
-
-  const { data: presetsData } = useQuery({
-    queryKey: ['presets', selectedSport],
-    queryFn: () => fetchPresets(selectedSport),
-    enabled: !!selectedSport,
-  })
-  const presets: PresetInfo[] = presetsData?.presets || []
-
-  const latestYear = useMemo(
-    () => availableChecklists.map((c) => c.year).filter(Boolean).sort().reverse()[0],
-    [availableChecklists],
-  )
-  const collections = useRecentCollections(COLLECTIONS_LIMIT)
+  const all = useAllCollections()
   const openCollection = useOpenCollection()
-  const recent = useMemo(
-    () => sortChecklists(availableChecklists.filter((c) => c.year === latestYear), 'rows_desc').slice(0, RECENT_LIMIT),
-    [availableChecklists, latestYear],
-  )
+  const [query, setQuery] = useState('')
+  const [season, setSeason] = useState('all')
 
-  const demoChecklists = recent.slice(0, 4).map((cl) => ({
-    name: formatChecklistName(cl.checklist_name, cl.display_name).name.replace(/^\d{4}(-\d{2})?\s+/, '').replace(/\s+Checklist$/i, ''),
-    rows: cl.rows,
-    odds: oddsChecklistIds.has(cl.checklist_id),
-  }))
+  const seasons = useMemo(() => [...new Set(all.map((e) => e.season).filter(Boolean))], [all])
 
-  const selectedRows = availableChecklists
-    .filter((c) => selectedChecklistIds.includes(c.checklist_id))
-    .reduce((s, c) => s + c.rows, 0)
-  const count = selectedChecklistIds.length
+  const groups = useMemo(() => {
+    const q = normalize(query.trim())
+    const list = all
+      .filter((e) => season === 'all' || e.season === season)
+      .filter((e) => !q || normalize(`${e.name} ${e.season}`).includes(q))
+    // En recherche : une seule liste. Sinon : par saison, la plus récente d'abord.
+    if (q) return [{ season: null as string | null, items: list }]
+    const by = new Map<string, CollectionEntry[]>()
+    for (const e of list) by.set(e.season, [...(by.get(e.season) ?? []), e])
+    return [...by.entries()].map(([s, items]) => ({ season: s as string | null, items }))
+  }, [all, query, season])
+
+  const total = groups.reduce((n, g) => n + g.items.length, 0)
+  // L'accueil ne s'affiche avec des collections ouvertes que si leur analyse a échoué.
+  const failed = selectedChecklistIds.length > 0 && !isAnalyzing
 
   return (
-    <div className="max-w-[1080px] mx-auto">
-      {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl px-5 pt-9 pb-10 sm:px-8 md:px-12 md:py-14 mb-8" style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}>
-        <div className="relative grid gap-10 lg:gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_380px] items-center">
-          <div>
-            <h1 className="text-[46px] sm:text-[64px] lg:text-[72px] font-display uppercase" style={{ color: 'var(--text-primary)' }}>
-              Ne te fais plus <span style={{ color: 'var(--accent)' }}>climatiser.</span>
-            </h1>
-            <div aria-hidden className="mt-5 h-1 w-24 rounded-full" style={{ background: 'var(--heat-gradient)' }} />
-            <p className="mt-5 text-[16px] leading-relaxed max-w-md" style={{ color: 'var(--text-secondary)' }}>
-              Avant d'acheter un spot, NoClim prend sa température : qui a les autos, les patchs, les case hits… et qui va te laisser avec une base de 2012.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              {count > 0 ? (
-                // Ici seulement si l'analyse automatique a échoué : on propose de réessayer.
-                <button onClick={() => runAnalysis({ goTo: '🌍 Vue Globale' })} disabled={isAnalyzing} className="ui-btn ui-btn-primary ui-btn-lg w-full sm:w-auto">
-                  {isAnalyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
-                  Réessayer l’analyse
-                  <span className="num font-normal opacity-80">· {formatCount(selectedRows)} cartes</span>
-                </button>
-              ) : (
-                <button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-primary ui-btn-lg w-full sm:w-auto">
-                  <Library className="w-4 h-4" /> Choisir une collection
-                </button>
-              )}
-              <button onClick={() => setActiveView('🎲 État du Break')} className="ui-btn ui-btn-secondary ui-btn-lg flex-1 sm:flex-none">
-                <Radio className="w-4 h-4" /> Break Voggt
-              </button>
-            </div>
-            <p className="mt-5 text-xs" style={{ color: 'var(--text-tertiary)' }}>
-              <span className="font-stat text-[13px]" style={{ color: 'var(--text-primary)' }}>{formatCount(availableChecklists.length)}</span> collections prêtes à croiser pour ce sport.
-            </p>
+    <div className="max-w-[1240px] mx-auto">
+      <header className="flex items-end justify-between gap-4 mb-5">
+        <div className="min-w-0">
+          <h1 className="text-[30px] sm:text-[38px] leading-none font-display uppercase" style={{ color: 'var(--text-primary)' }}>
+            Collections
+          </h1>
+          <p className="text-sm mt-2 max-w-xl" style={{ color: 'var(--text-tertiary)' }}>
+            Ouvre une collection : qui a les autos, les patchs et les case hits. Ne te fais plus climatiser.
+          </p>
+        </div>
+        <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
+          <button onClick={() => setActiveView('🎲 État du Break')} className="ui-btn ui-btn-secondary">
+            <Radio className="w-4 h-4" /> Break Voggt
+          </button>
+          <button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-secondary" title="Cocher plusieurs collections à croiser">
+            <Layers className="w-4 h-4" /> Croiser plusieurs
+          </button>
+        </div>
+      </header>
+
+      {failed && (
+        <div className="ui-card px-4 py-3 mb-5 flex items-center gap-3" role="alert">
+          <AlertTriangle className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--warning)' }} />
+          <span className="flex-1 text-sm" style={{ color: 'var(--text-secondary)' }}>
+            L’analyse de {plural(selectedChecklistIds.length, 'collection')} n’a pas abouti.
+          </span>
+          <button onClick={() => runAnalysis({ goTo: '🌍 Vue Globale' })} className="ui-btn ui-btn-primary ui-btn-sm">
+            <Play className="w-3.5 h-3.5" /> Réessayer
+          </button>
+        </div>
+      )}
+
+      <ReleaseCalendar variant="strip" className="lg:hidden mb-5" />
+
+      <div className="grid gap-8 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_300px]">
+        <div className="@container min-w-0">
+          <div className="flex items-center gap-2 mb-5">
+            <label className="relative flex-1 min-w-0 sm:max-w-sm">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: 'var(--text-quaternary)' }} />
+              <input
+                className="ui-input !pl-9 w-full"
+                placeholder="Prizm, Chrome, Select…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Chercher une collection"
+              />
+            </label>
+            <select className="ui-select flex-shrink-0" value={season} onChange={(e) => setSeason(e.target.value)} aria-label="Saison">
+              <option value="all">Saisons</option>
+              {seasons.map((s) => <option key={s} value={s}>{s}</option>)}
+            </select>
+            <button onClick={() => openSelection('catalog')} className="sm:hidden ui-btn ui-btn-secondary ui-btn-icon flex-shrink-0" aria-label="Croiser plusieurs collections">
+              <Layers className="w-4 h-4" />
+            </button>
           </div>
-          <div className="relative">
-            <HeroDemo sport={selectedSport} checklists={demoChecklists} />
-            <HeroCard />
+
+          {all.length === 0 ? (
+            <div className="grid gap-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
+              {Array.from({ length: 9 }).map((_, i) => <div key={i} className="ui-skeleton h-[96px] !rounded-2xl" />)}
+            </div>
+          ) : total === 0 ? (
+            <EmptyState icon={Library} title="Aucune collection">Essaie un autre nom ou une autre saison.</EmptyState>
+          ) : (
+            groups.map((g) => (
+              <section key={g.season ?? 'search'} className="mb-7">
+                {g.season && (
+                  <h2 className="flex items-baseline gap-2 mb-2.5 text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>
+                    {g.season}
+                    <span className="text-xs font-normal num" style={{ color: 'var(--text-quaternary)' }}>{plural(g.items.length, 'collection')}</span>
+                  </h2>
+                )}
+                <div className="grid gap-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
+                  {g.items.map((entry) => (
+                    <CollectionCard key={entry.id} entry={entry} hasOdds={oddsChecklistIds.has(entry.id)} onOpen={() => openCollection(entry.id)} />
+                  ))}
+                </div>
+              </section>
+            ))
+          )}
+
+          <div className="lg:hidden">
+            <Presets sport={selectedSport} />
           </div>
         </div>
-      </section>
 
-      <div className="grid gap-6 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_320px]">
-        {/* Dernières collections : un toucher ouvre la collection */}
-        <section className="@container">
-          <div className="flex items-end justify-between mb-3">
-            <div>
-              <h2 className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>Dernières collections</h2>
-              <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Touche une collection pour voir ce qu’elle contient.</p>
-            </div>
-            <button onClick={() => openSelection('catalog')} className="ui-btn ui-btn-ghost ui-btn-sm">
-              Tout le catalogue <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-          <div className="grid gap-2.5 @xl:grid-cols-2">
-            {collections.length === 0
-              ? Array.from({ length: 6 }).map((_, i) => <div key={i} className="ui-skeleton h-[86px] !rounded-2xl" />)
-              : collections.map((entry) => (
-                  <CollectionCard key={entry.id} entry={entry} hasOdds={oddsChecklistIds.has(entry.id)} onOpen={() => openCollection(entry.id)} />
-                ))}
-          </div>
-        </section>
-
-        {/* Presets + import */}
-        <aside className="space-y-6">
+        <aside className="hidden lg:flex flex-col gap-7 self-start sticky" style={{ top: 'calc(var(--topbar-h) + 20px)' }}>
           <ReleaseCalendar />
-          <section>
-            <div className="flex items-end justify-between mb-3">
-              <h2 className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>Presets</h2>
-              {presets.length > 0 && (
-                <button onClick={() => openSelection('presets')} className="ui-btn ui-btn-ghost ui-btn-sm">Gérer</button>
-              )}
-            </div>
-            {presets.length === 0 ? (
-              <div className="rounded-xl px-4 py-5 text-sm" style={{ border: '1px dashed var(--border-standard)', color: 'var(--text-tertiary)' }}>
-                <Bookmark className="w-4 h-4 mb-2" />
-                Enregistre une sélection récurrente pour la relancer en un clic.
-              </div>
-            ) : (
-              <ul className="space-y-1.5">
-                {presets.slice(0, 6).map((p) => (
-                  <li key={p.name}>
-                    <button
-                      onClick={() => { setSelectedChecklistIds(p.checklist_ids); setActiveView('🌍 Vue Globale') }}
-                      className="group w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-left transition-colors ui-row-hover"
-                      style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}
-                    >
-                      <Bookmark className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--text-quaternary)' }} />
-                      <span className="flex-1 min-w-0">
-                        <span className="block text-[13px] font-medium truncate" style={{ color: 'var(--text-primary)' }}>{p.name}</span>
-                        <span className="block text-xs num" style={{ color: 'var(--text-tertiary)' }}>{plural(p.checklist_ids.length, 'checklist')}</span>
-                      </span>
-                      <Play className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--accent)' }} />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
-
-          <section className="rounded-2xl p-4" style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}>
-            <div className="ui-eyebrow mb-3">Ce que tu obtiens</div>
-            <ul className="space-y-3">
-              {[
-                { icon: Trophy, title: 'Classements', text: 'Joueurs et équipes par volume, premium et case hits.' },
-                { icon: Dices, title: 'Simulation de break', text: 'Valeur de chaque spot, par équipe, joueur ou lettre.' },
-                { icon: Target, title: 'Odds Topps', text: 'Probabilités par configuration de box.' },
-              ].map(({ icon: Icon, title, text }) => (
-                <li key={title} className="flex gap-3">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'var(--bg-surface)', color: 'var(--accent)' }}>
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[13px] font-medium" style={{ color: 'var(--text-primary)' }}>{title}</div>
-                    <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{text}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <button onClick={() => setActiveView('📥 Import Intelligent')} className="mt-4 w-full ui-btn ui-btn-secondary">
-              <Wand2 className="w-4 h-4" /> Importer une checklist via IA
-            </button>
-          </section>
+          <Presets sport={selectedSport} />
         </aside>
       </div>
     </div>
+  )
+}
+
+function normalize(s: string) {
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+}
+
+/** Presets enregistrés : rouvrir une combinaison de collections en un toucher. */
+function Presets({ sport }: { sport: string }) {
+  const { setSelectedChecklistIds, setActiveView, openSelection, isAnalyzing } = useAppStore()
+  const { data } = useQuery({ queryKey: ['presets', sport], queryFn: () => fetchPresets(sport), enabled: !!sport })
+  const presets: PresetInfo[] = data?.presets || []
+  if (presets.length === 0) return null
+  return (
+    <section>
+      <div className="flex items-end justify-between mb-3">
+        <h2 className="text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>Presets</h2>
+        <button onClick={() => openSelection('presets')} className="ui-btn ui-btn-ghost ui-btn-sm">Gérer</button>
+      </div>
+      <ul className="space-y-1.5">
+        {presets.slice(0, 6).map((p) => (
+          <li key={p.name}>
+            <button
+              onClick={() => { setSelectedChecklistIds(p.checklist_ids); setActiveView('🌍 Vue Globale') }}
+              disabled={isAnalyzing}
+              className="group w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-left transition-colors ui-row-hover"
+              style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}
+            >
+              <Bookmark className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--text-quaternary)' }} />
+              <span className="flex-1 min-w-0">
+                <span className="block text-[13px] font-medium truncate" style={{ color: 'var(--text-primary)' }}>{p.name}</span>
+                <span className="block text-xs num" style={{ color: 'var(--text-tertiary)' }}>{plural(p.checklist_ids.length, 'collection')}</span>
+              </span>
+              {isAnalyzing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--accent)' }} />}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 
@@ -189,7 +184,7 @@ export function AnalysisSkeleton() {
     <div aria-busy="true" aria-live="polite">
       <div className="flex items-center gap-2 mb-6 text-sm" style={{ color: 'var(--text-tertiary)' }}>
         <GaugeSpinner size={30} />
-        Analyse en cours — on prend la température des checklists…
+        Analyse en cours — on prend la température des collections…
       </div>
       <div className="ui-skeleton h-[92px] !rounded-2xl mb-4" />
       <div className="ui-skeleton h-[120px] !rounded-2xl mb-6" />

@@ -30,10 +30,10 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
         <Menu className="w-5 h-5" />
       </button>
 
-      {/* Sur mobile, la barre du bas dit déjà où on est : on laisse la place à la collection ouverte. */}
-      <div className={`min-w-0 items-center gap-1.5 text-[13px] ${destination && selectedChecklistIds.length > 0 ? 'hidden sm:flex' : 'flex'}`}>
+      {/* Sur mobile, la barre du bas (et le titre de l'accueil) disent déjà où on est : on laisse la place à la collection ouverte. */}
+      <div className={`min-w-0 items-center gap-1.5 text-[13px] ${destination && (selectedChecklistIds.length > 0 || showsHome) ? 'hidden sm:flex' : 'flex'}`}>
         {showsHome ? (
-          <span className="font-semibold truncate" style={{ color: 'var(--text-primary)' }}>Accueil</span>
+          <span className="font-semibold truncate" style={{ color: 'var(--text-primary)' }}>Collections</span>
         ) : (
           <>
             {/* Mobile : la destination (les onglets montrent où on est). Desktop : « Collections / Hits ». */}

@@ -82,7 +82,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     view: '📦 Guide des boîtes', slug: 'boxes', label: 'Guide des boîtes', tab: 'Boîte', icon: Package, group: 'collections', sports: ['nba'],
-    description: 'Formats de boîte, contenu moyen, autos garantis, prix et dates de sortie.', needsAnalysis: false,
+    description: 'Formats de boîte, contenu moyen, autos garantis, prix et dates de sortie.', needsAnalysis: true,
   },
   {
     view: '📚 Checklist Beckett', slug: 'beckett', label: 'Checklist', tab: 'Checklist', icon: BookOpen, group: 'collections', enabledKey: 'checklist_browser',

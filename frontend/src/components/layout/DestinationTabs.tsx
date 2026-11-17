@@ -3,6 +3,7 @@ import { ChevronDown, Check } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { itemsOf, navItemFor, type DestinationId } from '../../navigation'
 import { useOddsConfig } from '../../hooks/useOddsConfig'
+import { useBoxGuideIndex } from '../../hooks/useCollections'
 import { Popover } from '../ui/primitives'
 
 /**
@@ -12,12 +13,15 @@ import { Popover } from '../ui/primitives'
 export function DestinationTabs({ destination }: { destination: DestinationId }) {
   const { activeView, setActiveView, analysisData, analyzedChecklistIds, selectedSport, breakContext } = useAppStore()
   const { oddsChecklistIds } = useOddsConfig()
+  const { index: guideIndex } = useBoxGuideIndex()
   const [moreOpen, setMoreOpen] = useState(false)
   const current = navItemFor(activeView)?.view
 
   const items = itemsOf(destination, analysisData?.enabled_views, selectedSport)
     // Odds : seulement si une collection ouverte a sa feuille.
     .filter((i) => i.view !== '🎯 Odds' || analyzedChecklistIds.some((id) => oddsChecklistIds.has(id)))
+    // Boîte : seulement si une collection ouverte a son guide des boîtes.
+    .filter((i) => i.view !== '📦 Guide des boîtes' || analyzedChecklistIds.some((id) => guideIndex.has(id)))
   const main = items.filter((i) => !i.overflow)
   const more = items.filter((i) => i.overflow)
   const activeMore = more.find((i) => i.view === current)

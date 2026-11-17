@@ -55,8 +55,8 @@ export function useOpenCollections(): CollectionEntry[] {
   }, [availableChecklists, selectedChecklistIds, index])
 }
 
-/** Dernières collections : saison la plus récente d'abord, puis date de sortie, puis taille. */
-export function useRecentCollections(limit: number): CollectionEntry[] {
+/** Tout le catalogue : saison la plus récente d'abord, puis date de sortie, puis taille. */
+export function useAllCollections(): CollectionEntry[] {
   const availableChecklists = useAppStore((s) => s.availableChecklists)
   const { index } = useBoxGuideIndex()
   return useMemo(() => {
@@ -66,8 +66,14 @@ export function useRecentCollections(limit: number): CollectionEntry[] {
       (b.guide?.release_date ?? '').localeCompare(a.guide?.release_date ?? '') ||
       b.rows - a.rows,
     )
-    return entries.slice(0, limit)
-  }, [availableChecklists, index, limit])
+    return entries
+  }, [availableChecklists, index])
+}
+
+/** Les dernières collections du catalogue. */
+export function useRecentCollections(limit: number): CollectionEntry[] {
+  const all = useAllCollections()
+  return useMemo(() => all.slice(0, limit), [all, limit])
 }
 
 export interface ReleaseEntry {
