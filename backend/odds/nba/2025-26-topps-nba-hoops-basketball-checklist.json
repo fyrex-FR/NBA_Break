@@ -1,0 +1,1723 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-nba-hoops-basketball-checklist",
+ "product_label": "2025-26 Topps NBA Hoops Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 20
+  },
+  {
+   "key": "jumbo",
+   "label": "Jumbo",
+   "channel": "hobby",
+   "group": "jumbo",
+   "packs_per_box": 10
+  },
+  {
+   "key": "value_blaster",
+   "label": "Value Blaster",
+   "channel": "retail",
+   "group": "value",
+   "packs_per_box": 7
+  },
+  {
+   "key": "fanatics_value_blaster",
+   "label": "Fanatics Value Blaster",
+   "channel": "special",
+   "group": "fanatics",
+   "packs_per_box": 8
+  },
+  {
+   "key": "hanger",
+   "label": "Hanger",
+   "channel": "retail",
+   "group": "hanger",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Rainbow",
+   "set": "Base",
+   "parallel": "Rainbow",
+   "odds": {
+    "hobby": 3,
+    "jumbo": 2,
+    "value_blaster": 7,
+    "fanatics_value_blaster": 8,
+    "hanger": 4
+   }
+  },
+  {
+   "label": "Base Pixel Burst",
+   "set": "Base",
+   "parallel": "Pixel Burst",
+   "odds": {
+    "hobby": 9,
+    "jumbo": 2
+   }
+  },
+  {
+   "label": "Base Rainbow Yellow /275",
+   "set": "Base",
+   "parallel": "Rainbow Yellow",
+   "odds": {
+    "hobby": 86,
+    "jumbo": 13
+   }
+  },
+  {
+   "label": "Base Rainbow Green & Blue /249",
+   "set": "Base",
+   "parallel": "Rainbow Green & Blue",
+   "odds": {
+    "hobby": 35,
+    "jumbo": 9
+   }
+  },
+  {
+   "label": "Base Rainbow Gold & Green /199",
+   "set": "Base",
+   "parallel": "Rainbow Gold & Green",
+   "odds": {
+    "hobby": 44,
+    "jumbo": 11
+   }
+  },
+  {
+   "label": "Base Pixel Burst Blue /149",
+   "set": "Base",
+   "parallel": "Pixel Burst Blue",
+   "odds": {
+    "hobby": 59,
+    "jumbo": 14
+   }
+  },
+  {
+   "label": "Base Pixel Burst Purple /99",
+   "set": "Base",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 88,
+    "jumbo": 21
+   }
+  },
+  {
+   "label": "Base Pixel Burst Green /75",
+   "set": "Base",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 117,
+    "jumbo": 28
+   }
+  },
+  {
+   "label": "Base Pixel Burst Gold /50",
+   "set": "Base",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 175,
+    "jumbo": 42
+   }
+  },
+  {
+   "label": "Base Pixel Burst Orange /25",
+   "set": "Base",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 348,
+    "jumbo": 83
+   }
+  },
+  {
+   "label": "Base Pixel Burst Black /10",
+   "set": "Base",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 870,
+    "jumbo": 207
+   }
+  },
+  {
+   "label": "Base Pixel Burst Red /5",
+   "set": "Base",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 1735,
+    "jumbo": 412
+   }
+  },
+  {
+   "label": "Base Pixel Burst Platinum /1",
+   "set": "Base",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 8614,
+    "jumbo": 2034
+   }
+  },
+  {
+   "label": "Base Green Hoops",
+   "set": "Base",
+   "parallel": "Green Hoops",
+   "odds": {
+    "value_blaster": 3,
+    "fanatics_value_blaster": 8
+   }
+  },
+  {
+   "label": "Base Fanatics",
+   "set": "Base",
+   "parallel": "Fanatics",
+   "odds": {
+    "fanatics_value_blaster": 4
+   }
+  },
+  {
+   "label": "Base Light Burst",
+   "set": "Base",
+   "parallel": "Light Burst",
+   "odds": {
+    "value_blaster": 11,
+    "fanatics_value_blaster": 17,
+    "hanger": 9
+   }
+  },
+  {
+   "label": "Base Rainbow Teal /299",
+   "set": "Base",
+   "parallel": "Rainbow Teal",
+   "odds": {
+    "value_blaster": 254,
+    "fanatics_value_blaster": 127,
+    "hanger": 72
+   }
+  },
+  {
+   "label": "Base Rainbow Blue & Yellow /275",
+   "set": "Base",
+   "parallel": "Rainbow Blue & Yellow",
+   "odds": {
+    "value_blaster": 131,
+    "fanatics_value_blaster": 100,
+    "hanger": 38
+   }
+  },
+  {
+   "label": "Base Rainbow Red & Orange /249",
+   "set": "Base",
+   "parallel": "Rainbow Red & Orange",
+   "odds": {
+    "value_blaster": 144,
+    "fanatics_value_blaster": 85,
+    "hanger": 42
+   }
+  },
+  {
+   "label": "Base Rainbow Purple & Blue /199",
+   "set": "Base",
+   "parallel": "Rainbow Purple & Blue",
+   "odds": {
+    "value_blaster": 180,
+    "fanatics_value_blaster": 106,
+    "hanger": 52
+   }
+  },
+  {
+   "label": "Base Light Burst Blue /149",
+   "set": "Base",
+   "parallel": "Light Burst Blue",
+   "odds": {
+    "value_blaster": 241,
+    "fanatics_value_blaster": 142,
+    "hanger": 69
+   }
+  },
+  {
+   "label": "Base Light Burst Purple /99",
+   "set": "Base",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 362,
+    "fanatics_value_blaster": 227,
+    "hanger": 104
+   }
+  },
+  {
+   "label": "Base Light Burst Green /75",
+   "set": "Base",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 478,
+    "fanatics_value_blaster": 280,
+    "hanger": 137
+   }
+  },
+  {
+   "label": "Base Light Burst Gold /50",
+   "set": "Base",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 716,
+    "fanatics_value_blaster": 224,
+    "hanger": 205
+   }
+  },
+  {
+   "label": "Base Light Burst Orange /25",
+   "set": "Base",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 1432,
+    "fanatics_value_blaster": 448,
+    "hanger": 410
+   }
+  },
+  {
+   "label": "Base Light Burst Black /10",
+   "set": "Base",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 3578,
+    "fanatics_value_blaster": 1117,
+    "hanger": 1021
+   }
+  },
+  {
+   "label": "Base Light Burst Red /5",
+   "set": "Base",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 7156,
+    "fanatics_value_blaster": 2218,
+    "hanger": 2038
+   }
+  },
+  {
+   "label": "Base Light Burst Platinum /1",
+   "set": "Base",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 35573,
+    "fanatics_value_blaster": 10696,
+    "hanger": 10118
+   }
+  },
+  {
+   "label": "1989 Hoops Signatures",
+   "set": "Hoops 1989 Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 130,
+    "jumbo": 31
+   }
+  },
+  {
+   "label": "1989 Hoops Signatures Pixel Burst Black /10",
+   "set": "Hoops 1989 Signatures",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 4151,
+    "jumbo": 986
+   }
+  },
+  {
+   "label": "1989 Hoops Signatures Pixel Burst Red /5",
+   "set": "Hoops 1989 Signatures",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 8274,
+    "jumbo": 1979
+   }
+  },
+  {
+   "label": "1989 Hoops Signatures Pixel Burst Platinum /1",
+   "set": "Hoops 1989 Signatures",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 40568,
+    "jumbo": 10097
+   }
+  },
+  {
+   "label": "1989 Hoops Signatures Green Hoops",
+   "set": "Hoops 1989 Signatures",
+   "parallel": "Green Hoops",
+   "odds": {
+    "value_blaster": 352,
+    "fanatics_value_blaster": 190,
+    "hanger": 106
+   }
+  },
+  {
+   "label": "1989 Hoops Signatures Light Burst",
+   "set": "Hoops 1989 Signatures",
+   "parallel": "Light Burst",
+   "odds": {
+    "fanatics_value_blaster": 136
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 221,
+    "hanger": 66
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Purple /99",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 2529,
+    "fanatics_value_blaster": 1362,
+    "hanger": 756
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Green /75",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 3081,
+    "fanatics_value_blaster": 1659,
+    "hanger": 921
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Gold /50",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 4506,
+    "fanatics_value_blaster": 2426,
+    "hanger": 1347
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Orange /25",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 9243,
+    "fanatics_value_blaster": 4976,
+    "hanger": 2763
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Black /10",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 19173,
+    "fanatics_value_blaster": 10323,
+    "hanger": 5731
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Red /5",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 38345,
+    "fanatics_value_blaster": 20646,
+    "hanger": 11462
+   }
+  },
+  {
+   "label": "Hoops Hyper Signatures Light Burst Platinum /1",
+   "set": "Hoops Hyper Signatures",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 191723,
+    "fanatics_value_blaster": 103226,
+    "hanger": 57309
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 74,
+    "jumbo": 18
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Purple /99",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 630,
+    "jumbo": 150
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Green /75",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 831,
+    "jumbo": 198
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Gold /50",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 1247,
+    "jumbo": 296
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Orange /25",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 2491,
+    "jumbo": 592
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Black /10",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 6226,
+    "jumbo": 1479
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Red /5",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 12452,
+    "jumbo": 2958
+   }
+  },
+  {
+   "label": "Hoops Rookie Signatures Pixel Burst Platinum /1",
+   "set": "Hoops Rookie Signatures",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 59886,
+    "jumbo": 15411
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 207,
+    "hanger": 62
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Purple /99",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 2168,
+    "fanatics_value_blaster": 1167,
+    "hanger": 648
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Green /75",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 2403,
+    "fanatics_value_blaster": 1294,
+    "hanger": 719
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Gold /50",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 3605,
+    "fanatics_value_blaster": 1941,
+    "hanger": 1078
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Orange /25",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 7209,
+    "fanatics_value_blaster": 3882,
+    "hanger": 2155
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Black /10",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 18022,
+    "fanatics_value_blaster": 9704,
+    "hanger": 5387
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Red /5",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 36189,
+    "fanatics_value_blaster": 19485,
+    "hanger": 10818
+   }
+  },
+  {
+   "label": "Hoops Rookies First Signs Light Burst Platinum /1",
+   "set": "Hoops Rookie First Signs",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 180220,
+    "fanatics_value_blaster": 120320,
+    "hanger": 53870
+   }
+  },
+  {
+   "label": "Hoops Signs",
+   "set": "Hoops Signs",
+   "parallel": "",
+   "odds": {
+    "hobby": 55,
+    "jumbo": 13
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Purple /99",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 525,
+    "jumbo": 125
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Green /75",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 679,
+    "jumbo": 161
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Gold /50",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 1018,
+    "jumbo": 242
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Orange /25",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 1847,
+    "jumbo": 438
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Black /10",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 4607,
+    "jumbo": 1097
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Red /5",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 9180,
+    "jumbo": 2202
+   }
+  },
+  {
+   "label": "Hoops Signs Pixel Burst Platinum /1",
+   "set": "Hoops Signs",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 44915,
+    "jumbo": 11262
+   }
+  },
+  {
+   "label": "Block by Block",
+   "set": "Block By Block",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 351,
+    "fanatics_value_blaster": 202,
+    "hanger": 81
+   }
+  },
+  {
+   "label": "Block by Block Platinum /1",
+   "set": "Block By Block",
+   "parallel": "Platinum",
+   "odds": {
+    "value_blaster": 267571,
+    "fanatics_value_blaster": 80214,
+    "hanger": 73352
+   }
+  },
+  {
+   "label": "Boom Shaka Laka",
+   "set": "Boom Shaka Laka",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 1402,
+    "fanatics_value_blaster": 789,
+    "hanger": 319
+   }
+  },
+  {
+   "label": "Boom Shaka Laka Platinum /1",
+   "set": "Boom Shaka Laka",
+   "parallel": "Platinum",
+   "odds": {
+    "value_blaster": 1025687,
+    "fanatics_value_blaster": 240640,
+    "hanger": 293408
+   }
+  },
+  {
+   "label": "Bounce House",
+   "set": "Bounce House",
+   "parallel": "",
+   "odds": {
+    "hobby": 15,
+    "jumbo": 6
+   }
+  },
+  {
+   "label": "Bounce House Rainbow",
+   "set": "Bounce House",
+   "parallel": "Rainbow",
+   "odds": {
+    "hobby": 84,
+    "jumbo": 24
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst",
+   "odds": {
+    "hobby": 168,
+    "jumbo": 47
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Purple /99",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 1055,
+    "jumbo": 250
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Green /75",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 1392,
+    "jumbo": 330
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Gold /50",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 2086,
+    "jumbo": 495
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Orange /25",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 4165,
+    "jumbo": 990
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Black /10",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 10394,
+    "jumbo": 2461
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Red /5",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 20617,
+    "jumbo": 4880
+   }
+  },
+  {
+   "label": "Bounce House Pixel Burst Platinum /1",
+   "set": "Bounce House",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 96739,
+    "jumbo": 24400
+   }
+  },
+  {
+   "label": "Checkmate",
+   "set": "Checkmate",
+   "parallel": "",
+   "odds": {
+    "hobby": 403,
+    "jumbo": 133
+   }
+  },
+  {
+   "label": "Checkmate Platinum /1",
+   "set": "Checkmate",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 83840,
+    "jumbo": 19520
+   }
+  },
+  {
+   "label": "Dunk-umentory",
+   "set": "Dunkumentory",
+   "parallel": "",
+   "odds": {
+    "hobby": 25,
+    "jumbo": 10
+   }
+  },
+  {
+   "label": "Dunk-umentory Rainbow",
+   "set": "Dunkumentory",
+   "parallel": "Rainbow",
+   "odds": {
+    "hobby": 140,
+    "jumbo": 40
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst",
+   "odds": {
+    "hobby": 280,
+    "jumbo": 79
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Purple /99",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 1757,
+    "jumbo": 417
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Green /75",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 2321,
+    "jumbo": 550
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Gold /50",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 3475,
+    "jumbo": 825
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Orange /25",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 6949,
+    "jumbo": 1645
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Black /10",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 17228,
+    "jumbo": 4124
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Red /5",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 33990,
+    "jumbo": 8134
+   }
+  },
+  {
+   "label": "Dunk-umentory Pixel Burst Platinum /1",
+   "set": "Dunkumentory",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 157200,
+    "jumbo": 41829
+   }
+  },
+  {
+   "label": "Finals Pursuit First Round",
+   "set": "Finals Pursuit",
+   "parallel": "First Round",
+   "odds": {
+    "hobby": 27,
+    "jumbo": 7
+   }
+  },
+  {
+   "label": "Finals Pursuit Second Round",
+   "set": "Finals Pursuit",
+   "parallel": "Second Round",
+   "odds": {
+    "hobby": 396,
+    "jumbo": 94
+   }
+  },
+  {
+   "label": "Finals Pursuit Semifinals Round",
+   "set": "Finals Pursuit",
+   "parallel": "Semifinals Round",
+   "odds": {
+    "hobby": 1087,
+    "jumbo": 258
+   }
+  },
+  {
+   "label": "Finals Pursuit NBA Champions Players",
+   "set": "Finals Pursuit",
+   "parallel": "NBA Champions Players",
+   "odds": {
+    "hobby": 1317,
+    "jumbo": 307
+   }
+  },
+  {
+   "label": "Finals Pursuit The Finals",
+   "set": "Finals Pursuit",
+   "parallel": "The Finals",
+   "odds": {
+    "hobby": 4337,
+    "jumbo": 1031
+   }
+  },
+  {
+   "label": "Finals Pursuit NBA Champions Team",
+   "set": "Finals Pursuit",
+   "parallel": "NBA Champions Team",
+   "odds": {
+    "hobby": 13100,
+    "jumbo": 3050
+   }
+  },
+  {
+   "label": "Finals Pursuit Finals MVP",
+   "set": "Finals Pursuit",
+   "parallel": "Finals MVP",
+   "odds": {
+    "hobby": 13100,
+    "jumbo": 3050
+   }
+  },
+  {
+   "label": "Hardwired",
+   "set": "Hardwired",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 20,
+    "fanatics_value_blaster": 26,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "Hardwired Orange Hoops",
+   "set": "Hardwired",
+   "parallel": "Orange Hoops",
+   "odds": {
+    "hanger": 11
+   }
+  },
+  {
+   "label": "Hardwired Green Hoops",
+   "set": "Hardwired",
+   "parallel": "Green Hoops",
+   "odds": {
+    "value_blaster": 62,
+    "fanatics_value_blaster": 56
+   }
+  },
+  {
+   "label": "Hardwired Light Burst",
+   "set": "Hardwired",
+   "parallel": "Light Burst",
+   "odds": {
+    "value_blaster": 616,
+    "fanatics_value_blaster": 551,
+    "hanger": 105
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Purple /99",
+   "set": "Hardwired",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 4337,
+    "fanatics_value_blaster": 1356,
+    "hanger": 1241
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Green /75",
+   "set": "Hardwired",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 5725,
+    "fanatics_value_blaster": 1790,
+    "hanger": 1635
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Gold /50",
+   "set": "Hardwired",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 8584,
+    "fanatics_value_blaster": 2674,
+    "hanger": 2456
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Orange /25",
+   "set": "Hardwired",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 17143,
+    "fanatics_value_blaster": 5348,
+    "hanger": 4891
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Black /10",
+   "set": "Hardwired",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 42737,
+    "fanatics_value_blaster": 13369,
+    "hanger": 12226
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Red /5",
+   "set": "Hardwired",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 85474,
+    "fanatics_value_blaster": 26738,
+    "hanger": 24451
+   }
+  },
+  {
+   "label": "Hardwired Light Burst Platinum /1",
+   "set": "Hardwired",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 410275,
+    "fanatics_value_blaster": 120320,
+    "hanger": 117364
+   }
+  },
+  {
+   "label": "Hoopers",
+   "set": "Hoopers",
+   "parallel": "",
+   "odds": {
+    "hobby": 19,
+    "jumbo": 8
+   }
+  },
+  {
+   "label": "Hoopers Rainbow",
+   "set": "Hoopers",
+   "parallel": "Rainbow",
+   "odds": {
+    "hobby": 105,
+    "jumbo": 30
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst",
+   "odds": {
+    "hobby": 210,
+    "jumbo": 59
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Purple /99",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 1319,
+    "jumbo": 313
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Green /75",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 1740,
+    "jumbo": 413
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Gold /50",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 2610,
+    "jumbo": 618
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Orange /25",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 5219,
+    "jumbo": 1236
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Black /10",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 12965,
+    "jumbo": 3083
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Red /5",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 25666,
+    "jumbo": 6100
+   }
+  },
+  {
+   "label": "Hoopers Pixel Burst Platinum /1",
+   "set": "Hoopers",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 125760,
+    "jumbo": 29280
+   }
+  },
+  {
+   "label": "Hoopnotic",
+   "set": "Hoopnotic",
+   "parallel": "",
+   "odds": {
+    "hobby": 346,
+    "jumbo": 118
+   }
+  },
+  {
+   "label": "Hoopnotic Platinum /1",
+   "set": "Hoopnotic",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 73977,
+    "jumbo": 17224
+   }
+  },
+  {
+   "label": "Jam Packed",
+   "set": "Jam Packed",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 33,
+    "fanatics_value_blaster": 43,
+    "hanger": 5
+   }
+  },
+  {
+   "label": "Jam Packed Orange Hoops",
+   "set": "Jam Packed",
+   "parallel": "Orange Hoops",
+   "odds": {
+    "hanger": 18
+   }
+  },
+  {
+   "label": "Jam Packed Green Hoops",
+   "set": "Jam Packed",
+   "parallel": "Green Hoops",
+   "odds": {
+    "value_blaster": 103,
+    "fanatics_value_blaster": 92
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst",
+   "set": "Jam Packed",
+   "parallel": "Light Burst",
+   "odds": {
+    "value_blaster": 1026,
+    "fanatics_value_blaster": 917,
+    "hanger": 174
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Purple /99",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 7232,
+    "fanatics_value_blaster": 2260,
+    "hanger": 2067
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Green /75",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 9542,
+    "fanatics_value_blaster": 2971,
+    "hanger": 2730
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Gold /50",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 14312,
+    "fanatics_value_blaster": 4457,
+    "hanger": 4076
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Orange /25",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 28624,
+    "fanatics_value_blaster": 8913,
+    "hanger": 8151
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Black /10",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 71560,
+    "fanatics_value_blaster": 21877,
+    "hanger": 20236
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Red /5",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 143120,
+    "fanatics_value_blaster": 43753,
+    "hanger": 39122
+   }
+  },
+  {
+   "label": "Jam Packed Light Burst Platinum /1",
+   "set": "Jam Packed",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 683792,
+    "fanatics_value_blaster": 160427,
+    "hanger": 195606
+   }
+  },
+  {
+   "label": "Joy",
+   "set": "Joy",
+   "parallel": "",
+   "odds": {
+    "hobby": 1154,
+    "jumbo": 381
+   }
+  },
+  {
+   "label": "Joy Platinum /1",
+   "set": "Joy",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 251520,
+    "jumbo": 58560
+   }
+  },
+  {
+   "label": "Net 2 Net",
+   "set": "Net 2 Net",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 17,
+    "fanatics_value_blaster": 22,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "Net 2 Net Orange Hoops",
+   "set": "Net 2 Net",
+   "parallel": "Orange Hoops",
+   "odds": {
+    "hanger": 9
+   }
+  },
+  {
+   "label": "Net 2 Net Green Hoops",
+   "set": "Net 2 Net",
+   "parallel": "Green Hoops",
+   "odds": {
+    "value_blaster": 52,
+    "fanatics_value_blaster": 46
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst",
+   "odds": {
+    "value_blaster": 513,
+    "fanatics_value_blaster": 459,
+    "hanger": 87
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Purple /99",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 3616,
+    "fanatics_value_blaster": 1130,
+    "hanger": 1034
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Green /75",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 4771,
+    "fanatics_value_blaster": 1491,
+    "hanger": 1365
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Gold /50",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 7156,
+    "fanatics_value_blaster": 2239,
+    "hanger": 2045
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Orange /25",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 14312,
+    "fanatics_value_blaster": 4457,
+    "hanger": 4076
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Black /10",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 35780,
+    "fanatics_value_blaster": 11193,
+    "hanger": 10118
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Red /5",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 71560,
+    "fanatics_value_blaster": 21877,
+    "hanger": 20236
+   }
+  },
+  {
+   "label": "Net 2 Net Light Burst Platinum /1",
+   "set": "Net 2 Net",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 341896,
+    "fanatics_value_blaster": 96256,
+    "hanger": 97803
+   }
+  },
+  {
+   "label": "Next Episode",
+   "set": "Next Episode",
+   "parallel": "",
+   "odds": {
+    "hobby": 19,
+    "jumbo": 8
+   }
+  },
+  {
+   "label": "Next Episode Rainbow",
+   "set": "Next Episode",
+   "parallel": "Rainbow",
+   "odds": {
+    "hobby": 105,
+    "jumbo": 30
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst",
+   "odds": {
+    "hobby": 210,
+    "jumbo": 59
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Purple /99",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 1319,
+    "jumbo": 313
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Green /75",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 1740,
+    "jumbo": 413
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Gold /50",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 2610,
+    "jumbo": 618
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Orange /25",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 5219,
+    "jumbo": 1236
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Black /10",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 12965,
+    "jumbo": 3083
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Red /5",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 25666,
+    "jumbo": 6100
+   }
+  },
+  {
+   "label": "Next Episode Pixel Burst Platinum /1",
+   "set": "Next Episode",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 125760,
+    "jumbo": 29280
+   }
+  },
+  {
+   "label": "Oasis",
+   "set": "Oasis",
+   "parallel": "",
+   "odds": {
+    "hobby": 489,
+    "jumbo": 163
+   }
+  },
+  {
+   "label": "Oasis Platinum /1",
+   "set": "Oasis",
+   "parallel": "Platinum",
+   "odds": {
+    "hobby": 96739,
+    "jumbo": 24400
+   }
+  },
+  {
+   "label": "Pay Attention",
+   "set": "Pay Attention",
+   "parallel": "",
+   "odds": {
+    "hobby": 19,
+    "jumbo": 8
+   }
+  },
+  {
+   "label": "Pay Attention Rainbow",
+   "set": "Pay Attention",
+   "parallel": "Rainbow",
+   "odds": {
+    "hobby": 105,
+    "jumbo": 30
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst",
+   "odds": {
+    "hobby": 210,
+    "jumbo": 59
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Purple /99",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Purple",
+   "odds": {
+    "hobby": 1319,
+    "jumbo": 313
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Green /75",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Green",
+   "odds": {
+    "hobby": 1740,
+    "jumbo": 413
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Gold /50",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Gold",
+   "odds": {
+    "hobby": 2610,
+    "jumbo": 618
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Orange /25",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Orange",
+   "odds": {
+    "hobby": 5219,
+    "jumbo": 1236
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Black /10",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Black",
+   "odds": {
+    "hobby": 12965,
+    "jumbo": 3083
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Red /5",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Red",
+   "odds": {
+    "hobby": 25666,
+    "jumbo": 6100
+   }
+  },
+  {
+   "label": "Pay Attention Pixel Burst Platinum /1",
+   "set": "Pay Attention",
+   "parallel": "Pixel Burst Platinum",
+   "odds": {
+    "hobby": 125760,
+    "jumbo": 29280
+   }
+  },
+  {
+   "label": "The Buzz",
+   "set": "The Buzz",
+   "parallel": "",
+   "odds": {
+    "value_blaster": 17,
+    "fanatics_value_blaster": 22,
+    "hanger": 3
+   }
+  },
+  {
+   "label": "The Buzz Orange Hoops",
+   "set": "The Buzz",
+   "parallel": "Orange Hoops",
+   "odds": {
+    "hanger": 9
+   }
+  },
+  {
+   "label": "The Buzz Green Hoops",
+   "set": "The Buzz",
+   "parallel": "Green Hoops",
+   "odds": {
+    "value_blaster": 52,
+    "fanatics_value_blaster": 46
+   }
+  },
+  {
+   "label": "The Buzz Light Burst",
+   "set": "The Buzz",
+   "parallel": "Light Burst",
+   "odds": {
+    "value_blaster": 513,
+    "fanatics_value_blaster": 459,
+    "hanger": 87
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Purple /99",
+   "set": "The Buzz",
+   "parallel": "Light Burst Purple",
+   "odds": {
+    "value_blaster": 3616,
+    "fanatics_value_blaster": 1130,
+    "hanger": 1034
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Green /75",
+   "set": "The Buzz",
+   "parallel": "Light Burst Green",
+   "odds": {
+    "value_blaster": 4771,
+    "fanatics_value_blaster": 1491,
+    "hanger": 1365
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Gold /50",
+   "set": "The Buzz",
+   "parallel": "Light Burst Gold",
+   "odds": {
+    "value_blaster": 7156,
+    "fanatics_value_blaster": 2239,
+    "hanger": 2045
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Orange /25",
+   "set": "The Buzz",
+   "parallel": "Light Burst Orange",
+   "odds": {
+    "value_blaster": 14312,
+    "fanatics_value_blaster": 4457,
+    "hanger": 4076
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Black /10",
+   "set": "The Buzz",
+   "parallel": "Light Burst Black",
+   "odds": {
+    "value_blaster": 35780,
+    "fanatics_value_blaster": 11193,
+    "hanger": 10118
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Red /5",
+   "set": "The Buzz",
+   "parallel": "Light Burst Red",
+   "odds": {
+    "value_blaster": 71560,
+    "fanatics_value_blaster": 21877,
+    "hanger": 20236
+   }
+  },
+  {
+   "label": "The Buzz Light Burst Platinum /1",
+   "set": "The Buzz",
+   "parallel": "Light Burst Platinum",
+   "odds": {
+    "value_blaster": 341896,
+    "fanatics_value_blaster": 96256,
+    "hanger": 97803
+   }
+  }
+ ]
+}

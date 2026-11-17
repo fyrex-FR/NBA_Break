@@ -1,0 +1,216 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-holiday-basketball-checklist",
+ "product_label": "2025-26 Topps Holiday Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "holiday_mega",
+   "label": "Holiday Mega",
+   "channel": "retail",
+   "group": "mega",
+   "packs_per_box": 10
+  },
+  {
+   "key": "holiday_advent_calendar",
+   "label": "Holiday Advent Calendar",
+   "channel": "special",
+   "group": "holiday_advent_calendar",
+   "packs_per_box": 24
+  },
+  {
+   "key": "advent_calendar",
+   "label": "Advent Calendar",
+   "channel": "special",
+   "group": "advent_calendar"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Green Plaid",
+   "set": "Base",
+   "parallel": "Green Plaid",
+   "odds": {
+    "holiday_advent_calendar": 1
+   }
+  },
+  {
+   "label": "Base Silver Glitter Holiday",
+   "set": "Base",
+   "parallel": "Silver Glitter Holiday",
+   "odds": {
+    "holiday_mega": 2
+   }
+  },
+  {
+   "label": "Base Blue Metallic Glitter Holiday",
+   "set": "Base",
+   "parallel": "Blue Metallic Glitter Holiday",
+   "odds": {
+    "holiday_mega": 10
+   }
+  },
+  {
+   "label": "Base Light Blue and White Glitter Holiday",
+   "set": "Base",
+   "parallel": "Light Blue and White Glitter Holiday",
+   "odds": {
+    "holiday_mega": 10
+   }
+  },
+  {
+   "label": "Base Orange Metallic Glitter Holiday /25",
+   "set": "Base",
+   "parallel": "Orange Metallic Glitter Holiday",
+   "odds": {
+    "holiday_mega": 1469
+   }
+  },
+  {
+   "label": "Base Red Metallic Glitter Holiday /10",
+   "set": "Base",
+   "parallel": "Red Metallic Glitter Holiday",
+   "odds": {
+    "holiday_mega": 3673
+   }
+  },
+  {
+   "label": "Base Green Glitter Holiday /5",
+   "set": "Base",
+   "parallel": "Green Glitter Holiday",
+   "odds": {
+    "holiday_mega": 7351
+   }
+  },
+  {
+   "label": "Base Golden Glitter Holiday /1",
+   "set": "Base",
+   "parallel": "Golden Glitter Holiday",
+   "odds": {
+    "holiday_mega": 36817
+   }
+  },
+  {
+   "label": "Base Stocking Stuffer Metallic Santa Bag SSP",
+   "set": "Base",
+   "parallel": "Stocking Stuffer Metallic Santa Bag SSP",
+   "odds": {
+    "holiday_mega": 3002
+   }
+  },
+  {
+   "label": "Base Stocking Stuffer Metallic Candy Cane SSP",
+   "set": "Base",
+   "parallel": "Stocking Stuffer Metallic Candy Cane SSP",
+   "odds": {
+    "holiday_mega": 3002
+   }
+  },
+  {
+   "label": "Base Stocking Stuffer Metallic Ornament SSP",
+   "set": "Base",
+   "parallel": "Stocking Stuffer Metallic Ornament SSP",
+   "odds": {
+    "holiday_mega": 3002
+   }
+  },
+  {
+   "label": "Base Stocking Stuffer Metallic Stocking SSP",
+   "set": "Base",
+   "parallel": "Stocking Stuffer Metallic Stocking SSP",
+   "odds": {
+    "holiday_mega": 3002
+   }
+  },
+  {
+   "label": "Base Stocking Stuffer Metallic Holly SSP",
+   "set": "Base",
+   "parallel": "Stocking Stuffer Metallic Holly SSP",
+   "odds": {
+    "holiday_mega": 3002
+   }
+  },
+  {
+   "label": "Base SSP Variations",
+   "set": "Base - SSP Variations",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 23
+   }
+  },
+  {
+   "label": "Base SSP Back Variations",
+   "set": "Base - SSP Back Variations",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 23
+   }
+  },
+  {
+   "label": "Base Autographs",
+   "set": "Base Autographs",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 379
+   }
+  },
+  {
+   "label": "Holiday Relics",
+   "set": "Holiday Relics",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 54
+   }
+  },
+  {
+   "label": "Player Holiday Shaped Relics",
+   "set": "Player Holiday-Shaped Relics",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 345
+   }
+  },
+  {
+   "label": "Player Relics",
+   "set": "Player Relics",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 75
+   }
+  },
+  {
+   "label": "Evergreen",
+   "set": "Evergreen",
+   "parallel": "",
+   "odds": {
+    "advent_calendar": 6
+   }
+  },
+  {
+   "label": "Frostbite Finishers",
+   "set": "Frostbite Finishers",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 200
+   }
+  },
+  {
+   "label": "Hidden Elf",
+   "set": "Hidden Elf",
+   "parallel": "",
+   "odds": {
+    "holiday_mega": 200
+   }
+  },
+  {
+   "label": "Making the Nice List",
+   "set": "Making The Nice List",
+   "parallel": "",
+   "odds": {
+    "advent_calendar": 2
+   }
+  }
+ ]
+}

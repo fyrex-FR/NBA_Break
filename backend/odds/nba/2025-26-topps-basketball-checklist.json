@@ -1,0 +1,505 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-basketball-checklist",
+ "product_label": "2025-26 Topps Flagship Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 12
+  },
+  {
+   "key": "hobby_jumbo",
+   "label": "Hobby Jumbo",
+   "channel": "hobby",
+   "group": "hobby_jumbo",
+   "packs_per_box": 10
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega",
+   "packs_per_box": 16
+  },
+  {
+   "key": "value_blaster",
+   "label": "Value Blaster",
+   "channel": "retail",
+   "group": "value",
+   "packs_per_box": 12
+  },
+  {
+   "key": "fanatics_value_blaster",
+   "label": "Fanatics Value Blaster",
+   "channel": "special",
+   "group": "fanatics"
+  },
+  {
+   "key": "black_friday_target_blaster",
+   "label": "Black Friday Target Blaster",
+   "channel": "retail",
+   "group": "blaster"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Topps Foil Pattern",
+   "set": "Base",
+   "parallel": "Topps Foil Pattern",
+   "odds": {
+    "fanatics_value_blaster": 1
+   }
+  },
+  {
+   "label": "Base Victory",
+   "set": "Base",
+   "parallel": "Victory",
+   "odds": {
+    "hobby": 22
+   }
+  },
+  {
+   "label": "Base Sandglitter",
+   "set": "Base",
+   "parallel": "Sandglitter",
+   "odds": {
+    "hobby_jumbo": 2
+   }
+  },
+  {
+   "label": "Base Blue Sandglitter",
+   "set": "Base",
+   "parallel": "Blue Sandglitter",
+   "odds": {
+    "hobby_jumbo": 6
+   }
+  },
+  {
+   "label": "Base Player Number Variations",
+   "set": "Base - Player Number Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": 5002
+   }
+  },
+  {
+   "label": "1980-81 Topps Basketball Autographs",
+   "set": "1980-81 Topps Basketball Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2582,
+    "hobby_jumbo": 640,
+    "mega": 5632,
+    "value_blaster": 5956
+   }
+  },
+  {
+   "label": "1980-81 Topps Basketball Rookie Autographs",
+   "set": "1980-81 Topps Basketball Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2763,
+    "hobby_jumbo": 685,
+    "mega": 6027,
+    "value_blaster": 6374
+   }
+  },
+  {
+   "label": "Contemporary Marks",
+   "set": "Contemporary Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 134,
+    "hobby_jumbo": 35
+   }
+  },
+  {
+   "label": "Flagship Real One Autographs",
+   "set": "Flagship Real One Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 3154,
+    "hobby_jumbo": 782,
+    "mega": 6880,
+    "value_blaster": 7276
+   }
+  },
+  {
+   "label": "Flagship Real One Autographs (Spike Lee)",
+   "set": "Flagship Real One Autographs (Spike Lee)",
+   "parallel": "",
+   "odds": {
+    "hobby": 344400,
+    "hobby_jumbo": 85387,
+    "mega": 751403,
+    "value_blaster": 794640
+   }
+  },
+  {
+   "label": "Flagship Real One Rookie Autographs",
+   "set": "Flagship Real Ones Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2864,
+    "hobby_jumbo": 711,
+    "mega": 6756,
+    "value_blaster": 6608
+   }
+  },
+  {
+   "label": "Havoc Marks",
+   "set": "Havoc Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 442,
+    "hobby_jumbo": 113
+   }
+  },
+  {
+   "label": "Marks of Excellence",
+   "set": "Marks of Excellence",
+   "parallel": "",
+   "odds": {
+    "hobby": 518,
+    "hobby_jumbo": 133
+   }
+  },
+  {
+   "label": "New Applicants Autographs",
+   "set": "New Applicants Autographs",
+   "parallel": "",
+   "odds": {
+    "mega": 503,
+    "value_blaster": 420
+   }
+  },
+  {
+   "label": "Rookie Photo Shoot Autographs",
+   "set": "Rookie Photo Shoot Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 2781,
+    "hobby_jumbo": 690,
+    "mega": 6067,
+    "value_blaster": 6416
+   }
+  },
+  {
+   "label": "Shopping Spree Signatures",
+   "set": "Shopping Spree Signatures",
+   "parallel": "",
+   "odds": {
+    "black_friday_target_blaster": 14625
+   }
+  },
+  {
+   "label": "Signed and Sealed",
+   "set": "Signed and Sealed",
+   "parallel": "",
+   "odds": {
+    "mega": 2053,
+    "value_blaster": 2158
+   }
+  },
+  {
+   "label": "Topps Notch Signatures",
+   "set": "Topps Notch Signatures",
+   "parallel": "",
+   "odds": {
+    "mega": 963,
+    "value_blaster": 730
+   }
+  },
+  {
+   "label": "Flagship Real One Relics",
+   "set": "Flagship Real One Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 1378,
+    "hobby_jumbo": 342,
+    "mega": 3006,
+    "value_blaster": 3179
+   }
+  },
+  {
+   "label": "Franchise Fabrics",
+   "set": "Franchise Fabrics",
+   "parallel": "",
+   "odds": {
+    "mega": 195,
+    "value_blaster": 141
+   }
+  },
+  {
+   "label": "Own the Game Relics",
+   "set": "Own The Game",
+   "parallel": "",
+   "odds": {
+    "hobby": 202,
+    "hobby_jumbo": 52
+   }
+  },
+  {
+   "label": "Retail Ripper Relics",
+   "set": "Retail Ripper Relics",
+   "parallel": "",
+   "odds": {
+    "black_friday_target_blaster": 293
+   }
+  },
+  {
+   "label": "Rise to the Occasion Relics",
+   "set": "Rise to the Occasion Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 181,
+    "hobby_jumbo": 46
+   }
+  },
+  {
+   "label": "Rookie Roundball Remnants",
+   "set": "Rookie Roundball Remnants",
+   "parallel": "",
+   "odds": {
+    "hobby": 352,
+    "hobby_jumbo": 90
+   }
+  },
+  {
+   "label": "Store Exclusive Relics",
+   "set": "Store Exclusive Relics",
+   "parallel": "",
+   "odds": {
+    "black_friday_target_blaster": 381
+   }
+  },
+  {
+   "label": "Swish and Stitch Relics",
+   "set": "Swish and Stitch Relics",
+   "parallel": "",
+   "odds": {
+    "mega": 575,
+    "value_blaster": 482
+   }
+  },
+  {
+   "label": "Woven Wonders Relics",
+   "set": "Woven Wonders Relics",
+   "parallel": "",
+   "odds": {
+    "mega": 822,
+    "value_blaster": 853
+   }
+  },
+  {
+   "label": "1980-81 Topps Basketball",
+   "set": "1980-81 Topps Basketball",
+   "parallel": "",
+   "odds": {
+    "hobby": 11,
+    "hobby_jumbo": 3,
+    "mega": 3,
+    "value_blaster": 2
+   }
+  },
+  {
+   "label": "8-Bit Ballers",
+   "set": "8-Bit Ballers",
+   "parallel": "",
+   "odds": {
+    "mega": 3,
+    "value_blaster": 4
+   }
+  },
+  {
+   "label": "All Kings",
+   "set": "All Kings",
+   "parallel": "",
+   "odds": {
+    "hobby": 2864,
+    "hobby_jumbo": 727,
+    "mega": 6325,
+    "value_blaster": 6640
+   }
+  },
+  {
+   "label": "Class of 2025",
+   "set": "Class of 2025",
+   "parallel": "",
+   "odds": {
+    "hobby": 3583,
+    "hobby_jumbo": 910,
+    "mega": 7904,
+    "value_blaster": 8305
+   }
+  },
+  {
+   "label": "Clutch City Prospects",
+   "set": "Clutch City Prospects",
+   "parallel": "",
+   "odds": {
+    "mega": 11,
+    "value_blaster": 13
+   }
+  },
+  {
+   "label": "Comic Court",
+   "set": "Comic Court",
+   "parallel": "",
+   "odds": {
+    "hobby": 736,
+    "hobby_jumbo": 217
+   }
+  },
+  {
+   "label": "Generation Now",
+   "set": "Generation Now",
+   "parallel": "",
+   "odds": {
+    "mega": 4,
+    "value_blaster": 5
+   }
+  },
+  {
+   "label": "Hardwood Stars",
+   "set": "Hardwood Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 1790,
+    "hobby_jumbo": 455,
+    "mega": 3952,
+    "value_blaster": 4151
+   }
+  },
+  {
+   "label": "Home Court",
+   "set": "Home Court",
+   "parallel": "",
+   "odds": {
+    "hobby": 2400,
+    "hobby_jumbo": 400
+   }
+  },
+  {
+   "label": "Levitation",
+   "set": "Levitation",
+   "parallel": "",
+   "odds": {
+    "hobby": 52,
+    "hobby_jumbo": 13
+   }
+  },
+  {
+   "label": "Limited Stock Legends",
+   "set": "Limited Stock Legends",
+   "parallel": "",
+   "odds": {
+    "black_friday_target_blaster": 8
+   }
+  },
+  {
+   "label": "MVP Vault",
+   "set": "MVP Vault",
+   "parallel": "",
+   "odds": {
+    "hobby": 37,
+    "hobby_jumbo": 10
+   }
+  },
+  {
+   "label": "New School",
+   "set": "New School",
+   "parallel": "",
+   "odds": {
+    "hobby": 26,
+    "hobby_jumbo": 7
+   }
+  },
+  {
+   "label": "No Limit",
+   "set": "No Limit",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "hobby_jumbo": 3
+   }
+  },
+  {
+   "label": "Power Players",
+   "set": "Power Players",
+   "parallel": "",
+   "odds": {
+    "mega": 6,
+    "value_blaster": 7
+   }
+  },
+  {
+   "label": "Rise to Stardom",
+   "set": "Rise to Stardom",
+   "parallel": "",
+   "odds": {
+    "hobby": 19,
+    "hobby_jumbo": 5
+   }
+  },
+  {
+   "label": "Scan and Slam",
+   "set": "Scan and Slam",
+   "parallel": "",
+   "odds": {
+    "black_friday_target_blaster": 8
+   }
+  },
+  {
+   "label": "Social Media Followback Redemption",
+   "set": "Social Media Followback Redemption",
+   "parallel": "",
+   "odds": {
+    "hobby": 482160,
+    "hobby_jumbo": 128072
+   }
+  },
+  {
+   "label": "Sole Ambition",
+   "set": "Sole Ambition",
+   "parallel": "",
+   "odds": {
+    "mega": 17557,
+    "value_blaster": 15375
+   }
+  },
+  {
+   "label": "Sonic Boom",
+   "set": "Sonic Boom",
+   "parallel": "",
+   "odds": {
+    "mega": 2319,
+    "value_blaster": 1930
+   }
+  },
+  {
+   "label": "Stars of the NBA",
+   "set": "Stars of the NBA",
+   "parallel": "",
+   "odds": {
+    "hobby": 682,
+    "hobby_jumbo": 174
+   }
+  },
+  {
+   "label": "The Daily Dribble",
+   "set": "The Daily Dribble",
+   "parallel": "",
+   "odds": {
+    "hobby": 26,
+    "hobby_jumbo": 7
+   }
+  }
+ ]
+}

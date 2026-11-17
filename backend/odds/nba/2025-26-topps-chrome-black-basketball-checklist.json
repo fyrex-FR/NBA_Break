@@ -1,0 +1,466 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-chrome-black-basketball-checklist",
+ "product_label": "2025-26 Topps Chrome Black Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "topper",
+   "label": "Topper",
+   "channel": "special",
+   "group": "topper"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Autographs Refractor /299",
+   "set": "Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "topper": 71
+   }
+  },
+  {
+   "label": "Autographs Blue Refractor /150",
+   "set": "Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "topper": 116
+   }
+  },
+  {
+   "label": "Autographs Green Refractor /99",
+   "set": "Autographs",
+   "parallel": "Green Refractor",
+   "odds": {
+    "topper": 115
+   }
+  },
+  {
+   "label": "Autographs Purple Refractor /75",
+   "set": "Autographs",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "topper": 98
+   }
+  },
+  {
+   "label": "Autographs Purple Mini-Diamond Refractor /75",
+   "set": "Autographs",
+   "parallel": "Purple Mini-Diamond Refractor",
+   "odds": {
+    "topper": 363
+   }
+  },
+  {
+   "label": "Autographs Gold Refractor /50",
+   "set": "Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 89
+   }
+  },
+  {
+   "label": "Autographs Gold Mini-Diamond Refractor /50",
+   "set": "Autographs",
+   "parallel": "Gold Mini-Diamond Refractor",
+   "odds": {
+    "topper": 318
+   }
+  },
+  {
+   "label": "Autographs Orange Refractor /25",
+   "set": "Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 173
+   }
+  },
+  {
+   "label": "Autographs Rose Gold Wave Refractor /15",
+   "set": "Autographs",
+   "parallel": "Rose Gold Wave Refractor",
+   "odds": {
+    "topper": 282
+   }
+  },
+  {
+   "label": "Autographs White Refractor /10",
+   "set": "Autographs",
+   "parallel": "White Refractor",
+   "odds": {
+    "topper": 423
+   }
+  },
+  {
+   "label": "Autographs Red Refractor /5",
+   "set": "Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 842
+   }
+  },
+  {
+   "label": "Autographs SuperFractor /1",
+   "set": "Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 4208
+   }
+  },
+  {
+   "label": "Rookie Autographs Refractor /299",
+   "set": "Rookie Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "topper": 58
+   }
+  },
+  {
+   "label": "Rookie Autographs Blue Refractor /150",
+   "set": "Rookie Autographs",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "topper": 80
+   }
+  },
+  {
+   "label": "Rookie Autographs Green Refractor /99",
+   "set": "Rookie Autographs",
+   "parallel": "Green Refractor",
+   "odds": {
+    "topper": 81
+   }
+  },
+  {
+   "label": "Rookie Autographs Purple Refractor /75",
+   "set": "Rookie Autographs",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "topper": 78
+   }
+  },
+  {
+   "label": "Rookie Autographs Purple Mini-Diamond Refractor /75",
+   "set": "Rookie Autographs",
+   "parallel": "Purple Mini-Diamond Refractor",
+   "odds": {
+    "topper": 98
+   }
+  },
+  {
+   "label": "Rookie Autographs Gold Refractor /50",
+   "set": "Rookie Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 85
+   }
+  },
+  {
+   "label": "Rookie Autographs Gold Mini-Diamond Refractor /50",
+   "set": "Rookie Autographs",
+   "parallel": "Gold Mini-Diamond Refractor",
+   "odds": {
+    "topper": 116
+   }
+  },
+  {
+   "label": "Rookie Autographs Orange Refractor /25",
+   "set": "Rookie Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 162
+   }
+  },
+  {
+   "label": "Rookie Autographs Rose Gold Wave Refractor /15",
+   "set": "Rookie Autographs",
+   "parallel": "Rose Gold Wave Refractor",
+   "odds": {
+    "topper": 259
+   }
+  },
+  {
+   "label": "Rookie Autographs White Refractor /10",
+   "set": "Rookie Autographs",
+   "parallel": "White Refractor",
+   "odds": {
+    "topper": 380
+   }
+  },
+  {
+   "label": "Rookie Autographs Red Refractor /5",
+   "set": "Rookie Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 764
+   }
+  },
+  {
+   "label": "Rookie Autographs SuperFractor /1",
+   "set": "Rookie Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 3788
+   }
+  },
+  {
+   "label": "Black Fire Autographs Gold Refractor /50",
+   "set": "Black Fire Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 200
+   }
+  },
+  {
+   "label": "Black Fire Autographs Orange Refractor /25",
+   "set": "Black Fire Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 402
+   }
+  },
+  {
+   "label": "Black Fire Autographs Red Refractor /5",
+   "set": "Black Fire Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 2015
+   }
+  },
+  {
+   "label": "Black Fire Autographs SuperFractor /1",
+   "set": "Black Fire Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 9967
+   }
+  },
+  {
+   "label": "Carbon Ink Refractor /299",
+   "set": "Carbon Ink",
+   "parallel": "Refractor",
+   "odds": {
+    "topper": 27
+   }
+  },
+  {
+   "label": "Carbon Ink Blue Refractor /150",
+   "set": "Carbon Ink",
+   "parallel": "Blue Refractor",
+   "odds": {
+    "topper": 28
+   }
+  },
+  {
+   "label": "Carbon Ink Green Refractor /99",
+   "set": "Carbon Ink",
+   "parallel": "Green Refractor",
+   "odds": {
+    "topper": 43
+   }
+  },
+  {
+   "label": "Carbon Ink Purple Refractor /75",
+   "set": "Carbon Ink",
+   "parallel": "Purple Refractor",
+   "odds": {
+    "topper": 55
+   }
+  },
+  {
+   "label": "Carbon Ink Purple Mini-Diamond Refractor /75",
+   "set": "Carbon Ink",
+   "parallel": "Purple Mini-Diamond Refractor",
+   "odds": {
+    "topper": 55
+   }
+  },
+  {
+   "label": "Carbon Ink Gold Refractor /50",
+   "set": "Carbon Ink",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 81
+   }
+  },
+  {
+   "label": "Carbon Ink Gold Mini-Diamond Refractor /50",
+   "set": "Carbon Ink",
+   "parallel": "Gold Mini-Diamond Refractor",
+   "odds": {
+    "topper": 82
+   }
+  },
+  {
+   "label": "Carbon Ink Orange Refractor /25",
+   "set": "Carbon Ink",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 163
+   }
+  },
+  {
+   "label": "Carbon Ink Rose Gold Wave Refractor /15",
+   "set": "Carbon Ink",
+   "parallel": "Rose Gold Wave Refractor",
+   "odds": {
+    "topper": 271
+   }
+  },
+  {
+   "label": "Carbon Ink White Refractor /10",
+   "set": "Carbon Ink",
+   "parallel": "White Refractor",
+   "odds": {
+    "topper": 404
+   }
+  },
+  {
+   "label": "Carbon Ink Red Refractor /5",
+   "set": "Carbon Ink",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 806
+   }
+  },
+  {
+   "label": "Carbon Ink SuperFractor /1",
+   "set": "Carbon Ink",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 4117
+   }
+  },
+  {
+   "label": "Glow Up Signatures Gold Refractor /50",
+   "set": "Glow Up Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 212
+   }
+  },
+  {
+   "label": "Glow Up Signatures Orange Refractor /25",
+   "set": "Glow Up Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 379
+   }
+  },
+  {
+   "label": "Glow Up Signatures Red Refractor /5",
+   "set": "Glow Up Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 1894
+   }
+  },
+  {
+   "label": "Glow Up Signatures SuperFractor /1",
+   "set": "Glow Up Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 9468
+   }
+  },
+  {
+   "label": "Ivory Autographs Refractor /50",
+   "set": "Ivory Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "topper": 98
+   }
+  },
+  {
+   "label": "Ivory Autographs Orange Refractor /25",
+   "set": "Ivory Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 196
+   }
+  },
+  {
+   "label": "Ivory Autographs Red Refractor /5",
+   "set": "Ivory Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 972
+   }
+  },
+  {
+   "label": "Ivory Autographs SuperFractor /1",
+   "set": "Ivory Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 4855
+   }
+  },
+  {
+   "label": "Shrouded Signatures Gold Refractor /50",
+   "set": "Shrouded Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 158
+   }
+  },
+  {
+   "label": "Shrouded Signatures Orange Refractor /25",
+   "set": "Shrouded Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 316
+   }
+  },
+  {
+   "label": "Shrouded Signatures Red Refractor /5",
+   "set": "Shrouded Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 1578
+   }
+  },
+  {
+   "label": "Shrouded Signatures SuperFractor /1",
+   "set": "Shrouded Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 7890
+   }
+  },
+  {
+   "label": "Super Futures Autographs Gold Refractor /50",
+   "set": "Super Futures Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "topper": 101
+   }
+  },
+  {
+   "label": "Super Futures Autographs Orange Refractor /25",
+   "set": "Super Futures Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "topper": 191
+   }
+  },
+  {
+   "label": "Super Futures Autographs Red Refractor /5",
+   "set": "Super Futures Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "topper": 952
+   }
+  },
+  {
+   "label": "Super Futures Autographs SuperFractor /1",
+   "set": "Super Futures Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "topper": 4734
+   }
+  }
+ ]
+}

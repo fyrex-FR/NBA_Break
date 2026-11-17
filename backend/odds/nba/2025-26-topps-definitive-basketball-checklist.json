@@ -1,0 +1,1221 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-definitive-basketball-checklist",
+ "product_label": "2025-26 Topps Definitive Collection Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  },
+  {
+   "key": "fdi",
+   "label": "FDI",
+   "channel": "hobby",
+   "group": "fdi",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Definitive Autographs",
+   "set": "Definitive Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Definitive Autographs Orange /25",
+   "set": "Definitive Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Definitive Autographs Pink /15",
+   "set": "Definitive Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Definitive Autographs Black /10",
+   "set": "Definitive Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Definitive Autographs Red /5",
+   "set": "Definitive Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 32,
+    "fdi": 32
+   }
+  },
+  {
+   "label": "Definitive Autographs Blue /2",
+   "set": "Definitive Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 78,
+    "fdi": 79
+   }
+  },
+  {
+   "label": "Definitive Autographs Gold /1",
+   "set": "Definitive Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 155,
+    "fdi": 158
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs Orange /25",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs Pink /15",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs Black /10",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs Red /5",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs Blue /2",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 104,
+    "fdi": 106
+   }
+  },
+  {
+   "label": "Definitive Rookies Autographs Gold /1",
+   "set": "Definitive Rookies Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Decisive Signatures",
+   "set": "Decisive Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Decisive Signatures Orange /25",
+   "set": "Decisive Signatures",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Decisive Signatures Pink /15",
+   "set": "Decisive Signatures",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Decisive Signatures Black /10",
+   "set": "Decisive Signatures",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Decisive Signatures Red /5",
+   "set": "Decisive Signatures",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Decisive Signatures Blue /2",
+   "set": "Decisive Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 104,
+    "fdi": 106
+   }
+  },
+  {
+   "label": "Decisive Signatures Gold /1",
+   "set": "Decisive Signatures",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Defining Images Autographs",
+   "set": "Defining Images Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 18,
+    "fdi": 18
+   }
+  },
+  {
+   "label": "Defining Images Autographs Orange /25",
+   "set": "Defining Images Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 10,
+    "fdi": 10
+   }
+  },
+  {
+   "label": "Defining Images Autographs Pink /15",
+   "set": "Defining Images Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Defining Images Autographs Black /10",
+   "set": "Defining Images Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Defining Images Autographs Red /5",
+   "set": "Defining Images Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Defining Images Autographs Blue /2",
+   "set": "Defining Images Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 104,
+    "fdi": 106
+   }
+  },
+  {
+   "label": "Defining Images Autographs Gold /1",
+   "set": "Defining Images Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Definitive Markers Autographs",
+   "set": "Definitive Markers Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 317,
+    "fdi": 317
+   }
+  },
+  {
+   "label": "Definitive Moments Collection Autographs",
+   "set": "Definitive Moments Collection Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Definitive Moments Collection Autographs Gold /1",
+   "set": "Definitive Moments Collection Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Definitive Signs",
+   "set": "Definitive Signs",
+   "parallel": "",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Definitive Signs Orange /25",
+   "set": "Definitive Signs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Definitive Signs Pink /15",
+   "set": "Definitive Signs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Definitive Signs Black /10",
+   "set": "Definitive Signs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Definitive Signs Red /5",
+   "set": "Definitive Signs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Definitive Signs Blue /2",
+   "set": "Definitive Signs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 104,
+    "fdi": 106
+   }
+  },
+  {
+   "label": "Definitive Signs Gold /1",
+   "set": "Definitive Signs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "fdi": 10
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection Orange /25",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection Pink /15",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection Black /10",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection Red /5",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection Blue /2",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 104,
+    "fdi": 106
+   }
+  },
+  {
+   "label": "Framed Legends Autograph Collection Gold /1",
+   "set": "Framed Legends Autograph Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection Orange /25",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection Pink /15",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection Black /10",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection Red /5",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 32,
+    "fdi": 32
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection Blue /2",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 78,
+    "fdi": 79
+   }
+  },
+  {
+   "label": "Framed Rookies Autograph Collection Gold /1",
+   "set": "Framed Rookies Autograph Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 155,
+    "fdi": 158
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 13,
+    "fdi": 13
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection Orange /25",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection Pink /15",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 17,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection Black /10",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 22,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection Red /5",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection Blue /2",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 104,
+    "fdi": 106
+   }
+  },
+  {
+   "label": "Framed Veterans Autograph Collection Gold /1",
+   "set": "Framed Veterans Autograph Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Legendary Autograph Collection",
+   "set": "Legendary Autograph Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Legendary Autograph Collection Gold /1",
+   "set": "Legendary Autograph Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 402
+   }
+  },
+  {
+   "label": "Noble Ink",
+   "set": "Noble Ink",
+   "parallel": "",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Noble Ink Orange /25",
+   "set": "Noble Ink",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Noble Ink Pink /15",
+   "set": "Noble Ink",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 12,
+    "fdi": 12
+   }
+  },
+  {
+   "label": "Noble Ink Black /10",
+   "set": "Noble Ink",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 18,
+    "fdi": 18
+   }
+  },
+  {
+   "label": "Noble Ink Red /5",
+   "set": "Noble Ink",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 35,
+    "fdi": 35
+   }
+  },
+  {
+   "label": "Noble Ink Blue /2",
+   "set": "Noble Ink",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 80,
+    "fdi": 81
+   }
+  },
+  {
+   "label": "Noble Ink Gold /1",
+   "set": "Noble Ink",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 159,
+    "fdi": 162
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics",
+   "set": "Definitive Autograph Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics Orange /25",
+   "set": "Definitive Autograph Relics",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics Pink /15",
+   "set": "Definitive Autograph Relics",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics Black /10",
+   "set": "Definitive Autograph Relics",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics Red /5",
+   "set": "Definitive Autograph Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics Blue /2",
+   "set": "Definitive Autograph Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 39,
+    "fdi": 39
+   }
+  },
+  {
+   "label": "Definitive Autograph Relics Gold /1",
+   "set": "Definitive Autograph Relics",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 73,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 4,
+    "fdi": 4
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs FDI",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "FDI",
+   "odds": {
+    "fdi": 1
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs Orange /25",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs Pink /15",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs Black /10",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs Red /5",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 31,
+    "fdi": 31
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs Blue /2",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 75,
+    "fdi": 75
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Autographs Gold /1",
+   "set": "Definitive Rookie Patch Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 147,
+    "fdi": 151
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs",
+   "set": "Authentic Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs Orange /25",
+   "set": "Authentic Relic Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs Pink /15",
+   "set": "Authentic Relic Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 13,
+    "fdi": 13
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs Black /10",
+   "set": "Authentic Relic Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 19,
+    "fdi": 19
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs Red /5",
+   "set": "Authentic Relic Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 38,
+    "fdi": 38
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs Blue /2",
+   "set": "Authentic Relic Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 94,
+    "fdi": 96
+   }
+  },
+  {
+   "label": "Authentic Relic Autographs Gold /1",
+   "set": "Authentic Relic Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 192,
+    "fdi": 192
+   }
+  },
+  {
+   "label": "Definable Relic Autographs",
+   "set": "Definable Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 18,
+    "fdi": 18
+   }
+  },
+  {
+   "label": "Definable Relic Autographs Orange /25",
+   "set": "Definable Relic Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 13,
+    "fdi": 13
+   }
+  },
+  {
+   "label": "Definable Relic Autographs Pink /15",
+   "set": "Definable Relic Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 19,
+    "fdi": 19
+   }
+  },
+  {
+   "label": "Definable Relic Autographs Black /10",
+   "set": "Definable Relic Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 29,
+    "fdi": 29
+   }
+  },
+  {
+   "label": "Definable Relic Autographs Red /5",
+   "set": "Definable Relic Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 55,
+    "fdi": 55
+   }
+  },
+  {
+   "label": "Definable Relic Autographs Blue /2",
+   "set": "Definable Relic Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 134,
+    "fdi": 138
+   }
+  },
+  {
+   "label": "Definable Relic Autographs Gold /1",
+   "set": "Definable Relic Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 275,
+    "fdi": 275
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 10,
+    "fdi": 10
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs Orange /25",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 13,
+    "fdi": 13
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs Pink /15",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 21,
+    "fdi": 21
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs Black /10",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 32,
+    "fdi": 32
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs Red /5",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 63,
+    "fdi": 63
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs Blue /2",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 155,
+    "fdi": 158
+   }
+  },
+  {
+   "label": "Opening Act Rookie Relic Autographs Gold /1",
+   "set": "Opening Act Rookie Relic Autographs",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 317,
+    "fdi": 317
+   }
+  },
+  {
+   "label": "Rookie Defining Games Relic Autograph Redemption",
+   "set": "Rookie Defining Games Relic Autograph Redemption",
+   "parallel": "",
+   "odds": {
+    "hobby": 90,
+    "fdi": 68
+   }
+  },
+  {
+   "label": "Rookie Defining Games Relic Autograph Redemption Orange /25",
+   "set": "Rookie Defining Games Relic Autograph Redemption",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 126,
+    "fdi": 102
+   }
+  },
+  {
+   "label": "Rookie Defining Games Relic Autograph Redemption Black /10",
+   "set": "Rookie Defining Games Relic Autograph Redemption",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 317,
+    "fdi": 204
+   }
+  },
+  {
+   "label": "Rookie Defining Games Relic Autograph Redemption Red /5",
+   "set": "Rookie Defining Games Relic Autograph Redemption",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 670,
+    "fdi": 204
+   }
+  },
+  {
+   "label": "Rookie Defining Games Relic Autograph Redemption Blue /2",
+   "set": "Rookie Defining Games Relic Autograph Redemption",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 2011,
+    "fdi": 204
+   }
+  },
+  {
+   "label": "Rookie Defining Games Relic Autograph Redemption Gold /1",
+   "set": "Rookie Defining Games Relic Autograph Redemption",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 6032,
+    "fdi": 204
+   }
+  },
+  {
+   "label": "Definitive Relic Collection",
+   "set": "Definitive Relic Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 2,
+    "fdi": 2
+   }
+  },
+  {
+   "label": "Definitive Relic Collection Orange /25",
+   "set": "Definitive Relic Collection",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Definitive Relic Collection Pink /15",
+   "set": "Definitive Relic Collection",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Definitive Relic Collection Black /10",
+   "set": "Definitive Relic Collection",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 9,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Definitive Relic Collection Red /5",
+   "set": "Definitive Relic Collection",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 13,
+    "fdi": 13
+   }
+  },
+  {
+   "label": "Definitive Relic Collection Blue /2",
+   "set": "Definitive Relic Collection",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 32,
+    "fdi": 32
+   }
+  },
+  {
+   "label": "Definitive Relic Collection Gold /1",
+   "set": "Definitive Relic Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 63,
+    "fdi": 65
+   }
+  },
+  {
+   "label": "Definitive Patch Collection",
+   "set": "Definitive Patch Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 3,
+    "fdi": 3
+   }
+  },
+  {
+   "label": "Definitive Patch Collection Orange /25",
+   "set": "Definitive Patch Collection",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 7,
+    "fdi": 7
+   }
+  },
+  {
+   "label": "Definitive Patch Collection Pink /15",
+   "set": "Definitive Patch Collection",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 12,
+    "fdi": 12
+   }
+  },
+  {
+   "label": "Definitive Patch Collection Black /10",
+   "set": "Definitive Patch Collection",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 18,
+    "fdi": 18
+   }
+  },
+  {
+   "label": "Definitive Patch Collection Red /5",
+   "set": "Definitive Patch Collection",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 23,
+    "fdi": 23
+   }
+  },
+  {
+   "label": "Definitive Patch Collection Blue /2",
+   "set": "Definitive Patch Collection",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 57,
+    "fdi": 57
+   }
+  },
+  {
+   "label": "Definitive Patch Collection Gold /1",
+   "set": "Definitive Patch Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 112,
+    "fdi": 113
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "",
+   "odds": {
+    "hobby": 5,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection Orange /25",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "Orange",
+   "odds": {
+    "hobby": 16,
+    "fdi": 16
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection Pink /15",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 38,
+    "fdi": 38
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection Black /10",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "Black",
+   "odds": {
+    "hobby": 40,
+    "fdi": 40
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection Red /5",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 42,
+    "fdi": 42
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection Blue /2",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 88,
+    "fdi": 88
+   }
+  },
+  {
+   "label": "Definitive Rookie Patch Collection Gold /1",
+   "set": "Definitive Rookie Patch Collection",
+   "parallel": "Gold",
+   "odds": {
+    "hobby": 211,
+    "fdi": 211
+   }
+  },
+  {
+   "label": "Definitive Nameplate I",
+   "set": "Definitive Nameplate I",
+   "parallel": "",
+   "odds": {
+    "hobby": 62,
+    "fdi": 63
+   }
+  },
+  {
+   "label": "Definitive Nameplate II",
+   "set": "Definitive Nameplate II",
+   "parallel": "",
+   "odds": {
+    "hobby": 74,
+    "fdi": 75
+   }
+  }
+ ]
+}

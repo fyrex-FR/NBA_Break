@@ -1,0 +1,791 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-inception-basketball-checklist",
+ "product_label": "2025-26 Topps Inception Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 1
+  },
+  {
+   "key": "fdi",
+   "label": "FDI",
+   "channel": "hobby",
+   "group": "fdi",
+   "packs_per_box": 1
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base Green",
+   "set": "Base",
+   "parallel": "Green",
+   "odds": {
+    "hobby": 1,
+    "fdi": 1
+   }
+  },
+  {
+   "label": "Base Purple /125",
+   "set": "Base",
+   "parallel": "Purple",
+   "odds": {
+    "hobby": 5,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Base Pink /99",
+   "set": "Base",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 6,
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Base Red /75",
+   "set": "Base",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 8,
+    "fdi": 8
+   }
+  },
+  {
+   "label": "Base Gold Electricity /50",
+   "set": "Base",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 11,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Base Blue /25",
+   "set": "Base",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 22,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Base Camo /10",
+   "set": "Base",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 54,
+    "fdi": 54
+   }
+  },
+  {
+   "label": "Base Sky Blue /5",
+   "set": "Base",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 107,
+    "fdi": 108
+   }
+  },
+  {
+   "label": "Base Inception /1",
+   "set": "Base",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 534,
+    "fdi": 539
+   }
+  },
+  {
+   "label": "Rookie Autographs",
+   "set": "Rookie Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 35,
+    "fdi": 22
+   }
+  },
+  {
+   "label": "Rookie Autographs Red Electricity",
+   "set": "Rookie Autographs",
+   "parallel": "Red Electricity",
+   "odds": {
+    "fdi": 3
+   }
+  },
+  {
+   "label": "Rookie Autographs Green Electricity",
+   "set": "Rookie Autographs",
+   "parallel": "Green Electricity",
+   "odds": {
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Rookie Autographs Pink /99",
+   "set": "Rookie Autographs",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Rookie Autographs Red /75",
+   "set": "Rookie Autographs",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 18,
+    "fdi": 11
+   }
+  },
+  {
+   "label": "Rookie Autographs Gold Electricity /50",
+   "set": "Rookie Autographs",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 27,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Rookie Autographs Blue /25",
+   "set": "Rookie Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 53,
+    "fdi": 33
+   }
+  },
+  {
+   "label": "Rookie Autographs Camo /10",
+   "set": "Rookie Autographs",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 131,
+    "fdi": 81
+   }
+  },
+  {
+   "label": "Rookie Autographs Sky Blue /5",
+   "set": "Rookie Autographs",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 269,
+    "fdi": 180
+   }
+  },
+  {
+   "label": "Rookie Autographs Inception /1",
+   "set": "Rookie Autographs",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1305,
+    "fdi": 808
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "",
+   "odds": {
+    "hobby": 55,
+    "fdi": 35
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Red Electricity",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Red Electricity",
+   "odds": {
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Green Electricity",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Green Electricity",
+   "odds": {
+    "fdi": 12
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Pink /99",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 30,
+    "fdi": 19
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Red /75",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 39,
+    "fdi": 25
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Gold Electricity /50",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 59,
+    "fdi": 37
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Blue /25",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 117,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Camo /10",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 290,
+    "fdi": 180
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Sky Blue /5",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 584,
+    "fdi": 404
+   }
+  },
+  {
+   "label": "Rookie Autographs Horizontal Variations Inception /1",
+   "set": "Rookie Autographs - Horizontal",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 2917
+   }
+  },
+  {
+   "label": "Dawn of Greatness Autographs",
+   "set": "Dawn Of Greatness Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 53,
+    "fdi": 33
+   }
+  },
+  {
+   "label": "Dawn of Greatness Autographs Blue /25",
+   "set": "Dawn Of Greatness Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 105,
+    "fdi": 65
+   }
+  },
+  {
+   "label": "Dawn of Greatness Autographs Camo /10",
+   "set": "Dawn Of Greatness Autographs",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 261,
+    "fdi": 162
+   }
+  },
+  {
+   "label": "Dawn of Greatness Autographs Sky Blue /5",
+   "set": "Dawn Of Greatness Autographs",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 522,
+    "fdi": 324
+   }
+  },
+  {
+   "label": "Dawn of Greatness Autographs Inception /1",
+   "set": "Dawn Of Greatness Autographs",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 2610,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "Fountain of Youth Signatures",
+   "set": "Fountain Of Youth Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 54,
+    "fdi": 34
+   }
+  },
+  {
+   "label": "Fountain of Youth Signatures Gold Electricity /50",
+   "set": "Fountain Of Youth Signatures",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 55,
+    "fdi": 35
+   }
+  },
+  {
+   "label": "Fountain of Youth Signatures Blue /25",
+   "set": "Fountain Of Youth Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 81,
+    "fdi": 51
+   }
+  },
+  {
+   "label": "Fountain of Youth Signatures Camo /10",
+   "set": "Fountain Of Youth Signatures",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 194,
+    "fdi": 125
+   }
+  },
+  {
+   "label": "Fountain of Youth Signatures Sky Blue /5",
+   "set": "Fountain Of Youth Signatures",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 388,
+    "fdi": 270
+   }
+  },
+  {
+   "label": "Fountain of Youth Signatures Inception /1",
+   "set": "Fountain Of Youth Signatures",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1984,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "Inception Silver Signings",
+   "set": "Silver Signings",
+   "parallel": "",
+   "odds": {
+    "hobby": 73,
+    "fdi": 47
+   }
+  },
+  {
+   "label": "Inception Silver Signings Red Electricity",
+   "set": "Silver Signings",
+   "parallel": "Red Electricity",
+   "odds": {
+    "fdi": 6
+   }
+  },
+  {
+   "label": "Inception Silver Signings Green Electricity",
+   "set": "Silver Signings",
+   "parallel": "Green Electricity",
+   "odds": {
+    "fdi": 12
+   }
+  },
+  {
+   "label": "Inception Silver Signings Gold Electricity /50",
+   "set": "Silver Signings",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 56,
+    "fdi": 35
+   }
+  },
+  {
+   "label": "Inception Silver Signings Gold Ink Inscription /1",
+   "set": "Silver Signings",
+   "parallel": "Gold Ink Inscription",
+   "odds": {
+    "hobby": 2610,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "Persistent Marks",
+   "set": "Persistent Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": 87,
+    "fdi": 54
+   }
+  },
+  {
+   "label": "Persistent Marks Gold Electricity /50",
+   "set": "Persistent Marks",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 58,
+    "fdi": 36
+   }
+  },
+  {
+   "label": "Persistent Marks Blue /25",
+   "set": "Persistent Marks",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 117,
+    "fdi": 74
+   }
+  },
+  {
+   "label": "Persistent Marks Camo /10",
+   "set": "Persistent Marks",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 290,
+    "fdi": 180
+   }
+  },
+  {
+   "label": "Persistent Marks Sky Blue /5",
+   "set": "Persistent Marks",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 584,
+    "fdi": 404
+   }
+  },
+  {
+   "label": "Persistent Marks Inception /1",
+   "set": "Persistent Marks",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 2917
+   }
+  },
+  {
+   "label": "Rise to Fame Signatures",
+   "set": "Rise To Fame Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 31,
+    "fdi": 19
+   }
+  },
+  {
+   "label": "Rise to Fame Signatures Gold Electricity /50",
+   "set": "Rise To Fame Signatures",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 44,
+    "fdi": 27
+   }
+  },
+  {
+   "label": "Rise to Fame Signatures Blue /25",
+   "set": "Rise To Fame Signatures",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 91,
+    "fdi": 58
+   }
+  },
+  {
+   "label": "Rise to Fame Signatures Camo /10",
+   "set": "Rise To Fame Signatures",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 218,
+    "fdi": 135
+   }
+  },
+  {
+   "label": "Rise to Fame Signatures Sky Blue /5",
+   "set": "Rise To Fame Signatures",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 435,
+    "fdi": 270
+   }
+  },
+  {
+   "label": "Rise to Fame Signatures Inception /1",
+   "set": "Rise To Fame Signatures",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 2254,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 7,
+    "fdi": 5
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Pink /99",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 14,
+    "fdi": 9
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Red /75",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 18,
+    "fdi": 12
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Gold Electricity /50",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 27,
+    "fdi": 17
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Blue /25",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 54,
+    "fdi": 34
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Camo /10",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 135,
+    "fdi": 86
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Sky Blue /5",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 269,
+    "fdi": 180
+   }
+  },
+  {
+   "label": "Rookie Jumbo Relic Autographs Inception /1",
+   "set": "Rookie Jumbo Autographed Relics",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1341,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 131,
+    "fdi": 81
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Pink /99",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Pink",
+   "odds": {
+    "hobby": 76,
+    "fdi": 48
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Red /75",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Red",
+   "odds": {
+    "hobby": 54,
+    "fdi": 34
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Gold Electricity /50",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Gold Electricity",
+   "odds": {
+    "hobby": 37,
+    "fdi": 23
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Blue /25",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 78,
+    "fdi": 49
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Camo /10",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 169,
+    "fdi": 108
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Sky Blue /5",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 327,
+    "fdi": 202
+   }
+  },
+  {
+   "label": "Franchise Fundamental Relic Autographs Inception /1",
+   "set": "Franchise Foundational Autographed Relics",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1653,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "NBA First Milestone Autograph Relics (Redemption)",
+   "set": "NBA First Milestone Autographed Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 159,
+    "fdi": 101
+   }
+  },
+  {
+   "label": "NBA First Milestone Autograph Relics (Redemption) Sky Blue /5",
+   "set": "NBA First Milestone Autographed Relics",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 318,
+    "fdi": 202
+   }
+  },
+  {
+   "label": "NBA First Milestone Autograph Relics (Redemption) Inception /1",
+   "set": "NBA First Milestone Autographed Relics",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 1600,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "Rookie Relic Booklet Autographs Blue /25",
+   "set": "Rookie Relic Booklet Autographs",
+   "parallel": "Blue",
+   "odds": {
+    "hobby": 111,
+    "fdi": 71
+   }
+  },
+  {
+   "label": "Rookie Relic Booklet Autographs Camo /10",
+   "set": "Rookie Relic Booklet Autographs",
+   "parallel": "Camo",
+   "odds": {
+    "hobby": 261,
+    "fdi": 162
+   }
+  },
+  {
+   "label": "Rookie Relic Booklet Autographs Sky Blue /5",
+   "set": "Rookie Relic Booklet Autographs",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 522,
+    "fdi": 324
+   }
+  },
+  {
+   "label": "Rookie Relic Booklet Autographs Inception /1",
+   "set": "Rookie Relic Booklet Autographs",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 2610,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "NBA First Milestone Relics (Redemption)",
+   "set": "NBA First Milestone Relics",
+   "parallel": "",
+   "odds": {
+    "hobby": 1055,
+    "fdi": 808
+   }
+  },
+  {
+   "label": "NBA First Milestone Relics (Redemption) Sky Blue /5",
+   "set": "NBA First Milestone Relics",
+   "parallel": "Sky Blue",
+   "odds": {
+    "hobby": 2156,
+    "fdi": 1616
+   }
+  },
+  {
+   "label": "NBA First Milestone Relics (Redemption) Inception /1",
+   "set": "NBA First Milestone Relics",
+   "parallel": "Inception",
+   "odds": {
+    "hobby": 12396
+   }
+  },
+  {
+   "label": "Endgame",
+   "set": "Endgame",
+   "parallel": "",
+   "odds": {
+    "hobby": 40,
+    "fdi": 27
+   }
+  },
+  {
+   "label": "Launch",
+   "set": "Launch",
+   "parallel": "",
+   "odds": {
+    "hobby": 20,
+    "fdi": 14
+   }
+  },
+  {
+   "label": "Splashdown",
+   "set": "Splashdown",
+   "parallel": "",
+   "odds": {
+    "hobby": 20,
+    "fdi": 14
+   }
+  }
+ ]
+}

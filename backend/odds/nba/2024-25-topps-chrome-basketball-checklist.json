@@ -1,0 +1,1499 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2024-25-topps-chrome-basketball-checklist",
+ "product_label": "2024-25 Topps Chrome Basketball",
+ "source": "The Hobby Checklist (cotes Topps officielles), import avec accord de l'éditeur",
+ "updated_at": "2026-11-17",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 12
+  },
+  {
+   "key": "mega",
+   "label": "Mega",
+   "channel": "retail",
+   "group": "mega",
+   "packs_per_box": 7
+  },
+  {
+   "key": "value_blaster",
+   "label": "Value Blaster",
+   "channel": "retail",
+   "group": "value",
+   "packs_per_box": 8
+  },
+  {
+   "key": "breaker",
+   "label": "Breaker",
+   "channel": "hobby",
+   "group": "delight"
+  }
+ ],
+ "rows": [
+  {
+   "label": "1973 Topps Autographs",
+   "set": "1973 Topps Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 49
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Refractor",
+   "set": "1973 Topps Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 111
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Purple Geometric Refractor",
+   "set": "1973 Topps Autographs",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Gold Refractor /50",
+   "set": "1973 Topps Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 283
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Gold Geometric Refractor /50",
+   "set": "1973 Topps Autographs",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 11
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Orange Geometric Refractor /25",
+   "set": "1973 Topps Autographs",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 21
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Black Refractor /10",
+   "set": "1973 Topps Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1415
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Red Refractor /5",
+   "set": "1973 Topps Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2829
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Red Geometric Refractor /5",
+   "set": "1973 Topps Autographs",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 104
+   }
+  },
+  {
+   "label": "1973 Topps Autographs Black Geometric Refractor /2",
+   "set": "1973 Topps Autographs",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 261
+   }
+  },
+  {
+   "label": "1973 Topps Autographs SuperFractor /1",
+   "set": "1973 Topps Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 14142
+   }
+  },
+  {
+   "label": "Chromographs",
+   "set": "Chromographs",
+   "parallel": "",
+   "odds": {
+    "mega": 164,
+    "value_blaster": 194
+   }
+  },
+  {
+   "label": "Chromographs Pink Basketball Refractor /55",
+   "set": "Chromographs",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 969
+   }
+  },
+  {
+   "label": "Chromographs Blue Basketball Refractor /10",
+   "set": "Chromographs",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 1431
+   }
+  },
+  {
+   "label": "Future Stars Autographs",
+   "set": "Future Stars Autographs",
+   "parallel": "",
+   "odds": {
+    "mega": 358,
+    "value_blaster": 445
+   }
+  },
+  {
+   "label": "Future Stars Autographs Blue Basketball Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 4760
+   }
+  },
+  {
+   "label": "Future Stars Autographs Pink Basketball Refractor",
+   "set": "Future Stars Autographs",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 2616
+   }
+  },
+  {
+   "label": "Next Stop Signatures",
+   "set": "Next Stop Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "Next Stop Signatures Refractor",
+   "set": "Next Stop Signatures",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 124
+   }
+  },
+  {
+   "label": "Next Stop Signatures Purple Geometric Refractor",
+   "set": "Next Stop Signatures",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Next Stop Signatures Gold Refractor /50",
+   "set": "Next Stop Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 378
+   }
+  },
+  {
+   "label": "Next Stop Signatures Gold Geometric Refractor /50",
+   "set": "Next Stop Signatures",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 14
+   }
+  },
+  {
+   "label": "Next Stop Signatures Orange Geometric Refractor /25",
+   "set": "Next Stop Signatures",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 28
+   }
+  },
+  {
+   "label": "Next Stop Signatures Black Refractor /10",
+   "set": "Next Stop Signatures",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1889
+   }
+  },
+  {
+   "label": "Next Stop Signatures Red Refractor /5",
+   "set": "Next Stop Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 3778
+   }
+  },
+  {
+   "label": "Next Stop Signatures Red Geometric Refractor /5",
+   "set": "Next Stop Signatures",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 140
+   }
+  },
+  {
+   "label": "Next Stop Signatures Black Geometric Refractor /2",
+   "set": "Next Stop Signatures",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 350
+   }
+  },
+  {
+   "label": "Next Stop Signatures SuperFractor /1",
+   "set": "Next Stop Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 19018
+   }
+  },
+  {
+   "label": "Sky-Light Signatures",
+   "set": "Sky-Light Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": 53
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Refractor",
+   "set": "Sky-Light Signatures",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 96
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Purple Geometric Refractor",
+   "set": "Sky-Light Signatures",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Gold Refractor /50",
+   "set": "Sky-Light Signatures",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 224
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Gold Geometric Refractor /50",
+   "set": "Sky-Light Signatures",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 9
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Orange Refractor /25",
+   "set": "Sky-Light Signatures",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1133
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Orange Geometric Refractor /25",
+   "set": "Sky-Light Signatures",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 17
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Black Refractor /10",
+   "set": "Sky-Light Signatures",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1133
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Red Refractor /5",
+   "set": "Sky-Light Signatures",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2270
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Red Geometric Refractor /5",
+   "set": "Sky-Light Signatures",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 84
+   }
+  },
+  {
+   "label": "Sky-Light Signatures Black Geometric Refractor /2",
+   "set": "Sky-Light Signatures",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 214
+   }
+  },
+  {
+   "label": "Sky-Light Signatures SuperFractor /1",
+   "set": "Sky-Light Signatures",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 11490
+   }
+  },
+  {
+   "label": "Topps Certified Autographs",
+   "set": "Topps Certified Autograph Issue",
+   "parallel": "",
+   "odds": {
+    "mega": 236,
+    "value_blaster": 283
+   }
+  },
+  {
+   "label": "Topps Certified Autographs Pink Basketball Refractor /55",
+   "set": "Topps Certified Autograph Issue",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 2243
+   }
+  },
+  {
+   "label": "Topps Certified Autographs Blue Basketball Refractor /10",
+   "set": "Topps Certified Autograph Issue",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 2133
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 48
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Refractor",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 122
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Purple Geometric Refractor",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 5
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Gold Refractor /50",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 378
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Gold Geometric Refractor /50",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 14
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Orange Geometric Refractor /25",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 28
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Black Refractor /10",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1889
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Red Refractor /5",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 3778
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Red Geometric Refractor /5",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 140
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs Black Geometric Refractor /2",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 350
+   }
+  },
+  {
+   "label": "Topps Certified Rookie Autographs SuperFractor /1",
+   "set": "Topps Certified Autograph Issue Rookies",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 19018
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs",
+   "set": "Topps Chrome Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Refractor",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 98
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Purple Geometric Refractor",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 4
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Gold Refractor /50",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 227
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Gold Geometric Refractor /50",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 9
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Orange Refractor /25",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 926
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Orange Geometric Refractor /25",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 17
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Black Refractor /10",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Black Refractor",
+   "odds": {
+    "hobby": 1133
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Red Refractor /5",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 2270
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Red Geometric Refractor /5",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 84
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs Black Geometric Refractor /2",
+   "set": "Topps Chrome Autographs",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 210
+   }
+  },
+  {
+   "label": "Topps Chrome Autographs SuperFractor /1",
+   "set": "Topps Chrome Autographs",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 11490
+   }
+  },
+  {
+   "label": "451",
+   "set": "451",
+   "parallel": "",
+   "odds": {
+    "hobby": 367
+   }
+  },
+  {
+   "label": "451 SuperFractor /1",
+   "set": "451",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29028
+   }
+  },
+  {
+   "label": "Advisory",
+   "set": "Advisory",
+   "parallel": "",
+   "odds": {
+    "mega": 281,
+    "value_blaster": 644
+   }
+  },
+  {
+   "label": "Ball of Duty",
+   "set": "Ball of Duty",
+   "parallel": "",
+   "odds": {
+    "mega": 11,
+    "value_blaster": 17
+   }
+  },
+  {
+   "label": "Ball of Duty Refractor",
+   "set": "Ball of Duty",
+   "parallel": "Refractor",
+   "odds": {
+    "value_blaster": 55,
+    "mega": 24
+   }
+  },
+  {
+   "label": "Ball of Duty Blue Basketball Refractor",
+   "set": "Ball of Duty",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 10
+   }
+  },
+  {
+   "label": "Ball of Duty Topps Green Refractor",
+   "set": "Ball of Duty",
+   "parallel": "Topps Green Refractor",
+   "odds": {
+    "value_blaster": 109
+   }
+  },
+  {
+   "label": "Ball of Duty Pink Refractor",
+   "set": "Ball of Duty",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "value_blaster": 217
+   }
+  },
+  {
+   "label": "Ball of Duty Pink Basketball Refractor",
+   "set": "Ball of Duty",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 588
+   }
+  },
+  {
+   "label": "Ball of Duty SuperFractor /1",
+   "set": "Ball of Duty",
+   "parallel": "SuperFractor",
+   "odds": {
+    "value_blaster": 280576,
+    "mega": 199240
+   }
+  },
+  {
+   "label": "Countdown Complete",
+   "set": "Countdown Complete",
+   "parallel": "",
+   "odds": {
+    "mega": 11,
+    "value_blaster": 17
+   }
+  },
+  {
+   "label": "Countdown Complete Refractor",
+   "set": "Countdown Complete",
+   "parallel": "Refractor",
+   "odds": {
+    "value_blaster": 55,
+    "mega": 24
+   }
+  },
+  {
+   "label": "Countdown Complete Blue Basketball Refractor",
+   "set": "Countdown Complete",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 10
+   }
+  },
+  {
+   "label": "Countdown Complete Topps Green Refractor",
+   "set": "Countdown Complete",
+   "parallel": "Topps Green Refractor",
+   "odds": {
+    "value_blaster": 109
+   }
+  },
+  {
+   "label": "Countdown Complete Pink Refractor",
+   "set": "Countdown Complete",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "value_blaster": 217
+   }
+  },
+  {
+   "label": "Countdown Complete Pink Basketball Refractor",
+   "set": "Countdown Complete",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 588
+   }
+  },
+  {
+   "label": "Countdown Complete SuperFractor /1",
+   "set": "Countdown Complete",
+   "parallel": "SuperFractor",
+   "odds": {
+    "value_blaster": 280576,
+    "mega": 199240
+   }
+  },
+  {
+   "label": "Destiny",
+   "set": "Destiny",
+   "parallel": "",
+   "odds": {
+    "hobby": 5
+   }
+  },
+  {
+   "label": "Destiny Refractor",
+   "set": "Destiny",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 47
+   }
+  },
+  {
+   "label": "Destiny Purple Geometric Refractor",
+   "set": "Destiny",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 11
+   }
+  },
+  {
+   "label": "Destiny Green Refractor /99",
+   "set": "Destiny",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 234
+   }
+  },
+  {
+   "label": "Destiny Gold Refractor /50",
+   "set": "Destiny",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 463
+   }
+  },
+  {
+   "label": "Destiny Gold Geometric Refractor /50",
+   "set": "Destiny",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 22
+   }
+  },
+  {
+   "label": "Destiny Orange Refractor /25",
+   "set": "Destiny",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 926
+   }
+  },
+  {
+   "label": "Destiny Orange Geometric Refractor /25",
+   "set": "Destiny",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 43
+   }
+  },
+  {
+   "label": "Destiny White Geometric Refractor /10",
+   "set": "Destiny",
+   "parallel": "White Geometric Refractor",
+   "odds": {
+    "breaker": 107
+   }
+  },
+  {
+   "label": "Destiny Red Refractor /5",
+   "set": "Destiny",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 4635
+   }
+  },
+  {
+   "label": "Destiny Red Geometric Refractor /5",
+   "set": "Destiny",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 214
+   }
+  },
+  {
+   "label": "Destiny Black Geometric Refractor /2",
+   "set": "Destiny",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 535
+   }
+  },
+  {
+   "label": "Destiny SuperFractor /1",
+   "set": "Destiny",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 23980
+   }
+  },
+  {
+   "label": "Dippers",
+   "set": "Dippers",
+   "parallel": "",
+   "odds": {
+    "mega": 280,
+    "value_blaster": 637
+   }
+  },
+  {
+   "label": "Film Study",
+   "set": "Film Study",
+   "parallel": "",
+   "odds": {
+    "mega": 13,
+    "value_blaster": 22
+   }
+  },
+  {
+   "label": "Film Study Refractor",
+   "set": "Film Study",
+   "parallel": "Refractor",
+   "odds": {
+    "value_blaster": 68,
+    "mega": 30
+   }
+  },
+  {
+   "label": "Film Study Blue Basketball Refractor",
+   "set": "Film Study",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 13
+   }
+  },
+  {
+   "label": "Film Study Topps Green Refractor",
+   "set": "Film Study",
+   "parallel": "Topps Green Refractor",
+   "odds": {
+    "value_blaster": 136
+   }
+  },
+  {
+   "label": "Film Study Pink Refractor",
+   "set": "Film Study",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "value_blaster": 271
+   }
+  },
+  {
+   "label": "Film Study Pink Basketball Refractor",
+   "set": "Film Study",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 735
+   }
+  },
+  {
+   "label": "Film Study SuperFractor",
+   "set": "Film Study",
+   "parallel": "SuperFractor",
+   "odds": {
+    "value_blaster": 350720,
+    "mega": 232447
+   }
+  },
+  {
+   "label": "Fresh Start",
+   "set": "Fresh Start",
+   "parallel": "",
+   "odds": {
+    "mega": 17,
+    "value_blaster": 29
+   }
+  },
+  {
+   "label": "Fresh Start Refractor",
+   "set": "Fresh Start",
+   "parallel": "Refractor",
+   "odds": {
+    "value_blaster": 91,
+    "mega": 39
+   }
+  },
+  {
+   "label": "Fresh Start Blue Basketball Refractor",
+   "set": "Fresh Start",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 17
+   }
+  },
+  {
+   "label": "Fresh Start Topps Green Refractor",
+   "set": "Fresh Start",
+   "parallel": "Topps Green Refractor",
+   "odds": {
+    "value_blaster": 181
+   }
+  },
+  {
+   "label": "Fresh Start Pink Refractor",
+   "set": "Fresh Start",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "value_blaster": 361
+   }
+  },
+  {
+   "label": "Fresh Start Pink Basketball Refractor",
+   "set": "Fresh Start",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 980
+   }
+  },
+  {
+   "label": "Fresh Start SuperFractor /1",
+   "set": "Fresh Start",
+   "parallel": "SuperFractor",
+   "odds": {
+    "value_blaster": 467626,
+    "mega": 348670
+   }
+  },
+  {
+   "label": "Helix",
+   "set": "Helix",
+   "parallel": "",
+   "odds": {
+    "hobby": 386
+   }
+  },
+  {
+   "label": "Helix SuperFractor /1",
+   "set": "Helix",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29028
+   }
+  },
+  {
+   "label": "Instinct",
+   "set": "Instinct",
+   "parallel": "",
+   "odds": {
+    "hobby": 4
+   }
+  },
+  {
+   "label": "Instinct Refractor",
+   "set": "Instinct",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 39
+   }
+  },
+  {
+   "label": "Instinct Purple Geometric Refractor",
+   "set": "Instinct",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 8
+   }
+  },
+  {
+   "label": "Instinct Green Refractor /99",
+   "set": "Instinct",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 195
+   }
+  },
+  {
+   "label": "Instinct Gold Refractor /50",
+   "set": "Instinct",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 386
+   }
+  },
+  {
+   "label": "Instinct Gold Geometric Refractor /50",
+   "set": "Instinct",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 15
+   }
+  },
+  {
+   "label": "Instinct Orange Refractor /25",
+   "set": "Instinct",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 771
+   }
+  },
+  {
+   "label": "Instinct Orange Geometric Refractor /25",
+   "set": "Instinct",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 29
+   }
+  },
+  {
+   "label": "Instinct White Geometric Refractor /10",
+   "set": "Instinct",
+   "parallel": "White Geometric Refractor",
+   "odds": {
+    "breaker": 71
+   }
+  },
+  {
+   "label": "Instinct Red Refractor /5",
+   "set": "Instinct",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 3857
+   }
+  },
+  {
+   "label": "Instinct Red Geometric Refractor /5",
+   "set": "Instinct",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 142
+   }
+  },
+  {
+   "label": "Instinct Black Geometric Refractor /2",
+   "set": "Instinct",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 357
+   }
+  },
+  {
+   "label": "Instinct SuperFractor /1",
+   "set": "Instinct",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 19698
+   }
+  },
+  {
+   "label": "Let's Go",
+   "set": "Let's Go!",
+   "parallel": "",
+   "odds": {
+    "hobby": 470
+   }
+  },
+  {
+   "label": "Let's Go SuperFractor /1",
+   "set": "Let's Go!",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 39395
+   }
+  },
+  {
+   "label": "Lock It Up",
+   "set": "Lock It Up",
+   "parallel": "",
+   "odds": {
+    "hobby": 12
+   }
+  },
+  {
+   "label": "Lock It Up Refractor",
+   "set": "Lock It Up",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 116
+   }
+  },
+  {
+   "label": "Lock It Up Purple Geometric Refractor",
+   "set": "Lock It Up",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 22
+   }
+  },
+  {
+   "label": "Lock It Up Green Refractor /99",
+   "set": "Lock It Up",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 584
+   }
+  },
+  {
+   "label": "Lock It Up Gold Refractor /50",
+   "set": "Lock It Up",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 1157
+   }
+  },
+  {
+   "label": "Lock It Up Gold Geometric Refractor /50",
+   "set": "Lock It Up",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 43
+   }
+  },
+  {
+   "label": "Lock It Up Orange Refractor /25",
+   "set": "Lock It Up",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 2318
+   }
+  },
+  {
+   "label": "Lock It Up Orange Geometric Refractor /25",
+   "set": "Lock It Up",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 86
+   }
+  },
+  {
+   "label": "Lock It Up White Geometric Refractor /10",
+   "set": "Lock It Up",
+   "parallel": "White Geometric Refractor",
+   "odds": {
+    "breaker": 214
+   }
+  },
+  {
+   "label": "Lock It Up Red Refractor /5",
+   "set": "Lock It Up",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 11735
+   }
+  },
+  {
+   "label": "Lock It Up Red Geometric Refractor /5",
+   "set": "Lock It Up",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 432
+   }
+  },
+  {
+   "label": "Lock It Up Black Geometric Refractor /2",
+   "set": "Lock It Up",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 1069
+   }
+  },
+  {
+   "label": "Lock It Up SuperFractor /1",
+   "set": "Lock It Up",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 61280
+   }
+  },
+  {
+   "label": "Radiating Rookies",
+   "set": "Radiating Rookies",
+   "parallel": "",
+   "odds": {
+    "hobby": 771
+   }
+  },
+  {
+   "label": "Radiating Rookies SuperFractor /1",
+   "set": "Radiating Rookies",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 61280
+   }
+  },
+  {
+   "label": "Rock Stars",
+   "set": "Rock Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 353
+   }
+  },
+  {
+   "label": "Rock Stars SuperFractor /1",
+   "set": "Rock Stars",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29028
+   }
+  },
+  {
+   "label": "Show & Tell",
+   "set": "Show and Tell",
+   "parallel": "",
+   "odds": {
+    "mega": 17,
+    "value_blaster": 29
+   }
+  },
+  {
+   "label": "Show & Tell Refractor",
+   "set": "Show and Tell",
+   "parallel": "Refractor",
+   "odds": {
+    "value_blaster": 91,
+    "mega": 39
+   }
+  },
+  {
+   "label": "Show & Tell Blue Basketball Refractor",
+   "set": "Show and Tell",
+   "parallel": "Blue Basketball Refractor",
+   "odds": {
+    "mega": 17
+   }
+  },
+  {
+   "label": "Show & Tell Topps Green Refractor",
+   "set": "Show and Tell",
+   "parallel": "Topps Green Refractor",
+   "odds": {
+    "value_blaster": 181
+   }
+  },
+  {
+   "label": "Show & Tell Pink Refractor",
+   "set": "Show and Tell",
+   "parallel": "Pink Refractor",
+   "odds": {
+    "value_blaster": 361
+   }
+  },
+  {
+   "label": "Show & Tell Pink Basketball Refractor",
+   "set": "Show and Tell",
+   "parallel": "Pink Basketball Refractor",
+   "odds": {
+    "value_blaster": 980
+   }
+  },
+  {
+   "label": "Show & Tell SuperFractor /1",
+   "set": "Show and Tell",
+   "parallel": "SuperFractor",
+   "odds": {
+    "value_blaster": 467626,
+    "mega": 348670
+   }
+  },
+  {
+   "label": "Test Drive",
+   "set": "Test Drive",
+   "parallel": "",
+   "odds": {
+    "hobby": 6
+   }
+  },
+  {
+   "label": "Test Drive Refractor",
+   "set": "Test Drive",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 58
+   }
+  },
+  {
+   "label": "Test Drive Purple Geometric Refractor",
+   "set": "Test Drive",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 9
+   }
+  },
+  {
+   "label": "Test Drive Green Refractor /99",
+   "set": "Test Drive",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 292
+   }
+  },
+  {
+   "label": "Test Drive Gold Refractor /50",
+   "set": "Test Drive",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 578
+   }
+  },
+  {
+   "label": "Test Drive Gold Geometric Refractor /50",
+   "set": "Test Drive",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 18
+   }
+  },
+  {
+   "label": "Test Drive Orange Refractor /25",
+   "set": "Test Drive",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1157
+   }
+  },
+  {
+   "label": "Test Drive Orange Geometric Refractor /25",
+   "set": "Test Drive",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 35
+   }
+  },
+  {
+   "label": "Test Drive White Geometric Refractor /10",
+   "set": "Test Drive",
+   "parallel": "White Geometric Refractor",
+   "odds": {
+    "breaker": 86
+   }
+  },
+  {
+   "label": "Test Drive Red Refractor /5",
+   "set": "Test Drive",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 5806
+   }
+  },
+  {
+   "label": "Test Drive Red Geometric Refractor /5",
+   "set": "Test Drive",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 171
+   }
+  },
+  {
+   "label": "Test Drive Black Geometric Refractor /2",
+   "set": "Test Drive",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 432
+   }
+  },
+  {
+   "label": "Test Drive SuperFractor /1",
+   "set": "Test Drive",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 29028
+   }
+  },
+  {
+   "label": "Ultraviolet All-Stars",
+   "set": "Ultra Violet All-Stars",
+   "parallel": "",
+   "odds": {
+    "hobby": 470
+   }
+  },
+  {
+   "label": "Ultraviolet All-Stars SuperFractor /1",
+   "set": "Ultra Violet All-Stars",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 39395
+   }
+  },
+  {
+   "label": "YouthQuake",
+   "set": "Youthquake",
+   "parallel": "",
+   "odds": {
+    "hobby": 8
+   }
+  },
+  {
+   "label": "YouthQuake Refractor",
+   "set": "Youthquake",
+   "parallel": "Refractor",
+   "odds": {
+    "hobby": 77
+   }
+  },
+  {
+   "label": "YouthQuake Purple Geometric Refractor",
+   "set": "Youthquake",
+   "parallel": "Purple Geometric Refractor",
+   "odds": {
+    "breaker": 15
+   }
+  },
+  {
+   "label": "YouthQuake Green Refractor /99",
+   "set": "Youthquake",
+   "parallel": "Green Refractor",
+   "odds": {
+    "hobby": 389
+   }
+  },
+  {
+   "label": "YouthQuake Gold Refractor /50",
+   "set": "Youthquake",
+   "parallel": "Gold Refractor",
+   "odds": {
+    "hobby": 771
+   }
+  },
+  {
+   "label": "YouthQuake Gold Geometric Refractor /50",
+   "set": "Youthquake",
+   "parallel": "Gold Geometric Refractor",
+   "odds": {
+    "breaker": 29
+   }
+  },
+  {
+   "label": "YouthQuake Orange Refractor /25",
+   "set": "Youthquake",
+   "parallel": "Orange Refractor",
+   "odds": {
+    "hobby": 1541
+   }
+  },
+  {
+   "label": "YouthQuake Orange Geometric Refractor /25",
+   "set": "Youthquake",
+   "parallel": "Orange Geometric Refractor",
+   "odds": {
+    "breaker": 57
+   }
+  },
+  {
+   "label": "YouthQuake White Geometric Refractor /10",
+   "set": "Youthquake",
+   "parallel": "White Geometric Refractor",
+   "odds": {
+    "breaker": 142
+   }
+  },
+  {
+   "label": "YouthQuake Red Refractor /5",
+   "set": "Youthquake",
+   "parallel": "Red Refractor",
+   "odds": {
+    "hobby": 7768
+   }
+  },
+  {
+   "label": "YouthQuake Red Geometric Refractor /5",
+   "set": "Youthquake",
+   "parallel": "Red Geometric Refractor",
+   "odds": {
+    "breaker": 286
+   }
+  },
+  {
+   "label": "YouthQuake Black Geometric Refractor /2",
+   "set": "Youthquake",
+   "parallel": "Black Geometric Refractor",
+   "odds": {
+    "breaker": 725
+   }
+  },
+  {
+   "label": "YouthQuake SuperFractor /1",
+   "set": "Youthquake",
+   "parallel": "SuperFractor",
+   "odds": {
+    "hobby": 39395
+   }
+  }
+ ]
+}
