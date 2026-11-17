@@ -439,6 +439,7 @@ export type ViewName =
   | '🎲 État du Break'
   | '🎯 Odds'
   | '🔗 Mapping Odds'
+  | '📦 Guide des boîtes'
 
 export interface PlayerSeason {
   season: string
@@ -546,4 +547,62 @@ export interface MarvelAttributionCard {
   team: string
   note: string
   is_overridden: boolean
+}
+
+// ---------------------------------------------------------------------------
+// Guide des boîtes (import thehobbychecklist.com)
+// ---------------------------------------------------------------------------
+
+export interface BoxContentLine {
+  fr: string
+  vo: string | null
+  auto: boolean
+}
+
+export interface BoxFormat {
+  name: string
+  aliases: string[]
+  description: string | null
+  release_date: string | null
+  cards_per_pack: number | null
+  packs_per_box: number | null
+  boxes_per_case: number | null
+  cards_per_box: number | null
+  price_usd: number | null
+  autos_per_box: number | null
+  autos_per_case: number | null
+  case_from_shops: boolean
+  contents: BoxContentLine[]
+  image: string | null
+}
+
+export interface BoxGuide {
+  checklist_id: string | null
+  source_slug: string
+  name: string | null
+  season: string | null
+  brand: string | null
+  checklist_updated: string | null
+  odds_published: boolean
+  cover_image: string | null
+  formats: BoxFormat[]
+  presentation: string[]
+}
+
+export interface BoxGuideSummary {
+  checklist_id: string | null
+  source_slug: string
+  name: string | null
+  season: string | null
+  brand: string | null
+  cover_image: string | null
+  release_date: string | null
+  formats: Pick<BoxFormat, 'name' | 'cards_per_box' | 'packs_per_box' | 'boxes_per_case' | 'autos_per_box' | 'price_usd'>[]
+  hobby_autos_per_box: number | null
+}
+
+export interface BoxGuidesResponse {
+  sport_key: string
+  source: { _source?: string; _imported_at?: string }
+  guides: BoxGuideSummary[]
 }

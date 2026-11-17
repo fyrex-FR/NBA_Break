@@ -23,6 +23,8 @@ import type {
   PollOptionsResponse,
   PollChecklistChoice,
   PollResultsResponse,
+  BoxGuide,
+  BoxGuidesResponse,
 } from '../types'
 
 const BASE = (import.meta.env.VITE_API_BASE ?? '') + '/api'
@@ -418,4 +420,16 @@ export function saveOddsMapping(
     method: 'POST',
     body: JSON.stringify({ sport_key: sportKey, checklist_id: checklistId, mapping }),
   })
+}
+
+// ---------------------------------------------------------------------------
+// Guide des boîtes
+// ---------------------------------------------------------------------------
+
+export function fetchBoxGuides(sportKey: string): Promise<BoxGuidesResponse> {
+  return fetchJSON(`/box-guides/${sportKey}`)
+}
+
+export function fetchBoxGuide(sportKey: string, guideId: string): Promise<BoxGuide> {
+  return fetchJSON(`/box-guides/${sportKey}/${encodeURIComponent(guideId)}`)
 }

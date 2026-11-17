@@ -11,7 +11,7 @@ load_dotenv()  # Load .env file before anything else
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import sports, analysis, simulation, presets, export, upload, overrides, players, rookies, smart_upload, chat, jarvis, break_scout, audit, marvel_attributions, odds, polls
+from .routers import sports, analysis, simulation, presets, export, upload, overrides, players, rookies, smart_upload, chat, jarvis, break_scout, audit, marvel_attributions, odds, polls, box_guides
 
 from .services.nba_relay import configure_nba_relay
 
@@ -55,3 +55,4 @@ app.include_router(audit.router)
 app.include_router(marvel_attributions.router)
 app.include_router(odds.router)
 app.include_router(polls.router)
+app.include_router(box_guides.router)

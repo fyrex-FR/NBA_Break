@@ -8,7 +8,7 @@
 import type { LucideIcon } from 'lucide-react'
 import {
   LayoutDashboard, Gem, Users, Sparkles, TrendingUp, User, Shield, Scale,
-  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama,
+  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package,
 } from 'lucide-react'
 import type { ViewName } from './types'
 
@@ -92,6 +92,10 @@ export const NAV_ITEMS: NavItem[] = [
     description: 'Fichier Excel personnalisé de la sélection.', needsAnalysis: true,
   },
 
+  {
+    view: '📦 Guide des boîtes', slug: 'boxes', label: 'Guide des boîtes', icon: Package, section: 'donnees', sports: ['nba'],
+    description: 'Formats de boîte, contenu moyen, autos garantis, prix et dates de sortie.', needsAnalysis: false,
+  },
   {
     view: '📚 Checklist Beckett', slug: 'beckett', label: 'Checklist', icon: BookOpen, section: 'donnees', enabledKey: 'checklist_browser',
     description: 'Parcours la checklist complète, carte par carte.', needsAnalysis: true,

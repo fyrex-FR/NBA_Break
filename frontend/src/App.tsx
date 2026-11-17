@@ -30,6 +30,7 @@ import { SmartImportView } from './components/views/SmartImportView'
 import { BreakOverviewView } from './components/views/BreakOverviewView'
 import { OddsView } from './components/views/OddsView'
 import { OddsMappingView } from './components/views/OddsMappingView'
+import { BoxGuideView } from './components/views/BoxGuideView'
 import ChatWidget from './components/shared/ChatWidget'
 import type { ViewName } from './types'
 
@@ -64,6 +65,7 @@ function renderView(view: ViewName) {
     case '📤 Export': return <ExportView />
     case '📥 Import Intelligent': return <SmartImportView />
     case '🎲 État du Break': return <BreakOverviewView />
+    case '📦 Guide des boîtes': return <BoxGuideView />
     default: return <GlobalView />
   }
 }
@@ -72,7 +74,7 @@ function MainContent() {
   const { analysisData, activeView, isAnalyzing, breakContext } = useAppStore()
   const item = navItemFor(activeView)
 
-  const standalone = activeView === '📥 Import Intelligent' || (activeView === '🎲 État du Break' && !!breakContext)
+  const standalone = activeView === '📥 Import Intelligent' || activeView === '📦 Guide des boîtes' || (activeView === '🎲 État du Break' && !!breakContext)
 
   let body: React.ReactNode
   if (isAnalyzing && !standalone) {

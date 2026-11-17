@@ -15,7 +15,8 @@ import { CATEGORY_META } from '../../constants/categories'
 const CATEGORY_RANK = new Map(CATEGORY_META.map((m, i) => [m.category, i]))
 const categoryRank = (cat?: string) => CATEGORY_RANK.get(cat ?? '') ?? CATEGORY_META.length
 import { X, Check } from 'lucide-react'
-import { fetchBreakPlayers, fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
+import { useQuery } from '@tanstack/react-query'
+import { fetchBoxGuides, fetchBreakPlayers, fetchBreakSimulation, fetchSimulationPresets, saveSimulationPreset, deleteSimulationPreset } from '../../api/client'
 import type { BreakSpotRecord, BreakSimulationResponse, SimulationPreset, BreakCardDetail, BreakPlayerStats } from '../../types'
 
 const columnHelper = createColumnHelper<BreakSpotRecord>()
@@ -244,6 +245,37 @@ export function BreakSimulationView() {
   )
 
   const hasAnyGuaranteed = Object.values(hitsGuaranteed).some(v => parseInt(v) > 0)
+
+  // Guide des boîtes : autos garantis d'une boîte Hobby, pour pré-remplir la pondération.
+  const { data: boxGuides } = useQuery({
+    queryKey: ['box-guides', selectedSport],
+    queryFn: () => fetchBoxGuides(selectedSport),
+    enabled: selectedSport === 'nba',
+    staleTime: 60 * 60 * 1000,
+  })
+  const guideAutos = useMemo(() => {
+    const m = new Map<string, number>()
+    for (const g of boxGuides?.guides ?? []) {
+      if (g.checklist_id && g.hobby_autos_per_box) m.set(g.checklist_id, g.hobby_autos_per_box)
+    }
+    return m
+  }, [boxGuides])
+  useEffect(() => {
+    if (guideAutos.size === 0) return
+    setHitsGuaranteed(prev => {
+      let next = prev
+      for (const id of selectedChecklistIds) {
+        const n = guideAutos.get(id)
+        if (n && prev[id] === undefined) {
+          if (next === prev) next = { ...prev }
+          next[id] = String(n)
+        }
+      }
+      return next
+    })
+  }, [selectedChecklistIds, guideAutos])
+  const fromGuide = (id: string) => guideAutos.has(id) && hitsGuaranteed[id] === String(guideAutos.get(id))
+  const anyFromGuide = selectedChecklistIds.some(fromGuide)
   const filteredPlayers = useMemo(() => {
     const query = playerSearch.trim().toLocaleLowerCase('fr')
     const filtered = query
@@ -638,7 +670,11 @@ export function BreakSimulationView() {
           >
             <span className="flex flex-col">
               <span className="text-[13px] font-medium" style={{ color: 'var(--text-primary)' }}>Hits garantis par box</span>
-              <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Pondère le score de chaque checklist selon ses autos/memo garantis</span>
+              <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+                {anyFromGuide
+                  ? 'Pré-rempli avec les autos garantis d’une boîte Hobby (guide des boîtes)'
+                  : 'Pondère le score de chaque checklist selon ses autos/memo garantis'}
+              </span>
             </span>
             <ChevronDown className={`w-4 h-4 transition-transform ${panelOpen ? 'rotate-180' : ''}`} style={{ color: 'var(--text-quaternary)' }} />
           </button>
@@ -661,7 +697,9 @@ export function BreakSimulationView() {
                       inputMode="numeric"
                       className="ui-input !w-16 text-center"
                     />
-                    <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>hits/box</span>
+                    <span className="text-xs w-14" style={{ color: 'var(--text-quaternary)' }}>
+                      {fromGuide(cl!.checklist_id) ? <span title="Valeur du guide des boîtes (autos d’une Hobby)" style={{ color: 'var(--cat-auto)' }}>guide</span> : 'hits/box'}
+                    </span>
                   </div>
                 </div>
               ))}
