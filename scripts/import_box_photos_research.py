@@ -16,7 +16,8 @@ Une page par seconde, cache local des pages et des images.
 Sortie : frontend/public/boxes/<id>-*.webp + data/box_research_photos.json,
 repris par scripts/import_box_research.py.
 
-Usage : python3 scripts/import_box_photos_research.py [--only <checklist_id>]
+Usage : python3 scripts/import_box_photos_research.py [--sport nba|soccer] [--only <checklist_id>]
+        Page source: champ `photo_page` de la collection si présent, sinon la page Cardboard Connection citée en source.
 """
 
 from __future__ import annotations
@@ -32,7 +33,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXTRA = ROOT / "backend" / "box_guides_extra.json"
-PHOTOS = ROOT / "data" / "box_research_photos.json"
 IMAGES = ROOT / "frontend" / "public" / "boxes"
 CACHE = Path.home() / ".cache" / "noclim" / "cardboardconnection"
 UA = "Mozilla/5.0 (NoClim box photos)"
@@ -150,16 +150,18 @@ def save(url: str, name: str) -> str | None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--only")
+    ap.add_argument("--sport", default="nba")
     args = ap.parse_args()
+    PHOTOS = ROOT / "data" / ("box_research_photos.json" if args.sport == "nba" else f"box_research_photos_{args.sport}.json")
 
-    guides = json.loads(EXTRA.read_text(encoding="utf-8"))["nba"]
+    guides = json.loads(EXTRA.read_text(encoding="utf-8"))[args.sport]
     photos = json.loads(PHOTOS.read_text(encoding="utf-8")) if PHOTOS.exists() else {}
     IMAGES.mkdir(parents=True, exist_ok=True)
     found = promo = none = 0
     for cid, g in sorted(guides.items()):
         if args.only and cid != args.only:
             continue
-        src = next((s.split()[0] for s in g.get("sources", []) if "cardboardconnection.com" in s), None)
+        src = g.get("photo_page") or next((s.split()[0] for s in g.get("sources", []) if "cardboardconnection.com" in s), None)
         if not src:
             none += 1
             continue
@@ -169,7 +171,7 @@ def main() -> int:
             print(f"✗ {cid} : page KO ({e})")
             none += 1
             continue
-        short = cid.replace("-basketball-checklist", "")
+        short = re.sub(r"-(basketball|soccer)-checklist$|-checklist$", "", cid)
         entry = {"page": src, "formats": {}}
         cover_url = pick_cover(boxes)
         if cover_url:

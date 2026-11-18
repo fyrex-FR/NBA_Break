@@ -10,11 +10,13 @@ avec box_guides.json (The Hobby Checklist reste prioritaire si les deux existent
 Photos : data/box_research_photos.json (scripts/import_box_photos_research.py),
 reprises ici comme photo de couverture et photo par format.
 
-Usage : python3 scripts/import_box_research.py [data/box_research_nba.json]
+Usage : python3 scripts/import_box_research.py [--sport nba|soccer] [fichier.json]
+        (n'écrit que la clé du sport demandé: les autres sports du fichier de sortie sont conservés)
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -22,8 +24,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "data" / "box_research_nba.json"
-PHOTOS = ROOT / "data" / "box_research_photos.json"  # scripts/import_box_photos_research.py
+SPORT_DEFAULT = "nba"
+
+
+def paths(sport: str):
+    """nba garde ses noms historiques; les autres sports: data/box_research_<sport>.json et ..._photos_<sport>.json."""
+    if sport == "nba":
+        return ROOT / "data" / "box_research_nba.json", ROOT / "data" / "box_research_photos.json"
+    return ROOT / "data" / f"box_research_{sport}.json", ROOT / "data" / f"box_research_photos_{sport}.json"
 OUT = ROOT / "backend" / "box_guides_extra.json"
 
 MIXED = re.compile(r"\b(or|ou)\s+(memorabilia|relics?|memo)\b|autographs?/memorabilia|hits?\b", re.I)
@@ -67,6 +75,7 @@ def convert(entry: dict, photos: dict | None = None) -> dict:
         "name": name,
         "season": entry.get("season"),
         "brand": entry.get("brand"),
+        "photo_page": entry.get("photo_page"),
         "checklist_updated": None,
         "odds_published": False,
         "cover_image": photos.get("cover"),
@@ -79,19 +88,25 @@ def convert(entry: dict, photos: dict | None = None) -> dict:
 
 
 def main() -> int:
-    src = Path(sys.argv[1]) if len(sys.argv) > 1 else SRC
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--sport", default=SPORT_DEFAULT)
+    ap.add_argument("src", nargs="?")
+    args = ap.parse_args()
+    default_src, photos_path = paths(args.sport)
+    src = Path(args.src) if args.src else default_src
     data = json.loads(src.read_text(encoding="utf-8"))
-    photos = json.loads(PHOTOS.read_text(encoding="utf-8")) if PHOTOS.exists() else {}
+    photos = json.loads(photos_path.read_text(encoding="utf-8")) if photos_path.exists() else {}
     guides = {cid: convert(e, photos.get(cid)) for cid, e in sorted(data.items()) if e.get("formats")}
-    out = {
+    out = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    out.update({
         "_source": "Recherche web (fabricants, Cardboard Connection, Beckett…), sources par collection",
         "_imported_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "_script": "scripts/import_box_research.py",
-        "nba": guides,
-    }
+        args.sport: guides,
+    })
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     from collections import Counter
-    print(f"{len(guides)} collections écrites ({len(data) - len(guides)} sans configuration trouvée) :",
+    print(f"[{args.sport}] {len(guides)} collections écrites ({len(data) - len(guides)} sans configuration trouvée) :",
           dict(Counter(g["confidence"] for g in guides.values())))
     return 0
 

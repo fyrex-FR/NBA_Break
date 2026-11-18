@@ -1,0 +1,1551 @@
+{
+ "2024-25-topps-museum-collection-uefa-club-competitions-checklist": {
+  "checklist_id": "2024-25-topps-museum-collection-uefa-club-competitions-checklist",
+  "name": "2024-25 Topps Museum Collection UEFA Club Competitions",
+  "season": "2024-25",
+  "brand": "Topps",
+  "release_date": "2025-12-30",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 8,
+    "autos_per_box": 2,
+    "autos_per_case": 16,
+    "price_usd": null,
+    "release_date": "2025-12-30",
+    "contents": [
+     "1 Autograph",
+     "1 Autograph Relic",
+     "1 Relic",
+     "1 Base Card Parallel",
+     "4 Base Cards"
+    ]
+   },
+   {
+    "name": "Hat Trick",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 6,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "3 Autograph Relics",
+     "3 Relics"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.topps.com/products/2024-25-topps-museum-collection-ucc-hobby-box",
+   "https://www.beckett.com/news/2024-25-topps-museum-collection-uefa-club-competitions-soccer-cards",
+   "https://www.steelcitycollectibles.com/i/2024-25-topps-uefa-club-competitions-museum-collection-soccer-hobby-box"
+  ],
+  "confidence": "high",
+  "notes": "Autos per box for Hobby counts Autograph + Autograph Relic (2 signed cards, relic-only card excluded); Hat Trick = 3 Autos + 3 Auto Relics. Boxes per case 8 per Beckett only (Hobby). Hat Trick: Beckett says 9 cards per box; pack/case structure unpublished. Release date 2025-12-30 (released late despite 2024-25 label). Retail seen: $589.95 at Steel City (reseller, not MSRP) so price null."
+ },
+ "2025-25-topps-merlin-uefa-club-competitions-checklist": {
+  "checklist_id": "2025-25-topps-merlin-uefa-club-competitions-checklist",
+  "name": "2025-26 Topps Merlin UEFA Club Competitions",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-12-03",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 18,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": 12,
+    "price_usd": null,
+    "release_date": "2026-12-03",
+    "contents": [
+     "1 Autograph",
+     "4 Numbered Parallels",
+     "4 Refractor Base Parallels",
+     "2 Speckle Refractors",
+     "1 Vintage Merlin Refractor",
+     "6 Inserts"
+    ]
+   },
+   {
+    "name": "Breaker Delight",
+    "cards_per_pack": 12,
+    "packs_per_box": 1,
+    "boxes_per_case": 6,
+    "autos_per_box": 2,
+    "autos_per_case": 12,
+    "price_usd": null,
+    "release_date": "2026-12-03",
+    "contents": [
+     "2 Autographs",
+     "Geometric Refractor Parallels",
+     "Merlin Gold Autographs (exclusive)"
+    ]
+   },
+   {
+    "name": "Value",
+    "cards_per_pack": 4,
+    "packs_per_box": 7,
+    "boxes_per_case": 40,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-12-03",
+    "contents": [
+     "3 Mini-Diamond Refractor Parallels (exclusive)",
+     "1 Numbered Parallel",
+     "Merlin's Gamers inserts (exclusive)"
+    ]
+   },
+   {
+    "name": "Master & Apprentice",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.topps.com/pages/topps-ucc-merlin",
+   "https://www.topps.com/products/topps-merlin-uefa-club-competitions-2025-26-valuebox",
+   "https://www.checklistinsider.com/2025-26-topps-merlin-uefa",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-merlin-uefa-club-competitions-soccer/",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-merlin-uefa-club-competitions-soccer-delight-box/",
+   "https://www.steelcitycollectibles.com/i/2025-26-topps-merlin-uefa-club-competitions-soccer-hobby-box"
+  ],
+  "confidence": "high",
+  "notes": "ID typo '2025-25': real season is 2025-26 (Topps pre-order page 'Merlin UCC 2025/26', release Dec 3 2026; the prior 2024-25 Merlin edition shipped Dec 19 2025 and is a different set). Autos per case computed = autos/box x boxes/case. Hobby/Value Topps pages show Pre-Order/Sold out status. Master & Apprentice format only mentioned by Checklist Insider (1 auto), specs unknown. Value contents: Topps text says 3 Mini-Diamond refractors (truncated page) and 1 numbered parallel; verify. No manufacturer prices found.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-merlin-uefa-club-competitions-soccer"
+ },
+ "2025-26-donruss-road-to-world-cup-soccer-checklist": {
+  "checklist_id": "2025-26-donruss-road-to-world-cup-soccer-checklist",
+  "name": "2025-26 Panini Donruss Road to FIFA World Cup 26 Soccer",
+  "season": "2025-26",
+  "brand": "Panini",
+  "release_date": "2026-04-22",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 30,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-04-22",
+    "contents": [
+     "1 Autograph",
+     "1 Memorabilia Card",
+     "6 Numbered Parallels",
+     "12 Optic Holo",
+     "48 Inserts/Insert Parallels"
+    ]
+   },
+   {
+    "name": "Hobby International",
+    "cards_per_pack": 30,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "3 Numbered Parallels",
+     "12 Optic Argyle",
+     "48 Inserts/Insert Parallels"
+    ]
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": 15,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "6 Rated Rookies",
+     "1 Numbered Parallel",
+     "1 Optic Holo",
+     "18 Inserts/Insert Parallels"
+    ]
+   },
+   {
+    "name": "Fat Pack",
+    "cards_per_pack": 25,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Rated Rookies",
+     "2 Parallels",
+     "3 Optic Base or Rated Rookies",
+     "3 Inserts/Insert Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2025-26-donruss-road-to-fifa-world-cup-26-soccer-cards",
+   "https://gogts.net/2025-26-donruss-road-to-fifa-world-cup-soccer-cards-hobby-international/",
+   "https://www.blowoutcards.com/2025-26-panini-donruss-road-to-fifa-world-cup-26-soccer-hobby-blaster-20-box-case.html",
+   "https://www.dacardworld.com/sports-cards/2025-26-panini-donruss-road-to-fifa-world-cup-soccer-hobby-box",
+   "https://www.checklistinsider.com/2025-26-donruss-road-to-world-cup"
+  ],
+  "confidence": "medium",
+  "notes": "Hobby: Beckett lists 12 cards/pack and 30 packs/box, while Panini distributor GTS, DACW and Chicagoland list 12 packs x 30 cards; Checklist Insider says 4 inserts per pack/48 per box => 12 packs, so used 12 packs x 30 cards (360 cards total either way). Fat Pack per Beckett: 25 cards, 12 packs/box ambiguous (Amazon lists 25 total cards per cello/fat pack) - low reliability. Hobby International release date not found. Prices (CI: Hobby $449.99, Intl $299.95) not from manufacturer -> null. Blaster data (6 packs x 15 cards, 20 boxes) agrees across Blowout, GTS, Beckett.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-panini-donruss-road-to-fifa-world-cup-soccer"
+ },
+ "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist": {
+  "checklist_id": "2025-26-panini-noir-road-to-fifa-world-cup-soccer-checklist",
+  "name": "2025-26 Panini Noir Road to FIFA World Cup 26 Soccer",
+  "season": "2025-26",
+  "brand": "Panini",
+  "release_date": "2026-05-13",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 3,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-05-13",
+    "contents": [
+     "3 Autographs",
+     "2 Relics",
+     "3 Parallels or Inserts"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 3,
+    "autos_per_box": 3,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs",
+     "2 Relics",
+     "1 FOTL Framed Base Parallel (/2 or less)",
+     "2 Parallels or Inserts"
+    ]
+   },
+   {
+    "name": "Hobby International",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 3,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs or Relics",
+     "2 Exclusive Base Parallels",
+     "3 Parallels or Inserts"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.checklistinsider.com/2025-26-panini-noir-road-to-fifa-world-cup",
+   "https://gogts.net/wp-content/uploads/2026/04/2025-26-Panini-Noir-Road-to-FIFA-World-Cup-Soccer-Cards-Hobby-Intl-Sell-Sheet.pdf",
+   "https://www.bestbuy.com/product/2025-26-panini-noir-road-to-fifa-world-cup-soccer-hobby-box/JX58X29PLK/sku/12691807"
+  ],
+  "confidence": "medium",
+  "notes": "Config from Checklist Insider only (10 cards, 1 pack, 3 boxes/case); Best Buy listing confirms 10 cards, 3 autos + 2 memorabilia per box. Retail prices (~$1,700-2,250) are reseller/eBay, not manufacturer -> null. Sell sheets not parsed.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-panini-noir-road-to-fifa-world-cup"
+ },
+ "2025-26-panini-obsidian-soccer-checklist": {
+  "checklist_id": "2025-26-panini-obsidian-soccer-checklist",
+  "name": "2025-26 Panini Obsidian Soccer",
+  "season": "2025-26",
+  "brand": "Panini",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 Autographs or Memorabilia Cards",
+     "1 Parallel",
+     "1 Insert or Insert Parallel",
+     "1 Base Card"
+    ]
+   },
+   {
+    "name": "Hobby International",
+    "cards_per_pack": 5,
+    "packs_per_box": 1,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.checklistinsider.com/2025-26-panini-obsidian-soccer",
+   "https://giantsportscards.com/products/2025-26-panini-obsidian-soccer-hobby-box",
+   "https://www.diamondcardsonline.com/2025-26-panini-obsidian-soccer-hobby-box/",
+   "https://theballersbank.com/products/2025-26-panini-obsidian-soccer-hobby-box-presell-ships-sealed-only"
+  ],
+  "confidence": "high",
+  "notes": "Hobby 7 cards/1 pack/12 boxes per Checklist Insider; contents (4 autos-or-memo, 1 parallel, 1 insert, 1 base = 7) consistent across 3 retailers. 'Autograph' count is autos-or-memorabilia, so autos_per_box null. Hobby International contents/release date not found. Release date not verified.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-panini-obsidian-soccer"
+ },
+ "2025-26-panini-pitch-kings-soccer-checklist": {
+  "checklist_id": "2025-26-panini-pitch-kings-soccer-checklist",
+  "name": "2025-26 Panini Pitch Kings La Liga Soccer",
+  "season": "2025-26",
+  "brand": "Panini",
+  "release_date": "2026-06-26",
+  "formats": [
+   {
+    "name": "Hobby International",
+    "cards_per_pack": 10,
+    "packs_per_box": 1,
+    "boxes_per_case": 16,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Base Parallels",
+     "2 Inserts/Insert Parallels",
+     "2 Rookies I Inserts",
+     "1 Rookies II/III/IV Insert",
+     "2 Base Cards"
+    ]
+   },
+   {
+    "name": "Blaster International",
+    "cards_per_pack": 6,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Rookies I Insert",
+     "1 Rookies II/III/IV Insert",
+     "1 Base Parallel",
+     "3 Inserts/Insert Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.checklistinsider.com/2025-26-panini-pitch-kings",
+   "https://www.paniniamerica.net/2025-26-panini-pitch-kings-soccer-trading-card-box-hobby-international",
+   "https://overtimesportscards.ca/products/2025-26-panini-pitch-kings-soccer-hobby-international-box"
+  ],
+  "confidence": "medium",
+  "notes": "10 cards/box, 1 auto per box confirmed by Panini America product text and Overtime Sports Cards. Packs/case and Blaster config only from Checklist Insider. Panini America page lists $79.95 under the Hobby International title but its image/SKU appears to be the international blaster, while CI says Hobby Intl is $199.95 -> price left null for both. Release date June 26, 2026 is Checklist Insider 'estimated'."
+ },
+ "2025-26-panini-select-ligue-1-soccer-checklist": {
+  "checklist_id": "2025-26-panini-select-ligue-1-soccer-checklist",
+  "name": "2025-26 Panini Select Ligue 1 Soccer",
+  "season": "2025-26",
+  "brand": "Panini",
+  "release_date": "2026-06-05",
+  "formats": [
+   {
+    "name": "H2 Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-06-05",
+    "contents": [
+     "2 Autographs or Memorabilia Cards",
+     "6 Inserts or Insert Parallels",
+     "3 Numbered Base Parallels",
+     "9 Additional Base Parallels"
+    ]
+   },
+   {
+    "name": "Hobby International Mega",
+    "cards_per_pack": 4,
+    "packs_per_box": 10,
+    "boxes_per_case": 20,
+    "autos_per_box": 0,
+    "autos_per_case": null,
+    "price_usd": 84.95,
+    "release_date": null,
+    "contents": [
+     "1 Memorabilia Card",
+     "5 Inserts or Insert Parallels",
+     "2 Numbered Base Parallels",
+     "6 Other Base Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2025-26-panini-select-ligue-1-soccer-cards",
+   "https://gogts.net/2025-26-panini-select-ligue-1-soccer-cards-hobby-international-mega-box",
+   "https://www.paniniamerica.net/2025-26-panini-select-ligue-1-trading-card-box-hobby-international-mega-box.html",
+   "https://www.checklistinsider.com/2025-26-panini-select-ligue-1"
+  ],
+  "confidence": "high",
+  "notes": "H2 config from Beckett (Checklist Insider concurs on 1 auto + 1 relic per H2 box; CI H2 price $174.95 not manufacturer -> null). Mega price $84.95 from Panini America listing. Mega: GTS sell-sheet 20 boxes/10 packs/4 cards. Release: Beckett June 5, 2026 vs Trading Card Journal June 6 (Japan). Mega autos_per_box set to 0 as box has 1 memorabilia and no auto stated."
+ },
+ "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist": {
+  "checklist_id": "2025-26-panini-select-road-to-fifa-world-cup-soccer-checklist",
+  "name": "2025-26 Panini Select Road to FIFA World Cup 26 Soccer",
+  "season": "2025-26",
+  "brand": "Panini",
+  "release_date": "2026-07-22",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 5,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-07-22",
+    "contents": [
+     "3 Autographed or Memorabilia Cards",
+     "7 Inserts or Insert Parallels",
+     "14 Parallels (including 5 Numbered)"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": 4,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Inserts/Parallels",
+     "3 Base Purple Mojo",
+     "1 Base Pink or Orange Mojo"
+    ]
+   },
+   {
+    "name": "Mega",
+    "cards_per_pack": 10,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "6 Inserts/Parallels",
+     "12 Base Pink Ice",
+     "2 Numbered Parallels"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2025-26-panini-select-road-to-fifa-world-cup-26-soccer-cards",
+   "https://gogts.net/2025-26-panini-select-road-to-fifa-world-cup-soccer-cards/",
+   "https://gogts.net/2025-26-panini-select-road-to-fifa-world-cup-soccer-cards-retail/",
+   "https://thehobby.com.au/products/2025-26-panini-select-road-to-fifa-world-cup-soccer-blaster-box",
+   "https://www.sportscardsdirect.co.uk/products/panini-select-road-to-fifa-world-cup-2025-26-mega-box",
+   "https://www.checklistinsider.com/2025-26-panini-select-road-to-fifa-world-cup"
+  ],
+  "confidence": "high",
+  "notes": "Hobby 12/12/5 agreed by Beckett and GTS; Blaster 20/6/4 (GTS + The Hobby AU); Mega 20/6/10 (GTS + SportsCardsDirect). Release July 22, 2026 per Beckett ('subject to change'; earlier delayed). Hobby $499.95 from Checklist Insider only -> null. FOTL format exists (CI) but config not found; autos in Hobby are autograph-or-memorabilia (3), so autos_per_box null.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-panini-select-road-to-fifa-world-cup-2026-soccer"
+ },
+ "2025-26-topps-arsenal-fc-team-set": {
+  "checklist_id": "2025-26-topps-arsenal-fc-team-set",
+  "name": "Topps Arsenal FC Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-03-05",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": 0.5,
+    "autos_per_case": 10.0,
+    "price_usd": null,
+    "release_date": "2026-03-05",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://uk.topps.com/pages/topps-arsenal-2025-26-team-set",
+   "https://ripped.topps.com/uk/dropping-soon-arsenal-fc-2025-26-team-set",
+   "https://de.topps.com/products/topps-arsenal-2025-26-team-set",
+   "https://www.collectosk.com/2025-26-topps-arsenal-fc-team-set-soccer-cards/",
+   "https://fanter.co.uk/topps/arsenal-team-set-2025-2026"
+  ],
+  "confidence": "high",
+  "notes": "Prix: £50 / 55 EUR. 20 boxes/case (collectosk, Fanter). Rainbow Flick 1 par case (Topps). Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-carnaval-uefa": {
+  "checklist_id": "2025-26-topps-carnaval-uefa",
+  "name": "2025-26 Topps UEFA Club Competitions Carnaval Edition",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-04-13",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 8,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-04-13",
+    "contents": [
+     "4 Numbered Parallels",
+     "3 Inserts",
+     "2 Roots Samba inserts",
+     "1 Brazilian Artist insert",
+     "Carnaval Autographs (about 1 per 3 boxes)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.checklistinsider.com/2025-26-topps-carnaval-uefa",
+   "https://www.collectosk.com/2025-26-topps-carnaval-edition-uefa-club-competitions-soccer-cards",
+   "https://www.taass.com/en/2025-26-topps-carnaval-edition-uefa-club-competitions-football-hobby-box/114883",
+   "https://br.topps.com/products/hobby-box-ucc-carnaval-topps-2025-26-4-parallels-numerados-64-cards-importado"
+  ],
+  "confidence": "high",
+  "notes": "Brazil-only release. Single Hobby box: 8 packs x 8 cards = 64 (Topps Brazil, taass). Autos per box null: guaranteed none, ~1:3 boxes. Boxes per case not found. Price was R$299.90 (~$60) at Topps Brazil per Checklist Insider: BRL/approximate, so price_usd left null."
+ },
+ "2025-26-topps-chelsea-fc-team-set": {
+  "checklist_id": "2025-26-topps-chelsea-fc-team-set",
+  "name": "Topps Chelsea FC Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-01-15",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": 0.5,
+    "autos_per_case": 10.0,
+    "price_usd": null,
+    "release_date": "2026-01-15",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.collectosk.com/2025-26-topps-chelsea-fc-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/chelsea-team-set-2025-2026"
+  ],
+  "confidence": "medium",
+  "notes": "Prix RRP £45 / 50 EUR (collectosk). Date 15 jan 2026 (collectosk). Fanter page non détaillée à l'extraction. Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-chrome-sapphire-uefa-club-competitions-soccer-checklist": {
+  "checklist_id": "2025-26-topps-chrome-sapphire-uefa-club-competitions-soccer-checklist",
+  "name": "Topps Chrome Sapphire UEFA Club Competitions 2025/26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-06-25",
+  "formats": [
+   {
+    "name": "Hobby (Sapphire Edition)",
+    "cards_per_pack": 4,
+    "packs_per_box": 8,
+    "boxes_per_case": 10,
+    "autos_per_box": 1,
+    "autos_per_case": 10,
+    "price_usd": null,
+    "release_date": "2026-06-25",
+    "contents": [
+     "1 Sapphire Autograph",
+     "4 Numbered Parallels",
+     "Sapphire Selections inserts (2 per case)",
+     "Infinite Sapphire (case hit)"
+    ]
+   }
+  ],
+  "sources": [
+   "https://otia.com/news/2025-26-topps-chrome-sapphire-uefa-club-competitions-checklist",
+   "https://sportscardportal.com/news/2025-26-topps-chrome-sapphire-uefa-checklist-odds-details",
+   "https://www.steelcitycollectibles.com/i/2025-26-topps-chrome-uefa-club-competitions-soccer-sapphire-edition-10-box-case",
+   "https://www.steelcitycollectibles.com/i/2025-26-topps-chrome-uefa-club-competitions-soccer-sapphire-edition-box",
+   "https://www.dacardworld.com/sports-cards/2025-26-topps-chrome-uefa-club-competitions-soccer-sapphire-edition-box"
+  ],
+  "confidence": "high",
+  "notes": "Single format. Release 25 Jun 2026 per otia/sportscardportal; steelcity lists 6 Jul 2026 (retailer ship date). Dealer price ~$1,149.95 (dealer, not MSRP) -> price null. '4 Numbered Parallels' from steelcity retailer description."
+ },
+ "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist": {
+  "checklist_id": "2025-26-topps-chrome-uefa-club-competitions-soccer-checklist",
+  "name": "Topps Chrome UEFA Club Competitions 2025/26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-05-07",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": 12,
+    "price_usd": 249.99,
+    "release_date": "2026-05-07",
+    "contents": [
+     "1 Autograph",
+     "10 Inserts",
+     "6 Base Card Refractor Parallels",
+     "4 Prism Refractor Parallels",
+     "3+ Numbered Parallels"
+    ]
+   },
+   {
+    "name": "Jumbo",
+    "cards_per_pack": 10,
+    "packs_per_box": 12,
+    "boxes_per_case": 8,
+    "autos_per_box": 3,
+    "autos_per_case": 24,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "3 Autographs (incl. 1 Black Lazer Autograph)",
+     "8 Refractor Parallels",
+     "6 Prism Refractor Parallels",
+     "12 Inserts",
+     "4+ Numbered Parallels"
+    ]
+   },
+   {
+    "name": "Delight (Members Only)",
+    "cards_per_pack": 12,
+    "packs_per_box": 1,
+    "boxes_per_case": 6,
+    "autos_per_box": 2,
+    "autos_per_case": 12,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Chrome Autographs (avg 1 Geometric Autograph Parallel)",
+     "3 Base Card Refractors",
+     "3 Numbered Geometric Base Parallels",
+     "3 Geometric Parallels",
+     "1 Youthquake Insert"
+    ]
+   },
+   {
+    "name": "Mega",
+    "cards_per_pack": 6,
+    "packs_per_box": 7,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "8 X-Fractor Parallels",
+     "1 Numbered X-Fractor",
+     "2 Base Refractor Parallels",
+     "6 Inserts",
+     "Autograph about 1 in 7.5 boxes"
+    ]
+   },
+   {
+    "name": "Value (Blaster)",
+    "cards_per_pack": 4,
+    "packs_per_box": 7,
+    "boxes_per_case": 40,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "4 RayWave Parallels",
+     "1 Numbered Parallel",
+     "3 Inserts",
+     "1 Base Refractor Parallel",
+     "Autograph about 1 in 19 boxes"
+    ]
+   },
+   {
+    "name": "Hanger",
+    "cards_per_pack": 15,
+    "packs_per_box": 1,
+    "boxes_per_case": 64,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Exclusive Pulsar Parallels",
+     "2 Inserts",
+     "About 1 Autograph per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-chrome-uefa-club-competitions-soccer",
+   "https://www.chicagolandsportscards.com/media/wysiwyg/Other/25tpuccchrSC.pdf",
+   "https://www.topps.com/products/topps-chrome%C2%AE-uefa-club-competitions-2025-26-hobby-box",
+   "https://www.topps.com/products/topps-chrome%C2%AE-uefa-club-competitions-2025-26-jumbo-box",
+   "https://www.topps.com/products/topps-chrome%C2%AE-uefa-club-competitions-2025-26-mega-box-1",
+   "https://www.topps.com/products/topps-chrome%C2%AE-uefa-club-competitions-2025-26-value-box",
+   "https://www.checklistinsider.com/2025-26-topps-chrome-uefa"
+  ],
+  "confidence": "high",
+  "notes": "Packs/cards confirmed by Topps product pages + sell sheet; boxes per case only from cardsmithsbreaks (single source). Hobby price $249.99 release day (checklistinsider). Also a First Day Issue (FDI) hobby presale (5 May 2026, exclusive autograph parallel) and LogoFractor exclusive format: config not found. Hobby/Retail release 7 May 2026. Autos_per_case derived from per-box guarantee (hobby 12, jumbo 24, delight 12).",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-chrome-uefa-club-competitions-soccer"
+ },
+ "2025-26-topps-fc-barcelona-team-set": {
+  "checklist_id": "2025-26-topps-fc-barcelona-team-set",
+  "name": "Topps FC Barcelona Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2025-11-27",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": 0.5,
+    "autos_per_case": 10.0,
+    "price_usd": null,
+    "release_date": "2025-11-27",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.collectosk.com/2025-26-topps-fc-barcelona-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/barcelona-team-set-2025-2026"
+  ],
+  "confidence": "medium",
+  "notes": "Subset club 'We Want The Ball'. RRP non relevé. Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-fc-bayern-m-nchen-team-set": {
+  "checklist_id": "2025-26-topps-fc-bayern-m-nchen-team-set",
+  "name": "Topps FC Bayern München Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2025-11-26",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": null,
+    "autos_per_box": 0.5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2025-11-26",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.collectosk.com/2025-26-topps-fc-bayern-munchen-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/bayern-munich-team-set-2025-2026"
+  ],
+  "confidence": "medium",
+  "notes": "RRP £45 / 50 EUR (collectosk). boxes_per_case non confirmé. Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-finest-uefa-club-competitions-soccer-checklist": {
+  "checklist_id": "2025-26-topps-finest-uefa-club-competitions-soccer-checklist",
+  "name": "Topps Finest UEFA Club Competitions 2025/26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-06-25",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 10,
+    "packs_per_box": 6,
+    "boxes_per_case": 8,
+    "autos_per_box": 2,
+    "autos_per_case": 16,
+    "price_usd": null,
+    "release_date": "2026-06-25",
+    "contents": [
+     "2 Autographs",
+     "~4 Numbered Cards",
+     "~10 Inserts",
+     "Numbered Parallels",
+     "Uncommon and Rare tier base cards"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.topps.com/products/topps%C2%AE-finest-uefa-club-competitions-2025-26-hobby-box",
+   "https://www.chicagolandsportscards.com/media/wysiwyg/Other/25tpfinestSC.pdf",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-finest-uefa-club-competitions-soccer"
+  ],
+  "confidence": "medium",
+  "notes": "6x10 and 2 autos confirmed by Topps + sell sheet; 8 boxes/case from cardsmithsbreaks only (not confirmed by Topps case page I could read). Only a Hobby format found. Retail dealer prices ($475-570) are not MSRP -> null.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-finest-uefa-club-competitions"
+ },
+ "2025-26-topps-focus-liverpool-fc": {
+  "checklist_id": "2025-26-topps-focus-liverpool-fc",
+  "name": "2025-26 Topps Focus Liverpool FC",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-03-20",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 15,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-03-20",
+    "contents": [
+     "1 Autograph or Cut Signature",
+     "2 Numbered Parallels",
+     "Shutter Speed parallel (1 per box)"
+    ]
+   },
+   {
+    "name": "Bumper Box",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "50 cards",
+     "2 Hall of Fame Limited Edition cards"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.checklistinsider.com/2025-26-topps-focus-liverpool",
+   "https://uk.topps.com/pages/topps-focus-liverpool",
+   "https://soccercardsunited2.myshopify.com/products/topps-focus-liverpool",
+   "https://maniahobby.com/en-int/products/2025-26-topps-focus-soccer-liverpool",
+   "https://store.liverpoolfc.com/topps-pl-bumper-box",
+   "https://fanter.co.uk/topps/focus-liverpool-2025-2026"
+  ],
+  "confidence": "medium",
+  "notes": "Hobby: 1 pack of 15 cards (soccercardsunited, maniahobby). Price £70/€85 (Checklist Insider), no USD published so null. Bumper Box sold at Liverpool FC store (£16.99): 50 cards + 2 LE cards; pack count and autos unknown (autos_per_box null: not published). Boxes per case not found."
+ },
+ "2025-26-topps-inception-uefa-club-competitions-soccer-checklist": {
+  "checklist_id": "2025-26-topps-inception-uefa-club-competitions-soccer-checklist",
+  "name": "Topps Inception UEFA Club Competitions 2025/26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-07-30",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 7,
+    "packs_per_box": 1,
+    "boxes_per_case": 8,
+    "autos_per_box": 1,
+    "autos_per_case": 8,
+    "price_usd": 249.99,
+    "release_date": "2026-07-30",
+    "contents": [
+     "1 Autograph",
+     "2 Numbered Parallels",
+     "4 Base Cards"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.topps.com/products/topps-inception-uefa-club-competitions-2025-26",
+   "https://www.checklistinsider.com/2025-26-topps-inception-uefa",
+   "https://www.blowoutcards.com/2025-26-topps-uefa-club-competitions-inception-soccer-hobby-8-box-case.html",
+   "https://www.midwestcards.com/soccer-cards/2025-26-topps-inception-uefa-club-competitions-soccer-hobby-12-box-case",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-inception-uefa-club-competitions-soccer"
+  ],
+  "confidence": "high",
+  "notes": "Single hobby format, 1 pack of 7 cards. Case: checklistinsider + Blowout + Ballers Bank say 8 boxes; a midwestcards URL slug says '12-box case' (but its image file says 8-box) -> 8 retained. Price $249.99 per checklistinsider.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-inception-uefa-club-competitions"
+ },
+ "2025-26-topps-juventus-fc-team-set": {
+  "checklist_id": "2025-26-topps-juventus-fc-team-set",
+  "name": "Topps Juventus FC Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2025-11-20",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": 0.5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2025-11-20",
+    "contents": [
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://uk.topps.com/products/topps%C2%AE-juventus-2025-26-team-set",
+   "https://www.collectosk.com/2025-26-topps-juventus-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/juventus-team-set-2025-2026",
+   "https://breakmachine.it/en/products/topps-juventus-team-set-2025-26-hobby-box"
+  ],
+  "confidence": "medium",
+  "notes": "Topps UK: £45; 1 auto/2 boxes, 2 numbered, 3 Halo, 1 Static par box. cards_per_pack/packs_per_box/boxes_per_case non vus explicitement pour Juventus (null), probablement 5x6 comme les autres. Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-manchester-city-team-set": {
+  "checklist_id": "2025-26-topps-manchester-city-team-set",
+  "name": "Topps Manchester City Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2025-11-11",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": null,
+    "autos_per_box": 0.5,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2025-11-11",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.collectosk.com/2025-26-topps-manchester-city-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/manchester-city-team-set-2025-2026"
+  ],
+  "confidence": "medium",
+  "notes": "RRP £45 / 50 EUR (collectosk). boxes_per_case non confirmé. Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-manchester-united-team-set": {
+  "checklist_id": "2025-26-topps-manchester-united-team-set",
+  "name": "Topps Manchester United Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-02-12",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": 0.5,
+    "autos_per_case": 10.0,
+    "price_usd": null,
+    "release_date": "2026-02-12",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.collectosk.com/2025-26-topps-manchester-united-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/manchester-united-team-set-2025-2026"
+  ],
+  "confidence": "high",
+  "notes": "RRP £50 / 55 EUR (collectosk). Date 12 fév 2026 concordante (collectosk, Fanter). Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-museum-collection-uefa-club-competitions-soccer-checklist": {
+  "checklist_id": "2025-26-topps-museum-collection-uefa-club-competitions-soccer-checklist",
+  "name": "Topps Museum Collection UEFA Club Competitions 2025/26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-09-18",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 8,
+    "autos_per_box": 1,
+    "autos_per_case": 8,
+    "price_usd": null,
+    "release_date": "2026-09-18",
+    "contents": [
+     "1 Autograph",
+     "1 Relic",
+     "1 Autograph Relic",
+     "1 Numbered Base Parallel"
+    ]
+   },
+   {
+    "name": "Hat Trick",
+    "cards_per_pack": 9,
+    "packs_per_box": 1,
+    "boxes_per_case": 4,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.topps.com/pages/topps-museum-ucc",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-museum-uefa-club-competitions",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-museum-uefa-club-competitions-hobby-box"
+  ],
+  "confidence": "medium",
+  "notes": "Hobby contents per Topps page (1 pack, 8 cards). Hat Trick: 1x9 and 4 boxes/case only from cardsmithsbreaks; contents/autos not found. Cases: Hobby 8, Hat Trick 4 (cardsmiths). Prices: Hat Trick dealer ~EUR 1,999 not MSRP -> null. Release 18 Sep 2026 (cardsmiths; Topps BR site 28 Sep).",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-museum-uefa-club-competitions"
+ },
+ "2025-26-topps-paris-saint-germain-team-set": {
+  "checklist_id": "2025-26-topps-paris-saint-germain-team-set",
+  "name": "Topps Paris Saint-Germain Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-01-29",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": 0.5,
+    "autos_per_case": 10.0,
+    "price_usd": null,
+    "release_date": "2026-01-29",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://uk.topps.com/products/topps-paris-saint-germain-2025-26-team-set",
+   "https://www.collectosk.com/2025-26-topps-paris-saint-germain-team-set-soccer-cards",
+   "https://www.checklistinsider.com/2025-26-topps-paris-saint-germain-team-set",
+   "https://fanter.co.uk/topps/psg-team-set-2025-2026",
+   "https://shop.tradingcardsclub.com/products/topps-team-set-25-26-paris-saint-germain"
+  ],
+  "confidence": "high",
+  "notes": "Topps UK £45 / 50 EUR. Désaccord: Checklist Insider écrit '6 cards per pack; 5 packs per box' (inversé), Topps/collectosk/Fanter disent 5 cartes x 6 packs (retenu). Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-real-madrid-cf-team-set": {
+  "checklist_id": "2025-26-topps-real-madrid-cf-team-set",
+  "name": "Topps Real Madrid CF Team Set 2025-26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-03-03",
+  "formats": [
+   {
+    "name": "Hobby Box",
+    "cards_per_pack": 5,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": 0.5,
+    "autos_per_case": 10.0,
+    "price_usd": null,
+    "release_date": "2026-03-03",
+    "contents": [
+     "30 cards per box (6 packs of 5)",
+     "2 sequentially numbered parallels per box",
+     "1 Static Foil parallel per box",
+     "3 Halo parallels per box",
+     "1 autograph in every 2 boxes on average (Base Autographs / Bona Fide Baller Autographs)",
+     "1 Rainbow Flick case hit per case"
+    ]
+   }
+  ],
+  "sources": [
+   "https://de.topps.com/products/topps-real-madrid-2025-26-team-set",
+   "https://uk.topps.com/pages/topps-real-madrid-2025-26-team-set",
+   "https://www.collectosk.com/2025-26-topps-real-madrid-cf-team-set-soccer-cards",
+   "https://fanter.co.uk/topps/real-madrid-team-set-2025-2026",
+   "https://www.waxstat.com/boxes/2025-26-topps-soccer-real-madrid-team-set-box"
+  ],
+  "confidence": "high",
+  "notes": "Prix 55 EUR (Topps DE) / £50. 20 boxes/case (collectosk, Fanter). Prix publiés seulement en GBP/EUR (price_usd=null). autos_per_box=0.5 = 1 auto par 2 boxes en moyenne (Topps); autos_per_case dérivé = 0.5 x boxes_per_case, non publié tel quel. Pas de format par pack/blaster trouvé; vendu en 'hobby box' team set."
+ },
+ "2025-26-topps-stadium-club-chrome-uefa-champions-league-soccer-checklist": {
+  "checklist_id": "2025-26-topps-stadium-club-chrome-uefa-champions-league-soccer-checklist",
+  "name": "Topps Stadium Club Chrome UEFA Champions League 2025/26",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-11-04",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 6,
+    "packs_per_box": 20,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": 12,
+    "price_usd": 249.99,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "1 Electric Charge Numbered Parallel",
+     "~4 Refractor Base Parallels",
+     "~10 Inserts"
+    ]
+   },
+   {
+    "name": "Value",
+    "cards_per_pack": 4,
+    "packs_per_box": 7,
+    "boxes_per_case": 40,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": 29.99,
+    "release_date": null,
+    "contents": [
+     "4 RayWave Parallels",
+     "1 Numbered Parallel",
+     "1 Refractor Base Parallel",
+     "3 Inserts",
+     "Autograph in about 1 of 10 boxes"
+    ]
+   },
+   {
+    "name": "Members Only (Breaker Delight)",
+    "cards_per_pack": 12,
+    "packs_per_box": 1,
+    "boxes_per_case": 6,
+    "autos_per_box": 2,
+    "autos_per_case": 12,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Autographs (1 standard + 1 Members Only stamped)",
+     "6 Members Only Refractors",
+     "3 Members Only Base Parallels",
+     "1 Members Only Champions Club Short Print"
+    ]
+   }
+  ],
+  "sources": [
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-stadium-club-chrome-uefa-champions-league-soccer",
+   "https://ripped.topps.com/topps-stadium-club-chrome-ucl-2025-26-which-box-is-best/",
+   "https://www.checklistinsider.com/2025-26-topps-stadium-club-chrome-uefa",
+   "https://www.topps.com/pages/topps-stadium-club-chrome-uefa-champions-league"
+  ],
+  "confidence": "high",
+  "notes": "DISAGREEMENT Members Only boxes/case: cardsmithsbreaks says 6, checklistinsider says 12 -> boxes_per_case set to 6 (autos_per_case 12 derived = 6x2; would be 24 if 12/case). Hobby price $249.99 on release day ($239.99 presale), Value Blaster $29.99 per checklistinsider (Topps presale prices); Members Only price not found. Release 4 Nov 2026. Hobby $ is Topps price; retail resale far higher. Hobby/Value per-box autos: hobby 1 guaranteed, value ~1 in 9.9-10 boxes (autos_per_box null).",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-stadium-club-chrome-uefa-champions-league-soccer"
+ },
+ "2025-26-topps-uefa-club-competitions-checklist": {
+  "checklist_id": "2025-26-topps-uefa-club-competitions-checklist",
+  "name": "2025-26 Topps UEFA Club Competitions",
+  "season": "2025-26",
+  "brand": "Topps",
+  "release_date": "2026-01-15",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": 12,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": 99.99,
+    "release_date": "2026-01-15",
+    "contents": [
+     "1 Autograph, Relic or Autograph Relic",
+     "3 Numbered Parallels",
+     "2 Flowfractor Parallels",
+     "6 Raindrop Parallels",
+     "1 Silver Promo Pack (Chrome cards, bonus)"
+    ]
+   },
+   {
+    "name": "London Store Hobby",
+    "cards_per_pack": 8,
+    "packs_per_box": 24,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph, Relic or Autograph Relic",
+     "3 Numbered Parallels",
+     "2 Flowfractor Parallels",
+     "6 Raindrop Parallels",
+     "1 exclusive London Store Silver Pack"
+    ]
+   },
+   {
+    "name": "Value",
+    "cards_per_pack": 8,
+    "packs_per_box": 7,
+    "boxes_per_case": 40,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": 24.99,
+    "release_date": "2026-01-15",
+    "contents": [
+     "1 Numbered Inferno/Holo Parallel"
+    ]
+   },
+   {
+    "name": "Hanger",
+    "cards_per_pack": 35,
+    "packs_per_box": 1,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Diamante Parallels (Hanger exclusive)"
+    ]
+   },
+   {
+    "name": "Spring Tin",
+    "cards_per_pack": 59,
+    "packs_per_box": 1,
+    "boxes_per_case": 9,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": 15.0,
+    "release_date": "2026-03-09",
+    "contents": [
+     "2 Spring Parallels (Spring Tin exclusive)",
+     "1 Egg Parallel (Spring Tin exclusive)",
+     "3 exclusive themed base parallels per box (Topps); autographs in lucky tins"
+    ]
+   }
+  ],
+  "sources": [
+   "https://www.collectosk.com/2025-26-topps-flagship-uefa-club-competitions-soccer-cards/",
+   "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-uefa-club-competitions-soccer",
+   "https://www.topps.com/products/2025-26-topps-uefa-club-competitions-hobby-box",
+   "https://www.topps.com/products/2025-26-topps-uefa-club-competitions-value-box",
+   "https://www.topps.com/products/topps-uefa-club-competitions-2025-26-spring-tin",
+   "https://www.beckett.com/news/2025-26-topps-uefa-club-competitions-soccer-cards",
+   "https://www.checklistinsider.com/2025-26-topps-uefa-club-competitions"
+  ],
+  "confidence": "high",
+  "notes": "Autos per box null: hobby guarantees 1 Autograph OR Relic OR Autograph Relic (not a fixed auto). Prices are RRP listed by collectosk (USD only for Hobby/Value/Spring Tin; Hanger RRP only in EUR/GBP so null). Beckett calls Value a 'Value Blaster' (7 packs); Hanger 35 cards x1 pack per cardsmithsbreaks. Retail format and Carnaval (Brazil) not documented for this base set; Carnaval has its own entry. Spring Tin date is 'expected' per collectosk. Spring Tin 59 cards: Topps page says 'per pack' with 1 pack per tin, 9 tins per box/case ambiguity (collectosk: 9 per case).",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-26-topps-uefa-club-competitions-soccer"
+ },
+ "2025-topps-chrome-mls-soccer-checklist": {
+  "checklist_id": "2025-topps-chrome-mls-soccer-checklist",
+  "name": "2025 Topps Chrome MLS",
+  "season": "2025",
+  "brand": "Topps",
+  "release_date": null,
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 4,
+    "packs_per_box": 21,
+    "boxes_per_case": 12,
+    "autos_per_box": 2,
+    "autos_per_case": 24,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "2 Chrome Autographs",
+     "3 Refractors",
+     "4 Prism Parallels",
+     "1 Blue Lava Parallel",
+     "1 Bonus MLS 30 Years Celebration Pack"
+    ]
+   },
+   {
+    "name": "Mania",
+    "cards_per_pack": 12,
+    "packs_per_box": 1,
+    "boxes_per_case": 5,
+    "autos_per_box": 4,
+    "autos_per_case": 20,
+    "price_usd": 349.99,
+    "release_date": null,
+    "contents": [
+     "4 Encased Autographs",
+     "6 Mania Parallels"
+    ]
+   },
+   {
+    "name": "Value Blaster",
+    "cards_per_pack": 4,
+    "packs_per_box": 7,
+    "boxes_per_case": 40,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Numbered Mini-Diamonds Refractor",
+     "4 RayWave Refractor Parallels",
+     "4 Inserts"
+    ]
+   },
+   {
+    "name": "Hanger",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2025-topps-chrome-mls-soccer-cards",
+   "https://www.checklistinsider.com/2025-topps-chrome-mls",
+   "https://www.topps.com/products/topps-chrome-mls-2025-hobby-box",
+   "https://www.topps.com/products/topps-chrome%C2%AE-mls-2025-value-box"
+  ],
+  "confidence": "medium",
+  "notes": "Release date disagreement: Topps value-box page 'available Mar 24 2026', halloflists Feb 19 2026; collection date left null. Hobby 21 packs per Beckett (Checklist Insider generic config '4 cards x 7 packs x 40 boxes' matches Blaster). Mania price $349.99 = EQL raffle price per Checklist Insider; Hobby price not published ($119.99 refers to previous year). Hanger exists (odds listed) but config not found. Autos per case computed.",
+  "photo_page": "https://cardsmithsbreaks.com/full-checklist/2025-topps-mls-chrome-soccer"
+ },
+ "2026-27-topps-ucc-summer-signings-soccer-checklist": {
+  "checklist_id": "2026-27-topps-ucc-summer-signings-soccer-checklist",
+  "name": "Topps UCC Summer Signings 2026/27",
+  "season": "2026-27",
+  "brand": "Topps",
+  "release_date": "2026-09-18",
+  "formats": [
+   {
+    "name": "Hobby (printed to order)",
+    "cards_per_pack": 6,
+    "packs_per_box": 6,
+    "boxes_per_case": null,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-09-18",
+    "contents": [
+     "1 Autograph",
+     "2 Numbered Parallels",
+     "36 Cards"
+    ]
+   }
+  ],
+  "sources": [
+   "https://uk.topps.com/products/topps-ucc-summer-signings-2026-27",
+   "https://fanter.co.uk/topps/2026-27-ucc-summer-signings",
+   "https://uk.topps.com/pages/topps-ucc-summer-signings"
+  ],
+  "confidence": "medium",
+  "notes": "Only one format found. 36 cards/box and 1 auto + 2 parallels per uk.topps.com; 6x6 split from the brief (not re-verified on the page text I read). Price GBP 100 (not USD) -> price_usd null. Printed to order, sales window 18 Sep-2 Oct 2026; no case size published. Autographs and inserts can also be found in 'lucky boxes' (not a separate format with its own config). Star Signings SP autos in lucky boxes."
+ },
+ "2026-panini-prizm-fifa-world-cup-soccer-checklist": {
+  "checklist_id": "2026-panini-prizm-fifa-world-cup-soccer-checklist",
+  "name": "2026 Panini Prizm FIFA World Cup Soccer",
+  "season": "2026",
+  "brand": "Panini",
+  "release_date": "2026-06-26",
+  "formats": [
+   {
+    "name": "Hobby",
+    "cards_per_pack": 12,
+    "packs_per_box": 12,
+    "boxes_per_case": 12,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-06-26",
+    "contents": [
+     "1 Autograph",
+     "2 Numbered Prizms",
+     "3 Additional Prizms",
+     "1 Silver",
+     "1 Silver Insert"
+    ]
+   },
+   {
+    "name": "FOTL",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-06-16",
+    "contents": [
+     "Exclusive Shimmer Autograph",
+     "1 Base Parallel (FOTL exclusive)"
+    ]
+   },
+   {
+    "name": "Choice",
+    "cards_per_pack": 8,
+    "packs_per_box": 1,
+    "boxes_per_case": 20,
+    "autos_per_box": 1,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "1 Autograph",
+     "2 Numbered Prizm Parallels",
+     "3 Additional Prizm Parallels",
+     "1 Silver Prizm",
+     "1 Insert Silver Prizm"
+    ]
+   },
+   {
+    "name": "Mega",
+    "cards_per_pack": 7,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-06-15",
+    "contents": [
+     "1 Numbered Prizm",
+     "6 Disco Prizms",
+     "1 Silver",
+     "5 Inserts",
+     "1 Silver Insert"
+    ]
+   },
+   {
+    "name": "Hobby Mega (DSG Mega)",
+    "cards_per_pack": 7,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   },
+   {
+    "name": "Blaster",
+    "cards_per_pack": 4,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": [
+     "6 Prizm Parallels",
+     "3 Inserts/Insert Parallels"
+    ]
+   },
+   {
+    "name": "Hobby Blaster",
+    "cards_per_pack": 4,
+    "packs_per_box": 6,
+    "boxes_per_case": 20,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": null,
+    "contents": []
+   },
+   {
+    "name": "Breakaway (Panini TikTok Shop exclusive)",
+    "cards_per_pack": null,
+    "packs_per_box": null,
+    "boxes_per_case": null,
+    "autos_per_box": null,
+    "autos_per_case": null,
+    "price_usd": null,
+    "release_date": "2026-09-23",
+    "contents": []
+   }
+  ],
+  "sources": [
+   "https://www.beckett.com/news/2026-panini-prizm-fifa-world-cup-soccer-cards",
+   "https://www.cardboardconnection.com/2026-panini-prizm-fifa-world-cup-soccer-cards-full-review-checklist",
+   "https://www.checklistinsider.com/2026-panini-prizm-fifa-world-cup-soccer"
+  ],
+  "confidence": "high",
+  "notes": "Beckett and CardboardConnection agree on Hobby 12x12x12 and Mega 7x6x20 (CC release for Mega est. Jun 15-17; used 06-15). Beckett lists Blaster/Hobby Blaster 4x6x20, Hobby Mega/DSG Mega 7x6x20, Choice 8x1x20. Content lists per Checklist Insider/Beckett (Choice contents mirror Hobby per Beckett). Hobby price ~$899.95 reported by Checklist Insider only (not manufacturer) so price null. FOTL and Breakaway configs not found. CC says 5 numbered Prizms per Hobby box vs CI/Beckett 2 #'d Prizms in the box-break list (differs; unresolved)."
+ }
+}
