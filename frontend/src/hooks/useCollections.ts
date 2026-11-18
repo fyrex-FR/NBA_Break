@@ -22,7 +22,6 @@ export function useBoxGuideIndex() {
   const { data, isLoading } = useQuery({
     queryKey: ['box-guides', sport],
     queryFn: () => fetchBoxGuides(sport),
-    enabled: sport === 'nba',
     staleTime: 60 * 60 * 1000,
   })
   const index = useMemo(() => {
@@ -30,7 +29,7 @@ export function useBoxGuideIndex() {
     for (const g of data?.guides ?? []) if (g.checklist_id) m.set(g.checklist_id, g)
     return m
   }, [data])
-  return { index, guides: data?.guides ?? [], isLoading: isLoading && sport === 'nba' }
+  return { index, guides: data?.guides ?? [], isLoading }
 }
 
 export function toEntry(cl: ChecklistInfo, guide?: BoxGuideSummary): CollectionEntry {
