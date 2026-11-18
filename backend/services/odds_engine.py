@@ -16,6 +16,7 @@ d'odds : c'est le comportement par défaut attendu (dégradation silencieuse).
 from __future__ import annotations
 
 import json
+import re
 import logging
 import os
 from functools import lru_cache
@@ -353,9 +354,14 @@ def derive_parallel(label, set_root):
 # Badges de disponibilité
 # ---------------------------------------------------------------------------
 
-def classify_availability_badge(groups_present):
+def classify_availability_badge(groups_present, all_groups=None):
     """Badge de disponibilité exclusif à partir de l'ensemble des groups où le
-    set/famille existe (avec au moins une odds non nulle)."""
+    set/famille existe (avec au moins une odds non nulle).
+
+    `all_groups` = tous les groups que la feuille déclare. Avec lui le badge est
+    dynamique : « partout » seulement si le set est dans TOUS les groups de la
+    feuille, sinon `in:<g1>,<g2>` (les groups réels, dans l'ordre de la feuille).
+    Sans lui, on garde l'ancien repli « partout » (appels hors feuille)."""
     groups_present = {g for g in (groups_present or set()) if g}
     if not groups_present:
         return None
@@ -370,7 +376,7 @@ def classify_availability_badge(groups_present):
             return BADGE_FANATICS_ONLY
         if only_group == "promo":
             return BADGE_PROMO_ONLY
-        # Format spécial seul (China, Silver Pack…) : ni Hobby ni Retail, on le nomme.
+        # Format spécial seul (China, Silver Pack, Members Only…) : on le nomme.
         if only_group not in HOBBY_NON_DELIGHT_GROUPS and only_group not in RETAIL_GROUPS:
             return f"only:{only_group}"
 
@@ -378,6 +384,15 @@ def classify_availability_badge(groups_present):
         return BADGE_HOBBY_ONLY
     if groups_present <= (HOBBY_NON_DELIGHT_GROUPS | {DELIGHT_GROUP}):
         return BADGE_HOBBY_DELIGHT
+    if all_groups:
+        everything = {g for g in all_groups if g}
+        if groups_present <= RETAIL_GROUPS:
+            return BADGE_RETAIL_ONLY
+        if everything and groups_present >= everything:
+            return BADGE_EVERYWHERE
+        order = [g for g in all_groups if g in groups_present]
+        order += sorted(groups_present - set(order))
+        return "in:" + ",".join(order)
     if not (groups_present & HOBBY_NON_DELIGHT_GROUPS):
         return BADGE_RETAIL_ONLY
     return BADGE_EVERYWHERE
@@ -438,6 +453,11 @@ def build_set_summaries(sheet):
     configs_by_key = _config_lookup(sheet)
     all_labels = [r.get("label", "") for r in rows if isinstance(r, dict)]
     declared_rarity = isinstance(sheet.get("rarity"), dict) and bool(sheet.get("rarity"))
+    all_groups = []
+    for cfg in (sheet.get("configs") or []):
+        g = (cfg.get("group") or cfg.get("key")) if isinstance(cfg, dict) else None
+        if g and g not in all_groups:
+            all_groups.append(g)
 
     # Résout (set, parallel) pour chaque ligne, en respectant les valeurs
     # explicites du fichier quand elles sont fournies.
@@ -489,7 +509,7 @@ def build_set_summaries(sheet):
                         if tok in PARALLEL_FAMILY_TOKENS:
                             family_groups.setdefault(tok, set()).add(group)
 
-        availability_badge = classify_availability_badge(groups_present)
+        availability_badge = classify_availability_badge(groups_present, all_groups)
         # Rareté déclarée par l'éditeur (champ `rarity`) : seules ses étiquettes comptent.
         rarity_badge = None if declared_rarity else _set_rarity(set_rows, configs_by_key, best_overall)
 
@@ -499,7 +519,7 @@ def build_set_summaries(sheet):
                 (only_group,) = tuple(fam_groups)
                 label = group_display_label(only_group)
             else:
-                badge = classify_availability_badge(fam_groups)
+                badge = classify_availability_badge(fam_groups, all_groups)
                 from .odds_config import AVAILABILITY_BADGE_LABELS_FR
                 label = AVAILABILITY_BADGE_LABELS_FR.get(badge, ", ".join(sorted(fam_groups)))
             exclusive_families.append({"family": family, "groups": sorted(fam_groups), "label": label})
@@ -618,6 +638,25 @@ def _apply_exclusives(summaries, exclusives):
 NONE_MAPPING_VALUE = "__none__"
 
 
+_LOOSE_DROP = {"card", "cards", "set", "the"}
+
+
+def loose_box_type_key(value):
+    """Clé tolérante pour rapprocher un Box Type d'un set d'odds : casse, accents, ponctuation,
+    pluriel (Autographs/Autograph) et mots creux (Cards, Set) ne comptent pas."""
+    import unicodedata
+    text = unicodedata.normalize("NFKD", str(value or "")).encode("ascii", "ignore").decode().lower()
+    words = re.sub(r"[^a-z0-9]+", " ", text).split()
+    out = []
+    for w in words:
+        if w in _LOOSE_DROP:
+            continue
+        if len(w) > 3 and w.endswith("s") and not w.endswith("ss"):
+            w = w[:-1]
+        out.append(w)
+    return " ".join(out)
+
+
 def resolve_box_types(sheet, box_types, mappings=None):
     """Rattache une liste de `Box Type` de checklist aux set roots d'une
     feuille d'odds.
@@ -641,6 +680,9 @@ def resolve_box_types(sheet, box_types, mappings=None):
     summaries = build_set_summaries(sheet) if sheet else {"sets": {}}
     set_roots = list(summaries["sets"].keys())
     normalized_roots = {normalize_box_type_text(root): root for root in set_roots}
+    loose_roots = {}
+    for root in set_roots:
+        loose_roots.setdefault(loose_box_type_key(root), []).append(root)
 
     resolved = {}
     unresolved = []
@@ -662,6 +704,11 @@ def resolve_box_types(sheet, box_types, mappings=None):
         auto_match = normalized_roots.get(norm)
         if auto_match:
             resolved[box_type] = auto_match
+            continue
+
+        loose = loose_roots.get(loose_box_type_key(box_type))
+        if loose and len(loose) == 1 and loose_box_type_key(box_type):
+            resolved[box_type] = loose[0]   # rapprochement tolérant, sans ambiguïté
             continue
 
         unresolved.append(box_type)

@@ -54,10 +54,16 @@ const RARITY_STYLES: Record<string, Colors> = {
 const FALLBACK_STYLE: Colors = { bg: 'var(--bg-hover)', text: 'var(--text-tertiary)' }
 const BEST_STYLE: Colors = { bg: 'color-mix(in srgb, var(--accent) 16%, transparent)', text: 'var(--accent)' }
 
-function resolve(code: OddsBadgeCode): { label: string; colors: Colors } {
+function resolve(code: OddsBadgeCode): { label: string; colors: Colors; title?: string } {
   if (isBestBadge(code)) {
     const group = code.slice('best:'.length)
     return { label: `Best : ${groupLabel(group)}`, colors: BEST_STYLE }
+  }
+  if (code.startsWith('in:')) {
+    // Disponibilité dynamique : les formats réels où le set existe (ex. « Hobby + Value »).
+    const groups = code.slice('in:'.length).split(',').filter(Boolean)
+    const label = groups.length > 3 ? `${groups.length} formats` : groups.map(groupLabel).join(' + ')
+    return { label, colors: tone('#14b8a6'), title: groups.map(groupLabel).join(' + ') }
   }
   if (code.startsWith('only:')) {
     // Exclusif à un format spécial (China, Silver Pack…).
@@ -81,8 +87,8 @@ interface OddsBadgeProps {
 
 /** Mode compact : une pastille seule. */
 export function OddsBadge({ code, best, className }: OddsBadgeProps) {
-  const { label, colors } = resolve(code)
-  const title = isBestBadge(code) && best ? `1:${best.odds.toLocaleString('fr-FR')}` : undefined
+  const { label, colors, title: resolvedTitle } = resolve(code)
+  const title = isBestBadge(code) && best ? `1:${best.odds.toLocaleString('fr-FR')}` : resolvedTitle
   return (
     <span
       className={`inline-flex items-center rounded-full h-[20px] px-2 text-[11px] font-semibold whitespace-nowrap${className ? ` ${className}` : ''}`}
