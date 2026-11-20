@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Menu, Search, Library, Target, Check, Loader2, Radio, X } from 'lucide-react'
+import { Menu, Search, Library, Target, Check, Loader2, Radio, X, Share2 } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { destinationFor, itemsOf, navItemFor } from '../../navigation'
 import { useOddsConfig, ODDS_CHANNEL_LABELS_FR, ODDS_CHANNEL_ORDER } from '../../hooks/useOddsConfig'
 import { plural, shortCollectionLabel } from '../../utils/checklists'
 import { Popover } from '../ui/primitives'
+import { buildShareUrl } from '../../hooks/useUrlSync'
 
 export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
   const { activeView, setPaletteOpen, analysisData, isAnalyzing, selectedSport, selectedChecklistIds } = useAppStore()
@@ -54,6 +55,7 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
       <BreakChip />
       <OddsConfigChip />
       <SelectionChip />
+      <ShareButton />
 
       <button
         onClick={() => setPaletteOpen(true)}
@@ -72,6 +74,44 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
       {/* Analyse en cours alors qu'un résultat est déjà affiché : simple filet de progression. */}
       {isAnalyzing && analysisData && <span className="ui-progress-line" role="progressbar" aria-label="Mise à jour de l’analyse" />}
     </header>
+  )
+}
+
+/* Gros bouton Partager : feuille de partage native (iPhone, tablette), sinon copie du lien. */
+function ShareButton() {
+  const { selectedChecklistIds } = useAppStore()
+  const [copied, setCopied] = useState(false)
+  if (selectedChecklistIds.length === 0) return null
+
+  async function share() {
+    const url = buildShareUrl()
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: document.title, url })
+        return
+      } catch (e) {
+        if ((e as Error).name === 'AbortError') return
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1800)
+    } catch {
+      window.prompt('Copie le lien :', url)
+    }
+  }
+
+  return (
+    <button
+      onClick={share}
+      className="ui-btn ui-btn-primary !h-10 sm:!h-8 !px-3 gap-2 flex-shrink-0"
+      title="Partager cette vue"
+      aria-label="Partager cette vue"
+    >
+      {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
+      <span className="font-semibold">{copied ? 'Lien copié' : 'Partager'}</span>
+    </button>
   )
 }
 
