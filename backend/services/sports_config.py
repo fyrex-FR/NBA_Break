@@ -816,6 +816,12 @@ for _key, _label, _icon, _hints in (
 
 BASE_EXACT_CATEGORY_BY_SPORT = {
     "nba": {
+        # Stadium Club 2025-26: autographes doubles, mots-clés non reconnus ("cosigners").
+        "auto": [
+            "Cosigners",
+            # Marks = autographes de la gamme Members Only ("mem" y matchait via « Members »).
+            "Members Only Marks",
+        ],
         "auto_mem": [
             "Autographed Gold Logoman Relics",
             "Gold Logoman Relics",
