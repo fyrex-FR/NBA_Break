@@ -857,6 +857,14 @@ def _normalized_exact_list(values):
     return output
 
 
+def _merge_exact(base_values, runtime_values):
+    """Base (code) + overrides runtime (R2): union. Une liste runtime vide ne doit pas effacer la base."""
+    merged = list(base_values or [])
+    if isinstance(runtime_values, list):
+        merged += runtime_values
+    return merged
+
+
 def get_base_exact_category_by_sport():
     output = {}
     for sk in SPORT_PROFILES:
@@ -897,10 +905,10 @@ def get_effective_exact_category_by_sport(keyword_overrides_root):
         runtime_case = sport_runtime.get("case_hit", None)
         legacy_values = legacy_auto.get(sk, [])
 
-        auto_only_values = runtime_auto_only if isinstance(runtime_auto_only, list) else sport_base.get("auto", [])
-        mem_values = runtime_mem if isinstance(runtime_mem, list) else sport_base.get("mem", [])
-        auto_values = runtime_auto if isinstance(runtime_auto, list) else sport_base.get("auto_mem", [])
-        case_values = runtime_case if isinstance(runtime_case, list) else sport_base.get("case_hit", [])
+        auto_only_values = _merge_exact(sport_base.get("auto", []), runtime_auto_only)
+        mem_values = _merge_exact(sport_base.get("mem", []), runtime_mem)
+        auto_values = _merge_exact(sport_base.get("auto_mem", []), runtime_auto)
+        case_values = _merge_exact(sport_base.get("case_hit", []), runtime_case)
 
         if isinstance(legacy_values, list):
             auto_values = list(auto_values) + legacy_values
