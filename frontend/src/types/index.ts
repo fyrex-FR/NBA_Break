@@ -225,6 +225,8 @@ export interface OddsSheet {
   checklist_id: string
   product_label?: string
   source?: string
+  /** Feuille sans cotes : seulement la disponibilité par format (cotes officielles pas encore publiées). */
+  availability_only?: boolean
   updated_at?: string
   configs: OddsConfig[]
   rows: OddsRow[]

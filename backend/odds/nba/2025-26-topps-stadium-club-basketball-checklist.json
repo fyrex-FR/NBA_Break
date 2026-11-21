@@ -1,0 +1,340 @@
+{
+ "version": 1,
+ "sport": "nba",
+ "checklist_id": "2025-26-topps-stadium-club-basketball-checklist",
+ "product_label": "2025-26 Topps Stadium Club Basketball",
+ "source": "Disponibilité par format (fiche Topps, Cardsmiths, Giant Sports Cards) — cotes officielles non publiées",
+ "availability_only": true,
+ "updated_at": "2026-11-20",
+ "configs": [
+  {
+   "key": "hobby",
+   "label": "Hobby",
+   "channel": "hobby",
+   "group": "hobby",
+   "packs_per_box": 16
+  },
+  {
+   "key": "members_only",
+   "label": "Members Only",
+   "channel": "special",
+   "group": "members_only",
+   "packs_per_box": 3
+  }
+ ],
+ "rows": [
+  {
+   "label": "Base",
+   "set": "Base",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Stadium Club Collection Base Card",
+   "set": "Stadium Club Collection Base Card",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Rookie Shot",
+   "set": "Rookie Shot",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Stadium Club Collection Chrome Base Card",
+   "set": "Stadium Club Collection Chrome Base Card",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Rookie Takeover",
+   "set": "Rookie Takeover",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Oversized Stadium Club Basketball Card",
+   "set": "Oversized Stadium Club Basketball Card",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Members Only",
+   "set": "Base Members Only",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Members Only II",
+   "set": "Base Members Only II",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Members Only Rookie Photo Variation",
+   "set": "Base Members Only Rookie Photo Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Cards Image Variation",
+   "set": "Base Cards Image Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Cards Design Variation",
+   "set": "Base Cards Design Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Beam Team",
+   "set": "Beam Team",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Pure Focus",
+   "set": "Pure Focus",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Framed Greatness",
+   "set": "Framed Greatness",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Concentration",
+   "set": "Concentration",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Coming Into Focus",
+   "set": "Coming Into Focus",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "In Case Of Emergency",
+   "set": "In Case Of Emergency",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Triumvirates",
+   "set": "Triumvirates",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Triumvirates Nickname",
+   "set": "Triumvirates Nickname",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Stadium Squad",
+   "set": "Stadium Squad",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Lets Go",
+   "set": "Lets Go",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "The Main Stage",
+   "set": "The Main Stage",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Net Effect",
+   "set": "Net Effect",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "The Follow Through",
+   "set": "The Follow Through",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Members Only Cuts",
+   "set": "Members Only Cuts",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Cards I Autograph Variation",
+   "set": "Base Cards I Autograph Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Cards II Autograph Variation",
+   "set": "Base Cards II Autograph Variation",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Fresh Frames Autographs",
+   "set": "Fresh Frames Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Legends Of The Lens Autographs",
+   "set": "Legends Of The Lens Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Ink Exposure",
+   "set": "Ink Exposure",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Abstract Autographs",
+   "set": "Abstract Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Cosigners",
+   "set": "Cosigners",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Lonestar Autographs",
+   "set": "Lonestar Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Rookie Photoshoot Polaroid Signatures",
+   "set": "Rookie Photoshoot Polaroid Signatures",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Rookie Takeover Autograph Parallel",
+   "set": "Rookie Takeover Autograph Parallel",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Base Members Only Photo Variation Autographs",
+   "set": "Base Members Only Photo Variation Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Stadium Club Collection Chrome Base Card Autographs",
+   "set": "Stadium Club Collection Chrome Base Card Autographs",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  },
+  {
+   "label": "Members Only Marks",
+   "set": "Members Only Marks",
+   "parallel": "",
+   "odds": {
+    "hobby": null
+   }
+  }
+ ],
+ "exclusives": {
+  "Base Members Only": "Members Only",
+  "Base Members Only II": "Members Only",
+  "Base Members Only Photo Variation Autographs": "Members Only",
+  "Members Only Marks": "Members Only",
+  "The Main Stage": "Members Only",
+  "Net Effect": "Members Only",
+  "The Follow Through": "Members Only"
+ }
+}

@@ -208,6 +208,7 @@ export function OddsView() {
             </span>
             <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{allSets.length} sets</span>
             {sheetData.sheet.source && <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Source : {sheetData.sheet.source}</span>}
+            {sheetData.sheet.availability_only && <span className="text-xs font-medium" style={{ color: 'var(--warning, #d97706)' }}>Cotes officielles non publiées : seule la disponibilité par format est indiquée.</span>}
             {sheetData.sheet.updated_at && <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Maj {sheetData.sheet.updated_at}</span>}
             {selectedConfigs.length > 0 && (
               <span className="text-xs px-2 py-0.5 rounded-full ml-auto" style={{ background: 'color-mix(in srgb, var(--accent) 16%, transparent)', color: 'var(--accent)' }}>
