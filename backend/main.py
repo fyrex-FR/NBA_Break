@@ -39,11 +39,25 @@ def health():
 
 @app.on_event("startup")
 def _warm_cache():
-    """Précharge le master NBA en tâche de fond: la première requête après un
-    déploiement ne paie plus le chargement complet."""
+    """Précharge le master NBA en tâche de fond (catalogue + master préparé pour l'analyse):
+    la première requête après un déploiement ne paie plus le chargement complet."""
     import threading
-    from .routers.sports import list_checklists
-    threading.Thread(target=lambda: list_checklists("nba"), daemon=True).start()
+
+    def warm():
+        try:
+            from .routers.sports import list_checklists
+            from .services.analysis_engine import _prepared_master
+            from .services.data_pipeline import master_parquet_key_for_sport
+            from .services.r2_storage import get_r2_config, is_r2_configured
+
+            list_checklists("nba")
+            config = get_r2_config()
+            if is_r2_configured(config):
+                _prepared_master("nba", master_parquet_key_for_sport("nba"), config)
+        except Exception:
+            pass  # le préchauffage est facultatif: la première requête chargera à la demande
+
+    threading.Thread(target=warm, daemon=True).start()
 
 
 # Register routers
