@@ -13,6 +13,11 @@ let inflightKey: string | null = null
 const CACHE_SIZE = 3
 const cache = new Map<string, AnalyzeResponse>()
 
+/** Même règle que le backend (master_parquet_key_for_sport): inutile d'attendre la liste des checklists pour la connaître. */
+function masterKeyFor(sport: string) {
+  return sport === 'all' ? 'all' : `parquet_master/${sport}.parquet`
+}
+
 function keyOf(sport: string, ids: string[]) {
   return `${sport}:${[...ids].sort().join('|')}`
 }
@@ -47,7 +52,7 @@ export function useRunAnalysis() {
     inflightKey = key
     s.setIsAnalyzing(true)
     try {
-      const data = await fetchAnalysis(s.selectedSport, ids, s.masterKey)
+      const data = await fetchAnalysis(s.selectedSport, ids, masterKeyFor(s.selectedSport))
       cache.set(key, data)
       while (cache.size > CACHE_SIZE) cache.delete(cache.keys().next().value!)
       // Une demande plus récente, ou un périmètre vidé entre-temps : ce résultat ne sert plus.
@@ -80,12 +85,11 @@ export function useAutoAnalysis() {
   const analyzed = useAppStore((s) => s.analyzedChecklistIds)
   const hasData = useAppStore((s) => !!s.analysisData)
   const sport = useAppStore((s) => s.selectedSport)
-  const ready = useAppStore((s) => s.availableChecklists.length > 0)
   const run = useRunAnalysis()
   const failed = useRef<string | null>(null)
 
   useEffect(() => {
-    if (!ready || ids.length === 0) return
+    if (ids.length === 0) return
     if (hasData && sameIds(ids, analyzed)) return
     const key = keyOf(sport, ids)
     if (failed.current === key) return
@@ -94,9 +98,9 @@ export function useAutoAnalysis() {
       // Pas de boucle de relance sur une analyse qui échoue : on attend un autre changement.
       if (!ok && sameIds(useAppStore.getState().selectedChecklistIds, ids)) failed.current = key
       else if (ok) failed.current = null
-    }, hasData ? 450 : 0)
+    }, hasData ? 200 : 0)
     return () => clearTimeout(t)
-  }, [ids, analyzed, hasData, sport, ready, run])
+  }, [ids, analyzed, hasData, sport, run])
 }
 
 export function sameIds(a: string[], b: string[]) {
