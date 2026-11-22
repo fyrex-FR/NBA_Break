@@ -8,6 +8,7 @@ import re
 import hashlib
 from io import BytesIO
 
+import numpy as np
 import pandas as pd
 
 from .card_logic import normalize_team_name
@@ -74,6 +75,25 @@ def normalize_team_value(value, team_aliases):
         if team and team not in deduped:
             deduped.append(team)
     return "/".join(deduped)
+
+
+def normalize_team_series(series, team_aliases):
+    """normalize_team_value sur une colonne, calculé une fois par valeur distincte
+    (une équipe revient des milliers de fois: ~25x plus rapide, résultat identique,
+    dtype compris). Les valeurs manquantes gardent le chemin ligne à ligne."""
+    result = np.empty(len(series), dtype=object)
+    missing = series.isna().to_numpy()
+    present = ~missing
+    if present.any():
+        codes, uniques = pd.factorize(series[present])
+        mapped = np.empty(len(uniques), dtype=object)
+        for i, value in enumerate(uniques):
+            mapped[i] = normalize_team_value(value, team_aliases)
+        result[present] = mapped[codes]
+    for i in np.flatnonzero(missing):
+        result[i] = normalize_team_value(series.iloc[i], team_aliases)
+    # Une liste de str: pandas choisit le dtype comme le faisait .apply.
+    return pd.Series(result.tolist(), index=series.index, name=series.name)
 
 
 # ---------------------------------------------------------------------------

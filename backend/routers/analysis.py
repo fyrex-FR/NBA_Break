@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException
 
 from ..models.schemas import AnalyzeRequest, AnalyzeResponse
 from ..services.analysis_engine import run_analysis
-from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json
+from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_json_cached
 
 router = APIRouter(prefix="/api", tags=["analysis"])
 
@@ -19,7 +19,7 @@ def _load_keyword_overrides():
     config = get_r2_config()
     if is_r2_configured(config):
         try:
-            return read_r2_json(config, _KEYWORD_OVERRIDES_R2_KEY)
+            return read_r2_json_cached(config, _KEYWORD_OVERRIDES_R2_KEY)
         except Exception:
             pass
     if os.path.exists(_OVERRIDES_PATH):

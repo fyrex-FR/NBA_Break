@@ -32,14 +32,14 @@ from .section_kind import apply_section_kinds
 from .sports_config import ALL_SPORT_KEY, SPORT_PROFILES, get_sport_profile, get_effective_exact_category_by_sport
 from .data_pipeline import (
     split_slash_values,
-    normalize_team_value,
+    normalize_team_series,
     count_distinct_checklists,
     get_checklist_labels,
     dedupe_multiplayer_projection_rows,
     ensure_master_dataframe_schema,
     master_parquet_key_for_sport,
 )
-from .r2_storage import read_r2_parquet, get_r2_config, is_r2_configured
+from .r2_storage import read_r2_parquet, get_r2_config, is_r2_configured, cached_r2
 from .checklist_aliases import load_checklist_aliases, equivalent_checklist_ids
 from .marvel_attributions import apply_marvel_attributions
 
@@ -112,23 +112,37 @@ def normalize_player_name(name):
 # Data loading (master mode)
 # ---------------------------------------------------------------------------
 
-def _load_sport_master(sport_key, checklist_ids, master_key, config):
-    master_df = read_r2_parquet(config, master_key)
-    sport_profile = get_sport_profile(sport_key)
-    master_df = ensure_master_dataframe_schema(master_df, sport_key)
-    if sport_key == "marvel":
-        master_df = apply_marvel_attributions(master_df)
-    team_aliases = sport_profile.get("team_aliases", {})
-    master_df["Team"] = master_df["Team"].apply(lambda t: normalize_team_value(t, team_aliases))
+def _prepared_master(sport_key, master_key, config):
+    """Master du sport: schéma garanti + équipes normalisées.
 
+    Le résultat est mémorisé tant que le fichier R2 ne change pas (ETag): ce
+    travail portait sur toutes les lignes du master (172 000 en NBA) à chaque
+    requête, alors qu'on n'en garde qu'une checklist. Marvel dépend d'un
+    fichier d'attributions séparé et reste calculé à chaque fois. Le DataFrame
+    mémorisé ne doit jamais être modifié: l'appelant en prend une copie."""
+    def build():
+        df = ensure_master_dataframe_schema(read_r2_parquet(config, master_key), sport_key)
+        if sport_key == "marvel":
+            df = apply_marvel_attributions(df)
+        team_aliases = get_sport_profile(sport_key).get("team_aliases", {})
+        df["Team"] = normalize_team_series(df["Team"], team_aliases)
+        return df
+
+    if sport_key == "marvel":
+        return build()
+    return cached_r2(config, master_key, build, namespace=f"analysis:{sport_key}")
+
+
+def _load_sport_master(sport_key, checklist_ids, master_key, config):
+    master_df = _prepared_master(sport_key, master_key, config)
     if checklist_ids:
         aliases_root = load_checklist_aliases()
         selected_ids = set()
         for value in checklist_ids:
             selected_ids.update(equivalent_checklist_ids(sport_key, value, aliases_root))
         if selected_ids:
-            master_df = master_df[master_df["checklist_id"].astype(str).isin(selected_ids)].copy()
-    return master_df
+            return master_df[master_df["checklist_id"].astype(str).isin(selected_ids)].copy()
+    return master_df.copy()
 
 
 def load_master_data(sport_key, checklist_ids, master_key):

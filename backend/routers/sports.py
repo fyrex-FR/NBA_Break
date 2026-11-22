@@ -3,7 +3,7 @@
 from fastapi import APIRouter, HTTPException
 
 from ..services.sports_config import ALL_SPORT_KEY, ALL_SPORT_LABEL, SPORT_PROFILES, get_sport_profile
-from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_parquet
+from ..services.r2_storage import get_r2_config, is_r2_configured, read_r2_parquet, cached_r2
 from ..services.data_pipeline import (
     ensure_master_dataframe_schema,
     build_master_catalog,
@@ -64,9 +64,13 @@ def list_checklists(sport_key: str):
     # Check for master parquet
     master_key = master_parquet_key_for_sport(sport_key)
     try:
-        master_df = read_r2_parquet(config, master_key)
-        master_df = ensure_master_dataframe_schema(master_df, sport_key)
-        catalog = build_master_catalog(master_df, sport_key)
+        # Catalogue (comptes par checklist) mémorisé tant que le master ne change pas.
+        catalog = cached_r2(
+            config, master_key,
+            lambda: build_master_catalog(
+                ensure_master_dataframe_schema(read_r2_parquet(config, master_key), sport_key), sport_key),
+            namespace=f"catalog:{sport_key}",
+        )
         aliases_root = load_checklist_aliases()
         if not catalog.empty:
             alias_rows = [

@@ -6,7 +6,7 @@ import json
 import os
 import re
 
-from .r2_storage import get_r2_config, is_r2_configured, read_r2_json
+from .r2_storage import get_r2_config, is_r2_configured, read_r2_json_cached
 
 
 CHECKLIST_ALIASES_R2_KEY = "app/checklist_aliases.json"
@@ -22,7 +22,7 @@ def load_checklist_aliases():
     config = get_r2_config()
     if is_r2_configured(config):
         try:
-            data = read_r2_json(config, CHECKLIST_ALIASES_R2_KEY)
+            data = read_r2_json_cached(config, CHECKLIST_ALIASES_R2_KEY)
             if isinstance(data, dict):
                 return data
         except Exception:

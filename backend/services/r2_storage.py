@@ -5,8 +5,11 @@ Configuration is read exclusively from environment variables:
     R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET, R2_ENDPOINT
 """
 
+import copy
 import os
 import json
+import threading
+import time
 from io import BytesIO
 from functools import lru_cache
 
@@ -65,16 +68,85 @@ def source_label(source):
     return f"{name} ☁️" if source_is_cloud(source) else name
 
 
+_clients = {}
+_clients_lock = threading.Lock()
+
+
 def make_r2_client(config):
+    """Client S3 partagé par configuration: garde les connexions TLS ouvertes
+    (un client neuf par appel refaisait une poignée de main à chaque lecture)."""
     if boto3 is None:
         raise RuntimeError("boto3 is required for R2 access. pip install boto3")
-    return boto3.client(
-        "s3",
-        endpoint_url=config["endpoint"],
-        aws_access_key_id=config["access_key_id"],
-        aws_secret_access_key=config["secret_access_key"],
-        region_name="auto",
-    )
+    ident = tuple(config.get(k) for k in ("endpoint", "access_key_id", "secret_access_key"))
+    with _clients_lock:
+        client = _clients.get(ident)
+        if client is None:
+            client = boto3.client(
+                "s3",
+                endpoint_url=config["endpoint"],
+                aws_access_key_id=config["access_key_id"],
+                aws_secret_access_key=config["secret_access_key"],
+                region_name="auto",
+            )
+            _clients[ident] = client
+    return client
+
+
+# ---------------------------------------------------------------------------
+# Cache en mémoire validé par ETag
+# ---------------------------------------------------------------------------
+# Un objet R2 n'est relu et reparsé que s'il a changé. La validation (un
+# head_object, ~75 ms) est faite au plus toutes les _VALIDATE_TTL_S secondes:
+# un import écrit directement sur R2 par un script est vu en moins de 10 s,
+# et les écritures faites par l'API invalident tout de suite (write_r2_json,
+# upload_parquet_dataframe, delete_r2_object).
+
+_VALIDATE_TTL_S = 10.0
+_cache = {}
+_cache_lock = threading.Lock()
+
+
+def _head_etag(config, key):
+    try:
+        resp = make_r2_client(config).head_object(Bucket=config["bucket"], Key=key)
+        return resp.get("ETag")
+    except Exception:
+        return None
+
+
+def cached_r2(config, key, loader, namespace=""):
+    """Valeur de `loader()` mémorisée tant que l'ETag de `key` ne change pas.
+
+    `namespace` distingue plusieurs transformations d'un même objet. Si R2 ne
+    répond pas au head: copie en mémoire servie telle quelle si elle existe,
+    sinon appel direct du loader (jamais mis en cache sans ETag)."""
+    ck = (key, namespace)
+    now = time.monotonic()
+    with _cache_lock:
+        entry = _cache.get(ck)
+    if entry and now - entry["checked"] < _VALIDATE_TTL_S:
+        return entry["value"]
+    etag = _head_etag(config, key)
+    if entry and (not etag or etag == entry["etag"]):
+        entry["checked"] = now
+        return entry["value"]
+    value = loader()
+    if etag:
+        with _cache_lock:
+            _cache[ck] = {"etag": etag, "checked": now, "value": value}
+    return value
+
+
+def invalidate_r2_cache(key=None):
+    """Oublie les valeurs mémorisées de `key` (toutes si key est None)."""
+    with _cache_lock:
+        for ck in [ck for ck in _cache if key is None or ck[0] == key]:
+            del _cache[ck]
+
+
+def read_r2_json_cached(config, key):
+    """read_r2_json via le cache ETag. Renvoie une copie: l'appelant peut la modifier."""
+    return copy.deepcopy(cached_r2(config, key, lambda: read_r2_json(config, key), "json"))
 
 
 def list_r2_parquet_keys(config, sport_key):
@@ -142,6 +214,7 @@ def upload_parquet_dataframe(config, key, df):
         Body=data,
         ContentType="application/octet-stream",
     )
+    invalidate_r2_cache(key)
     return len(data)
 
 
@@ -163,8 +236,10 @@ def write_r2_json(config, key, data):
         Body=payload,
         ContentType="application/json",
     )
+    invalidate_r2_cache(key)
 
 
 def delete_r2_object(config, key):
     client = make_r2_client(config)
     client.delete_object(Bucket=config["bucket"], Key=key)
+    invalidate_r2_cache(key)

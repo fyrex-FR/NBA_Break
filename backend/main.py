@@ -37,6 +37,15 @@ app.add_middleware(
 def health():
     return {"status": "ok"}
 
+@app.on_event("startup")
+def _warm_cache():
+    """Précharge le master NBA en tâche de fond: la première requête après un
+    déploiement ne paie plus le chargement complet."""
+    import threading
+    from .routers.sports import list_checklists
+    threading.Thread(target=lambda: list_checklists("nba"), daemon=True).start()
+
+
 # Register routers
 app.include_router(sports.router)
 app.include_router(analysis.router)
