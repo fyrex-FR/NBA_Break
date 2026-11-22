@@ -207,7 +207,6 @@ export function OddsView() {
               {sheetData.sheet.product_label || checklistLabel(checklistId)}
             </span>
             <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>{allSets.length} sets</span>
-            {sheetData.sheet.source && <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Source : {sheetData.sheet.source}</span>}
             {sheetData.sheet.availability_only && <span className="text-xs font-medium" style={{ color: 'var(--warning, #d97706)' }}>Cotes officielles non publiées : seule la disponibilité par format est indiquée.</span>}
             {sheetData.sheet.updated_at && <span className="text-xs" style={{ color: 'var(--text-quaternary)' }}>Maj {sheetData.sheet.updated_at}</span>}
             {selectedConfigs.length > 0 && (

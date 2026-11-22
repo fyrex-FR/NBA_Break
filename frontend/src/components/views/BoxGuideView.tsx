@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Package, PenLine, Dot, CalendarDays, ExternalLink } from 'lucide-react'
+import { Package, PenLine, Dot, CalendarDays } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchBoxGuide } from '../../api/client'
 import { useOpenCollections } from '../../hooks/useCollections'
 import { frenchDate, isUpcoming, usd } from '../../utils/boxGuide'
 import { BoxImage } from '../shared/CollectionCard'
 import { EmptyState, Segmented } from '../ui/primitives'
-import type { BoxFormat, BoxGuide } from '../../types'
+import type { BoxFormat } from '../../types'
 
-const SOURCE_URL = 'https://www.thehobbychecklist.com'
 
 /**
  * Onglet « Boîte » d'une collection ouverte : sa fiche boîte, directement.
@@ -113,54 +112,7 @@ function BoxGuideBody({ guideId }: { guideId: string }) {
           )}
         </section>
       )}
-
-      <GuideSources guide={guide} />
     </>
-  )
-}
-
-const CONFIDENCE_NOTE: Record<string, string> = {
-  high: 'Infos vérifiées (fabricant ou deux sources concordantes).',
-  medium: 'Une seule source : à confirmer.',
-  low: 'Infos partielles, à confirmer avant de s’y fier.',
-}
-
-function hostOf(url: string) {
-  try { return new URL(url).hostname.replace(/^www\./, '') } catch { return url }
-}
-
-/** Provenance du guide : The Hobby Checklist, ou recherche web avec ses sources et sa fiabilité. */
-function GuideSources({ guide }: { guide: BoxGuide }) {
-  if (guide.origin !== 'recherche') {
-    return (
-      <a
-        href={`${SOURCE_URL}/collections/${guide.source_slug}`}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-6 flex items-center gap-1.5 text-xs underline underline-offset-2 w-fit"
-        style={{ color: 'var(--text-tertiary)' }}
-      >
-        Source : The Hobby Checklist <ExternalLink className="w-3 h-3" />
-      </a>
-    )
-  }
-  const sources = guide.sources ?? []
-  return (
-    <div className="mt-6 text-xs space-y-1" style={{ color: 'var(--text-tertiary)' }}>
-      {guide.confidence && (
-        <p style={{ color: guide.confidence === 'high' ? 'var(--text-tertiary)' : 'var(--warning)' }}>{CONFIDENCE_NOTE[guide.confidence]}</p>
-      )}
-      {sources.length > 0 && (
-        <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          Sources :
-          {sources.map((u) => (
-            <a key={u} href={u} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline underline-offset-2">
-              {hostOf(u)} <ExternalLink className="w-3 h-3" />
-            </a>
-          ))}
-        </p>
-      )}
-    </div>
   )
 }
 
