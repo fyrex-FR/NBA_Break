@@ -205,6 +205,7 @@ MASTER_COLUMNS = [
     "checklist_name",
     "Category",
     "Hit Type",
+    "Section",
 ]
 
 
@@ -290,7 +291,7 @@ def ensure_master_dataframe_schema(df, sport_key):
     else:
         work["Hits"] = pd.to_numeric(work["Hits"], errors="coerce").fillna(1).astype(int)
 
-    for col in ["Category", "Hit Type"]:
+    for col in ["Category", "Hit Type", "Section"]:
         if col not in work.columns:
             work[col] = ""
         else:

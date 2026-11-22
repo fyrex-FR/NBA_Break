@@ -28,6 +28,7 @@ from .card_logic import (
     get_hype_multiplier,
     rarity_multiplier,
 )
+from .section_kind import apply_section_kinds
 from .sports_config import ALL_SPORT_KEY, SPORT_PROFILES, get_sport_profile, get_effective_exact_category_by_sport
 from .data_pipeline import (
     split_slash_values,
@@ -336,6 +337,8 @@ def enrich_dataframe(df, sport_key, keyword_overrides_root=None):
             scoped_auto_category = df.loc[scoped_auto_category_index, "Hit Type"].apply(category_from_hit_type)
             df.loc[scoped_auto_category_index, "Category"] = scoped_auto_category.values
             df.loc[scoped_case_index, "Category"] = CATEGORY_CASE_HIT
+        # La section de la source (Section = base/insert/auto/mem/auto_mem) décide avant les mots-clés et les règles.
+        apply_section_kinds(df, mask, HIT_TYPE_NONE, category_from_hit_type, (CATEGORY_LOGOMAN, CATEGORY_CASE_HIT))
     df.drop(columns=["Normalized Box Type"], inplace=True, errors="ignore")
     df["Rarity Mult"] = df["Numbering"].apply(rarity_multiplier)
     df["Score"] = df["Category"].apply(calculate_score) * df["Rarity Mult"]
