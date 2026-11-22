@@ -52,7 +52,12 @@ def categorize_card(box_type, category_rules):
     return CATEGORY_BASE_OTHER
 
 
-NOT_A_HIT_PHRASES = ("center stage", "main stage", "members only", "facsimile")  # "stage" contient "tag", "members" contient "mem"
+# Mots qui CONTIENNENT un mot-clé sans être un hit: "stage"/"heritage"/"vintage"/"vantage" contiennent "tag",
+# "members" contient "mem", "prime time" contient "prime" (set d'inserts Panini, pas une parallèle Prime).
+NOT_A_HIT_PHRASES = (
+    "center stage", "main stage", "members only", "facsimile",
+    "heritage", "vintage", "vantage", "prime time",
+)
 
 
 def classify_hit_type(box_type, category_rules):
