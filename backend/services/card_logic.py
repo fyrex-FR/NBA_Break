@@ -34,6 +34,8 @@ def normalize_team_name(value, team_aliases):
 
 def categorize_card(box_type, category_rules):
     text = str(box_type).lower()
+    # "members only" contient "mem": ce n'est pas de la memorabilia (le NOT_A_HIT_PHRASES de classify_hit_type).
+    text = text.replace("members only", " ")
 
     logoman_keywords = category_rules.get("logoman", [])
     if any(k in text for k in logoman_keywords):
@@ -50,7 +52,7 @@ def categorize_card(box_type, category_rules):
     return CATEGORY_BASE_OTHER
 
 
-NOT_A_HIT_PHRASES = ("center stage", "main stage", "facsimile")  # "stage" contient "tag" (mem)
+NOT_A_HIT_PHRASES = ("center stage", "main stage", "members only", "facsimile")  # "stage" contient "tag", "members" contient "mem"
 
 
 def classify_hit_type(box_type, category_rules):
