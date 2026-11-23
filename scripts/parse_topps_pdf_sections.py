@@ -30,6 +30,7 @@ def parse(text, teams):
         if l.isupper() and not CODE.match(l) and not NUM.match(l) and len(l) < 80 and l != 'ROOKIE':
             box = l.title().replace("'S", "'s"); i += 1; continue
         m = NUM.match(l)
+        code = l if CODE.match(l) else ''
         if CODE.match(l): player = lines[i + 1]; i += 2
         elif m: player = m.group(2); i += 1
         else: i += 1; continue
@@ -38,8 +39,21 @@ def parse(text, teams):
         else: team = lines[i]; i += 1
         rookie = i < len(lines) and lines[i] == 'Rookie'
         if rookie: i += 1
-        rows.append({'Player': player, 'Team': team, 'Box Type': box, 'Section': kind, 'Rookie': int(rookie)})
-    return rows
+        rows.append({'Player': player, 'Team': team, 'Box Type': box, 'Section': kind, 'Rookie': int(rookie), '_code': code})
+    return merge_duals(rows)
+
+
+def merge_duals(rows):
+    """Un code répété par signataire (duals) = UNE carte `A/B` ; équipe du premier signataire (convention Hoops).
+    Seuls les codes consécutifs d'un même set sont fusionnés ; un code répété ailleurs (cartes distinctes) reste."""
+    out = []
+    for r in rows:
+        prev = out[-1] if out else None
+        if prev and r['_code'] and prev['_code'] == r['_code'] and prev['Box Type'] == r['Box Type']:
+            prev['Player'] += '/' + r['Player']; prev['Rookie'] = max(prev['Rookie'], r['Rookie']); continue
+        out.append(dict(r))
+    for r in out: r.pop('_code', None)
+    return out
 
 
 def main():

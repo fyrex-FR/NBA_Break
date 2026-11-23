@@ -48,3 +48,17 @@ class SectionKindTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ParseurDualsTests(unittest.TestCase):
+    def test_codes_repetes_fusionnes(self):
+        import sys
+        sys.path.insert(0, "scripts")
+        from parse_topps_pdf_sections import merge_duals
+        rows = [{"Player": "A", "Team": "X", "Box Type": "Dual", "Section": "auto", "Rookie": 0, "_code": "D-1"},
+                {"Player": "B", "Team": "Y", "Box Type": "Dual", "Section": "auto", "Rookie": 1, "_code": "D-1"},
+                {"Player": "C", "Team": "Z", "Box Type": "Solo", "Section": "auto", "Rookie": 0, "_code": "S-1"}]
+        out = merge_duals(rows)
+        self.assertEqual([r["Player"] for r in out], ["A/B", "C"])
+        self.assertEqual(out[0]["Team"], "X")
+        self.assertEqual(out[0]["Rookie"], 1)
