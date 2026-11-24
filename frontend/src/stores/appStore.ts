@@ -30,9 +30,6 @@ interface AppState {
 
   // Spots entourés (visés), par sport : « team:Nom » / « player:Nom »
   markedSpots: string[]
-  /** Spots par équipe ou par joueur (gardé au retour d'une fiche). */
-  spotsKind: 'team' | 'player'
-  setSpotsKind: (k: 'team' | 'player') => void
   toggleMarkedSpot: (key: string) => void
 
   // Navigation
@@ -144,8 +141,6 @@ export const useAppStore = create<AppState>()(
       masterKey: null,
       setMasterKey: (key) => set({ masterKey: key }),
 
-      spotsKind: 'team',
-      setSpotsKind: (k) => set({ spotsKind: k }),
       markedSpots: [],
       toggleMarkedSpot: (key) => set((s) => ({
         markedSpots: s.markedSpots.includes(key) ? s.markedSpots.filter((k) => k !== key) : [...s.markedSpots, key],

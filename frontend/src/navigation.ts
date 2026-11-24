@@ -1,11 +1,9 @@
 /**
  * Registre unique de navigation.
  *
- * Deux destinations : Collections (on prépare un achat ou un break : Spots,
- * Hits, Boîte…) et Break (le show en cours, la simulation). Les fiches équipe
- * et joueur sont des pages de la collection, ouvertes depuis Spots ou la
- * recherche, pas des destinations. Les outils (export, import) et l'admin
- * vivent dans un menu secondaire.
+ * La navigation est organisée par objets : quatre destinations (Collections,
+ * Équipes, Joueurs, Break), chacune avec ses onglets. Les outils (export,
+ * import) et l'admin vivent dans un menu secondaire.
  *
  * Les ViewName historiques restent les identifiants internes (les vues
  * s'appellent entre elles avec) ; le registre leur associe destination,
@@ -19,7 +17,7 @@ import {
 } from 'lucide-react'
 import type { ViewName } from './types'
 
-export type DestinationId = 'collections' | 'break'
+export type DestinationId = 'collections' | 'teams' | 'players' | 'break'
 export type NavGroupId = DestinationId | 'tools' | 'admin'
 
 export interface Destination {
@@ -33,7 +31,15 @@ export interface Destination {
 export const DESTINATIONS: Destination[] = [
   {
     id: 'collections', label: 'Collections', icon: Library, defaultView: '🌡️ Spots',
-    description: 'Ce que contiennent les collections ouvertes : spots, hits, boîte, checklist, odds.',
+    description: 'Ce que contiennent les collections ouvertes : hits, boîte, checklist, odds.',
+  },
+  {
+    id: 'teams', label: 'Équipes', icon: Shield, defaultView: '🛡️ Analyse Équipe',
+    description: 'Roster, hits et cartes d’une équipe dans les collections ouvertes.',
+  },
+  {
+    id: 'players', label: 'Joueurs', icon: User, defaultView: '🔍 Analyse Joueur',
+    description: 'Toutes les cartes d’un joueur, les rookies, et la comparaison.',
   },
   {
     id: 'break', label: 'Break', icon: Radio, defaultView: '🎲 État du Break',
@@ -53,8 +59,6 @@ export interface NavItem {
   group: NavGroupId
   /** Onglet rangé dans le menu « Plus » de sa destination. */
   overflow?: boolean
-  /** Page ouverte depuis un onglet (fiche équipe, fiche joueur) : pas d'onglet à elle. */
-  sheet?: boolean
   /** Clé `enabled_views` côté backend — masque l'entrée si le sport la désactive. */
   enabledKey?: string
   /** La vue a besoin d'une analyse (au moins une collection ouverte). */
@@ -105,31 +109,33 @@ export const NAV_ITEMS: NavItem[] = [
     description: "Évolution des volumes d'une saison à l'autre.", needsAnalysis: true,
   },
 
-  // Fiches : ouvertes depuis Spots ou la recherche (l'onglet Spots reste actif)
+  // ── Équipes ──
   {
-    view: '🛡️ Analyse Équipe', slug: 'team', label: 'Fiche équipe', tab: 'Équipe', icon: Shield, group: 'collections', enabledKey: 'team_detail', sheet: true,
+    view: '🛡️ Analyse Équipe', slug: 'team', label: 'Équipe', tab: 'Équipe', icon: Shield, group: 'teams', enabledKey: 'team_detail',
     description: 'Roster, hits et cartes d’une équipe.', needsAnalysis: true,
   },
+
   {
-    view: '🔍 Analyse Joueur', slug: 'player', label: 'Fiche joueur', tab: 'Joueur', icon: User, group: 'collections', enabledKey: 'player_detail', sheet: true,
+    view: '🏟️ Équipes catalogue', slug: 'teams-all', label: 'Équipes, toutes collections', tab: 'Toutes collections', icon: LayoutGrid, group: 'teams',
+    description: 'Pour une équipe, les collections où elle a le plus de cartes qui comptent.', needsAnalysis: false,
+  },
+
+  // ── Joueurs ──
+  {
+    view: '🔍 Analyse Joueur', slug: 'player', label: 'Joueur', tab: 'Fiche', icon: User, group: 'players', enabledKey: 'player_detail',
     description: 'Toutes les cartes d’un joueur, par catégorie et par produit.', needsAnalysis: true,
   },
   {
-    view: '🧨 Rookies', slug: 'rookies', label: 'Rookies', tab: 'Rookies', icon: Sparkles, group: 'collections', enabledKey: 'rookies', overflow: true,
+    view: '🧨 Rookies', slug: 'rookies', label: 'Rookies', tab: 'Rookies', icon: Sparkles, group: 'players', enabledKey: 'rookies',
     description: 'Rookie cards présentes dans les collections ouvertes.', needsAnalysis: true,
   },
   {
-    view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', tab: 'Comparer des joueurs', icon: Scale, group: 'collections', enabledKey: 'comparator', overflow: true,
+    view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', tab: 'Comparer', icon: Scale, group: 'players', enabledKey: 'comparator',
     description: 'Mets plusieurs joueurs côte à côte.', needsAnalysis: true,
   },
 
-  // Tout le catalogue (pas besoin d'ouvrir une collection) : choisir quoi acheter
   {
-    view: '🏟️ Équipes catalogue', slug: 'teams-all', label: 'Quelle collection pour mon équipe ?', tab: 'Par équipe', icon: LayoutGrid, group: 'collections', overflow: true,
-    description: 'Pour une équipe, les collections où elle a le plus de cartes qui comptent.', needsAnalysis: false,
-  },
-  {
-    view: '🖊️ Qui a signé', slug: 'signed', label: 'Qui a signé ?', tab: 'Qui a signé ?', icon: PenLine, group: 'collections', overflow: true,
+    view: '🖊️ Qui a signé', slug: 'signed', label: 'Qui a signé ?', tab: 'Toutes collections', icon: PenLine, group: 'players',
     description: 'Tape un nom : toutes les collections où le joueur a des autos, memo et case hits.', needsAnalysis: false,
   },
 
@@ -169,7 +175,7 @@ export const NAV_ITEMS: NavItem[] = [
 ]
 
 export const GROUP_LABELS: Record<NavGroupId, string> = {
-  collections: 'Collections', break: 'Break', tools: 'Outils', admin: 'Outils admin',
+  collections: 'Collections', teams: 'Équipes', players: 'Joueurs', break: 'Break', tools: 'Outils', admin: 'Outils admin',
 }
 
 const BY_VIEW = new Map<ViewName, NavItem>()
@@ -215,11 +221,6 @@ export function destinationFor(view: ViewName): Destination | undefined {
 /** Onglets visibles d'une destination (ou d'un groupe). */
 export function itemsOf(group: NavGroupId, enabledViews: Record<string, boolean> | undefined, sport: string): NavItem[] {
   return NAV_ITEMS.filter((i) => i.group === group && isItemEnabled(i, enabledViews, sport))
-}
-
-/** Onglets d'une destination : sans les fiches, qui s'ouvrent depuis un onglet. */
-export function tabsOf(group: NavGroupId, enabledViews: Record<string, boolean> | undefined, sport: string): NavItem[] {
-  return itemsOf(group, enabledViews, sport).filter((i) => !i.sheet)
 }
 
 export function isItemEnabled(item: NavItem, enabledViews: Record<string, boolean> | undefined, sport: string): boolean {

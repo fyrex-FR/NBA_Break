@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Menu, Search, Library, Target, Check, Loader2, Radio, X, Share2 } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
-import { destinationFor, tabsOf, navItemFor } from '../../navigation'
+import { destinationFor, itemsOf, navItemFor } from '../../navigation'
 import { useOddsConfig, ODDS_CHANNEL_LABELS_FR, ODDS_CHANNEL_ORDER } from '../../hooks/useOddsConfig'
 import { plural, shortCollectionLabel } from '../../utils/checklists'
 import { Popover } from '../ui/primitives'
@@ -11,7 +11,7 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
   const { activeView, setPaletteOpen, analysisData, isAnalyzing, selectedSport, selectedChecklistIds } = useAppStore()
   const item = navItemFor(activeView)
   const destination = destinationFor(activeView)
-  const multiTab = !!destination && tabsOf(destination.id, analysisData?.enabled_views, selectedSport).length > 1
+  const multiTab = !!destination && itemsOf(destination.id, analysisData?.enabled_views, selectedSport).length > 1
   const showsHome = !!item?.needsAnalysis && !analysisData && destination?.id === 'collections'
   const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
 

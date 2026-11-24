@@ -200,7 +200,7 @@ Une palette d'imprimerie : encre chaude, papier crème, filets bruns, un rouge u
 
 ## Layout
 
-Mobile d'abord, à 390 px : gouttière latérale de 16 px, aucun débordement horizontal (vérifié à 390 et 1440 px : largeur de défilement égale au viewport). Le premier écran d'une collection empile la barre du haut (56 px + safe area, filet épais dessous), le masthead (vignette de boîte 72 px, nom en display, ligne de métadonnées et ligne Hobby), la rangée d'onglets (Spots · Hits · Boîte · Checklist · Odds, les autres sous « Plus »), puis le tableau des spots qui occupe l'écran ; sur mobile, une barre de trois entrées est fixée en bas (Collections, Break, Chercher). Les fiches équipe et joueur sont des pages de la collection : on y arrive depuis Spots, la recherche ou un lien, l'onglet Spots reste actif et un lien « ← Spots » ramène au tableau (le choix équipe/joueur est conservé). Sans collection ouverte, les onglets proposent Catalogue · Par équipe · Qui a signé ?, qui cherchent dans tout le catalogue.
+Mobile d'abord, à 390 px : gouttière latérale de 16 px, aucun débordement horizontal (vérifié à 390 et 1440 px : largeur de défilement égale au viewport). Le premier écran d'une collection empile la barre du haut (56 px + safe area, filet épais dessous), le masthead (vignette de boîte 72 px, nom en display, ligne de métadonnées et ligne Hobby), la rangée d'onglets (Spots · Hits · Boîte · Checklist · Odds, les autres sous « Plus »), puis le tableau des spots qui occupe l'écran ; sur mobile, une barre de cinq destinations est fixée en bas.
 
 Rythme : lignes de tableau à 10 px de padding vertical, gaps de 8 et 12 px entre contrôles, 16 à 20 px entre blocs. Sur desktop (≥ 768 px) un rail de navigation remplace la barre du bas, les onglets passent à 38 px / 13 px, et le tableau gagne la colonne Cartes (≥ 640 px).
 
@@ -243,7 +243,7 @@ Coins presque carrés : 2 px pour boutons, chips, champs, segments ; 3 à 4 px p
 
 ### Navigation
 - **Onglets de destination :** texte tertiaire 14 px / 500, 42 px de haut ; l'onglet choisi passe en papier 800 avec un filet rouge de 3 px dessous. La rangée défile horizontalement et s'estompe en fondu sur 28 px à droite.
-- **Barre du bas (mobile) :** trois entrées (Collections, Break, Chercher), filet épais au-dessus, entrée active en rouge.
+- **Barre du bas (mobile) :** cinq destinations, filet épais au-dessus, destination active en rouge.
 - **Rail (desktop) :** élément courant sur fond ink-hover, 600.
 
 ### Tableau des spots (signature)

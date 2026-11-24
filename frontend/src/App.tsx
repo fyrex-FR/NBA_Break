@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
-import { Search, ArrowLeft } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { useAppStore } from './stores/appStore'
 import { fetchChecklists } from './api/client'
 import { useUrlSync } from './hooks/useUrlSync'
@@ -87,7 +87,7 @@ function MainContent() {
   let body: React.ReactNode
   if (needsCollection && isAnalyzing) {
     body = <AnalysisSkeleton />
-  } else if (needsCollection && destination?.id === 'collections' && !item?.sheet) {
+  } else if (needsCollection && destination?.id === 'collections') {
     // Rien d'ouvert : l'accueil sert de porte d'entrée vers les collections.
     body = <HomeView />
   } else {
@@ -103,7 +103,6 @@ function MainContent() {
               : <PageHeader title={item.label} description={item.description} icon={item.icon} />
           )}
         {destination && <DestinationTabs destination={destination.id} />}
-        {item?.sheet && !needsCollection && <BackToSpots />}
         {needsCollection ? <NeedsCollection /> : renderView(activeView, !!breakContext)}
       </>
     )
@@ -134,22 +133,12 @@ function useCatalogSync() {
   }, [data, setAvailableChecklists, setMasterKey])
 }
 
-/** Fiche équipe ou joueur : retour direct au tableau des spots. */
-function BackToSpots() {
-  const setActiveView = useAppStore((s) => s.setActiveView)
-  return (
-    <button type="button" onClick={() => setActiveView('🌡️ Spots')} className="ui-btn ui-btn-ghost ui-btn-sm -ml-2 mb-3">
-      <ArrowLeft className="w-4 h-4" /> Spots
-    </button>
-  )
-}
-
 function MobileTabBar() {
   const { activeView, goToDestination, setPaletteOpen, breakContext } = useAppStore()
   const current = destinationFor(activeView)?.id
   return (
     <nav
-      className="md:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-3"
+      className="md:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-5"
       style={{
         background: 'color-mix(in srgb, var(--bg-panel) 92%, transparent)',
         backdropFilter: 'blur(14px)',
