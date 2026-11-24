@@ -2,14 +2,17 @@ import { Library, Search } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { destinationFor, navItemFor } from '../../navigation'
 import { EmptyState } from '../ui/primitives'
+import type { ViewName } from '../../types'
 import { BreakModePanel } from './BreakModePanel'
 import { CollectionCard } from '../shared/CollectionCard'
 import { useOpenCollection, useRecentCollections } from '../../hooks/useCollections'
 
-const WHAT: Record<string, string> = {
-  teams: 'les équipes',
-  players: 'les joueurs',
-  break: 'la valeur des spots',
+const WHAT: Partial<Record<ViewName, string>> = {
+  '🛡️ Analyse Équipe': 'une équipe',
+  '🔍 Analyse Joueur': 'un joueur',
+  '🧨 Rookies': 'les rookies',
+  '⚖️ Comparateur Joueurs': 'les joueurs',
+  '🧩 Simulation de Break': 'la valeur des spots',
 }
 
 /** Une vue qui a besoin d'au moins une collection ouverte, alors qu'aucune ne l'est. */
@@ -17,9 +20,10 @@ export function NeedsCollection() {
   const { activeView, openSelection, setActiveView } = useAppStore()
   const destination = destinationFor(activeView)
   const item = navItemFor(activeView)
-  const what = (destination && WHAT[destination.id]) ?? item?.label.toLowerCase() ?? 'cette vue'
+  const what = WHAT[activeView] ?? item?.label.toLowerCase() ?? 'cette vue'
   const recent = useRecentCollections(4)
-  const catalogView = destination?.id === 'players' ? '🖊️ Qui a signé' as const : destination?.id === 'teams' ? '🏟️ Équipes catalogue' as const : null
+  const catalogView = activeView === '🛡️ Analyse Équipe' ? '🏟️ Équipes catalogue' as const
+    : ['🔍 Analyse Joueur', '🧨 Rookies', '⚖️ Comparateur Joueurs'].includes(activeView) ? '🖊️ Qui a signé' as const : null
   const openCollection = useOpenCollection()
   return (
     <>

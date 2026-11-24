@@ -1,23 +1,29 @@
 import { useState } from 'react'
 import { ChevronDown, Check } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
-import { itemsOf, navItemFor, type DestinationId } from '../../navigation'
+import { tabsOf, navItemFor, type DestinationId } from '../../navigation'
 import { useOddsConfig } from '../../hooks/useOddsConfig'
 import { useBoxGuideIndex } from '../../hooks/useCollections'
 import { Popover } from '../ui/primitives'
 
 /**
- * Onglets d'une destination (Collections : Aperçu · Hits · Boîte · Checklist…).
- * Les onglets secondaires sont rangés dans « Plus ».
+ * Onglets d'une destination (Collections : Spots · Hits · Boîte · Checklist…).
+ * Les onglets secondaires sont rangés dans « Plus ». Une fiche (équipe, joueur)
+ * garde l'onglet Spots actif. Sans collection ouverte, seuls les onglets qui
+ * cherchent dans tout le catalogue restent, à côté du catalogue lui-même.
  */
 export function DestinationTabs({ destination }: { destination: DestinationId }) {
   const { activeView, setActiveView, analysisData, analyzedChecklistIds, selectedSport, breakContext } = useAppStore()
   const { oddsChecklistIds } = useOddsConfig()
   const { index: guideIndex } = useBoxGuideIndex()
   const [moreOpen, setMoreOpen] = useState(false)
-  const current = navItemFor(activeView)?.view
+  const activeItem = navItemFor(activeView)
+  const current = activeItem?.sheet ? '🌡️ Spots' : activeItem?.view
+  const catalogOnly = destination === 'collections' && !analysisData
 
-  const items = itemsOf(destination, analysisData?.enabled_views, selectedSport)
+  const items = tabsOf(destination, analysisData?.enabled_views, selectedSport)
+    .filter((i) => !catalogOnly || !i.needsAnalysis || i.view === '🌡️ Spots')
+    .map((i) => (catalogOnly ? { ...i, overflow: false, tab: i.view === '🌡️ Spots' ? 'Catalogue' : i.tab } : i))
     // Odds : seulement si une collection ouverte a sa feuille.
     .filter((i) => i.view !== '🎯 Odds' || analyzedChecklistIds.some((id) => oddsChecklistIds.has(id)))
     // Boîte : seulement si une collection ouverte a son guide des boîtes.
@@ -61,7 +67,7 @@ export function DestinationTabs({ destination }: { destination: DestinationId })
             {activeMore ? activeMore.tab : <span className="hidden sm:inline">Plus</span>}
             <ChevronDown className={`w-3.5 h-3.5 transition-transform ${moreOpen ? 'rotate-180' : ''}`} />
           </button>
-          <Popover open={moreOpen} onClose={() => setMoreOpen(false)} align="right" width={220}>
+          <Popover open={moreOpen} onClose={() => setMoreOpen(false)} align="right" width={280}>
             <div role="menu">
               {more.map((i) => {
                 const Icon = i.icon
@@ -74,7 +80,7 @@ export function DestinationTabs({ destination }: { destination: DestinationId })
                     style={{ color: 'var(--text-primary)' }}
                   >
                     <Icon className="w-4 h-4" style={{ color: 'var(--text-tertiary)' }} />
-                    <span className="flex-1 text-left">{i.tab}</span>
+                    <span className="flex-1 text-left">{i.label}</span>
                     {current === i.view && <Check className="w-4 h-4" style={{ color: 'var(--accent)' }} />}
                   </button>
                 )

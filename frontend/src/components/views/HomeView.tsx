@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Search, Bookmark, Play, Radio, Layers, Loader2, Library, AlertTriangle } from 'lucide-react'
+import { Search, Bookmark, Play, Radio, Layers, Loader2, Library, AlertTriangle, Shield, PenLine } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { fetchPresets } from '../../api/client'
 import { useRunAnalysis } from '../../hooks/useRunAnalysis'
@@ -64,6 +64,19 @@ export function HomeView() {
           </button>
         </div>
       </header>
+
+      {/* Préparer un achat sans savoir encore quelle collection : on part de son équipe ou de son joueur. */}
+      <nav aria-label="Chercher dans tout le catalogue" className="mb-6">
+        <div className="ui-eyebrow pb-1.5 mb-2" style={{ borderBottom: '2px solid var(--rule-heavy)' }}>Tout le catalogue</div>
+        <div className="grid grid-cols-2 gap-2 max-w-md">
+          <button onClick={() => setActiveView('🏟️ Équipes catalogue')} className="ui-btn ui-btn-secondary justify-start">
+            <Shield className="w-4 h-4" /> Pour mon équipe
+          </button>
+          <button onClick={() => setActiveView('🖊️ Qui a signé')} className="ui-btn ui-btn-secondary justify-start">
+            <PenLine className="w-4 h-4" /> Qui a signé ?
+          </button>
+        </div>
+      </nav>
 
       {failed && (
         <div className="ui-card px-4 py-3 mb-5 flex items-center gap-3" role="alert">
