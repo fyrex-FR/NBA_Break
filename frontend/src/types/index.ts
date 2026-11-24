@@ -422,6 +422,7 @@ export type ViewCategory = '📊 Analyse' | '🔍 Détails' | '🛠️ Outils' |
 
 export type ViewName =
   | '🌍 Vue Globale'
+  | '🌡️ Spots'
   | '💎 Autos & Patchs'
   | '🔥 Logoman'
   | '✨ Case Hits'

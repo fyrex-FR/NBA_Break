@@ -16,6 +16,7 @@ import { NeedsCollection, BreakStart } from './components/layout/EmptyDestinatio
 import { PageHeader } from './components/ui/primitives'
 import { HomeView, AnalysisSkeleton } from './components/views/HomeView'
 import { GlobalView } from './components/views/GlobalView'
+import { SpotsView } from './components/views/SpotsView'
 import { HitsView } from './components/views/HitsView'
 import { MultiPlayersView } from './components/views/MultiPlayersView'
 import { PlayerDetailView } from './components/views/PlayerDetailView'
@@ -50,6 +51,7 @@ const OWN_HEADER = new Set<ViewName>(['📚 Checklist Beckett', '📥 Import Int
 function renderView(view: ViewName, hasBreak: boolean) {
   switch (view) {
     case '🌍 Vue Globale': return <GlobalView />
+    case '🌡️ Spots': return <SpotsView />
     case '💎 Autos & Patchs':
     case '🔥 Logoman':
     case '✨ Case Hits': return <HitsView />
@@ -141,7 +143,7 @@ function MobileTabBar() {
         background: 'color-mix(in srgb, var(--bg-panel) 92%, transparent)',
         backdropFilter: 'blur(14px)',
         WebkitBackdropFilter: 'blur(14px)',
-        borderTop: '1px solid var(--border-subtle)',
+        borderTop: '2px solid var(--rule-heavy)',
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}
       aria-label="Navigation principale"
@@ -153,7 +155,7 @@ function MobileTabBar() {
             key={id}
             onClick={() => goToDestination(id)}
             aria-current={active ? 'page' : undefined}
-            className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold"
+            className="relative flex flex-col items-center justify-center gap-0.5 h-14 text-xs font-semibold"
             style={{ color: active ? 'var(--accent)' : 'var(--text-tertiary)' }}
           >
             <Icon className="w-5 h-5" />
@@ -164,7 +166,7 @@ function MobileTabBar() {
           </button>
         )
       })}
-      <button onClick={() => setPaletteOpen(true)} className="flex flex-col items-center justify-center gap-0.5 h-14 text-[11px] font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+      <button onClick={() => setPaletteOpen(true)} className="flex flex-col items-center justify-center gap-0.5 h-14 text-xs font-semibold" style={{ color: 'var(--text-tertiary)' }}>
         <Search className="w-5 h-5" />
         Chercher
       </button>
@@ -198,7 +200,7 @@ function Shell() {
   return (
     <div className="flex h-dvh w-screen overflow-hidden" data-sport={selectedSport} data-theme={theme} style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
       <NavRail mobileOpen={navOpen} onMobileClose={() => setNavOpen(false)} />
-      <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto flex flex-col">
+      <main ref={mainRef} className="flex-1 min-w-0 overflow-y-auto flex flex-col md:pb-20">
         <TopBar onOpenNav={() => setNavOpen(true)} />
         <MainContent />
       </main>

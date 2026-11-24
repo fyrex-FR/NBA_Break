@@ -22,7 +22,7 @@ export function QuickPick({ title, items, onPick, format }: QuickPickProps) {
               <span className="w-5 text-right text-xs num" style={{ color: 'var(--text-quaternary)' }}>{i + 1}</span>
               <span className="flex-1 min-w-0">
                 <span className="block text-[14px] font-medium truncate" style={{ color: 'var(--text-primary)' }}>{format ? format(name) : name}</span>
-                <span className="mt-1 block h-1 rounded-full" style={{ width: `${Math.max(6, (hits / max) * 100)}%`, background: 'var(--accent-soft)' }} />
+                <span className="mt-1 block h-[3px]" style={{ width: `${Math.max(1, (hits / max) * 100)}%`, background: 'var(--accent)', opacity: 0.85 }} />
               </span>
               <span className="text-xs num" style={{ color: 'var(--text-tertiary)' }}>{hits} cartes</span>
               <ChevronRight className="w-4 h-4" style={{ color: 'var(--text-quaternary)' }} />

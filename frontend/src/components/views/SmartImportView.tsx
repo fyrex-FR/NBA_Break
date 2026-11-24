@@ -84,7 +84,7 @@ export function SmartImportView() {
           </div>
           {analysisData && (
             <button
-              onClick={() => setActiveView('🌍 Vue Globale')}
+              onClick={() => setActiveView('🌡️ Spots')}
               className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg hover:bg-[var(--bg-hover)] transition-colors shrink-0"
               style={{ color: 'var(--text-secondary)', border: '1px solid var(--border-subtle)' }}
             >

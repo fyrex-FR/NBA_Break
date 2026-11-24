@@ -23,7 +23,7 @@ export function Segmented<T extends string>({ value, onChange, options, classNam
             {Icon && <Icon className="w-3.5 h-3.5" />}
             {opt.label}
             {opt.count !== undefined && (
-              <span className="num text-[11px]" style={{ color: 'var(--text-quaternary)' }}>{opt.count}</span>
+              <span className="num text-xs" style={{ color: 'var(--text-quaternary)' }}>{opt.count}</span>
             )}
           </button>
         )
@@ -126,14 +126,14 @@ export function PageHeader({ title, description, icon: Icon, eyebrow, actions }:
         {Icon && (
           <div
             className="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center flex-shrink-0"
-            style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}
+            style={{ background: 'var(--text-primary)', color: 'var(--bg-primary)' }}
           >
             <Icon className="w-5 h-5" />
           </div>
         )}
         <div className="min-w-0">
           {eyebrow && <div className="ui-eyebrow mb-0.5">{eyebrow}</div>}
-          <h1 className="text-[26px] leading-8 font-bold" style={{ color: 'var(--text-primary)' }}>{title}</h1>
+          <h1 className="text-[28px] leading-8 font-black" style={{ color: 'var(--text-primary)' }}>{title}</h1>
           {description && (
             <p className="hidden sm:block text-sm mt-1 max-w-2xl" style={{ color: 'var(--text-tertiary)' }}>{description}</p>
           )}

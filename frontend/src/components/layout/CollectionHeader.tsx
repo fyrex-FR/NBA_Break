@@ -37,7 +37,7 @@ export function CollectionHeader() {
       )}
 
       <div className="flex-1 min-w-0">
-        <h1 className="text-[20px] leading-6 sm:text-[28px] sm:leading-8 font-bold truncate" style={{ color: 'var(--text-primary)' }}>
+        <h1 className="text-[32px] leading-[34px] sm:text-[34px] sm:leading-9 font-black line-clamp-2 break-words" style={{ color: 'var(--text-primary)' }}>
           {single ? single.name : open.map((e) => e.name).join(' + ')}
         </h1>
         <div className="mt-0.5 sm:mt-1 flex items-center gap-x-2 gap-y-0.5 flex-wrap text-xs sm:text-[13px]" style={{ color: 'var(--text-tertiary)' }}>

@@ -35,7 +35,7 @@ export function HobbyLine({ entry }: { entry: CollectionEntry }) {
       {hobby ? (
         <>
           {hobby.name}
-          {hobby.autos_per_box ? <> · <b style={{ color: 'var(--cat-auto)' }}>{hobby.autos_per_box} {hobby.hits_mixed ? 'hit' : 'auto'}{hobby.autos_per_box > 1 ? 's' : ''}</b></> : null}
+          {hobby.autos_per_box ? <> · <b style={{ color: 'var(--text-primary)' }}>{hobby.autos_per_box} {hobby.hits_mixed ? 'hit' : 'auto'}{hobby.autos_per_box > 1 ? 's' : ''}</b></> : null}
           {usd(hobby.price_usd) ? <> · {usd(hobby.price_usd)}</> : null}
         </>
       ) : (

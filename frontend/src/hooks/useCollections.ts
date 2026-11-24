@@ -110,7 +110,7 @@ export function useReleaseCalendar(upcomingMax = 4, recentMax = 5): ReleaseEntry
 
 /** Ouvre une collection seule (le parcours principal) et va sur l'onglet voulu. */
 export function useOpenCollection() {
-  return useCallback((id: string, view: ViewName = '🌍 Vue Globale') => {
+  return useCallback((id: string, view: ViewName = '🌡️ Spots') => {
     const s = useAppStore.getState()
     s.setSelectedChecklistIds([id])
     s.setActiveView(view)

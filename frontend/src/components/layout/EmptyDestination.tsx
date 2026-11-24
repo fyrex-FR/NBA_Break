@@ -44,7 +44,7 @@ export function NeedsCollection() {
     {recent.length > 0 && (
       <section className="mt-6 @container">
         <h2 className="text-[13px] font-semibold mb-2.5" style={{ color: 'var(--text-secondary)' }}>Ou ouvre une des dernières</h2>
-        <div className="grid gap-2.5 @xl:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2.5 @xl:grid-cols-2">
           {/* On reste sur l'onglet courant : l'équipe ou le joueur s'affiche dès que l'analyse arrive. */}
           {recent.map((e) => <CollectionCard key={e.id} entry={e} onOpen={() => openCollection(e.id, activeView)} />)}
         </div>
