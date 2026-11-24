@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T12:26:38.817280+00:00",
+  "title": "Design System: NoClim",
+  "extensions": {
+    "colorMeta": {
+      "accent-red": {
+        "role": "primary",
+        "displayName": "Rouge d'imprimeur",
+        "canonical": "#C8261F",
+        "tonalRamp": [
+          "#3D0B09",
+          "#5E110E",
+          "#821813",
+          "#A61F19",
+          "#C8261F",
+          "#DA5B52",
+          "#EA9790",
+          "#F7D3CF"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Encre chaude",
+        "canonical": "#15130F",
+        "tonalRamp": [
+          "#0A0907",
+          "#15130F",
+          "#1A1814",
+          "#211E19",
+          "#2A2620",
+          "#3A352C",
+          "#4D473C",
+          "#6C6457"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papier",
+        "canonical": "#F1EADB",
+        "tonalRamp": [
+          "#6C6457",
+          "#958C7B",
+          "#ADA390",
+          "#C9C0AE",
+          "#D6CDBA",
+          "#E7E1D4",
+          "#F1EADB",
+          "#F8F5EE"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Filet",
+        "canonical": "#3A352C",
+        "tonalRamp": [
+          "#1A1814",
+          "#2A2620",
+          "#3A352C",
+          "#4D473C",
+          "#6C6457",
+          "#958C7B",
+          "#ADA390",
+          "#C9C0AE"
+        ]
+      },
+      "rule-heavy": {
+        "role": "neutral",
+        "displayName": "Filet épais",
+        "canonical": "#F1EADB"
+      },
+      "cat-logoman": {
+        "role": "data",
+        "displayName": "Catégorie Logoman"
+      },
+      "cat-case": {
+        "role": "data",
+        "displayName": "Catégorie case hit"
+      },
+      "cat-auto": {
+        "role": "data",
+        "displayName": "Catégorie auto"
+      },
+      "cat-mem": {
+        "role": "data",
+        "displayName": "Catégorie memo"
+      },
+      "cat-automem": {
+        "role": "data",
+        "displayName": "Catégorie auto/memo"
+      },
+      "cat-base": {
+        "role": "data",
+        "displayName": "Catégorie base"
+      },
+      "light-paper": {
+        "role": "neutral",
+        "displayName": "Papier journal (thème clair)"
+      },
+      "light-accent-red": {
+        "role": "primary",
+        "displayName": "Rouge d'imprimeur (thème clair)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nom de la collection dans le masthead."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titres de rubrique de l'accueil."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nom d'un spot dans une ligne de tableau."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Phrase de détail d'un spot."
+      },
+      "body-ui": {
+        "displayName": "Body UI",
+        "purpose": "Boutons, champs, menus."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Valeurs chiffrées en colonnes, chiffres tabulaires ; 800 sur la colonne triée."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "En-têtes de colonnes et intitulés de groupes, capitales espacées."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-outline",
+        "value": "0 0 0 1px var(--border-standard)",
+        "purpose": "Contour d'une carte ou vignette au repos, sans ombre portée."
+      },
+      {
+        "name": "pop",
+        "value": "0 0 0 1px #4D473C, 0 18px 40px rgba(0,0,0,0.55)",
+        "purpose": "Popovers et menus flottants uniquement."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "0.12s",
+        "purpose": "Couleur, fond et bordure des contrôles au survol."
+      },
+      {
+        "name": "progress",
+        "value": "1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+        "purpose": "Filet rouge de progression sous la barre du haut ; figé en reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "390px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "coarse-pointer",
+        "value": "(pointer: coarse)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action principale d'un écran ou d'un détail (« Voir la fiche »).",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Voir la fiche</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:2px;font:600 13px 'Libre Franklin',system-ui,sans-serif;border:1px solid transparent;cursor:pointer;transition:background .12s,border-color .12s}.ds-btn-primary{background:var(--accent,#C8261F);color:var(--accent-fg,#F7F1E4)}.ds-btn-primary:hover{background:var(--accent-hover,#D9322A)}.ds-btn:focus-visible{outline:2px solid color-mix(in srgb,#C8261F 45%,transparent);outline-offset:2px}"
+    },
+    {
+      "name": "Bouton secondaire",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Action d'appoint (« Entourer », « Voir les autres »).",
+      "html": "<button class=\"ds-btn-sec\">Entourer</button>",
+      "css": ".ds-btn-sec{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:2px;font:500 13px 'Libre Franklin',system-ui,sans-serif;background:var(--bg-surface,#211E19);color:var(--text-primary,#F1EADB);border:1px solid var(--border-standard,#3A352C);cursor:pointer;transition:background .12s,border-color .12s}.ds-btn-sec:hover{background:var(--bg-hover,#2A2620);border-color:var(--border-strong,#4D473C)}.ds-btn-sec:focus-visible{outline:2px solid color-mix(in srgb,#C8261F 45%,transparent);outline-offset:2px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Filtre bascule ; actif = papier sur encre.",
+      "html": "<button class=\"ds-chip\">Entourés 0</button> <button class=\"ds-chip is-active\">Entourés 3</button>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:2px;font:500 12px 'Libre Franklin',system-ui,sans-serif;color:var(--text-secondary,#D6CDBA);background:var(--bg-surface,#211E19);border:1px solid var(--border-standard,#3A352C);cursor:pointer}.ds-chip:hover{border-color:var(--border-strong,#4D473C);color:var(--text-primary,#F1EADB)}.ds-chip.is-active{background:var(--text-primary,#F1EADB);border-color:var(--text-primary,#F1EADB);color:var(--bg-primary,#15130F);font-weight:700}"
+    },
+    {
+      "name": "Segmenté",
+      "kind": "custom",
+      "refersTo": "segment-active",
+      "description": "Choix exclusif (Par équipe / Par joueur) avec compteur.",
+      "html": "<div class=\"ds-seg\"><button aria-pressed=\"true\">Par équipe <span>30</span></button><button aria-pressed=\"false\">Par joueur</button></div>",
+      "css": ".ds-seg{display:inline-flex;padding:3px;gap:2px;border-radius:2px;background:var(--bg-surface,#211E19);border:1px solid var(--border-subtle,#2A2620)}.ds-seg button{height:26px;padding:0 10px;border:0;border-radius:2px;background:none;font:500 12px 'Libre Franklin',system-ui,sans-serif;color:var(--text-tertiary,#ADA390);cursor:pointer}.ds-seg button span{font-variant-numeric:tabular-nums;color:var(--text-quaternary,#958C7B)}.ds-seg button:hover{color:var(--text-primary,#F1EADB)}.ds-seg button[aria-pressed=true]{background:var(--text-primary,#F1EADB);color:var(--bg-primary,#15130F);font-weight:700}"
+    },
+    {
+      "name": "Champ",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Saisie texte ; focus en filet et halo rouges.",
+      "html": "<input class=\"ds-input\" placeholder=\"Chercher un joueur\">",
+      "css": ".ds-input{height:34px;padding:0 10px;border-radius:2px;font:400 13px 'Libre Franklin',system-ui,sans-serif;color:var(--text-primary,#F1EADB);background:var(--bg-surface,#211E19);border:1px solid var(--border-standard,#3A352C);outline:none;transition:border-color .12s,box-shadow .12s}.ds-input::placeholder{color:var(--text-quaternary,#958C7B)}.ds-input:focus{border-color:color-mix(in srgb,#C8261F 45%,transparent);box-shadow:0 0 0 3px color-mix(in srgb,#C8261F 14%,transparent)}"
+    },
+    {
+      "name": "Onglets de destination",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Spots · Hits · Boîte · Checklist · Odds ; onglet choisi en 800 avec filet rouge.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab\" aria-selected=\"true\">Spots</button><button class=\"ds-tab\">Hits</button><button class=\"ds-tab\">Boîte</button></div>",
+      "css": ".ds-tabs{display:flex;gap:2px;border-bottom:1px solid var(--border-standard,#3A352C)}.ds-tab{position:relative;height:42px;padding:0 10px;border:0;background:none;font:500 14px 'Libre Franklin',system-ui,sans-serif;color:var(--text-tertiary,#ADA390);cursor:pointer}.ds-tab:hover{color:var(--text-primary,#F1EADB)}.ds-tab[aria-selected=true]{color:var(--text-primary,#F1EADB);font-weight:800}.ds-tab[aria-selected=true]::after{content:'';position:absolute;left:10px;right:10px;bottom:-1px;height:3px;background:var(--accent,#C8261F)}"
+    },
+    {
+      "name": "Tableau des spots",
+      "kind": "custom",
+      "refersTo": "spots-row-selected",
+      "description": "Signature : filet épais sous l'en-tête, colonne triée soulignée de rouge, barre à l'échelle, ligne choisie inversée.",
+      "html": "<table class=\"ds-spots\"><thead><tr><th>#</th><th>Équipe</th><th class=\"n sorted\">Autos</th><th class=\"n\">Memo</th><th class=\"n\">Case</th></tr></thead><tbody><tr><td class=\"r\">1</td><td>Dallas Mavericks<i style=\"width:100%\"></i></td><td class=\"n b\">41</td><td class=\"n\">15</td><td class=\"n\">8</td></tr><tr class=\"open\"><td class=\"r\">2</td><td>Atlanta Hawks</td><td class=\"n b\">33</td><td class=\"n\">16</td><td class=\"n\">5</td></tr><tr><td class=\"r\">3</td><td>Oklahoma City Thunder<i style=\"width:80%\"></i></td><td class=\"n b\">33</td><td class=\"n\">20</td><td class=\"n\">4</td></tr></tbody></table>",
+      "css": ".ds-spots{width:100%;border-collapse:collapse;font-family:'Libre Franklin',system-ui,sans-serif;color:var(--text-primary,#F1EADB)}.ds-spots thead tr{border-bottom:2px solid var(--rule-heavy,#F1EADB)}.ds-spots th{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary,#ADA390);text-align:left;padding:6px 0}.ds-spots th.n{text-align:right}.ds-spots th.sorted{color:var(--text-primary,#F1EADB);text-decoration:underline;text-decoration-color:var(--accent,#C8261F);text-decoration-thickness:2px;text-underline-offset:4px}.ds-spots td{padding:10px 0;font-size:15px;font-weight:600;border-bottom:1px solid var(--border-standard,#3A352C)}.ds-spots td i{display:block;height:3px;margin-top:4px;background:var(--accent,#C8261F);opacity:.85}.ds-spots td.n{text-align:right;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text-secondary,#D6CDBA)}.ds-spots td.b{font-weight:800;color:inherit}.ds-spots td.r{width:32px;font-size:13px;font-weight:700;color:var(--text-tertiary,#ADA390)}.ds-spots tbody tr{cursor:pointer}.ds-spots tbody tr:hover{background:var(--bg-hover,#2A2620)}.ds-spots tr.open,.ds-spots tr.open:hover{background:var(--text-primary,#F1EADB);color:var(--bg-primary,#15130F)}.ds-spots tr.open td{color:var(--bg-primary,#15130F)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La Cote du mois",
+    "overview": "NoClim se lit comme la page de stats d'un guide de cotes mensuel : encre chaude, papier, filets, colonnes de chiffres alignés et un seul rouge d'imprimeur. Chaque spot est présenté par ce qu'il contient vraiment, en comptes bruts, triable par colonne. Thème sombre par défaut, thème clair « papier journal » par tokens ; mobile d'abord à 390 px.",
+    "keyCharacteristics": [
+      "Encre chaude et papier, un seul accent rouge",
+      "Libre Franklin seule, 400 à 900, chiffres tabulaires",
+      "Tableaux denses, filet épais de 2 px sous les en-têtes",
+      "Sélection inversée papier sur encre",
+      "Coins de 2 à 6 px, aucune ombre au repos",
+      "Chiffres vrais et comparaisons simples uniquement"
+    ],
+    "rules": [
+      {
+        "name": "La règle du Rouge Unique",
+        "body": "Le rouge est le seul accent : action, colonne triée, échelle, emplacement courant. Aucune deuxième couleur d'accent.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle des Catégories-Données",
+        "body": "Les couleurs cat-* ne codent que le type de carte ; jamais en décoration ni en accent.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle des Colonnes Tabulaires",
+        "body": "Tout chiffre qui se compare est en chiffres tabulaires, aligné à droite.",
+        "section": "typography"
+      },
+      {
+        "name": "La règle du Plancher de 12 px",
+        "body": "Aucun texte lisible sous 12 px sur mobile.",
+        "section": "typography"
+      },
+      {
+        "name": "La règle de la Cible de 44 px",
+        "body": "Sur pointeur grossier, toute cible principale fait au moins 44 px.",
+        "section": "layout"
+      },
+      {
+        "name": "La règle du Papier à Plat",
+        "body": "Aucune ombre au repos ; seuls popovers et menus flottants en ont une.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do montrer des comptes réels (cartes, autos, memo, case hits, odds) et des comparaisons simples : rang, moyenne.",
+      "Do inverser papier sur encre pour toute sélection.",
+      "Do mettre un filet de 2 px de la couleur du texte sous chaque en-tête de tableau.",
+      "Do dessiner les barres à l'échelle exacte de leur valeur.",
+      "Do définir toute nouvelle couleur dans les deux thèmes.",
+      "Do tenir 44 px de cible tactile et 12 px de texte minimum sur mobile."
+    ],
+    "donts": [
+      "Don't introduire de score ou d'indice synthétique, de mention HOT, ni de flèche chaud/froid.",
+      "Don't utiliser les couleurs cat-* hors du codage du type de carte.",
+      "Don't ajouter une deuxième couleur d'accent, un dégradé ou un accent néon.",
+      "Don't composer en tuiles de KPI.",
+      "Don't poser d'ombre sur une surface au repos, ni de coins au-delà de 6 px.",
+      "Don't introduire une deuxième famille de caractères."
+    ]
+  }
+}

@@ -13,7 +13,7 @@
 import type { LucideIcon } from 'lucide-react'
 import {
   LayoutDashboard, Gem, Users, TrendingUp, User, Shield, Scale, Sparkles,
-  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library, PenLine, LayoutGrid,
+  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library, PenLine, LayoutGrid, Thermometer,
 } from 'lucide-react'
 import type { ViewName } from './types'
 
@@ -30,7 +30,7 @@ export interface Destination {
 
 export const DESTINATIONS: Destination[] = [
   {
-    id: 'collections', label: 'Collections', icon: Library, defaultView: '🌍 Vue Globale',
+    id: 'collections', label: 'Collections', icon: Library, defaultView: '🌡️ Spots',
     description: 'Ce que contiennent les collections ouvertes : hits, boîte, checklist, odds.',
   },
   {
@@ -72,7 +72,11 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   // ── Collections ──
   {
-    view: '🌍 Vue Globale', slug: 'overview', label: "Vue d'ensemble", tab: 'Aperçu', icon: LayoutDashboard, group: 'collections',
+    view: '🌡️ Spots', slug: 'spots', label: 'Spots', tab: 'Spots', icon: Thermometer, group: 'collections',
+    description: 'Indice climat de chaque équipe ou joueur : quels spots sont chauds, lesquels sont froids, et pourquoi.', needsAnalysis: true,
+  },
+  {
+    view: '🌍 Vue Globale', slug: 'overview', label: 'Chiffres de la sélection', tab: 'Chiffres', icon: LayoutDashboard, group: 'collections', overflow: true,
     description: 'Volumes, répartition des hits et classements des collections ouvertes.', needsAnalysis: true,
   },
   {

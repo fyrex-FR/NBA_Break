@@ -28,6 +28,10 @@ interface AppState {
   masterKey: string | null
   setMasterKey: (key: string | null) => void
 
+  // Spots entourés (visés), par sport : « team:Nom » / « player:Nom »
+  markedSpots: string[]
+  toggleMarkedSpot: (key: string) => void
+
   // Navigation
   activeView: ViewName
   setActiveView: (view: ViewName) => void
@@ -137,8 +141,13 @@ export const useAppStore = create<AppState>()(
       masterKey: null,
       setMasterKey: (key) => set({ masterKey: key }),
 
+      markedSpots: [],
+      toggleMarkedSpot: (key) => set((s) => ({
+        markedSpots: s.markedSpots.includes(key) ? s.markedSpots.filter((k) => k !== key) : [...s.markedSpots, key],
+      })),
+
       // Navigation
-      activeView: '🌍 Vue Globale',
+      activeView: '🌡️ Spots',
       setActiveView: (view) => {
         const group = navItemFor(view)?.group
         const isDestination = DESTINATIONS.some((d) => d.id === group)
@@ -215,6 +224,7 @@ export const useAppStore = create<AppState>()(
         masterKey: state.masterKey,
         selectedConfigKeys: state.selectedConfigKeys,
         navCollapsed: state.navCollapsed,
+        markedSpots: state.markedSpots,
       }),
     },
   ),

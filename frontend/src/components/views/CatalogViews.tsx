@@ -89,7 +89,7 @@ function CollectionsBySeason({ rows, onOpen, onOpenSeason }: {
                 </button>
               )}
             </div>
-            <ul className="grid gap-2 @xl:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-2 @xl:grid-cols-2">
               {list.map((r) => {
                 const cl = byId.get(r.checklist_id)
                 const entry = cl ? toEntry(cl, index.get(r.checklist_id)) : null
@@ -106,7 +106,7 @@ function CollectionsBySeason({ rows, onOpen, onOpenSeason }: {
                         <span className="block text-[14px] font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{entry?.name ?? r.name}</span>
                         <span className="block text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}><CountsLine c={r} /></span>
                         {r.top_players && r.top_players.length > 0 && (
-                          <span className="block text-[11px] mt-0.5 truncate" style={{ color: 'var(--text-tertiary)' }}>
+                          <span className="block text-xs mt-0.5 truncate" style={{ color: 'var(--text-tertiary)' }}>
                             {r.top_players.map((p) => p.name).join(' · ')}
                           </span>
                         )}
@@ -253,7 +253,7 @@ export function CatalogTeamsView() {
       {isLoading || (isError && failureCount < 8) ? <IndexLoading /> : isError ? (
         <EmptyState icon={Layers} title="Indisponible">L’index du catalogue n’a pas pu être chargé.</EmptyState>
       ) : (
-        <ul className="grid gap-2 @xl:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-2 @xl:grid-cols-2">
           {teams.map((t) => (
             <li key={t.name}>
               <button type="button" onClick={() => setPicked(t.name)} className="ui-card ui-row-hover w-full text-left px-3.5 py-2.5 flex items-center gap-3">

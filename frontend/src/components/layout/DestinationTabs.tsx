@@ -56,8 +56,9 @@ export function DestinationTabs({ destination }: { destination: DestinationId })
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen((v) => !v)}
             className="ui-tab"
+            aria-label={activeMore ? undefined : "Plus d'onglets"}
           >
-            {activeMore ? activeMore.tab : 'Plus'}
+            {activeMore ? activeMore.tab : <span className="hidden sm:inline">Plus</span>}
             <ChevronDown className={`w-3.5 h-3.5 transition-transform ${moreOpen ? 'rotate-180' : ''}`} />
           </button>
           <Popover open={moreOpen} onClose={() => setMoreOpen(false)} align="right" width={220}>

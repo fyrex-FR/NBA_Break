@@ -178,8 +178,8 @@ export default function ChatWidget() {
 
       <button
         onClick={() => setOpen(!open)}
-        className="hidden md:flex w-11 h-11 rounded-full items-center justify-center transition-transform hover:scale-105"
-        style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', boxShadow: 'var(--shadow-pop)' }}
+        className="hidden md:flex w-11 h-11 rounded-sm items-center justify-center"
+        style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-strong)' }}
         aria-label={open ? "Fermer l'assistant" : "Ouvrir l'assistant"}
         title="Assistant"
       >

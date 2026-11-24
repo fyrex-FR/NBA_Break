@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400..900;1,400..700&display=swap');
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -7,101 +7,111 @@
    ces noms sont conservés, seules les valeurs et les nouveaux tokens changent.
    ────────────────────────────────────────────────────────────────────────── */
 
+/* Identité NoClim : une page de stats de journal.
+   Encre chaude, papier, un seul accent rouge (action principale, colonne triée,
+   barres). Les couleurs de catégories ne servent qu'à coder les types de cartes. */
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
-  --rc-year-color: #f5c84b;
+  --rc-year-color: #E8B04A;
 
-  /* Surfaces — du plus profond au plus élevé */
-  --bg-primary: #0a0a0f;
-  --bg-panel: #111117;
-  --bg-surface: #17171f;
-  --bg-hover: #1f1f29;
-  --bg-elevated: #16161e;
-  --bg-glass: rgba(17, 17, 23, 0.72);
-  --bg-overlay: rgba(4, 4, 8, 0.64);
+  /* Surfaces : encre chaude, du plus profond au plus élevé */
+  --bg-primary: #15130F;
+  --bg-panel: #1A1814;
+  --bg-surface: #211E19;
+  --bg-hover: #2A2620;
+  --bg-elevated: #1E1B17;
+  --bg-glass: rgba(21, 19, 15, 0.9);
+  --bg-overlay: rgba(8, 7, 5, 0.7);
 
-  /* Texte */
-  --text-primary: #f4f4f6;
-  --text-secondary: #c7c7d1;
-  --text-tertiary: #a1a1af;
-  --text-quaternary: #868696;
+  /* Texte : papier */
+  --text-primary: #F1EADB;
+  --text-secondary: #D6CDBA;
+  --text-tertiary: #ADA390;
+  --text-quaternary: #958C7B;
 
-  /* Bordures */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-standard: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --border-solid: #2a2a35;
+  /* Filets */
+  --border-subtle: #2A2620;
+  --border-standard: #3A352C;
+  --border-strong: #4D473C;
+  --border-solid: #3A352C;
+  --rule-heavy: #F1EADB;
 
-  /* Élévation */
-  --shadow-glass: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 8px 24px rgba(0, 0, 0, 0.25);
-  --shadow-pop: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 16px 48px rgba(0, 0, 0, 0.55);
-  --shadow-card: 0 0 0 1px var(--border-subtle);
+  /* Pas d'ombres portées : un guide imprimé se lit à plat */
+  --shadow-glass: none;
+  --shadow-pop: 0 0 0 1px #4D473C, 0 18px 40px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 0 0 1px var(--border-standard);
 
-  /* Marque « Thermo » : infrarouge = chaud, cyan = froid */
-  --accent: #ff4d2e;
-  --accent-hover: #ff6a4d;
-  --accent-fg: #0a0a0f;
-  --cold: #3fc8f2;
-  --hot: #ff2e63;
-  --heat-gradient: linear-gradient(90deg, #3fc8f2 0%, #ff2e63 55%, #ff5a1f 100%);
-  --heat-gradient-warm: linear-gradient(90deg, #ff2e63 0%, #ff5a1f 100%);
+  /* Accent */
+  --accent: #C8261F;
+  --accent-hover: #D9322A;
+  --accent-fg: #F7F1E4;
 
-  /* Sémantique catégories — une seule source pour badges, barres, KPI */
-  --cat-logoman: #fb5a6e;
-  --cat-case: #f5b93c;
-  --cat-auto: #4cb7f5;
-  --cat-mem: #32d1b4;
-  --cat-automem: #8b8cf8;
-  --cat-base: #7d8592;
+  /* Catégories de cartes */
+  --cat-logoman: #F0607A;
+  --cat-case: #E8B04A;
+  --cat-auto: #6FA9E8;
+  --cat-mem: #45C2A6;
+  --cat-automem: #A69CEE;
+  --cat-base: #958C7B;
 
-  --success: #34d399;
-  --warning: #fbbf24;
-  --danger: #f87171;
+  --success: #5CC28A;
+  --warning: #E8B04A;
+  --danger: #EB4034;
 }
 
 [data-theme="light"] {
   color-scheme: light;
-  --rc-year-color: #9a5b00;
+  --rc-year-color: #8A5A00;
 
-  --bg-primary: #f6f6f8;
-  --bg-panel: #ffffff;
-  --bg-surface: #f2f4f7;
-  --bg-hover: #e9ecf1;
-  --bg-elevated: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.78);
-  --bg-overlay: rgba(15, 18, 25, 0.32);
+  /* Papier journal */
+  --bg-primary: #EFEAE0;
+  --bg-panel: #F6F2E9;
+  --bg-surface: #E7E1D4;
+  --bg-hover: #DED7C8;
+  --bg-elevated: #F8F5EE;
+  --bg-glass: rgba(239, 234, 224, 0.92);
+  --bg-overlay: rgba(21, 19, 15, 0.35);
 
-  --text-primary: #0e1116;
-  --text-secondary: #39414d;
-  --text-tertiary: #4f5765;
-  --text-quaternary: #646b7a;
+  --text-primary: #15130F;
+  --text-secondary: #37322A;
+  --text-tertiary: #575046;
+  --text-quaternary: #6C6457;
 
-  --border-subtle: rgba(15, 23, 42, 0.07);
-  --border-standard: rgba(15, 23, 42, 0.12);
-  --border-strong: rgba(15, 23, 42, 0.2);
-  --border-solid: #d5dae2;
+  --border-subtle: #DDD5C6;
+  --border-standard: #C9C0AE;
+  --border-strong: #ADA390;
+  --border-solid: #C9C0AE;
+  --rule-heavy: #15130F;
 
-  --shadow-glass: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.05);
-  --shadow-pop: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 16px 48px rgba(15, 23, 42, 0.16);
-  --shadow-card: 0 0 0 1px var(--border-subtle), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-glass: none;
+  --shadow-pop: 0 0 0 1px #ADA390, 0 18px 40px rgba(21, 19, 15, 0.18);
+  --shadow-card: 0 0 0 1px var(--border-standard);
 
-  --accent: #c8341a;
-  --accent-hover: #d9401f;
-  --accent-fg: #ffffff;
-  --cold: #0b9fd1;
-  --hot: #e11d55;
+  --accent: #B51F18;
+  --accent-hover: #C4271F;
+  --accent-fg: #F8F5EE;
 
-  --cat-logoman: #e11d48;
-  --cat-case: #c98a06;
-  --cat-auto: #0284c7;
-  --cat-mem: #0d9488;
-  --cat-automem: #6366f1;
-  --cat-base: #7a8291;
+  --cat-logoman: #C4234A;
+  --cat-case: #946200;
+  --cat-auto: #1E5FB0;
+  --cat-mem: #0B7A66;
+  --cat-automem: #5546C9;
+  --cat-base: #6C6457;
 
-  --success: #059669;
-  --warning: #d97706;
-  --danger: #dc2626;
+  --success: #1D7A47;
+  --warning: #946200;
+  --danger: #B51F18;
+}
+
+/* Tailwind : coins carrés partout (un guide imprimé n'a pas de pilules) */
+@theme {
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 5px;
+  --radius-3xl: 6px;
 }
 
 /* Dérivés recalculés sur chaque conteneur qui redéfinit l'accent */
@@ -109,10 +119,10 @@
 [data-theme] {
   --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
   --accent-ring: color-mix(in srgb, var(--accent) 45%, transparent);
-  --font-sans: "Archivo", -apple-system, system-ui, sans-serif;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --font-sans: "Libre Franklin", -apple-system, system-ui, sans-serif;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
   --topbar-h: 56px;
 }
 
@@ -161,17 +171,24 @@ body {
   min-height: 100vh;
 }
 
-/* Titres en largeur réduite : l'accent « fiche de stats » de la marque */
+/* Titres : Franklin très gras et serré, comme les rubriques d'un guide de cotes */
 h1, h2 {
-  font-stretch: 84%;
-  letter-spacing: -0.012em;
+  font-weight: 900;
+  letter-spacing: -0.022em;
 }
 h3 {
-  letter-spacing: -0.006em;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
-  background: var(--accent-soft);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Barres de défilement aux couleurs du papier */
+* {
+  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: thin;
 }
 
 /* Focus clavier visible partout, invisible à la souris */
@@ -199,32 +216,30 @@ textarea {
 
   .ui-card {
     background: var(--bg-panel);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-card);
   }
 
   .font-display {
-    font-stretch: 72%;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 0.98;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
   }
 
-  /* Chiffres clés : condensés et tabulaires, comme une ligne de stats au dos d'une carte */
+  /* Chiffres : tabulaires et gras, alignés en colonnes comme dans un guide de cotes */
   .font-stat {
-    font-stretch: 78%;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
 
+  /* En-têtes de colonnes et rubriques : petites capitales espacées */
   .ui-eyebrow {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 16px;
     font-weight: 700;
-    font-stretch: 88%;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-tertiary);
   }
@@ -236,7 +251,7 @@ textarea {
     gap: 6px;
     height: 32px;
     padding: 0 12px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
@@ -254,13 +269,13 @@ textarea {
     height: 26px;
     padding: 0 8px;
     font-size: 12px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
   }
   .ui-btn-lg {
     height: 40px;
     padding: 0 16px;
     font-size: 14px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
   }
   .ui-btn-icon {
     width: 32px;
@@ -311,7 +326,7 @@ textarea {
     width: 100%;
     height: 34px;
     padding: 0 10px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 13px;
     color: var(--text-primary);
     background: var(--bg-surface);
@@ -333,7 +348,7 @@ textarea {
     height: 28px;
     max-width: 200px;
     padding: 0 26px 0 10px;
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     font-size: 12px;
     font-weight: 500;
     color: var(--text-secondary);
@@ -363,7 +378,7 @@ textarea {
     gap: 6px;
     height: 28px;
     padding: 0 10px;
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     font-size: 12px;
     font-weight: 500;
     color: var(--text-secondary);
@@ -379,10 +394,12 @@ textarea {
       color: var(--text-primary);
     }
   }
+  /* Sélection = inversion franche, papier sur encre (geste signature) */
   .ui-chip.is-active {
-    background: var(--accent-soft);
-    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-    color: var(--text-primary);
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg-primary);
+    font-weight: 700;
   }
 
   /* Filet de progression sous la barre du haut (mise à jour de l'analyse) */
@@ -415,7 +432,7 @@ textarea {
   .ui-tabs {
     display: flex;
     align-items: stretch;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-standard);
   }
   .ui-tabs-scroll {
     display: flex;
@@ -424,6 +441,8 @@ textarea {
     gap: 2px;
     overflow-x: auto;
     scrollbar-width: none;
+    /* Onglet coupé en fondu, pas en tranche nette */
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
   }
   .ui-tabs-scroll::-webkit-scrollbar { display: none; }
   .ui-tab {
@@ -432,7 +451,7 @@ textarea {
     align-items: center;
     gap: 6px;
     height: 42px;
-    padding: 0 12px;
+    padding: 0 10px;
     font-size: 14px;
     font-weight: 500;
     color: var(--text-tertiary);
@@ -444,16 +463,15 @@ textarea {
   }
   .ui-tab[aria-selected="true"] {
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: 800;
   }
   .ui-tab[aria-selected="true"]::after {
     content: '';
     position: absolute;
-    left: 12px;
-    right: 12px;
+    left: 10px;
+    right: 10px;
     bottom: -1px;
-    height: 2px;
-    border-radius: 2px 2px 0 0;
+    height: 3px;
     background: var(--accent);
   }
   @media (min-width: 768px) {
@@ -464,7 +482,7 @@ textarea {
     display: inline-flex;
     padding: 3px;
     gap: 2px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
   }
@@ -474,7 +492,7 @@ textarea {
     gap: 6px;
     height: 26px;
     padding: 0 10px;
-    border-radius: 7px;
+    border-radius: var(--radius-sm);
     font-size: 12px;
     font-weight: 500;
     color: var(--text-tertiary);
@@ -487,9 +505,9 @@ textarea {
     }
   }
   .ui-segment > button[aria-pressed="true"] {
-    background: var(--bg-panel);
-    color: var(--text-primary);
-    box-shadow: 0 0 0 1px var(--border-standard), 0 1px 2px rgba(0, 0, 0, 0.12);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-weight: 700;
   }
 
   .ui-kbd {
@@ -509,12 +527,12 @@ textarea {
 
   /* Retour tactile : visible pendant l'appui uniquement */
   @media (pointer: coarse) {
-    .ui-btn { min-height: 40px; }
-    .ui-btn-icon { width: 40px; height: 40px; }
+    .ui-btn { min-height: 44px; }
+    .ui-btn-icon { width: 44px; height: 44px; }
     .ui-btn-sm { min-height: 34px; }
     .ui-btn-sm.ui-btn-icon { width: 34px; height: 34px; }
-    .ui-segment > button { height: 32px; }
-    .ui-chip { height: 34px; }
+    .ui-segment > button { height: 38px; }
+    .ui-chip { height: 44px; }
     .ui-select { height: 36px; }
     .ui-input { height: 40px; }
   }
@@ -549,7 +567,7 @@ textarea {
   }
 
   .ui-skeleton {
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     background: linear-gradient(90deg, var(--bg-surface) 0%, var(--bg-hover) 50%, var(--bg-surface) 100%);
     background-size: 800px 100%;
     animation: shimmer 1.4s linear infinite;

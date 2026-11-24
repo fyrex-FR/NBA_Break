@@ -24,7 +24,7 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
         background: 'color-mix(in srgb, var(--bg-primary) 82%, transparent)',
         backdropFilter: 'saturate(1.4) blur(12px)',
         WebkitBackdropFilter: 'saturate(1.4) blur(12px)',
-        borderBottom: '1px solid var(--border-subtle)',
+        borderBottom: '2px solid var(--rule-heavy)',
       }}
     >
       <button onClick={onOpenNav} className="md:hidden ui-btn ui-btn-ghost ui-btn-icon" aria-label="Ouvrir le menu">
@@ -77,7 +77,7 @@ export function TopBar({ onOpenNav }: { onOpenNav: () => void }) {
   )
 }
 
-/* Gros bouton Partager : feuille de partage native (iPhone, tablette), sinon copie du lien. */
+/* Bouton Partager : feuille de partage native (iPhone, tablette), sinon copie du lien. Discret : ce n'est pas l'action principale. */
 function ShareButton() {
   const { selectedChecklistIds } = useAppStore()
   const [copied, setCopied] = useState(false)
@@ -105,12 +105,12 @@ function ShareButton() {
   return (
     <button
       onClick={share}
-      className="ui-btn ui-btn-primary !h-10 sm:!h-8 !px-3 gap-2 flex-shrink-0"
+      className="ui-btn ui-btn-ghost ui-btn-icon sm:!w-auto sm:!px-2.5 gap-2 flex-shrink-0"
       title="Partager cette vue"
       aria-label="Partager cette vue"
     >
-      {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
-      <span className="font-semibold">{copied ? 'Lien copié' : 'Partager'}</span>
+      {copied ? <Check className="w-[18px] h-[18px]" style={{ color: 'var(--success)' }} /> : <Share2 className="w-[18px] h-[18px]" />}
+      <span className="hidden sm:inline">{copied ? 'Lien copié' : 'Partager'}</span>
     </button>
   )
 }
@@ -210,7 +210,7 @@ function BreakChip() {
   const { breakContext, setActiveView, clearBreakContext, activeView } = useAppStore()
   if (!breakContext) return null
   return (
-    <div className="flex items-center rounded-full h-8 pl-1.5 md:pl-2.5 pr-0 md:pr-1 gap-1.5" style={{ background: 'color-mix(in srgb, var(--danger) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--danger) 25%, transparent)' }}>
+    <div className="flex items-center rounded-sm h-8 pl-1.5 md:pl-2.5 pr-0 md:pr-1 gap-1.5" style={{ background: 'color-mix(in srgb, var(--danger) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--danger) 25%, transparent)' }}>
       <button onClick={() => setActiveView('🎲 État du Break')} className="md:hidden pr-1.5" aria-label="Break en cours">
         <Radio className="w-4 h-4 animate-pulse" style={{ color: 'var(--danger)' }} />
       </button>
@@ -223,7 +223,7 @@ function BreakChip() {
       >
         {breakContext.detail.title || 'Break actif'}
       </button>
-      <button onClick={clearBreakContext} className="hidden md:inline-flex ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon !rounded-full" aria-label="Quitter le break">
+      <button onClick={clearBreakContext} className="hidden md:inline-flex ui-btn ui-btn-ghost ui-btn-sm ui-btn-icon" aria-label="Quitter le break">
         <X className="w-3 h-3" />
       </button>
     </div>

@@ -71,7 +71,7 @@ export function HomeView() {
           <span className="flex-1 text-sm" style={{ color: 'var(--text-secondary)' }}>
             L’analyse de {plural(selectedChecklistIds.length, 'collection')} n’a pas abouti.
           </span>
-          <button onClick={() => runAnalysis({ goTo: '🌍 Vue Globale' })} className="ui-btn ui-btn-primary ui-btn-sm">
+          <button onClick={() => runAnalysis({ goTo: '🌡️ Spots' })} className="ui-btn ui-btn-primary ui-btn-sm">
             <Play className="w-3.5 h-3.5" /> Réessayer
           </button>
         </div>
@@ -102,7 +102,7 @@ export function HomeView() {
           </div>
 
           {all.length === 0 ? (
-            <div className="grid gap-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
               {Array.from({ length: 9 }).map((_, i) => <div key={i} className="ui-skeleton h-[96px] !rounded-2xl" />)}
             </div>
           ) : total === 0 ? (
@@ -111,12 +111,12 @@ export function HomeView() {
             groups.map((g) => (
               <section key={g.season ?? 'search'} className="mb-7">
                 {g.season && (
-                  <h2 className="flex items-baseline gap-2 mb-2.5 text-[15px] font-semibold" style={{ color: 'var(--text-primary)' }}>
+                  <h2 className="flex items-baseline gap-2 mb-3 pb-1.5 text-[20px] leading-6" style={{ color: 'var(--text-primary)', borderBottom: '2px solid var(--rule-heavy)' }}>
                     {g.season}
                     <span className="text-xs font-normal num" style={{ color: 'var(--text-quaternary)' }}>{plural(g.items.length, 'collection')}</span>
                   </h2>
                 )}
-                <div className="grid gap-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
+                <div className="grid grid-cols-1 gap-2.5 @xl:grid-cols-2 @4xl:grid-cols-3">
                   {g.items.map((entry) => (
                     <CollectionCard key={entry.id} entry={entry} hasOdds={oddsChecklistIds.has(entry.id)} onOpen={() => openCollection(entry.id)} />
                   ))}
@@ -159,7 +159,7 @@ function Presets({ sport }: { sport: string }) {
         {presets.slice(0, 6).map((p) => (
           <li key={p.name}>
             <button
-              onClick={() => { setSelectedChecklistIds(p.checklist_ids); setActiveView('🌍 Vue Globale') }}
+              onClick={() => { setSelectedChecklistIds(p.checklist_ids); setActiveView('🌡️ Spots') }}
               disabled={isAnalyzing}
               className="group w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-left transition-colors ui-row-hover"
               style={{ background: 'var(--bg-panel)', boxShadow: 'var(--shadow-card)' }}
