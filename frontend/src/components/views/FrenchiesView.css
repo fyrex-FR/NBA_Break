@@ -41,3 +41,11 @@
 .frenchies-table tbody th { font-weight: 500; }
 .frenchies-table tbody tr:last-child > * { border-bottom: 0; }
 .frenchies-table tr > :last-child { border-right: 0; }
+
+.frenchies-table .frenchies-family {
+  background: var(--bg-surface);
+  border-left: 2px solid var(--border-standard);
+  border-right: 2px solid var(--border-standard);
+  min-width: 6rem;
+  font-weight: 700;
+}

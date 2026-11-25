@@ -1,8 +1,8 @@
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { Download } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { sameIds } from '../../hooks/useRunAnalysis'
-import { buildFrenchies } from '../../utils/frenchies'
+import { buildFrenchies, FAMILY_LABELS } from '../../utils/frenchies'
 import { prettyChecklist } from '../../utils/checklists'
 import './FrenchiesView.css'
 
@@ -47,7 +47,7 @@ export function FrenchiesView() {
         </button>
       </div>
       <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>
-        Liste vérifiée mais incomplète : certains joueurs français ou variantes de noms peuvent manquer. × indique une présence dans le set. Auto et Memo comptent les lignes de checklist (selon Hits), parallèles compris ; une carte auto-memo compte dans les deux.
+        Liste vérifiée mais incomplète : certains joueurs français ou variantes de noms peuvent manquer. × indique une présence dans le set pour la famille indiquée ; un même set peut apparaître dans plusieurs familles. Auto et Memo comptent les lignes de checklist (selon Hits), parallèles compris ; une carte auto-memo compte dans les deux.
       </p>
       {error && <p role="alert" className="mb-4">{error}</p>}
       {series.length === 0 && <p>Aucune carte dans les checklists ouvertes.</p>}
@@ -60,9 +60,9 @@ export function FrenchiesView() {
                 <p className="text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>Fais défiler le tableau horizontalement pour voir tous les sets.</p>
                 <div className="frenchies-scroll" role="region" aria-label={`Tableau ${prettyChecklist(group.name)}`} tabIndex={0}>
                   <table className="frenchies-table">
-                    <thead><tr><th scope="col">Joueur</th>{group.sets.map((set) => <th key={set} scope="col">{set}</th>)}<th scope="col">Auto</th><th scope="col">Memo</th></tr></thead>
+                    <thead><tr><th scope="col">Joueur</th>{group.columns.map((column, i) => <Fragment key={column.key}>{(i === 0 || group.columns[i - 1].family !== column.family) && <th scope="col" className="frenchies-family">{FAMILY_LABELS[column.family]}</th>}<th scope="col">{column.name}</th></Fragment>)}<th scope="col">Auto</th><th scope="col">Memo</th></tr></thead>
                     <tbody>{group.players.map((player) => (
-                      <tr key={player.name}><th scope="row">{player.name}</th>{group.sets.map((set) => <td key={set}>{player.sets.has(set) ? '×' : ''}</td>)}<td>{player.auto}</td><td>{player.memo}</td></tr>
+                      <tr key={player.name}><th scope="row">{player.name}</th>{group.columns.map((column, i) => <Fragment key={column.key}>{(i === 0 || group.columns[i - 1].family !== column.family) && <td className="frenchies-family" aria-hidden="true" />}<td>{player.sets.has(column.key) ? '×' : ''}</td></Fragment>)}<td>{player.auto}</td><td>{player.memo}</td></tr>
                     ))}</tbody>
                   </table>
                 </div>
