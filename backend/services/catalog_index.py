@@ -68,9 +68,11 @@ def build_index(df_p, df_t, checklists: dict[str, dict]) -> dict:
         name = str(player).strip()
         if not name:
             continue
-        entry = players.setdefault(name, {"name": name, "teams": {}, "totals": _empty_counts(), "collections": {}})
+        entry = players.setdefault(name, {"name": name, "teams": {}, "totals": _empty_counts(), "collections": {}, "collection_teams": {}})
         n = int(hits)
         entry["teams"][team] = entry["teams"].get(team, 0) + n
+        tally = entry["collection_teams"].setdefault(str(cid), {})
+        tally[team] = tally.get(team, 0) + n
         _add(entry["totals"], category, n)
         _add(entry["collections"].setdefault(str(cid), _empty_counts()), category, n)
 
@@ -188,7 +190,13 @@ def player_detail(index: dict, name: str) -> dict | None:
         p = next((x for x in index["players"].values() if x["search"] == key), None)
     if p is None:
         return None
-    return {"name": p["name"], "team": p["team"], "totals": p["totals"], "collections": _collection_rows(index, p["collections"])}
+    rows = _collection_rows(index, p["collections"])
+    # Équipe du joueur dans chaque collection (la plus fréquente), pour les vues par équipe.
+    for row in rows:
+        tally = p.get("collection_teams", {}).get(row["checklist_id"])
+        if tally:
+            row["team"] = str(max(tally.items(), key=lambda kv: kv[1])[0]).strip()
+    return {"name": p["name"], "team": p["team"], "totals": p["totals"], "collections": rows}
 
 
 def list_teams(index: dict) -> list[dict]:

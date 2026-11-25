@@ -126,6 +126,7 @@ function NavSections({ collapsed, onNavigate }: { collapsed: boolean; onNavigate
   const activeItem = navItemFor(activeView)
   const currentDestination = destinationFor(activeView)?.id
   const enabled = analysisData?.enabled_views
+  const featured = itemsOf('frenchies', enabled, selectedSport)
   const tools = itemsOf('tools', enabled, selectedSport)
   const admin = itemsOf('admin', enabled, selectedSport)
 
@@ -174,6 +175,12 @@ function NavSections({ collapsed, onNavigate }: { collapsed: boolean; onNavigate
             : null,
         ))}
       </ul>
+
+      {featured.length > 0 && (
+        <ul className="space-y-0.5 -mt-2 pt-3" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+          {featured.map((item) => row(item.view, item.label, item.icon, activeItem?.view === item.view, () => setActiveView(item.view)))}
+        </ul>
+      )}
 
       {tools.length > 0 && (
         <div>

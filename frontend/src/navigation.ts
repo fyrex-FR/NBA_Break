@@ -13,12 +13,13 @@
 import type { LucideIcon } from 'lucide-react'
 import {
   LayoutDashboard, Gem, Users, TrendingUp, User, Shield, Scale, Sparkles,
-  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library, PenLine, LayoutGrid, Thermometer,
+  Dices, Target, Radio, Download, BookOpen, FileText, Wand2, FlaskConical, Link2, Drama, Package, Library, PenLine, LayoutGrid, Thermometer, Flag,
 } from 'lucide-react'
 import type { ViewName } from './types'
 
 export type DestinationId = 'collections' | 'teams' | 'players' | 'break'
-export type NavGroupId = DestinationId | 'tools' | 'admin'
+/** `frenchies` : entrée à part du panneau latéral, sous les quatre destinations. */
+export type NavGroupId = DestinationId | 'frenchies' | 'tools' | 'admin'
 
 export interface Destination {
   id: DestinationId
@@ -130,8 +131,8 @@ export const NAV_ITEMS: NavItem[] = [
     description: 'Rookie cards présentes dans les collections ouvertes.', needsAnalysis: true,
   },
   {
-    view: '🇫🇷 Frenchies', slug: 'frenchies', label: 'Frenchies', tab: 'Frenchies', icon: Users, group: 'players', sports: ['nba'],
-    description: 'Les joueurs français par set dans chaque collection ouverte.', needsAnalysis: true,
+    view: '🇫🇷 Frenchies', slug: 'frenchies', label: 'Frenchies', tab: 'Frenchies', icon: Flag, group: 'frenchies', sports: ['nba'],
+    description: 'Les joueurs français : leurs autos, memo et case hits, et les équipes qui les portent.', needsAnalysis: false,
   },
   {
     view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', tab: 'Comparer', icon: Scale, group: 'players', enabledKey: 'comparator',
@@ -179,7 +180,7 @@ export const NAV_ITEMS: NavItem[] = [
 ]
 
 export const GROUP_LABELS: Record<NavGroupId, string> = {
-  collections: 'Collections', teams: 'Équipes', players: 'Joueurs', break: 'Break', tools: 'Outils', admin: 'Outils admin',
+  collections: 'Collections', teams: 'Équipes', players: 'Joueurs', break: 'Break', frenchies: 'Frenchies', tools: 'Outils', admin: 'Outils admin',
 }
 
 const BY_VIEW = new Map<ViewName, NavItem>()
