@@ -130,6 +130,10 @@ export const NAV_ITEMS: NavItem[] = [
     description: 'Rookie cards présentes dans les collections ouvertes.', needsAnalysis: true,
   },
   {
+    view: '🇫🇷 Frenchies', slug: 'frenchies', label: 'Frenchies', tab: 'Frenchies', icon: Users, group: 'players', sports: ['nba'],
+    description: 'Les joueurs français par set dans chaque collection ouverte.', needsAnalysis: true,
+  },
+  {
     view: '⚖️ Comparateur Joueurs', slug: 'compare', label: 'Comparateur', tab: 'Comparer', icon: Scale, group: 'players', enabledKey: 'comparator',
     description: 'Mets plusieurs joueurs côte à côte.', needsAnalysis: true,
   },

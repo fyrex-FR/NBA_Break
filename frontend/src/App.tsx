@@ -29,6 +29,7 @@ import { ExportView } from './components/views/ExportView'
 import { DetectionView } from './components/views/DetectionView'
 import { MarvelAttributionView } from './components/views/MarvelAttributionView'
 import { RookiesView } from './components/views/RookiesView'
+import { FrenchiesView } from './components/views/FrenchiesView'
 import { TrendView } from './components/views/TrendView'
 import { SmartImportView } from './components/views/SmartImportView'
 import { BreakOverviewView } from './components/views/BreakOverviewView'
@@ -62,6 +63,7 @@ function renderView(view: ViewName, hasBreak: boolean) {
     case '📁 Par Fichier': return <FileAnalysisView />
     case '📈 Tendances': return <TrendView />
     case '🧨 Rookies': return <RookiesView />
+    case '🇫🇷 Frenchies': return <FrenchiesView />
     case '🧪 Détection Auto/Mem': return <DetectionView />
     case '🦸 Attribution Marvel': return <MarvelAttributionView />
     case '⚖️ Comparateur Joueurs': return <ComparatorView />

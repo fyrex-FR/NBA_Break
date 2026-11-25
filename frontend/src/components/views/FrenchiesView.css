@@ -1,0 +1,43 @@
+.frenchies-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-standard);
+  border-radius: 10px;
+  background: var(--bg-panel);
+}
+.frenchies-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content;
+  min-width: 100%;
+  font-size: 0.8125rem;
+}
+.frenchies-table th, .frenchies-table td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+}
+.frenchies-table thead th {
+  max-width: 12rem;
+  min-width: 5rem;
+  text-align: center;
+  vertical-align: bottom;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  font-weight: 600;
+}
+.frenchies-table tbody td { text-align: center; font-variant-numeric: tabular-nums; }
+.frenchies-table tr > :first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 10rem;
+  max-width: 12rem;
+  text-align: left;
+  background: var(--bg-panel);
+  box-shadow: 1px 0 var(--border-standard);
+}
+.frenchies-table thead tr > :first-child { z-index: 2; background: var(--bg-surface); }
+.frenchies-table tbody th { font-weight: 500; }
+.frenchies-table tbody tr:last-child > * { border-bottom: 0; }
+.frenchies-table tr > :last-child { border-right: 0; }

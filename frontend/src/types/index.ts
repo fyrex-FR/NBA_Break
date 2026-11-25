@@ -429,6 +429,7 @@ export type ViewName =
   | '👥 Multi-Joueurs'
   | '📈 Tendances'
   | '🧨 Rookies'
+  | '🇫🇷 Frenchies'
   | '🔍 Analyse Joueur'
   | '🛡️ Analyse Équipe'
   | '📚 Checklist Beckett'
