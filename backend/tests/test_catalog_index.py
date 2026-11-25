@@ -36,3 +36,17 @@ def test_team_top_players_per_collection():
     d = ci.team_detail(idx, "San Antonio Spurs")
     chrome = next(c for c in d["collections"] if c["checklist_id"] == "b")
     assert [p["name"] for p in chrome["top_players"]] == ["Victor Wembanyama", "Stephon Castle"]
+
+
+def test_player_team_per_collection():
+    df_p = pd.DataFrame([
+        {"Player": "Nicolas Batum", "Team": "Portland Trail Blazers", "checklist_id": "a", "Category": CATEGORY_AUTO, "Hits": 2},
+        {"Player": "Nicolas Batum", "Team": "LA Clippers", "checklist_id": "b", "Category": CATEGORY_AUTO, "Hits": 1},
+        {"Player": "Nicolas Batum", "Team": "LA Clippers", "checklist_id": "b", "Category": CATEGORY_BASE_OTHER, "Hits": 4},
+    ])
+    meta = {"a": {"checklist_id": "a", "name": "Prizm", "season": "2012-13"}, "b": {"checklist_id": "b", "name": "Chrome", "season": "2025-26"}}
+    idx = ci.build_index(df_p, df_p.drop(columns=["Player"]), meta)
+    d = ci.player_detail(idx, "Nicolas Batum")
+    assert {c["checklist_id"]: c["team"] for c in d["collections"]} == {"b": "LA Clippers", "a": "Portland Trail Blazers"}
+    # La lecture ne modifie pas l'index.
+    assert "team" not in idx["players"]["Nicolas Batum"]["collections"]["b"]

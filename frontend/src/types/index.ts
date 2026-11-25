@@ -640,6 +640,8 @@ export interface CatalogCollectionRow extends CatalogCounts {
   checklist_id: string
   name: string
   season: string
+  /** Équipe du joueur dans cette collection (détail joueur uniquement). */
+  team?: string
   top_players?: { name: string; premium: number }[]
 }
 
