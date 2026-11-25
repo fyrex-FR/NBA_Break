@@ -1,8 +1,8 @@
-import { Fragment, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Download } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
 import { sameIds } from '../../hooks/useRunAnalysis'
-import { buildFrenchies, FAMILY_LABELS } from '../../utils/frenchies'
+import { buildFrenchies, FAMILY_LABELS, frenchFamilyGroups } from '../../utils/frenchies'
 import { prettyChecklist } from '../../utils/checklists'
 import './FrenchiesView.css'
 
@@ -60,9 +60,12 @@ export function FrenchiesView() {
                 <p className="text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>Fais défiler le tableau horizontalement pour voir tous les sets.</p>
                 <div className="frenchies-scroll" role="region" aria-label={`Tableau ${prettyChecklist(group.name)}`} tabIndex={0}>
                   <table className="frenchies-table">
-                    <thead><tr><th scope="col">Joueur</th>{group.columns.map((column, i) => <Fragment key={column.key}>{(i === 0 || group.columns[i - 1].family !== column.family) && <th scope="col" className="frenchies-family">{FAMILY_LABELS[column.family]}</th>}<th scope="col">{column.name}</th></Fragment>)}<th scope="col">Auto</th><th scope="col">Memo</th></tr></thead>
+                    <thead>
+                      <tr><th scope="col" rowSpan={2} className="frenchies-player">Joueur</th>{frenchFamilyGroups(group.columns).map((family) => <th scope="colgroup" colSpan={family.columns.length} className="frenchies-family" key={family.start}>{FAMILY_LABELS[family.family]}</th>)}<th scope="col" rowSpan={2} className="frenchies-boundary">Auto</th><th scope="col" rowSpan={2}>Memo</th></tr>
+                      <tr>{group.columns.map((column, i) => <th scope="col" className={i === 0 || group.columns[i - 1].family !== column.family ? 'frenchies-boundary' : undefined} key={column.key}>{column.name}</th>)}</tr>
+                    </thead>
                     <tbody>{group.players.map((player) => (
-                      <tr key={player.name}><th scope="row">{player.name}</th>{group.columns.map((column, i) => <Fragment key={column.key}>{(i === 0 || group.columns[i - 1].family !== column.family) && <td className="frenchies-family" aria-hidden="true" />}<td>{player.sets.has(column.key) ? '×' : ''}</td></Fragment>)}<td>{player.auto}</td><td>{player.memo}</td></tr>
+                      <tr key={player.name}><th scope="row" className="frenchies-player">{player.name}</th>{group.columns.map((column, i) => <td className={i === 0 || group.columns[i - 1].family !== column.family ? 'frenchies-boundary' : undefined} key={column.key}>{player.sets.has(column.key) ? '×' : ''}</td>)}<td className="frenchies-boundary">{player.auto}</td><td>{player.memo}</td></tr>
                     ))}</tbody>
                   </table>
                 </div>

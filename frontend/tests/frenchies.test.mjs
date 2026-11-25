@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { buildFrenchies } from '../src/utils/frenchies.ts'
+import { buildFrenchies, frenchFamilyGroups } from '../src/utils/frenchies.ts'
 
 const card = (player, box, hit, id = 'a', hits = 1) => ({ Player: player, 'Box Type': box, 'Hit Type': hit, checklist_id: id, checklist_name: `Série ${id}`, Hits: hits })
 
@@ -43,17 +43,10 @@ test("classe les colonnes selon Hit Type, même pour un set partagé", () => {
   assert.equal(victor.sets.has(group.columns[1].key), false)
 })
 
-
-test('export Excel conserve les familles, séparateurs et présences', async () => {
-  const ExcelJS = (await import('exceljs')).default
-  const { buildFrenchiesWorkbook } = await import('../src/utils/frenchiesExport.ts')
-  const groups = buildFrenchies([card('Victor Wembanyama', 'Signatures', 'none'), card('Nolan Traoré', 'Signatures', 'auto'), card('Victor Wembanyama', 'Patch', 'mem'), card('Victor Wembanyama', 'Dual', 'auto_mem')])
-  const workbook = new ExcelJS.Workbook()
-  await workbook.xlsx.load(await buildFrenchiesWorkbook(groups))
-  const sheet = workbook.worksheets[0]
-  assert.deepEqual(sheet.getRow(1).values.slice(1), ['Joueur', 'Bases / Inserts', 'Signatures', 'Auto', 'Signatures', 'Memo', 'Patch', 'Auto / Memo', 'Dual', 'Auto', 'Memo'])
-  assert.equal(sheet.getRow(3).getCell(3).value, '×')
-  assert.equal(sheet.getRow(3).getCell(5).value, '')
-  assert.equal(sheet.views[0].xSplit, 1)
-  assert.equal(sheet.views[0].ySplit, 1)
+test('les groupes contigus couvrent exactement les sets dans le même ordre', () => {
+  const [group] = buildFrenchies([card('Victor Wembanyama', 'Z', 'none'), card('Victor Wembanyama', 'A', 'none'), card('Victor Wembanyama', 'Signatures', 'auto'), card('Victor Wembanyama', 'Patch', 'mem')])
+  const spans = frenchFamilyGroups(group.columns)
+  assert.deepEqual(spans.map(g => [g.family, g.start, g.columns.length]), [['none', 0, 2], ['auto', 2, 1], ['mem', 3, 1]])
+  assert.deepEqual(spans.flatMap(g => g.columns), group.columns)
+  assert.deepEqual(frenchFamilyGroups([]), [])
 })

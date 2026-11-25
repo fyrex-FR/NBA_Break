@@ -34,6 +34,20 @@ export interface FrenchSeries {
   players: FrenchPlayerRow[]
 }
 
+/** Groupes contigus, partagés par le tableau et l'export. */
+export function frenchFamilyGroups(columns: FrenchColumn[]) {
+  const groups: { family: FrenchFamily; start: number; columns: FrenchColumn[] }[] = []
+  columns.forEach((column, index) => {
+    let group = groups[groups.length - 1]
+    if (!group || group.family !== column.family) {
+      group = { family: column.family, start: index, columns: [] }
+      groups.push(group)
+    }
+    group.columns.push(column)
+  })
+  return groups
+}
+
 /** Une ligne de checklist contribue à chaque joueur présent, une fois par joueur. */
 export function buildFrenchies(cards: CardRecord[]): FrenchSeries[] {
   const series = new Map<string, { id: string; name: string; columns: Map<string, FrenchColumn>; players: Map<string, FrenchPlayerRow> }>()
